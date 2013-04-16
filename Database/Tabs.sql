@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Tabs]
+(
+	[TabId] INT NOT NULL PRIMARY KEY, 
+    [TabName] NVARCHAR(50) NOT NULL
+)
