@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[ItemsLog]
 (
-	[ItemLogId] INT NOT NULL PRIMARY KEY, 
+	[ItemLogId] INT NOT NULL PRIMARY KEY IDENTITY, 
     [ItemId] INT NOT NULL, 
     [Value] NVARCHAR(50) NOT NULL, 
     [Time] DATETIME2 NOT NULL, 

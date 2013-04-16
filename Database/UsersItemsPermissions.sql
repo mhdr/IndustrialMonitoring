@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[UsersItemsPermissions]
 (
-	[PermissionId] INT NOT NULL PRIMARY KEY, 
+	[PermissionId] INT NOT NULL PRIMARY KEY IDENTITY, 
     [UserId] INT NOT NULL, 
     [ItemId] INT NOT NULL, 
     CONSTRAINT [FK_UsersItemsPermissions_Users] FOREIGN KEY ([UserId]) REFERENCES [Users]([UserId]), 
