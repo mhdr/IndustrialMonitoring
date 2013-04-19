@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialMonitoring", "Ind
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{F94D5A2B-7AB6-4D4C-B72B-E1D1D1772D60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitoring", "Monitoring\Monitoring.csproj", "{1F69F51D-221C-47F4-9AD9-1647CF94C7A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F94D5A2B-7AB6-4D4C-B72B-E1D1D1772D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F94D5A2B-7AB6-4D4C-B72B-E1D1D1772D60}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F94D5A2B-7AB6-4D4C-B72B-E1D1D1772D60}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1F69F51D-221C-47F4-9AD9-1647CF94C7A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F69F51D-221C-47F4-9AD9-1647CF94C7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F69F51D-221C-47F4-9AD9-1647CF94C7A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F69F51D-221C-47F4-9AD9-1647CF94C7A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
