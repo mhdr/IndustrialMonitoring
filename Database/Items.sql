@@ -2,5 +2,12 @@
 (
 	[ItemId] INT NOT NULL PRIMARY KEY IDENTITY, 
     [ItemName] NVARCHAR(50) NOT NULL, 
-    [ItemType] INT NOT NULL
+    [ItemType] INT NOT NULL, 
+    [Location] TEXT NOT NULL, 
+    [SaveInItemsLogTimeInterval] INT NOT NULL DEFAULT 5, 
+    [SaveInItemsLogLastesTimeInterval] INT NOT NULL DEFAULT 60, 
+    [ShowInUITimeInterval] INT NOT NULL DEFAULT 5, 
+    [ScanCycle] INT NOT NULL DEFAULT 100, 
+    [SaveInItemsLogWhen] INT NOT NULL DEFAULT 1, 
+    [SaveInItemsLogLastWhen] INT NOT NULL DEFAULT 1
 )

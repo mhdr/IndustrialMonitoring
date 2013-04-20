@@ -49,4 +49,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ItemLogId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="c37a33a0-03fb-49fe-8e51-f65852605272" ChangeDateTime="04/20/2013 06:53:36">
+    <Property Name="ElementName" Value="[dbo].[Items].[SaveInItemLogTimeInterval]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SaveInItemsLogTimeInterval" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3a2cad8a-7a13-460b-ab90-d5b860607359" ChangeDateTime="04/20/2013 06:54:01">
+    <Property Name="ElementName" Value="[dbo].[Items].[SaveInItemLog]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SaveInItemsLogLastesTimeInterval" />
+  </Operation>
 </Operations>
