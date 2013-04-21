@@ -22,6 +22,9 @@ namespace Monitoring
         private WhenToLog _saveInItemsLogWhen;
         private WhenToLog _saveInItemsLogLastWhen;
         private IndustrialMonitoringEntities _entities = new IndustrialMonitoringEntities();
+        private object padlock=new object();
+        private NetworkVariableBufferedSubscriber<Int32> _subscriberInt;
+        private NetworkVariableBufferedSubscriber<Boolean> _subscriberBool; 
 
         private ItemsLog _lastItemLog;
         private ItemsLogLatest _lastItemLogLatest;
@@ -110,6 +113,18 @@ namespace Monitoring
             set { _saveInItemsLogLastWhen = value; }
         }
 
+        public NetworkVariableBufferedSubscriber<int> SubscriberInt
+        {
+            get { return _subscriberInt; }
+            set { _subscriberInt = value; }
+        }
+
+        public NetworkVariableBufferedSubscriber<bool> SubscriberBool
+        {
+            get { return _subscriberBool; }
+            set { _subscriberBool = value; }
+        }
+
         public ItemCollector(Item item)
         {
             this.ItemId = item.ItemId;
@@ -125,84 +140,106 @@ namespace Monitoring
 
         public void Start()
         {
-            switch (Type)
+            if (this.Type == ItemType.Digital)
             {
-                    case ItemType.Analog:
-                    Timer = new Timer(CheckAnalogValue, new object(), 0, ScanCycle);   
-                    break;
-                    case ItemType.Digital:
-                    Timer=new Timer(CheckDigitalValue,new object(), 0,ScanCycle);
-                    break;
+                SubscriberBool = new NetworkVariableBufferedSubscriber<bool>(this.Location);
+                SubscriberBool.Connect();
             }
-            
+            else if (this.Type == ItemType.Analog)
+            {
+                SubscriberInt = new NetworkVariableBufferedSubscriber<int>(this.Location);   
+                SubscriberInt.Connect();
+            }
+            Timer = new Timer(CheckValue, new object(), 0, ScanCycle);   
         }
 
         public void Stop()
         {
             Timer.Dispose();
+
+            //if (this.Type == ItemType.Digital)
+            //{
+            //    SubscriberBool.Disconnect();
+            //    SubscriberBool.Dispose();
+            //}
+            //else if (this.Type == ItemType.Analog)
+            //{
+            //    SubscriberInt.Disconnect();
+            //    SubscriberInt.Dispose();
+            //}
         }
 
-        private void CheckAnalogValue(object state)
+        private void CheckValue(object state)
         {
-            NetworkVariableBufferedSubscriber<Int32> subscriber = new NetworkVariableBufferedSubscriber<int>(this.Location);
-            subscriber.Connect();
+            string value = null;
 
-            var data = subscriber.ReadData();
-            int value = data.GetValue();
-
-            if (LastItemLog == null)
+            if (this.Type == ItemType.Digital)
             {
-                System.Diagnostics.Debug.WriteLine(1);
-                SaveAnalogValueInItemsLog(value.ToString());
+                var data = SubscriberBool.ReadData();
+                value = Convert.ToInt32(data.GetValue()).ToString();
             }
-            else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
+            else if (this.Type == ItemType.Analog)
             {
-                System.Diagnostics.Debug.WriteLine(2);
-                TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
+                var data = SubscriberInt.ReadData();
+                value = data.GetValue().ToString();
+            }
 
-                if (timeSpan.Seconds > SaveInItemsLogTimeInterval*1000)
+            lock (padlock)
+            {
+
+
+                if (LastItemLog == null)
                 {
-                    SaveAnalogValueInItemsLog(value.ToString());    
+                    System.Diagnostics.Debug.WriteLine("LastItemLog : null");
+                    SaveValueInItemsLog(value);
                 }
-            }
-            else if (SaveInItemsLogWhen == WhenToLog.OnChange)
-            {
-                System.Diagnostics.Debug.WriteLine(3);
-                if (LastItemLog.Value != value.ToString())
+                else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
                 {
-                    SaveAnalogValueInItemsLog(value.ToString());    
+                    TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
+
+                    if (timeSpan.Seconds >= SaveInItemsLogTimeInterval)
+                    {
+                        System.Diagnostics.Debug.WriteLine("LastItemLog : TimerElapsed");
+                        SaveValueInItemsLog(value);
+                    }
                 }
-            }
-
-            if (LastItemLogLatest == null)
-            {
-                System.Diagnostics.Debug.WriteLine(4);
-                SaveAnalogValueInItemsLogLatest(value.ToString());    
-            }
-            else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
-            {
-                System.Diagnostics.Debug.WriteLine(5);
-                TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
-
-                if (timeSpan.Seconds > SaveInItemsLogTimeInterval * 1000)
+                else if (SaveInItemsLogWhen == WhenToLog.OnChange)
                 {
-                    SaveAnalogValueInItemsLogLatest(value.ToString()); 
+                    if (LastItemLog.Value != value)
+                    {
+                        System.Diagnostics.Debug.WriteLine("LastItemLog : Changed");
+                        SaveValueInItemsLog(value);
+                    }
                 }
-            }
-            else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
-            {
-                System.Diagnostics.Debug.WriteLine(6);
-                if (LastItemLog.Value != value.ToString())
-                {
-                    SaveAnalogValueInItemsLogLatest(value.ToString()); 
-                }
-            }
 
-            subscriber.Disconnect();
-            subscriber.Dispose();
+                if (LastItemLogLatest == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("LastItemLogLatest : null");
+                    SaveValueInItemsLogLatest(value);
+                }
+                else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
+                {
+                    TimeSpan timeSpan = DateTime.Now - LastItemLogLatest.Time;
+
+                    if (timeSpan.Seconds >= SaveInItemsLogLastesTimeInterval)
+                    {
+                        System.Diagnostics.Debug.WriteLine("LastItemLogLatest : TimerElapsed");
+                        SaveValueInItemsLogLatest(value);
+                    }
+                }
+                else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
+                {
+                    if (LastItemLogLatest.Value != value)
+                    {
+                        System.Diagnostics.Debug.WriteLine("LastItemLogLatest : Changed");
+                        SaveValueInItemsLogLatest(value);
+                    }
+                }
+
+            }
         }
 
-        private void SaveAnalogValueInItemsLogLatest(string value)
+        private void SaveValueInItemsLogLatest(string value)
         {
             ItemsLogLatest itemsLogLatest = null;
             if (Entities.ItemsLogLatests.Any(x => x.ItemId == this.ItemId))
@@ -225,7 +262,8 @@ namespace Monitoring
             this.LastItemLogLatest = itemsLogLatest;
         }
 
-        private void SaveAnalogValueInItemsLog(string value)
+
+        private void SaveValueInItemsLog(string value)
         {
             ItemsLog itemsLog = new ItemsLog();
             itemsLog.ItemId = this.ItemId;
@@ -238,49 +276,5 @@ namespace Monitoring
             this.LastItemLog = itemsLog;
         }
 
-        private void CheckDigitalValue(object state)
-        {
-            return;
-            NetworkVariableBufferedSubscriber<bool> subscriber = new NetworkVariableBufferedSubscriber<bool>(this.Location);
-            subscriber.Connect();
-
-            var data = subscriber.ReadData();
-            bool value = data.GetValue();
-
-            if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
-            {
-
-            }
-            else if (SaveInItemsLogWhen == WhenToLog.OnChange)
-            {
-
-            }
-
-            if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
-            {
-
-            }
-            else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
-            {
-
-            }
-
-            ItemsLogLatest itemsLogLatest = new ItemsLogLatest();
-
-            if (Convert.ToBoolean(LastItemLogLatest.Value) != value)
-            {
-                
-                itemsLogLatest.ItemId = this.ItemId;
-                itemsLogLatest.Time = DateTime.Now;
-                itemsLogLatest.Value = Convert.ToInt32(value).ToString();
-                Entities.ItemsLogLatests.Add(itemsLogLatest);
-                Entities.SaveChanges();
-
-                subscriber.Disconnect();
-                subscriber.Dispose();
-            }
-
-            LastItemLogLatest = itemsLogLatest;
-        }
     }
 }

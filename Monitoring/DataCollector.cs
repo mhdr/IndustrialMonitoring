@@ -12,6 +12,7 @@ namespace Monitoring
         private static object padLock=new object();
         private List<Item> _items;
         private IndustrialMonitoringEntities _entities=new IndustrialMonitoringEntities();
+        private List<ItemCollector> _itemCollectors; 
 
         public static DataCollector Collector
         {
@@ -40,6 +41,19 @@ namespace Monitoring
             set { _entities = value; }
         }
 
+        public List<ItemCollector> ItemCollectors
+        {
+            get
+            {
+                if (_itemCollectors == null)
+                {
+                    _itemCollectors=new List<ItemCollector>();
+                }
+                return _itemCollectors;
+            }
+            set { _itemCollectors = value; }
+        }
+
         public void Start()
         {
             this.DoStart();
@@ -58,13 +72,19 @@ namespace Monitoring
             {
                 ItemCollector itemCollector=new ItemCollector(item);
                 itemCollector.Start();
+
+                ItemCollectors.Add(itemCollector);
                 Thread.Sleep(1);
             }
         }
 
         public void Stop()
         {
-            
+            foreach (var item in ItemCollectors)
+            {
+                item.Stop();
+                Thread.Sleep(1);
+            }
         }
     }
 }
