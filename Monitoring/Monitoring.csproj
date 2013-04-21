@@ -67,11 +67,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataCollectorService.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataCollector.cs" />
+    <Compile Include="DataCollectorService.svc.cs">
+      <DependentUpon>DataCollectorService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IDataCollectorService.cs" />
     <Compile Include="Item.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

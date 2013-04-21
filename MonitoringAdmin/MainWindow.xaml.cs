@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MonitoringAdmin.MonitoringServiceReference;
+using MonitoringAdmin.MonitoringServiceReferenceDataCollector;
 
 namespace MonitoringAdmin
 {
@@ -21,20 +21,20 @@ namespace MonitoringAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Service1Client _proxy;
+        private DataCollectorServiceClient _proxy;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public Service1Client Proxy
+        public DataCollectorServiceClient Proxy
         {
             get
             {
                 if (_proxy == null)
                 {
-                    _proxy=new Service1Client();
+                    _proxy = new DataCollectorServiceClient();
                 }
 
                 return _proxy;

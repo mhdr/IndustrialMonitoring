@@ -20,12 +20,6 @@ namespace Monitoring
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
-
-        [OperationContract]
-        bool StartDataCollectorServer();
-
-        [OperationContract]
-        bool StopDataCollectorServer();
     }
 
 
