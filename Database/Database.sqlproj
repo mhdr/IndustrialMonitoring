@@ -73,4 +73,7 @@
   <ItemGroup>
     <None Include="Database.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeployment.sql" />
+  </ItemGroup>
 </Project>

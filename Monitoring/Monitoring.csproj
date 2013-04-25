@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataCollectorService.svc" />
+    <Content Include="ProcessDataService.svc" />
     <Content Include="Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -77,6 +78,7 @@
       <DependentUpon>DataCollectorService.svc</DependentUpon>
     </Compile>
     <Compile Include="IDataCollectorService.cs" />
+    <Compile Include="IProcessDataService.cs" />
     <Compile Include="Item.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -102,6 +104,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ProcessDataService.svc.cs">
+      <DependentUpon>ProcessDataService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
@@ -119,6 +124,8 @@
     <Compile Include="UsersItemsPermission.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ItemsAIOViewModel.cs" />
+    <Compile Include="ViewModels\ItemsLogLatestAIOViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
