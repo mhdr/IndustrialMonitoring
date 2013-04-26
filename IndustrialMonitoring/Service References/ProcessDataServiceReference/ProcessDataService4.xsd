@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:19532/ProcessDataService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SharedLibrary" />
+  <xs:complexType name="ItemsLogLatestAIOViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemLogLatestId" type="xs:int" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ItemsLogLatestAIOViewModel" nillable="true" type="tns:ItemsLogLatestAIOViewModel" />
+  <xs:complexType name="ArrayOfItemsAIOViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ItemsAIOViewModel" nillable="true" type="tns:ItemsAIOViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItemsAIOViewModel" nillable="true" type="tns:ArrayOfItemsAIOViewModel" />
+  <xs:complexType name="ItemsAIOViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SharedLibrary" minOccurs="0" name="ItemType" type="q1:ItemType" />
+      <xs:element minOccurs="0" name="ShowInUITimeInterval" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ItemsAIOViewModel" nillable="true" type="tns:ItemsAIOViewModel" />
+</xs:schema>

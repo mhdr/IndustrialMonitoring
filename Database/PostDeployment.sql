@@ -10,4 +10,8 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInItemsLogLastesTimeInterval,ShowInUITimeInterval,ScanCycle,SaveInItemsLogWhen,SaveInItemsLogLastWhen)
+VALUES('Random1',2,'\\localhost\Simulation\OPC\Simulation Examples\Functions\Random1',5,2,4,1000,1,1);
+
+
 INSERT INTO Tabs (Tabs.TabName) VALUES ('TabTasisat');

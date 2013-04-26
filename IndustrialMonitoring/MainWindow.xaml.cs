@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IndustrialMonitoring.ProcessDataServiceReference;
 
 namespace IndustrialMonitoring
 {
@@ -20,9 +21,39 @@ namespace IndustrialMonitoring
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ProcessDataServiceClient _processDataServiceClient;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public ProcessDataServiceClient ProcessDataServiceClient
+        {
+            get
+            {
+                if (_processDataServiceClient == null)
+                {
+                    _processDataServiceClient=new ProcessDataServiceClient();
+                }
+
+                return _processDataServiceClient;
+            }
+            set { _processDataServiceClient = value; }
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            BusyIndicator.IsBusy = true;
+
+            var items = ProcessDataServiceClient.GetItemsAll();
+
+            foreach (var itemsAioViewModel in items)
+            {
+                
+            }
+
+            BusyIndicator.IsBusy = false;
         }
     }
 }

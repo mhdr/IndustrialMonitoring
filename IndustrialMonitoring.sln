@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialMonitoring", "IndustrialMonitoring\IndustrialMonitoring.csproj", "{6DC5D2C4-BB92-4BBE-9769-86758C45FE71}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1F69F51D-221C-47F4-9AD9-1647CF94C7A1} = {1F69F51D-221C-47F4-9AD9-1647CF94C7A1}
+	EndProjectSection
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{F94D5A2B-7AB6-4D4C-B72B-E1D1D1772D60}"
 EndProject

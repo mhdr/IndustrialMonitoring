@@ -30,5 +30,39 @@ namespace Monitoring
 
             return result;
         }
+
+        public List<ItemsAIOViewModel> GetItems()
+        {
+            List<ItemsAIOViewModel> result = new List<ItemsAIOViewModel>();
+
+            var items = Entities.Items;
+
+            foreach (var item in items)
+            {
+                result.Add(new ItemsAIOViewModel(item));
+            }
+
+            return result;
+        }
+
+        public List<ItemsAIOViewModel> GetItems(Func<ItemsAIOViewModel, bool> predicate)
+        {
+            List<ItemsAIOViewModel> result = new List<ItemsAIOViewModel>();
+
+            var items = Entities.Items;
+
+            foreach (var item in items)
+            {
+                ItemsAIOViewModel current=new ItemsAIOViewModel(item);
+
+                if (predicate(current))
+                {
+                    result.Add(current);    
+                }
+                
+            }
+
+            return result;
+        }
     }
 }

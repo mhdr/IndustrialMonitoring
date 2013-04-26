@@ -20,7 +20,6 @@
             <Setter Property="FontFamily" Value="./Fonts/#B Titr" />
         </Style>
     </UserControl.Resources>
-    <telerik:RadBusyIndicator Name="BusyIndicator">
         <Border CornerRadius="5" BorderThickness="1" BorderBrush="AliceBlue">
             <Grid Name="GridContainer"
         FlowDirection="RightToLeft" MinWidth="100">
@@ -54,5 +53,4 @@
                 </Grid>
             </Grid>
         </Border>
-    </telerik:RadBusyIndicator>
 </UserControl>

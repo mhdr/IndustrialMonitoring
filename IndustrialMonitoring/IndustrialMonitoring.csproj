@@ -37,6 +37,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,6 +61,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Lib\ChartLiveData.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Service References\ProcessDataServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Page Include="AIO.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +111,28 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.ItemsLogLatestAIOViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.wsdl" />
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -112,6 +143,28 @@
       <Name>SharedLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ProcessDataServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
