@@ -5,7 +5,16 @@
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <telerik:RadBusyIndicator Name="BusyIndicator">
-
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition MinHeight="10" MaxHeight="25"/>
+                </Grid.RowDefinitions>
+                
+                <DockPanel>
+                    <telerik:RadRibbonView Name="RadRibbonView" />
+                </DockPanel>
+            </Grid>
         </telerik:RadBusyIndicator>
     </Grid>
 </Window>
