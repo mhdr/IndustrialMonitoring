@@ -60,7 +60,7 @@ namespace IndustrialMonitoring
             var tabs = ProcessDataServiceClient.GetTabsAll();
             var tabItems = ProcessDataServiceClient.GetTabItemsAll();
 
-            foreach (var itemsAioViewModel in items)
+            foreach (var itemsAioViewModel in items.OrderBy(x=>x.ItemType))
             {
                 ItemsAIOViewModel model = itemsAioViewModel;
                 var tabIds = tabItems.Where(x => x.ItemId == model.ItemId);
@@ -71,18 +71,21 @@ namespace IndustrialMonitoring
 
                     WrapPanel wrapPanel = (WrapPanel) this.FindName(tabName);
 
-                    AIO aio = new AIO();
-                    aio.ItemsAioViewModel = model;
-                    aio.ProcessDataServiceClient = this.ProcessDataServiceClient;
+                    ChartLiveData chartLiveData = new ChartLiveData();
+                    chartLiveData.ItemsAioViewModel = model;
+                    chartLiveData.ProcessDataServiceClient = this.ProcessDataServiceClient;
                     
                     // TODO Parameter
-                    aio.Width = 200;
+                    chartLiveData.Width = 200;
 
                     // TODO Parameter
-                    aio.Height = 200;
+                    chartLiveData.Height = 200;
 
-                    wrapPanel.Children.Add(aio);
-                    aio.Start();
+                    // TODO Parameter
+                    chartLiveData.Margin=new Thickness(4,2,4,2);
+
+                    wrapPanel.Children.Add(chartLiveData);
+                    chartLiveData.Start();
                 }
             }
 

@@ -59,3 +59,7 @@ INSERT INTO TabsItems(ItemId,TabId) VALUES(11,1);
 INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInItemsLogLastesTimeInterval,ShowInUITimeInterval,ScanCycle,SaveInItemsLogWhen,SaveInItemsLogLastWhen)
 VALUES('Ramp4',2,'\\localhost\Simulation\OPC\Simulation Examples\Functions\Ramp4',5,1,1,1000,1,1);
 INSERT INTO TabsItems(ItemId,TabId) VALUES(12,1);
+
+INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInItemsLogLastesTimeInterval,ShowInUITimeInterval,ScanCycle,SaveInItemsLogWhen,SaveInItemsLogLastWhen)
+VALUES('User3',1,'\\localhost\Simulation\OPC\Simulation Examples\Functions\User3',5,1,1,1000,1,1);
+INSERT INTO TabsItems(ItemId,TabId) VALUES(13,1);

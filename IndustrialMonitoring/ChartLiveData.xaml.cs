@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IndustrialMonitoring.Lib;
+using SharedLibrary;
 using Telerik.Windows.Controls.ChartView;
 using IndustrialMonitoring.ProcessDataServiceReference;
 using System.Threading;
@@ -21,17 +22,17 @@ using System.Threading;
 namespace IndustrialMonitoring
 {
     /// <summary>
-    /// Interaction logic for AIO.xaml
+    /// Interaction logic for ChartLiveData.xaml
     /// </summary>
-    public partial class AIO : UserControl
+    public partial class ChartLiveData : UserControl
     {
         private ItemsAIOViewModel _itemsAioViewModel = null;
         private Timer _timer;
-        private ObservableCollection<ChartLiveData> _observableCollection;
+        private ObservableCollection<Lib.ChartLiveData> _observableCollection;
         private ItemsLogLatestAIOViewModel _latestData;
         private ProcessDataServiceClient _processDataServiceClient;
 
-        public AIO()
+        public ChartLiveData()
         {
             InitializeComponent();
         }
@@ -48,7 +49,7 @@ namespace IndustrialMonitoring
             set { _timer = value; }
         }
 
-        public ObservableCollection<ChartLiveData> ObservableCollection
+        public ObservableCollection<Lib.ChartLiveData> ObservableCollection
         {
             get { return _observableCollection; }
             set { _observableCollection = value; }
@@ -69,29 +70,44 @@ namespace IndustrialMonitoring
         private void InitChart()
         {
             Chart.Series.Clear();
-            Chart.Series.Add(new LineSeries());
-            LineSeries series = (LineSeries)this.Chart.Series[0];
-            series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
-            series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-            series.Stroke = Brushes.Green;
-            //series.Fill = Brushes.Green;
-            series.StrokeThickness = 2;
+
+            if (this.ItemsAioViewModel.ItemType == ItemType.Digital)
+            {
+                Chart.Series.Add(new AreaSeries());
+                AreaSeries series =(AreaSeries) this.Chart.Series[0];
+                series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
+                series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                series.Stroke = Brushes.Green;
+                series.Fill = Brushes.Green;
+                series.StrokeThickness = 2;
+
+                series.ItemsSource = ObservableCollection;
+            }
+            else if (this.ItemsAioViewModel.ItemType == ItemType.Analog)
+            {
+                
+                Chart.Series.Add(new LineSeries());
+                LineSeries series = (LineSeries)this.Chart.Series[0];
+                series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
+                series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                series.Stroke = Brushes.Green;
+                series.StrokeThickness = 2;
+
+                series.ItemsSource = ObservableCollection;
+            }
         }
 
         private void AIO_OnLoaded(object sender, RoutedEventArgs e)
         {
             TextBlockTitle.Text = this.ItemsAioViewModel.ItemName;
-//            InitChart();
         }
 
         public void Start()
         {
             Timer=new Timer(ShowLiveData,new object(), 0,this.ItemsAioViewModel.ShowInUITimeInterval * 1000);
-            ObservableCollection=new ObservableCollection<ChartLiveData>();
+            ObservableCollection=new ObservableCollection<Lib.ChartLiveData>();
 
             InitChart();
-            LineSeries series = (LineSeries)this.Chart.Series[0];
-            series.ItemsSource = ObservableCollection;
         }
 
         public void Stop()
@@ -119,9 +135,9 @@ namespace IndustrialMonitoring
                 ObservableCollection.RemoveAt(0);
             }
 
-            ObservableCollection.Add(new ChartLiveData() { Value = Convert.ToDouble(LatestData.Value), Date = DateTime.Now });
+            ObservableCollection.Add(new Lib.ChartLiveData() { Value = Convert.ToDouble(LatestData.Value), Date = DateTime.Now });
 
-            TextBlockValue.Text = LatestData.Value;
+            TextBlockValue.Text = LatestData.Value;  
 
             System.Diagnostics.Debug.WriteLine("Item Name : {0} , Count ObservableCollection : {1}",
                 this.ItemsAioViewModel.ItemName, ObservableCollection.Count);
