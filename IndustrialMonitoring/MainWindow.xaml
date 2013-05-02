@@ -4,7 +4,7 @@
         Title="MainWindow" Height="593" Width="871" Loaded="MainWindow_OnLoaded"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-        <telerik:RadBusyIndicator Name="BusyIndicator">
+        <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />

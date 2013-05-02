@@ -113,7 +113,8 @@ namespace IndustrialMonitoring
 
         private void ShowLiveDataUI()
         {
-            if (ObservableCollection.Count > 99)
+            // TODO Parameter
+            if (ObservableCollection.Count > 49)
             {
                 ObservableCollection.RemoveAt(0);
             }

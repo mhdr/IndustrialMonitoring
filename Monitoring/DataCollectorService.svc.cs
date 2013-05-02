@@ -14,6 +14,9 @@ namespace Monitoring
     {
         public bool StartDataCollectorServer()
         {
+            //DataCollector dataCollector = DataCollector.Collector;
+            //dataCollector.Start();
+
             try
             {
                 DataCollector dataCollector = DataCollector.Collector;

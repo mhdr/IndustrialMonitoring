@@ -23,7 +23,7 @@ namespace Monitoring
         private WhenToLog _saveInItemsLogLastWhen;
         private IndustrialMonitoringEntities _entities = new IndustrialMonitoringEntities();
         private object padlock=new object();
-        private NetworkVariableBufferedSubscriber<Int32> _subscriberInt;
+        private NetworkVariableBufferedSubscriber<dynamic> _subscriberInt;
         private NetworkVariableBufferedSubscriber<Boolean> _subscriberBool; 
 
         private ItemsLog _lastItemLog;
@@ -113,7 +113,7 @@ namespace Monitoring
             set { _saveInItemsLogLastWhen = value; }
         }
 
-        public NetworkVariableBufferedSubscriber<int> SubscriberInt
+        public NetworkVariableBufferedSubscriber<dynamic> SubscriberInt
         {
             get { return _subscriberInt; }
             set { _subscriberInt = value; }
@@ -147,7 +147,7 @@ namespace Monitoring
             }
             else if (this.Type == ItemType.Analog)
             {
-                SubscriberInt = new NetworkVariableBufferedSubscriber<int>(this.Location);   
+                SubscriberInt = new NetworkVariableBufferedSubscriber<dynamic>(this.Location);   
                 SubscriberInt.Connect();
             }
             Timer = new Timer(CheckValue, new object(), 0, ScanCycle);   

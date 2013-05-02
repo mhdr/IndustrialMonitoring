@@ -8,48 +8,50 @@
     <UserControl.Resources>
         <Style x:Key="TitleH1" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#FF606060" />
-            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontSize" Value="14" />
             <Setter Property="Margin" Value="0,5" />
             <Setter Property="FontFamily" Value="Segoe UI" />
         </Style>
 
         <Style x:Key="TitleH2" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="Margin" Value="0,5" />
             <Setter Property="FontFamily" Value="./Fonts/#B Titr" />
         </Style>
     </UserControl.Resources>
-        <Border CornerRadius="5" BorderThickness="1" BorderBrush="AliceBlue">
-            <Grid Name="GridContainer"
+    <Border CornerRadius="5" BorderThickness="1" BorderBrush="AliceBlue">
+        <Grid Name="GridContainer"
         FlowDirection="RightToLeft" MinWidth="100">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition />
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
 
 
-                    <TextBlock Name="TextBlockTitle" VerticalAlignment="Center" Style="{StaticResource ResourceKey=TitleH2}"
+                <TextBlock Name="TextBlockTitle" VerticalAlignment="Center" Style="{StaticResource ResourceKey=TitleH2}"
                        HorizontalAlignment="Center" FontWeight="Bold" />
 
-                    <telerik:RadCartesianChart Name="Chart" Grid.Row="1" FlowDirection="LeftToRight" MinWidth="200"
-                                       Visibility="Collapsed">
-                        <telerik:RadCartesianChart.HorizontalAxis>
-                            <telerik:DateTimeContinuousAxis LabelFitMode="Rotate" MaximumTicks="10" Visibility="Hidden"
+                <telerik:RadCartesianChart Name="Chart" Grid.Row="1" FlowDirection="LeftToRight" MinWidth="200"
+                                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:DateTimeContinuousAxis LabelFitMode="Rotate" MaximumTicks="10" Visibility="Hidden"
                                                     PlotMode="OnTicks" />
-                        </telerik:RadCartesianChart.HorizontalAxis>
-                        <telerik:RadCartesianChart.VerticalAxis>
-                            <telerik:LinearAxis LabelInterval="2"/>
-                        </telerik:RadCartesianChart.VerticalAxis>
-                    </telerik:RadCartesianChart>
-                    <Border Name="BorderSelect" CornerRadius="8"
+                    </telerik:RadCartesianChart.HorizontalAxis>
+                    <telerik:RadCartesianChart.VerticalAxis>
+                        <telerik:LinearAxis LabelInterval="2"/>
+                    </telerik:RadCartesianChart.VerticalAxis>
+                </telerik:RadCartesianChart>
+
+                <Border Name="BorderSelect" CornerRadius="8"
                     Grid.Row="2" Margin="0,5,0,0">
-                        <TextBlock Name="TextBlockValue" Style="{StaticResource ResourceKey=TitleH1}"
+                    <TextBlock Name="TextBlockValue" Style="{StaticResource ResourceKey=TitleH1}"
                        VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="LeftToRight"/>
-                    </Border>
-                </Grid>
+                </Border>
+
             </Grid>
-        </Border>
+        </Grid>
+    </Border>
 </UserControl>
