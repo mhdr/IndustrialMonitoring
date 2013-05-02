@@ -14,4 +14,5 @@ INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInIt
 VALUES('Random1',2,'\\localhost\Simulation\OPC\Simulation Examples\Functions\Random1',5,2,4,1000,1,1);
 
 
-INSERT INTO Tabs (Tabs.TabName) VALUES ('TabTasisat');
+INSERT INTO Tabs (Tabs.TabName) VALUES ('WrapPanelRO');
+INSERT INTO TabsItems(ItemId,TabId) VALUES(1,1);

@@ -20,5 +20,17 @@ namespace Monitoring
 
         [OperationContract(Name = "GetItems")]
         List<ItemsAIOViewModel> GetItems(Func<ItemsAIOViewModel, bool> predicate);
+
+        [OperationContract(Name = "GetTabsAll")]
+        List<TabsViewModel> GetTabs();
+
+        [OperationContract(Name = "GetTab")]
+        List<TabsViewModel> GetTabs(Func<TabsViewModel,bool> predicate);
+
+        [OperationContract(Name = "GetTabItemsAll")]
+        List<TabsItemsViewModel> GetTabItems();
+
+        [OperationContract(Name = "GetTabItems")]
+        List<TabsItemsViewModel> GetTabItems(Func<TabsItemsViewModel,bool> predicate);
     }
 }

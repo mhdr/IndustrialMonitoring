@@ -120,6 +120,12 @@
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.ItemsLogLatestAIOViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ProcessDataServiceReference\ProcessDataService.wsdl" />
     <None Include="Service References\ProcessDataServiceReference\ProcessDataService.xsd">
       <SubType>Designer</SubType>

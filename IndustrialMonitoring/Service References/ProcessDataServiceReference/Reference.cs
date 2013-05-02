@@ -199,6 +199,144 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TabsViewModel", Namespace="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels")]
+    [System.SerializableAttribute()]
+    public partial class TabsViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TabIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TabNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TabId {
+            get {
+                return this.TabIdField;
+            }
+            set {
+                if ((this.TabIdField.Equals(value) != true)) {
+                    this.TabIdField = value;
+                    this.RaisePropertyChanged("TabId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TabName {
+            get {
+                return this.TabNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TabNameField, value) != true)) {
+                    this.TabNameField = value;
+                    this.RaisePropertyChanged("TabName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TabsItemsViewModel", Namespace="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels")]
+    [System.SerializableAttribute()]
+    public partial class TabsItemsViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ItemIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TabIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TabItemIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ItemId {
+            get {
+                return this.ItemIdField;
+            }
+            set {
+                if ((this.ItemIdField.Equals(value) != true)) {
+                    this.ItemIdField = value;
+                    this.RaisePropertyChanged("ItemId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TabId {
+            get {
+                return this.TabIdField;
+            }
+            set {
+                if ((this.TabIdField.Equals(value) != true)) {
+                    this.TabIdField = value;
+                    this.RaisePropertyChanged("TabId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TabItemId {
+            get {
+                return this.TabItemIdField;
+            }
+            set {
+                if ((this.TabItemIdField.Equals(value) != true)) {
+                    this.TabItemIdField = value;
+                    this.RaisePropertyChanged("TabItemId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProcessDataServiceReference.IProcessDataService")]
     public interface IProcessDataService {
@@ -226,6 +364,38 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.IAsyncResult BeginGetItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel, bool> predicate, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> EndGetItems(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabsAllResponse")]
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTabsAll();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IProcessDataService/GetTabsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabsAllResponse")]
+        System.IAsyncResult BeginGetTabsAll(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> EndGetTabsAll(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTab", ReplyAction="http://tempuri.org/IProcessDataService/GetTabResponse")]
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTab(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IProcessDataService/GetTab", ReplyAction="http://tempuri.org/IProcessDataService/GetTabResponse")]
+        System.IAsyncResult BeginGetTab(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> EndGetTab(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabItemsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItemsAllResponse")]
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> GetTabItemsAll();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IProcessDataService/GetTabItemsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItemsAllResponse")]
+        System.IAsyncResult BeginGetTabItemsAll(System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> EndGetTabItemsAll(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabItems", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItemsResponse")]
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> GetTabItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IProcessDataService/GetTabItems", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItemsResponse")]
+        System.IAsyncResult BeginGetTabItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> EndGetTabItems(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -291,6 +461,82 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetTabsAllCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetTabsAllCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetTabCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetTabCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetTabItemsAllCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetTabItemsAllCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetTabItemsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetTabItemsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ProcessDataServiceClient : System.ServiceModel.ClientBase<IndustrialMonitoring.ProcessDataServiceReference.IProcessDataService>, IndustrialMonitoring.ProcessDataServiceReference.IProcessDataService {
         
         private BeginOperationDelegate onBeginGeItemsLogLatestDelegate;
@@ -310,6 +556,30 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         private EndOperationDelegate onEndGetItemsDelegate;
         
         private System.Threading.SendOrPostCallback onGetItemsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetTabsAllDelegate;
+        
+        private EndOperationDelegate onEndGetTabsAllDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetTabsAllCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetTabDelegate;
+        
+        private EndOperationDelegate onEndGetTabDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetTabCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetTabItemsAllDelegate;
+        
+        private EndOperationDelegate onEndGetTabItemsAllDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetTabItemsAllCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetTabItemsDelegate;
+        
+        private EndOperationDelegate onEndGetTabItemsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetTabItemsCompletedDelegate;
         
         public ProcessDataServiceClient() {
         }
@@ -335,6 +605,14 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         public event System.EventHandler<GetItemsAllCompletedEventArgs> GetItemsAllCompleted;
         
         public event System.EventHandler<GetItemsCompletedEventArgs> GetItemsCompleted;
+        
+        public event System.EventHandler<GetTabsAllCompletedEventArgs> GetTabsAllCompleted;
+        
+        public event System.EventHandler<GetTabCompletedEventArgs> GetTabCompleted;
+        
+        public event System.EventHandler<GetTabItemsAllCompletedEventArgs> GetTabItemsAllCompleted;
+        
+        public event System.EventHandler<GetTabItemsCompletedEventArgs> GetTabItemsCompleted;
         
         public IndustrialMonitoring.ProcessDataServiceReference.ItemsLogLatestAIOViewModel GeItemsLogLatest(int itemId) {
             return base.Channel.GeItemsLogLatest(itemId);
@@ -482,6 +760,202 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             }
             base.InvokeAsync(this.onBeginGetItemsDelegate, new object[] {
                         predicate}, this.onEndGetItemsDelegate, this.onGetItemsCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTabsAll() {
+            return base.Channel.GetTabsAll();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetTabsAll(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetTabsAll(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> EndGetTabsAll(System.IAsyncResult result) {
+            return base.Channel.EndGetTabsAll(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetTabsAll(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetTabsAll(callback, asyncState);
+        }
+        
+        private object[] OnEndGetTabsAll(System.IAsyncResult result) {
+            System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> retVal = this.EndGetTabsAll(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetTabsAllCompleted(object state) {
+            if ((this.GetTabsAllCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetTabsAllCompleted(this, new GetTabsAllCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetTabsAllAsync() {
+            this.GetTabsAllAsync(null);
+        }
+        
+        public void GetTabsAllAsync(object userState) {
+            if ((this.onBeginGetTabsAllDelegate == null)) {
+                this.onBeginGetTabsAllDelegate = new BeginOperationDelegate(this.OnBeginGetTabsAll);
+            }
+            if ((this.onEndGetTabsAllDelegate == null)) {
+                this.onEndGetTabsAllDelegate = new EndOperationDelegate(this.OnEndGetTabsAll);
+            }
+            if ((this.onGetTabsAllCompletedDelegate == null)) {
+                this.onGetTabsAllCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTabsAllCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetTabsAllDelegate, null, this.onEndGetTabsAllDelegate, this.onGetTabsAllCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTab(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate) {
+            return base.Channel.GetTab(predicate);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetTab(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetTab(predicate, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> EndGetTab(System.IAsyncResult result) {
+            return base.Channel.EndGetTab(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetTab(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate = ((System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool>)(inValues[0]));
+            return this.BeginGetTab(predicate, callback, asyncState);
+        }
+        
+        private object[] OnEndGetTab(System.IAsyncResult result) {
+            System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> retVal = this.EndGetTab(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetTabCompleted(object state) {
+            if ((this.GetTabCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetTabCompleted(this, new GetTabCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetTabAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate) {
+            this.GetTabAsync(predicate, null);
+        }
+        
+        public void GetTabAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate, object userState) {
+            if ((this.onBeginGetTabDelegate == null)) {
+                this.onBeginGetTabDelegate = new BeginOperationDelegate(this.OnBeginGetTab);
+            }
+            if ((this.onEndGetTabDelegate == null)) {
+                this.onEndGetTabDelegate = new EndOperationDelegate(this.OnEndGetTab);
+            }
+            if ((this.onGetTabCompletedDelegate == null)) {
+                this.onGetTabCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTabCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetTabDelegate, new object[] {
+                        predicate}, this.onEndGetTabDelegate, this.onGetTabCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> GetTabItemsAll() {
+            return base.Channel.GetTabItemsAll();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetTabItemsAll(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetTabItemsAll(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> EndGetTabItemsAll(System.IAsyncResult result) {
+            return base.Channel.EndGetTabItemsAll(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetTabItemsAll(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetTabItemsAll(callback, asyncState);
+        }
+        
+        private object[] OnEndGetTabItemsAll(System.IAsyncResult result) {
+            System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> retVal = this.EndGetTabItemsAll(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetTabItemsAllCompleted(object state) {
+            if ((this.GetTabItemsAllCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetTabItemsAllCompleted(this, new GetTabItemsAllCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetTabItemsAllAsync() {
+            this.GetTabItemsAllAsync(null);
+        }
+        
+        public void GetTabItemsAllAsync(object userState) {
+            if ((this.onBeginGetTabItemsAllDelegate == null)) {
+                this.onBeginGetTabItemsAllDelegate = new BeginOperationDelegate(this.OnBeginGetTabItemsAll);
+            }
+            if ((this.onEndGetTabItemsAllDelegate == null)) {
+                this.onEndGetTabItemsAllDelegate = new EndOperationDelegate(this.OnEndGetTabItemsAll);
+            }
+            if ((this.onGetTabItemsAllCompletedDelegate == null)) {
+                this.onGetTabItemsAllCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTabItemsAllCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetTabItemsAllDelegate, null, this.onEndGetTabItemsAllDelegate, this.onGetTabItemsAllCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> GetTabItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate) {
+            return base.Channel.GetTabItems(predicate);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetTabItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetTabItems(predicate, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> EndGetTabItems(System.IAsyncResult result) {
+            return base.Channel.EndGetTabItems(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetTabItems(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate = ((System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool>)(inValues[0]));
+            return this.BeginGetTabItems(predicate, callback, asyncState);
+        }
+        
+        private object[] OnEndGetTabItems(System.IAsyncResult result) {
+            System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> retVal = this.EndGetTabItems(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetTabItemsCompleted(object state) {
+            if ((this.GetTabItemsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetTabItemsCompleted(this, new GetTabItemsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetTabItemsAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate) {
+            this.GetTabItemsAsync(predicate, null);
+        }
+        
+        public void GetTabItemsAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate, object userState) {
+            if ((this.onBeginGetTabItemsDelegate == null)) {
+                this.onBeginGetTabItemsDelegate = new BeginOperationDelegate(this.OnBeginGetTabItems);
+            }
+            if ((this.onEndGetTabItemsDelegate == null)) {
+                this.onEndGetTabItemsDelegate = new EndOperationDelegate(this.OnEndGetTabItems);
+            }
+            if ((this.onGetTabItemsCompletedDelegate == null)) {
+                this.onGetTabItemsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetTabItemsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetTabItemsDelegate, new object[] {
+                        predicate}, this.onEndGetTabItemsDelegate, this.onGetTabItemsCompletedDelegate, userState);
         }
     }
 }

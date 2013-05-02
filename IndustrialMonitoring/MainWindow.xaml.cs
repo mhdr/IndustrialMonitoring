@@ -44,13 +44,41 @@ namespace IndustrialMonitoring
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void RibbonButtonStart_OnClick(object sender, RoutedEventArgs e)
+        {
+            Start();
+        }
+
+        private void Start()
+        {
             BusyIndicator.IsBusy = true;
 
             var items = ProcessDataServiceClient.GetItemsAll();
+            var tabs = ProcessDataServiceClient.GetTabsAll();
+            var tabItems = ProcessDataServiceClient.GetTabItemsAll();
 
             foreach (var itemsAioViewModel in items)
             {
-                
+                ItemsAIOViewModel model = itemsAioViewModel;
+                var tabIds = tabItems.Where(x => x.ItemId == model.ItemId);
+
+                foreach (var tabsItemsViewModel in tabIds)
+                {
+                    string tabName = tabs.FirstOrDefault(x => x.TabId == tabsItemsViewModel.TabId).TabName;
+
+                    WrapPanel wrapPanel = (WrapPanel) this.FindName(tabName);
+
+                    AIO aio = new AIO();
+                    aio.ItemsAioViewModel = model;
+                    aio.ProcessDataServiceClient = this.ProcessDataServiceClient;
+                    aio.Width = 200;
+                    aio.Height = 100;
+                    wrapPanel.Children.Add(aio);
+                    aio.Start();
+                }
             }
 
             BusyIndicator.IsBusy = false;

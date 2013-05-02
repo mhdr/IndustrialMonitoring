@@ -25,4 +25,31 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ItemsAIOViewModel" nillable="true" type="tns:ItemsAIOViewModel" />
+  <xs:complexType name="ArrayOfTabsViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TabsViewModel" nillable="true" type="tns:TabsViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTabsViewModel" nillable="true" type="tns:ArrayOfTabsViewModel" />
+  <xs:complexType name="TabsViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TabId" type="xs:int" />
+      <xs:element minOccurs="0" name="TabName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TabsViewModel" nillable="true" type="tns:TabsViewModel" />
+  <xs:complexType name="ArrayOfTabsItemsViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TabsItemsViewModel" nillable="true" type="tns:TabsItemsViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTabsItemsViewModel" nillable="true" type="tns:ArrayOfTabsItemsViewModel" />
+  <xs:complexType name="TabsItemsViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="TabId" type="xs:int" />
+      <xs:element minOccurs="0" name="TabItemId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TabsItemsViewModel" nillable="true" type="tns:TabsItemsViewModel" />
 </xs:schema>

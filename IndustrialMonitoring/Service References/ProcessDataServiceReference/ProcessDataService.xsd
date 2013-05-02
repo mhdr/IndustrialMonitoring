@@ -28,4 +28,32 @@
     <xs:attribute ref="ser:FactoryType" />
   </xs:complexType>
   <xs:element name="Delegate" nillable="true" type="tns:Delegate" />
+  <xs:complexType name="FuncOfTabsViewModelboolean8_SIOQneY">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="FuncOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TabsViewModel" Namespace="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" />
+          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MulticastDelegate" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FuncOfTabsViewModelboolean8_SIOQneY" nillable="true" type="tns:FuncOfTabsViewModelboolean8_SIOQneY" />
+  <xs:complexType name="FuncOfTabsItemsViewModelboolean8_SIOQneY">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="FuncOf{0}{1}{#}" Namespace="http://schemas.datacontract.org/2004/07/System" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TabsItemsViewModel" Namespace="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" />
+          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MulticastDelegate" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FuncOfTabsItemsViewModelboolean8_SIOQneY" nillable="true" type="tns:FuncOfTabsItemsViewModelboolean8_SIOQneY" />
 </xs:schema>

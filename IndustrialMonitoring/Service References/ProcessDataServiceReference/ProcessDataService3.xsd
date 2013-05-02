@@ -42,4 +42,56 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetTabsAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTabsAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabsAllResult" nillable="true" type="q5:ArrayOfTabsViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q6:FuncOfTabsViewModelboolean8_SIOQneY" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTabResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabResult" nillable="true" type="q7:ArrayOfTabsViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTabItemsAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTabItemsAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabItemsAllResult" nillable="true" type="q8:ArrayOfTabsItemsViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTabItems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q9:FuncOfTabsItemsViewModelboolean8_SIOQneY" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTabItemsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabItemsResult" nillable="true" type="q10:ArrayOfTabsItemsViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

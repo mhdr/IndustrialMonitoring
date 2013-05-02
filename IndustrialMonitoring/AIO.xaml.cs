@@ -76,20 +76,21 @@ namespace IndustrialMonitoring
             series.Stroke = Brushes.Green;
             //series.Fill = Brushes.Green;
             series.StrokeThickness = 2;
-
-            //LineSeries series = (LineSeries)this.Chart.Series[0];
-            series.ItemsSource = ObservableCollection;
         }
 
         private void AIO_OnLoaded(object sender, RoutedEventArgs e)
         {
-            InitChart();
+//            InitChart();
         }
 
         public void Start()
         {
-            Timer=new Timer(ShowLiveData,new object(), 0,this.ItemsAioViewModel.ShowInUITimeInterval);
+            Timer=new Timer(ShowLiveData,new object(), 0,this.ItemsAioViewModel.ShowInUITimeInterval * 1000);
             ObservableCollection=new ObservableCollection<ChartLiveData>();
+
+            InitChart();
+            LineSeries series = (LineSeries)this.Chart.Series[0];
+            series.ItemsSource = ObservableCollection;
         }
 
         public void Stop()
@@ -101,12 +102,20 @@ namespace IndustrialMonitoring
         {
             LatestData = ProcessDataServiceClient.GeItemsLogLatest(this.ItemsAioViewModel.ItemId);
 
-            if (ObservableCollection.Count > 100)
+            if (LatestData == null)
+            {
+                return;
+            }
+
+            if (ObservableCollection.Count > 99)
             {
                 ObservableCollection.RemoveAt(0);
             }
 
             ObservableCollection.Add(new ChartLiveData(){Value = Convert.ToDouble(LatestData.Value),Date = DateTime.Now});
+
+            System.Diagnostics.Debug.WriteLine("Item Name : {0} , Count ObservableCollection : {1}",
+                this.ItemsAioViewModel.ItemName,ObservableCollection.Count);
         }
     }
 }

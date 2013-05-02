@@ -126,6 +126,8 @@
     </Compile>
     <Compile Include="ViewModels\ItemsAIOViewModel.cs" />
     <Compile Include="ViewModels\ItemsLogLatestAIOViewModel.cs" />
+    <Compile Include="ViewModels\TabsItemsViewModel.cs" />
+    <Compile Include="ViewModels\TabsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

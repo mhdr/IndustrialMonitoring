@@ -26,6 +26,11 @@ namespace Monitoring
 
             ItemsLogLatest current = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == itemId);
 
+            if (current == null)
+            {
+                return null;
+            }
+
             result=new ItemsLogLatestAIOViewModel(current);
 
             return result;
@@ -60,6 +65,75 @@ namespace Monitoring
                     result.Add(current);    
                 }
                 
+            }
+
+            return result;
+        }
+
+        public List<TabsViewModel> GetTabs()
+        {
+            List<TabsViewModel> result=new List<TabsViewModel>();
+
+            var tabs = Entities.Tabs;
+
+            foreach (var tab in tabs)
+            {
+                TabsViewModel current=new TabsViewModel(tab);
+
+                result.Add(current);
+            }
+
+            return result;
+        }
+
+        public List<TabsViewModel> GetTabs(Func<TabsViewModel, bool> predicate)
+        {
+            List<TabsViewModel> result = new List<TabsViewModel>();
+
+            var tabs = Entities.Tabs;
+
+            foreach (var tab in tabs)
+            {
+                TabsViewModel current = new TabsViewModel(tab);
+
+                if (predicate(current))
+                {
+                    result.Add(current);   
+                }
+            }
+
+            return result;
+        }
+
+        public List<TabsItemsViewModel> GetTabItems()
+        {
+            List<TabsItemsViewModel> result=new List<TabsItemsViewModel>();
+
+            var tabItems = Entities.TabsItems;
+
+            foreach (var tabsItem in tabItems)
+            {
+                TabsItemsViewModel current = new TabsItemsViewModel(tabsItem);
+                result.Add(current);
+            }
+
+            return result;
+        }
+
+        public List<TabsItemsViewModel> GetTabItems(Func<TabsItemsViewModel, bool> predicate)
+        {
+            List<TabsItemsViewModel> result = new List<TabsItemsViewModel>();
+
+            var tabItems = Entities.TabsItems;
+
+            foreach (var tabsItem in tabItems)
+            {
+                TabsItemsViewModel current = new TabsItemsViewModel(tabsItem);
+                
+                if (predicate(current))
+                {
+                    result.Add(current);   
+                }
             }
 
             return result;

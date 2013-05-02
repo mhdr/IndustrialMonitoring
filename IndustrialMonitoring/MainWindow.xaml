@@ -1,7 +1,7 @@
 ﻿<Window xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  x:Class="IndustrialMonitoring.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" Loaded="MainWindow_OnLoaded"
+        Title="MainWindow" Height="593" Width="871" Loaded="MainWindow_OnLoaded"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <telerik:RadBusyIndicator Name="BusyIndicator">
@@ -10,9 +10,33 @@
                     <RowDefinition />
                     <RowDefinition MinHeight="10" MaxHeight="25"/>
                 </Grid.RowDefinitions>
-                
+
                 <DockPanel>
-                    <telerik:RadRibbonView Name="RadRibbonView" />
+                    <telerik:RadRibbonView Name="RadRibbonView" DockPanel.Dock="Top" HorizontalAlignment="Stretch"
+                                           ApplicationName="Monitoring">
+                        <telerik:RadRibbonTab Name="RibbonTabHome" Header="Home" MinWidth="70">
+                            <telerik:RadRibbonGroup>
+                                <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                                         Content="Start"
+                                                         Name="RibbonButtonStart" Click="RibbonButtonStart_OnClick"/>
+                            </telerik:RadRibbonGroup>
+
+                            <telerik:RadRibbonGroup>
+                                <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                                         Content="Start"
+                                                         Name="RibbonButtonStop"/>
+                            </telerik:RadRibbonGroup>
+                        </telerik:RadRibbonTab>
+                    </telerik:RadRibbonView>
+
+                    <telerik:RadTabControl>
+                        <telerik:RadTabItem Header="RO" Name="TabItemRO" Width="80" Height="25" 
+                                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <WrapPanel Name="WrapPanelRO">
+
+                            </WrapPanel>
+                        </telerik:RadTabItem>
+                    </telerik:RadTabControl>
                 </DockPanel>
             </Grid>
         </telerik:RadBusyIndicator>
