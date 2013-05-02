@@ -74,8 +74,13 @@ namespace IndustrialMonitoring
                     AIO aio = new AIO();
                     aio.ItemsAioViewModel = model;
                     aio.ProcessDataServiceClient = this.ProcessDataServiceClient;
+                    
+                    // TODO Parameter
                     aio.Width = 200;
-                    aio.Height = 100;
+
+                    // TODO Parameter
+                    aio.Height = 200;
+
                     wrapPanel.Children.Add(aio);
                     aio.Start();
                 }

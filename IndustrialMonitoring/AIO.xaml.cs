@@ -80,6 +80,7 @@ namespace IndustrialMonitoring
 
         private void AIO_OnLoaded(object sender, RoutedEventArgs e)
         {
+            TextBlockTitle.Text = this.ItemsAioViewModel.ItemName;
 //            InitChart();
         }
 
@@ -107,15 +108,23 @@ namespace IndustrialMonitoring
                 return;
             }
 
+            Dispatcher.Invoke(new Action(ShowLiveDataUI));
+        }
+
+        private void ShowLiveDataUI()
+        {
             if (ObservableCollection.Count > 99)
             {
                 ObservableCollection.RemoveAt(0);
             }
 
-            ObservableCollection.Add(new ChartLiveData(){Value = Convert.ToDouble(LatestData.Value),Date = DateTime.Now});
+            ObservableCollection.Add(new ChartLiveData() { Value = Convert.ToDouble(LatestData.Value), Date = DateTime.Now });
+
+            TextBlockValue.Text = LatestData.Value;
 
             System.Diagnostics.Debug.WriteLine("Item Name : {0} , Count ObservableCollection : {1}",
-                this.ItemsAioViewModel.ItemName,ObservableCollection.Count);
+                this.ItemsAioViewModel.ItemName, ObservableCollection.Count);
+            
         }
     }
 }
