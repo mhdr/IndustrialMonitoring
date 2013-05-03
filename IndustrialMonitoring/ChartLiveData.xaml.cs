@@ -143,5 +143,10 @@ namespace IndustrialMonitoring
                 this.ItemsAioViewModel.ItemName, ObservableCollection.Count);
             
         }
+
+        private void ChartLiveData_OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            this.Stop();
+        }
     }
 }
