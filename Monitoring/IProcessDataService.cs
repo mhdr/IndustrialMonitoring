@@ -32,5 +32,8 @@ namespace Monitoring
 
         [OperationContract(Name = "GetTabItems")]
         List<TabsItemsViewModel> GetTabItems(Func<TabsItemsViewModel,bool> predicate);
+
+        [OperationContract(Name = "GetItemsForTab")]
+        List<ItemsAIOViewModel> GetItems(int tabId);
     }
 }

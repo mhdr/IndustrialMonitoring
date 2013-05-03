@@ -396,6 +396,14 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.IAsyncResult BeginGetTabItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> EndGetTabItems(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemsForTab", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsForTabResponse")]
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItemsForTab(int tabId);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IProcessDataService/GetItemsForTab", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsForTabResponse")]
+        System.IAsyncResult BeginGetItemsForTab(int tabId, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> EndGetItemsForTab(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -537,6 +545,25 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetItemsForTabCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetItemsForTabCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ProcessDataServiceClient : System.ServiceModel.ClientBase<IndustrialMonitoring.ProcessDataServiceReference.IProcessDataService>, IndustrialMonitoring.ProcessDataServiceReference.IProcessDataService {
         
         private BeginOperationDelegate onBeginGeItemsLogLatestDelegate;
@@ -581,6 +608,12 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         private System.Threading.SendOrPostCallback onGetTabItemsCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetItemsForTabDelegate;
+        
+        private EndOperationDelegate onEndGetItemsForTabDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetItemsForTabCompletedDelegate;
+        
         public ProcessDataServiceClient() {
         }
         
@@ -613,6 +646,8 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         public event System.EventHandler<GetTabItemsAllCompletedEventArgs> GetTabItemsAllCompleted;
         
         public event System.EventHandler<GetTabItemsCompletedEventArgs> GetTabItemsCompleted;
+        
+        public event System.EventHandler<GetItemsForTabCompletedEventArgs> GetItemsForTabCompleted;
         
         public IndustrialMonitoring.ProcessDataServiceReference.ItemsLogLatestAIOViewModel GeItemsLogLatest(int itemId) {
             return base.Channel.GeItemsLogLatest(itemId);
@@ -956,6 +991,56 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             }
             base.InvokeAsync(this.onBeginGetTabItemsDelegate, new object[] {
                         predicate}, this.onEndGetTabItemsDelegate, this.onGetTabItemsCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItemsForTab(int tabId) {
+            return base.Channel.GetItemsForTab(tabId);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetItemsForTab(int tabId, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetItemsForTab(tabId, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> EndGetItemsForTab(System.IAsyncResult result) {
+            return base.Channel.EndGetItemsForTab(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetItemsForTab(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int tabId = ((int)(inValues[0]));
+            return this.BeginGetItemsForTab(tabId, callback, asyncState);
+        }
+        
+        private object[] OnEndGetItemsForTab(System.IAsyncResult result) {
+            System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> retVal = this.EndGetItemsForTab(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetItemsForTabCompleted(object state) {
+            if ((this.GetItemsForTabCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetItemsForTabCompleted(this, new GetItemsForTabCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetItemsForTabAsync(int tabId) {
+            this.GetItemsForTabAsync(tabId, null);
+        }
+        
+        public void GetItemsForTabAsync(int tabId, object userState) {
+            if ((this.onBeginGetItemsForTabDelegate == null)) {
+                this.onBeginGetItemsForTabDelegate = new BeginOperationDelegate(this.OnBeginGetItemsForTab);
+            }
+            if ((this.onEndGetItemsForTabDelegate == null)) {
+                this.onEndGetItemsForTabDelegate = new EndOperationDelegate(this.OnEndGetItemsForTab);
+            }
+            if ((this.onGetItemsForTabCompletedDelegate == null)) {
+                this.onGetItemsForTabCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetItemsForTabCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetItemsForTabDelegate, new object[] {
+                        tabId}, this.onEndGetItemsForTabDelegate, this.onGetItemsForTabCompletedDelegate, userState);
         }
     }
 }

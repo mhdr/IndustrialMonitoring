@@ -51,6 +51,12 @@
   <wsdl:message name="IProcessDataService_GetTabItems_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTabItemsResponse" />
   </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItemsForTab_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsForTab" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItemsForTab_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsForTabResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProcessDataService">
     <wsdl:operation name="GeItemsLogLatest">
       <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GeItemsLogLatest" message="tns:IProcessDataService_GeItemsLogLatest_InputMessage" />
@@ -79,6 +85,10 @@
     <wsdl:operation name="GetTabItems">
       <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GetTabItems" message="tns:IProcessDataService_GetTabItems_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProcessDataService/GetTabItemsResponse" message="tns:IProcessDataService_GetTabItems_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsForTab">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GetItemsForTab" message="tns:IProcessDataService_GetItemsForTab_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcessDataService/GetItemsForTabResponse" message="tns:IProcessDataService_GetItemsForTab_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProcessDataService" type="tns:IProcessDataService">
@@ -139,6 +149,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTabItems">
       <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetTabItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsForTab">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItemsForTab" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

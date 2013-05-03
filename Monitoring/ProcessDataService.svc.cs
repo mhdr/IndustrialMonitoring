@@ -12,7 +12,7 @@ namespace Monitoring
     // NOTE: In order to launch WCF Test Client for testing this service, please select ProcessDataService.svc or ProcessDataService.svc.cs at the Solution Explorer and start debugging.
     public class ProcessDataService : IProcessDataService
     {
-        private IndustrialMonitoringEntities _entities=new IndustrialMonitoringEntities();
+        private IndustrialMonitoringEntities _entities = new IndustrialMonitoringEntities();
 
         public IndustrialMonitoringEntities Entities
         {
@@ -31,7 +31,7 @@ namespace Monitoring
                 return null;
             }
 
-            result=new ItemsLogLatestAIOViewModel(current);
+            result = new ItemsLogLatestAIOViewModel(current);
 
             return result;
         }
@@ -58,13 +58,13 @@ namespace Monitoring
 
             foreach (var item in items)
             {
-                ItemsAIOViewModel current=new ItemsAIOViewModel(item);
+                ItemsAIOViewModel current = new ItemsAIOViewModel(item);
 
                 if (predicate(current))
                 {
-                    result.Add(current);    
+                    result.Add(current);
                 }
-                
+
             }
 
             return result;
@@ -72,13 +72,13 @@ namespace Monitoring
 
         public List<TabsViewModel> GetTabs()
         {
-            List<TabsViewModel> result=new List<TabsViewModel>();
+            List<TabsViewModel> result = new List<TabsViewModel>();
 
             var tabs = Entities.Tabs;
 
             foreach (var tab in tabs)
             {
-                TabsViewModel current=new TabsViewModel(tab);
+                TabsViewModel current = new TabsViewModel(tab);
 
                 result.Add(current);
             }
@@ -98,7 +98,7 @@ namespace Monitoring
 
                 if (predicate(current))
                 {
-                    result.Add(current);   
+                    result.Add(current);
                 }
             }
 
@@ -107,7 +107,7 @@ namespace Monitoring
 
         public List<TabsItemsViewModel> GetTabItems()
         {
-            List<TabsItemsViewModel> result=new List<TabsItemsViewModel>();
+            List<TabsItemsViewModel> result = new List<TabsItemsViewModel>();
 
             var tabItems = Entities.TabsItems;
 
@@ -129,11 +129,27 @@ namespace Monitoring
             foreach (var tabsItem in tabItems)
             {
                 TabsItemsViewModel current = new TabsItemsViewModel(tabsItem);
-                
+
                 if (predicate(current))
                 {
-                    result.Add(current);   
+                    result.Add(current);
                 }
+            }
+
+            return result;
+        }
+
+        public List<ItemsAIOViewModel> GetItems(int tabId)
+        {
+            List<ItemsAIOViewModel> result = new List<ItemsAIOViewModel>();
+
+            var tabsItem = Entities.TabsItems.Where(x => x.TabId == tabId);
+
+            foreach (var item in tabsItem)
+            {
+                Item currentItem = Entities.Items.FirstOrDefault(x => x.ItemId == item.ItemId);
+
+                result.Add(new ItemsAIOViewModel(currentItem));
             }
 
             return result;

@@ -94,4 +94,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetItemsForTab">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tabId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItemsForTabResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetItemsForTabResult" nillable="true" type="q11:ArrayOfItemsAIOViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

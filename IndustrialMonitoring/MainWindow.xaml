@@ -29,13 +29,13 @@
                         </telerik:RadRibbonTab>
                     </telerik:RadRibbonView>
 
-                    <telerik:RadTabControl>
-                        <telerik:RadTabItem Header="RO" Name="TabItemRO" Width="80" Height="25" 
+                    <telerik:RadTabControl Name="TabControlIOs">
+                        <!--<telerik:RadTabItem Header="RO" Name="TabItemRO" Width="80" Height="25" 
                                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                             <WrapPanel Name="WrapPanelRO">
 
                             </WrapPanel>
-                        </telerik:RadTabItem>
+                        </telerik:RadTabItem>-->
                     </telerik:RadTabControl>
                 </DockPanel>
             </Grid>

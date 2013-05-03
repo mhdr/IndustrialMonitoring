@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace Monitoring.ViewModels
 {
+    [DataContract]
     public class TabsItemsViewModel
     {
+        [DataMember]
         public int TabItemId { get; set; }
+
+        [DataMember]
         public int TabId { get; set; }
+
+        [DataMember]
         public int ItemId { get; set; }
 
         public TabsItemsViewModel()

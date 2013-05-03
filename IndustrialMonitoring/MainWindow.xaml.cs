@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IndustrialMonitoring.ProcessDataServiceReference;
+using Telerik.Windows.Controls;
 
 namespace IndustrialMonitoring
 {
@@ -56,25 +57,34 @@ namespace IndustrialMonitoring
         {
             BusyIndicator.IsBusy = true;
 
-            var items = ProcessDataServiceClient.GetItemsAll();
             var tabs = ProcessDataServiceClient.GetTabsAll();
-            var tabItems = ProcessDataServiceClient.GetTabItemsAll();
 
-            foreach (var itemsAioViewModel in items.OrderBy(x=>x.ItemType))
+            foreach (var tabsViewModel in tabs)
             {
-                ItemsAIOViewModel model = itemsAioViewModel;
-                var tabIds = tabItems.Where(x => x.ItemId == model.ItemId);
+                TabsViewModel model = tabsViewModel;
+                var items = ProcessDataServiceClient.GetItemsForTab(model.TabId);
 
-                foreach (var tabsItemsViewModel in tabIds)
+                RadTabItem radTabItem=new RadTabItem();
+                radTabItem.Name = string.Format("TabItem{0}", tabsViewModel.TabName);
+                radTabItem.Width = 80;
+                radTabItem.Height = 25;
+                radTabItem.Header = tabsViewModel.TabName;
+                radTabItem.HorizontalContentAlignment=HorizontalAlignment.Center;
+                radTabItem.VerticalContentAlignment=VerticalAlignment.Center;
+
+                WrapPanel wrapPanel=new WrapPanel();
+                wrapPanel.Name = string.Format("WrapPanel{0}", tabsViewModel.TabName);
+
+                radTabItem.Content = wrapPanel;
+
+                TabControlIOs.Items.Add(radTabItem);
+
+                foreach (var itemsAioViewModel in items)
                 {
-                    string tabName = tabs.FirstOrDefault(x => x.TabId == tabsItemsViewModel.TabId).TabName;
-
-                    WrapPanel wrapPanel = (WrapPanel) this.FindName(tabName);
-
                     ChartLiveData chartLiveData = new ChartLiveData();
-                    chartLiveData.ItemsAioViewModel = model;
+                    chartLiveData.ItemsAioViewModel = itemsAioViewModel;
                     chartLiveData.ProcessDataServiceClient = this.ProcessDataServiceClient;
-                    
+
                     // TODO Parameter
                     chartLiveData.Width = 200;
 
@@ -82,12 +92,14 @@ namespace IndustrialMonitoring
                     chartLiveData.Height = 200;
 
                     // TODO Parameter
-                    chartLiveData.Margin=new Thickness(4,2,4,2);
+                    chartLiveData.Margin = new Thickness(4, 2, 4, 2);
 
                     wrapPanel.Children.Add(chartLiveData);
                     chartLiveData.Start();
                 }
             }
+
+            TabControlIOs.SelectedIndex = 0;
 
             BusyIndicator.IsBusy = false;
         }

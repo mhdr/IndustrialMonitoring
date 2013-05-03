@@ -10,7 +10,7 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-INSERT INTO Tabs (Tabs.TabName) VALUES ('WrapPanelRO');
+INSERT INTO Tabs (Tabs.TabName) VALUES ('RO');
 
 INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInItemsLogLastesTimeInterval,ShowInUITimeInterval,ScanCycle,SaveInItemsLogWhen,SaveInItemsLogLastWhen)
 VALUES('Random1',2,'\\localhost\Simulation\OPC\Simulation Examples\Functions\Random1',5,1,1,1000,1,1);
