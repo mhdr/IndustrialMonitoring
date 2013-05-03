@@ -4,7 +4,6 @@
         Title="MainWindow" Height="593" Width="871" Loaded="MainWindow_OnLoaded"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-        <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -20,25 +19,13 @@
                                                          Content="Start"
                                                          Name="RibbonButtonStart" Click="RibbonButtonStart_OnClick"/>
                             </telerik:RadRibbonGroup>
-
-                            <telerik:RadRibbonGroup>
-                                <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Stop"
-                                                         Name="RibbonButtonStop"/>
-                            </telerik:RadRibbonGroup>
                         </telerik:RadRibbonTab>
                     </telerik:RadRibbonView>
 
-                    <telerik:RadTabControl Name="TabControlIOs">
-                        <!--<telerik:RadTabItem Header="RO" Name="TabItemRO" Width="80" Height="25" 
-                                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-                            <WrapPanel Name="WrapPanelRO">
-
-                            </WrapPanel>
-                        </telerik:RadTabItem>-->
-                    </telerik:RadTabControl>
-                </DockPanel>
+                <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True">
+                    <telerik:RadTabControl Name="TabControlIOs" />
+                </telerik:RadBusyIndicator>
+            </DockPanel>
             </Grid>
-        </telerik:RadBusyIndicator>
     </Grid>
 </Window>
