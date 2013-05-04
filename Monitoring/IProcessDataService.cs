@@ -37,6 +37,6 @@ namespace Monitoring
         List<ItemsAIOViewModel> GetItems(int tabId);
 
         [OperationContract]
-        List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId);
+        List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId,DateTime startDate,DateTime endDate);
     }
 }

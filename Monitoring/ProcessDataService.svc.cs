@@ -155,9 +155,23 @@ namespace Monitoring
             return result;
         }
 
-        public List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId)
+        public List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId, DateTime startDate, DateTime endDate)
         {
-            List<ItemsLogChartHistoryViewModel> result
+            List<ItemsLogChartHistoryViewModel> result = new List<ItemsLogChartHistoryViewModel>();
+
+            var itemsLog = Entities.ItemsLogs.Where(x => x.ItemId == itemId);
+
+            foreach (var log in itemsLog)
+            {
+                if (log.Time >= startDate && log.Time <= endDate)
+                {
+                    result.Add(new ItemsLogChartHistoryViewModel(log));    
+                }
+                
+            }
+
+            return result;
         }
+
     }
 }
