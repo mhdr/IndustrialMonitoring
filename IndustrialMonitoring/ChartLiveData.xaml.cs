@@ -31,6 +31,25 @@ namespace IndustrialMonitoring
         private ObservableCollection<Lib.ChartLiveData> _observableCollection;
         private ItemsLogLatestAIOViewModel _latestData;
         private ProcessDataServiceClient _processDataServiceClient;
+        private bool _isSelected;
+
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set
+            {
+                _isSelected = value;
+
+                if (_isSelected)
+                {
+                    BorderUI.BorderBrush = Brushes.LightGreen;
+                }
+                else
+                {
+                    BorderUI.BorderBrush = Brushes.AliceBlue;
+                }
+            }
+        }
 
         public ChartLiveData()
         {
@@ -74,7 +93,7 @@ namespace IndustrialMonitoring
             if (this.ItemsAioViewModel.ItemType == ItemType.Digital)
             {
                 Chart.Series.Add(new AreaSeries());
-                AreaSeries series =(AreaSeries) this.Chart.Series[0];
+                AreaSeries series = (AreaSeries)this.Chart.Series[0];
                 series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
                 series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
                 series.Stroke = Brushes.LightGreen;
@@ -85,7 +104,7 @@ namespace IndustrialMonitoring
             }
             else if (this.ItemsAioViewModel.ItemType == ItemType.Analog)
             {
-                
+
                 Chart.Series.Add(new LineSeries());
                 LineSeries series = (LineSeries)this.Chart.Series[0];
                 series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
@@ -104,8 +123,8 @@ namespace IndustrialMonitoring
 
         public void Start()
         {
-            Timer=new Timer(ShowLiveData,new object(), 0,this.ItemsAioViewModel.ShowInUITimeInterval * 1000);
-            ObservableCollection=new ObservableCollection<Lib.ChartLiveData>();
+            Timer = new Timer(ShowLiveData, new object(), 0, this.ItemsAioViewModel.ShowInUITimeInterval * 1000);
+            ObservableCollection = new ObservableCollection<Lib.ChartLiveData>();
 
             InitChart();
         }
@@ -137,12 +156,11 @@ namespace IndustrialMonitoring
 
             ObservableCollection.Add(new Lib.ChartLiveData() { Value = Convert.ToDouble(LatestData.Value), Date = DateTime.Now });
 
-            TextBlockValue.Text = LatestData.Value;  
+            TextBlockValue.Text = LatestData.Value;
 
             System.Diagnostics.Debug.WriteLine("Item Name : {0} , Count ObservableCollection : {1}",
                 this.ItemsAioViewModel.ItemName, ObservableCollection.Count);
-            
-        }
 
+        }
     }
 }

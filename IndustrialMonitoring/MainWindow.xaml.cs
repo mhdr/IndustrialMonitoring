@@ -149,6 +149,8 @@ namespace IndustrialMonitoring
                 ChartLiveData chartLiveData = new ChartLiveData();
                 chartLiveData.ItemsAioViewModel = itemsAioViewModel;
                 chartLiveData.ProcessDataServiceClient = this.ProcessDataServiceClient;
+                chartLiveData.MouseDoubleClick += chartLiveData_MouseDoubleClick;
+
 
                 // TODO Parameter
                 chartLiveData.Width = 200;
@@ -165,6 +167,25 @@ namespace IndustrialMonitoring
             }
         }
 
+        void chartLiveData_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var current = sender as ChartLiveData;
+
+            if (current.IsSelected)
+            {
+                current.IsSelected = false;
+                return;
+            }
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                chartLiveData.IsSelected = false;
+            }
+
+            
+            current.IsSelected = true;
+        }
+
         private void RibbonButtonStop_OnClick(object sender, RoutedEventArgs e)
         {
             if (AllCharts == null)
@@ -176,6 +197,45 @@ namespace IndustrialMonitoring
             {
                 chartLiveData.Stop();
             }
+        }
+
+        private void RibbonButtonChart_OnClick(object sender, RoutedEventArgs e)
+        {
+            ChartLiveData selected = null;
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                if (chartLiveData.IsSelected)
+                {
+                    selected = chartLiveData;
+                    break;
+                }
+            }
+
+            if (selected == null)
+            {
+                ShowMsgOnStatusBar("First select a item");
+                return;
+            }
+
+            
+        }
+
+        private void ShowMsgOnStatusBar(string msg)
+        {
+            ClearStatusBar();
+
+            StatusBarBottom.Items.Add(msg);
+        }
+
+        private void ClearStatusBar()
+        {
+            StatusBarBottom.Items.Clear();
+        }
+
+        private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ClearStatusBar();
         }
     }
 }

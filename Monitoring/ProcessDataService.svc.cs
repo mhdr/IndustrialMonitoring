@@ -154,5 +154,10 @@ namespace Monitoring
 
             return result;
         }
+
+        public List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId)
+        {
+            List<ItemsLogChartHistoryViewModel> result
+        }
     }
 }

@@ -20,7 +20,7 @@
             <Setter Property="FontFamily" Value="./Fonts/#B Titr" />
         </Style>
     </UserControl.Resources>
-    <Border CornerRadius="5" BorderThickness="1" BorderBrush="AliceBlue">
+    <Border CornerRadius="5" BorderThickness="1" BorderBrush="AliceBlue" Name="BorderUI">
         <Grid Name="GridContainer"
         FlowDirection="RightToLeft" MinWidth="100">
             <Grid>

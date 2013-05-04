@@ -35,5 +35,8 @@ namespace Monitoring
 
         [OperationContract(Name = "GetItemsForTab")]
         List<ItemsAIOViewModel> GetItems(int tabId);
+
+        [OperationContract]
+        List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId);
     }
 }
