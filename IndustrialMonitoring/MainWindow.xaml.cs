@@ -26,6 +26,7 @@ namespace IndustrialMonitoring
     {
         private ProcessDataServiceClient _processDataServiceClient;
         private event EventHandler StartAsyncCompleted;
+        private List<ChartLiveData> _allCharts=new List<ChartLiveData>();
 
         protected virtual void OnStartAsyncCompleted()
         {
@@ -52,6 +53,12 @@ namespace IndustrialMonitoring
             set { _processDataServiceClient = value; }
         }
 
+        public List<ChartLiveData> AllCharts
+        {
+            get { return _allCharts; }
+            set { _allCharts = value; }
+        }
+
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
 
@@ -59,7 +66,32 @@ namespace IndustrialMonitoring
 
         private void RibbonButtonStart_OnClick(object sender, RoutedEventArgs e)
         {
-            StartAsync();
+            if (AllCharts==null)
+            {
+                StartAsync();    
+            }
+            else if (AllCharts.Count == 0)
+            {
+                StartAsync();
+            }
+            else if (AllCharts.Count>0)
+            {
+                Resume();
+            }
+            
+        }
+
+        private void Resume()
+        {
+            if (AllCharts == null)
+            {
+                return;
+            }
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                chartLiveData.Start();
+            }
         }
 
         private void StartAsync()
@@ -128,9 +160,22 @@ namespace IndustrialMonitoring
                 chartLiveData.Margin = new Thickness(4, 2, 4, 2);
 
                 wrapPanel.Children.Add(chartLiveData);
+                AllCharts.Add(chartLiveData);
                 chartLiveData.Start();
             }
         }
 
+        private void RibbonButtonStop_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (AllCharts == null)
+            {
+                return;
+            }
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                chartLiveData.Stop();
+            }
+        }
     }
 }

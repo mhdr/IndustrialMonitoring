@@ -19,7 +19,13 @@
                                                          Content="Start"
                                                          Name="RibbonButtonStart" Click="RibbonButtonStart_OnClick"/>
                             </telerik:RadRibbonGroup>
-                        </telerik:RadRibbonTab>
+
+                        <telerik:RadRibbonGroup>
+                            <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                                         Content="Stop"
+                                                         Name="RibbonButtonStop" Click="RibbonButtonStop_OnClick"/>
+                        </telerik:RadRibbonGroup>
+                    </telerik:RadRibbonTab>
                     </telerik:RadRibbonView>
 
                 <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True">

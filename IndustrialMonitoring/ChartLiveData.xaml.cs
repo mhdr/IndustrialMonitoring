@@ -77,8 +77,8 @@ namespace IndustrialMonitoring
                 AreaSeries series =(AreaSeries) this.Chart.Series[0];
                 series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
                 series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                series.Stroke = Brushes.Green;
-                series.Fill = Brushes.Green;
+                series.Stroke = Brushes.LightGreen;
+                series.Fill = Brushes.LightGreen;
                 series.StrokeThickness = 2;
 
                 series.ItemsSource = ObservableCollection;
@@ -144,9 +144,5 @@ namespace IndustrialMonitoring
             
         }
 
-        private void ChartLiveData_OnUnloaded(object sender, RoutedEventArgs e)
-        {
-            this.Stop();
-        }
     }
 }
