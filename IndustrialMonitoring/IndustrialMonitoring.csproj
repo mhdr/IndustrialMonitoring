@@ -43,6 +43,7 @@
     <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -74,7 +75,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DialogSetTime.xaml.cs">
+      <DependentUpon>DialogSetTime.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ChartLiveData.cs" />
+    <Compile Include="Lib\TimeChangedEventArgs.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Service References\ProcessDataServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -85,6 +90,10 @@
       <DependentUpon>WindowChartHistory.xaml</DependentUpon>
     </Compile>
     <Page Include="ChartLiveData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogSetTime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

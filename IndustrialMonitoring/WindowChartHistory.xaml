@@ -13,17 +13,19 @@
         <DockPanel>
             <telerik:RadRibbonView Name="RibbonViewTop" DockPanel.Dock="Top" HorizontalAlignment="Stretch"
                                            ApplicationName="Monitoring">
-                <telerik:RadRibbonTab Name="RibbonTabHome" Header="Home" MinWidth="70">
+                <telerik:RadRibbonTab Name="RibbonTabFilter" Header="Filter" MinWidth="70">
                     <telerik:RadRibbonGroup>
                         <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Start"
-                                                         Name="RibbonButtonStart" />
+                                                         Content="Time"
+                                                         Name="RibbonButtonShowSetTimeDialog" Click="RibbonButtonShowSetTimeDialog_OnClick"/>
+
                     </telerik:RadRibbonGroup>
 
                     <telerik:RadRibbonGroup>
                         <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Stop"
-                                                         Name="RibbonButtonStop" />
+                                                         Content="Apply"
+                                                         Name="RibbonButtonApply" Click="RibbonButtonApply_OnClick"/>
+
                     </telerik:RadRibbonGroup>
                 </telerik:RadRibbonTab>
             </telerik:RadRibbonView>

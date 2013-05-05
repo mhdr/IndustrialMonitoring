@@ -1,0 +1,31 @@
+﻿<Window xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  x:Class="IndustrialMonitoring.DialogSetTime"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DialogSetTime" Height="162.4" Width="452" ShowInTaskbar="False" Closing="DialogSetTime_OnClosing" Loaded="DialogSetTime_OnLoaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Start Time" Grid.Row="0" Grid.Column="0" Margin="5,0,5,0"
+                   HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+        <telerik:RadDateTimePicker Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Name="DateTimePickerStartTime"/>
+
+        <TextBlock Text="End Time" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0"
+                   HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"/>
+        <telerik:RadDateTimePicker Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+                                   Name="DateTimePickerEndTime"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <telerik:RadButton Name="ButtonClose" Click="ButtonClose_OnClick" Content="Close" Width="70" Height="30" Margin="50,0,10,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

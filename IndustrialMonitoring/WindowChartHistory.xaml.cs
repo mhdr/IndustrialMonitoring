@@ -133,5 +133,25 @@ namespace IndustrialMonitoring
         {
             StatusBarBottom.Items.Clear();
         }
+
+        private void RibbonButtonShowSetTimeDialog_OnClick(object sender, RoutedEventArgs e)
+        {
+            DialogSetTime dialogSetTime=new DialogSetTime();
+            dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
+            dialogSetTime.StartTime = StartTime;
+            dialogSetTime.EndTime = EndTime;
+            dialogSetTime.ShowDialog();
+        }
+
+        void dialogSetTime_TimeChanged(object sender, Lib.TimeChangedEventArgs e)
+        {
+            this.StartTime = e.StartTime;
+            this.EndTime = e.EndTime;
+        }
+
+        private void RibbonButtonApply_OnClick(object sender, RoutedEventArgs e)
+        {
+            ShowData();
+        }
     }
 }
