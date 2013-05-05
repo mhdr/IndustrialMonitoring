@@ -337,6 +337,99 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemsLogChartHistoryViewModel", Namespace="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels")]
+    [System.SerializableAttribute()]
+    public partial class ItemsLogChartHistoryViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ItemIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ItemLogIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime TimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ItemId {
+            get {
+                return this.ItemIdField;
+            }
+            set {
+                if ((this.ItemIdField.Equals(value) != true)) {
+                    this.ItemIdField = value;
+                    this.RaisePropertyChanged("ItemId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ItemLogId {
+            get {
+                return this.ItemLogIdField;
+            }
+            set {
+                if ((this.ItemLogIdField.Equals(value) != true)) {
+                    this.ItemLogIdField = value;
+                    this.RaisePropertyChanged("ItemLogId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Time {
+            get {
+                return this.TimeField;
+            }
+            set {
+                if ((this.TimeField.Equals(value) != true)) {
+                    this.TimeField = value;
+                    this.RaisePropertyChanged("Time");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProcessDataServiceReference.IProcessDataService")]
     public interface IProcessDataService {
@@ -349,21 +442,21 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         IndustrialMonitoring.ProcessDataServiceReference.ItemsLogLatestAIOViewModel EndGeItemsLogLatest(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsAllResponse")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItemsAll();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IProcessDataService/GetItemsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsAllResponse")]
-        System.IAsyncResult BeginGetItemsAll(System.AsyncCallback callback, object asyncState);
-        
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> EndGetItemsAll(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsResponse")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel, bool> predicate);
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItems();
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IProcessDataService/GetItems", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsResponse")]
-        System.IAsyncResult BeginGetItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel, bool> predicate, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetItems(System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> EndGetItems(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItem", ReplyAction="http://tempuri.org/IProcessDataService/GetItemResponse")]
+        IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel GetItem(int itemId);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IProcessDataService/GetItem", ReplyAction="http://tempuri.org/IProcessDataService/GetItemResponse")]
+        System.IAsyncResult BeginGetItem(int itemId, System.AsyncCallback callback, object asyncState);
+        
+        IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel EndGetItem(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabsAllResponse")]
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTabsAll();
@@ -404,6 +497,14 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.IAsyncResult BeginGetItemsForTab(int tabId, System.AsyncCallback callback, object asyncState);
         
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> EndGetItemsForTab(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemLogs", ReplyAction="http://tempuri.org/IProcessDataService/GetItemLogsResponse")]
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel> GetItemLogs(int itemId, System.DateTime startDate, System.DateTime endDate);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IProcessDataService/GetItemLogs", ReplyAction="http://tempuri.org/IProcessDataService/GetItemLogsResponse")]
+        System.IAsyncResult BeginGetItemLogs(int itemId, System.DateTime startDate, System.DateTime endDate, System.AsyncCallback callback, object asyncState);
+        
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel> EndGetItemLogs(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -431,11 +532,11 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetItemsAllCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetItemsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetItemsAllCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetItemsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -450,19 +551,19 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetItemsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetItemCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public GetItemsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public GetItemCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> Result {
+        public IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel>)(this.results[0]));
+                return ((IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel)(this.results[0]));
             }
         }
     }
@@ -564,6 +665,25 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetItemLogsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetItemLogsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel> Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel>)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ProcessDataServiceClient : System.ServiceModel.ClientBase<IndustrialMonitoring.ProcessDataServiceReference.IProcessDataService>, IndustrialMonitoring.ProcessDataServiceReference.IProcessDataService {
         
         private BeginOperationDelegate onBeginGeItemsLogLatestDelegate;
@@ -572,17 +692,17 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         private System.Threading.SendOrPostCallback onGeItemsLogLatestCompletedDelegate;
         
-        private BeginOperationDelegate onBeginGetItemsAllDelegate;
-        
-        private EndOperationDelegate onEndGetItemsAllDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetItemsAllCompletedDelegate;
-        
         private BeginOperationDelegate onBeginGetItemsDelegate;
         
         private EndOperationDelegate onEndGetItemsDelegate;
         
         private System.Threading.SendOrPostCallback onGetItemsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetItemDelegate;
+        
+        private EndOperationDelegate onEndGetItemDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetItemCompletedDelegate;
         
         private BeginOperationDelegate onBeginGetTabsAllDelegate;
         
@@ -614,6 +734,12 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         private System.Threading.SendOrPostCallback onGetItemsForTabCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetItemLogsDelegate;
+        
+        private EndOperationDelegate onEndGetItemLogsDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetItemLogsCompletedDelegate;
+        
         public ProcessDataServiceClient() {
         }
         
@@ -635,9 +761,9 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         public event System.EventHandler<GeItemsLogLatestCompletedEventArgs> GeItemsLogLatestCompleted;
         
-        public event System.EventHandler<GetItemsAllCompletedEventArgs> GetItemsAllCompleted;
-        
         public event System.EventHandler<GetItemsCompletedEventArgs> GetItemsCompleted;
+        
+        public event System.EventHandler<GetItemCompletedEventArgs> GetItemCompleted;
         
         public event System.EventHandler<GetTabsAllCompletedEventArgs> GetTabsAllCompleted;
         
@@ -648,6 +774,8 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         public event System.EventHandler<GetTabItemsCompletedEventArgs> GetTabItemsCompleted;
         
         public event System.EventHandler<GetItemsForTabCompletedEventArgs> GetItemsForTabCompleted;
+        
+        public event System.EventHandler<GetItemLogsCompletedEventArgs> GetItemLogsCompleted;
         
         public IndustrialMonitoring.ProcessDataServiceReference.ItemsLogLatestAIOViewModel GeItemsLogLatest(int itemId) {
             return base.Channel.GeItemsLogLatest(itemId);
@@ -699,61 +827,13 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
                         itemId}, this.onEndGeItemsLogLatestDelegate, this.onGeItemsLogLatestCompletedDelegate, userState);
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItemsAll() {
-            return base.Channel.GetItemsAll();
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItems() {
+            return base.Channel.GetItems();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetItemsAll(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetItemsAll(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> EndGetItemsAll(System.IAsyncResult result) {
-            return base.Channel.EndGetItemsAll(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetItemsAll(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetItemsAll(callback, asyncState);
-        }
-        
-        private object[] OnEndGetItemsAll(System.IAsyncResult result) {
-            System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> retVal = this.EndGetItemsAll(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetItemsAllCompleted(object state) {
-            if ((this.GetItemsAllCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetItemsAllCompleted(this, new GetItemsAllCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetItemsAllAsync() {
-            this.GetItemsAllAsync(null);
-        }
-        
-        public void GetItemsAllAsync(object userState) {
-            if ((this.onBeginGetItemsAllDelegate == null)) {
-                this.onBeginGetItemsAllDelegate = new BeginOperationDelegate(this.OnBeginGetItemsAll);
-            }
-            if ((this.onEndGetItemsAllDelegate == null)) {
-                this.onEndGetItemsAllDelegate = new EndOperationDelegate(this.OnEndGetItemsAll);
-            }
-            if ((this.onGetItemsAllCompletedDelegate == null)) {
-                this.onGetItemsAllCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetItemsAllCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetItemsAllDelegate, null, this.onEndGetItemsAllDelegate, this.onGetItemsAllCompletedDelegate, userState);
-        }
-        
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel, bool> predicate) {
-            return base.Channel.GetItems(predicate);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetItems(System.Func<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel, bool> predicate, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetItems(predicate, callback, asyncState);
+        public System.IAsyncResult BeginGetItems(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetItems(callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -762,8 +842,7 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         }
         
         private System.IAsyncResult OnBeginGetItems(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            System.Func<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel, bool> predicate = ((System.Func<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel, bool>)(inValues[0]));
-            return this.BeginGetItems(predicate, callback, asyncState);
+            return this.BeginGetItems(callback, asyncState);
         }
         
         private object[] OnEndGetItems(System.IAsyncResult result) {
@@ -779,11 +858,11 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             }
         }
         
-        public void GetItemsAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel, bool> predicate) {
-            this.GetItemsAsync(predicate, null);
+        public void GetItemsAsync() {
+            this.GetItemsAsync(null);
         }
         
-        public void GetItemsAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel, bool> predicate, object userState) {
+        public void GetItemsAsync(object userState) {
             if ((this.onBeginGetItemsDelegate == null)) {
                 this.onBeginGetItemsDelegate = new BeginOperationDelegate(this.OnBeginGetItems);
             }
@@ -793,8 +872,57 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             if ((this.onGetItemsCompletedDelegate == null)) {
                 this.onGetItemsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetItemsCompleted);
             }
-            base.InvokeAsync(this.onBeginGetItemsDelegate, new object[] {
-                        predicate}, this.onEndGetItemsDelegate, this.onGetItemsCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginGetItemsDelegate, null, this.onEndGetItemsDelegate, this.onGetItemsCompletedDelegate, userState);
+        }
+        
+        public IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel GetItem(int itemId) {
+            return base.Channel.GetItem(itemId);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetItem(int itemId, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetItem(itemId, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel EndGetItem(System.IAsyncResult result) {
+            return base.Channel.EndGetItem(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetItem(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int itemId = ((int)(inValues[0]));
+            return this.BeginGetItem(itemId, callback, asyncState);
+        }
+        
+        private object[] OnEndGetItem(System.IAsyncResult result) {
+            IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel retVal = this.EndGetItem(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetItemCompleted(object state) {
+            if ((this.GetItemCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetItemCompleted(this, new GetItemCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetItemAsync(int itemId) {
+            this.GetItemAsync(itemId, null);
+        }
+        
+        public void GetItemAsync(int itemId, object userState) {
+            if ((this.onBeginGetItemDelegate == null)) {
+                this.onBeginGetItemDelegate = new BeginOperationDelegate(this.OnBeginGetItem);
+            }
+            if ((this.onEndGetItemDelegate == null)) {
+                this.onEndGetItemDelegate = new EndOperationDelegate(this.OnEndGetItem);
+            }
+            if ((this.onGetItemCompletedDelegate == null)) {
+                this.onGetItemCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetItemCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetItemDelegate, new object[] {
+                        itemId}, this.onEndGetItemDelegate, this.onGetItemCompletedDelegate, userState);
         }
         
         public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTabsAll() {
@@ -1041,6 +1169,60 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             }
             base.InvokeAsync(this.onBeginGetItemsForTabDelegate, new object[] {
                         tabId}, this.onEndGetItemsForTabDelegate, this.onGetItemsForTabCompletedDelegate, userState);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel> GetItemLogs(int itemId, System.DateTime startDate, System.DateTime endDate) {
+            return base.Channel.GetItemLogs(itemId, startDate, endDate);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetItemLogs(int itemId, System.DateTime startDate, System.DateTime endDate, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetItemLogs(itemId, startDate, endDate, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel> EndGetItemLogs(System.IAsyncResult result) {
+            return base.Channel.EndGetItemLogs(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetItemLogs(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int itemId = ((int)(inValues[0]));
+            System.DateTime startDate = ((System.DateTime)(inValues[1]));
+            System.DateTime endDate = ((System.DateTime)(inValues[2]));
+            return this.BeginGetItemLogs(itemId, startDate, endDate, callback, asyncState);
+        }
+        
+        private object[] OnEndGetItemLogs(System.IAsyncResult result) {
+            System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel> retVal = this.EndGetItemLogs(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetItemLogsCompleted(object state) {
+            if ((this.GetItemLogsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetItemLogsCompleted(this, new GetItemLogsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetItemLogsAsync(int itemId, System.DateTime startDate, System.DateTime endDate) {
+            this.GetItemLogsAsync(itemId, startDate, endDate, null);
+        }
+        
+        public void GetItemLogsAsync(int itemId, System.DateTime startDate, System.DateTime endDate, object userState) {
+            if ((this.onBeginGetItemLogsDelegate == null)) {
+                this.onBeginGetItemLogsDelegate = new BeginOperationDelegate(this.OnBeginGetItemLogs);
+            }
+            if ((this.onEndGetItemLogsDelegate == null)) {
+                this.onEndGetItemLogsDelegate = new EndOperationDelegate(this.OnEndGetItemLogs);
+            }
+            if ((this.onGetItemLogsCompletedDelegate == null)) {
+                this.onGetItemLogsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetItemLogsCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetItemLogsDelegate, new object[] {
+                        itemId,
+                        startDate,
+                        endDate}, this.onEndGetItemLogsDelegate, this.onGetItemLogsCompletedDelegate, userState);
         }
     }
 }

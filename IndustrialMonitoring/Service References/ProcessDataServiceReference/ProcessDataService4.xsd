@@ -52,4 +52,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TabsItemsViewModel" nillable="true" type="tns:TabsItemsViewModel" />
+  <xs:complexType name="ArrayOfItemsLogChartHistoryViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ItemsLogChartHistoryViewModel" nillable="true" type="tns:ItemsLogChartHistoryViewModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItemsLogChartHistoryViewModel" nillable="true" type="tns:ArrayOfItemsLogChartHistoryViewModel" />
+  <xs:complexType name="ItemsLogChartHistoryViewModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemLogId" type="xs:int" />
+      <xs:element minOccurs="0" name="Time" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Value" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ItemsLogChartHistoryViewModel" nillable="true" type="tns:ItemsLogChartHistoryViewModel" />
 </xs:schema>

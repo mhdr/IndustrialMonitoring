@@ -218,7 +218,18 @@ namespace IndustrialMonitoring
                 return;
             }
 
+            WindowChartHistory windowChartHistory=new WindowChartHistory();
+            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
+            windowChartHistory.ItemId = selected.ItemsAioViewModel.ItemId;
             
+            // TODO Parameter
+            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+            // TODO Parameter
+            windowChartHistory.EndTime = DateTime.Now;
+
+            windowChartHistory.Show();
+            windowChartHistory.ShowData();
         }
 
         private void ShowMsgOnStatusBar(string msg)

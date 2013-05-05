@@ -16,29 +16,29 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetItemsAll">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetItemsAllResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetItemsAllResult" nillable="true" type="q2:ArrayOfItemsAIOViewModel" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetItems">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q3:FuncOfItemsAIOViewModelboolean8_SIOQneY" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetItemsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetItemsResult" nillable="true" type="q4:ArrayOfItemsAIOViewModel" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetItemsResult" nillable="true" type="q2:ArrayOfItemsAIOViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="itemId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetItemResult" nillable="true" type="q3:ItemsAIOViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -50,21 +50,21 @@
   <xs:element name="GetTabsAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabsAllResult" nillable="true" type="q5:ArrayOfTabsViewModel" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabsAllResult" nillable="true" type="q4:ArrayOfTabsViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTab">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q6:FuncOfTabsViewModelboolean8_SIOQneY" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q5:FuncOfTabsViewModelboolean8_SIOQneY" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTabResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabResult" nillable="true" type="q7:ArrayOfTabsViewModel" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabResult" nillable="true" type="q6:ArrayOfTabsViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -76,21 +76,21 @@
   <xs:element name="GetTabItemsAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabItemsAllResult" nillable="true" type="q8:ArrayOfTabsItemsViewModel" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabItemsAllResult" nillable="true" type="q7:ArrayOfTabsItemsViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTabItems">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q9:FuncOfTabsItemsViewModelboolean8_SIOQneY" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q8:FuncOfTabsItemsViewModelboolean8_SIOQneY" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTabItemsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabItemsResult" nillable="true" type="q10:ArrayOfTabsItemsViewModel" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetTabItemsResult" nillable="true" type="q9:ArrayOfTabsItemsViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -104,7 +104,23 @@
   <xs:element name="GetItemsForTabResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetItemsForTabResult" nillable="true" type="q11:ArrayOfItemsAIOViewModel" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetItemsForTabResult" nillable="true" type="q10:ArrayOfItemsAIOViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItemLogs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="itemId" type="xs:int" />
+        <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItemLogsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Monitoring.ViewModels" minOccurs="0" name="GetItemLogsResult" nillable="true" type="q11:ArrayOfItemsLogChartHistoryViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -15,17 +15,17 @@
   <wsdl:message name="IProcessDataService_GeItemsLogLatest_OutputMessage">
     <wsdl:part name="parameters" element="tns:GeItemsLogLatestResponse" />
   </wsdl:message>
-  <wsdl:message name="IProcessDataService_GetItemsAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetItemsAll" />
-  </wsdl:message>
-  <wsdl:message name="IProcessDataService_GetItemsAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetItemsAllResponse" />
-  </wsdl:message>
   <wsdl:message name="IProcessDataService_GetItems_InputMessage">
     <wsdl:part name="parameters" element="tns:GetItems" />
   </wsdl:message>
   <wsdl:message name="IProcessDataService_GetItems_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItem" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemResponse" />
   </wsdl:message>
   <wsdl:message name="IProcessDataService_GetTabsAll_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTabsAll" />
@@ -57,18 +57,24 @@
   <wsdl:message name="IProcessDataService_GetItemsForTab_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetItemsForTabResponse" />
   </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItemLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemLogs" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItemLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemLogsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProcessDataService">
     <wsdl:operation name="GeItemsLogLatest">
       <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GeItemsLogLatest" message="tns:IProcessDataService_GeItemsLogLatest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProcessDataService/GeItemsLogLatestResponse" message="tns:IProcessDataService_GeItemsLogLatest_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetItemsAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GetItemsAll" message="tns:IProcessDataService_GetItemsAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IProcessDataService/GetItemsAllResponse" message="tns:IProcessDataService_GetItemsAll_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetItems">
       <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GetItems" message="tns:IProcessDataService_GetItems_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProcessDataService/GetItemsResponse" message="tns:IProcessDataService_GetItems_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GetItem" message="tns:IProcessDataService_GetItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcessDataService/GetItemResponse" message="tns:IProcessDataService_GetItem_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetTabsAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GetTabsAll" message="tns:IProcessDataService_GetTabsAll_InputMessage" />
@@ -90,6 +96,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GetItemsForTab" message="tns:IProcessDataService_GetItemsForTab_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProcessDataService/GetItemsForTabResponse" message="tns:IProcessDataService_GetItemsForTab_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetItemLogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcessDataService/GetItemLogs" message="tns:IProcessDataService_GetItemLogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcessDataService/GetItemLogsResponse" message="tns:IProcessDataService_GetItemLogs_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProcessDataService" type="tns:IProcessDataService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -102,8 +112,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetItemsAll">
-      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItemsAll" style="document" />
+    <wsdl:operation name="GetItems">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItems" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -111,8 +121,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetItems">
-      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItems" style="document" />
+    <wsdl:operation name="GetItem">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItem" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -158,6 +168,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetItemsForTab">
       <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItemsForTab" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemLogs">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItemLogs" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

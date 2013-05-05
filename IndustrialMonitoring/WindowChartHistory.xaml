@@ -11,7 +11,7 @@
         </Grid.RowDefinitions>
 
         <DockPanel>
-            <telerik:RadRibbonView Name="RadRibbonView" DockPanel.Dock="Top" HorizontalAlignment="Stretch"
+            <telerik:RadRibbonView Name="RibbonViewTop" DockPanel.Dock="Top" HorizontalAlignment="Stretch"
                                            ApplicationName="Monitoring">
                 <telerik:RadRibbonTab Name="RibbonTabHome" Header="Home" MinWidth="70">
                     <telerik:RadRibbonGroup>
@@ -29,18 +29,24 @@
             </telerik:RadRibbonView>
 
             <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True">
-                <telerik:RadCartesianChart Name="Chart" Grid.Row="1" FlowDirection="LeftToRight" MinWidth="200"
-                                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <telerik:RadCartesianChart Name="Chart">
                     <telerik:RadCartesianChart.HorizontalAxis>
-                        <telerik:DateTimeContinuousAxis LabelFitMode="Rotate" MaximumTicks="10" Visibility="Hidden"
-                                                    PlotMode="OnTicks" />
+                        <telerik:DateTimeContinuousAxis LabelFitMode="Rotate" MaximumTicks="10"/>
                     </telerik:RadCartesianChart.HorizontalAxis>
                     <telerik:RadCartesianChart.VerticalAxis>
-                        <telerik:LinearAxis LabelInterval="2"/>
+                        <telerik:LinearAxis/>
                     </telerik:RadCartesianChart.VerticalAxis>
+
+                    <telerik:RadCartesianChart.Behaviors>
+                        <telerik:ChartTrackBallBehavior
+                        ShowTrackInfo="True" />
+                        <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" PanMode="Horizontal"/>
+                    </telerik:RadCartesianChart.Behaviors>
                 </telerik:RadCartesianChart>
             </telerik:RadBusyIndicator>
         </DockPanel>
 
+        <StatusBar Name="StatusBarBottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
+                   MouseDoubleClick="StatusBarBottom_OnMouseDoubleClick" FontWeight="Bold"/>
     </Grid>
 </Window>

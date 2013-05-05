@@ -16,7 +16,7 @@ namespace Monitoring.ViewModels
         public int ItemId { get; set; }
 
         [DataMember]
-        public string Value { get; set; }
+        public double Value { get; set; }
 
         [DataMember]
         public System.DateTime Time { get; set; }
@@ -30,7 +30,7 @@ namespace Monitoring.ViewModels
         {
             this.ItemLogId = itemLog.ItemLogId;
             this.ItemId = itemLog.ItemId;
-            this.Value = itemLog.Value;
+            this.Value = Convert.ToDouble(itemLog.Value);
             this.Time = itemLog.Time;
         }
     }

@@ -15,11 +15,11 @@ namespace Monitoring
         [OperationContract]
         ItemsLogLatestAIOViewModel GeItemsLogLatest(int itemId);
 
-        [OperationContract(Name = "GetItemsAll")]
+        [OperationContract]
         List<ItemsAIOViewModel> GetItems();
 
-        [OperationContract(Name = "GetItems")]
-        List<ItemsAIOViewModel> GetItems(Func<ItemsAIOViewModel, bool> predicate);
+        [OperationContract]
+        ItemsAIOViewModel GetItem(int itemId);
 
         [OperationContract(Name = "GetTabsAll")]
         List<TabsViewModel> GetTabs();

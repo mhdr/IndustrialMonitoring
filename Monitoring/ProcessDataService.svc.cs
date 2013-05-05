@@ -50,22 +50,10 @@ namespace Monitoring
             return result;
         }
 
-        public List<ItemsAIOViewModel> GetItems(Func<ItemsAIOViewModel, bool> predicate)
+        public ItemsAIOViewModel GetItem(int itemId)
         {
-            List<ItemsAIOViewModel> result = new List<ItemsAIOViewModel>();
-
-            var items = Entities.Items;
-
-            foreach (var item in items)
-            {
-                ItemsAIOViewModel current = new ItemsAIOViewModel(item);
-
-                if (predicate(current))
-                {
-                    result.Add(current);
-                }
-
-            }
+            var item = Entities.Items.FirstOrDefault(x=>x.ItemId==itemId);
+            ItemsAIOViewModel result = new ItemsAIOViewModel(item);
 
             return result;
         }
