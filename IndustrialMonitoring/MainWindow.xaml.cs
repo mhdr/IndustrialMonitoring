@@ -61,7 +61,7 @@ namespace IndustrialMonitoring
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void RibbonButtonStart_OnClick(object sender, RoutedEventArgs e)
