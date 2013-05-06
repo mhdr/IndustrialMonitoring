@@ -253,5 +253,38 @@ namespace IndustrialMonitoring
         {
             ClearStatusBar();
         }
+
+        private void RibbonButtonGrid_OnClick(object sender, RoutedEventArgs e)
+        {
+            ChartLiveData selected = null;
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                if (chartLiveData.IsSelected)
+                {
+                    selected = chartLiveData;
+                    break;
+                }
+            }
+
+            if (selected == null)
+            {
+                ShowMsgOnStatusBar("First select a item");
+                return;
+            }
+
+            WindowGridHistory windowChartHistory = new WindowGridHistory();
+            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
+            windowChartHistory.ItemId = selected.ItemsAioViewModel.ItemId;
+
+            // TODO Parameter
+            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+            // TODO Parameter
+            windowChartHistory.EndTime = DateTime.Now;
+
+            windowChartHistory.Show();
+            windowChartHistory.ShowData();
+        }
     }
 }

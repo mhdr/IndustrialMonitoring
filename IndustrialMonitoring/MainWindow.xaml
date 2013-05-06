@@ -31,6 +31,12 @@
                                                          Content="Chart"
                                                          Name="RibbonButtonChart" Click="RibbonButtonChart_OnClick"/>
                     </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                                         Content="Grid"
+                                                         Name="RibbonButtonGrid" Click="RibbonButtonGrid_OnClick"/>
+                    </telerik:RadRibbonGroup>
                 </telerik:RadRibbonTab>
             </telerik:RadRibbonView>
 
