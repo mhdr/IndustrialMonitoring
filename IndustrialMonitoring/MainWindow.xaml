@@ -22,7 +22,7 @@
 
                     <telerik:RadRibbonGroup>
                         <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Stop"
+                                                         Content="Stop" IsEnabled="False"
                                                          Name="RibbonButtonStop" Click="RibbonButtonStop_OnClick"/>
                     </telerik:RadRibbonGroup>
                     

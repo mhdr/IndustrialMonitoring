@@ -78,7 +78,9 @@ namespace IndustrialMonitoring
             {
                 Resume();
             }
-            
+
+            RibbonButtonStart.IsEnabled = false;
+            RibbonButtonStop.IsEnabled = true;
         }
 
         private void Resume()
@@ -197,6 +199,9 @@ namespace IndustrialMonitoring
             {
                 chartLiveData.Stop();
             }
+
+            RibbonButtonStart.IsEnabled = true;
+            RibbonButtonStop.IsEnabled = false;
         }
 
         private void RibbonButtonChart_OnClick(object sender, RoutedEventArgs e)

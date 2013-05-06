@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IndustrialMonitoring.ProcessDataServiceReference;
+using Telerik.Windows;
 using Telerik.Windows.Controls.ChartView;
 
 namespace IndustrialMonitoring
@@ -95,6 +96,8 @@ namespace IndustrialMonitoring
             RibbonViewTop.ApplicationName = string.Format("{0} {1}-{2}", CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());
             LineSeries series = (LineSeries)this.Chart.Series[0];
             series.ItemsSource = ItemsLog;
+            Chart.Zoom=new Size(1,1);
+
             BusyIndicator.IsBusy = false;
         }
 
@@ -152,6 +155,41 @@ namespace IndustrialMonitoring
         private void RibbonButtonApply_OnClick(object sender, RoutedEventArgs e)
         {
             ShowData();
+        }
+
+        private void RibbonButtonShowSetTimeDialog_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            TextBlock textBlock1 = new TextBlock();
+            textBlock1.Text = "Start Time : ";
+            textBlock1.FontWeight = FontWeights.Bold;
+
+            TextBlock textBlock2 = new TextBlock();
+            textBlock2.Text = StartTime.ToString();
+
+            StackPanel stackPanel1 = new StackPanel();
+            stackPanel1.Orientation = Orientation.Horizontal;
+
+            stackPanel1.Children.Add(textBlock1);
+            stackPanel1.Children.Add(textBlock2);
+
+            TextBlock textBlock3 = new TextBlock();
+            textBlock3.Text = "End Time : ";
+            textBlock3.FontWeight = FontWeights.Bold;
+
+            TextBlock textBlock4 = new TextBlock();
+            textBlock4.Text = EndTime.ToString();
+
+            StackPanel stackPanel2 = new StackPanel();
+            stackPanel2.Orientation = Orientation.Horizontal;
+
+            stackPanel2.Children.Add(textBlock3);
+            stackPanel2.Children.Add(textBlock4);
+
+            StackPanel stackPanel3 = new StackPanel();
+            stackPanel3.Children.Add(stackPanel1);
+            stackPanel3.Children.Add(stackPanel2);
+
+            RibbonButtonShowSetTimeDialog.ToolTip = stackPanel3;
         }
     }
 }

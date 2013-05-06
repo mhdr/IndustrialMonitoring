@@ -13,10 +13,11 @@
         <DockPanel>
             <telerik:RadRibbonView Name="RibbonViewTop" DockPanel.Dock="Top" HorizontalAlignment="Stretch"
                                            ApplicationName="Monitoring">
-                <telerik:RadRibbonTab Name="RibbonTabFilter" Header="Filter" MinWidth="70">
+                <telerik:RadRibbonTab Name="RibbonTabFilter" Header="Filter" MinWidth="70" HorizontalContentAlignment="Center">
                     <telerik:RadRibbonGroup>
                         <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                                          Content="Time"
+                                                          MouseEnter="RibbonButtonShowSetTimeDialog_OnMouseEnter"
                                                          Name="RibbonButtonShowSetTimeDialog" Click="RibbonButtonShowSetTimeDialog_OnClick"/>
 
                     </telerik:RadRibbonGroup>
