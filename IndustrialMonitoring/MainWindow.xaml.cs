@@ -111,6 +111,17 @@ namespace IndustrialMonitoring
 
         void MainWindow_StartAsyncCompleted(object sender, EventArgs e)
         {
+            
+            //foreach (RadTabItem item in TabControlIOs.Items)
+            //{
+            //    var chartExist = item.FindChildByType<ChartLiveData>();
+                
+            //    if (chartExist == null)
+            //    {
+            //        TabControlIOs.Items.Remove(item);
+            //    }
+            //}
+
             // TODO Parameter
             TabControlIOs.SelectedIndex = 0;
             BusyIndicator.IsBusy = false;

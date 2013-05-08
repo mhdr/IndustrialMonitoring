@@ -36,17 +36,20 @@ INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInIt
 VALUES('Random3',2,'\\localhost\Simulation\OPC\Simulation Examples\Functions\Random3',5,1,1,1000,1,1);
 INSERT INTO TabsItems(ItemId,TabId) VALUES(3,1);
 INSERT INTO UsersItemsPermissions(UserId,ItemId) VALUES(1,3);
+INSERT INTO UsersItemsPermissions(UserId,ItemId) VALUES(3,3);
 
 
 INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInItemsLogLastesTimeInterval,ShowInUITimeInterval,ScanCycle,SaveInItemsLogWhen,SaveInItemsLogLastWhen)
 VALUES('Random4',2,'\\localhost\Simulation\OPC\Simulation Examples\Functions\Random4',5,1,1,1000,1,1);
 INSERT INTO TabsItems(ItemId,TabId) VALUES(4,1);
 INSERT INTO UsersItemsPermissions(UserId,ItemId) VALUES(1,4);
+INSERT INTO UsersItemsPermissions(UserId,ItemId) VALUES(3,4);
 
 INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInItemsLogLastesTimeInterval,ShowInUITimeInterval,ScanCycle,SaveInItemsLogWhen,SaveInItemsLogLastWhen)
 VALUES('Sine1',2,'\\localhost\Simulation\OPC\Simulation Examples\Functions\Sine1',5,1,1,1000,1,1);
 INSERT INTO TabsItems(ItemId,TabId) VALUES(5,2);
 INSERT INTO UsersItemsPermissions(UserId,ItemId) VALUES(1,5);
+INSERT INTO UsersItemsPermissions(UserId,ItemId) VALUES(3,5);
 
 INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInItemsLogLastesTimeInterval,ShowInUITimeInterval,ScanCycle,SaveInItemsLogWhen,SaveInItemsLogLastWhen)
 VALUES('Sine2',2,'\\localhost\Simulation\OPC\Simulation Examples\Functions\Sine2',5,2,4,1000,1,1);
