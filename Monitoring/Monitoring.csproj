@@ -70,6 +70,7 @@
     <Content Include="DataCollectorService.svc" />
     <Content Include="ProcessDataService.svc" />
     <Content Include="Service1.svc" />
+    <Content Include="UserService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +90,7 @@
     <Compile Include="ItemsLogLatest.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="IUserService.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -121,6 +123,9 @@
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserService.svc.cs">
+      <DependentUpon>UserService.svc</DependentUpon>
+    </Compile>
     <Compile Include="UsersItemsPermission.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -129,6 +134,7 @@
     <Compile Include="ViewModels\ItemsLogLatestAIOViewModel.cs" />
     <Compile Include="ViewModels\TabsItemsViewModel.cs" />
     <Compile Include="ViewModels\TabsViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IndustrialMonitoring.ProcessDataServiceReference;
+using IndustrialMonitoring.UserServiceReference;
 using Telerik.Windows.Controls;
 
 namespace IndustrialMonitoring
@@ -24,7 +25,8 @@ namespace IndustrialMonitoring
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ProcessDataServiceClient _processDataServiceClient;
+        private ProcessDataServiceClient _processDataServiceClient=new ProcessDataServiceClient();
+        private UserServiceClient _userServiceClient=new UserServiceClient();
         private event EventHandler StartAsyncCompleted;
         private List<ChartLiveData> _allCharts=new List<ChartLiveData>();
 
@@ -43,11 +45,6 @@ namespace IndustrialMonitoring
         {
             get
             {
-                if (_processDataServiceClient == null)
-                {
-                    _processDataServiceClient=new ProcessDataServiceClient();
-                }
-
                 return _processDataServiceClient;
             }
             set { _processDataServiceClient = value; }
@@ -57,6 +54,12 @@ namespace IndustrialMonitoring
         {
             get { return _allCharts; }
             set { _allCharts = value; }
+        }
+
+        public UserServiceClient UserServiceClient
+        {
+            get { return _userServiceClient; }
+            set { _userServiceClient = value; }
         }
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
@@ -148,6 +151,11 @@ namespace IndustrialMonitoring
 
             foreach (var itemsAioViewModel in items)
             {
+                if (!UserServiceClient.CheckPermission(Lib.Static.CurrentUser.UserId, itemsAioViewModel.ItemId))
+                {
+                    continue;
+                }
+
                 ChartLiveData chartLiveData = new ChartLiveData();
                 chartLiveData.ItemsAioViewModel = itemsAioViewModel;
                 chartLiveData.ProcessDataServiceClient = this.ProcessDataServiceClient;

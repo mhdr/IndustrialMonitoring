@@ -18,18 +18,14 @@ namespace MonitoringAdmin.MonitoringServiceReferenceDataCollector {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataCollectorService/StartDataCollectorServer", ReplyAction="http://tempuri.org/IDataCollectorService/StartDataCollectorServerResponse")]
         bool StartDataCollectorServer();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IDataCollectorService/StartDataCollectorServer", ReplyAction="http://tempuri.org/IDataCollectorService/StartDataCollectorServerResponse")]
-        System.IAsyncResult BeginStartDataCollectorServer(System.AsyncCallback callback, object asyncState);
-        
-        bool EndStartDataCollectorServer(System.IAsyncResult result);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataCollectorService/StartDataCollectorServer", ReplyAction="http://tempuri.org/IDataCollectorService/StartDataCollectorServerResponse")]
+        System.Threading.Tasks.Task<bool> StartDataCollectorServerAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataCollectorService/StopDataCollectorServer", ReplyAction="http://tempuri.org/IDataCollectorService/StopDataCollectorServerResponse")]
         bool StopDataCollectorServer();
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IDataCollectorService/StopDataCollectorServer", ReplyAction="http://tempuri.org/IDataCollectorService/StopDataCollectorServerResponse")]
-        System.IAsyncResult BeginStopDataCollectorServer(System.AsyncCallback callback, object asyncState);
-        
-        bool EndStopDataCollectorServer(System.IAsyncResult result);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataCollectorService/StopDataCollectorServer", ReplyAction="http://tempuri.org/IDataCollectorService/StopDataCollectorServerResponse")]
+        System.Threading.Tasks.Task<bool> StopDataCollectorServerAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -38,57 +34,7 @@ namespace MonitoringAdmin.MonitoringServiceReferenceDataCollector {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class StartDataCollectorServerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public StartDataCollectorServerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class StopDataCollectorServerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public StopDataCollectorServerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class DataCollectorServiceClient : System.ServiceModel.ClientBase<MonitoringAdmin.MonitoringServiceReferenceDataCollector.IDataCollectorService>, MonitoringAdmin.MonitoringServiceReferenceDataCollector.IDataCollectorService {
-        
-        private BeginOperationDelegate onBeginStartDataCollectorServerDelegate;
-        
-        private EndOperationDelegate onEndStartDataCollectorServerDelegate;
-        
-        private System.Threading.SendOrPostCallback onStartDataCollectorServerCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginStopDataCollectorServerDelegate;
-        
-        private EndOperationDelegate onEndStopDataCollectorServerDelegate;
-        
-        private System.Threading.SendOrPostCallback onStopDataCollectorServerCompletedDelegate;
         
         public DataCollectorServiceClient() {
         }
@@ -109,104 +55,20 @@ namespace MonitoringAdmin.MonitoringServiceReferenceDataCollector {
                 base(binding, remoteAddress) {
         }
         
-        public event System.EventHandler<StartDataCollectorServerCompletedEventArgs> StartDataCollectorServerCompleted;
-        
-        public event System.EventHandler<StopDataCollectorServerCompletedEventArgs> StopDataCollectorServerCompleted;
-        
         public bool StartDataCollectorServer() {
             return base.Channel.StartDataCollectorServer();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginStartDataCollectorServer(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginStartDataCollectorServer(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndStartDataCollectorServer(System.IAsyncResult result) {
-            return base.Channel.EndStartDataCollectorServer(result);
-        }
-        
-        private System.IAsyncResult OnBeginStartDataCollectorServer(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginStartDataCollectorServer(callback, asyncState);
-        }
-        
-        private object[] OnEndStartDataCollectorServer(System.IAsyncResult result) {
-            bool retVal = this.EndStartDataCollectorServer(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnStartDataCollectorServerCompleted(object state) {
-            if ((this.StartDataCollectorServerCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.StartDataCollectorServerCompleted(this, new StartDataCollectorServerCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void StartDataCollectorServerAsync() {
-            this.StartDataCollectorServerAsync(null);
-        }
-        
-        public void StartDataCollectorServerAsync(object userState) {
-            if ((this.onBeginStartDataCollectorServerDelegate == null)) {
-                this.onBeginStartDataCollectorServerDelegate = new BeginOperationDelegate(this.OnBeginStartDataCollectorServer);
-            }
-            if ((this.onEndStartDataCollectorServerDelegate == null)) {
-                this.onEndStartDataCollectorServerDelegate = new EndOperationDelegate(this.OnEndStartDataCollectorServer);
-            }
-            if ((this.onStartDataCollectorServerCompletedDelegate == null)) {
-                this.onStartDataCollectorServerCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnStartDataCollectorServerCompleted);
-            }
-            base.InvokeAsync(this.onBeginStartDataCollectorServerDelegate, null, this.onEndStartDataCollectorServerDelegate, this.onStartDataCollectorServerCompletedDelegate, userState);
+        public System.Threading.Tasks.Task<bool> StartDataCollectorServerAsync() {
+            return base.Channel.StartDataCollectorServerAsync();
         }
         
         public bool StopDataCollectorServer() {
             return base.Channel.StopDataCollectorServer();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginStopDataCollectorServer(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginStopDataCollectorServer(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndStopDataCollectorServer(System.IAsyncResult result) {
-            return base.Channel.EndStopDataCollectorServer(result);
-        }
-        
-        private System.IAsyncResult OnBeginStopDataCollectorServer(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginStopDataCollectorServer(callback, asyncState);
-        }
-        
-        private object[] OnEndStopDataCollectorServer(System.IAsyncResult result) {
-            bool retVal = this.EndStopDataCollectorServer(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnStopDataCollectorServerCompleted(object state) {
-            if ((this.StopDataCollectorServerCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.StopDataCollectorServerCompleted(this, new StopDataCollectorServerCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void StopDataCollectorServerAsync() {
-            this.StopDataCollectorServerAsync(null);
-        }
-        
-        public void StopDataCollectorServerAsync(object userState) {
-            if ((this.onBeginStopDataCollectorServerDelegate == null)) {
-                this.onBeginStopDataCollectorServerDelegate = new BeginOperationDelegate(this.OnBeginStopDataCollectorServer);
-            }
-            if ((this.onEndStopDataCollectorServerDelegate == null)) {
-                this.onEndStopDataCollectorServerDelegate = new EndOperationDelegate(this.OnEndStopDataCollectorServer);
-            }
-            if ((this.onStopDataCollectorServerCompletedDelegate == null)) {
-                this.onStopDataCollectorServerCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnStopDataCollectorServerCompleted);
-            }
-            base.InvokeAsync(this.onBeginStopDataCollectorServerDelegate, null, this.onEndStopDataCollectorServerDelegate, this.onStopDataCollectorServerCompletedDelegate, userState);
+        public System.Threading.Tasks.Task<bool> StopDataCollectorServerAsync() {
+            return base.Channel.StopDataCollectorServerAsync();
         }
     }
 }
