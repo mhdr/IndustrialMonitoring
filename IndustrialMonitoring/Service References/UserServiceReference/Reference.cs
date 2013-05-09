@@ -149,6 +149,12 @@ namespace IndustrialMonitoring.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CheckPermission", ReplyAction="http://tempuri.org/IUserService/CheckPermissionResponse")]
         System.Threading.Tasks.Task<bool> CheckPermissionAsync(int userId, int itemId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UserHaveItemInTab", ReplyAction="http://tempuri.org/IUserService/UserHaveItemInTabResponse")]
+        bool UserHaveItemInTab(int userId, int tabId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UserHaveItemInTab", ReplyAction="http://tempuri.org/IUserService/UserHaveItemInTabResponse")]
+        System.Threading.Tasks.Task<bool> UserHaveItemInTabAsync(int userId, int tabId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -208,6 +214,14 @@ namespace IndustrialMonitoring.UserServiceReference {
         
         public System.Threading.Tasks.Task<bool> CheckPermissionAsync(int userId, int itemId) {
             return base.Channel.CheckPermissionAsync(userId, itemId);
+        }
+        
+        public bool UserHaveItemInTab(int userId, int tabId) {
+            return base.Channel.UserHaveItemInTab(userId, tabId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UserHaveItemInTabAsync(int userId, int tabId) {
+            return base.Channel.UserHaveItemInTabAsync(userId, tabId);
         }
     }
 }

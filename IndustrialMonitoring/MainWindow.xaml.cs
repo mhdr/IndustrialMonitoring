@@ -111,17 +111,6 @@ namespace IndustrialMonitoring
 
         void MainWindow_StartAsyncCompleted(object sender, EventArgs e)
         {
-            
-            //foreach (RadTabItem item in TabControlIOs.Items)
-            //{
-            //    var chartExist = item.FindChildByType<ChartLiveData>();
-                
-            //    if (chartExist == null)
-            //    {
-            //        TabControlIOs.Items.Remove(item);
-            //    }
-            //}
-
             // TODO Parameter
             TabControlIOs.SelectedIndex = 0;
             BusyIndicator.IsBusy = false;
@@ -133,8 +122,11 @@ namespace IndustrialMonitoring
 
             foreach (var tabsViewModel in tabs)
             {
-                TabsViewModel model = tabsViewModel;
-                Dispatcher.BeginInvoke(new Action(() => GenerateTab(model)));
+                if (UserServiceClient.UserHaveItemInTab(Lib.Static.CurrentUser.UserId, tabsViewModel.TabId))
+                {
+                    TabsViewModel model = tabsViewModel;
+                    Dispatcher.BeginInvoke(new Action(() => GenerateTab(model)));   
+                }
             }
 
             Dispatcher.BeginInvoke(new Action(OnStartAsyncCompleted));

@@ -31,6 +31,12 @@
   <wsdl:message name="IUserService_CheckPermission_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckPermissionResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserService_UserHaveItemInTab_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserHaveItemInTab" />
+  </wsdl:message>
+  <wsdl:message name="IUserService_UserHaveItemInTab_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserHaveItemInTabResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserService">
     <wsdl:operation name="GetUserByUserName">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/GetUserByUserName" message="tns:IUserService_GetUserByUserName_InputMessage" />
@@ -47,6 +53,10 @@
     <wsdl:operation name="CheckPermission">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserService/CheckPermission" message="tns:IUserService_CheckPermission_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserService/CheckPermissionResponse" message="tns:IUserService_CheckPermission_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserHaveItemInTab">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserService/UserHaveItemInTab" message="tns:IUserService_UserHaveItemInTab_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserService/UserHaveItemInTabResponse" message="tns:IUserService_UserHaveItemInTab_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserService" type="tns:IUserService">
@@ -80,6 +90,15 @@
     </wsdl:operation>
     <wsdl:operation name="CheckPermission">
       <soap:operation soapAction="http://tempuri.org/IUserService/CheckPermission" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserHaveItemInTab">
+      <soap:operation soapAction="http://tempuri.org/IUserService/UserHaveItemInTab" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

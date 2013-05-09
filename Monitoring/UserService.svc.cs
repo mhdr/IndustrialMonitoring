@@ -61,5 +61,22 @@ namespace Monitoring
 
             return false;
         }
+
+        public bool UserHaveItemInTab(int userId, int tabId)
+        {
+            var userItemsPermissionQuery = Entities.UsersItemsPermissions.Where(x => x.UserId == userId);
+
+            foreach (var u in userItemsPermissionQuery)
+            {
+                bool tabExist = Entities.TabsItems.Any(x => x.ItemId == u.ItemId && x.TabId==tabId);
+
+                if (tabExist)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

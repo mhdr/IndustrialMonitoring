@@ -23,5 +23,8 @@ namespace Monitoring
 
         [OperationContract]
         bool CheckPermission(int userId, int itemId);
+
+        [OperationContract]
+        bool UserHaveItemInTab(int userId, int tabId);
     }
 }
