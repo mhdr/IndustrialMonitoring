@@ -37,6 +37,21 @@
                                                          Content="Grid"
                                                          Name="RibbonButtonGrid" Click="RibbonButtonGrid_OnClick"/>
                     </telerik:RadRibbonGroup>
+                    
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonDropDownButton x:Name="RibbonDropDownButtonCompare" Content="Compare" MinWidth="75" Click="RibbonDropDownButtonCompare_Click">
+                            <telerik:RadRibbonDropDownButton.DropDownContent>
+                                <telerik:RadContextMenu>
+                                    <telerik:RadMenuItem Header="Add" Name="MenuItemAddItem" Click="MenuItemAddItem_Click"/>
+                                    <telerik:RadMenuItem Header="Clear" Name="MenuItemClearItems" IsEnabled="False" Click="MenuItemClearItems_Click"/>
+                                    <telerik:RadMenuItem Header="Items" Name="MenuItemItems" Click="MenuItemItems_Click">
+										
+									</telerik:RadMenuItem>
+									<telerik:RadMenuItem Name="MenuItemCompare" Header="Compare"/>
+                                </telerik:RadContextMenu>
+                            </telerik:RadRibbonDropDownButton.DropDownContent>
+                        </telerik:RadRibbonDropDownButton>
+                    </telerik:RadRibbonGroup>
                 </telerik:RadRibbonTab>
             </telerik:RadRibbonView>
 

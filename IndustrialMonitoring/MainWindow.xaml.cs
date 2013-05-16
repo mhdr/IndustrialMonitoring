@@ -29,6 +29,7 @@ namespace IndustrialMonitoring
         private UserServiceClient _userServiceClient=new UserServiceClient();
         private event EventHandler StartAsyncCompleted;
         private List<ChartLiveData> _allCharts=new List<ChartLiveData>();
+        private List<ChartLiveData> _ItemsForCompare=new List<ChartLiveData>(); 
 
         protected virtual void OnStartAsyncCompleted()
         {
@@ -60,6 +61,12 @@ namespace IndustrialMonitoring
         {
             get { return _userServiceClient; }
             set { _userServiceClient = value; }
+        }
+
+        public List<ChartLiveData> ItemsForCompare
+        {
+            get { return _ItemsForCompare; }
+            set { _ItemsForCompare = value; }
         }
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
@@ -297,5 +304,67 @@ namespace IndustrialMonitoring
             windowChartHistory.Show();
             windowChartHistory.ShowData();
         }
+
+        private void MenuItemAddItem_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            ChartLiveData selected = null;
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                if (chartLiveData.IsSelected)
+                {
+                    selected = chartLiveData;
+                    break;
+                }
+            }
+
+            if (selected == null)
+            {
+                ShowMsgOnStatusBar("First select a item");
+                return;
+            }
+
+            ItemsForCompare.Add(selected);
+        }
+
+        private void MenuItemClearItems_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+        	ItemsForCompare.Clear();
+        }
+
+        private void RibbonDropDownButtonCompare_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+        	if (ItemsForCompare.Any())
+        	{
+        	    MenuItemClearItems.IsEnabled = true;
+        	}
+        }
+
+        private void MenuItemItems_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            MenuItemItems.Items.Clear();
+
+            foreach (ChartLiveData item in ItemsForCompare)
+            {
+                StackPanel stackPanel=new StackPanel();
+                stackPanel.Orientation=Orientation.Horizontal;
+
+                RadMenuItem menuItem=new RadMenuItem();
+                menuItem.Header = item.Name;
+
+                RadButton button=new RadButton();
+                button.Content = "X";
+                button.Background = Brushes.Transparent;
+                button.Click += button_Click;
+            }
+        }
+
+        void button_Click(object sender, RoutedEventArgs e)
+        {
+            RadButton button = (RadButton) sender;
+            StackPanel parent1 = (StackPanel) button.Parent;
+            MenuItemItems.Items.Remove(parent1);
+        }
+        
     }
 }
