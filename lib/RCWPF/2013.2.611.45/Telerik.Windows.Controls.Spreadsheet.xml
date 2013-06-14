@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telerik.Windows.Controls.Spreadsheet</name>
+    </assembly>
+    <members>
+        <member name="T:Telerik.Windows.Controls.Spreadsheet.Controls.HeaderLabel">
+            <summary>
+            HeaderLabel
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.Spreadsheet.Controls.HeaderLabel.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.Spreadsheet.Dialogs.TextOrientationRotateControl">
+            <summary>
+            TextOrientationRotateControl
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.Spreadsheet.Dialogs.TextOrientationRotateControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.Spreadsheet.Dialogs.BordersPreview">
+            <summary>
+            BordersPreview
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.Spreadsheet.Dialogs.BordersPreview.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.Spreadsheet.Dialogs.CellPreview">
+            <summary>
+            CellPreview
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.Spreadsheet.Dialogs.CellPreview.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.Spreadsheet.Dialogs.CornerPath">
+            <summary>
+            CornerPath
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.Spreadsheet.Dialogs.CornerPath.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.Spreadsheet.Dialogs.InsidePath">
+            <summary>
+            InsidePath
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.Spreadsheet.Dialogs.InsidePath.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>
