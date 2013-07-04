@@ -1,9 +1,9 @@
 <!DOCTYPE System-Monitor-Workspace>
 <System-Monitor-Workspace path="D:/Users/ma.ramezani.SBO/Documents/Visual Studio 2012/Projects/IndustrialMonitoring/MonitoringPLCs/PLC1.smw" >
- <state w="-1" x="0" y="0" h="-1" max="true" >AAAA/wAAAAD9AAAAAgAAAAEAAAGFAAAC+fwCAAAAAfsAAAAcAEEAdQB0AG8AIABWAGkAZQB3AF8ARABvAGMAawEAAAA4AAAC+QAAAg8A////AAAAA////////////AEAAAAB+wAAACwAQQBsAGEAcgBtAHMAIABhAG4AZAAgAEUAdgBlAG4AdABzAF8ARABvAGMAawAAAAAA/////wAAAsUA////AAAEFwAAAvkAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAf////8BAAAAAP////8AAAAAAAAAAA==</state>
+ <state w="-1" x="0" y="0" h="-1" max="true" >AAAA/wAAAAD9AAAAAgAAAAEAAAGcAAACHfwCAAAAAfsAAAAcAEEAdQB0AG8AIABWAGkAZQB3AF8ARABvAGMAawEAAAA4AAACHQAAAh0A////AAAAAwAABaAAAADY/AEAAAAB+wAAACwAQQBsAGEAcgBtAHMAIABhAG4AZAAgAEUAdgBlAG4AdABzAF8ARABvAGMAawEAAAAAAAAFoAAAAsUA////AAAEAAAAAh0AAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAf////8BAAAAAP////8AAAAAAAAAAA==</state>
  <Tree>
   <system>localhost</system>
-  <selection>\\localhost\Project01\OPC\PLCS71200\Device2\AlarmChambers</selection>
+  <selection>\\localhost\Project01\OPC\PLCS71200\Device2\TemperatureAccelerated</selection>
  </Tree>
  <System-Event-Window>
   <Alarms-Window>
