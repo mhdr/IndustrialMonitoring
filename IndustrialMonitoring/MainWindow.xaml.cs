@@ -325,11 +325,17 @@ namespace IndustrialMonitoring
             }
 
             ItemsForCompare.Add(selected);
+            MenuItem newMenuItem=new MenuItem();
+            newMenuItem.Header = selected.ItemsAioViewModel.ItemName;
+            MenuItemItems.Items.Add(newMenuItem);
+            MenuItemClearItems.IsEnabled = true;
         }
 
         private void MenuItemClearItems_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
         	ItemsForCompare.Clear();
+            MenuItemItems.Items.Clear();
+            MenuItemClearItems.IsEnabled = false;
         }
 
         private void RibbonDropDownButtonCompare_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -339,32 +345,5 @@ namespace IndustrialMonitoring
         	    MenuItemClearItems.IsEnabled = true;
         	}
         }
-
-        private void MenuItemItems_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
-        {
-            MenuItemItems.Items.Clear();
-
-            foreach (ChartLiveData item in ItemsForCompare)
-            {
-                StackPanel stackPanel=new StackPanel();
-                stackPanel.Orientation=Orientation.Horizontal;
-
-                RadMenuItem menuItem=new RadMenuItem();
-                menuItem.Header = item.Name;
-
-                RadButton button=new RadButton();
-                button.Content = "X";
-                button.Background = Brushes.Transparent;
-                button.Click += button_Click;
-            }
-        }
-
-        void button_Click(object sender, RoutedEventArgs e)
-        {
-            RadButton button = (RadButton) sender;
-            StackPanel parent1 = (StackPanel) button.Parent;
-            MenuItemItems.Items.Remove(parent1);
-        }
-        
     }
 }

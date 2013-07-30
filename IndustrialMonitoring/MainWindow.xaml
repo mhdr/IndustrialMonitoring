@@ -44,7 +44,7 @@
                                 <telerik:RadContextMenu>
                                     <telerik:RadMenuItem Header="Add" Name="MenuItemAddItem" Click="MenuItemAddItem_Click"/>
                                     <telerik:RadMenuItem Header="Clear" Name="MenuItemClearItems" IsEnabled="False" Click="MenuItemClearItems_Click"/>
-                                    <telerik:RadMenuItem Header="Items" Name="MenuItemItems" Click="MenuItemItems_Click">
+                                    <telerik:RadMenuItem Header="Items" Name="MenuItemItems">
 										
 									</telerik:RadMenuItem>
 									<telerik:RadMenuItem Name="MenuItemCompare" Header="Compare"/>
