@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringAdmin", "Monitori
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringServiceLibrary", "MonitoringServiceLibrary\MonitoringServiceLibrary.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringHostService", "MonitoringHostService\MonitoringHostService.csproj", "{79A25230-34DF-4BF1-90CB-4BCC88D6E384}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringHostService", "MonitoringHostService\MonitoringHostService.csproj", "{3E06EC9D-681E-421A-87C3-0B903387D638}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +53,10 @@ Global
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79A25230-34DF-4BF1-90CB-4BCC88D6E384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79A25230-34DF-4BF1-90CB-4BCC88D6E384}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79A25230-34DF-4BF1-90CB-4BCC88D6E384}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79A25230-34DF-4BF1-90CB-4BCC88D6E384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E06EC9D-681E-421A-87C3-0B903387D638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E06EC9D-681E-421A-87C3-0B903387D638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E06EC9D-681E-421A-87C3-0B903387D638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E06EC9D-681E-421A-87C3-0B903387D638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
