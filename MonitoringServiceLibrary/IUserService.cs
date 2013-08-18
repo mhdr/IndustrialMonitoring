@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using MonitoringServiceLibrary.ViewModels;
 
 namespace MonitoringServiceLibrary
 {
@@ -11,6 +12,18 @@ namespace MonitoringServiceLibrary
     public interface IUserService
     {
         [OperationContract]
-        string GetData(int value);
+        UserViewModel GetUserByUserName(string userName);
+
+        [OperationContract]
+        UserViewModel GetUserByUserId(int userId);
+
+        [OperationContract]
+        bool Authorize(string userName, string password);
+
+        [OperationContract]
+        bool CheckPermission(int userId, int itemId);
+
+        [OperationContract]
+        bool UserHaveItemInTab(int userId, int tabId);
     }
 }
