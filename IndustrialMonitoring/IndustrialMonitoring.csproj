@@ -199,33 +199,33 @@
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.wsdl" />
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.xsd">
+    <None Include="Service References\ProcessDataServiceReference\MonitoringServiceLibrary.ViewModels.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.xsd">
+    <None Include="Service References\ProcessDataServiceReference\service.wsdl" />
+    <None Include="Service References\ProcessDataServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService2.xsd">
+    <None Include="Service References\ProcessDataServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService3.xsd">
+    <None Include="Service References\ProcessDataServiceReference\SharedLibrary.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService4.xsd">
+    <None Include="Service References\ProcessDataServiceReference\System.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserServiceReference\IndustrialMonitoring.UserServiceReference.UserViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\UserServiceReference\UserService.wsdl" />
-    <None Include="Service References\UserServiceReference\UserService.xsd">
+    <None Include="Service References\UserServiceReference\MonitoringServiceLibrary.ViewModels.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServiceReference\UserService1.xsd">
+    <None Include="Service References\UserServiceReference\service.wsdl" />
+    <None Include="Service References\UserServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServiceReference\UserService2.xsd">
+    <None Include="Service References\UserServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -248,7 +248,7 @@
     <WCFMetadataStorage Include="Service References\UserServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.disco" />
+    <None Include="Resources\chart-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ProcessDataServiceReference\configuration91.svcinfo" />
@@ -261,12 +261,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\chart-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\UserServiceReference\UserService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\UserServiceReference\configuration91.svcinfo" />

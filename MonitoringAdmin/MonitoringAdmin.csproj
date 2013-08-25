@@ -70,11 +70,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\MonitoringServiceReferenceDataCollector\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,13 +115,6 @@
     <None Include="Service References\DataCollectorServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MonitoringServiceReferenceDataCollector\DataCollectorService.wsdl" />
-    <None Include="Service References\MonitoringServiceReferenceDataCollector\DataCollectorService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MonitoringServiceReferenceDataCollector\DataCollectorService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -135,29 +123,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Monitoring\Monitoring.csproj">
-      <Project>{1f69f51d-221c-47f4-9ad9-1647cf94c7a1}</Project>
-      <Name>Monitoring</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadataStorage Include="Service References\DataCollectorServiceReference\" />
-    <WCFMetadataStorage Include="Service References\MonitoringServiceReferenceDataCollector\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MonitoringServiceReferenceDataCollector\DataCollectorService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MonitoringServiceReferenceDataCollector\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MonitoringServiceReferenceDataCollector\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MonitoringServiceReferenceDataCollector\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DataCollectorServiceReference\configuration91.svcinfo" />
