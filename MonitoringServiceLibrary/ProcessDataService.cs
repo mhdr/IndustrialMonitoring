@@ -9,18 +9,11 @@ namespace MonitoringServiceLibrary
 {
     public class ProcessDataService : IProcessDataService
     {
-        private IndustrialMonitoringEntities _entities = new IndustrialMonitoringEntities();
-
-        public IndustrialMonitoringEntities Entities
-        {
-            get { return _entities; }
-            set { _entities = value; }
-        }
-
         public ItemsLogLatestAIOViewModel GeItemsLogLatest(int itemId)
         {
             ItemsLogLatestAIOViewModel result = null;
 
+            var Entities=new IndustrialMonitoringEntities();
             ItemsLogLatest current = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == itemId);
 
             if (current == null)
@@ -36,7 +29,7 @@ namespace MonitoringServiceLibrary
         public List<ItemsAIOViewModel> GetItems()
         {
             List<ItemsAIOViewModel> result = new List<ItemsAIOViewModel>();
-
+            var Entities = new IndustrialMonitoringEntities();
             var items = Entities.Items;
 
             foreach (var item in items)
@@ -49,6 +42,7 @@ namespace MonitoringServiceLibrary
 
         public ItemsAIOViewModel GetItem(int itemId)
         {
+            var Entities = new IndustrialMonitoringEntities();
             var item = Entities.Items.FirstOrDefault(x => x.ItemId == itemId);
             ItemsAIOViewModel result = new ItemsAIOViewModel(item);
 
@@ -58,7 +52,7 @@ namespace MonitoringServiceLibrary
         public List<TabsViewModel> GetTabs()
         {
             List<TabsViewModel> result = new List<TabsViewModel>();
-
+            var Entities = new IndustrialMonitoringEntities();
             var tabs = Entities.Tabs;
 
             foreach (var tab in tabs)
@@ -73,6 +67,7 @@ namespace MonitoringServiceLibrary
 
         public List<TabsViewModel> GetTabs(Func<TabsViewModel, bool> predicate)
         {
+            var Entities = new IndustrialMonitoringEntities();
             List<TabsViewModel> result = new List<TabsViewModel>();
 
             var tabs = Entities.Tabs;
@@ -92,6 +87,7 @@ namespace MonitoringServiceLibrary
 
         public List<TabsItemsViewModel> GetTabItems()
         {
+            var Entities = new IndustrialMonitoringEntities();
             List<TabsItemsViewModel> result = new List<TabsItemsViewModel>();
 
             var tabItems = Entities.TabsItems;
@@ -107,6 +103,7 @@ namespace MonitoringServiceLibrary
 
         public List<TabsItemsViewModel> GetTabItems(Func<TabsItemsViewModel, bool> predicate)
         {
+            var Entities = new IndustrialMonitoringEntities();
             List<TabsItemsViewModel> result = new List<TabsItemsViewModel>();
 
             var tabItems = Entities.TabsItems;
@@ -126,6 +123,7 @@ namespace MonitoringServiceLibrary
 
         public List<ItemsAIOViewModel> GetItems(int tabId)
         {
+            var Entities = new IndustrialMonitoringEntities();
             List<ItemsAIOViewModel> result = new List<ItemsAIOViewModel>();
 
             var tabsItem = Entities.TabsItems.Where(x => x.TabId == tabId);
@@ -142,6 +140,7 @@ namespace MonitoringServiceLibrary
 
         public List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId, DateTime startDate, DateTime endDate)
         {
+            var Entities = new IndustrialMonitoringEntities();
             List<ItemsLogChartHistoryViewModel> result = new List<ItemsLogChartHistoryViewModel>();
 
             var itemsLog = Entities.ItemsLogs.Where(x => x.ItemId == itemId);
