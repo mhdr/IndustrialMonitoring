@@ -15,6 +15,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringAdmin", "MonitoringAdmin\MonitoringAdmin.csproj", "{EE6C3689-016C-487D-945A-9B75015A8F1C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{1F69F51D-221C-47F4-9AD9-1647CF94C7A1} = {1F69F51D-221C-47F4-9AD9-1647CF94C7A1}
+		{15B3E0D2-6217-493A-A690-158C497F5318} = {15B3E0D2-6217-493A-A690-158C497F5318}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringServiceLibrary", "MonitoringServiceLibrary\MonitoringServiceLibrary.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
