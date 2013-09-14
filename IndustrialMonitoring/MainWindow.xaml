@@ -47,7 +47,7 @@
                                     <telerik:RadMenuItem Header="Items" Name="MenuItemItems">
 										
 									</telerik:RadMenuItem>
-									<telerik:RadMenuItem Name="MenuItemCompare" Header="Compare"/>
+									<telerik:RadMenuItem Name="MenuItemCompare" Header="Compare" Click="MenuItemCompare_OnClick"/>
                                 </telerik:RadContextMenu>
                             </telerik:RadRibbonDropDownButton.DropDownContent>
                         </telerik:RadRibbonDropDownButton>

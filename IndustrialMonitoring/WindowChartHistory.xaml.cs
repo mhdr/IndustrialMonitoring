@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.ProcessDataServiceReference;
 using Telerik.Windows;
 using Telerik.Windows.Controls.ChartView;
@@ -27,17 +28,17 @@ namespace IndustrialMonitoring
         private ProcessDataServiceClient _processDataServiceClient;
         private DateTime _startTime;
         private DateTime _endTime;
-        private int _itemId;
-        private List<ItemsLogChartHistoryViewModel> _itemsLog;
-        private event EventHandler ShowDataCompleted;
+        private Dictionary<int,int> _itemsId;
+        //private List<ItemsLogChartHistoryViewModel> _itemsLog;
+        private event EventHandler<ShowDataCompletedEventArgs> ShowDataCompleted;
 
-        protected virtual void OnShowDataCompleted()
+        protected virtual void OnShowDataCompleted(ShowDataCompletedEventArgs e)
         {
-            EventHandler handler = ShowDataCompleted;
-            if (handler != null) handler(this, EventArgs.Empty);
+            EventHandler<ShowDataCompletedEventArgs> handler = ShowDataCompleted;
+            if (handler != null) handler(this, e);
         }
 
-        private ItemsAIOViewModel CurrentItem;
+        private List<Brush> _chartBrushes;
 
         public WindowChartHistory()
         {
@@ -62,26 +63,65 @@ namespace IndustrialMonitoring
             set { _endTime = value; }
         }
 
-        public int ItemId
+        //public List<ItemsLogChartHistoryViewModel> ItemsLog
+        //{
+        //    get { return _itemsLog; }
+        //    set { _itemsLog = value; }
+        //}
+
+        public Dictionary<int,int> ItemsId
         {
-            get { return _itemId; }
-            set { _itemId = value; }
+            get { return _itemsId; }
+            set { _itemsId = value; }
         }
 
-        public List<ItemsLogChartHistoryViewModel> ItemsLog
+        public List<Brush> ChartBrushes
         {
-            get { return _itemsLog; }
-            set { _itemsLog = value; }
+            get { return _chartBrushes; }
+            set { _chartBrushes = value; }
         }
+
 
         private void InitChart()
         {
-            Chart.Series.Add(new LineSeries());
-            LineSeries series = (LineSeries)this.Chart.Series[0];
-            series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-            series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-            series.Stroke = Brushes.Green;
-            series.StrokeThickness = 2;
+            //Chart.Series.Add(new LineSeries());
+            //LineSeries series = (LineSeries)this.Chart.Series[0];
+            //series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+            //series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+            //series.Stroke = Brushes.Green;
+            //series.StrokeThickness = 2;
+            ChartBrushes=new List<Brush>();
+            ChartBrushes.Add(Brushes.Green);
+            ChartBrushes.Add(Brushes.Blue);
+            ChartBrushes.Add(Brushes.Bisque);
+            ChartBrushes.Add(Brushes.DarkRed);
+            ChartBrushes.Add(Brushes.Gold);
+            ChartBrushes.Add(Brushes.MediumBlue);
+            ChartBrushes.Add(Brushes.CadetBlue);
+            ChartBrushes.Add(Brushes.Coral);
+            ChartBrushes.Add(Brushes.Chocolate);
+            ChartBrushes.Add(Brushes.Crimson);
+            ChartBrushes.Add(Brushes.Indigo);
+            ChartBrushes.Add(Brushes.PaleGreen);
+            ChartBrushes.Add(Brushes.OrangeRed);
+            ChartBrushes.Add(Brushes.Purple);
+            ChartBrushes.Add(Brushes.Fuchsia);
+
+            int countItems = ItemsId.Count;
+
+            if (ItemsId != null)
+            {
+
+                for (int i = 0; i < countItems; i++)
+                {
+                    Chart.Series.Add(new LineSeries());
+                    LineSeries series = (LineSeries)this.Chart.Series[i];
+                    series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                    series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                    series.Stroke = ChartBrushes[i];
+                    series.StrokeThickness = 2;                    
+                }
+            }
         }
 
         private void WindowChartHistory_OnLoaded(object sender, RoutedEventArgs e)
@@ -91,11 +131,20 @@ namespace IndustrialMonitoring
             this.ShowDataCompleted += WindowChartHistory_ShowDataCompleted;
         }
 
-        void WindowChartHistory_ShowDataCompleted(object sender, EventArgs e)
+        void WindowChartHistory_ShowDataCompleted(object sender, ShowDataCompletedEventArgs e)
         {
-            RibbonViewTop.ApplicationName = string.Format("{0} {1}-{2}", CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());
-            LineSeries series = (LineSeries)this.Chart.Series[0];
-            series.ItemsSource = ItemsLog;
+            if (ItemsId.Count == 1)
+            {
+                RibbonViewTop.ApplicationName = string.Format("{0} {1}-{2}", e.CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());    
+            }
+            else
+            {
+                
+                RibbonViewTop.ApplicationName = string.Format("Compare {0}-{1}", this.StartTime.ToString(), this.EndTime.ToString());    
+            }
+
+            LineSeries series = (LineSeries)this.Chart.Series[e.ItemId.Key];
+            series.ItemsSource =e.Data ;
             Chart.Zoom=new Size(1,1);
 
             BusyIndicator.IsBusy = false;
@@ -105,19 +154,20 @@ namespace IndustrialMonitoring
         {
             BusyIndicator.IsBusy = true;
 
-            ItemsLog=new List<ItemsLogChartHistoryViewModel>();
-
-            Thread t1=new Thread(ShowDataAsync);
-            t1.Start();
+            foreach (var dic in ItemsId)
+            {
+                KeyValuePair<int, int> dic1 = dic;
+                Thread t1 = new Thread(()=>ShowDataAsync(dic1));
+                t1.Start();
+            }
         }
 
-        private void ShowDataAsync()
+        private void ShowDataAsync(KeyValuePair<int,int> itemId)
         {
-            CurrentItem = ProcessDataServiceClient.GetItem(ItemId);
+            ItemsAIOViewModel CurrentItem = ProcessDataServiceClient.GetItem(itemId.Value);
+            List<ItemsLogChartHistoryViewModel> ItemsLog = ProcessDataServiceClient.GetItemLogs(itemId.Value, StartTime, EndTime);
 
-            ItemsLog = ProcessDataServiceClient.GetItemLogs(ItemId, StartTime, EndTime);
-
-            Dispatcher.BeginInvoke(new Action(OnShowDataCompleted));
+            Dispatcher.BeginInvoke(new Action(()=>OnShowDataCompleted(new ShowDataCompletedEventArgs( itemId,ItemsLog,CurrentItem))));
         }
 
         private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)

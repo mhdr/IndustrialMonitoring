@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IndustrialMonitoring.ProcessDataServiceReference;
 using IndustrialMonitoring.UserServiceReference;
+using Telerik.Windows;
 using Telerik.Windows.Controls;
 
 namespace IndustrialMonitoring
@@ -241,9 +242,12 @@ namespace IndustrialMonitoring
                 return;
             }
 
+
+            Dictionary<int,int> dictionary=new Dictionary<int, int>();
+            dictionary.Add(0,selected.ItemsAioViewModel.ItemId);
             WindowChartHistory windowChartHistory=new WindowChartHistory();
             windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
-            windowChartHistory.ItemId = selected.ItemsAioViewModel.ItemId;
+            windowChartHistory.ItemsId = dictionary;
             
             // TODO Parameter
             windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
@@ -324,6 +328,12 @@ namespace IndustrialMonitoring
                 return;
             }
 
+            if (ItemsForCompare.IndexOf(selected) >= 0)
+            {
+                ShowMsgOnStatusBar("This item already exists in Compare List");
+                return;
+            }
+
             ItemsForCompare.Add(selected);
             MenuItem newMenuItem=new MenuItem();
             newMenuItem.Header = selected.ItemsAioViewModel.ItemName;
@@ -344,6 +354,37 @@ namespace IndustrialMonitoring
         	{
         	    MenuItemClearItems.IsEnabled = true;
         	}
+        }
+
+        private void MenuItemCompare_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            if (ItemsForCompare.Count < 2)
+            {
+                ShowMsgOnStatusBar(string.Format("At least 2 Item is needed for Compare,you have selected {0}",ItemsForCompare.Count));
+                return;
+            }
+
+            Dictionary<int,int> dictionary=new Dictionary<int, int>();
+
+            int i = 0;
+            foreach (var chartLiveData in ItemsForCompare)
+            {
+                dictionary.Add(i,chartLiveData.ItemsAioViewModel.ItemId);
+                i++;
+            }
+
+            WindowChartHistory windowChartHistory = new WindowChartHistory();
+            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
+            windowChartHistory.ItemsId = dictionary;
+
+            // TODO Parameter
+            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+            // TODO Parameter
+            windowChartHistory.EndTime = DateTime.Now;
+
+            windowChartHistory.Show();
+            windowChartHistory.ShowData();
         }
     }
 }
