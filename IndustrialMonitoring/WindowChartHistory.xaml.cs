@@ -16,7 +16,9 @@ using System.Windows.Shapes;
 using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.ProcessDataServiceReference;
 using Telerik.Windows;
+using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.ChartView;
+using Telerik.Windows.Controls.Legend;
 
 namespace IndustrialMonitoring
 {
@@ -93,7 +95,7 @@ namespace IndustrialMonitoring
             ChartBrushes=new List<Brush>();
             ChartBrushes.Add(Brushes.Green);
             ChartBrushes.Add(Brushes.Blue);
-            ChartBrushes.Add(Brushes.Bisque);
+            ChartBrushes.Add(Brushes.LightSalmon);
             ChartBrushes.Add(Brushes.DarkRed);
             ChartBrushes.Add(Brushes.Gold);
             ChartBrushes.Add(Brushes.MediumBlue);
@@ -119,7 +121,7 @@ namespace IndustrialMonitoring
                     series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
                     series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
                     series.Stroke = ChartBrushes[i];
-                    series.StrokeThickness = 2;                    
+                    series.StrokeThickness = 2;   
                 }
             }
         }
@@ -146,6 +148,9 @@ namespace IndustrialMonitoring
             LineSeries series = (LineSeries)this.Chart.Series[e.ItemId.Key];
             series.ItemsSource =e.Data ;
             Chart.Zoom=new Size(1,1);
+
+
+            ChartLegend.Items.Add(new LegendItem(){MarkerFill = ChartBrushes[e.ItemId.Key],Title = e.CurrentItem.ItemName});
 
             BusyIndicator.IsBusy = false;
         }

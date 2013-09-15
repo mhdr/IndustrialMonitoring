@@ -32,20 +32,35 @@
             </telerik:RadRibbonView>
 
             <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True">
-                <telerik:RadCartesianChart Name="Chart">
-                    <telerik:RadCartesianChart.HorizontalAxis>
-                        <telerik:DateTimeContinuousAxis LabelFitMode="Rotate" MaximumTicks="10"/>
-                    </telerik:RadCartesianChart.HorizontalAxis>
-                    <telerik:RadCartesianChart.VerticalAxis>
-                        <telerik:LinearAxis/>
-                    </telerik:RadCartesianChart.VerticalAxis>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <telerik:RadCartesianChart Name="Chart">
+                        <telerik:RadCartesianChart.HorizontalAxis>
+                            <telerik:DateTimeContinuousAxis LabelFitMode="Rotate" MaximumTicks="10"/>
+                        </telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:RadCartesianChart.VerticalAxis>
+                            <telerik:LinearAxis/>
+                        </telerik:RadCartesianChart.VerticalAxis>
 
-                    <telerik:RadCartesianChart.Behaviors>
-                        <telerik:ChartTrackBallBehavior
+                        <telerik:RadCartesianChart.Behaviors>
+                            <telerik:ChartTrackBallBehavior
                         ShowTrackInfo="True" />
-                        <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" PanMode="Horizontal"/>
-                    </telerik:RadCartesianChart.Behaviors>
-                </telerik:RadCartesianChart>
+                            <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" PanMode="Horizontal"/>
+                        </telerik:RadCartesianChart.Behaviors>
+                    </telerik:RadCartesianChart>
+
+                    <telerik:RadLegend Grid.Column="1" Name="ChartLegend" Background="White"
+                                       BorderBrush="Gainsboro" BorderThickness="1" Padding="5">
+                        <telerik:RadLegend.Items>
+                            <telerik:LegendItemCollection>
+                            </telerik:LegendItemCollection>
+                        </telerik:RadLegend.Items>
+                        </telerik:RadLegend>
+                </Grid>                
             </telerik:RadBusyIndicator>
         </DockPanel>
 
