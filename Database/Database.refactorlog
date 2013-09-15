@@ -63,4 +63,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="SaveInItemsLogLastesTimeInterval" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="00dbe6ef-01b9-4cf6-be47-7a399688d797" ChangeDateTime="09/15/2013 11:15:11">
+    <Property Name="ElementName" Value="[dbo].[UsersItemsSettings].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UsersItemsSettings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SettingId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2eb7fff3-c1f6-41d4-85b9-a894d1b1f374" ChangeDateTime="09/15/2013 13:18:33">
+    <Property Name="ElementName" Value="[dbo].[UsersItemsSettings].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UsersItemsSettings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SettingId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8821a3de-bd92-4248-9343-1206f7deaede" ChangeDateTime="09/15/2013 13:20:17">
+    <Property Name="ElementName" Value="[dbo].[UsersItemsSettings].[ChartHoursToShowStartup]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UsersItemsSettings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChartHoursToShowAtStartup" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="62a5b87c-4115-4e75-bb1e-73c2331e76a4" ChangeDateTime="09/15/2013 13:21:02">
+    <Property Name="ElementName" Value="[dbo].[UsersItemsSettings].[ChartHoursToShowAtStartup]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UsersItemsSettings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="HoursToShowDataForChartAtStartup" />
+  </Operation>
 </Operations>

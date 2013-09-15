@@ -328,6 +328,13 @@ namespace IndustrialMonitoring
                 return;
             }
 
+            //TODO Parameters
+            if (ItemsForCompare.Count >= 15)
+            {
+                ShowMsgOnStatusBar(string.Format("Maximum number of items(={0}) for Compare is reached", 15));
+                return;
+            }
+
             if (ItemsForCompare.IndexOf(selected) >= 0)
             {
                 ShowMsgOnStatusBar("This item already exists in Compare List");
