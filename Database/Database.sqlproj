@@ -66,6 +66,10 @@
     <Build Include="TabsItems.sql" />
     <Build Include="ItemsLogLatest.sql" />
     <Build Include="ItemsLog.sql" />
+    <Build Include="Notifications.sql" />
+    <Build Include="NotificationOccur.sql" />
+    <Build Include="NotificationOccurUsers.sql" />
+    <Build Include="NotificationsUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Database.refactorlog" />

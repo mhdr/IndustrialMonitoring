@@ -91,4 +91,67 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="HoursToShowDataForChartAtStartup" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="897458df-7f65-4a4d-946d-2cc43bbb7201" ChangeDateTime="09/17/2013 12:29:31">
+    <Property Name="ElementName" Value="[dbo].[Notifications].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Notifications]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aff08879-26de-4b0d-8a66-fb882b94848f" ChangeDateTime="09/17/2013 12:51:29">
+    <Property Name="ElementName" Value="[dbo].[NotificationOccur].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationOccur]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OccurId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="84b905b7-8524-4702-8389-3593106d39f8" ChangeDateTime="09/17/2013 12:53:04">
+    <Property Name="ElementName" Value="[dbo].[NotificationOccur].[Date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationOccur]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DateAcknowledged" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bfec70e8-3372-4f3a-901e-59fa49ee6d51" ChangeDateTime="09/17/2013 12:54:01">
+    <Property Name="ElementName" Value="[dbo].[NotificationOccur].[IsaAknowledged]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationOccur]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsAknowledged" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5c5b4545-5a6e-4914-806e-f4f8772f86b2" ChangeDateTime="09/17/2013 12:55:02">
+    <Property Name="ElementName" Value="[dbo].[NotificationOccur].[IsAknowledged]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationOccur]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsAcknowledged" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e51af6bf-9c4a-470b-be05-a9c9073863ef" ChangeDateTime="09/17/2013 13:02:35">
+    <Property Name="ElementName" Value="[dbo].[Notifications].[Noti]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Notifications]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationDescription" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d664a8bc-92b3-45ee-9b11-c2c4edb18133" ChangeDateTime="09/17/2013 13:13:32">
+    <Property Name="ElementName" Value="[dbo].[NotificationOccurUsers].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationOccurUsers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OccurUserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="50e9ff71-6d30-4091-9fd0-ceab0944085f" ChangeDateTime="09/17/2013 13:28:02">
+    <Property Name="ElementName" Value="[dbo].[NotificationsUsers].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationsUsers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NUId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3d017ef2-e3d4-44d8-93d4-da4cfdf52cb4" ChangeDateTime="09/17/2013 13:29:28">
+    <Property Name="ElementName" Value="[dbo].[NotificationsReceivers].[NUId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationsReceivers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationReceiverId" />
+  </Operation>
 </Operations>

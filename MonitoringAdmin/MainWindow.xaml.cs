@@ -46,7 +46,7 @@ namespace MonitoringAdmin
         {
             if (Proxy.StartDataCollectorServer())
             {
-                led1.Value = true;
+                Led1.Value = true;
             }
         }
 
@@ -54,7 +54,7 @@ namespace MonitoringAdmin
         {
             if (Proxy.StopDataCollectorServer())
             {
-                led1.Value = false;
+                Led1.Value = false;
             }
         }
 
