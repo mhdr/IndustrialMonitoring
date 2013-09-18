@@ -26,6 +26,11 @@
                     </telerik:RadRibbonGroup>
 
                     <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton Name="ButtonItems" Content="Items"  MinWidth="75"
+                                                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
                         <telerik:RadRibbonButton Name="ButtonItemPermissions" Content="Permissions"  MinWidth="75"
                                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     </telerik:RadRibbonGroup>
@@ -36,6 +41,10 @@
                     </telerik:RadRibbonGroup>
                 </telerik:RadRibbonTab>
             </telerik:RadRibbonView>
+            
+            <StackPanel Name="StackPanelMain">
+                
+            </StackPanel>
         </DockPanel>
 
         <StatusBar Name="StatusBarBottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"

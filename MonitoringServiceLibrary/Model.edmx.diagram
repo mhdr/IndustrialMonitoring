@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="IndustrialMonitoringModel.Item" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLog" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogLatest" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.Tab" Width="1.5" PointX="3.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Tab" Width="1.5" PointX="4.375" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.TabsItem" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.User" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersItemsPermission" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
@@ -18,6 +18,15 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationOccur" Width="1.5" PointX="2.6217033372361693" PointY="14.675889945903741" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationOccurUser" Width="1.5" PointX="2.9072491633273891" PointY="10.179778833957286" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Notification" Width="1.5" PointX="7.8153587169085439" PointY="18.453245961318373" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationsReceiver" Width="1.5" PointX="10.525768255128417" PointY="17.8548326426441" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_Notifications_Items" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationOccur_Users" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationOccurUsers_NotificationOccur" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationsReceivers_Notifications" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationsReceivers_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

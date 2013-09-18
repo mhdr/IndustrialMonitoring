@@ -20,6 +20,7 @@ namespace MonitoringServiceLibrary
             this.ItemsLogLatests = new HashSet<ItemsLogLatest>();
             this.TabsItems = new HashSet<TabsItem>();
             this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
+            this.Notifications = new HashSet<Notification>();
         }
     
         public int ItemId { get; set; }
@@ -37,5 +38,6 @@ namespace MonitoringServiceLibrary
         public virtual ICollection<ItemsLogLatest> ItemsLogLatests { get; set; }
         public virtual ICollection<TabsItem> TabsItems { get; set; }
         public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
     }
 }

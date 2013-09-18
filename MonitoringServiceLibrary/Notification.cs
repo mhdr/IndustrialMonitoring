@@ -12,23 +12,22 @@ namespace MonitoringServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Notification
     {
-        public User()
+        public Notification()
         {
-            this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
-            this.NotificationOccurs = new HashSet<NotificationOccur>();
             this.NotificationsReceivers = new HashSet<NotificationsReceiver>();
         }
     
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public int NotificationId { get; set; }
+        public int ItemId { get; set; }
+        public string NotificationTitle { get; set; }
+        public string NotificationDescription { get; set; }
+        public Nullable<double> HighLimit { get; set; }
+        public Nullable<double> LowLimit { get; set; }
+        public bool AutoAcknowledge { get; set; }
     
-        public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
-        public virtual ICollection<NotificationOccur> NotificationOccurs { get; set; }
+        public virtual Item Item { get; set; }
         public virtual ICollection<NotificationsReceiver> NotificationsReceivers { get; set; }
     }
 }

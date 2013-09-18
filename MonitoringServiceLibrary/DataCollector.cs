@@ -10,8 +10,7 @@ namespace MonitoringServiceLibrary
     {
         private static DataCollector _collector=null;
         private static object padLock=new object();
-        private List<Item> _items;
-        private IndustrialMonitoringEntities _entities=new IndustrialMonitoringEntities();
+        private List<Item> _items=new List<Item>();
         private List<ItemCollector> _itemCollectors; 
 
         public static DataCollector Collector
@@ -33,12 +32,6 @@ namespace MonitoringServiceLibrary
         {
             get { return _items; }
             set { _items = value; }
-        }
-
-        public IndustrialMonitoringEntities Entities
-        {
-            get { return _entities; }
-            set { _entities = value; }
         }
 
         public List<ItemCollector> ItemCollectors
@@ -66,6 +59,7 @@ namespace MonitoringServiceLibrary
 
         private void DoStart()
         {
+            IndustrialMonitoringEntities Entities=new IndustrialMonitoringEntities();
             Items = Entities.Items.ToList();
 
             foreach (var item in Items)
