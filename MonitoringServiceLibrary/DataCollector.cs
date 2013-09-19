@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Web;
+using SharedLibrary;
 
 namespace MonitoringServiceLibrary
 {
@@ -11,7 +12,8 @@ namespace MonitoringServiceLibrary
         private static DataCollector _collector=null;
         private static object padLock=new object();
         private List<Item> _items=new List<Item>();
-        private List<ItemCollector> _itemCollectors; 
+        private List<ItemCollector> _itemCollectors;
+        private ServerStatus _serverStatus;
 
         public static DataCollector Collector
         {
@@ -47,6 +49,11 @@ namespace MonitoringServiceLibrary
             set { _itemCollectors = value; }
         }
 
+        public ServerStatus ServerStatus
+        {
+            get { return _serverStatus; }
+        }
+
         public void Start()
         {
             this.DoStart();
@@ -70,6 +77,8 @@ namespace MonitoringServiceLibrary
                 ItemCollectors.Add(itemCollector);
                 Thread.Sleep(1);
             }
+
+            this._serverStatus=ServerStatus.Run;
         }
 
         public void Stop()
@@ -79,6 +88,8 @@ namespace MonitoringServiceLibrary
                 item.Stop();
                 Thread.Sleep(1);
             }
+
+            this._serverStatus=ServerStatus.Stop;
         }
     }
 }

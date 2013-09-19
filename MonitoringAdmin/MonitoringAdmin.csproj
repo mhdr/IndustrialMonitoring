@@ -38,6 +38,7 @@
     <Reference Include="NationalInstruments.Controls, Version=13.0.45.242, Culture=neutral, PublicKeyToken=4febd62461bf11a4, processorArchitecture=MSIL" />
     <Reference Include="nationalinstruments.controls.booleans, Version=13.0.45.242, Culture=neutral, PublicKeyToken=4febd62461bf11a4, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
@@ -54,9 +55,11 @@
       <HintPath>..\lib\RCWPF\2013.2.724.45\Telerik.Windows.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="telerik.windows.controls.gridview, Version=2013.2.724.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Input, Version=2013.2.724.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Navigation, Version=2013.2.724.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="telerik.windows.controls.ribbonview, Version=2013.2.724.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Data, Version=2013.2.724.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
@@ -73,6 +76,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ProcessDataServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="WindowAddItems.xaml.cs">
+      <DependentUpon>WindowAddItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowItems.xaml.cs">
+      <DependentUpon>WindowItems.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,6 +99,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WindowAddItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -111,11 +133,51 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\DataCollectorServiceReference\MonitoringAdmin.DataCollectorServiceReference.ServerStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\DataCollectorServiceReference\service.wsdl" />
     <None Include="Service References\DataCollectorServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\DataCollectorServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataCollectorServiceReference\SharedLibrary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Items2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.ItemsAIOViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.ItemsLogChartHistoryViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.ItemsLogLatestAIOViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabsItemsViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabsViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\MonitoringServiceLibrary.ViewModels.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\service.wsdl" />
+    <None Include="Service References\ProcessDataServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\SharedLibrary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\System.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -127,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\DataCollectorServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ProcessDataServiceReference\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DataCollectorServiceReference\configuration91.svcinfo" />
@@ -136,6 +199,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DataCollectorServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj">
+      <Project>{cc6f55e9-ddbe-46ce-8045-74c5326f1f84}</Project>
+      <Name>SharedLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

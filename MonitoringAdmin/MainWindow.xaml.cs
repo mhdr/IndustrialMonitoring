@@ -46,11 +46,7 @@ namespace MonitoringAdmin
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            ButtonStart.IsEnabled = false;
-            ButtonStop.IsEnabled = false;
-
-            AddToStackPanel(string.Format("{0} - Data Collector is Starting ...",DateTime.Now.ToString()), Brushes.Black);
-            StartAsync();
+            StartDataColletor();
         }
 
         public void StartAsync()
@@ -74,34 +70,48 @@ namespace MonitoringAdmin
         private void StartUI()
         {
             Led1.Value = true;
-            AddToStackPanel(string.Format("{0} - Data Collector is Started successfully",DateTime.Now.ToString()), Brushes.Green);
+            AddToStackPanel("Data Collector is Started successfully",Brushes.Green);
             ButtonStop.IsEnabled = true;
             ButtonStart.IsEnabled = false;
         }
 
         private void StartUIFailed()
         {
-            AddToStackPanel(string.Format("{0} - Data Collector is failed to Start",DateTime.Now.ToString()), Brushes.Red);
+            AddToStackPanel("Data Collector is failed to Start", Brushes.Red);
             ButtonStart.IsEnabled = true;
             ButtonStop.IsEnabled = false;
         }
 
         private void ButtonStop_Click(object sender, RoutedEventArgs e)
         {
-            ButtonStart.IsEnabled = false;
-            ButtonStop.IsEnabled = false;
-
-            AddToStackPanel(string.Format("{0} - Data Collector is Stopping ...", DateTime.Now.ToString()), Brushes.Black);
+            
             StopAsync();
         }
 
-        public void StopAsync()
+        public void StartDataColletor()
         {
-            Thread thread = new Thread(() => Stop());
+            ButtonStart.IsEnabled = false;
+            ButtonStop.IsEnabled = false;
+
+            AddToStackPanel("Data Collector is Starting ...", Brushes.Black);
+            StartAsync();
+        }
+
+        public void StopDataColletor()
+        {
+            ButtonStart.IsEnabled = false;
+            ButtonStop.IsEnabled = false;
+            AddToStackPanel("Data Collector is Stopping ...", Brushes.Black);
+            StopAsync();
+        }
+
+        private void StopAsync()
+        {
+            Thread thread = new Thread(() => StopDoWork());
             thread.Start();
         }
 
-        private void Stop()
+        private void StopDoWork()
         {
             if (Proxy.StopDataCollectorServer())
             {
@@ -116,14 +126,14 @@ namespace MonitoringAdmin
         private void StopUI()
         {
             Led1.Value = false;
-            AddToStackPanel(string.Format("{0} - Data Collector is Stopped successfully", DateTime.Now.ToString()), Brushes.Green);
+            AddToStackPanel("Data Collector is Stopped successfully", Brushes.Green);
             ButtonStop.IsEnabled = false;
             ButtonStart.IsEnabled = true;
         }
 
         private void StopUIFailed()
         {
-            AddToStackPanel(string.Format("{0} - Data Collector is failed to Stop", DateTime.Now.ToString()), Brushes.Red);
+            AddToStackPanel("Data Collector is failed to Stop", Brushes.Red);
             ButtonStart.IsEnabled = false;
             ButtonStop.IsEnabled = true;
         }
@@ -137,13 +147,25 @@ namespace MonitoringAdmin
 
         public void AddToStackPanel(string msg,Brush brush)
         {
-            TextBlock textBlock=new TextBlock();
-            textBlock.Text = msg;
+            Dispatcher.BeginInvoke(new Action(() => AddToStackPanelUI(msg, brush)));
+        }
+
+        private void AddToStackPanelUI(string msg, Brush brush)
+        {
+            TextBlock textBlock = new TextBlock();
+            textBlock.Text = string.Format("{0} - {1}",DateTime.Now,msg);
             textBlock.Foreground = brush;
             textBlock.FontSize = 14;
             textBlock.FontWeight = FontWeights.Bold;
-            textBlock.Margin=new Thickness(5,2,5,2);
+            textBlock.Margin = new Thickness(5, 2, 5, 2);
             StackPanelMain.Children.Add(textBlock);
+        }
+
+        private void ButtonItems_OnClick(object sender, RoutedEventArgs e)
+        {
+            WindowItems windowItems=new WindowItems();
+            windowItems.MainWindow = this;
+            windowItems.Show();
         }
     }
 }

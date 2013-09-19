@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SharedLibrary;
 
 namespace MonitoringServiceLibrary
 {
@@ -41,6 +42,12 @@ namespace MonitoringServiceLibrary
             }
 
             return true;
+        }
+
+        public ServerStatus GetServerStatus()
+        {
+            DataCollector dataCollector = DataCollector.Collector;
+            return dataCollector.ServerStatus;
         }
     }
 }

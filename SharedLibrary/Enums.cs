@@ -19,4 +19,10 @@ namespace SharedLibrary
         OnTimerElapsed=1,
         OnChange=2
     }
+
+    public enum ServerStatus
+    {
+        Run=1,
+        Stop=2,
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using MonitoringServiceLibrary.ViewModels;
 
 namespace MonitoringServiceLibrary
@@ -35,6 +36,20 @@ namespace MonitoringServiceLibrary
             foreach (var item in items)
             {
                 result.Add(new ItemsAIOViewModel(item));
+            }
+
+            return result;
+        }
+
+        public List<Items2> GetItems2()
+        {
+            List<Items2> result = new List<Items2>();
+            var Entities = new IndustrialMonitoringEntities();
+            var items = Entities.Items;
+
+            foreach (var item in items)
+            {
+                result.Add(new Items2(item));
             }
 
             return result;
@@ -155,6 +170,135 @@ namespace MonitoringServiceLibrary
             }
 
             return result;
+        }
+
+        public bool AddItem2(Items2 item)
+        {
+            IndustrialMonitoringEntities entities=new IndustrialMonitoringEntities();
+            
+            Item newItem=new Item();
+            newItem.ItemName = item.ItemName;
+            newItem.ItemType = (int) item.ItemType;
+            newItem.Location = item.Location;
+            newItem.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
+            newItem.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
+            newItem.ShowInUITimeInterval = item.ShowInUITimeInterval;
+            newItem.ScanCycle = item.ScanCycle;
+            newItem.SaveInItemsLogWhen = (int) item.SaveInItemsLogWhen;
+            newItem.SaveInItemsLogLastWhen = (int) item.SaveInItemsLogLastWhen;
+
+            entities.Items.Add(newItem);
+
+            if (entities.SaveChanges() > 0)
+            {
+                return true;
+            }
+
+
+            return false;
+        }
+
+        public bool DeleteItem(int itemId)
+        {
+            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+            bool success = false;
+
+            using (TransactionScope transaction=new TransactionScope())
+            {
+                try
+                {
+                    var itemsLogQuery = entities.ItemsLogs.Where(x => x.ItemId == itemId);
+
+                    foreach (var itemsLog in itemsLogQuery)
+                    {
+                        entities.ItemsLogs.Remove(itemsLog);
+                    }
+
+                    entities.SaveChanges();
+
+                    var itemsLogLatestQuery = entities.ItemsLogLatests.Where(x => x.ItemId == itemId);
+
+                    foreach (var itemsLogLatest in itemsLogLatestQuery)
+                    {
+                        entities.ItemsLogLatests.Remove(itemsLogLatest);
+                    }
+
+                    entities.SaveChanges();
+
+                    var tabItemsQuery = entities.TabsItems.Where(x => x.ItemId == itemId);
+
+                    foreach (var tabsItem in tabItemsQuery)
+                    {
+                        entities.TabsItems.Remove(tabsItem);
+                    }
+
+                    entities.SaveChanges();
+
+                    var userItemsPermissionQuery = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId);
+
+                    foreach (var usersItemsPermission in userItemsPermissionQuery)
+                    {
+                        entities.UsersItemsPermissions.Remove(usersItemsPermission);
+                    }
+
+                    entities.SaveChanges();
+
+                    var notificationQuery = entities.Notifications.Where(x => x.ItemId == itemId);
+
+
+                    foreach (var notification in notificationQuery)
+                    {
+                        Notification notification1 = notification;
+                        var notificationReceiversQuery =
+                            entities.NotificationsReceivers.Where(x => x.NotificationId == notification1.NotificationId);
+
+                        foreach (var notificationsReceiver in notificationReceiversQuery)
+                        {
+                            entities.NotificationsReceivers.Remove(notificationsReceiver);
+                        }
+
+                        entities.SaveChanges();
+
+                        var notificationOccurQuery =
+                            entities.NotificationOccurs.Where(x => x.NotificationId == notification1.NotificationId);
+
+                        foreach (var notificationOccur in notificationOccurQuery)
+                        {
+                            NotificationOccur occur = notificationOccur;
+                            var notificationOccurUserQuery =
+                                entities.NotificationOccurUsers.Where(x => x.OccurId == occur.OccurId);
+
+                            foreach (var notificationOccurUser in notificationOccurUserQuery)
+                            {
+                                entities.NotificationOccurUsers.Remove(notificationOccurUser);
+                            }
+
+                            entities.SaveChanges();
+
+                            entities.NotificationOccurs.Remove(notificationOccur);
+                            entities.SaveChanges();
+                        }
+
+                        entities.Notifications.Remove(notification);
+                        entities.SaveChanges();
+                    }
+
+
+                    Item itemToDelete = entities.Items.FirstOrDefault(x => x.ItemId == itemId);
+                    entities.Items.Remove(itemToDelete);
+                    entities.SaveChanges();
+
+                    transaction.Complete();
+                    success = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return success;
         }
     }
 }

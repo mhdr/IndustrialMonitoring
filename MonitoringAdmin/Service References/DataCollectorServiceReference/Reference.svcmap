@@ -27,6 +27,7 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="23b50131-59b6-43a0-bea3-d7b7f9169c4b" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/DataCollectorService/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="0cf1bdf4-9029-4773-8aae-88b9886185af" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/DataCollectorService/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="95e8a566-3baf-4b32-a5aa-fb76d8221be1" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/DataCollectorService/mex" />
+    <MetadataFile FileName="SharedLibrary.xsd" MetadataType="Schema" ID="25121541-322d-49bb-8fbb-d9828752a1dd" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/DataCollectorService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

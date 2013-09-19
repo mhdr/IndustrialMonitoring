@@ -18,6 +18,9 @@ namespace MonitoringServiceLibrary
         List<ItemsAIOViewModel> GetItems();
 
         [OperationContract]
+        List<Items2> GetItems2();
+
+        [OperationContract]
         ItemsAIOViewModel GetItem(int itemId);
 
         [OperationContract(Name = "GetTabsAll")]
@@ -37,5 +40,11 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId, DateTime startDate, DateTime endDate);
+
+        [OperationContract]
+        bool AddItem2(Items2 item);
+
+        [OperationContract]
+        bool DeleteItem(int itemId);
     }
 }

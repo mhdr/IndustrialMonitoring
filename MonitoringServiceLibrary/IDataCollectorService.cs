@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using SharedLibrary;
 
 namespace MonitoringServiceLibrary
 {
@@ -15,5 +16,8 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         bool StopDataCollectorServer();
+
+        [OperationContract]
+        ServerStatus GetServerStatus();
     }
 }
