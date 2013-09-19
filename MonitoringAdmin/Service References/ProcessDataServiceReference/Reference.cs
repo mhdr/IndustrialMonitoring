@@ -742,6 +742,12 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/DeleteItem", ReplyAction="http://tempuri.org/IProcessDataService/DeleteItemResponse")]
         System.Threading.Tasks.Task<bool> DeleteItemAsync(int itemId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/EditItem2", ReplyAction="http://tempuri.org/IProcessDataService/EditItem2Response")]
+        bool EditItem2(MonitoringAdmin.ProcessDataServiceReference.Items2 item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/EditItem2", ReplyAction="http://tempuri.org/IProcessDataService/EditItem2Response")]
+        System.Threading.Tasks.Task<bool> EditItem2Async(MonitoringAdmin.ProcessDataServiceReference.Items2 item);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -865,6 +871,14 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
         
         public System.Threading.Tasks.Task<bool> DeleteItemAsync(int itemId) {
             return base.Channel.DeleteItemAsync(itemId);
+        }
+        
+        public bool EditItem2(MonitoringAdmin.ProcessDataServiceReference.Items2 item) {
+            return base.Channel.EditItem2(item);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EditItem2Async(MonitoringAdmin.ProcessDataServiceReference.Items2 item) {
+            return base.Channel.EditItem2Async(item);
         }
     }
 }

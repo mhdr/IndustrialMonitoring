@@ -164,4 +164,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="EditItem2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="item" nillable="true" type="q14:Items2" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditItem2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EditItem2Result" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

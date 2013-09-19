@@ -300,5 +300,35 @@ namespace MonitoringServiceLibrary
 
             return success;
         }
+
+        public bool EditItem2(Items2 item)
+        {
+            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+            Item itemToEdit = entities.Items.FirstOrDefault(x => x.ItemId == item.ItemId);
+
+            if (itemToEdit == null)
+            {
+                return false;
+            }
+
+            itemToEdit.ItemName = item.ItemName;
+            itemToEdit.ItemType = (int)item.ItemType;
+            itemToEdit.Location = item.Location;
+            itemToEdit.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
+            itemToEdit.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
+            itemToEdit.ShowInUITimeInterval = item.ShowInUITimeInterval;
+            itemToEdit.ScanCycle = item.ScanCycle;
+            itemToEdit.SaveInItemsLogWhen = (int)item.SaveInItemsLogWhen;
+            itemToEdit.SaveInItemsLogLastWhen = (int)item.SaveInItemsLogLastWhen;
+
+            if (entities.SaveChanges() > 0)
+            {
+                return true;
+            }
+
+
+            return false;
+        }
     }
 }

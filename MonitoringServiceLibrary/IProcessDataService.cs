@@ -46,5 +46,8 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         bool DeleteItem(int itemId);
+
+        [OperationContract]
+        bool EditItem2(Items2 item);
     }
 }

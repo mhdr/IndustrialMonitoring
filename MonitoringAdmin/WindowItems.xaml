@@ -21,8 +21,8 @@
 
                     <telerik:RadRibbonGroup>
                         <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Edit" IsEnabled="False"
-                                                         Name="RibbonButtonEdit" />
+                                                         Content="Edit"
+                                                         Name="RibbonButtonEdit"  Click="RibbonButtonEdit_OnClick"/>
                     </telerik:RadRibbonGroup>
 
                     <telerik:RadRibbonGroup>

@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WindowEditItems.xaml.cs">
+      <DependentUpon>WindowEditItems.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\DataCollectorServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +90,10 @@
     <Compile Include="WindowItems.xaml.cs">
       <DependentUpon>WindowItems.xaml</DependentUpon>
     </Compile>
+    <Page Include="WindowEditItems.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

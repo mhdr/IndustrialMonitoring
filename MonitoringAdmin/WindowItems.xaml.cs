@@ -162,5 +162,27 @@ namespace MonitoringAdmin
         {
             Dispatcher.BeginInvoke(new Action(() => MainWindow.StopDataColletor()));
         }
+
+        private void RibbonButtonEdit_OnClick(object sender, RoutedEventArgs e)
+        {
+            Items2 currentItem = (Items2)GridView.SelectedItem;
+
+            if (currentItem == null)
+            {
+                ShowMsgOnStatusBar("First select an Item");
+                return;
+            }
+
+            WindowEditItems windowEditItems = new WindowEditItems();
+            windowEditItems.MainWindow = MainWindow;
+            windowEditItems.ItemToEdit = currentItem;
+            windowEditItems.AddItemCompletedSuccessfully += windowEditItems_AddItemCompletedSuccessfully;
+            windowEditItems.Show();
+        }
+
+        void windowEditItems_AddItemCompletedSuccessfully(object sender, EventArgs e)
+        {
+            BindGridAsync();
+        }
     }
 }
