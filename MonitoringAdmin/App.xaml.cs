@@ -13,5 +13,6 @@ namespace MonitoringAdmin
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }
