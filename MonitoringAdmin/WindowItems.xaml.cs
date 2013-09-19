@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MonitoringAdmin.DataCollectorServiceReference;
 using MonitoringAdmin.ProcessDataServiceReference;
+using SharedLibrary;
 
 namespace MonitoringAdmin
 {

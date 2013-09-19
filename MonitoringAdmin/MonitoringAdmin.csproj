@@ -133,9 +133,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\DataCollectorServiceReference\MonitoringAdmin.DataCollectorServiceReference.ServerStatus.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\DataCollectorServiceReference\service.wsdl" />
     <None Include="Service References\DataCollectorServiceReference\service.xsd">
       <SubType>Designer</SubType>

@@ -9,19 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace MonitoringAdmin.DataCollectorServiceReference {
-    using System.Runtime.Serialization;
     
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServerStatus", Namespace="http://schemas.datacontract.org/2004/07/SharedLibrary")]
-    public enum ServerStatus : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Run = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Stop = 2,
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DataCollectorServiceReference.IDataCollectorService")]
@@ -40,10 +28,10 @@ namespace MonitoringAdmin.DataCollectorServiceReference {
         System.Threading.Tasks.Task<bool> StopDataCollectorServerAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataCollectorService/GetServerStatus", ReplyAction="http://tempuri.org/IDataCollectorService/GetServerStatusResponse")]
-        MonitoringAdmin.DataCollectorServiceReference.ServerStatus GetServerStatus();
+        SharedLibrary.ServerStatus GetServerStatus();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataCollectorService/GetServerStatus", ReplyAction="http://tempuri.org/IDataCollectorService/GetServerStatusResponse")]
-        System.Threading.Tasks.Task<MonitoringAdmin.DataCollectorServiceReference.ServerStatus> GetServerStatusAsync();
+        System.Threading.Tasks.Task<SharedLibrary.ServerStatus> GetServerStatusAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -89,11 +77,11 @@ namespace MonitoringAdmin.DataCollectorServiceReference {
             return base.Channel.StopDataCollectorServerAsync();
         }
         
-        public MonitoringAdmin.DataCollectorServiceReference.ServerStatus GetServerStatus() {
+        public SharedLibrary.ServerStatus GetServerStatus() {
             return base.Channel.GetServerStatus();
         }
         
-        public System.Threading.Tasks.Task<MonitoringAdmin.DataCollectorServiceReference.ServerStatus> GetServerStatusAsync() {
+        public System.Threading.Tasks.Task<SharedLibrary.ServerStatus> GetServerStatusAsync() {
             return base.Channel.GetServerStatusAsync();
         }
     }

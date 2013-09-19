@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using MonitoringAdmin.DataCollectorServiceReference;
 using MonitoringAdmin.ProcessDataServiceReference;
 using SharedLibrary;
-using ServerStatus = MonitoringAdmin.DataCollectorServiceReference.ServerStatus;
 
 namespace MonitoringAdmin
 {
