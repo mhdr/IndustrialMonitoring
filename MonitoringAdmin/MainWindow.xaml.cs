@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MonitoringAdmin.DataCollectorServiceReference;
+using Telerik.Windows.Controls;
 
 namespace MonitoringAdmin
 {
@@ -27,6 +28,7 @@ namespace MonitoringAdmin
 
         public MainWindow()
         {
+            StyleManager.ApplicationTheme=new Windows8Theme();
             InitializeComponent();
         }
 
