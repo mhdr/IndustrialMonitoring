@@ -4,7 +4,8 @@
     [NotificationId] INT NOT NULL, 
     [UserId] INT NOT NULL, 
 	[SilenceStatus] INT NOT NULL, 
-    [ActionDate] DATETIME2 NOT NULL, 
+    [StartDate] DATETIME2 NULL, 
+    [EndDate] DATETIME2 NULL, 
     CONSTRAINT [FK_NotificationsSilenceHistory_Notifications] FOREIGN KEY (NotificationId) REFERENCES Notifications(NotificationId), 
     CONSTRAINT [FK_NotificationsSilenceHistory_Users] FOREIGN KEY (UserId) REFERENCES Users(UserId),
 )

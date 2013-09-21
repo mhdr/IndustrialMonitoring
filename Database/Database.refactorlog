@@ -161,4 +161,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="SilenceId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="a279542c-e122-4bb3-bc98-156d290e7a85" ChangeDateTime="09/21/2013 10:39:02">
+    <Property Name="ElementName" Value="[dbo].[NotificationsSilenceHistory].[ActionDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationsSilenceHistory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StartDate" />
+  </Operation>
 </Operations>
