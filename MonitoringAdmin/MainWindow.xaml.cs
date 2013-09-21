@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MonitoringAdmin.DataCollectorServiceReference;
+using Telerik.Windows;
 using Telerik.Windows.Controls;
 
 namespace MonitoringAdmin
@@ -46,11 +47,6 @@ namespace MonitoringAdmin
             set { _proxy = value; }
         }
 
-        private void ButtonStart_Click(object sender, RoutedEventArgs e)
-        {
-            StartDataColletor();
-        }
-
         public void StartAsync()
         {
             Thread thread=new Thread(()=>Start());
@@ -73,27 +69,21 @@ namespace MonitoringAdmin
         {
             Led1.Value = true;
             AddToStackPanel("Data Collector is Started successfully",Brushes.Green);
-            ButtonStop.IsEnabled = true;
-            ButtonStart.IsEnabled = false;
+            MenuItemStop.IsEnabled = true;
+            MenuItemStart.IsEnabled = false;
         }
 
         private void StartUIFailed()
         {
             AddToStackPanel("Data Collector is failed to Start", Brushes.Red);
-            ButtonStart.IsEnabled = true;
-            ButtonStop.IsEnabled = false;
-        }
-
-        private void ButtonStop_Click(object sender, RoutedEventArgs e)
-        {
-            
-            StopAsync();
+            MenuItemStart.IsEnabled = true;
+            MenuItemStop.IsEnabled = false;
         }
 
         public void StartDataColletor()
         {
-            ButtonStart.IsEnabled = false;
-            ButtonStop.IsEnabled = false;
+            MenuItemStart.IsEnabled = false;
+            MenuItemStop.IsEnabled = false;
 
             AddToStackPanel("Data Collector is Starting ...", Brushes.Black);
             StartAsync();
@@ -101,8 +91,8 @@ namespace MonitoringAdmin
 
         public void StopDataColletor()
         {
-            ButtonStart.IsEnabled = false;
-            ButtonStop.IsEnabled = false;
+            MenuItemStart.IsEnabled = false;
+            MenuItemStop.IsEnabled = false;
             AddToStackPanel("Data Collector is Stopping ...", Brushes.Black);
             StopAsync();
         }
@@ -129,22 +119,22 @@ namespace MonitoringAdmin
         {
             Led1.Value = false;
             AddToStackPanel("Data Collector is Stopped successfully", Brushes.Green);
-            ButtonStop.IsEnabled = false;
-            ButtonStart.IsEnabled = true;
+            MenuItemStop.IsEnabled = false;
+            MenuItemStart.IsEnabled = true;
         }
 
         private void StopUIFailed()
         {
             AddToStackPanel("Data Collector is failed to Stop", Brushes.Red);
-            ButtonStart.IsEnabled = false;
-            ButtonStop.IsEnabled = true;
+            MenuItemStart.IsEnabled = false;
+            MenuItemStop.IsEnabled = true;
         }
 
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            ButtonStop.IsEnabled = false;
-            ButtonStart.IsEnabled = true;
+            MenuItemStop.IsEnabled = false;
+            MenuItemStart.IsEnabled = true;
         }
 
         public void AddToStackPanel(string msg,Brush brush)
@@ -163,9 +153,19 @@ namespace MonitoringAdmin
             StackPanelMain.Children.Add(textBlock);
         }
 
-        private void ButtonItems_OnClick(object sender, RoutedEventArgs e)
+        private void MenuItemStart_OnClick(object sender, RadRoutedEventArgs e)
         {
-            WindowItems windowItems=new WindowItems();
+            StartDataColletor();
+        }
+
+        private void MenuItemStop_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            StopDataColletor();
+        }
+
+        private void MenuItemItems_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            WindowItems windowItems = new WindowItems();
             windowItems.MainWindow = this;
             windowItems.Show();
         }

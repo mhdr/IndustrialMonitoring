@@ -151,8 +151,8 @@ namespace MonitoringAdmin
         {
             if (status)
             {
-                ShowMsgOnStatusBar("Item Edited Successfully");
                 OnAddItemCompletedSuccessfully();
+                ShowMsgOnStatusBar("Item Edited Successfully");
             }
             else
             {

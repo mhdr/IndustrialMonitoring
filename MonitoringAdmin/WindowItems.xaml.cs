@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using MonitoringAdmin.DataCollectorServiceReference;
 using MonitoringAdmin.ProcessDataServiceReference;
 using SharedLibrary;
+using Telerik.Windows;
 
 namespace MonitoringAdmin
 {
@@ -87,30 +88,9 @@ namespace MonitoringAdmin
             BindGridAsync();
         }
 
-        private void RibbonButtonAdd_OnClick(object sender, RoutedEventArgs e)
-        {
-            WindowAddItems windowAddItems=new WindowAddItems();
-            windowAddItems.MainWindow = MainWindow;
-            windowAddItems.AddItemCompletedSuccessfully += windowAddItems_AddItemCompletedSuccessfully;
-            windowAddItems.Show();
-        }
-
         void windowAddItems_AddItemCompletedSuccessfully(object sender, EventArgs e)
         {
             BindGridAsync();
-        }
-
-        private void RibbonButtonDelete_OnClick(object sender, RoutedEventArgs e)
-        {
-            Items2 currentItem = (Items2) GridView.SelectedItem;
-
-            if (currentItem == null)
-            {
-                ShowMsgOnStatusBar("First select an Item");
-                return;
-            }
-
-            DeleteItemAsync(currentItem.ItemId);
         }
 
         private void DeleteItemAsync(int itemId)
@@ -163,7 +143,20 @@ namespace MonitoringAdmin
             Dispatcher.BeginInvoke(new Action(() => MainWindow.StopDataColletor()));
         }
 
-        private void RibbonButtonEdit_OnClick(object sender, RoutedEventArgs e)
+        void windowEditItems_AddItemCompletedSuccessfully(object sender, EventArgs e)
+        {
+            BindGridAsync();
+        }
+
+        private void MenuItemAdd_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            WindowAddItems windowAddItems = new WindowAddItems();
+            windowAddItems.MainWindow = MainWindow;
+            windowAddItems.AddItemCompletedSuccessfully += windowAddItems_AddItemCompletedSuccessfully;
+            windowAddItems.Show();
+        }
+
+        private void MenuItemEdit_OnClick(object sender, RadRoutedEventArgs e)
         {
             Items2 currentItem = (Items2)GridView.SelectedItem;
 
@@ -180,9 +173,17 @@ namespace MonitoringAdmin
             windowEditItems.Show();
         }
 
-        void windowEditItems_AddItemCompletedSuccessfully(object sender, EventArgs e)
+        private void MenuItemDelete_OnClick(object sender, RadRoutedEventArgs e)
         {
-            BindGridAsync();
+            Items2 currentItem = (Items2)GridView.SelectedItem;
+
+            if (currentItem == null)
+            {
+                ShowMsgOnStatusBar("First select an Item");
+                return;
+            }
+
+            DeleteItemAsync(currentItem.ItemId);
         }
     }
 }

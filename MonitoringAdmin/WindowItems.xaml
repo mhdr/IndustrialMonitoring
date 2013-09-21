@@ -9,32 +9,22 @@
             <RowDefinition MinHeight="10" MaxHeight="25"/>
         </Grid.RowDefinitions>
 
-        <DockPanel>
-            <telerik:RadRibbonView Name="RadRibbonView" DockPanel.Dock="Top" HorizontalAlignment="Stretch"
-                                           ApplicationName="Monitoring">
-                <telerik:RadRibbonTab Name="RibbonTabHome" Header="Home" MinWidth="70">
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Add"
-                                                         Name="RibbonButtonAdd" Click="RibbonButtonAdd_OnClick"/>
-                    </telerik:RadRibbonGroup>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Edit"
-                                                         Name="RibbonButtonEdit"  Click="RibbonButtonEdit_OnClick"/>
-                    </telerik:RadRibbonGroup>
+            <telerik:RadMenu VerticalAlignment="Top" Name="MenuMain" HorizontalAlignment="Stretch" Grid.Row="0">
+                <telerik:RadMenuItem Header="Action">
+                    <telerik:RadMenuItem Header="Add..." Name="MenuItemAdd" Click="MenuItemAdd_OnClick"/>
+                    <telerik:RadMenuItem Header="Edit..." Name="MenuItemEdit" Click="MenuItemEdit_OnClick"/>
+                    <telerik:RadMenuItem Header="Delete" Name="MenuItemDelete" Click="MenuItemDelete_OnClick"/>
+                </telerik:RadMenuItem>
 
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Delete" Click="RibbonButtonDelete_OnClick"
-                                                         Name="RibbonButtonDelete" />
-                    </telerik:RadRibbonGroup>
+            </telerik:RadMenu>
 
-                </telerik:RadRibbonTab>
-            </telerik:RadRibbonView>
-
-            <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True">
+            <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True" Grid.Row="1">
                 <telerik:RadGridView Name="GridView" HorizontalAlignment="Stretch" IsSynchronizedWithCurrentItem="True"
                                  DataLoadMode="Synchronous" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserInsertRows="False"
                                  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -96,9 +86,16 @@
                         </telerik:GridViewDataColumn>
                         
                     </telerik:RadGridView.Columns>
+                    <telerik:RadContextMenu.ContextMenu>
+                        <telerik:RadContextMenu>
+                            <telerik:RadMenuItem Header="Add..." Name="ContextMenuItemAdd" Click="MenuItemAdd_OnClick"/>
+                            <telerik:RadMenuItem Header="Edit..." Name="ContextMenuItemEdit" Click="MenuItemEdit_OnClick"/>
+                            <telerik:RadMenuItem Header="Delete" Name="ContextMenuItemDelete" Click="MenuItemDelete_OnClick"/>
+                        </telerik:RadContextMenu>
+                    </telerik:RadContextMenu.ContextMenu>
                 </telerik:RadGridView>
             </telerik:RadBusyIndicator>
-        </DockPanel>
+        </Grid>
 
         <StatusBar Name="StatusBarBottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
                    MouseDoubleClick="StatusBarBottom_OnMouseDoubleClick" FontWeight="Bold"/>

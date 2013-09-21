@@ -11,41 +11,28 @@
             <RowDefinition MinHeight="10" MaxHeight="25"/>
         </Grid.RowDefinitions>
 
-        <DockPanel>
-            <telerik:RadRibbonView Name="RadRibbonView" DockPanel.Dock="Top" HorizontalAlignment="Stretch"
-                                           ApplicationName="Monitoring">
-                <telerik:RadRibbonTab Name="RibbonTabHome" Header="Home" MinWidth="70">
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton Name="ButtonStart" Content="Start" Click="ButtonStart_Click" MinWidth="75"
-                                                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    </telerik:RadRibbonGroup>
-
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton Name="ButtonStop" Content="Stop" Click="ButtonStop_Click" MinWidth="75"
-                                                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    </telerik:RadRibbonGroup>
-
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton Name="ButtonItems" Content="Items"  MinWidth="75" Click="ButtonItems_OnClick"
-                                                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    </telerik:RadRibbonGroup>
-
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton Name="ButtonItemPermissions" Content="Permissions"  MinWidth="75"
-                                                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    </telerik:RadRibbonGroup>
-
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton Name="ButtonNotifications" Content="Notifications"  MinWidth="75"
-                                                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                    </telerik:RadRibbonGroup>
-                </telerik:RadRibbonTab>
-            </telerik:RadRibbonView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
             
-            <StackPanel Name="StackPanelMain">
-                
+            <telerik:RadMenu VerticalAlignment="Top" Name="MenuMain" HorizontalAlignment="Stretch" Grid.Row="0">
+                <telerik:RadMenuItem Header="Action">
+                    <telerik:RadMenuItem Header="Start" Name="MenuItemStart" Click="MenuItemStart_OnClick"/>
+                    <telerik:RadMenuItem Header="Stop" Name="MenuItemStop" Click="MenuItemStop_OnClick"/>
+                </telerik:RadMenuItem>
+
+                <telerik:RadMenuItem Header="Settings">
+                    <telerik:RadMenuItem Header="Items..." Name="MenuItemItems" Click="MenuItemItems_OnClick"/>
+                    <telerik:RadMenuItem Header="Permissions..." Name="MenuItemPermissions"/>
+                    <telerik:RadMenuItem Header="Notifications..." Name="MenuItemNotifications"/>
+                </telerik:RadMenuItem>
+            </telerik:RadMenu>
+            <StackPanel Name="StackPanelMain" Grid.Row="1">
+
             </StackPanel>
-        </DockPanel>
+        </Grid>
 
         <StatusBar Name="StatusBarBottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
                    FontWeight="Bold">

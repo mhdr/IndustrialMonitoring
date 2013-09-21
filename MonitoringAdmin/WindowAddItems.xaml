@@ -3,6 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         Title="WindowAddItems" Height="428" Width="700">
+    <Window.Resources>
+        <telerik:Windows8Theme x:Key="Theme"/>
+        <Style TargetType="TextBox">
+            <Setter Property="telerik:StyleManager.Theme" Value="{StaticResource Theme}"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -33,13 +39,13 @@
                      Margin="5,0"/>
 
             <TextBlock Text="Type" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0"/>
-            <ComboBox Name="ComboBoxItemType" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+            <telerik:RadComboBox Name="ComboBoxItemType" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
                      Margin="5,0" SelectedIndex="0">
-                <ComboBox.Items>
-                    <ComboBoxItem>Digital</ComboBoxItem>
-                    <ComboBoxItem>Analog</ComboBoxItem>
-                </ComboBox.Items>
-            </ComboBox>
+                <telerik:RadComboBox.Items>
+                    <telerik:RadComboBoxItem>Digital</telerik:RadComboBoxItem>
+                    <telerik:RadComboBoxItem>Analog</telerik:RadComboBoxItem>
+                </telerik:RadComboBox.Items>
+            </telerik:RadComboBox>
 
             <TextBlock Text="Location" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0"/>
             <TextBox Name="TextBoxLocation" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
@@ -62,22 +68,22 @@
                      Margin="5,0" telerik:RadRangeBase.Value="100" IsInteger="True"/>
 
             <TextBlock Text="When to Save in Log" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0"/>
-            <ComboBox Name="ComboBoxSaveInItemsLogWhen" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+            <telerik:RadComboBox Name="ComboBoxSaveInItemsLogWhen" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
                      Margin="5,0" SelectedIndex="0">
-                <ComboBox.Items>
-                    <ComboBoxItem>On Timer Elapsed</ComboBoxItem>
-                    <ComboBoxItem>On Change</ComboBoxItem>
-                </ComboBox.Items>
-            </ComboBox>
+                <telerik:RadComboBox.Items>
+                    <telerik:RadComboBoxItem>On Timer Elapsed</telerik:RadComboBoxItem>
+                    <telerik:RadComboBoxItem>On Change</telerik:RadComboBoxItem>
+                </telerik:RadComboBox.Items>
+            </telerik:RadComboBox>
 
             <TextBlock Text="When to Save in Latest Log" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0"/>
-            <ComboBox Name="ComboBoxSaveInItemsLogLastWhen" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+            <telerik:RadComboBox Name="ComboBoxSaveInItemsLogLastWhen" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
                      Margin="5,0" SelectedIndex="0">
-                <ComboBox.Items>
-                    <ComboBoxItem>On Timer Elapsed</ComboBoxItem>
-                    <ComboBoxItem>On Change</ComboBoxItem>
-                </ComboBox.Items>
-            </ComboBox>
+                <telerik:RadComboBox.Items>
+                    <telerik:RadComboBoxItem>On Timer Elapsed</telerik:RadComboBoxItem>
+                    <telerik:RadComboBoxItem>On Change</telerik:RadComboBoxItem>
+                </telerik:RadComboBox.Items>
+            </telerik:RadComboBox>
 
             <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
                 <telerik:RadButton Name="ButtonAdd" Margin="80,0,0,0" Width="70" Height="30" Content="Add" Click="ButtonAdd_OnClick"/>
