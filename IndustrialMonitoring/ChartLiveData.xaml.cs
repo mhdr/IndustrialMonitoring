@@ -42,7 +42,7 @@ namespace IndustrialMonitoring
 
                 if (_isSelected)
                 {
-                    BorderUI.BorderBrush = Brushes.LightGreen;
+                    BorderUI.BorderBrush = Brushes.LightBlue;
                 }
                 else
                 {
@@ -96,8 +96,8 @@ namespace IndustrialMonitoring
                 AreaSeries series = (AreaSeries)this.Chart.Series[0];
                 series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
                 series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                series.Stroke = Brushes.LightGreen;
-                series.Fill = Brushes.LightGreen;
+                series.Stroke = Brushes.LightBlue;
+                series.Fill = Brushes.LightBlue;
                 series.StrokeThickness = 2;
 
                 series.ItemsSource = ObservableCollection;
@@ -109,7 +109,7 @@ namespace IndustrialMonitoring
                 LineSeries series = (LineSeries)this.Chart.Series[0];
                 series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
                 series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                series.Stroke = Brushes.Green;
+                series.Stroke = Brushes.Blue;
                 series.StrokeThickness = 2;
 
                 series.ItemsSource = ObservableCollection;

@@ -10,55 +10,52 @@
             <RowDefinition MinHeight="10" MaxHeight="25"/>
         </Grid.RowDefinitions>
 
-        <DockPanel>
-            <telerik:RadRibbonView Name="RadRibbonView" DockPanel.Dock="Top" HorizontalAlignment="Stretch"
-                                           ApplicationName="Monitoring">
-                <telerik:RadRibbonTab Name="RibbonTabHome" Header="Home" MinWidth="70">
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Start"
-                                                         Name="RibbonButtonStart" Click="RibbonButtonStart_OnClick"/>
-                    </telerik:RadRibbonGroup>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Stop" IsEnabled="False"
-                                                         Name="RibbonButtonStop" Click="RibbonButtonStop_OnClick"/>
-                    </telerik:RadRibbonGroup>
-                    
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Chart"
-                                                         Name="RibbonButtonChart" Click="RibbonButtonChart_OnClick"/>
-                    </telerik:RadRibbonGroup>
+            <telerik:RadMenu VerticalAlignment="Top" Name="MenuMain" HorizontalAlignment="Stretch" Grid.Row="0">
+                <telerik:RadMenuItem Header="Action">
+                    <telerik:RadMenuItem Header="Start Monitoring" Name="MenuItemStart" Click="MenuItemStart_OnClick"/>
+                    <telerik:RadMenuItem Header="Stop Monitoring" Name="MenuItemStop" Click="MenuItemStop_OnClick" IsEnabled="False"/>
+                </telerik:RadMenuItem>
 
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonButton MinWidth="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                                         Content="Grid"
-                                                         Name="RibbonButtonGrid" Click="RibbonButtonGrid_OnClick"/>
-                    </telerik:RadRibbonGroup>
-                    
-                    <telerik:RadRibbonGroup>
-                        <telerik:RadRibbonDropDownButton x:Name="RibbonDropDownButtonCompare" Content="Compare" MinWidth="75" Click="RibbonDropDownButtonCompare_Click">
-                            <telerik:RadRibbonDropDownButton.DropDownContent>
-                                <telerik:RadContextMenu>
-                                    <telerik:RadMenuItem Header="Add" Name="MenuItemAddItem" Click="MenuItemAddItem_Click"/>
-                                    <telerik:RadMenuItem Header="Clear" Name="MenuItemClearItems" IsEnabled="False" Click="MenuItemClearItems_Click"/>
-                                    <telerik:RadMenuItem Header="Items" Name="MenuItemItems">
-										
-									</telerik:RadMenuItem>
-									<telerik:RadMenuItem Name="MenuItemCompare" Header="Compare" Click="MenuItemCompare_OnClick"/>
-                                </telerik:RadContextMenu>
-                            </telerik:RadRibbonDropDownButton.DropDownContent>
-                        </telerik:RadRibbonDropDownButton>
-                    </telerik:RadRibbonGroup>
-                </telerik:RadRibbonTab>
-            </telerik:RadRibbonView>
+                <telerik:RadMenuItem Header="Archive">
+                    <telerik:RadMenuItem Header="Show Chart" Name="MenuItemChart" Click="MenuItemChart_OnClick"/>
+                    <telerik:RadMenuItem Header="Show Grid" Name="MenuItemGrid" Click="MenuItemGrid_OnClick"/>
+                    <telerik:RadMenuItem Header="Compare" Name="MenuItemCompareData" Click="MenuItemCompareData_OnClick">
+                        <telerik:RadMenuItem Header="Add Item" Name="MenuItemAddItem" Click="MenuItemAddItem_Click"/>
+                        <telerik:RadMenuItem Header="Clear Items" Name="MenuItemClearItems" IsEnabled="False" Click="MenuItemClearItems_Click"/>
+                        <telerik:RadMenuItem Header="Items" Name="MenuItemItems">
 
-            <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True">
-                <telerik:RadTabControl Name="TabControlIOs" />
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem Name="MenuItemCompare" Header="Compare Items" Click="MenuItemCompare_OnClick"/>
+                    </telerik:RadMenuItem>
+                </telerik:RadMenuItem>
+
+            </telerik:RadMenu>
+
+            <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True" Grid.Row="1">
+                <telerik:RadTabControl Name="TabControlIOs">
+                    <telerik:RadContextMenu.ContextMenu>
+                        <telerik:RadContextMenu>
+                            <telerik:RadMenuItem Header="Show Chart" Name="ContextMenuItemChart" Click="MenuItemChart_OnClick"/>
+                            <telerik:RadMenuItem Header="Show Grid" Name="ContextMenuItemGrid" Click="MenuItemGrid_OnClick"/>
+                            <telerik:RadMenuItem Header="Compare" Name="ContextMenuItemCompareData" Click="MenuItemCompareData_OnClick">
+                                <telerik:RadMenuItem Header="Add Item" Name="ContextMenuItemAddItem" Click="MenuItemAddItem_Click"/>
+                                <telerik:RadMenuItem Header="Clear Items" Name="ContextMenuItemClearItems" IsEnabled="False" Click="MenuItemClearItems_Click"/>
+                                <telerik:RadMenuItem Header="Items" Name="ContextMenuItemItems">
+
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Name="ContextMenuItemCompare" Header="Compare Items" Click="MenuItemCompare_OnClick"/>
+                            </telerik:RadMenuItem>
+                        </telerik:RadContextMenu>
+                    </telerik:RadContextMenu.ContextMenu>
+                    </telerik:RadTabControl>
             </telerik:RadBusyIndicator>
-        </DockPanel>
+        </Grid>
 
         <StatusBar Name="StatusBarBottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
                    MouseDoubleClick="StatusBarBottom_OnMouseDoubleClick" FontWeight="Bold"/>

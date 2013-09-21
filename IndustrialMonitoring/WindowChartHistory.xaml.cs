@@ -65,12 +65,6 @@ namespace IndustrialMonitoring
             set { _endTime = value; }
         }
 
-        //public List<ItemsLogChartHistoryViewModel> ItemsLog
-        //{
-        //    get { return _itemsLog; }
-        //    set { _itemsLog = value; }
-        //}
-
         public Dictionary<int,int> ItemsId
         {
             get { return _itemsId; }
@@ -86,15 +80,9 @@ namespace IndustrialMonitoring
 
         private void InitChart()
         {
-            //Chart.Series.Add(new LineSeries());
-            //LineSeries series = (LineSeries)this.Chart.Series[0];
-            //series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-            //series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-            //series.Stroke = Brushes.Green;
-            //series.StrokeThickness = 2;
             ChartBrushes=new List<Brush>();
-            ChartBrushes.Add(Brushes.Green);
             ChartBrushes.Add(Brushes.Blue);
+            ChartBrushes.Add(Brushes.Green);
             ChartBrushes.Add(Brushes.LightSalmon);
             ChartBrushes.Add(Brushes.DarkRed);
             ChartBrushes.Add(Brushes.Gold);

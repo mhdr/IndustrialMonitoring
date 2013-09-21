@@ -2,6 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="WindowLogin" Height="186" Width="451" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <telerik:Windows8Theme x:Key="Theme"/>
+        <Style TargetType="TextBox">
+            <Setter Property="telerik:StyleManager.Theme" Value="{StaticResource Theme}"/>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="telerik:StyleManager.Theme" Value="{StaticResource Theme}"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

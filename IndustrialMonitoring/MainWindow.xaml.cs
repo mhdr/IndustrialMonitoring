@@ -75,25 +75,6 @@ namespace IndustrialMonitoring
             
         }
 
-        private void RibbonButtonStart_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (AllCharts==null)
-            {
-                StartAsync();    
-            }
-            else if (AllCharts.Count == 0)
-            {
-                StartAsync();
-            }
-            else if (AllCharts.Count>0)
-            {
-                Resume();
-            }
-
-            RibbonButtonStart.IsEnabled = false;
-            RibbonButtonStop.IsEnabled = true;
-        }
-
         private void Resume()
         {
             if (AllCharts == null)
@@ -207,58 +188,6 @@ namespace IndustrialMonitoring
             current.IsSelected = true;
         }
 
-        private void RibbonButtonStop_OnClick(object sender, RoutedEventArgs e)
-        {
-            if (AllCharts == null)
-            {
-                return;
-            }
-
-            foreach (var chartLiveData in AllCharts)
-            {
-                chartLiveData.Stop();
-            }
-
-            RibbonButtonStart.IsEnabled = true;
-            RibbonButtonStop.IsEnabled = false;
-        }
-
-        private void RibbonButtonChart_OnClick(object sender, RoutedEventArgs e)
-        {
-            ChartLiveData selected = null;
-
-            foreach (var chartLiveData in AllCharts)
-            {
-                if (chartLiveData.IsSelected)
-                {
-                    selected = chartLiveData;
-                    break;
-                }
-            }
-
-            if (selected == null)
-            {
-                ShowMsgOnStatusBar("First select a item");
-                return;
-            }
-
-
-            Dictionary<int,int> dictionary=new Dictionary<int, int>();
-            dictionary.Add(0,selected.ItemsAioViewModel.ItemId);
-            WindowChartHistory windowChartHistory=new WindowChartHistory();
-            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
-            windowChartHistory.ItemsId = dictionary;
-            
-            // TODO Parameter
-            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
-
-            // TODO Parameter
-            windowChartHistory.EndTime = DateTime.Now;
-
-            windowChartHistory.Show();
-            windowChartHistory.ShowData();
-        }
-
         private void ShowMsgOnStatusBar(string msg)
         {
             ClearStatusBar();
@@ -274,39 +203,6 @@ namespace IndustrialMonitoring
         private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ClearStatusBar();
-        }
-
-        private void RibbonButtonGrid_OnClick(object sender, RoutedEventArgs e)
-        {
-            ChartLiveData selected = null;
-
-            foreach (var chartLiveData in AllCharts)
-            {
-                if (chartLiveData.IsSelected)
-                {
-                    selected = chartLiveData;
-                    break;
-                }
-            }
-
-            if (selected == null)
-            {
-                ShowMsgOnStatusBar("First select a item");
-                return;
-            }
-
-            WindowGridHistory windowChartHistory = new WindowGridHistory();
-            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
-            windowChartHistory.ItemId = selected.ItemsAioViewModel.ItemId;
-
-            // TODO Parameter
-            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
-
-            // TODO Parameter
-            windowChartHistory.EndTime = DateTime.Now;
-
-            windowChartHistory.Show();
-            windowChartHistory.ShowData();
         }
 
         private void MenuItemAddItem_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
@@ -342,25 +238,26 @@ namespace IndustrialMonitoring
             }
 
             ItemsForCompare.Add(selected);
+
             MenuItem newMenuItem=new MenuItem();
             newMenuItem.Header = selected.ItemsAioViewModel.ItemName;
+
+            MenuItem newContextMenuItem = new MenuItem();
+            newContextMenuItem.Header = selected.ItemsAioViewModel.ItemName;
+
             MenuItemItems.Items.Add(newMenuItem);
+            ContextMenuItemItems.Items.Add(newContextMenuItem);
             MenuItemClearItems.IsEnabled = true;
+            ContextMenuItemClearItems.IsEnabled = true;
         }
 
         private void MenuItemClearItems_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
         	ItemsForCompare.Clear();
             MenuItemItems.Items.Clear();
+            ContextMenuItemItems.Items.Clear();
             MenuItemClearItems.IsEnabled = false;
-        }
-
-        private void RibbonDropDownButtonCompare_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-        	if (ItemsForCompare.Any())
-        	{
-        	    MenuItemClearItems.IsEnabled = true;
-        	}
+            ContextMenuItemClearItems.IsEnabled = false;
         }
 
         private void MenuItemCompare_OnClick(object sender, RadRoutedEventArgs e)
@@ -392,6 +289,118 @@ namespace IndustrialMonitoring
 
             windowChartHistory.Show();
             windowChartHistory.ShowData();
+        }
+
+        private void MenuItemStart_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            if (AllCharts == null)
+            {
+                StartAsync();
+            }
+            else if (AllCharts.Count == 0)
+            {
+                StartAsync();
+            }
+            else if (AllCharts.Count > 0)
+            {
+                Resume();
+            }
+
+            MenuItemStart.IsEnabled = false;
+            MenuItemStop.IsEnabled = true;
+        }
+
+        private void MenuItemStop_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            if (AllCharts == null)
+            {
+                return;
+            }
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                chartLiveData.Stop();
+            }
+
+            MenuItemStart.IsEnabled = true;
+            MenuItemStop.IsEnabled = false;
+        }
+
+        private void MenuItemChart_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            ChartLiveData selected = null;
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                if (chartLiveData.IsSelected)
+                {
+                    selected = chartLiveData;
+                    break;
+                }
+            }
+
+            if (selected == null)
+            {
+                ShowMsgOnStatusBar("First select a item");
+                return;
+            }
+
+
+            Dictionary<int, int> dictionary = new Dictionary<int, int>();
+            dictionary.Add(0, selected.ItemsAioViewModel.ItemId);
+            WindowChartHistory windowChartHistory = new WindowChartHistory();
+            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
+            windowChartHistory.ItemsId = dictionary;
+
+            // TODO Parameter
+            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+            // TODO Parameter
+            windowChartHistory.EndTime = DateTime.Now;
+
+            windowChartHistory.Show();
+            windowChartHistory.ShowData();
+        }
+
+        private void MenuItemGrid_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            ChartLiveData selected = null;
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                if (chartLiveData.IsSelected)
+                {
+                    selected = chartLiveData;
+                    break;
+                }
+            }
+
+            if (selected == null)
+            {
+                ShowMsgOnStatusBar("First select a item");
+                return;
+            }
+
+            WindowGridHistory windowChartHistory = new WindowGridHistory();
+            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
+            windowChartHistory.ItemId = selected.ItemsAioViewModel.ItemId;
+
+            // TODO Parameter
+            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+            // TODO Parameter
+            windowChartHistory.EndTime = DateTime.Now;
+
+            windowChartHistory.Show();
+            windowChartHistory.ShowData();
+        }
+
+        private void MenuItemCompareData_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            if (ItemsForCompare.Any())
+            {
+                MenuItemClearItems.IsEnabled = true;
+            }
         }
     }
 }

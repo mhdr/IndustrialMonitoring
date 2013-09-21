@@ -19,8 +19,8 @@
             
             <telerik:RadMenu VerticalAlignment="Top" Name="MenuMain" HorizontalAlignment="Stretch" Grid.Row="0">
                 <telerik:RadMenuItem Header="Action">
-                    <telerik:RadMenuItem Header="Start" Name="MenuItemStart" Click="MenuItemStart_OnClick"/>
-                    <telerik:RadMenuItem Header="Stop" Name="MenuItemStop" Click="MenuItemStop_OnClick"/>
+                    <telerik:RadMenuItem Header="Start Data Collector Service" Name="MenuItemStart" Click="MenuItemStart_OnClick"/>
+                    <telerik:RadMenuItem Header="Stop Data Collector Service" Name="MenuItemStop" Click="MenuItemStop_OnClick"/>
                 </telerik:RadMenuItem>
 
                 <telerik:RadMenuItem Header="Settings">

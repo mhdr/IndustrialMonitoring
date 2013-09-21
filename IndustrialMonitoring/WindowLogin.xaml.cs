@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IndustrialMonitoring.UserServiceReference;
+using Telerik.Windows.Controls;
 
 namespace IndustrialMonitoring
 {
@@ -24,6 +25,7 @@ namespace IndustrialMonitoring
 
         public WindowLogin()
         {
+            StyleManager.ApplicationTheme = new Windows8Theme();
             InitializeComponent();
         }
 
