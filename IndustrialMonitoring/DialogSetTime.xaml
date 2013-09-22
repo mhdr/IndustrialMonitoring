@@ -16,12 +16,12 @@
 
         <TextBlock Text="Start Time" Grid.Row="0" Grid.Column="0" Margin="5,0,5,0"
                    HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"/>
-        <telerik:RadDateTimePicker Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+        <telerik:RadDateTimePicker Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0"
                                    Name="DateTimePickerStartTime"/>
 
         <TextBlock Text="End Time" Grid.Row="1" Grid.Column="0" Margin="5,0,5,0"
                    HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold"/>
-        <telerik:RadDateTimePicker Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,5,0"
+        <telerik:RadDateTimePicker Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,0,5,0"
                                    Name="DateTimePickerEndTime"/>
 
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
