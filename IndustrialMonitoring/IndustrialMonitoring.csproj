@@ -206,7 +206,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel.datasource">
+    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.Items1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.Items2.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel.datasource">

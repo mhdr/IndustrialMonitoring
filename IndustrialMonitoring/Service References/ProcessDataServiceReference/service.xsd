@@ -24,7 +24,19 @@
   <xs:element name="GetItemsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetItemsResult" nillable="true" type="q2:ArrayOfItemsAIOViewModel" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetItemsResult" nillable="true" type="q2:ArrayOfItems1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItems2">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetItems2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetItems2Result" nillable="true" type="q3:ArrayOfItems2" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,7 +50,7 @@
   <xs:element name="GetItemResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetItemResult" nillable="true" type="q3:ItemsAIOViewModel" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetItemResult" nillable="true" type="q4:Items1" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -50,21 +62,21 @@
   <xs:element name="GetTabsAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetTabsAllResult" nillable="true" type="q4:ArrayOfTabsViewModel" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetTabsAllResult" nillable="true" type="q5:ArrayOfTabsViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTab">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q5:FuncOfTabsViewModelbooleand4JwJsBP" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q6:FuncOfTabsViewModelbooleand4JwJsBP" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTabResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetTabResult" nillable="true" type="q6:ArrayOfTabsViewModel" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetTabResult" nillable="true" type="q7:ArrayOfTabsViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -76,21 +88,21 @@
   <xs:element name="GetTabItemsAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetTabItemsAllResult" nillable="true" type="q7:ArrayOfTabsItemsViewModel" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetTabItemsAllResult" nillable="true" type="q8:ArrayOfTabsItemsViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTabItems">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q8:FuncOfTabsItemsViewModelbooleand4JwJsBP" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q9:FuncOfTabsItemsViewModelbooleand4JwJsBP" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTabItemsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetTabItemsResult" nillable="true" type="q9:ArrayOfTabsItemsViewModel" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetTabItemsResult" nillable="true" type="q10:ArrayOfTabsItemsViewModel" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -104,7 +116,7 @@
   <xs:element name="GetItemsForTabResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetItemsForTabResult" nillable="true" type="q10:ArrayOfItemsAIOViewModel" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetItemsForTabResult" nillable="true" type="q11:ArrayOfItems1" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -120,7 +132,49 @@
   <xs:element name="GetItemLogsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetItemLogsResult" nillable="true" type="q11:ArrayOfItemsLogChartHistoryViewModel" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetItemLogsResult" nillable="true" type="q12:ArrayOfItemsLogChartHistoryViewModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddItem2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="item" nillable="true" type="q13:Items2" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddItem2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddItem2Result" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="itemId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteItemResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditItem2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="item" nillable="true" type="q14:Items2" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditItem2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EditItem2Result" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

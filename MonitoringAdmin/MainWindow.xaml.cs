@@ -169,5 +169,11 @@ namespace MonitoringAdmin
             windowItems.MainWindow = this;
             windowItems.Show();
         }
+
+        private void MenuItemPermissions_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            WindowItemsManagement windowItemsManagement=new WindowItemsManagement();
+            windowItemsManagement.Show();
+        }
     }
 }

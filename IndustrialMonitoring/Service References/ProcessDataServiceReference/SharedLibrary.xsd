@@ -8,4 +8,12 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="ItemType" nillable="true" type="tns:ItemType" />
+  <xs:simpleType name="WhenToLog">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="OnTimerElapsed" />
+      <xs:enumeration value="OnChange" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WhenToLog" nillable="true" type="tns:WhenToLog" />
 </xs:schema>

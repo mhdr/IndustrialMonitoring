@@ -108,9 +108,9 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ItemsAIOViewModel", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Items1", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
     [System.SerializableAttribute()]
-    public partial class ItemsAIOViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Items1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -172,6 +172,243 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
                 if ((this.ItemTypeField.Equals(value) != true)) {
                     this.ItemTypeField = value;
                     this.RaisePropertyChanged("ItemType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ShowInUITimeInterval {
+            get {
+                return this.ShowInUITimeIntervalField;
+            }
+            set {
+                if ((this.ShowInUITimeIntervalField.Equals(value) != true)) {
+                    this.ShowInUITimeIntervalField = value;
+                    this.RaisePropertyChanged("ShowInUITimeInterval");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Items2", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.SerializableAttribute()]
+    public partial class Items2 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ItemIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ItemNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SharedLibrary.ItemType ItemTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ItemTypeStringField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SharedLibrary.WhenToLog SaveInItemsLogLastWhenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SaveInItemsLogLastWhenStringField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SaveInItemsLogLastesTimeIntervalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SaveInItemsLogTimeIntervalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private SharedLibrary.WhenToLog SaveInItemsLogWhenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SaveInItemsLogWhenStringField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ScanCycleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ShowInUITimeIntervalField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ItemId {
+            get {
+                return this.ItemIdField;
+            }
+            set {
+                if ((this.ItemIdField.Equals(value) != true)) {
+                    this.ItemIdField = value;
+                    this.RaisePropertyChanged("ItemId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ItemName {
+            get {
+                return this.ItemNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemNameField, value) != true)) {
+                    this.ItemNameField = value;
+                    this.RaisePropertyChanged("ItemName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SharedLibrary.ItemType ItemType {
+            get {
+                return this.ItemTypeField;
+            }
+            set {
+                if ((this.ItemTypeField.Equals(value) != true)) {
+                    this.ItemTypeField = value;
+                    this.RaisePropertyChanged("ItemType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ItemTypeString {
+            get {
+                return this.ItemTypeStringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemTypeStringField, value) != true)) {
+                    this.ItemTypeStringField = value;
+                    this.RaisePropertyChanged("ItemTypeString");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Location {
+            get {
+                return this.LocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
+                    this.LocationField = value;
+                    this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SharedLibrary.WhenToLog SaveInItemsLogLastWhen {
+            get {
+                return this.SaveInItemsLogLastWhenField;
+            }
+            set {
+                if ((this.SaveInItemsLogLastWhenField.Equals(value) != true)) {
+                    this.SaveInItemsLogLastWhenField = value;
+                    this.RaisePropertyChanged("SaveInItemsLogLastWhen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SaveInItemsLogLastWhenString {
+            get {
+                return this.SaveInItemsLogLastWhenStringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SaveInItemsLogLastWhenStringField, value) != true)) {
+                    this.SaveInItemsLogLastWhenStringField = value;
+                    this.RaisePropertyChanged("SaveInItemsLogLastWhenString");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SaveInItemsLogLastesTimeInterval {
+            get {
+                return this.SaveInItemsLogLastesTimeIntervalField;
+            }
+            set {
+                if ((this.SaveInItemsLogLastesTimeIntervalField.Equals(value) != true)) {
+                    this.SaveInItemsLogLastesTimeIntervalField = value;
+                    this.RaisePropertyChanged("SaveInItemsLogLastesTimeInterval");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SaveInItemsLogTimeInterval {
+            get {
+                return this.SaveInItemsLogTimeIntervalField;
+            }
+            set {
+                if ((this.SaveInItemsLogTimeIntervalField.Equals(value) != true)) {
+                    this.SaveInItemsLogTimeIntervalField = value;
+                    this.RaisePropertyChanged("SaveInItemsLogTimeInterval");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public SharedLibrary.WhenToLog SaveInItemsLogWhen {
+            get {
+                return this.SaveInItemsLogWhenField;
+            }
+            set {
+                if ((this.SaveInItemsLogWhenField.Equals(value) != true)) {
+                    this.SaveInItemsLogWhenField = value;
+                    this.RaisePropertyChanged("SaveInItemsLogWhen");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SaveInItemsLogWhenString {
+            get {
+                return this.SaveInItemsLogWhenStringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SaveInItemsLogWhenStringField, value) != true)) {
+                    this.SaveInItemsLogWhenStringField = value;
+                    this.RaisePropertyChanged("SaveInItemsLogWhenString");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ScanCycle {
+            get {
+                return this.ScanCycleField;
+            }
+            set {
+                if ((this.ScanCycleField.Equals(value) != true)) {
+                    this.ScanCycleField = value;
+                    this.RaisePropertyChanged("ScanCycle");
                 }
             }
         }
@@ -441,16 +678,22 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogLatestAIOViewModel> GeItemsLogLatestAsync(int itemId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsResponse")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItems();
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItems();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel>> GetItemsAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1>> GetItemsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems2", ReplyAction="http://tempuri.org/IProcessDataService/GetItems2Response")]
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items2> GetItems2();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems2", ReplyAction="http://tempuri.org/IProcessDataService/GetItems2Response")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items2>> GetItems2Async();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItem", ReplyAction="http://tempuri.org/IProcessDataService/GetItemResponse")]
-        IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel GetItem(int itemId);
+        IndustrialMonitoring.ProcessDataServiceReference.Items1 GetItem(int itemId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItem", ReplyAction="http://tempuri.org/IProcessDataService/GetItemResponse")]
-        System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItemAsync(int itemId);
+        System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItemAsync(int itemId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabsAllResponse")]
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTabsAll();
@@ -477,16 +720,34 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel>> GetTabItemsAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemsForTab", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsForTabResponse")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItemsForTab(int tabId);
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItemsForTab(int tabId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemsForTab", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsForTabResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel>> GetItemsForTabAsync(int tabId);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1>> GetItemsForTabAsync(int tabId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemLogs", ReplyAction="http://tempuri.org/IProcessDataService/GetItemLogsResponse")]
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel> GetItemLogs(int itemId, System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemLogs", ReplyAction="http://tempuri.org/IProcessDataService/GetItemLogsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel>> GetItemLogsAsync(int itemId, System.DateTime startDate, System.DateTime endDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/AddItem2", ReplyAction="http://tempuri.org/IProcessDataService/AddItem2Response")]
+        bool AddItem2(IndustrialMonitoring.ProcessDataServiceReference.Items2 item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/AddItem2", ReplyAction="http://tempuri.org/IProcessDataService/AddItem2Response")]
+        System.Threading.Tasks.Task<bool> AddItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Items2 item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/DeleteItem", ReplyAction="http://tempuri.org/IProcessDataService/DeleteItemResponse")]
+        bool DeleteItem(int itemId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/DeleteItem", ReplyAction="http://tempuri.org/IProcessDataService/DeleteItemResponse")]
+        System.Threading.Tasks.Task<bool> DeleteItemAsync(int itemId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/EditItem2", ReplyAction="http://tempuri.org/IProcessDataService/EditItem2Response")]
+        bool EditItem2(IndustrialMonitoring.ProcessDataServiceReference.Items2 item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/EditItem2", ReplyAction="http://tempuri.org/IProcessDataService/EditItem2Response")]
+        System.Threading.Tasks.Task<bool> EditItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Items2 item);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -524,19 +785,27 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             return base.Channel.GeItemsLogLatestAsync(itemId);
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItems() {
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItems() {
             return base.Channel.GetItems();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel>> GetItemsAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1>> GetItemsAsync() {
             return base.Channel.GetItemsAsync();
         }
         
-        public IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel GetItem(int itemId) {
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items2> GetItems2() {
+            return base.Channel.GetItems2();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items2>> GetItems2Async() {
+            return base.Channel.GetItems2Async();
+        }
+        
+        public IndustrialMonitoring.ProcessDataServiceReference.Items1 GetItem(int itemId) {
             return base.Channel.GetItem(itemId);
         }
         
-        public System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItemAsync(int itemId) {
+        public System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItemAsync(int itemId) {
             return base.Channel.GetItemAsync(itemId);
         }
         
@@ -572,11 +841,11 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             return base.Channel.GetTabItemsAsync(predicate);
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel> GetItemsForTab(int tabId) {
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItemsForTab(int tabId) {
             return base.Channel.GetItemsForTab(tabId);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsAIOViewModel>> GetItemsForTabAsync(int tabId) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1>> GetItemsForTabAsync(int tabId) {
             return base.Channel.GetItemsForTabAsync(tabId);
         }
         
@@ -586,6 +855,30 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel>> GetItemLogsAsync(int itemId, System.DateTime startDate, System.DateTime endDate) {
             return base.Channel.GetItemLogsAsync(itemId, startDate, endDate);
+        }
+        
+        public bool AddItem2(IndustrialMonitoring.ProcessDataServiceReference.Items2 item) {
+            return base.Channel.AddItem2(item);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Items2 item) {
+            return base.Channel.AddItem2Async(item);
+        }
+        
+        public bool DeleteItem(int itemId) {
+            return base.Channel.DeleteItem(itemId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteItemAsync(int itemId) {
+            return base.Channel.DeleteItemAsync(itemId);
+        }
+        
+        public bool EditItem2(IndustrialMonitoring.ProcessDataServiceReference.Items2 item) {
+            return base.Channel.EditItem2(item);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EditItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Items2 item) {
+            return base.Channel.EditItem2Async(item);
         }
     }
 }

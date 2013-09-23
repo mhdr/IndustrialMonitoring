@@ -11,10 +11,10 @@ namespace IndustrialMonitoring.Lib
     {
         public List<ItemsLogChartHistoryViewModel> Data { get; set; }
         public KeyValuePair<int,int> ItemId { get; set; }
-        public ItemsAIOViewModel CurrentItem { get; set; }
+        public Items1 CurrentItem { get; set; }
         public bool GenerateLegend { get; set; }
 
-        public ShowDataCompletedEventArgs(KeyValuePair<int,int> itemId, List<ItemsLogChartHistoryViewModel> data,ItemsAIOViewModel currentItem,bool generateLegend)
+        public ShowDataCompletedEventArgs(KeyValuePair<int,int> itemId, List<ItemsLogChartHistoryViewModel> data,Items1 currentItem,bool generateLegend)
         {
             this.ItemId = itemId;
             this.Data = data;

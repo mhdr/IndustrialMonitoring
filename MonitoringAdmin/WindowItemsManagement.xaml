@@ -1,0 +1,28 @@
+﻿<Window xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  x:Class="MonitoringAdmin.WindowItemsManagement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WindowItemsManagement" Height="600" Width="600" WindowState="Maximized" Loaded="WindowItemsManagement_OnLoaded">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <telerik:RadBusyIndicator Grid.Column="0" Name="BusyIndicatorTabs" IsIndeterminate="True">
+                <telerik:RadTreeView Name="TreeViewTabs"/>
+            </telerik:RadBusyIndicator>
+
+
+            <telerik:RadBusyIndicator Grid.Column="1" Name="BusyIndicatorUsers" IsIndeterminate="True">
+                <telerik:RadTreeView Name="TreeViewUsers"/>
+            </telerik:RadBusyIndicator>
+
+            <telerik:RadBusyIndicator Grid.Column="2" Name="BusyIndicatorItems" IsIndeterminate="True">
+                <telerik:RadListBox Name="ListBoxItems"/>
+            </telerik:RadBusyIndicator>
+            
+        </Grid>
+    </Grid>
+</Window>

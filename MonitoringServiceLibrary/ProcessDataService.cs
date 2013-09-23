@@ -27,15 +27,15 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
-        public List<ItemsAIOViewModel> GetItems()
+        public List<Items1> GetItems()
         {
-            List<ItemsAIOViewModel> result = new List<ItemsAIOViewModel>();
+            List<Items1> result = new List<Items1>();
             var Entities = new IndustrialMonitoringEntities();
             var items = Entities.Items;
 
             foreach (var item in items)
             {
-                result.Add(new ItemsAIOViewModel(item));
+                result.Add(new Items1(item));
             }
 
             return result;
@@ -55,11 +55,25 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
-        public ItemsAIOViewModel GetItem(int itemId)
+        public List<Items3> GetItems3()
+        {
+            List<Items3> result = new List<Items3>();
+            var Entities = new IndustrialMonitoringEntities();
+            var items = Entities.Items;
+
+            foreach (var item in items)
+            {
+                result.Add(new Items3(item));
+            }
+
+            return result;
+        }
+
+        public Items1 GetItem(int itemId)
         {
             var Entities = new IndustrialMonitoringEntities();
             var item = Entities.Items.FirstOrDefault(x => x.ItemId == itemId);
-            ItemsAIOViewModel result = new ItemsAIOViewModel(item);
+            Items1 result = new Items1(item);
 
             return result;
         }
@@ -136,10 +150,10 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
-        public List<ItemsAIOViewModel> GetItems(int tabId)
+        public List<Items1> GetItems(int tabId)
         {
             var Entities = new IndustrialMonitoringEntities();
-            List<ItemsAIOViewModel> result = new List<ItemsAIOViewModel>();
+            List<Items1> result = new List<Items1>();
 
             var tabsItem = Entities.TabsItems.Where(x => x.TabId == tabId);
 
@@ -147,7 +161,7 @@ namespace MonitoringServiceLibrary
             {
                 Item currentItem = Entities.Items.FirstOrDefault(x => x.ItemId == item.ItemId);
 
-                result.Add(new ItemsAIOViewModel(currentItem));
+                result.Add(new Items1(currentItem));
             }
 
             return result;

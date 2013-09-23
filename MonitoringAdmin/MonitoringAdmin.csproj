@@ -90,6 +90,9 @@
     <Compile Include="WindowItems.xaml.cs">
       <DependentUpon>WindowItems.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowItemsManagement.xaml.cs">
+      <DependentUpon>WindowItemsManagement.xaml</DependentUpon>
+    </Compile>
     <Page Include="WindowEditItems.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -111,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowItemsManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,10 +157,13 @@
     <None Include="Service References\DataCollectorServiceReference\SharedLibrary.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Items1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Items2.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.ItemsAIOViewModel.datasource">
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Items3.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.ItemsLogChartHistoryViewModel.datasource">

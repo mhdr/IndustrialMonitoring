@@ -159,7 +159,7 @@ namespace IndustrialMonitoring
 
         private void ShowDataAsync(KeyValuePair<int,int> itemId,bool generateLegend)
         {
-            ItemsAIOViewModel CurrentItem = ProcessDataServiceClient.GetItem(itemId.Value);
+            Items1 CurrentItem = ProcessDataServiceClient.GetItem(itemId.Value);
             List<ItemsLogChartHistoryViewModel> ItemsLog = ProcessDataServiceClient.GetItemLogs(itemId.Value, StartTime, EndTime);
 
             Dispatcher.BeginInvoke(new Action(()=>OnShowDataCompleted(new ShowDataCompletedEventArgs( itemId,ItemsLog,CurrentItem,generateLegend))));

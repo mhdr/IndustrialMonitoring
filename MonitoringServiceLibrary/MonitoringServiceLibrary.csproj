@@ -114,7 +114,8 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Items2.cs" />
-    <Compile Include="ViewModels\ItemsAIOViewModel.cs" />
+    <Compile Include="ViewModels\Items1.cs" />
+    <Compile Include="ViewModels\Items3.cs" />
     <Compile Include="ViewModels\ItemsLogChartHistoryViewModel.cs" />
     <Compile Include="ViewModels\ItemsLogLatestAIOViewModel.cs" />
     <Compile Include="ViewModels\TabsItemsViewModel.cs" />

@@ -10,13 +10,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ItemsLogLatestAIOViewModel" nillable="true" type="tns:ItemsLogLatestAIOViewModel" />
-  <xs:complexType name="ArrayOfItemsAIOViewModel">
+  <xs:complexType name="ArrayOfItems1">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ItemsAIOViewModel" nillable="true" type="tns:ItemsAIOViewModel" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Items1" nillable="true" type="tns:Items1" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfItemsAIOViewModel" nillable="true" type="tns:ArrayOfItemsAIOViewModel" />
-  <xs:complexType name="ItemsAIOViewModel">
+  <xs:element name="ArrayOfItems1" nillable="true" type="tns:ArrayOfItems1" />
+  <xs:complexType name="Items1">
     <xs:sequence>
       <xs:element minOccurs="0" name="ItemId" type="xs:int" />
       <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
@@ -24,7 +24,31 @@
       <xs:element minOccurs="0" name="ShowInUITimeInterval" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ItemsAIOViewModel" nillable="true" type="tns:ItemsAIOViewModel" />
+  <xs:element name="Items1" nillable="true" type="tns:Items1" />
+  <xs:complexType name="ArrayOfItems2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Items2" nillable="true" type="tns:Items2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItems2" nillable="true" type="tns:ArrayOfItems2" />
+  <xs:complexType name="Items2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/SharedLibrary" minOccurs="0" name="ItemType" type="q2:ItemType" />
+      <xs:element minOccurs="0" name="ItemTypeString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/SharedLibrary" minOccurs="0" name="SaveInItemsLogLastWhen" type="q3:WhenToLog" />
+      <xs:element minOccurs="0" name="SaveInItemsLogLastWhenString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SaveInItemsLogLastesTimeInterval" type="xs:int" />
+      <xs:element minOccurs="0" name="SaveInItemsLogTimeInterval" type="xs:int" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/SharedLibrary" minOccurs="0" name="SaveInItemsLogWhen" type="q4:WhenToLog" />
+      <xs:element minOccurs="0" name="SaveInItemsLogWhenString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ScanCycle" type="xs:int" />
+      <xs:element minOccurs="0" name="ShowInUITimeInterval" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Items2" nillable="true" type="tns:Items2" />
   <xs:complexType name="ArrayOfTabsViewModel">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="TabsViewModel" nillable="true" type="tns:TabsViewModel" />

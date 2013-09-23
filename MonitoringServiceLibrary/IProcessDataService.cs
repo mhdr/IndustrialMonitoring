@@ -15,13 +15,16 @@ namespace MonitoringServiceLibrary
         ItemsLogLatestAIOViewModel GeItemsLogLatest(int itemId);
 
         [OperationContract]
-        List<ItemsAIOViewModel> GetItems();
+        List<Items1> GetItems();
 
         [OperationContract]
         List<Items2> GetItems2();
 
         [OperationContract]
-        ItemsAIOViewModel GetItem(int itemId);
+        List<Items3> GetItems3();
+
+        [OperationContract]
+        Items1 GetItem(int itemId);
 
         [OperationContract(Name = "GetTabsAll")]
         List<TabsViewModel> GetTabs();
@@ -36,7 +39,7 @@ namespace MonitoringServiceLibrary
         List<TabsItemsViewModel> GetTabItems(Func<TabsItemsViewModel, bool> predicate);
 
         [OperationContract(Name = "GetItemsForTab")]
-        List<ItemsAIOViewModel> GetItems(int tabId);
+        List<Items1> GetItems(int tabId);
 
         [OperationContract]
         List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId, DateTime startDate, DateTime endDate);

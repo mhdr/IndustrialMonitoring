@@ -26,7 +26,7 @@ namespace IndustrialMonitoring
     /// </summary>
     public partial class ChartLiveData : UserControl
     {
-        private ItemsAIOViewModel _itemsAioViewModel = null;
+        private Items1 _itemsAioViewModel = null;
         private Timer _timer;
         private ObservableCollection<Lib.ChartLiveData> _observableCollection;
         private ItemsLogLatestAIOViewModel _latestData;
@@ -56,7 +56,7 @@ namespace IndustrialMonitoring
             InitializeComponent();
         }
 
-        public ItemsAIOViewModel ItemsAioViewModel
+        public Items1 ItemsAioViewModel
         {
             get { return _itemsAioViewModel; }
             set { _itemsAioViewModel = value; }

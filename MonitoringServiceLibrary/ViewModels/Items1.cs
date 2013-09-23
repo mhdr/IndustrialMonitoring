@@ -4,7 +4,7 @@ using SharedLibrary;
 namespace MonitoringServiceLibrary.ViewModels
 {
     [DataContract]
-    public class ItemsAIOViewModel
+    public class Items1
     {
         [DataMember]
         public int ItemId { get; set; }
@@ -18,12 +18,12 @@ namespace MonitoringServiceLibrary.ViewModels
         [DataMember]
         public int ShowInUITimeInterval { get; set; }
 
-        public ItemsAIOViewModel()
+        public Items1()
         {
             
         }
 
-        public ItemsAIOViewModel(Item item)
+        public Items1(Item item)
         {
             this.ItemId = item.ItemId;
             this.ItemName = item.ItemName;

@@ -41,7 +41,7 @@ namespace IndustrialMonitoring
             if (handler != null) handler(this, EventArgs.Empty);
         }
 
-        private ItemsAIOViewModel CurrentItem;
+        private Items1 CurrentItem;
 
         public ProcessDataServiceClient ProcessDataServiceClient
         {
