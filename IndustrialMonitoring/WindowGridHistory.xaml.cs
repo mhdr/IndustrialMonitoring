@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IndustrialMonitoring.ProcessDataServiceReference;
+using Telerik.Windows;
 using Telerik.Windows.Controls.ChartView;
 
 namespace IndustrialMonitoring
@@ -75,7 +76,7 @@ namespace IndustrialMonitoring
 
         void WindowChartHistory_ShowDataCompleted(object sender, EventArgs e)
         {
-            RibbonViewTop.ApplicationName = string.Format("{0} {1}-{2}", CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());
+            TextBlockTitle.Text = string.Format("{0} {1}-{2}", CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());
             GridView.ItemsSource = ItemsLog;
 
             BusyIndicator.IsBusy = false;
@@ -117,27 +118,21 @@ namespace IndustrialMonitoring
             StatusBarBottom.Items.Clear();
         }
 
-        private void RibbonButtonShowSetTimeDialog_OnClick(object sender, RoutedEventArgs e)
-        {
-            DialogSetTime dialogSetTime=new DialogSetTime();
-            dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
-            dialogSetTime.StartTime = StartTime;
-            dialogSetTime.EndTime = EndTime;
-            dialogSetTime.ShowDialog();
-        }
-
         void dialogSetTime_TimeChanged(object sender, Lib.TimeChangedEventArgs e)
         {
             this.StartTime = e.StartTime;
             this.EndTime = e.EndTime;
-        }
 
-        private void RibbonButtonApply_OnClick(object sender, RoutedEventArgs e)
-        {
             ShowData();
         }
 
-        private void RibbonButtonShowSetTimeDialog_OnMouseEnter(object sender, MouseEventArgs e)
+
+        private void WindowGridHistory_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            this.ShowDataCompleted += WindowChartHistory_ShowDataCompleted;
+        }
+
+        private void MenuItemShowSetTimeDialog_OnMouseEnter(object sender, MouseEventArgs e)
         {
             TextBlock textBlock1 = new TextBlock();
             textBlock1.Text = "Start Time : ";
@@ -169,12 +164,16 @@ namespace IndustrialMonitoring
             stackPanel3.Children.Add(stackPanel1);
             stackPanel3.Children.Add(stackPanel2);
 
-            RibbonButtonShowSetTimeDialog.ToolTip = stackPanel3;
+            MenuItemShowSetTimeDialog.ToolTip = stackPanel3;
         }
 
-        private void WindowGridHistory_OnLoaded(object sender, RoutedEventArgs e)
+        private void MenuItemShowSetTimeDialog_OnClick(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
-            this.ShowDataCompleted += WindowChartHistory_ShowDataCompleted;
+            DialogSetTime dialogSetTime = new DialogSetTime();
+            dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
+            dialogSetTime.StartTime = StartTime;
+            dialogSetTime.EndTime = EndTime;
+            dialogSetTime.ShowDialog();
         }
     }
 }

@@ -42,18 +42,23 @@ namespace IndustrialMonitoring
             this.Close();
         }
 
-        private void DialogSetTime_OnClosing(object sender, CancelEventArgs e)
+        private void ApplyTime()
         {
             StartTime = (DateTime) DateTimePickerStartTime.SelectedValue;
             EndTime = (DateTime) DateTimePickerEndTime.SelectedValue;
 
-            OnTimeChanged(new TimeChangedEventArgs(StartTime,EndTime));
+            OnTimeChanged(new TimeChangedEventArgs(StartTime, EndTime));
         }
 
         private void DialogSetTime_OnLoaded(object sender, RoutedEventArgs e)
         {
             DateTimePickerStartTime.SelectedValue = StartTime;
             DateTimePickerEndTime.SelectedValue = EndTime;
+        }
+
+        private void ButtonApply_OnClick(object sender, RoutedEventArgs e)
+        {
+            ApplyTime();
         }
     }
 }

@@ -10,14 +10,16 @@ namespace IndustrialMonitoring.Lib
     public class ShowDataCompletedEventArgs : EventArgs
     {
         public List<ItemsLogChartHistoryViewModel> Data { get; set; }
-        public KeyValuePair<int,int> ItemId;
-        public ItemsAIOViewModel CurrentItem;
+        public KeyValuePair<int,int> ItemId { get; set; }
+        public ItemsAIOViewModel CurrentItem { get; set; }
+        public bool GenerateLegend { get; set; }
 
-        public ShowDataCompletedEventArgs(KeyValuePair<int,int> itemId, List<ItemsLogChartHistoryViewModel> data,ItemsAIOViewModel currentItem)
+        public ShowDataCompletedEventArgs(KeyValuePair<int,int> itemId, List<ItemsLogChartHistoryViewModel> data,ItemsAIOViewModel currentItem,bool generateLegend)
         {
             this.ItemId = itemId;
             this.Data = data;
             this.CurrentItem = currentItem;
+            this.GenerateLegend = generateLegend;
         }
     }
 }

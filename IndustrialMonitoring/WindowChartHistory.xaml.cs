@@ -125,42 +125,44 @@ namespace IndustrialMonitoring
         {
             if (ItemsId.Count == 1)
             {
-                RibbonViewTop.ApplicationName = string.Format("{0} {1}-{2}", e.CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());    
+                TextBlockTitle.Text = string.Format("{0} {1}-{2}", e.CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());    
             }
             else
             {
-                
-                RibbonViewTop.ApplicationName = string.Format("Compare {0}-{1}", this.StartTime.ToString(), this.EndTime.ToString());    
+
+                TextBlockTitle.Text = string.Format("Compare {0}-{1}", this.StartTime.ToString(), this.EndTime.ToString());    
             }
 
             LineSeries series = (LineSeries)this.Chart.Series[e.ItemId.Key];
             series.ItemsSource =e.Data ;
             Chart.Zoom=new Size(1,1);
 
-
-            ChartLegend.Items.Add(new LegendItem(){MarkerFill = ChartBrushes[e.ItemId.Key],Title = e.CurrentItem.ItemName});
+            if (e.GenerateLegend)
+            {
+                ChartLegend.Items.Add(new LegendItem() { MarkerFill = ChartBrushes[e.ItemId.Key], Title = e.CurrentItem.ItemName });    
+            }
 
             BusyIndicator.IsBusy = false;
         }
 
-        public void ShowData()
+        public void ShowData(bool generateLegend=true)
         {
             BusyIndicator.IsBusy = true;
 
             foreach (var dic in ItemsId)
             {
                 KeyValuePair<int, int> dic1 = dic;
-                Thread t1 = new Thread(()=>ShowDataAsync(dic1));
+                Thread t1 = new Thread(()=>ShowDataAsync(dic1,generateLegend));
                 t1.Start();
             }
         }
 
-        private void ShowDataAsync(KeyValuePair<int,int> itemId)
+        private void ShowDataAsync(KeyValuePair<int,int> itemId,bool generateLegend)
         {
             ItemsAIOViewModel CurrentItem = ProcessDataServiceClient.GetItem(itemId.Value);
             List<ItemsLogChartHistoryViewModel> ItemsLog = ProcessDataServiceClient.GetItemLogs(itemId.Value, StartTime, EndTime);
 
-            Dispatcher.BeginInvoke(new Action(()=>OnShowDataCompleted(new ShowDataCompletedEventArgs( itemId,ItemsLog,CurrentItem))));
+            Dispatcher.BeginInvoke(new Action(()=>OnShowDataCompleted(new ShowDataCompletedEventArgs( itemId,ItemsLog,CurrentItem,generateLegend))));
         }
 
         private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -180,27 +182,14 @@ namespace IndustrialMonitoring
             StatusBarBottom.Items.Clear();
         }
 
-        private void RibbonButtonShowSetTimeDialog_OnClick(object sender, RoutedEventArgs e)
-        {
-            DialogSetTime dialogSetTime=new DialogSetTime();
-            dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
-            dialogSetTime.StartTime = StartTime;
-            dialogSetTime.EndTime = EndTime;
-            dialogSetTime.ShowDialog();
-        }
-
         void dialogSetTime_TimeChanged(object sender, Lib.TimeChangedEventArgs e)
         {
             this.StartTime = e.StartTime;
             this.EndTime = e.EndTime;
+            ShowData(false);
         }
 
-        private void RibbonButtonApply_OnClick(object sender, RoutedEventArgs e)
-        {
-            ShowData();
-        }
-
-        private void RibbonButtonShowSetTimeDialog_OnMouseEnter(object sender, MouseEventArgs e)
+        private void MenuItemShowSetTimeDialog_OnMouseEnter(object sender, MouseEventArgs e)
         {
             TextBlock textBlock1 = new TextBlock();
             textBlock1.Text = "Start Time : ";
@@ -232,7 +221,16 @@ namespace IndustrialMonitoring
             stackPanel3.Children.Add(stackPanel1);
             stackPanel3.Children.Add(stackPanel2);
 
-            RibbonButtonShowSetTimeDialog.ToolTip = stackPanel3;
+            MenuItemShowSetTimeDialog.ToolTip = stackPanel3;
+        }
+
+        private void MenuItemShowSetTimeDialog_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            DialogSetTime dialogSetTime = new DialogSetTime();
+            dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
+            dialogSetTime.StartTime = StartTime;
+            dialogSetTime.EndTime = EndTime;
+            dialogSetTime.ShowDialog();
         }
     }
 }
