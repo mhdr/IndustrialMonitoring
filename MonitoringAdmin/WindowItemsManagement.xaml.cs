@@ -22,7 +22,7 @@ namespace MonitoringAdmin
     public partial class WindowItemsManagement : Window
     {
         private ProcessDataServiceClient _processDataServiceClient=new ProcessDataServiceClient();
-        private List<Items3> ItemsList=new List<Items3>(); 
+        private List<Items2> ItemsList=new List<Items2>(); 
 
         public WindowItemsManagement()
         {
@@ -44,7 +44,7 @@ namespace MonitoringAdmin
 
         private void BindListBoxItemsAsync()
         {
-            ItemsList = ProcessDataServiceClient.GetItems3();
+            ItemsList = ProcessDataServiceClient.GetItems2();
             Dispatcher.BeginInvoke(new Action(() => BindListBoxItemsUI()));
         }
 
