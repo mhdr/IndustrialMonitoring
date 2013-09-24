@@ -71,6 +71,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Lib\TabDataTemplateSelector.cs" />
+    <Compile Include="Service References\UsersServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="WindowEditItems.xaml.cs">
       <DependentUpon>WindowEditItems.xaml</DependentUpon>
     </Compile>
@@ -172,10 +178,10 @@
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.ItemsLogLatestAIOViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabsItemsViewModel.datasource">
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Tab1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabsViewModel.datasource">
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabsItemsViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringServiceLibrary.ViewModels.xsd">
@@ -194,6 +200,22 @@
     <None Include="Service References\ProcessDataServiceReference\System.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.Users2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.UserViewModel.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UsersServiceReference\MonitoringServiceLibrary.ViewModels.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UsersServiceReference\service.wsdl" />
+    <None Include="Service References\UsersServiceReference\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UsersServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -204,6 +226,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\DataCollectorServiceReference\" />
     <WCFMetadataStorage Include="Service References\ProcessDataServiceReference\" />
+    <WCFMetadataStorage Include="Service References\UsersServiceReference\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\DataCollectorServiceReference\configuration91.svcinfo" />
@@ -235,6 +258,19 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UsersServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UsersServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UsersServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

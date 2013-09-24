@@ -212,16 +212,19 @@
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.Items2.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.Items3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.ItemsLogLatestAIOViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel.datasource">
+    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.Tab1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel.datasource">
+    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringServiceLibrary.ViewModels.xsd">

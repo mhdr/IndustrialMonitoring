@@ -438,9 +438,70 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TabsViewModel", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Items3", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
     [System.SerializableAttribute()]
-    public partial class TabsViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Items3 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ItemIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ItemNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ItemId {
+            get {
+                return this.ItemIdField;
+            }
+            set {
+                if ((this.ItemIdField.Equals(value) != true)) {
+                    this.ItemIdField = value;
+                    this.RaisePropertyChanged("ItemId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ItemName {
+            get {
+                return this.ItemNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemNameField, value) != true)) {
+                    this.ItemNameField = value;
+                    this.RaisePropertyChanged("ItemName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tab1", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.SerializableAttribute()]
+    public partial class Tab1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -689,6 +750,12 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems2", ReplyAction="http://tempuri.org/IProcessDataService/GetItems2Response")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items2>> GetItems2Async();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems3", ReplyAction="http://tempuri.org/IProcessDataService/GetItems3Response")]
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items3> GetItems3();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems3", ReplyAction="http://tempuri.org/IProcessDataService/GetItems3Response")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items3>> GetItems3Async();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItem", ReplyAction="http://tempuri.org/IProcessDataService/GetItemResponse")]
         IndustrialMonitoring.ProcessDataServiceReference.Items1 GetItem(int itemId);
         
@@ -696,16 +763,16 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItemAsync(int itemId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabsAllResponse")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTabsAll();
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab1> GetTabsAll();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabsAllResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel>> GetTabsAllAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab1>> GetTabsAllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTab", ReplyAction="http://tempuri.org/IProcessDataService/GetTabResponse")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTab(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate);
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab1> GetTab(System.Func<IndustrialMonitoring.ProcessDataServiceReference.Tab1, bool> predicate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTab", ReplyAction="http://tempuri.org/IProcessDataService/GetTabResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel>> GetTabAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab1>> GetTabAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.Tab1, bool> predicate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabItemsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItemsAllResponse")]
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel> GetTabItemsAll();
@@ -801,6 +868,14 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             return base.Channel.GetItems2Async();
         }
         
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items3> GetItems3() {
+            return base.Channel.GetItems3();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items3>> GetItems3Async() {
+            return base.Channel.GetItems3Async();
+        }
+        
         public IndustrialMonitoring.ProcessDataServiceReference.Items1 GetItem(int itemId) {
             return base.Channel.GetItem(itemId);
         }
@@ -809,19 +884,19 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             return base.Channel.GetItemAsync(itemId);
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTabsAll() {
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab1> GetTabsAll() {
             return base.Channel.GetTabsAll();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel>> GetTabsAllAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab1>> GetTabsAllAsync() {
             return base.Channel.GetTabsAllAsync();
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel> GetTab(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate) {
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab1> GetTab(System.Func<IndustrialMonitoring.ProcessDataServiceReference.Tab1, bool> predicate) {
             return base.Channel.GetTab(predicate);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel>> GetTabAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsViewModel, bool> predicate) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab1>> GetTabAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.Tab1, bool> predicate) {
             return base.Channel.GetTabAsync(predicate);
         }
         

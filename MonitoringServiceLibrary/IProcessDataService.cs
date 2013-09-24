@@ -27,10 +27,10 @@ namespace MonitoringServiceLibrary
         Items1 GetItem(int itemId);
 
         [OperationContract(Name = "GetTabsAll")]
-        List<TabsViewModel> GetTabs();
+        List<Tab1> GetTabs();
 
         [OperationContract(Name = "GetTab")]
-        List<TabsViewModel> GetTabs(Func<TabsViewModel, bool> predicate);
+        List<Tab1> GetTabs(Func<Tab1, bool> predicate);
 
         [OperationContract(Name = "GetTabItemsAll")]
         List<TabsItemsViewModel> GetTabItems();
@@ -52,5 +52,8 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         bool EditItem2(Items2 item);
+
+        [OperationContract]
+        bool AddItemsToTab(string tabName, List<string> items);
     }
 }

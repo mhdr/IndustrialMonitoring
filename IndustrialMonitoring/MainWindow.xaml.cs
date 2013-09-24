@@ -113,7 +113,7 @@ namespace IndustrialMonitoring
             {
                 if (UserServiceClient.UserHaveItemInTab(Lib.Static.CurrentUser.UserId, tabsViewModel.TabId))
                 {
-                    TabsViewModel model = tabsViewModel;
+                    Tab1 model = tabsViewModel;
                     Dispatcher.BeginInvoke(new Action(() => GenerateTab(model)));   
                 }
             }
@@ -121,9 +121,9 @@ namespace IndustrialMonitoring
             Dispatcher.BeginInvoke(new Action(OnStartAsyncCompleted));
         }
 
-        private void GenerateTab(TabsViewModel tabsViewModel)
+        private void GenerateTab(Tab1 tabsViewModel)
         {
-            TabsViewModel model = tabsViewModel;
+            Tab1 model = tabsViewModel;
             var items = ProcessDataServiceClient.GetItemsForTab(model.TabId);
 
             RadTabItem radTabItem = new RadTabItem();

@@ -499,9 +499,9 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TabsViewModel", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tab1", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
     [System.SerializableAttribute()]
-    public partial class TabsViewModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Tab1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -763,16 +763,16 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
         System.Threading.Tasks.Task<MonitoringAdmin.ProcessDataServiceReference.Items1> GetItemAsync(int itemId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabsAllResponse")]
-        System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel> GetTabsAll();
+        System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Tab1> GetTabsAll();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabsAllResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel>> GetTabsAllAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Tab1>> GetTabsAllAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTab", ReplyAction="http://tempuri.org/IProcessDataService/GetTabResponse")]
-        System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel> GetTab(System.Func<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel, bool> predicate);
+        System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Tab1> GetTab(System.Func<MonitoringAdmin.ProcessDataServiceReference.Tab1, bool> predicate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTab", ReplyAction="http://tempuri.org/IProcessDataService/GetTabResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel>> GetTabAsync(System.Func<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel, bool> predicate);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Tab1>> GetTabAsync(System.Func<MonitoringAdmin.ProcessDataServiceReference.Tab1, bool> predicate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabItemsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItemsAllResponse")]
         System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabsItemsViewModel> GetTabItemsAll();
@@ -884,19 +884,19 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
             return base.Channel.GetItemAsync(itemId);
         }
         
-        public System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel> GetTabsAll() {
+        public System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Tab1> GetTabsAll() {
             return base.Channel.GetTabsAll();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel>> GetTabsAllAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Tab1>> GetTabsAllAsync() {
             return base.Channel.GetTabsAllAsync();
         }
         
-        public System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel> GetTab(System.Func<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel, bool> predicate) {
+        public System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Tab1> GetTab(System.Func<MonitoringAdmin.ProcessDataServiceReference.Tab1, bool> predicate) {
             return base.Channel.GetTab(predicate);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel>> GetTabAsync(System.Func<MonitoringAdmin.ProcessDataServiceReference.TabsViewModel, bool> predicate) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Tab1>> GetTabAsync(System.Func<MonitoringAdmin.ProcessDataServiceReference.Tab1, bool> predicate) {
             return base.Channel.GetTabAsync(predicate);
         }
         

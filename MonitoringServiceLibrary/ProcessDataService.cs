@@ -78,15 +78,15 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
-        public List<TabsViewModel> GetTabs()
+        public List<Tab1> GetTabs()
         {
-            List<TabsViewModel> result = new List<TabsViewModel>();
+            List<Tab1> result = new List<Tab1>();
             var Entities = new IndustrialMonitoringEntities();
             var tabs = Entities.Tabs;
 
             foreach (var tab in tabs)
             {
-                TabsViewModel current = new TabsViewModel(tab);
+                Tab1 current = new Tab1(tab);
 
                 result.Add(current);
             }
@@ -94,16 +94,16 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
-        public List<TabsViewModel> GetTabs(Func<TabsViewModel, bool> predicate)
+        public List<Tab1> GetTabs(Func<Tab1, bool> predicate)
         {
             var Entities = new IndustrialMonitoringEntities();
-            List<TabsViewModel> result = new List<TabsViewModel>();
+            List<Tab1> result = new List<Tab1>();
 
             var tabs = Entities.Tabs;
 
             foreach (var tab in tabs)
             {
-                TabsViewModel current = new TabsViewModel(tab);
+                Tab1 current = new Tab1(tab);
 
                 if (predicate(current))
                 {
@@ -343,6 +343,41 @@ namespace MonitoringServiceLibrary
 
 
             return false;
+        }
+
+        public bool AddItemsToTab(string tabName, List<string> items)
+        {
+            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+            bool success = false;
+
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                try
+                {
+                    Tab currenTab = entities.Tabs.FirstOrDefault(x => x.TabName == tabName);
+
+                    foreach (var item in items)
+                    {
+                        Item currentItem = entities.Items.FirstOrDefault(x => x.ItemName == item);
+                        TabsItem newTabsItem=new TabsItem();
+                        newTabsItem.ItemId = currentItem.ItemId;
+                        newTabsItem.TabId = currenTab.TabId;
+
+                        entities.TabsItems.Add(newTabsItem);
+                        entities.SaveChanges();
+                    }
+
+                    transaction.Complete();
+                    success = true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return success;
         }
     }
 }

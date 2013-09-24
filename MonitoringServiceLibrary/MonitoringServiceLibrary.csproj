@@ -119,7 +119,8 @@
     <Compile Include="ViewModels\ItemsLogChartHistoryViewModel.cs" />
     <Compile Include="ViewModels\ItemsLogLatestAIOViewModel.cs" />
     <Compile Include="ViewModels\TabsItemsViewModel.cs" />
-    <Compile Include="ViewModels\TabsViewModel.cs" />
+    <Compile Include="ViewModels\Tab1.cs" />
+    <Compile Include="ViewModels\Users2.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

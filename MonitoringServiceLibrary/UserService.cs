@@ -70,5 +70,21 @@ namespace MonitoringServiceLibrary
 
             return false;
         }
+
+        public List<Users2> GetUsers2()
+        {
+            IndustrialMonitoringEntities entities=new IndustrialMonitoringEntities();
+            var usersQuery = entities.Users;
+
+            List<Users2> result=new List<Users2>();
+
+            foreach (User user in usersQuery)
+            {
+                Users2 users2=new Users2(user);
+                result.Add(users2);
+            }
+
+            return result;
+        }
     }
 }
