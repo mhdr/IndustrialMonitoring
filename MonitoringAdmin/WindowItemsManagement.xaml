@@ -40,7 +40,7 @@
                     <telerik:RadTreeView Name="TreeViewTabs">
                         <telerik:RadTreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Items}">
-                                <TextBlock Text="{Binding ItemName}"/>
+                                <TextBlock Text="{Binding Item}"/>
                             </HierarchicalDataTemplate>
                         </telerik:RadTreeView.ItemTemplate>
                         <telerik:RadContextMenu.ContextMenu>

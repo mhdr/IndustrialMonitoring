@@ -738,10 +738,10 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Items2> ItemsField;
+        private string ItemField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MonitoringAdmin.ProcessDataServiceReference.Tab1 TabField;
+        private System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabItems2> ItemsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -754,7 +754,20 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.Items2> Items {
+        public string Item {
+            get {
+                return this.ItemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemField, value) != true)) {
+                    this.ItemField = value;
+                    this.RaisePropertyChanged("Item");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.TabItems2> Items {
             get {
                 return this.ItemsField;
             }
@@ -762,19 +775,6 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
                 if ((object.ReferenceEquals(this.ItemsField, value) != true)) {
                     this.ItemsField = value;
                     this.RaisePropertyChanged("Items");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public MonitoringAdmin.ProcessDataServiceReference.Tab1 Tab {
-            get {
-                return this.TabField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TabField, value) != true)) {
-                    this.TabField = value;
-                    this.RaisePropertyChanged("Tab");
                 }
             }
         }

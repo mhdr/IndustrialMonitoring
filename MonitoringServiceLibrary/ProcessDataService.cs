@@ -392,12 +392,12 @@ namespace MonitoringServiceLibrary
 
                 var items = Entities.TabsItems.Where(x => x.TabId == currentTab.TabId);
 
-                List<string> currentItems=new List<string>();
+                List<TabItems2> currentItems=new List<TabItems2>();
 
                 foreach (var tabsItem in items)
                 {
                     Items2 items2=new Items2(tabsItem.Item);
-                    currentItems.Add(items2.ItemName);
+                    currentItems.Add(new TabItems2(){Item = items2.ItemName});
                 }
 
                 result.Add(new TabItems2(){Item = currentTab.TabName,Items = currentItems});

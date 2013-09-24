@@ -14,7 +14,7 @@ namespace MonitoringServiceLibrary.ViewModels
         public string Item { get; set; }
 
         [DataMember]
-        public List<string> Items { get; set; } 
+        public List<TabItems2> Items { get; set; } 
 
     }
 }
