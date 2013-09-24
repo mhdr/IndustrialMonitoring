@@ -104,4 +104,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ItemsLogChartHistoryViewModel" nillable="true" type="tns:ItemsLogChartHistoryViewModel" />
+  <xs:complexType name="ArrayOfTabItems2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TabItems2" nillable="true" type="tns:TabItems2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTabItems2" nillable="true" type="tns:ArrayOfTabItems2" />
+  <xs:complexType name="TabItems2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfItems2" />
+      <xs:element minOccurs="0" name="Tab" nillable="true" type="tns:Tab1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TabItems2" nillable="true" type="tns:TabItems2" />
 </xs:schema>

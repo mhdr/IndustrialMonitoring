@@ -71,7 +71,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Lib\TabDataTemplateSelector.cs" />
     <Compile Include="Service References\UsersServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,6 +162,9 @@
     <None Include="Service References\DataCollectorServiceReference\SharedLibrary.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ProcessDataServiceReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Items1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -179,6 +181,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Tab1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabItems2.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabsItemsViewModel.datasource">
@@ -270,7 +275,9 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Lib\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

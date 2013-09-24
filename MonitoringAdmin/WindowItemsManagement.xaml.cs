@@ -29,8 +29,8 @@ namespace MonitoringAdmin
         private ProcessDataServiceClient _processDataServiceClient=new ProcessDataServiceClient();
         private UserServiceClient _userServiceClient=new UserServiceClient();
 
-        private List<Items2> ItemsList=new List<Items2>(); 
-        private List<Tab1> TabsList=new List<Tab1>(); 
+        private List<Items2> ItemsList=new List<Items2>();
+        private List<TabItems2> TabsItems = new List<TabItems2>(); 
 
         public WindowItemsManagement()
         {
@@ -101,13 +101,13 @@ namespace MonitoringAdmin
 
         private void BindTreeViewTabsAsync()
         {
-            TabsList = ProcessDataServiceClient.GetTabsAll();
+            TabsItems = ProcessDataServiceClient.GetTabItems2();
             Dispatcher.BeginInvoke(new Action(() => BindTreeViewTabsUI()));
         }
 
         private void BindTreeViewTabsUI()
         {
-            TreeViewTabs.ItemsSource = TabsList;
+            TreeViewTabs.ItemsSource = TabsItems;
             BusyIndicatorTabs.IsBusy = false;
         }
 

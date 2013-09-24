@@ -18,6 +18,7 @@
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
+        
     </Window.Resources>
     <Grid>
         <Grid>
@@ -37,6 +38,11 @@
 
                 <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorTabs" IsIndeterminate="True">
                     <telerik:RadTreeView Name="TreeViewTabs">
+                        <telerik:RadTreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Items}">
+                                <TextBlock Text="{Binding ItemName}"/>
+                            </HierarchicalDataTemplate>
+                        </telerik:RadTreeView.ItemTemplate>
                         <telerik:RadContextMenu.ContextMenu>
                             <telerik:RadContextMenu>
                                 <telerik:RadMenuItem Header="Add Items" Name="MenuItemAddItemsToTab" Click="MenuItemAddItemsToTab_OnClick"/>
