@@ -19,12 +19,12 @@
             </StackPanel>
         </DataTemplate>
 
-        <DataTemplate x:Key="Tab">
-            <TextBlock Text="{Binding TabName}" />
+        <DataTemplate x:Key="TabItems">
+            <TextBlock Text="{Binding ItemName}" />
         </DataTemplate>
-        <HierarchicalDataTemplate x:Key="TabItems" ItemTemplate="{StaticResource Tab}"
+        <HierarchicalDataTemplate x:Key="TabItemsDataTemplate" ItemTemplate="{StaticResource TabItems}"
            ItemsSource="{Binding Items}">
-            <TextBlock Text="{Binding ItemName}"/>
+            <TextBlock Text="{Binding TabName}"/>
         </HierarchicalDataTemplate>
 
     </Window.Resources>
@@ -51,7 +51,7 @@
                     <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Tabs</TextBlock>
 
                     <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorTabs" IsIndeterminate="True">
-                        <telerik:RadTreeView Name="TreeViewTabs" ItemTemplate="{StaticResource TabItems}">
+                        <telerik:RadTreeView Name="TreeViewTabs" ItemTemplate="{StaticResource TabItemsDataTemplate}">
                             <telerik:RadContextMenu.ContextMenu>
                                 <telerik:RadContextMenu Name="ContextMenuTreeViewTabs">
                                     <telerik:RadMenuItem Header="Add Items to Tab" Name="MenuItemAddItemsToTab" Click="MenuItemAddItemsToTab_OnClick"/>
