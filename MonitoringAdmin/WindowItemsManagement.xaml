@@ -19,9 +19,13 @@
             </StackPanel>
         </DataTemplate>
 
-        <Style x:Key="ItemContainerStyle" TargetType="telerik:RadTreeViewItem">
-            <Setter Property="IsExpanded" Value="True"/>
-        </Style>
+        <DataTemplate x:Key="Tab">
+            <TextBlock Text="{Binding TabName}" />
+        </DataTemplate>
+        <HierarchicalDataTemplate x:Key="TabItems" ItemTemplate="{StaticResource Tab}"
+           ItemsSource="{Binding Items}">
+            <TextBlock Text="{Binding ItemName}"/>
+        </HierarchicalDataTemplate>
 
     </Window.Resources>
     <Grid>
@@ -47,14 +51,9 @@
                     <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Tabs</TextBlock>
 
                     <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorTabs" IsIndeterminate="True">
-                        <telerik:RadTreeView Name="TreeViewTabs" ItemContainerStyle="{StaticResource ItemContainerStyle}">
-                            <telerik:RadTreeView.ItemTemplate>
-                                <HierarchicalDataTemplate ItemsSource="{Binding Items}">
-                                    <TextBlock Text="{Binding Item}"/>
-                                </HierarchicalDataTemplate>
-                            </telerik:RadTreeView.ItemTemplate>
+                        <telerik:RadTreeView Name="TreeViewTabs" ItemTemplate="{StaticResource TabItems}">
                             <telerik:RadContextMenu.ContextMenu>
-                                <telerik:RadContextMenu Name="ContextMenuTreeViewTabs" Opening="ContextMenuTreeViewTabs_OnOpening">
+                                <telerik:RadContextMenu Name="ContextMenuTreeViewTabs">
                                     <telerik:RadMenuItem Header="Add Items to Tab" Name="MenuItemAddItemsToTab" Click="MenuItemAddItemsToTab_OnClick"/>
                                 </telerik:RadContextMenu>
                             </telerik:RadContextMenu.ContextMenu>

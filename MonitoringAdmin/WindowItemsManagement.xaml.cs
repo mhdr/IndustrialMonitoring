@@ -30,7 +30,7 @@ namespace MonitoringAdmin
         private UserServiceClient _userServiceClient=new UserServiceClient();
 
         private List<Items2> ItemsList=new List<Items2>();
-        private List<TabItems2> TabsItems = new List<TabItems2>();
+        private List<Tab2> TabsItems = new List<Tab2>();
 
         public WindowItemsManagement()
         {
@@ -118,20 +118,6 @@ namespace MonitoringAdmin
             BindTreeViewTabs();
         }
 
-        private void MenuItemAddItemsToTab_OnClick(object sender, RadRoutedEventArgs e)
-        {
-            List<string> selectedItems=new List<string>();
-
-            foreach (var selectedItem in ListBoxItems.SelectedItems)
-            {
-                selectedItems.Add(((Items2) selectedItem).ItemName);
-            }
-
-            TabItems2 selectedTab = (TabItems2) TreeViewTabs.SelectedItem;
-
-            AddItemsToTab(selectedTab.Item,selectedItems);
-        }
-
         private void AddItemsToTab(string selectedTabName, List<string> selectedItems)
         {
             Thread thread=new Thread(()=>AddItemsToTabAsync(selectedTabName,selectedItems));
@@ -161,34 +147,10 @@ namespace MonitoringAdmin
             StatusBarBottom.Items.Clear();
         }
 
-        private void ContextMenuTreeViewTabs_OnOpening(object sender, RadRoutedEventArgs e)
+
+        private void MenuItemAddItemsToTab_OnClick(object sender, RadRoutedEventArgs e)
         {
-            List<string> selectedItems = new List<string>();
-
-            foreach (var selectedItem in ListBoxItems.SelectedItems)
-            {
-                selectedItems.Add(((Items2)selectedItem).ItemName);
-            }
-
-            if (selectedItems.Count == 0)
-            {
-                e.Handled = true;
-                return;
-            }
-
-            TabItems2 selectedTab = (TabItems2)TreeViewTabs.SelectedItem;
-
-            if (selectedTab == null)
-            {
-                e.Handled = true;
-                return;
-            }
-
-            if (selectedTab.Items == null)
-            {
-                e.Handled = true;
-            }
+            throw new NotImplementedException();
         }
-        
     }
 }

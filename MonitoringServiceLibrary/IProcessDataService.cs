@@ -57,6 +57,6 @@ namespace MonitoringServiceLibrary
         bool AddItemsToTab(string tabName, List<string> items);
 
         [OperationContract]
-        List<TabItems2> GetTabItems2();
+        List<Tab2> GetTabItems2();
     }
 }
