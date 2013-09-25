@@ -30,7 +30,7 @@ namespace MonitoringAdmin
         private UserServiceClient _userServiceClient=new UserServiceClient();
 
         private List<Items2> ItemsList=new List<Items2>();
-        private List<TabItems2> TabsItems = new List<TabItems2>(); 
+        private List<TabItems2> TabsItems = new List<TabItems2>();
 
         public WindowItemsManagement()
         {
@@ -127,9 +127,68 @@ namespace MonitoringAdmin
                 selectedItems.Add(((Items2) selectedItem).ItemName);
             }
 
-            string selectedTab = TreeViewTabs.SelectedItem.ToString();
+            TabItems2 selectedTab = (TabItems2) TreeViewTabs.SelectedItem;
 
-
+            AddItemsToTab(selectedTab.Item,selectedItems);
         }
+
+        private void AddItemsToTab(string selectedTabName, List<string> selectedItems)
+        {
+            Thread thread=new Thread(()=>AddItemsToTabAsync(selectedTabName,selectedItems));
+            thread.Start();
+        }
+
+        private void AddItemsToTabAsync(string selectedTabName, List<string> selectedItems)
+        {
+            ProcessDataServiceClient.AddItemsToTab(selectedTabName, selectedItems);
+            Dispatcher.BeginInvoke(new Action(BindTreeViewTabs));
+        }
+
+        private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ClearStatusBar();
+        }
+
+        private void ShowMsgOnStatusBar(string msg)
+        {
+            ClearStatusBar();
+
+            StatusBarBottom.Items.Add(msg);
+        }
+
+        private void ClearStatusBar()
+        {
+            StatusBarBottom.Items.Clear();
+        }
+
+        private void ContextMenuTreeViewTabs_OnOpening(object sender, RadRoutedEventArgs e)
+        {
+            List<string> selectedItems = new List<string>();
+
+            foreach (var selectedItem in ListBoxItems.SelectedItems)
+            {
+                selectedItems.Add(((Items2)selectedItem).ItemName);
+            }
+
+            if (selectedItems.Count == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            TabItems2 selectedTab = (TabItems2)TreeViewTabs.SelectedItem;
+
+            if (selectedTab == null)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (selectedTab.Items == null)
+            {
+                e.Handled = true;
+            }
+        }
+        
     }
 }

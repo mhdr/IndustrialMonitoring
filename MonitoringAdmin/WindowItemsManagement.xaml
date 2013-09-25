@@ -18,70 +18,84 @@
                 </StackPanel>
             </StackPanel>
         </DataTemplate>
-        
+
+        <Style x:Key="ItemContainerStyle" TargetType="telerik:RadTreeViewItem">
+            <Setter Property="IsExpanded" Value="True"/>
+        </Style>
+
     </Window.Resources>
     <Grid>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Tabs</TextBlock>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorTabs" IsIndeterminate="True">
-                    <telerik:RadTreeView Name="TreeViewTabs">
-                        <telerik:RadTreeView.ItemTemplate>
-                            <HierarchicalDataTemplate ItemsSource="{Binding Items}">
-                                <TextBlock Text="{Binding Item}"/>
-                            </HierarchicalDataTemplate>
-                        </telerik:RadTreeView.ItemTemplate>
-                        <telerik:RadContextMenu.ContextMenu>
-                            <telerik:RadContextMenu>
-                                <telerik:RadMenuItem Header="Add Items" Name="MenuItemAddItemsToTab" Click="MenuItemAddItemsToTab_OnClick"/>
-                            </telerik:RadContextMenu>
-                        </telerik:RadContextMenu.ContextMenu>
-                    </telerik:RadTreeView>
-                </telerik:RadBusyIndicator>
-            </Grid>
+                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Tabs</TextBlock>
 
-
-
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Users</TextBlock>
-
-                <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorUsers" IsIndeterminate="True">
-                    <telerik:RadTreeView Name="TreeViewUsers"/>
-                </telerik:RadBusyIndicator>
-            </Grid>
+                    <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorTabs" IsIndeterminate="True">
+                        <telerik:RadTreeView Name="TreeViewTabs" ItemContainerStyle="{StaticResource ItemContainerStyle}">
+                            <telerik:RadTreeView.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding Items}">
+                                    <TextBlock Text="{Binding Item}"/>
+                                </HierarchicalDataTemplate>
+                            </telerik:RadTreeView.ItemTemplate>
+                            <telerik:RadContextMenu.ContextMenu>
+                                <telerik:RadContextMenu Name="ContextMenuTreeViewTabs" Opening="ContextMenuTreeViewTabs_OnOpening">
+                                    <telerik:RadMenuItem Header="Add Items to Tab" Name="MenuItemAddItemsToTab" Click="MenuItemAddItemsToTab_OnClick"/>
+                                </telerik:RadContextMenu>
+                            </telerik:RadContextMenu.ContextMenu>
+                        </telerik:RadTreeView>
+                    </telerik:RadBusyIndicator>
+                </Grid>
 
 
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
 
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Items</TextBlock>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorItems" IsIndeterminate="True">
-                    <telerik:RadListBox Name="ListBoxItems" ItemTemplate="{StaticResource DataTemplateListBoxItems}"
+                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Users</TextBlock>
+
+                    <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorUsers" IsIndeterminate="True">
+                        <telerik:RadTreeView Name="TreeViewUsers"/>
+                    </telerik:RadBusyIndicator>
+                </Grid>
+
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Items</TextBlock>
+
+                    <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorItems" IsIndeterminate="True">
+                        <telerik:RadListBox Name="ListBoxItems" ItemTemplate="{StaticResource DataTemplateListBoxItems}"
                                         SelectionMode="Extended"/>
-                </telerik:RadBusyIndicator>
+                    </telerik:RadBusyIndicator>
+                </Grid>
+
             </Grid>
 
+            <StatusBar Name="StatusBarBottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
+                   MouseDoubleClick="StatusBarBottom_OnMouseDoubleClick" FontWeight="Bold"/>
         </Grid>
     </Grid>
 </Window>
