@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MonitoringServiceLibrary.ViewModels
 {
     [DataContract]
-    public class Items3
+    public class Item3
     {
         [DataMember]
         public int ItemId { get; set; }
@@ -16,7 +16,7 @@ namespace MonitoringServiceLibrary.ViewModels
         [DataMember]
         public string ItemName { get; set; }
 
-        public Items3(Item item)
+        public Item3(Item item)
         {
             this.ItemId = item.ItemId;
             this.ItemName = item.ItemName;

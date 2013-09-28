@@ -17,13 +17,13 @@ namespace MonitoringServiceLibrary.ViewModels
         public string TabName { get; set; }
 
         [DataMember]
-        List<Items2> Items { get; set; } 
+        List<Item3> Items { get; set; } 
 
-        public Tab2(Tab tab,List<Items2> items2)
+        public Tab2(Tab tab,List<Item3> items)
         {
             this.TabId = tab.TabId;
             this.TabName = tab.TabName;
-            this.Items = items2;
+            this.Items = items;
         }
     }
 }

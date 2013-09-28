@@ -28,5 +28,8 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         List<Users2> GetUsers2();
+
+        [OperationContract]
+        List<User3> GetUsers3();
     }
 }

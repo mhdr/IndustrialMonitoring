@@ -108,9 +108,9 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Items1", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Item1", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
     [System.SerializableAttribute()]
-    public partial class Items1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Item1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -201,9 +201,9 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Items2", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Item2", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
     [System.SerializableAttribute()]
-    public partial class Items2 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Item2 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -438,9 +438,9 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Items3", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Item3", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
     [System.SerializableAttribute()]
-    public partial class Items3 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Item3 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -728,6 +728,83 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tab2", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.SerializableAttribute()]
+    public partial class Tab2 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item3> ItemsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TabIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TabNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item3> Items {
+            get {
+                return this.ItemsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemsField, value) != true)) {
+                    this.ItemsField = value;
+                    this.RaisePropertyChanged("Items");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TabId {
+            get {
+                return this.TabIdField;
+            }
+            set {
+                if ((this.TabIdField.Equals(value) != true)) {
+                    this.TabIdField = value;
+                    this.RaisePropertyChanged("TabId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TabName {
+            get {
+                return this.TabNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TabNameField, value) != true)) {
+                    this.TabNameField = value;
+                    this.RaisePropertyChanged("TabName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProcessDataServiceReference.IProcessDataService")]
     public interface IProcessDataService {
@@ -739,28 +816,28 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogLatestAIOViewModel> GeItemsLogLatestAsync(int itemId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsResponse")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItems();
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item1> GetItems();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1>> GetItemsAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item1>> GetItemsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems2", ReplyAction="http://tempuri.org/IProcessDataService/GetItems2Response")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items2> GetItems2();
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item2> GetItems2();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems2", ReplyAction="http://tempuri.org/IProcessDataService/GetItems2Response")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items2>> GetItems2Async();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item2>> GetItems2Async();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems3", ReplyAction="http://tempuri.org/IProcessDataService/GetItems3Response")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items3> GetItems3();
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item3> GetItems3();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItems3", ReplyAction="http://tempuri.org/IProcessDataService/GetItems3Response")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items3>> GetItems3Async();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item3>> GetItems3Async();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItem", ReplyAction="http://tempuri.org/IProcessDataService/GetItemResponse")]
-        IndustrialMonitoring.ProcessDataServiceReference.Items1 GetItem(int itemId);
+        IndustrialMonitoring.ProcessDataServiceReference.Item1 GetItem(int itemId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItem", ReplyAction="http://tempuri.org/IProcessDataService/GetItemResponse")]
-        System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItemAsync(int itemId);
+        System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.Item1> GetItemAsync(int itemId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabsAll", ReplyAction="http://tempuri.org/IProcessDataService/GetTabsAllResponse")]
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab1> GetTabsAll();
@@ -787,10 +864,10 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel>> GetTabItemsAsync(System.Func<IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel, bool> predicate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemsForTab", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsForTabResponse")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItemsForTab(int tabId);
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item1> GetItemsForTab(int tabId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemsForTab", ReplyAction="http://tempuri.org/IProcessDataService/GetItemsForTabResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1>> GetItemsForTabAsync(int tabId);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item1>> GetItemsForTabAsync(int tabId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemLogs", ReplyAction="http://tempuri.org/IProcessDataService/GetItemLogsResponse")]
         System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel> GetItemLogs(int itemId, System.DateTime startDate, System.DateTime endDate);
@@ -799,10 +876,10 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.ItemsLogChartHistoryViewModel>> GetItemLogsAsync(int itemId, System.DateTime startDate, System.DateTime endDate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/AddItem2", ReplyAction="http://tempuri.org/IProcessDataService/AddItem2Response")]
-        bool AddItem2(IndustrialMonitoring.ProcessDataServiceReference.Items2 item);
+        bool AddItem2(IndustrialMonitoring.ProcessDataServiceReference.Item2 item);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/AddItem2", ReplyAction="http://tempuri.org/IProcessDataService/AddItem2Response")]
-        System.Threading.Tasks.Task<bool> AddItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Items2 item);
+        System.Threading.Tasks.Task<bool> AddItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Item2 item);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/DeleteItem", ReplyAction="http://tempuri.org/IProcessDataService/DeleteItemResponse")]
         bool DeleteItem(int itemId);
@@ -811,10 +888,22 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         System.Threading.Tasks.Task<bool> DeleteItemAsync(int itemId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/EditItem2", ReplyAction="http://tempuri.org/IProcessDataService/EditItem2Response")]
-        bool EditItem2(IndustrialMonitoring.ProcessDataServiceReference.Items2 item);
+        bool EditItem2(IndustrialMonitoring.ProcessDataServiceReference.Item2 item);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/EditItem2", ReplyAction="http://tempuri.org/IProcessDataService/EditItem2Response")]
-        System.Threading.Tasks.Task<bool> EditItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Items2 item);
+        System.Threading.Tasks.Task<bool> EditItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Item2 item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/AddItemsToTab", ReplyAction="http://tempuri.org/IProcessDataService/AddItemsToTabResponse")]
+        bool AddItemsToTab(string tabName, System.Collections.Generic.List<string> items);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/AddItemsToTab", ReplyAction="http://tempuri.org/IProcessDataService/AddItemsToTabResponse")]
+        System.Threading.Tasks.Task<bool> AddItemsToTabAsync(string tabName, System.Collections.Generic.List<string> items);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabItems2", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItems2Response")]
+        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab2> GetTabItems2();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabItems2", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItems2Response")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab2>> GetTabItems2Async();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -852,35 +941,35 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             return base.Channel.GeItemsLogLatestAsync(itemId);
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItems() {
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item1> GetItems() {
             return base.Channel.GetItems();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1>> GetItemsAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item1>> GetItemsAsync() {
             return base.Channel.GetItemsAsync();
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items2> GetItems2() {
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item2> GetItems2() {
             return base.Channel.GetItems2();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items2>> GetItems2Async() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item2>> GetItems2Async() {
             return base.Channel.GetItems2Async();
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items3> GetItems3() {
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item3> GetItems3() {
             return base.Channel.GetItems3();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items3>> GetItems3Async() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item3>> GetItems3Async() {
             return base.Channel.GetItems3Async();
         }
         
-        public IndustrialMonitoring.ProcessDataServiceReference.Items1 GetItem(int itemId) {
+        public IndustrialMonitoring.ProcessDataServiceReference.Item1 GetItem(int itemId) {
             return base.Channel.GetItem(itemId);
         }
         
-        public System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItemAsync(int itemId) {
+        public System.Threading.Tasks.Task<IndustrialMonitoring.ProcessDataServiceReference.Item1> GetItemAsync(int itemId) {
             return base.Channel.GetItemAsync(itemId);
         }
         
@@ -916,11 +1005,11 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             return base.Channel.GetTabItemsAsync(predicate);
         }
         
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1> GetItemsForTab(int tabId) {
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item1> GetItemsForTab(int tabId) {
             return base.Channel.GetItemsForTab(tabId);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Items1>> GetItemsForTabAsync(int tabId) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item1>> GetItemsForTabAsync(int tabId) {
             return base.Channel.GetItemsForTabAsync(tabId);
         }
         
@@ -932,11 +1021,11 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             return base.Channel.GetItemLogsAsync(itemId, startDate, endDate);
         }
         
-        public bool AddItem2(IndustrialMonitoring.ProcessDataServiceReference.Items2 item) {
+        public bool AddItem2(IndustrialMonitoring.ProcessDataServiceReference.Item2 item) {
             return base.Channel.AddItem2(item);
         }
         
-        public System.Threading.Tasks.Task<bool> AddItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Items2 item) {
+        public System.Threading.Tasks.Task<bool> AddItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Item2 item) {
             return base.Channel.AddItem2Async(item);
         }
         
@@ -948,12 +1037,28 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
             return base.Channel.DeleteItemAsync(itemId);
         }
         
-        public bool EditItem2(IndustrialMonitoring.ProcessDataServiceReference.Items2 item) {
+        public bool EditItem2(IndustrialMonitoring.ProcessDataServiceReference.Item2 item) {
             return base.Channel.EditItem2(item);
         }
         
-        public System.Threading.Tasks.Task<bool> EditItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Items2 item) {
+        public System.Threading.Tasks.Task<bool> EditItem2Async(IndustrialMonitoring.ProcessDataServiceReference.Item2 item) {
             return base.Channel.EditItem2Async(item);
+        }
+        
+        public bool AddItemsToTab(string tabName, System.Collections.Generic.List<string> items) {
+            return base.Channel.AddItemsToTab(tabName, items);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddItemsToTabAsync(string tabName, System.Collections.Generic.List<string> items) {
+            return base.Channel.AddItemsToTabAsync(tabName, items);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab2> GetTabItems2() {
+            return base.Channel.GetTabItems2();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab2>> GetTabItems2Async() {
+            return base.Channel.GetTabItems2Async();
         }
     }
 }

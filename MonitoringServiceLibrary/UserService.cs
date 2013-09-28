@@ -86,5 +86,31 @@ namespace MonitoringServiceLibrary
 
             return result;
         }
+
+        public List<User3> GetUsers3()
+        {
+            List<User3> result = new List<User3>();
+            var Entities = new IndustrialMonitoringEntities();
+            var users = Entities.Users;
+
+            foreach (var user in users)
+            {
+                User user1 = user;
+                var items = Entities.UsersItemsPermissions.Where(x => x.UserId == user1.UserId);
+
+                List<Item3> currentItems = new List<Item3>();
+
+                foreach (var userItem in items)
+                {
+                    currentItems.Add(new Item3(userItem.Item));
+                }
+
+                User3 currentUser = new User3(user, currentItems);
+
+                result.Add(currentUser);
+            }
+
+            return result;
+        }
     }
 }

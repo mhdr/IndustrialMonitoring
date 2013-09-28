@@ -77,7 +77,7 @@ namespace MonitoringAdmin
 
         public void AddItemAsync()
         {
-            Items2 item=new Items2();
+            Item2 item=new Item2();
             item.ItemName = TextBoxItemName.Text;
             ItemType itemType = ItemType.Unknown;
 
@@ -132,7 +132,7 @@ namespace MonitoringAdmin
             t1.Start();
         }
 
-        private void AddItem(Items2 item)
+        private void AddItem(Item2 item)
         {
             serverStatusBeforeAction = ProxyDataCollectorServiceClient.GetServerStatus();
 

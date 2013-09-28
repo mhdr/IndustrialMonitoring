@@ -165,13 +165,13 @@
     <None Include="Service References\ProcessDataServiceReference\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Items1.datasource">
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Item1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Items2.datasource">
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Item2.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Items3.datasource">
+    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Item3.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.ItemsLogChartHistoryViewModel.datasource">
@@ -204,6 +204,9 @@
     </None>
     <None Include="Service References\ProcessDataServiceReference\System.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.User3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.Users2.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

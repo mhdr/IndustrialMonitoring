@@ -113,14 +113,15 @@
     <Compile Include="UsersItemsPermission.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Items2.cs" />
-    <Compile Include="ViewModels\Items1.cs" />
-    <Compile Include="ViewModels\Items3.cs" />
+    <Compile Include="ViewModels\Item2.cs" />
+    <Compile Include="ViewModels\Item1.cs" />
+    <Compile Include="ViewModels\Item3.cs" />
     <Compile Include="ViewModels\ItemsLogChartHistoryViewModel.cs" />
     <Compile Include="ViewModels\ItemsLogLatestAIOViewModel.cs" />
     <Compile Include="ViewModels\Tab2.cs" />
     <Compile Include="ViewModels\TabsItemsViewModel.cs" />
     <Compile Include="ViewModels\Tab1.cs" />
+    <Compile Include="ViewModels\User3.cs" />
     <Compile Include="ViewModels\Users2.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>

@@ -9,7 +9,7 @@ using SharedLibrary;
 namespace MonitoringServiceLibrary.ViewModels
 {
     [DataContract]
-    public class Items2
+    public class Item2
     {
         [DataMember]
         public int ItemId { get; set; }
@@ -50,7 +50,7 @@ namespace MonitoringServiceLibrary.ViewModels
         [DataMember]
         public string SaveInItemsLogLastWhenString { get; set; }
 
-        public Items2(Item item)
+        public Item2(Item item)
         {
             this.ItemId = item.ItemId;
             this.ItemName = item.ItemName;

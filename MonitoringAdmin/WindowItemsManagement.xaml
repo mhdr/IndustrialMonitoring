@@ -24,9 +24,23 @@
         </DataTemplate>
         <HierarchicalDataTemplate x:Key="TabItemsDataTemplate" ItemTemplate="{StaticResource TabItems}"
            ItemsSource="{Binding Items}">
-            <TextBlock Text="{Binding TabName}"/>
+            <TextBlock Text="{Binding TabName}" FontWeight="Bold"/>
         </HierarchicalDataTemplate>
 
+        <DataTemplate x:Key="UserItems">
+            <TextBlock Text="{Binding ItemName}" />
+        </DataTemplate>
+        <HierarchicalDataTemplate x:Key="UserItemsDataTemplate" ItemTemplate="{StaticResource UserItems}"
+           ItemsSource="{Binding Items}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding UserName}" FontWeight="Bold"/>
+                <TextBlock Text=" ("/>
+                <TextBlock Text="{Binding FirstName}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{Binding LastName}"/>
+                <TextBlock Text=")"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
     </Window.Resources>
     <Grid>
         <Grid>
@@ -61,23 +75,26 @@
                     </telerik:RadBusyIndicator>
                 </Grid>
 
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
 
+                        <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Users</TextBlock>
 
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                        <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorUsers" IsIndeterminate="True">
+                            <telerik:RadTreeView Name="TreeViewUsers" ItemTemplate="{StaticResource UserItemsDataTemplate}">
+                                <telerik:RadContextMenu.ContextMenu>
+                                    <telerik:RadContextMenu Name="ContextMenuTreeViewUsers">
+                                        <telerik:RadMenuItem Header="Add Items to User" Name="MenuItemAddItemsToUser" Click="MenuItemAddItemsToUser_OnClick"/>
+                                    </telerik:RadContextMenu>
+                                </telerik:RadContextMenu.ContextMenu>
+                            </telerik:RadTreeView>
+                        </telerik:RadBusyIndicator>
+                    </Grid>
 
-                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Users</TextBlock>
-
-                    <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorUsers" IsIndeterminate="True">
-                        <telerik:RadTreeView Name="TreeViewUsers"/>
-                    </telerik:RadBusyIndicator>
-                </Grid>
-
-
-                <Grid Grid.Column="2">
+                    <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>

@@ -73,11 +73,11 @@ namespace MonitoringAdmin
 
         private void BindGrid()
         {
-            List<Items2> items = ProxyProcessDataServiceClient.GetItems2();
+            List<Item2> items = ProxyProcessDataServiceClient.GetItems2();
             Dispatcher.BeginInvoke(new Action(() => BindGridUI(items)));
         }
 
-        private void BindGridUI(List<Items2> items)
+        private void BindGridUI(List<Item2> items)
         {
             GridView.ItemsSource = items;
             BusyIndicator.IsBusy = false;
@@ -158,7 +158,7 @@ namespace MonitoringAdmin
 
         private void MenuItemEdit_OnClick(object sender, RadRoutedEventArgs e)
         {
-            Items2 currentItem = (Items2)GridView.SelectedItem;
+            Item2 currentItem = (Item2)GridView.SelectedItem;
 
             if (currentItem == null)
             {
@@ -175,7 +175,7 @@ namespace MonitoringAdmin
 
         private void MenuItemDelete_OnClick(object sender, RadRoutedEventArgs e)
         {
-            Items2 currentItem = (Items2)GridView.SelectedItem;
+            Item2 currentItem = (Item2)GridView.SelectedItem;
 
             if (currentItem == null)
             {

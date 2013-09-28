@@ -10,13 +10,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ItemsLogLatestAIOViewModel" nillable="true" type="tns:ItemsLogLatestAIOViewModel" />
-  <xs:complexType name="ArrayOfItems1">
+  <xs:complexType name="ArrayOfItem1">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Items1" nillable="true" type="tns:Items1" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item1" nillable="true" type="tns:Item1" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfItems1" nillable="true" type="tns:ArrayOfItems1" />
-  <xs:complexType name="Items1">
+  <xs:element name="ArrayOfItem1" nillable="true" type="tns:ArrayOfItem1" />
+  <xs:complexType name="Item1">
     <xs:sequence>
       <xs:element minOccurs="0" name="ItemId" type="xs:int" />
       <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
@@ -24,14 +24,14 @@
       <xs:element minOccurs="0" name="ShowInUITimeInterval" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Items1" nillable="true" type="tns:Items1" />
-  <xs:complexType name="ArrayOfItems2">
+  <xs:element name="Item1" nillable="true" type="tns:Item1" />
+  <xs:complexType name="ArrayOfItem2">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Items2" nillable="true" type="tns:Items2" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item2" nillable="true" type="tns:Item2" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfItems2" nillable="true" type="tns:ArrayOfItems2" />
-  <xs:complexType name="Items2">
+  <xs:element name="ArrayOfItem2" nillable="true" type="tns:ArrayOfItem2" />
+  <xs:complexType name="Item2">
     <xs:sequence>
       <xs:element minOccurs="0" name="ItemId" type="xs:int" />
       <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
@@ -48,20 +48,20 @@
       <xs:element minOccurs="0" name="ShowInUITimeInterval" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Items2" nillable="true" type="tns:Items2" />
-  <xs:complexType name="ArrayOfItems3">
+  <xs:element name="Item2" nillable="true" type="tns:Item2" />
+  <xs:complexType name="ArrayOfItem3">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Items3" nillable="true" type="tns:Items3" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item3" nillable="true" type="tns:Item3" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfItems3" nillable="true" type="tns:ArrayOfItems3" />
-  <xs:complexType name="Items3">
+  <xs:element name="ArrayOfItem3" nillable="true" type="tns:ArrayOfItem3" />
+  <xs:complexType name="Item3">
     <xs:sequence>
       <xs:element minOccurs="0" name="ItemId" type="xs:int" />
       <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Items3" nillable="true" type="tns:Items3" />
+  <xs:element name="Item3" nillable="true" type="tns:Item3" />
   <xs:complexType name="ArrayOfTab1">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Tab1" nillable="true" type="tns:Tab1" />
@@ -104,4 +104,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ItemsLogChartHistoryViewModel" nillable="true" type="tns:ItemsLogChartHistoryViewModel" />
+  <xs:complexType name="ArrayOfTab2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tab2" nillable="true" type="tns:Tab2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTab2" nillable="true" type="tns:ArrayOfTab2" />
+  <xs:complexType name="Tab2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfItem3" />
+      <xs:element minOccurs="0" name="TabId" type="xs:int" />
+      <xs:element minOccurs="0" name="TabName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tab2" nillable="true" type="tns:Tab2" />
 </xs:schema>

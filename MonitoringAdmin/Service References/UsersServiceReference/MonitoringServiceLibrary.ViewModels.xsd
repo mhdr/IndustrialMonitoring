@@ -23,4 +23,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Users2" nillable="true" type="tns:Users2" />
+  <xs:complexType name="ArrayOfUser3">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User3" nillable="true" type="tns:User3" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser3" nillable="true" type="tns:ArrayOfUser3" />
+  <xs:complexType name="User3">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfItem3" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User3" nillable="true" type="tns:User3" />
+  <xs:complexType name="ArrayOfItem3">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item3" nillable="true" type="tns:Item3" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItem3" nillable="true" type="tns:ArrayOfItem3" />
+  <xs:complexType name="Item3">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Item3" nillable="true" type="tns:Item3" />
 </xs:schema>

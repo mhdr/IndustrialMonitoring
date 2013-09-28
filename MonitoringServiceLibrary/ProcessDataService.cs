@@ -27,53 +27,53 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
-        public List<Items1> GetItems()
+        public List<Item1> GetItems()
         {
-            List<Items1> result = new List<Items1>();
+            List<Item1> result = new List<Item1>();
             var Entities = new IndustrialMonitoringEntities();
             var items = Entities.Items;
 
             foreach (var item in items)
             {
-                result.Add(new Items1(item));
+                result.Add(new Item1(item));
             }
 
             return result;
         }
 
-        public List<Items2> GetItems2()
+        public List<Item2> GetItems2()
         {
-            List<Items2> result = new List<Items2>();
+            List<Item2> result = new List<Item2>();
             var Entities = new IndustrialMonitoringEntities();
             var items = Entities.Items;
 
             foreach (var item in items)
             {
-                result.Add(new Items2(item));
+                result.Add(new Item2(item));
             }
 
             return result;
         }
 
-        public List<Items3> GetItems3()
+        public List<Item3> GetItems3()
         {
-            List<Items3> result = new List<Items3>();
+            List<Item3> result = new List<Item3>();
             var Entities = new IndustrialMonitoringEntities();
             var items = Entities.Items;
 
             foreach (var item in items)
             {
-                result.Add(new Items3(item));
+                result.Add(new Item3(item));
             }
 
             return result;
         }
 
-        public Items1 GetItem(int itemId)
+        public Item1 GetItem(int itemId)
         {
             var Entities = new IndustrialMonitoringEntities();
             var item = Entities.Items.FirstOrDefault(x => x.ItemId == itemId);
-            Items1 result = new Items1(item);
+            Item1 result = new Item1(item);
 
             return result;
         }
@@ -150,10 +150,10 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
-        public List<Items1> GetItems(int tabId)
+        public List<Item1> GetItems(int tabId)
         {
             var Entities = new IndustrialMonitoringEntities();
-            List<Items1> result = new List<Items1>();
+            List<Item1> result = new List<Item1>();
 
             var tabsItem = Entities.TabsItems.Where(x => x.TabId == tabId);
 
@@ -161,7 +161,7 @@ namespace MonitoringServiceLibrary
             {
                 Item currentItem = Entities.Items.FirstOrDefault(x => x.ItemId == item.ItemId);
 
-                result.Add(new Items1(currentItem));
+                result.Add(new Item1(currentItem));
             }
 
             return result;
@@ -186,7 +186,7 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
-        public bool AddItem2(Items2 item)
+        public bool AddItem2(Item2 item)
         {
             IndustrialMonitoringEntities entities=new IndustrialMonitoringEntities();
             
@@ -315,7 +315,7 @@ namespace MonitoringServiceLibrary
             return success;
         }
 
-        public bool EditItem2(Items2 item)
+        public bool EditItem2(Item2 item)
         {
             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
@@ -390,11 +390,11 @@ namespace MonitoringServiceLibrary
             {
                 var items = Entities.TabsItems.Where(x => x.TabId == tab.TabId);
 
-                List<Items2> currentItems=new List<Items2>();
+                List<Item3> currentItems=new List<Item3>();
 
                 foreach (var tabsItem in items)
                 {
-                    currentItems.Add(new Items2(tabsItem.Item));
+                    currentItems.Add(new Item3(tabsItem.Item));
                 }
 
                 Tab2 currentTab = new Tab2(tab,currentItems);

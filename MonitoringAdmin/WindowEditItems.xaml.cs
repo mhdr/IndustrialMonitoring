@@ -28,7 +28,7 @@ namespace MonitoringAdmin
         public event EventHandler AddItemCompletedSuccessfully;
         public MainWindow MainWindow { get; set; }
         private volatile ServerStatus serverStatusBeforeAction;
-        public Items2 ItemToEdit { get; set; }
+        public Item2 ItemToEdit { get; set; }
 
         protected virtual void OnAddItemCompletedSuccessfully()
         {
@@ -78,7 +78,7 @@ namespace MonitoringAdmin
 
         public void EditItemAsync()
         {
-            Items2 item = ItemToEdit;
+            Item2 item = ItemToEdit;
             item.ItemName = TextBoxItemName.Text;
             ItemType itemType = ItemType.Unknown;
 
@@ -133,7 +133,7 @@ namespace MonitoringAdmin
             t1.Start();
         }
 
-        private void EditItem(Items2 item)
+        private void EditItem(Item2 item)
         {
             serverStatusBeforeAction = ProxyDataCollectorServiceClient.GetServerStatus();
 

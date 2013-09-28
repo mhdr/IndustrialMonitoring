@@ -29,8 +29,9 @@ namespace MonitoringAdmin
         private ProcessDataServiceClient _processDataServiceClient=new ProcessDataServiceClient();
         private UserServiceClient _userServiceClient=new UserServiceClient();
 
-        private List<Items2> ItemsList=new List<Items2>();
-        private List<Tab2> TabsItems = new List<Tab2>();
+        private List<Item2> _itemsList=new List<Item2>();
+        private List<Tab2> _tabsItems = new List<Tab2>();
+        private List<User3> _userItems=new List<User3>();
 
         public WindowItemsManagement()
         {
@@ -47,6 +48,24 @@ namespace MonitoringAdmin
         {
             get { return _userServiceClient; }
             set { _userServiceClient = value; }
+        }
+
+        private List<Item2> ItemsList
+        {
+            get { return _itemsList; }
+            set { _itemsList = value; }
+        }
+
+        private List<Tab2> TabsItems
+        {
+            get { return _tabsItems; }
+            set { _tabsItems = value; }
+        }
+
+        private List<User3> UserItems
+        {
+            get { return _userItems; }
+            set { _userItems = value; }
         }
 
         private void BindListBoxItems()
@@ -77,18 +96,13 @@ namespace MonitoringAdmin
 
         private void BindTreeViewUsersAsync()
         {
-            List<Users2> usersList = UserServiceClient.GetUsers2();
-            Dispatcher.BeginInvoke(new Action(() => BindTreeViewUsersUI(usersList)));
+            UserItems = UserServiceClient.GetUsers3();
+            Dispatcher.BeginInvoke(new Action(() => BindTreeViewUsersUI()));
         }
 
-        private void BindTreeViewUsersUI(List<Users2> usersList)
+        private void BindTreeViewUsersUI()
         {
-            foreach (Users2 user in usersList)
-            {
-                RadTreeViewItem item = new RadTreeViewItem();
-                item.Header = user.UserName;
-                TreeViewUsers.Items.Add(item);
-            }
+            TreeViewUsers.ItemsSource = UserItems;
             BusyIndicatorUsers.IsBusy = false;
         }
 
@@ -149,6 +163,11 @@ namespace MonitoringAdmin
 
 
         private void MenuItemAddItemsToTab_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void MenuItemAddItemsToUser_OnClick(object sender, RadRoutedEventArgs e)
         {
             throw new NotImplementedException();
         }

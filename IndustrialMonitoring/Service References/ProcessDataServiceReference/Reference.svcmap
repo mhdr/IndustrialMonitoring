@@ -30,6 +30,7 @@
     <MetadataFile FileName="MonitoringServiceLibrary.ViewModels.xsd" MetadataType="Schema" ID="93d0736a-b35b-4b9c-a236-e73312da331a" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
     <MetadataFile FileName="SharedLibrary.xsd" MetadataType="Schema" ID="bebea14d-4e82-4a57-8401-d18088fecba1" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
     <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="9664ef86-70ab-4f8c-95cb-28d543dec5eb" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="b79004b3-73b4-46a6-b96a-2ec6d3698c07" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
