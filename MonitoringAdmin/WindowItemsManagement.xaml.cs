@@ -32,6 +32,7 @@ namespace MonitoringAdmin
         private List<Item2> _itemsList=new List<Item2>();
         private List<Tab2> _tabsItems = new List<Tab2>();
         private List<User3> _userItems=new List<User3>();
+        private Dictionary<string, bool> _tabItemsExpandStatus; 
 
         public WindowItemsManagement()
         {
@@ -66,6 +67,12 @@ namespace MonitoringAdmin
         {
             get { return _userItems; }
             set { _userItems = value; }
+        }
+
+        public Dictionary<string, bool> TabItemsExpandStatus
+        {
+            get { return _tabItemsExpandStatus; }
+            set { _tabItemsExpandStatus = value; }
         }
 
         private void BindListBoxItems()
@@ -164,11 +171,58 @@ namespace MonitoringAdmin
 
         private void MenuItemAddItemsToTab_OnClick(object sender, RadRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            
+            List<string> items=new List<string>();
+            foreach (Item2 selectedItem in ListBoxItems.SelectedItems)
+            {
+                items.Add(selectedItem.ItemName);
+            }
+
+            Tab2 selectedTab = (Tab2) TreeViewTabs.SelectedItem;
+
+            AddItemsToTab(selectedTab.TabName,items);
         }
 
         private void MenuItemAddItemsToUser_OnClick(object sender, RadRoutedEventArgs e)
         {
+            throw new NotImplementedException();
+        }
+
+        private void ContextMenuTreeViewTabs_OnOpening(object sender, RadRoutedEventArgs e)
+        {
+            if (TreeViewTabs.SelectedItem == null)
+            {
+                e.Handled = true;
+            }
+
+            if (TreeViewTabs.SelectedItem is Tab2)
+            {
+                if (ListBoxItems.SelectedItems.Count==0)
+                {
+                    MenuItemAddItemsToTab.IsEnabled = false;
+                }
+                else
+                {
+                    MenuItemAddItemsToTab.IsEnabled = true;    
+                }
+                
+                MenuItemDeleteItemFromTab.IsEnabled = false;
+            }
+            else if (TreeViewTabs.SelectedItem is ProcessDataServiceReference.Item3)
+            {
+                MenuItemAddItemsToTab.IsEnabled = false;
+                MenuItemDeleteItemFromTab.IsEnabled = true;
+            }
+        }
+
+        private void MenuItemDeleteItemFromTab_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void TreeViewTabs_OnExpanded(object sender, RadRoutedEventArgs e)
+        {
+            var t = e.OriginalSource;
             throw new NotImplementedException();
         }
     }

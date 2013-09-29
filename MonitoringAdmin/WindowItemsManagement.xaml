@@ -65,10 +65,11 @@
                     <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5">Tabs</TextBlock>
 
                     <telerik:RadBusyIndicator Grid.Row="1" Name="BusyIndicatorTabs" IsIndeterminate="True">
-                        <telerik:RadTreeView Name="TreeViewTabs" ItemTemplate="{StaticResource TabItemsDataTemplate}">
+                        <telerik:RadTreeView Name="TreeViewTabs" ItemTemplate="{StaticResource TabItemsDataTemplate}" Expanded="TreeViewTabs_OnExpanded">
                             <telerik:RadContextMenu.ContextMenu>
-                                <telerik:RadContextMenu Name="ContextMenuTreeViewTabs">
+                                <telerik:RadContextMenu Name="ContextMenuTreeViewTabs" Opening="ContextMenuTreeViewTabs_OnOpening">
                                     <telerik:RadMenuItem Header="Add Items to Tab" Name="MenuItemAddItemsToTab" Click="MenuItemAddItemsToTab_OnClick"/>
+                                    <telerik:RadMenuItem Header="Delete Item" Name="MenuItemDeleteItemFromTab" Click="MenuItemDeleteItemFromTab_OnClick"/>
                                 </telerik:RadContextMenu>
                             </telerik:RadContextMenu.ContextMenu>
                         </telerik:RadTreeView>
