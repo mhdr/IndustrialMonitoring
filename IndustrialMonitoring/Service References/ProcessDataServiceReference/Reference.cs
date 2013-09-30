@@ -728,83 +728,6 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Tab2", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
-    [System.SerializableAttribute()]
-    public partial class Tab2 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item3> ItemsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TabIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TabNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Item3> Items {
-            get {
-                return this.ItemsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ItemsField, value) != true)) {
-                    this.ItemsField = value;
-                    this.RaisePropertyChanged("Items");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TabId {
-            get {
-                return this.TabIdField;
-            }
-            set {
-                if ((this.TabIdField.Equals(value) != true)) {
-                    this.TabIdField = value;
-                    this.RaisePropertyChanged("TabId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TabName {
-            get {
-                return this.TabNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TabNameField, value) != true)) {
-                    this.TabNameField = value;
-                    this.RaisePropertyChanged("TabName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProcessDataServiceReference.IProcessDataService")]
     public interface IProcessDataService {
@@ -898,12 +821,6 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/AddItemsToTab", ReplyAction="http://tempuri.org/IProcessDataService/AddItemsToTabResponse")]
         System.Threading.Tasks.Task<bool> AddItemsToTabAsync(string tabName, System.Collections.Generic.List<string> items);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabItems2", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItems2Response")]
-        System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab2> GetTabItems2();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetTabItems2", ReplyAction="http://tempuri.org/IProcessDataService/GetTabItems2Response")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab2>> GetTabItems2Async();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1051,14 +968,6 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         public System.Threading.Tasks.Task<bool> AddItemsToTabAsync(string tabName, System.Collections.Generic.List<string> items) {
             return base.Channel.AddItemsToTabAsync(tabName, items);
-        }
-        
-        public System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab2> GetTabItems2() {
-            return base.Channel.GetTabItems2();
-        }
-        
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.ProcessDataServiceReference.Tab2>> GetTabItems2Async() {
-            return base.Channel.GetTabItems2Async();
         }
     }
 }

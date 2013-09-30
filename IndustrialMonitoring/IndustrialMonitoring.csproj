@@ -227,9 +227,6 @@
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.Tab1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.Tab2.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -248,6 +245,9 @@
     </None>
     <None Include="Service References\ProcessDataServiceReference\System.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\IndustrialMonitoring.UserServiceReference.User2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UserServiceReference\IndustrialMonitoring.UserServiceReference.UserViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

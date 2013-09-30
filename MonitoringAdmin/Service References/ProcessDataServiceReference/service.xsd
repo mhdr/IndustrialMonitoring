@@ -206,16 +206,4 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetTabItems2">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTabItems2Response">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetTabItems2Result" nillable="true" type="q17:ArrayOfTab2" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
 </xs:schema>

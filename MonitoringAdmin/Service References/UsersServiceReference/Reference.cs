@@ -124,9 +124,9 @@ namespace MonitoringAdmin.UsersServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Users2", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User2", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
     [System.SerializableAttribute()]
-    public partial class Users2 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class User2 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -169,176 +169,6 @@ namespace MonitoringAdmin.UsersServiceReference {
                 if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
                     this.UserNameField = value;
                     this.RaisePropertyChanged("UserName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User3", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
-    [System.SerializableAttribute()]
-    public partial class User3 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.Item3> ItemsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UserIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.Item3> Items {
-            get {
-                return this.ItemsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ItemsField, value) != true)) {
-                    this.ItemsField = value;
-                    this.RaisePropertyChanged("Items");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UserId {
-            get {
-                return this.UserIdField;
-            }
-            set {
-                if ((this.UserIdField.Equals(value) != true)) {
-                    this.UserIdField = value;
-                    this.RaisePropertyChanged("UserId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserName {
-            get {
-                return this.UserNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
-                    this.UserNameField = value;
-                    this.RaisePropertyChanged("UserName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Item3", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
-    [System.SerializableAttribute()]
-    public partial class Item3 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ItemIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ItemNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ItemId {
-            get {
-                return this.ItemIdField;
-            }
-            set {
-                if ((this.ItemIdField.Equals(value) != true)) {
-                    this.ItemIdField = value;
-                    this.RaisePropertyChanged("ItemId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ItemName {
-            get {
-                return this.ItemNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ItemNameField, value) != true)) {
-                    this.ItemNameField = value;
-                    this.RaisePropertyChanged("ItemName");
                 }
             }
         }
@@ -388,16 +218,10 @@ namespace MonitoringAdmin.UsersServiceReference {
         System.Threading.Tasks.Task<bool> UserHaveItemInTabAsync(int userId, int tabId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers2", ReplyAction="http://tempuri.org/IUserService/GetUsers2Response")]
-        System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.Users2> GetUsers2();
+        System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.User2> GetUsers2();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers2", ReplyAction="http://tempuri.org/IUserService/GetUsers2Response")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.Users2>> GetUsers2Async();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers3", ReplyAction="http://tempuri.org/IUserService/GetUsers3Response")]
-        System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.User3> GetUsers3();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers3", ReplyAction="http://tempuri.org/IUserService/GetUsers3Response")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.User3>> GetUsers3Async();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.User2>> GetUsers2Async();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -467,20 +291,12 @@ namespace MonitoringAdmin.UsersServiceReference {
             return base.Channel.UserHaveItemInTabAsync(userId, tabId);
         }
         
-        public System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.Users2> GetUsers2() {
+        public System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.User2> GetUsers2() {
             return base.Channel.GetUsers2();
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.Users2>> GetUsers2Async() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.User2>> GetUsers2Async() {
             return base.Channel.GetUsers2Async();
-        }
-        
-        public System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.User3> GetUsers3() {
-            return base.Channel.GetUsers3();
-        }
-        
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.UsersServiceReference.User3>> GetUsers3Async() {
-            return base.Channel.GetUsers3Async();
         }
     }
 }

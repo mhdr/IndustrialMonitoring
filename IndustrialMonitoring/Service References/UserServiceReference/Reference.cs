@@ -122,6 +122,67 @@ namespace IndustrialMonitoring.UserServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User2", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.SerializableAttribute()]
+    public partial class User2 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserServiceReference.IUserService")]
     public interface IUserService {
@@ -155,6 +216,12 @@ namespace IndustrialMonitoring.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UserHaveItemInTab", ReplyAction="http://tempuri.org/IUserService/UserHaveItemInTabResponse")]
         System.Threading.Tasks.Task<bool> UserHaveItemInTabAsync(int userId, int tabId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers2", ReplyAction="http://tempuri.org/IUserService/GetUsers2Response")]
+        System.Collections.Generic.List<IndustrialMonitoring.UserServiceReference.User2> GetUsers2();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers2", ReplyAction="http://tempuri.org/IUserService/GetUsers2Response")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.UserServiceReference.User2>> GetUsers2Async();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -222,6 +289,14 @@ namespace IndustrialMonitoring.UserServiceReference {
         
         public System.Threading.Tasks.Task<bool> UserHaveItemInTabAsync(int userId, int tabId) {
             return base.Channel.UserHaveItemInTabAsync(userId, tabId);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.UserServiceReference.User2> GetUsers2() {
+            return base.Channel.GetUsers2();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.UserServiceReference.User2>> GetUsers2Async() {
+            return base.Channel.GetUsers2Async();
         }
     }
 }

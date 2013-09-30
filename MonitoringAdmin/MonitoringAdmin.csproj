@@ -95,9 +95,6 @@
     <Compile Include="WindowItems.xaml.cs">
       <DependentUpon>WindowItems.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowItemsManagement.xaml.cs">
-      <DependentUpon>WindowItemsManagement.xaml</DependentUpon>
-    </Compile>
     <Page Include="WindowEditItems.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,10 +116,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowItems.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WindowItemsManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,9 +176,6 @@
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Tab1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Tab2.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabsItemsViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -205,10 +195,7 @@
     <None Include="Service References\ProcessDataServiceReference\System.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.User3.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.Users2.datasource">
+    <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.User2.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.UserViewModel.datasource">

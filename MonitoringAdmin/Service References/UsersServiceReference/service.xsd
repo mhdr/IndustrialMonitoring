@@ -82,19 +82,7 @@
   <xs:element name="GetUsers2Response">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetUsers2Result" nillable="true" type="q3:ArrayOfUsers2" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUsers3">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUsers3Response">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetUsers3Result" nillable="true" type="q4:ArrayOfUser3" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" minOccurs="0" name="GetUsers2Result" nillable="true" type="q3:ArrayOfUser2" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

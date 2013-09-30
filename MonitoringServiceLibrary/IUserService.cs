@@ -27,9 +27,6 @@ namespace MonitoringServiceLibrary
         bool UserHaveItemInTab(int userId, int tabId);
 
         [OperationContract]
-        List<Users2> GetUsers2();
-
-        [OperationContract]
-        List<User3> GetUsers3();
+        List<User2> GetUsers2();
     }
 }

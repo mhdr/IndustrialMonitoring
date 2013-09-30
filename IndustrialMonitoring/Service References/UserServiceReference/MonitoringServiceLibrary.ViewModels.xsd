@@ -10,4 +10,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserViewModel" nillable="true" type="tns:UserViewModel" />
+  <xs:complexType name="ArrayOfUser2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User2" nillable="true" type="tns:User2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser2" nillable="true" type="tns:ArrayOfUser2" />
+  <xs:complexType name="User2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User2" nillable="true" type="tns:User2" />
 </xs:schema>

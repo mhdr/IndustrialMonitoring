@@ -380,29 +380,5 @@ namespace MonitoringServiceLibrary
             return success;
         }
 
-        public List<Tab2> GetTabItems2()
-        {
-            List<Tab2> result = new List<Tab2>();
-            var Entities = new IndustrialMonitoringEntities();
-            var tabs = Entities.Tabs;
-
-            foreach (var tab in tabs)
-            {
-                var items = Entities.TabsItems.Where(x => x.TabId == tab.TabId);
-
-                List<Item3> currentItems=new List<Item3>();
-
-                foreach (var tabsItem in items)
-                {
-                    currentItems.Add(new Item3(tabsItem.Item));
-                }
-
-                Tab2 currentTab = new Tab2(tab,currentItems);
-
-                result.Add(currentTab);
-            }
-
-            return result;
-        }
     }
 }
