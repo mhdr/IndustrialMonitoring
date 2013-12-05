@@ -17,6 +17,7 @@ namespace MonitoringServiceLibrary
         public Notification()
         {
             this.NotificationsReceivers = new HashSet<NotificationsReceiver>();
+            this.NotificationsSilenceHistories = new HashSet<NotificationsSilenceHistory>();
         }
     
         public int NotificationId { get; set; }
@@ -26,8 +27,13 @@ namespace MonitoringServiceLibrary
         public Nullable<double> HighLimit { get; set; }
         public Nullable<double> LowLimit { get; set; }
         public bool AutoAcknowledge { get; set; }
+        public int NotificationPriority { get; set; }
+        public bool IsSilent { get; set; }
+        public bool AutoUnmute { get; set; }
+        public Nullable<System.DateTime> UnmuteDate { get; set; }
     
         public virtual Item Item { get; set; }
         public virtual ICollection<NotificationsReceiver> NotificationsReceivers { get; set; }
+        public virtual ICollection<NotificationsSilenceHistory> NotificationsSilenceHistories { get; set; }
     }
 }

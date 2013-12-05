@@ -16,7 +16,6 @@ namespace MonitoringServiceLibrary
     {
         public int OccurUserId { get; set; }
         public int OccurId { get; set; }
-        public bool IsAcknowledged { get; set; }
         public Nullable<System.DateTime> DateAcknowledged { get; set; }
         public string ReasonOccured { get; set; }
     

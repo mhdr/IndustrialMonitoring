@@ -33,8 +33,9 @@ namespace MonitoringServiceLibrary
         public DbSet<User> Users { get; set; }
         public DbSet<UsersItemsPermission> UsersItemsPermissions { get; set; }
         public DbSet<NotificationOccur> NotificationOccurs { get; set; }
-        public DbSet<NotificationOccurUser> NotificationOccurUsers { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<NotificationsReceiver> NotificationsReceivers { get; set; }
+        public DbSet<NotificationsSilenceHistory> NotificationsSilenceHistories { get; set; }
+        public DbSet<NotificationOccurUser> NotificationOccurUsers { get; set; }
     }
 }

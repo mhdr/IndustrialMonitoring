@@ -13,6 +13,7 @@
           <EntitySet Name="NotificationOccurUsers" EntityType="IndustrialMonitoringModel.Store.NotificationOccurUsers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Notifications" EntityType="IndustrialMonitoringModel.Store.Notifications" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="NotificationsReceivers" EntityType="IndustrialMonitoringModel.Store.NotificationsReceivers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NotificationsSilenceHistory" EntityType="IndustrialMonitoringModel.Store.NotificationsSilenceHistory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Tabs" EntityType="IndustrialMonitoringModel.Store.Tabs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TabsItems" EntityType="IndustrialMonitoringModel.Store.TabsItems" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="IndustrialMonitoringModel.Store.Users" store:Type="Tables" Schema="dbo" />
@@ -44,6 +45,14 @@
           <AssociationSet Name="FK_NotificationsReceivers_Users" Association="IndustrialMonitoringModel.Store.FK_NotificationsReceivers_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="NotificationsReceivers" EntitySet="NotificationsReceivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationsSilenceHistory_Notifications" Association="IndustrialMonitoringModel.Store.FK_NotificationsSilenceHistory_Notifications">
+            <End Role="Notifications" EntitySet="Notifications" />
+            <End Role="NotificationsSilenceHistory" EntitySet="NotificationsSilenceHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationsSilenceHistory_Users" Association="IndustrialMonitoringModel.Store.FK_NotificationsSilenceHistory_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="NotificationsSilenceHistory" EntitySet="NotificationsSilenceHistory" />
           </AssociationSet>
           <AssociationSet Name="FK_TabsItems_Items" Association="IndustrialMonitoringModel.Store.FK_TabsItems_Items">
             <End Role="Items" EntitySet="Items" />
@@ -116,7 +125,6 @@
           </Key>
           <Property Name="OccurUserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="OccurId" Type="int" Nullable="false" />
-          <Property Name="IsAcknowledged" Type="bit" Nullable="false" />
           <Property Name="DateAcknowledged" Type="datetime2" />
           <Property Name="ReasonOccured" Type="nvarchar(max)" />
         </EntityType>
@@ -130,7 +138,11 @@
           <Property Name="NotificationDescription" Type="nvarchar(max)" />
           <Property Name="HighLimit" Type="float" />
           <Property Name="LowLimit" Type="float" />
+          <Property Name="NotificationPriority" Type="int" Nullable="false" />
           <Property Name="AutoAcknowledge" Type="bit" Nullable="false" />
+          <Property Name="IsSilent" Type="bit" Nullable="false" />
+          <Property Name="AutoUnmute" Type="bit" Nullable="false" />
+          <Property Name="UnmuteDate" Type="datetime2" />
         </EntityType>
         <EntityType Name="NotificationsReceivers">
           <Key>
@@ -139,6 +151,17 @@
           <Property Name="NotificationReceiverId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NotificationId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationsSilenceHistory">
+          <Key>
+            <PropertyRef Name="SilenceId" />
+          </Key>
+          <Property Name="SilenceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SilenceStatus" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime2" />
+          <Property Name="EndDate" Type="datetime2" />
         </EntityType>
         <EntityType Name="Tabs">
           <Key>
@@ -257,6 +280,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NotificationsSilenceHistory_Notifications">
+          <End Role="Notifications" Type="IndustrialMonitoringModel.Store.Notifications" Multiplicity="1" />
+          <End Role="NotificationsSilenceHistory" Type="IndustrialMonitoringModel.Store.NotificationsSilenceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notifications">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="NotificationsSilenceHistory">
+              <PropertyRef Name="NotificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationsSilenceHistory_Users">
+          <End Role="Users" Type="IndustrialMonitoringModel.Store.Users" Multiplicity="1" />
+          <End Role="NotificationsSilenceHistory" Type="IndustrialMonitoringModel.Store.NotificationsSilenceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NotificationsSilenceHistory">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TabsItems_Items">
           <End Role="Items" Type="IndustrialMonitoringModel.Store.Items" Multiplicity="1" />
           <End Role="TabsItems" Type="IndustrialMonitoringModel.Store.TabsItems" Multiplicity="*" />
@@ -342,7 +389,6 @@
             <End Role="UsersItemsPermissions" EntitySet="UsersItemsPermissions" />
           </AssociationSet>
           <EntitySet Name="NotificationOccurs" EntityType="IndustrialMonitoringModel.NotificationOccur" />
-          <EntitySet Name="NotificationOccurUsers" EntityType="IndustrialMonitoringModel.NotificationOccurUser" />
           <EntitySet Name="Notifications" EntityType="IndustrialMonitoringModel.Notification" />
           <EntitySet Name="NotificationsReceivers" EntityType="IndustrialMonitoringModel.NotificationsReceiver" />
           <AssociationSet Name="FK_Notifications_Items" Association="IndustrialMonitoringModel.FK_Notifications_Items">
@@ -353,10 +399,6 @@
             <End Role="User" EntitySet="Users" />
             <End Role="NotificationOccur" EntitySet="NotificationOccurs" />
           </AssociationSet>
-          <AssociationSet Name="FK_NotificationOccurUsers_NotificationOccur" Association="IndustrialMonitoringModel.FK_NotificationOccurUsers_NotificationOccur">
-            <End Role="NotificationOccur" EntitySet="NotificationOccurs" />
-            <End Role="NotificationOccurUser" EntitySet="NotificationOccurUsers" />
-          </AssociationSet>
           <AssociationSet Name="FK_NotificationsReceivers_Notifications" Association="IndustrialMonitoringModel.FK_NotificationsReceivers_Notifications">
             <End Role="Notification" EntitySet="Notifications" />
             <End Role="NotificationsReceiver" EntitySet="NotificationsReceivers" />
@@ -364,6 +406,20 @@
           <AssociationSet Name="FK_NotificationsReceivers_Users" Association="IndustrialMonitoringModel.FK_NotificationsReceivers_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="NotificationsReceiver" EntitySet="NotificationsReceivers" />
+          </AssociationSet>
+          <EntitySet Name="NotificationsSilenceHistories" EntityType="IndustrialMonitoringModel.NotificationsSilenceHistory" />
+          <AssociationSet Name="FK_NotificationsSilenceHistory_Notifications" Association="IndustrialMonitoringModel.FK_NotificationsSilenceHistory_Notifications">
+            <End Role="Notification" EntitySet="Notifications" />
+            <End Role="NotificationsSilenceHistory" EntitySet="NotificationsSilenceHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationsSilenceHistory_Users" Association="IndustrialMonitoringModel.FK_NotificationsSilenceHistory_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="NotificationsSilenceHistory" EntitySet="NotificationsSilenceHistories" />
+          </AssociationSet>
+          <EntitySet Name="NotificationOccurUsers" EntityType="IndustrialMonitoringModel.NotificationOccurUser" />
+          <AssociationSet Name="FK_NotificationOccurUsers_NotificationOccur" Association="IndustrialMonitoringModel.FK_NotificationOccurUsers_NotificationOccur">
+            <End Role="NotificationOccur" EntitySet="NotificationOccurs" />
+            <End Role="NotificationOccurUser" EntitySet="NotificationOccurUsers" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Item">
@@ -438,6 +494,7 @@
           <NavigationProperty Name="UsersItemsPermissions" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" FromRole="Users" ToRole="UsersItemsPermissions" />
           <NavigationProperty Name="NotificationOccurs" Relationship="IndustrialMonitoringModel.FK_NotificationOccur_Users" FromRole="User" ToRole="NotificationOccur" />
           <NavigationProperty Name="NotificationsReceivers" Relationship="IndustrialMonitoringModel.FK_NotificationsReceivers_Users" FromRole="User" ToRole="NotificationsReceiver" />
+          <NavigationProperty Name="NotificationsSilenceHistories" Relationship="IndustrialMonitoringModel.FK_NotificationsSilenceHistory_Users" FromRole="User" ToRole="NotificationsSilenceHistory" />
         </EntityType>
         <EntityType Name="UsersItemsPermission">
           <Key>
@@ -536,17 +593,6 @@
           <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_NotificationOccur_Users" FromRole="NotificationOccur" ToRole="User" />
           <NavigationProperty Name="NotificationOccurUsers" Relationship="IndustrialMonitoringModel.FK_NotificationOccurUsers_NotificationOccur" FromRole="NotificationOccur" ToRole="NotificationOccurUser" />
         </EntityType>
-        <EntityType Name="NotificationOccurUser">
-          <Key>
-            <PropertyRef Name="OccurUserId" />
-          </Key>
-          <Property Type="Int32" Name="OccurUserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="OccurId" Nullable="false" />
-          <Property Type="Boolean" Name="IsAcknowledged" Nullable="false" />
-          <Property Type="DateTime" Name="DateAcknowledged" Precision="7" />
-          <Property Type="String" Name="ReasonOccured" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NotificationOccur" Relationship="IndustrialMonitoringModel.FK_NotificationOccurUsers_NotificationOccur" FromRole="NotificationOccurUser" ToRole="NotificationOccur" />
-        </EntityType>
         <EntityType Name="Notification">
           <Key>
             <PropertyRef Name="NotificationId" />
@@ -560,6 +606,11 @@
           <Property Type="Boolean" Name="AutoAcknowledge" Nullable="false" />
           <NavigationProperty Name="Item" Relationship="IndustrialMonitoringModel.FK_Notifications_Items" FromRole="Notification" ToRole="Item" />
           <NavigationProperty Name="NotificationsReceivers" Relationship="IndustrialMonitoringModel.FK_NotificationsReceivers_Notifications" FromRole="Notification" ToRole="NotificationsReceiver" />
+          <Property Type="Int32" Name="NotificationPriority" Nullable="false" />
+          <Property Type="Boolean" Name="IsSilent" Nullable="false" />
+          <Property Type="Boolean" Name="AutoUnmute" Nullable="false" />
+          <Property Type="DateTime" Name="UnmuteDate" Precision="7" />
+          <NavigationProperty Name="NotificationsSilenceHistories" Relationship="IndustrialMonitoringModel.FK_NotificationsSilenceHistory_Notifications" FromRole="Notification" ToRole="NotificationsSilenceHistory" />
         </EntityType>
         <EntityType Name="NotificationsReceiver">
           <Key>
@@ -595,18 +646,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_NotificationOccurUsers_NotificationOccur">
-          <End Type="IndustrialMonitoringModel.NotificationOccur" Role="NotificationOccur" Multiplicity="1" />
-          <End Type="IndustrialMonitoringModel.NotificationOccurUser" Role="NotificationOccurUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NotificationOccur">
-              <PropertyRef Name="OccurId" />
-            </Principal>
-            <Dependent Role="NotificationOccurUser">
-              <PropertyRef Name="OccurId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_NotificationsReceivers_Notifications">
           <End Type="IndustrialMonitoringModel.Notification" Role="Notification" Multiplicity="1" />
           <End Type="IndustrialMonitoringModel.NotificationsReceiver" Role="NotificationsReceiver" Multiplicity="*" />
@@ -628,6 +667,65 @@
             </Principal>
             <Dependent Role="NotificationsReceiver">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NotificationsSilenceHistory">
+          <Key>
+            <PropertyRef Name="SilenceId" />
+          </Key>
+          <Property Type="Int32" Name="SilenceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="NotificationId" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="SilenceStatus" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Precision="7" />
+          <Property Type="DateTime" Name="EndDate" Precision="7" />
+          <NavigationProperty Name="Notification" Relationship="IndustrialMonitoringModel.FK_NotificationsSilenceHistory_Notifications" FromRole="NotificationsSilenceHistory" ToRole="Notification" />
+          <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_NotificationsSilenceHistory_Users" FromRole="NotificationsSilenceHistory" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_NotificationsSilenceHistory_Notifications">
+          <End Type="IndustrialMonitoringModel.Notification" Role="Notification" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.NotificationsSilenceHistory" Role="NotificationsSilenceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notification">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="NotificationsSilenceHistory">
+              <PropertyRef Name="NotificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationsSilenceHistory_Users">
+          <End Type="IndustrialMonitoringModel.User" Role="User" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.NotificationsSilenceHistory" Role="NotificationsSilenceHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="NotificationsSilenceHistory">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NotificationOccurUser">
+          <Key>
+            <PropertyRef Name="OccurUserId" />
+          </Key>
+          <Property Type="Int32" Name="OccurUserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OccurId" Nullable="false" />
+          <Property Type="DateTime" Name="DateAcknowledged" Precision="7" />
+          <Property Type="String" Name="ReasonOccured" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NotificationOccur" Relationship="IndustrialMonitoringModel.FK_NotificationOccurUsers_NotificationOccur" FromRole="NotificationOccurUser" ToRole="NotificationOccur" />
+        </EntityType>
+        <Association Name="FK_NotificationOccurUsers_NotificationOccur">
+          <End Type="IndustrialMonitoringModel.NotificationOccur" Role="NotificationOccur" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.NotificationOccurUser" Role="NotificationOccurUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationOccur">
+              <PropertyRef Name="OccurId" />
+            </Principal>
+            <Dependent Role="NotificationOccurUser">
+              <PropertyRef Name="OccurId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -726,20 +824,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NotificationOccurUsers">
-            <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationOccurUser">
-              <MappingFragment StoreEntitySet="NotificationOccurUsers">
-                <ScalarProperty Name="ReasonOccured" ColumnName="ReasonOccured" />
-                <ScalarProperty Name="DateAcknowledged" ColumnName="DateAcknowledged" />
-                <ScalarProperty Name="IsAcknowledged" ColumnName="IsAcknowledged" />
-                <ScalarProperty Name="OccurId" ColumnName="OccurId" />
-                <ScalarProperty Name="OccurUserId" ColumnName="OccurUserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Notifications">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Notification">
               <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="UnmuteDate" ColumnName="UnmuteDate" />
+                <ScalarProperty Name="AutoUnmute" ColumnName="AutoUnmute" />
+                <ScalarProperty Name="IsSilent" ColumnName="IsSilent" />
+                <ScalarProperty Name="NotificationPriority" ColumnName="NotificationPriority" />
                 <ScalarProperty Name="AutoAcknowledge" ColumnName="AutoAcknowledge" />
                 <ScalarProperty Name="LowLimit" ColumnName="LowLimit" />
                 <ScalarProperty Name="HighLimit" ColumnName="HighLimit" />
@@ -756,6 +847,28 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="NotificationReceiverId" ColumnName="NotificationReceiverId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationsSilenceHistories">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationsSilenceHistory">
+              <MappingFragment StoreEntitySet="NotificationsSilenceHistory">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="SilenceStatus" ColumnName="SilenceStatus" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="SilenceId" ColumnName="SilenceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationOccurUsers">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationOccurUser">
+              <MappingFragment StoreEntitySet="NotificationOccurUsers">
+                <ScalarProperty Name="ReasonOccured" ColumnName="ReasonOccured" />
+                <ScalarProperty Name="DateAcknowledged" ColumnName="DateAcknowledged" />
+                <ScalarProperty Name="OccurId" ColumnName="OccurId" />
+                <ScalarProperty Name="OccurUserId" ColumnName="OccurUserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
