@@ -168,4 +168,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="StartDate" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="2ec50ba9-7441-4a95-b59f-e7dc14f611e0" ChangeDateTime="12/07/2013 12:30:41">
+    <Property Name="ElementName" Value="[dbo].[NotificationItems].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="86d3998b-1f72-4ab0-a3ec-39728c58c188" ChangeDateTime="12/07/2013 13:10:02">
+    <Property Name="ElementName" Value="[dbo].[NotificationItemsLog].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationItemsLog]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="da6447ba-3e6d-476f-bf73-1c3b50098969" ChangeDateTime="12/07/2013 13:11:53">
+    <Property Name="ElementName" Value="[dbo].[NotificationItemsLog].[NotificationId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationItemsLog]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationLogId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4b550993-c56f-4393-b6c2-687c3863ab45" ChangeDateTime="12/07/2013 13:17:18">
+    <Property Name="ElementName" Value="[dbo].[NotificationItemsLog].[Status]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationItemsLog]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Value" />
+  </Operation>
 </Operations>

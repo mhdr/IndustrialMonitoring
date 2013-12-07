@@ -3,7 +3,7 @@
 	[ItemId] INT NOT NULL PRIMARY KEY IDENTITY, 
     [ItemName] NVARCHAR(50) NOT NULL, 
     [ItemType] INT NOT NULL, 
-    [Location] TEXT NOT NULL, 
+    [Location] NVARCHAR(MAX) NOT NULL, 
     [SaveInItemsLogTimeInterval] INT NOT NULL DEFAULT 5, 
     [SaveInItemsLogLastesTimeInterval] INT NOT NULL DEFAULT 60, 
     [ShowInUITimeInterval] INT NOT NULL DEFAULT 5, 
