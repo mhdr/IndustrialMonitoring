@@ -12,13 +12,14 @@ namespace MonitoringServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class NotificationsReceiver
+    public partial class NotificationItemsLogLatest
     {
-        public int NotificationReceiverId { get; set; }
+        public int NotificationLogLatestId { get; set; }
         public int NotificationId { get; set; }
-        public int UserId { get; set; }
+        public bool Value { get; set; }
+        public System.DateTime Time { get; set; }
+        public byte[] TimeStamp { get; set; }
     
-        public virtual Notification Notification { get; set; }
-        public virtual User User { get; set; }
+        public virtual NotificationItem NotificationItem { get; set; }
     }
 }

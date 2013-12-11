@@ -12,16 +12,8 @@ namespace MonitoringServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class NotificationsSilenceHistory
+    public partial class C__RefactorLog
     {
-        public int SilenceId { get; set; }
-        public int NotificationId { get; set; }
-        public int UserId { get; set; }
-        public int SilenceStatus { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
-    
-        public virtual Notification Notification { get; set; }
-        public virtual User User { get; set; }
+        public System.Guid OperationKey { get; set; }
     }
 }

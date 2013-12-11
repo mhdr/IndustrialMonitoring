@@ -78,7 +78,7 @@ namespace MonitoringServiceLibrary
                 Thread.Sleep(1);
             }
 
-            this._serverStatus=ServerStatus.Run;
+            this._serverStatus = ServerStatus.Run;
         }
 
         public void Stop()

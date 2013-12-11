@@ -25,6 +25,7 @@ namespace MonitoringServiceLibrary
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemsLog> ItemsLogs { get; set; }
         public DbSet<ItemsLogLatest> ItemsLogLatests { get; set; }
@@ -32,10 +33,8 @@ namespace MonitoringServiceLibrary
         public DbSet<TabsItem> TabsItems { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UsersItemsPermission> UsersItemsPermissions { get; set; }
-        public DbSet<NotificationOccur> NotificationOccurs { get; set; }
-        public DbSet<Notification> Notifications { get; set; }
-        public DbSet<NotificationsReceiver> NotificationsReceivers { get; set; }
-        public DbSet<NotificationsSilenceHistory> NotificationsSilenceHistories { get; set; }
-        public DbSet<NotificationOccurUser> NotificationOccurUsers { get; set; }
+        public DbSet<NotificationItem> NotificationItems { get; set; }
+        public DbSet<NotificationItemsLog> NotificationItemsLogs { get; set; }
+        public DbSet<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
     }
 }

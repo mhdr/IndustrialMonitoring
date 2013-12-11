@@ -196,4 +196,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Value" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="a0d54dbd-60cc-4054-b2e4-9e9fb2843d2f" ChangeDateTime="12/11/2013 10:36:20">
+    <Property Name="ElementName" Value="[dbo].[NotificationItems].[Location]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Low" />
+  </Operation>
 </Operations>

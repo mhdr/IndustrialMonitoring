@@ -257,48 +257,6 @@ namespace MonitoringServiceLibrary
                     }
 
                     entities.SaveChanges();
-
-                    var notificationQuery = entities.Notifications.Where(x => x.ItemId == itemId);
-
-
-                    foreach (var notification in notificationQuery)
-                    {
-                        Notification notification1 = notification;
-                        var notificationReceiversQuery =
-                            entities.NotificationsReceivers.Where(x => x.NotificationId == notification1.NotificationId);
-
-                        foreach (var notificationsReceiver in notificationReceiversQuery)
-                        {
-                            entities.NotificationsReceivers.Remove(notificationsReceiver);
-                        }
-
-                        entities.SaveChanges();
-
-                        var notificationOccurQuery =
-                            entities.NotificationOccurs.Where(x => x.NotificationId == notification1.NotificationId);
-
-                        foreach (var notificationOccur in notificationOccurQuery)
-                        {
-                            NotificationOccur occur = notificationOccur;
-                            var notificationOccurUserQuery =
-                                entities.NotificationOccurUsers.Where(x => x.OccurId == occur.OccurId);
-
-                            foreach (var notificationOccurUser in notificationOccurUserQuery)
-                            {
-                                entities.NotificationOccurUsers.Remove(notificationOccurUser);
-                            }
-
-                            entities.SaveChanges();
-
-                            entities.NotificationOccurs.Remove(notificationOccur);
-                            entities.SaveChanges();
-                        }
-
-                        entities.Notifications.Remove(notification);
-                        entities.SaveChanges();
-                    }
-
-
                     Item itemToDelete = entities.Items.FirstOrDefault(x => x.ItemId == itemId);
                     entities.Items.Remove(itemToDelete);
                     entities.SaveChanges();

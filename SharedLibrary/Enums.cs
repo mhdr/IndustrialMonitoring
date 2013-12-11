@@ -25,4 +25,11 @@ namespace SharedLibrary
         Run=1,
         Stop=2,
     }
+
+    public enum NotificationType
+    {
+        Lower=1,
+        Between=2,
+        Higher=3,
+    }
 }

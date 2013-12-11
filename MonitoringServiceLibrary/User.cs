@@ -17,9 +17,6 @@ namespace MonitoringServiceLibrary
         public User()
         {
             this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
-            this.NotificationOccurs = new HashSet<NotificationOccur>();
-            this.NotificationsReceivers = new HashSet<NotificationsReceiver>();
-            this.NotificationsSilenceHistories = new HashSet<NotificationsSilenceHistory>();
         }
     
         public int UserId { get; set; }
@@ -29,8 +26,5 @@ namespace MonitoringServiceLibrary
         public string LastName { get; set; }
     
         public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
-        public virtual ICollection<NotificationOccur> NotificationOccurs { get; set; }
-        public virtual ICollection<NotificationsReceiver> NotificationsReceivers { get; set; }
-        public virtual ICollection<NotificationsSilenceHistory> NotificationsSilenceHistories { get; set; }
     }
 }

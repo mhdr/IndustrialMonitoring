@@ -54,6 +54,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C__RefactorLog.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataCollector.cs" />
     <Compile Include="DataCollectorService.cs" />
     <Compile Include="IDataCollectorService.cs" />
@@ -85,19 +88,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Notification.cs">
+    <Compile Include="NotificationCollector.cs" />
+    <Compile Include="NotificationItem.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="NotificationOccur.cs">
+    <Compile Include="NotificationItemsLog.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="NotificationOccurUser.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NotificationsReceiver.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NotificationsSilenceHistory.cs">
+    <Compile Include="NotificationItemsLogLatest.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ProcessDataService.cs" />

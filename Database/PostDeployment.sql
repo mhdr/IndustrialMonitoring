@@ -90,3 +90,9 @@ INSERT INTO Items(ItemName,ItemType,Location,SaveInItemsLogTimeInterval,SaveInIt
 VALUES('User3',1,'\\localhost\Simulation\OPC\Simulation Examples\Functions\User3',5,1,1,1000,1,1);
 INSERT INTO TabsItems(ItemId,TabId) VALUES(13,2);
 INSERT INTO UsersItemsPermissions(UserId,ItemId) VALUES(1,13);
+
+INSERT INTO NotificationItems(ItemId,NotificationType,Low,NotificationMsg) 
+VALUES(9,3,50,'Temperature is too high');
+
+INSERT INTO NotificationItems(ItemId,NotificationType,Low,NotificationMsg) 
+VALUES(12,3,700,'Temperature is too high');
