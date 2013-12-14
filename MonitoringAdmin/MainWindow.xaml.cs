@@ -163,16 +163,5 @@ namespace MonitoringAdmin
             StopDataColletor();
         }
 
-        private void MenuItemItems_OnClick(object sender, RadRoutedEventArgs e)
-        {
-            WindowItems windowItems = new WindowItems();
-            windowItems.MainWindow = this;
-            windowItems.Show();
-        }
-
-        private void MenuItemPermissions_OnClick(object sender, RadRoutedEventArgs e)
-        {
-
-        }
     }
 }
