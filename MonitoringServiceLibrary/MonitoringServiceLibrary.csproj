@@ -60,6 +60,7 @@
     <Compile Include="DataCollector.cs" />
     <Compile Include="DataCollectorService.cs" />
     <Compile Include="IDataCollectorService.cs" />
+    <Compile Include="INotificationService.cs" />
     <Compile Include="IProcessDataService.cs" />
     <Compile Include="IService1.cs" />
     <Compile Include="Item.cs">
@@ -98,6 +99,7 @@
     <Compile Include="NotificationItemsLogLatest.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="NotificationService.cs" />
     <Compile Include="ProcessDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service1.cs" />
