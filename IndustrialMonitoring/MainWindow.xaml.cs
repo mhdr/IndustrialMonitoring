@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IndustrialMonitoring.ProcessDataServiceReference;
 using IndustrialMonitoring.UserServiceReference;
+using IndustrialMonitoring.NotificationServiceReference;
 using Telerik.Windows;
 using Telerik.Windows.Controls;
 
@@ -31,6 +32,7 @@ namespace IndustrialMonitoring
         private event EventHandler StartAsyncCompleted;
         private List<ChartLiveData> _allCharts=new List<ChartLiveData>();
         private List<ChartLiveData> _ItemsForCompare=new List<ChartLiveData>(); 
+        private NotificationServiceClient _notificationServiceClient=new NotificationServiceClient();
 
         protected virtual void OnStartAsyncCompleted()
         {
@@ -68,6 +70,12 @@ namespace IndustrialMonitoring
         {
             get { return _ItemsForCompare; }
             set { _ItemsForCompare = value; }
+        }
+
+        public NotificationServiceClient NotificationServiceClient
+        {
+            get { return _notificationServiceClient; }
+            set { _notificationServiceClient = value; }
         }
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
@@ -151,6 +159,7 @@ namespace IndustrialMonitoring
                 ChartLiveData chartLiveData = new ChartLiveData();
                 chartLiveData.ItemsAioViewModel = itemsAioViewModel;
                 chartLiveData.ProcessDataServiceClient = this.ProcessDataServiceClient;
+                chartLiveData.NotificationServiceClient = this.NotificationServiceClient;
                 chartLiveData.MouseDoubleClick += chartLiveData_MouseDoubleClick;
 
 

@@ -19,6 +19,15 @@
             <Setter Property="Margin" Value="0,5" />
             <Setter Property="FontFamily" Value="./Fonts/#B Titr" />
         </Style>
+
+        <Storyboard Name="StoryboardNotification" x:Key="StoryboardAnim">
+            <ColorAnimation Name="ColorAnimationNotification"
+                                        Storyboard.TargetName="TextBlockTitle"
+                                        Storyboard.TargetProperty="Foreground.Color" 
+                                        From="Black" To="Red" Duration="0:0:1" 
+                                        AutoReverse="True" RepeatBehavior="Forever">
+            </ColorAnimation>
+        </Storyboard>
     </UserControl.Resources>
     <Border CornerRadius="5" BorderThickness="1" BorderBrush="AliceBlue" Name="BorderUI">
         <Grid Name="GridContainer"
@@ -32,7 +41,8 @@
 
 
                 <TextBlock Name="TextBlockTitle" VerticalAlignment="Center" Style="{StaticResource ResourceKey=TitleH2}"
-                       HorizontalAlignment="Center" FontWeight="Bold" />
+                       HorizontalAlignment="Center" FontWeight="Bold">
+                </TextBlock>
 
                 <telerik:RadCartesianChart Name="Chart" Grid.Row="1" FlowDirection="LeftToRight" MinWidth="200"
                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

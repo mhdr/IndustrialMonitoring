@@ -10,10 +10,12 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IndustrialMonitoring.Lib;
+using IndustrialMonitoring.NotificationServiceReference;
 using SharedLibrary;
 using Telerik.Windows.Controls.ChartView;
 using IndustrialMonitoring.ProcessDataServiceReference;
@@ -28,10 +30,15 @@ namespace IndustrialMonitoring
     {
         private Item1 _itemsAioViewModel = null;
         private Timer _timer;
+        //private Timer _timerAnimation;
         private ObservableCollection<Lib.ChartLiveData> _observableCollection;
         private ItemsLogLatestAIOViewModel _latestData;
         private ProcessDataServiceClient _processDataServiceClient;
         private bool _isSelected;
+        private NotificationServiceClient _notificationServiceClient;
+        private bool _hasNotification;
+        private bool isAnimationActive = false;
+        private Storyboard storyboard;
 
         public bool IsSelected
         {
@@ -86,6 +93,24 @@ namespace IndustrialMonitoring
             set { _processDataServiceClient = value; }
         }
 
+        public NotificationServiceClient NotificationServiceClient
+        {
+            get { return _notificationServiceClient; }
+            set { _notificationServiceClient = value; }
+        }
+
+        public bool HasNotification
+        {
+            get { return _hasNotification; }
+            set { _hasNotification = value; }
+        }
+
+        //public Timer TimerAnimation
+        //{
+        //    get { return _timerAnimation; }
+        //    set { _timerAnimation = value; }
+        //}
+
         private void InitChart()
         {
             Chart.Series.Clear();
@@ -123,7 +148,13 @@ namespace IndustrialMonitoring
 
         public void Start()
         {
+            if (storyboard == null)
+            {
+                storyboard = (Storyboard)FindResource("StoryboardAnim");    
+            }
+            
             Timer = new Timer(ShowLiveData, new object(), 0, this.ItemsAioViewModel.ShowInUITimeInterval * 1000);
+            //TimerAnimation = new Timer(ShowAnimation, new object(),0,3*1000);
             ObservableCollection = new ObservableCollection<Lib.ChartLiveData>();
 
             InitChart();
@@ -132,11 +163,14 @@ namespace IndustrialMonitoring
         public void Stop()
         {
             Timer.Dispose();
+            //TimerAnimation.Dispose();
+            storyboard.Stop();
         }
 
         private void ShowLiveData(object state)
         {
             LatestData = ProcessDataServiceClient.GeItemsLogLatest(this.ItemsAioViewModel.ItemId);
+            HasNotification = NotificationServiceClient.HasNotification(this.ItemsAioViewModel.ItemId);
 
             if (LatestData == null)
             {
@@ -161,6 +195,45 @@ namespace IndustrialMonitoring
             System.Diagnostics.Debug.WriteLine("Item Name : {0} , Count ObservableCollection : {1}",
                 this.ItemsAioViewModel.ItemName, ObservableCollection.Count);
 
+            if (HasNotification)
+            {
+                if (isAnimationActive == false)
+                {
+                    storyboard.Begin();
+                    isAnimationActive = true;
+                }
+
+            }
+            else
+            {
+                storyboard.Stop();
+                isAnimationActive = false;
+            }
+        }
+
+        private void ShowAnimation(object state)
+        {
+            HasNotification = NotificationServiceClient.HasNotification(this.ItemsAioViewModel.ItemId);
+
+            Dispatcher.Invoke(new Action(ShowAnimationUI));
+        }
+
+        private void ShowAnimationUI()
+        {
+            if (HasNotification)
+            {
+                if (isAnimationActive==false)
+                {
+                    storyboard.Begin();
+                    isAnimationActive = true;
+                }
+                
+            }
+            else
+            {
+                storyboard.Stop();
+                isAnimationActive = false;
+            }
         }
     }
 }

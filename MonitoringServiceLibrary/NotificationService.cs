@@ -14,7 +14,12 @@ namespace MonitoringServiceLibrary
             int count = 0;
             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
-            var itemIds = entities.NotificationItems.Where(x => x.ItemId == itemId);
+            List<NotificationItem> itemIds = entities.NotificationItems.Where(x => x.ItemId == itemId).ToList();
+
+            if (itemIds == null || itemIds.Count == 0)
+            {
+                return false;
+            }
 
             foreach (var notificationItem in itemIds)
             {
