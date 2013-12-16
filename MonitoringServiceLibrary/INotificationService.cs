@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using MonitoringServiceLibrary.ViewModels;
 
 namespace MonitoringServiceLibrary
 {
@@ -12,5 +13,8 @@ namespace MonitoringServiceLibrary
     {
         [OperationContract]
         bool HasNotification(int itemId);
+
+        [OperationContract]
+        List<Notification1> GetNotifications(int itemId);
     }
 }

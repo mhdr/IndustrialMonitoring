@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using MonitoringServiceLibrary.ViewModels;
 
 namespace MonitoringServiceLibrary
 {
@@ -14,14 +15,14 @@ namespace MonitoringServiceLibrary
             int count = 0;
             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
-            List<NotificationItem> itemIds = entities.NotificationItems.Where(x => x.ItemId == itemId).ToList();
+            List<NotificationItem> notificationItems = entities.NotificationItems.Where(x => x.ItemId == itemId).ToList();
 
-            if (itemIds == null || itemIds.Count == 0)
+            if (notificationItems == null || notificationItems.Count == 0)
             {
                 return false;
             }
 
-            foreach (var notificationItem in itemIds)
+            foreach (var notificationItem in notificationItems)
             {
                 NotificationItemsLogLatest notificationItemsLogLatest =
                     entities.NotificationItemsLogLatests.FirstOrDefault(
@@ -39,6 +40,35 @@ namespace MonitoringServiceLibrary
             }
 
             return false;
+        }
+
+        public List<Notification1> GetNotifications(int itemId)
+        {
+            List<Notification1> resultList=new List<Notification1>();
+
+            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+            List<NotificationItem> notificationItems = entities.NotificationItems.Where(x => x.ItemId == itemId).ToList();
+
+            if (notificationItems == null || notificationItems.Count == 0)
+            {
+                return null;
+            }
+
+            foreach (var notificationItem in notificationItems)
+            {
+                NotificationItemsLogLatest notificationItemsLogLatest =
+                    entities.NotificationItemsLogLatests.FirstOrDefault(
+                        x => x.NotificationId == notificationItem.NotificationId);
+
+                if (notificationItemsLogLatest.Value)
+                {
+                    Notification1 notification1=new Notification1(notificationItem);
+                    resultList.Add(notification1);
+                }
+            }
+
+            return resultList;
         }
     }
 }
