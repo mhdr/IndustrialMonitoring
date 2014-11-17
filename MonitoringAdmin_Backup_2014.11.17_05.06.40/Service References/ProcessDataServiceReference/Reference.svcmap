@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="92951f02-8552-4c71-8fda-a462cc75656e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9010/MonitoringService/ProcessDataService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="b5e91fca-f05f-422c-8b96-4ea8598de576" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="6304d1b3-7473-41af-a8af-8c4923cbb14c" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="b662b0d9-228e-47dd-94ea-3c49e15761eb" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
+    <MetadataFile FileName="MonitoringServiceLibrary.ViewModels.xsd" MetadataType="Schema" ID="e740058a-816c-4227-8318-536dfb0dfe66" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
+    <MetadataFile FileName="SharedLibrary.xsd" MetadataType="Schema" ID="e24665a7-703b-4f53-985c-20e8241faa70" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
+    <MetadataFile FileName="System.xsd" MetadataType="Schema" ID="f44bcb11-ac1c-40ac-a05d-7c4a78b4d52c" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="b166647a-a5bf-416f-93c8-84683aea7b20" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/ProcessDataService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
