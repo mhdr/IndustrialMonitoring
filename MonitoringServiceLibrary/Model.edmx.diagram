@@ -6,21 +6,21 @@
     <edmx:Diagrams>
       <Diagram DiagramId="ff069c0f29104e0b9479d612e035595c" Name="Diagram1">
         <EntityTypeShape EntityType="IndustrialMonitoringModel.C__RefactorLog" Width="1.5" PointX="5.78828135961121" PointY="20.382645854904617" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.Item" Width="1.5" PointX="7.24719180131666" PointY="11.654396762910483" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Item" Width="1.5" PointX="8" PointY="8.75" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLog" Width="1.5" PointX="6.2885647668915645" PointY="4.5919365457221568" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogLatest" Width="1.5" PointX="1.1191280694301837" PointY="4.5899409971153089" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.Tab" Width="1.5" PointX="5.1645814409314568" PointY="6.898777398699325" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.TabsItem" Width="1.5" PointX="3.675438798812888" PointY="20.742015654566703" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.User" Width="1.5" PointX="0.78188729136338786" PointY="17.24740783183249" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersItemsPermission" Width="1.5" PointX="6.3440376102663754" PointY="12.185302009892325" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Tab" Width="1.5" PointX="3.625" PointY="5.5" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.TabsItem" Width="1.5" PointX="5.75" PointY="17.125" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.User" Width="1.5" PointX="1.25" PointY="15.125" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersItemsPermission" Width="1.5" PointX="4.75" PointY="9" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLog_Items" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogLatest_Items" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Items" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItem" Width="1.5" PointX="7.9448821935546041" PointY="28.6374463274318" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItemsLog" Width="1.5" PointX="8.3197351304440446" PointY="29.321705921237221" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItem" Width="1.5" PointX="6.125" PointY="22.375" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItemsLog" Width="1.5" PointX="2.875" PointY="21.125" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItemsLogLatest" Width="1.5" PointX="0.55772815484447791" PointY="20.49119813204333" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItems_Items" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItemsLog_NotificationItems" />
