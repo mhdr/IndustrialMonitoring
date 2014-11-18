@@ -34,6 +34,8 @@ namespace IndustrialMonitoring
         private List<ChartLiveData> _ItemsForCompare=new List<ChartLiveData>(); 
         private NotificationServiceClient _notificationServiceClient=new NotificationServiceClient();
 
+        
+
         protected virtual void OnStartAsyncCompleted()
         {
             EventHandler handler = StartAsyncCompleted;
@@ -317,6 +319,8 @@ namespace IndustrialMonitoring
 
             MenuItemStart.IsEnabled = false;
             MenuItemStop.IsEnabled = true;
+
+            
         }
 
         private void MenuItemStop_OnClick(object sender, RadRoutedEventArgs e)

@@ -70,5 +70,41 @@ namespace MonitoringServiceLibrary
 
             return resultList;
         }
+
+        public bool SystemHasNotification(int userId)
+        {
+            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+            var notifications = entities.NotificationItemsLogLatests.ToList();
+
+            if (notifications == null || notifications.Count == 0)
+            {
+                return false;
+            }
+
+            List<int> ItemIds=new List<int>();
+
+            foreach (NotificationItemsLogLatest notification in notifications)
+            {
+                ItemIds.Add(notification.NotificationItem.ItemId);
+            }
+
+            List<int> ItemIdsForCurrentUser=new List<int>();
+
+            foreach (int itemId in ItemIds)
+            {
+                if (entities.UsersItemsPermissions.Any(x => x.UserId == userId && x.ItemId == itemId))
+                {
+                    ItemIdsForCurrentUser.Add(itemId);
+                }
+            }
+
+            if (ItemIdsForCurrentUser.Count > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

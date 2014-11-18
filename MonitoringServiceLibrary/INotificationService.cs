@@ -16,5 +16,8 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         List<Notification1> GetNotifications(int itemId);
+
+        [OperationContract]
+        bool SystemHasNotification(int userId);
     }
 }
