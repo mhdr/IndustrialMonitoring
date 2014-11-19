@@ -86,7 +86,10 @@ namespace MonitoringServiceLibrary
 
             foreach (NotificationItemsLogLatest notification in notifications)
             {
-                ItemIds.Add(notification.NotificationItem.ItemId);
+                if (!notification.Value)
+                {
+                    ItemIds.Add(notification.NotificationItem.ItemId);    
+                }
             }
 
             List<int> ItemIdsForCurrentUser=new List<int>();

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.ProcessDataServiceReference;
 using IndustrialMonitoring.UserServiceReference;
 using IndustrialMonitoring.NotificationServiceReference;
@@ -33,7 +34,8 @@ namespace IndustrialMonitoring
         private List<ChartLiveData> _allCharts=new List<ChartLiveData>();
         private List<ChartLiveData> _ItemsForCompare=new List<ChartLiveData>(); 
         private NotificationServiceClient _notificationServiceClient=new NotificationServiceClient();
-
+        private Timer timerNotifications;
+        private Horn horn;
         
 
         protected virtual void OnStartAsyncCompleted()
@@ -321,6 +323,25 @@ namespace IndustrialMonitoring
             MenuItemStop.IsEnabled = true;
 
             
+            timerNotifications=new Timer(CheckNotifications,null,0,2000);
+            horn = Horn.GetInstance();
+        }
+
+        private void CheckNotifications(object state)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                bool hastNotification = NotificationServiceClient.SystemHasNotification(Lib.Static.CurrentUser.UserId);
+
+                if (hastNotification)
+                {
+                    horn.Start();
+                }
+                else
+                {
+                    horn.Stop();
+                }
+            }));
         }
 
         private void MenuItemStop_OnClick(object sender, RadRoutedEventArgs e)

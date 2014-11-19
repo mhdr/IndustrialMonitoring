@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3c595aaf-d3f9-4715-b42a-73b306840a79" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="09ad8301-9f28-4d45-b39c-50f87bb2541c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -24,10 +24,10 @@
     <MetadataSource Address="http://localhost:9010/MonitoringService/NotificationService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="300fb7a9-b6ea-4c75-860a-fcd8bd3b9740" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/NotificationService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="5a690ddd-0449-4a13-83fa-4f20bcbd5bc8" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/NotificationService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="152bb44a-5b96-4b76-b690-68c1df2fe6dc" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/NotificationService/mex" />
-    <MetadataFile FileName="MonitoringServiceLibrary.ViewModels.xsd" MetadataType="Schema" ID="ab2f016f-85e6-4be9-9f09-5fbafb157cd7" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/NotificationService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="5688d9c5-7bfe-4010-ab94-3bfc4380ba48" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/NotificationService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="148f4a52-84c7-445b-8563-9e9af67e92a7" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/NotificationService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="67a5a046-3be1-4c22-bfc6-8a7d80eefc38" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/NotificationService/mex" />
+    <MetadataFile FileName="MonitoringServiceLibrary.ViewModels.xsd" MetadataType="Schema" ID="f86e2638-51b3-4141-8c3a-f0293a4524ae" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/NotificationService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
