@@ -1,0 +1,3598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc xmlns:ni="urn:ni">
+  <assembly>
+    <name>NationalInstruments.Tdms</name>
+  </assembly>
+  <members>
+    <member name="T:NationalInstruments.Tdms.ITdmsContainerObject">
+      <summary>
+            Defines the interface for TDMS objects that contain properties.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.ITdmsObject">
+      <summary>
+            Defines the interface for all TDMS objects.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.ITdmsObject.Name">
+      <summary>
+            Gets the name of a TDMS object.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.ITdmsObject.Parent">
+      <summary>
+            Gets the parent object of a TDMS object.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.ITdmsContainerObject.GetProperties">
+      <summary>
+            Returns the collection of properties for the TDMS object.
+            </summary>
+      <returns>
+            A TdmsPropertyCollection that contains the 
+            TdmsProperty objects for the TDMS object.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.ITdmsContainerObject.GetChildren">
+      <summary>
+            Returns a collection of child objects for the TDMS object.
+            </summary>
+      <returns>
+            A collection of ITdmsContainerObject objects that are children of the TDMS object.
+            </returns>
+    </member>
+    <member name="P:NationalInstruments.Tdms.ITdmsContainerObject.Description">
+      <summary>
+            Gets the description of a TDMS object.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsAnalogWaveformWriteOptions">
+      <summary>
+            Provides options to use when writing analog waveform data to a TDMS file.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsAnalogWaveformWriteOptions.#ctor">
+      <summary>
+            Initializes a new instance of the TdmsAnalogWaveformWriteOptions 
+            class with the default values.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsAnalogWaveformWriteOptions.#ctor(NationalInstruments.Tdms.TdmsSaveFile,System.Boolean,System.String,NationalInstruments.Tdms.TdmsWaveformTimingType)">
+      <summary>
+            Initializes a new instance of the TdmsAnalogWaveformWriteOptions 
+            class with the specified values.
+            </summary>
+      <param name="saveFile">
+            A TdmsSaveFile value which specifies whether the TdmsFile should be saved after writing the analog waveform data.
+            </param>
+      <param name="writeScaledData">
+            A Boolean value which specifies whether the data should be scaled when writing the analog 
+            waveform data.
+            </param>
+      <param name="timingAxisName">
+            A String representing the name of the timing axis of the analog waveform.
+            </param>
+      <param name="waveformTimingType">
+            A TdmsWaveformTimingType which indicates whether the timing of the
+            analog waveform is relative or absolute.
+            </param>
+      <exception cref="T:System.ArgumentNullException">timingAxisName (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">saveFile (parameter) is not a member of TdmsSaveFile.-or-waveformTimingType (parameter) is not a member of TdmsWaveformTimingType.</exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsAnalogWaveformWriteOptions.SaveFile">
+      <summary>
+            Gets or sets a value indicating whether the TdmsFile should be saved after writing the analog waveform data.
+            </summary>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            	The value is not a member of TdmsSaveFile.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsAnalogWaveformWriteOptions.WriteScaledData">
+      <summary>
+            Gets or sets a value indicating whether scaled analog waveform data should be written to the 
+            TdmsFile.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsAnalogWaveformWriteOptions.TimingAxisName">
+      <summary>
+            Gets or sets the name of the timing axis of the analog waveform.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsAnalogWaveformWriteOptions.WaveformTimingType">
+      <summary>
+            Gets or sets the timing type of the analog waveform.
+            </summary>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            The value is not a member of TdmsWaveformTimingType.
+            </exception>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsByteOrder">
+      <summary>
+            Specifies the byte order for TDMS data.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsByteOrder.BigEndian">
+      <summary>
+            The byte order of data written to the TDMS file is big endian.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsByteOrder.Native">
+      <summary>
+            The byte order of data written to the TDMS file is the native order of the operating system.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsByteOrder.LittleEndian">
+      <summary>
+            The byte order of data written to the TDMS file is little endian.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsChannel">
+      <summary>
+            Provides a way to create and use a TDMS channel.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.#ctor(System.String,NationalInstruments.Tdms.TdmsDataType)">
+      <summary>
+            Initializes a new instance of a TDMS channel with the specified name and TdmsDataType.
+            </summary>
+      <param name="name">
+            The name of the channel.
+            </param>
+      <param name="dataType">
+            A TdmsDataType value that specifies the data type of the TDMS channel.
+            </param>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsDataType.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.#ctor(System.String,NationalInstruments.Tdms.TdmsDataType,System.String)">
+      <summary>
+            Initializes a new instance of a TDMS channel with the specified name, TdmsDataType, and description.
+            </summary>
+      <param name="name">
+            The name of the channel.
+            </param>
+      <param name="dataType">
+            A TdmsDataType value that specifies the data type of the TDMS channel.
+            </param>
+      <param name="description">
+            A description of the channel.
+            </param>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            
+            - or -
+            description (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsDataType.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.#ctor(System.String,NationalInstruments.Tdms.TdmsDataType,System.String,System.String)">
+      <summary>
+            Initializes a new instance of a TDMS channel with the specified name, TdmsDataType, description, and unit string.
+            </summary>
+      <param name="name">
+            The name of the channel.
+            </param>
+      <param name="dataType">
+            A TdmsDataType value that specifies the data type of the TDMS channel.
+            </param>
+      <param name="description">
+            A description of the channel.
+            </param>
+      <param name="unitString">
+            A string specifying the channel's units.
+            </param>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            
+            - or -
+            description (parameter) is null.
+            
+            - or -
+            unitString (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsDataType.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetProperties">
+      <summary>
+            Returns the collection of properties for the TDMS channel.
+            </summary>
+      <returns>
+            A TdmsPropertyCollection that contains the 
+            TdmsProperty objects for the TDMS channel.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.AddProperty(System.String,NationalInstruments.Tdms.TdmsPropertyDataType,System.Object)">
+      <summary>
+            Adds a new TdmsProperty with the specified name, data type,
+            and value to the TdmsChannel.
+            </summary>
+      <param name="name">
+            The name of the property.
+            </param>
+      <param name="dataType">
+            A TdmsPropertyDataType value that specifies the data type of the TDMS property.
+            </param>
+      <param name="value">
+            The value of the property.
+            </param>
+      <returns>
+            The newly added TdmsProperty.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            -orvalue (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            
+            - or -
+            value (parameter) is an unsupported type.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsPropertyDataType.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">dataType (parameter) does not match value (parameter)'s data type.
+            -or-
+            The TdmsChannel has not yet been added to
+            a TdmsChannelCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.AddProperty(NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            Adds the specified TdmsProperty 
+            to the TdmsChannel.
+            </summary>
+      <param name="property">
+            The TdmsProperty to add.
+            </param>
+      <exception cref="T:System.ArgumentNullException">property (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">property (parameter) already belongs to another TDMS file, channel group, or channel.
+            -or-
+            The TdmsChannel has not yet been added to
+            a TdmsChannelCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetProperty(System.String)">
+      <summary>
+            Returns the specified TDMS property associated with this 
+            TdmsChannel.
+            </summary>
+      <param name="name">
+            The name of the property.
+            </param>
+      <returns>
+            If the property exists on the TDMS channel, returns a 
+            TdmsProperty
+            that represents the property specified by name (parameter);
+            otherwise, returns null.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.Dispose">
+      <summary>
+            Releases the resources used by TdmsChannel.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetDataType">
+      <summary>
+            Returns the data type of the TDMS channel.
+            </summary>
+      <returns>
+            A Type object that represents the data type of the TDMS channel.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetData">
+      <summary>
+            Returns the TDMS channel's data in an object array.
+            </summary>
+      <returns>
+            An Object array that holds the TDMS channel data.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.OutOfMemoryException">The data type of the channel's data is PrecisionDateTime
+            and the amount of memory required for the array that holds all of the channel's data exceeds the .NET 2GB
+            object memory limit.- or -The amount of memory required for the returned data array exceeds the amount of memory
+            available.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetData(System.Int32,System.Int32)">
+      <summary>
+            Returns a subset of the TDMS channel data in an object array.
+            </summary>
+      <param name="index">
+            Index to get data from.
+            </param>
+      <param name="count">
+            Number of items to return.
+            </param>
+      <returns>
+            An Object array that holds a subset of the TDMS channel data.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.IndexOutOfRangeException">index (parameter) is less than zero.
+            
+            - or -
+            index (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">count (parameter) is less than zero.
+            
+            - or -
+            index (parameter) plus count (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.OutOfMemoryException">The data type of the channel's data is PrecisionDateTime
+            and the amount of memory required for the array that holds the requested channel's data exceeds the .NET 2GB
+            object memory limit.- or -The amount of memory required for the returned data array exceeds the amount of memory
+            available.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetData(System.Int64,System.Int32)">
+      <summary>
+            Returns a subset of the TDMS channel data in an object array.
+            </summary>
+      <param name="index">
+            Index to get data from.
+            </param>
+      <param name="count">
+            Number of items to return.
+            </param>
+      <returns>
+            An Object array that holds a subset of the TDMS channel data.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.IndexOutOfRangeException">index (parameter) is less than zero.
+            
+            - or -
+            index (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">count (parameter) is less than zero.
+            
+            - or -
+            index (parameter) plus count (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.OutOfMemoryException">The data type of the channel's data is PrecisionDateTime
+            and the amount of memory required for the array that holds the requested channel's data exceeds the .NET 2GB
+            object memory limit.- or -The amount of memory required for the returned data array exceeds the amount of memory
+            available.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetData(System.UInt64,System.Int32)">
+      <summary>
+            Returns a subset of the TDMS channel data in an object array.
+            </summary>
+      <param name="index">
+            Index to get data from.
+            </param>
+      <param name="count">
+            Number of items to return.
+            </param>
+      <returns>
+            An Object array that holds a subset of the TDMS channel data.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.IndexOutOfRangeException">index (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">count (parameter) is less than zero.
+            
+            - or -
+            index (parameter) plus count (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.OutOfMemoryException">The data type of the channel's data is PrecisionDateTime
+            and the amount of memory required for the array that holds the requested channel's data exceeds the .NET 2GB
+            object memory limit.- or -The amount of memory required for the returned data array exceeds the amount of memory
+            available.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetData``1">
+      <summary>
+            Returns the TDMS channel data in a TData (generic type parameter) array.
+            </summary>
+      <typeparam name="TData">
+            The data type of the TDMS channel.
+            </typeparam>
+      <returns>
+            A TData (generic type parameter) array that holds the TDMS channel data.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            TData (generic type parameter) does not match the TDMS channel data type.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.OutOfMemoryException">TData (generic type parameter) is PrecisionDateTime
+            and the amount of memory required for the array that holds all of the channel's data exceeds the .NET 2GB
+            object memory limit.- or -The amount of memory required for the returned data array exceeds the amount of memory
+            available.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetData``1(System.Int32,System.Int32)">
+      <summary>
+            Returns a subset of the TDMS channel data in a TData (generic type parameter) array.
+            </summary>
+      <param name="index">
+            Index to get data from.
+            </param>
+      <param name="count">
+            Number of items to return.
+            </param>
+      <typeparam name="TData">
+            The data type of the TDMS channel.
+            </typeparam>
+      <returns>
+            A TData (generic type parameter) array that holds a subset of the TDMS channel data.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            TData (generic type parameter) does not match the TDMS channel data type.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.IndexOutOfRangeException">index (parameter) is less than zero.
+            
+            - or -
+            index (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">count (parameter) is less than zero.
+            
+            - or -
+            index (parameter) plus count (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.OutOfMemoryException">TData (generic type parameter) is PrecisionDateTime
+            and the amount of memory required for the array that holds the requested channel's data exceeds the .NET 2GB
+            object memory limit.- or -The amount of memory required for the returned data array exceeds the amount of memory
+            available.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetData``1(System.Int64,System.Int32)">
+      <summary>
+            Returns a subset of the TDMS channel data in a TData (generic type parameter) array.
+            </summary>
+      <param name="index">
+            Index to get data from.
+            </param>
+      <param name="count">
+            Number of items to return.
+            </param>
+      <typeparam name="TData">
+            The data type of the TDMS channel.
+            </typeparam>
+      <returns>
+            A TData (generic type parameter) array that holds a subset of the TDMS channel data.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            TData (generic type parameter) does not match the TDMS channel data type.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.IndexOutOfRangeException">index (parameter) is less than zero.
+            
+            - or -
+            index (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">count (parameter) is less than zero.
+            
+            - or -
+            index (parameter) plus count (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.OutOfMemoryException">TData (generic type parameter) is PrecisionDateTime
+            and the amount of memory required for the array that holds the requested channel's data exceeds the .NET 2GB
+            object memory limit.- or -The amount of memory required for the returned data array exceeds the amount of memory
+            available.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.GetData``1(System.UInt64,System.Int32)">
+      <summary>
+            Returns a subset of the TDMS channel data in a TData (generic type parameter) array.
+            </summary>
+      <param name="index">
+            Index to get data from.
+            </param>
+      <param name="count">
+            Number of items to return.
+            </param>
+      <typeparam name="TData">
+            The data type of the TDMS channel.
+            </typeparam>
+      <returns>
+            A TData (generic type parameter) array that holds a subset of the TDMS channel data.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            TData (generic type parameter) does not match the TDMS channel data type.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.IndexOutOfRangeException">index (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">count (parameter) is less than zero.
+            
+            - or -
+            index (parameter) plus count (parameter) is greater than the number of data items in the TDMS channel.
+            </exception>
+      <exception cref="T:System.OutOfMemoryException">TData (generic type parameter) is PrecisionDateTime
+            and the amount of memory required for the array that holds the requested channel's data exceeds the .NET 2GB
+            object memory limit.- or -The amount of memory required for the returned data array exceeds the amount of memory
+            available.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.AppendData``1(``0)">
+      <summary>
+            Appends a data item to the specified TDMS channel.  If the specified channel is empty, the new data value will be added at the beginning of the channel.
+            </summary>
+      <param name="data">
+            The data item to append to the TDMS channel.
+            </param>
+      <typeparam name="TData">
+            The data type of the TDMS channel.
+            </typeparam>
+      <exception cref="T:System.ArgumentNullException">data (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            TData (generic type parameter) does not match the TDMS channel's data type.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.AppendData``1(``0,NationalInstruments.Tdms.TdmsSaveFile)">
+      <summary>
+            Appends a data item to the specified TDMS channel.  If the specified channel is empty, the new data value will be added at the beginning of the channel.
+            </summary>
+      <param name="data">
+            The data item to append to the TDMS channel.
+            </param>
+      <param name="saveFile">
+            A TdmsSaveFile value indicating whether to save the TDMS file after the data is written.
+            </param>
+      <typeparam name="TData">
+            The data type of the TDMS channel.
+            </typeparam>
+      <exception cref="T:System.ArgumentNullException">data (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">saveFile (parameter) is not a member of TdmsSaveFile.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            TData (generic type parameter) does not match the TDMS channel's data type.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.AppendData``1(``0[])">
+      <summary>
+            Appends an array of data to the specified TDMS channel.  If the specified channel is empty, the new data values will be added at the beginning of the channel.
+            </summary>
+      <param name="data">
+            The array of data to append to the TDMS channel.
+            </param>
+      <typeparam name="TData">
+            The data type of the TDMS channel.
+            </typeparam>
+      <exception cref="T:System.ArgumentNullException">data (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            TData (generic type parameter) does not match the TDMS channel's data type.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.AppendData``1(``0[],NationalInstruments.Tdms.TdmsSaveFile)">
+      <summary>
+            Appends an array of data to the specified TDMS channel.  If the specified channel is empty, the new data values will be added at the beginning of the channel.
+            </summary>
+      <param name="data">
+            The array of data to append to the TDMS channel.
+            </param>
+      <param name="saveFile">
+            A TdmsSaveFile value indicating whether to save the TDMS file after the data is written.
+            </param>
+      <typeparam name="TData">
+            The data type of the TDMS channel.
+            </typeparam>
+      <exception cref="T:System.ArgumentNullException">data (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">saveFile (parameter) is not a member of TdmsSaveFile.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            TData (generic type parameter) does not match the TDMS channel's data type.
+            
+            - or -
+            
+            The TDMS channel data type is an unsupported type.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannel.ToString">
+      <summary>
+            Returns a string representation of the object.
+            </summary>
+      <returns>
+            Returns a string representation of the object.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannel.Parent">
+      <summary>
+            Gets the parent object of a TDMS channel.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannel.Name">
+      <summary>
+            Gets or sets the name of a TDMS channel.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannel.Description">
+      <summary>
+            Gets or sets the description of a TDMS channel.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannel.UnitString">
+      <summary>
+            Gets or sets the unit string of a TDMS channel.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannel.TdmsDataType">
+      <summary>
+            Gets the data type of a TDMS channel.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannel.DataCount">
+      <summary>
+            Gets the number of data elements in a TDMS channel.
+            </summary>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannel has been disposed.
+            </exception>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsChannelCollection">
+      <summary>
+            Represents a strongly typed collection of TdmsChannel objects.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.Add(NationalInstruments.Tdms.TdmsChannel)">
+      <summary>
+            Adds a TdmsChannel to the end of the collection.
+            </summary>
+      <param name="value">TdmsChannel to add to the collection.
+            </param>
+      <returns>
+            The array index of the added item.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) is already in this collection.
+            
+            - or -
+            value (parameter) is in another TdmsChannelCollection.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.Contains(NationalInstruments.Tdms.TdmsChannel)">
+      <summary>
+            Determines if the specified TdmsChannel is in the collection.
+            </summary>
+      <param name="item">TdmsChannel to locate in the collection.
+            </param>
+      <returns>true if the collection contains item (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">item (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">item (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.Contains(System.String)">
+      <summary>
+            Determines if a TdmsChannel with the specified name is in the collection.
+            </summary>
+      <param name="name">
+            Name of the TdmsChannel to locate in the collection.
+            </param>
+      <returns>true if the collection contains a TdmsChannel named name (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.IndexOf(NationalInstruments.Tdms.TdmsChannel)">
+      <summary>
+            Returns the zero-based index of a TdmsChannel in the collection.
+            </summary>
+      <param name="value">TdmsChannel to search for.
+            </param>
+      <returns>
+            Index of the item.  If the item is not found, returns -1.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.CopyTo(NationalInstruments.Tdms.TdmsChannel[],System.Int32)">
+      <summary>
+            Copies the elements of the TdmsChannelCollection to
+            an array, starting at a particular array index.
+            </summary>
+      <param name="array">
+            The one-dimensional array of TdmsChannel objects that is the
+            destination of the elements copied from the TdmsChannelCollection.
+            </param>
+      <param name="arrayIndex">
+            The zero-based index in array (parameter) at which copying begins.
+            </param>
+      <exception cref="T:System.ArgumentNullException">array (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">arrayIndex (parameter) is less than zero.
+            </exception>
+      <exception cref="T:System.ArgumentException">arrayIndex (parameter) is equal to or greater than the length of array (parameter).-orThe number of elements in the source TdmsChannelCollection
+            is greater than the space available from arrayIndex (parameter) to the end of the destination
+            array (parameter).</exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.ToString">
+      <summary>
+            Returns a string representation of the object.
+            </summary>
+      <returns>
+            Returns a string representation of the object.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#IList#Clear">
+      <summary>
+            This method is not supported by TdmsChannelCollection.
+            </summary>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#IList#Insert(System.Int32,System.Object)">
+      <summary>
+            This method is not supported by TdmsChannelCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#IList#Remove(System.Object)">
+      <summary>
+            This method is not supported by TdmsChannelCollection.
+            </summary>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+      <returns>This return value is not documented because this method is not supported.</returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#IList#RemoveAt(System.Int32)">
+      <summary>
+            This method is not supported by TdmsChannelCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#ITdmsContainerObject}#IndexOf(NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            Returns the zero-based index of a ITdmsContainerObject in the collection.
+            </summary>
+      <param name="value">ITdmsContainerObject to search for.
+            </param>
+      <returns>
+            Index of the item.  If the item is not found, returns -1.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.NotSupportedException">value (parameter) is not of type TdmsChannel.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#ITdmsContainerObject}#Insert(System.Int32,NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            This method is not supported by TdmsChannelCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#ITdmsContainerObject}#RemoveAt(System.Int32)">
+      <summary>
+            This method is not supported by TdmsChannelCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#Add(NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            Adds an ITdmsContainerObject to the end of the collection.
+            </summary>
+      <param name="value">ITdmsContainerObject to add to the collection.
+            </param>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.NotSupportedException">value (parameter) is not of type TdmsChannel.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) is already in this collection.
+            
+            - or -
+            value (parameter) is in another TdmsChannelCollection.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#Remove(NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            This method is not supported by TdmsChannelCollection.
+            </summary>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+      <returns>This return value is not documented because this method is not supported.</returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#Clear">
+      <summary>
+            This method is not supported by TdmsChannelCollection.
+            </summary>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#CopyTo(NationalInstruments.Tdms.ITdmsContainerObject[],System.Int32)">
+      <summary>
+            Copies the elements of the TdmsChannelCollection to
+            an array, starting at a particular array index.
+            </summary>
+      <param name="array">
+            The one-dimensional array of ITdmsContainerObject objects that is the
+            destination of the elements copied from the TdmsChannelCollection.
+            </param>
+      <param name="arrayIndex">
+            The zero-based index in array (parameter) at which copying begins.
+            </param>
+      <exception cref="T:System.ArgumentNullException">array (parameter) is null.
+            </exception>
+      <exception cref="T:System.NotSupportedException">array (parameter) is not an array of type TdmsChannel.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">arrayIndex (parameter) is less than zero.
+            </exception>
+      <exception cref="T:System.ArgumentException">arrayIndex (parameter) is equal to or greater than the length of array (parameter).-orThe number of elements in the source TdmsChannelCollection
+            is greater than the space available from arrayIndex (parameter) to the end of the destination
+            array (parameter).</exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#Contains(NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            Determines if the specified ITdmsContainerObject is in the collection.
+            </summary>
+      <param name="item">ITdmsContainerObject to locate in the collection.
+            </param>
+      <returns>true if the collection contains item (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">item (parameter) is null.
+            </exception>
+      <exception cref="T:System.NotSupportedException">item (parameter) is not of type TdmsChannel.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">item (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#IEnumerable{NationalInstruments#Tdms#ITdmsContainerObject}#GetEnumerator">
+      <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+      <returns>
+            An IEnumerator&lt;T&gt;  that can be used to iterate through the collection.
+            </returns>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelCollection.Item(System.Int32)">
+      <summary>
+            Gets the TdmsChannel at the specified index.
+            </summary>
+      <param name="index">
+            The zero-based index of the entry to locate in the collection.
+            </param>
+      <exception cref="T:System.ArgumentOutOfRangeException">index (parameter) is less than zero.
+            
+            - or -
+            index (parameter) is greater than Count.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelCollection.Item(System.String)">
+      <summary>
+            Gets the TdmsChannel with the specified name.
+            </summary>
+      <param name="name">
+            The name of the entry to locate in the collection.
+            </param>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelCollection.Count">
+      <summary>
+            Gets the number of elements in the TdmsChannelCollection.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#ITdmsContainerObject}#Item(System.Int32)">
+      <summary>
+            Gets or sets the TdmsChannel. 
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#IsReadOnly">
+      <summary>
+            Gets a value indicating whether the ICollection&lt;T&gt;  is read-only.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsChannelGroup">
+      <summary>
+            Provides a way to create and use a TDMS channel group.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of TdmsChannelGroup with the specified channel group
+            name.
+            </summary>
+      <param name="name">
+            The name of the TdmsChannelGroup.
+            </param>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.#ctor(System.String,System.String)">
+      <summary>
+            Initializes a new instance of TdmsChannelGroup with the specified channel group
+            name and description.
+            </summary>
+      <param name="name">
+            The name of the TdmsChannelGroup.
+            </param>
+      <param name="description">
+            The description of the TdmsChannelGroup.
+            </param>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            - or -description (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetProperties">
+      <summary>
+            Returns the collection of properties for the TDMS channel group.
+            </summary>
+      <returns>
+            A TdmsPropertyCollection that contains the 
+            TdmsProperty objects for the TDMS channel group.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannelGroup has not yet been added to
+            a TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetChannels">
+      <summary>
+            Returns the collection of channels in the TDMS channel group.
+            </summary>
+      <returns>
+            A TdmsChannelCollection that contains the 
+            TdmsChannel objects in the TDMS channel group.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannelGroup has not yet been added to
+            a TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AddChannel(System.String,NationalInstruments.Tdms.TdmsDataType)">
+      <summary>
+            Adds a new TdmsChannel with the specified name
+            and data type to the TdmsChannelGroup.
+            </summary>
+      <param name="name">
+            The name of the TdmsChannel.
+            </param>
+      <param name="dataType">
+            A TdmsDataType value that specifies the data type of the TDMS channel.
+            </param>
+      <returns>
+            The newly added TdmsChannel.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsDataType.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannelGroup has not yet been added to
+            a TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AddChannel(System.String,NationalInstruments.Tdms.TdmsDataType,System.String)">
+      <summary>
+            Adds a new TdmsChannel with the specified name, 
+            data type, and description to the TdmsChannelGroup.
+            </summary>
+      <param name="name">
+            The name of the TdmsChannel.
+            </param>
+      <param name="dataType">
+            A TdmsDataType value that specifies the data type of the TDMS channel.
+            </param>
+      <param name="description">
+            A description of the channel.
+            </param>
+      <returns>
+            The newly added TdmsChannel.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            
+            - or -
+            description (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsDataType.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannelGroup has not yet been added to
+            a TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AddChannel(System.String,NationalInstruments.Tdms.TdmsDataType,System.String,System.String)">
+      <summary>
+            Adds a new TdmsChannel with the specified name, 
+            data type, description, and unit string to the TdmsChannelGroup.
+            </summary>
+      <param name="name">
+            The name of the TdmsChannel.
+            </param>
+      <param name="dataType">
+            A TdmsDataType value that specifies the data type of the TDMS channel.
+            </param>
+      <param name="description">
+            A description of the channel.
+            </param>
+      <param name="unitString">
+            A string specifying the channel's units.
+            </param>
+      <returns>
+            The newly added TdmsChannel.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            
+            - or -
+            description (parameter) is null.
+            
+            - or -
+            unitString (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsDataType.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannelGroup has not yet been added to
+            a TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AddChannel(NationalInstruments.Tdms.TdmsChannel)">
+      <summary>
+            Adds the specified TdmsChannel 
+            to the TdmsChannelGroup.
+            </summary>
+      <param name="channel">
+            The TdmsChannel to add.
+            </param>
+      <exception cref="T:System.ArgumentNullException">channel (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">channel (parameter) already belongs to another TDMS channel group.
+            - or -
+            The TdmsChannelGroup has not yet been added to
+            a TdmsChannelGroupCollection.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetChannel(System.String)">
+      <summary>
+            Returns the specified TDMS channel associated with this 
+            TdmsChannelGroup.
+            </summary>
+      <param name="name">
+            The name of the channel.
+            </param>
+      <returns>
+            If the channel exists in the TDMS channel group, returns a 
+            TdmsChannel
+            that represents the channel specified by name (parameter);
+            otherwise, returns null.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannelGroup has not yet been added to a 
+            TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AddProperty(System.String,NationalInstruments.Tdms.TdmsPropertyDataType,System.Object)">
+      <summary>
+            Adds a new TdmsProperty with the specified name, data type,
+            and value to the TdmsChannelGroup.
+            </summary>
+      <param name="name">
+            The name of the property.
+            </param>
+      <param name="dataType">
+            A TdmsPropertyDataType value that specifies the data type of the TDMS property.
+            </param>
+      <param name="value">
+            The value of the property.
+            </param>
+      <returns>
+            The newly added TdmsProperty.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            - or -value (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            
+            - or -
+            value (parameter) is an unsupported type.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsPropertyDataType.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">dataType (parameter) does not match value (parameter)'s data type.
+            - or -
+            The TdmsChannelGroup has not yet been added to
+            a TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AddProperty(NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            Adds the specified TdmsProperty 
+            to the TdmsChannelGroup.
+            </summary>
+      <param name="property">
+            The TdmsProperty to add.
+            </param>
+      <exception cref="T:System.ArgumentNullException">property (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">property (parameter) already belongs to another TDMS file, channel group, or channel.
+            - or -
+            The TdmsChannelGroup has not yet been added to
+            a TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetProperty(System.String)">
+      <summary>
+            Returns the specified TDMS property associated with this 
+            TdmsChannelGroup.
+            </summary>
+      <param name="name">
+            The name of the property.
+            </param>
+      <returns>
+            If the property exists on the TDMS channel group, returns a 
+            TdmsProperty
+            that represents the property specified by name (parameter);
+            otherwise, returns null.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannelGroup has not yet been added to a 
+            TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.Dispose">
+      <summary>
+            Releases the resources used by TdmsChannelGroup.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendData``1(NationalInstruments.Tdms.TdmsChannel[],``0[],NationalInstruments.Tdms.TdmsDataLayout)">
+      <summary>
+            Appends an array of data to the channel group using the specified channels.
+            </summary>
+      <typeparam name="TData">
+            The data type of the TDMS channels.
+            </typeparam>
+      <param name="channels">
+            An array of TdmsChannel objects representing the channels you want to write data to.
+            All of the TdmsChannel objects in the array must have the same
+            TdmsDataType.
+            </param>
+      <param name="data">
+            The array of data to write to the TDMS channels.
+            </param>
+      <param name="dataLayout">
+            The layout of the data you want to write to the TDMS channels.
+            </param>
+      <exception cref="T:System.ArgumentNullException">channels (parameter) is null.- or -data (parameter) is null.</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataLayout (parameter) is not a member of TdmsDataLayout.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            
+
+
+            - or -
+            
+
+TData (generic type parameter) is an unsupported type.
+            
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            
+            - or -
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            
+            The TdmsChannelGroup has not yet been added to a 
+            TdmsChannelGroupCollection.
+            
+            - or -
+            TData (generic type parameter) does not match one of the TDMS channels' data type.
+            
+            - or -
+            dataLayout (parameter) is Interleaved 
+            and AutoSave is set to false.
+            </exception>
+      <exception cref="T:System.NotSupportedException">dataLayout (parameter) is Interleaved
+            and the FileFormat of the
+            TDMS file is Version10.
+            - or -dataLayout (parameter) is Interleaved
+            and TData (generic type parameter) is String.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendData``1(NationalInstruments.Tdms.TdmsChannel[],``0[],NationalInstruments.Tdms.TdmsDataLayout,NationalInstruments.Tdms.TdmsSaveFile)">
+      <summary>
+            Appends an array of data to the channel group using the specified channels.
+            </summary>
+      <typeparam name="TData">
+            The data type of the TDMS channels.
+            </typeparam>
+      <param name="channels">
+            An array of TdmsChannel objects representing the channels you want to write data to.
+            All of the TdmsChannel objects in the array must have the same
+            TdmsDataType.
+            </param>
+      <param name="data">
+            The array of data to write to the TDMS channels.
+            </param>
+      <param name="dataLayout">
+            The layout of the data you want to write to the TDMS channels.
+            </param>
+      <param name="saveFile">
+            A TdmsSaveFile which specifies whether or not to save the TdmsFile
+            after writing the data.
+            </param>
+      <exception cref="T:System.ArgumentNullException">channels (parameter) is null.- or -data (parameter) is null.</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataLayout (parameter) is not a member of TdmsDataLayout.
+            - or -saveFile (parameter) is not a member of TdmsSaveFile.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            
+
+
+            - or -
+            
+
+TData (generic type parameter) is an unsupported type.
+            
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            
+            - or -
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelCollection.
+            
+            - or -
+            
+            The TdmsChannelGroup has not yet been added to a 
+            TdmsChannelGroupCollection.
+            
+            - or -
+            TData (generic type parameter) does not match one of the TDMS channels' data types.
+            
+            - or -
+            dataLayout (parameter) is Interleaved
+            and saveFile (parameter) is DoNotSaveFile.
+            
+            - or -
+            dataLayout (parameter) is Interleaved, 
+            saveFile (parameter) is UseGlobalAutoSaveValue,
+            and AutoSave is set to false.
+            </exception>
+      <exception cref="T:System.NotSupportedException">dataLayout (parameter) is Interleaved
+            and the FileFormat of the
+            TDMS file is Version10.
+            - or -dataLayout (parameter) is Interleaved
+            and TData (generic type parameter) is String.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendAnalogWaveform``1(NationalInstruments.Tdms.TdmsChannel,NationalInstruments.AnalogWaveform{``0})">
+      <summary>
+            Appends AnalogWaveform&lt;T&gt; data to the channel group using the specified channel.
+            </summary>
+      <param name="channel">
+            A TdmsChannel representing the channel you want to write data to.
+            </param>
+      <param name="waveform">
+            An AnalogWaveform&lt;T&gt; containing the analog waveform data to write.
+            </param>
+      <typeparam name="TData">
+            The underlying type of the AnalogWaveform&lt;T&gt;.
+            </typeparam>
+      <exception cref="T:System.ArgumentException">channel (parameter) is not a member of the channel group.</exception>
+      <exception cref="T:System.ArgumentNullException">channel (parameter) is null.- or -waveform (parameter) is null.</exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -WaveformLayout is
+            SingleTimeChannel.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendAnalogWaveform``1(NationalInstruments.Tdms.TdmsChannel,NationalInstruments.AnalogWaveform{``0},NationalInstruments.Tdms.TdmsAnalogWaveformWriteOptions)">
+      <summary>
+            Appends AnalogWaveform&lt;T&gt; data to the channel group using the specified channel.
+            </summary>
+      <param name="channel">
+            A TdmsChannel representing the channel you want to write data to.
+            </param>
+      <param name="waveform">
+            An AnalogWaveform&lt;T&gt; containing the analog waveform data to write.
+            </param>
+      <param name="waveformWriteOptions">
+            An instance of TdmsAnalogWaveformWriteOptions which specifies what options to use when writing the analog waveform data.
+            </param>
+      <typeparam name="TData">
+            The underlying type of the AnalogWaveform&lt;T&gt;.
+            </typeparam>
+      <exception cref="T:System.ArgumentException">channel (parameter) is not a member of the channel group.</exception>
+      <exception cref="T:System.ArgumentNullException">channel (parameter) is null.- or -waveform (parameter) is null.- or -waveformWriteOptions (parameter) is null.</exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -WaveformLayout is
+            SingleTimeChannel.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendDigitalWaveform(NationalInstruments.Tdms.TdmsChannel,NationalInstruments.DigitalWaveform)">
+      <summary>
+            Appends DigitalWaveform data to the channel group using the specified channel.
+            </summary>
+      <param name="channel">
+            A TdmsChannel representing the first channel you want to write data to.
+            </param>
+      <param name="waveform">
+            A DigitalWaveform containing the digital waveform data to write.
+            </param>
+      <exception cref="T:System.ArgumentException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">channel (parameter) is null.- or -waveform (parameter) is null.</exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -WaveformLayout is SingleTimeChannel
+            or PairedTimeAndSampleChannels.- or -channel (parameter) does not have Byte as data type. </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendDigitalWaveform(NationalInstruments.Tdms.TdmsChannel,NationalInstruments.DigitalWaveform,NationalInstruments.Tdms.TdmsSaveFile)">
+      <summary>
+            Appends DigitalWaveform data to the channel group using the specified channel.
+            </summary>
+      <param name="channel">
+            A TdmsChannel representing the first channel you want to write data to.
+            </param>
+      <param name="waveform">
+            A DigitalWaveform containing the digital waveform data to write.
+            </param>
+      <param name="saveFile">
+            A TdmsSaveFile which specifies whether or not to save the 
+            TdmsFile after writing the waveform data.
+            </param>
+      <exception cref="T:System.ArgumentException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">channel (parameter) is null.- or -waveform (parameter) is null.</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">saveFile (parameter) is not a member of TdmsSaveFile.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -WaveformLayout is SingleTimeChannel
+            or PairedTimeAndSampleChannels.- or -channel (parameter) does not have Byte as data type. </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendAnalogWaveforms``1(NationalInstruments.Tdms.TdmsChannel[],NationalInstruments.AnalogWaveform{``0}[])">
+      <summary>
+            Appends data from multiple AnalogWaveform&lt;T&gt; objects to the channel group
+            using the specified channels.
+            </summary>
+      <param name="channels">
+            An array of TdmsChannel objects representing the channels you want to write data to.
+            Each channel must correspond to a waveform in waveforms (parameter).
+            </param>
+      <param name="waveforms">
+            An array of AnalogWaveform&lt;T&gt; objects containing the analog waveform data to write.
+            </param>
+      <typeparam name="TData">
+            The underlying type of the AnalogWaveform&lt;T&gt;.
+            </typeparam>
+      <exception cref="T:System.ArgumentException">A TdmsChannel in channels (parameter) is not a member of the channel group.</exception>
+      <exception cref="T:System.ArgumentNullException">channels (parameter) is null.- or -waveforms (parameter) is null.</exception>
+      <exception cref="T:System.ArgumentException">
+            The lengths of channels (parameter) and waveforms (parameter) are not equal.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -WaveformLayout is
+            SingleTimeChannel.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendAnalogWaveforms``1(NationalInstruments.Tdms.TdmsChannel[],NationalInstruments.AnalogWaveform{``0}[],NationalInstruments.Tdms.TdmsAnalogWaveformWriteOptions[])">
+      <summary>
+            Appends data from multiple AnalogWaveform&lt;T&gt; objects to the channel group
+            using the specified channels.
+            </summary>
+      <param name="channels">
+            An array of TdmsChannel objects representing the channels you want to write data to.
+            Each channel must correspond to a waveform in waveforms (parameter).
+            </param>
+      <param name="waveforms">
+            An array of AnalogWaveform&lt;T&gt; objects containing the analog waveform data to write.
+            </param>
+      <param name="waveformWriteOptions">
+            An array of TdmsAnalogWaveformWriteOptions objects which specifies what options to use when writing the analog waveform data.
+            </param>
+      <typeparam name="TData">
+            The underlying type of the AnalogWaveform&lt;T&gt;.
+            </typeparam>
+      <exception cref="T:System.ArgumentException">A TdmsChannel in channels (parameter) is not a member of the channel group.</exception>
+      <exception cref="T:System.ArgumentNullException">channels (parameter) is null.- or -waveforms (parameter) is null.- or -waveformWriteOptions (parameter) is null.</exception>
+      <exception cref="T:System.ArgumentException">The lengths of channels (parameter) and waveforms (parameter) are not equal.- or -The lengths of waveforms (parameter) and waveformWriteOptions (parameter)  are not equal.</exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -WaveformLayout is
+            SingleTimeChannel.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendDigitalWaveforms(NationalInstruments.Tdms.TdmsChannel[],NationalInstruments.DigitalWaveform[])">
+      <summary>
+            Appends DigitalWaveform data to the channel group using the specified channels.
+            </summary>
+      <param name="channels">
+            An array of TdmsChannel objects representing the first channel for each digital
+            waveform you want to write data to.
+            </param>
+      <param name="waveforms">
+            An array of DigitalWaveform objects containing the digital waveform data to write.
+            </param>
+      <exception cref="T:System.ArgumentException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">channels (parameter) is null.- or -waveforms (parameter) is null.</exception>
+      <exception cref="T:System.ArgumentException">
+            The lengths of channels (parameter) and waveforms (parameter) are not equal.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -WaveformLayout is SingleTimeChannel
+            or PairedTimeAndSampleChannels.- or -A TdmsChannel in channels (parameter) does not have Byte as the data type. </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.AppendDigitalWaveforms(NationalInstruments.Tdms.TdmsChannel[],NationalInstruments.DigitalWaveform[],NationalInstruments.Tdms.TdmsSaveFile)">
+      <summary>
+            Appends DigitalWaveform data to the channel group using the specified channels.
+            </summary>
+      <param name="channels">
+            An array of TdmsChannel objects representing the first channel for each digital
+            waveform you want to write data to.
+            </param>
+      <param name="waveforms">
+            An array of DigitalWaveform objects containing the digital waveform data to write.
+            </param>
+      <param name="saveFile">
+            A TdmsSaveFile which specifies whether or not to save the TdmsFile
+            after writing the waveform data.
+            </param>
+      <exception cref="T:System.ArgumentException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">channels (parameter) is null.- or -waveforms (parameter) is null.</exception>
+      <exception cref="T:System.ArgumentException">
+            The lengths of channels (parameter) and waveforms (parameter) are not equal.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">saveFile (parameter) is not a member of TdmsSaveFile.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -WaveformLayout is SingleTimeChannel
+            or PairedTimeAndSampleChannels.- or -A TdmsChannel in channels (parameter) does not have Byte as the data type. </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetAnalogWaveform``1(NationalInstruments.Tdms.TdmsChannel)">
+      <summary>
+            Returns AnalogWaveform&lt;T&gt; data from the specified channel.
+            </summary>
+      <param name="channel">
+            A TdmsChannel representing the channel you want to read data from.
+            </param>
+      <typeparam name="TData">
+            The underlying type of the AnalogWaveform&lt;T&gt;.
+            </typeparam>
+      <returns>
+            An AnalogWaveform&lt;T&gt; containing the analog waveform data from 
+            the specified channel.
+            </returns>
+      <exception cref="T:System.ArgumentException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">channel (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -The channel layout does not match the layout specified in WaveformLayout.- or -The wf_samples property on the specified waveform channel is not present or is less than 1.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetAnalogWaveform``1(NationalInstruments.Tdms.TdmsChannel,System.Boolean)">
+      <summary>
+            Returns AnalogWaveform&lt;T&gt; data from the specified channel.
+            </summary>
+      <param name="channel">
+            A TdmsChannel representing the channel you want to read data from.
+            </param>
+      <param name="precisionTiming">
+            A Boolean which specifies whether or not to read timing information using the higher precision of
+            PrecisionTiming.
+            </param>
+      <typeparam name="TData">
+            The underlying type of the AnalogWaveform&lt;T&gt;.
+            </typeparam>
+      <returns>
+            An AnalogWaveform&lt;T&gt; containing the analog waveform data from 
+            the specified channel.
+            </returns>
+      <exception cref="T:System.ArgumentException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">channel (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -The channel layout does not match the layout specified in WaveformLayout.- or -The wf_samples property on the specified waveform channel is not present or is less than 1.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetAnalogWaveforms``1">
+      <summary>
+            Returns AnalogWaveform&lt;T&gt; data from all the channels in the channel group.
+            </summary>
+      <typeparam name="TData">
+            The underlying type of the AnalogWaveform&lt;T&gt;.
+            </typeparam>
+      <returns>
+            An AnalogWaveform&lt;T&gt; array containing the analog waveform data from 
+            all the channels in the channel group.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -The channel layout does not match the layout specified in WaveformLayout.- or -The wf_samples property on a waveform channel in the channel group is not present or is less than 1.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetAnalogWaveforms``1(System.Boolean)">
+      <summary>
+            Returns AnalogWaveform&lt;T&gt; data from all the channels in the channel group.
+            </summary>
+      <param name="precisionTiming">
+            A Boolean which specifies whether or not to read timing information using the higher precision of
+            PrecisionTiming.
+            </param>
+      <typeparam name="TData">
+            The underlying type of the AnalogWaveform&lt;T&gt;.
+            </typeparam>
+      <returns>
+            An AnalogWaveform&lt;T&gt; array containing the analog waveform data from 
+            all the channels in the channel group.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -The channel layout does not match the layout specified in WaveformLayout.- or -The wf_samples property on a waveform channel in the channel group is not present or is less than 1.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetDigitalWaveform(NationalInstruments.Tdms.TdmsChannel)">
+      <summary>
+            Returns DigitalWaveform data for a digital waveform starting with the specified channel.
+            </summary>
+      <param name="channel">
+            The first channel of the specified digital waveform.
+            </param>
+      <returns>
+            A DigitalWaveform containing the digital waveform data from 
+            the specified channel.
+            </returns>
+      <exception cref="T:System.ArgumentException">
+            The TdmsChannel has not yet been added to a 
+            TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">channel (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -The channel layout does not match the layout specified in WaveformLayout.- or -The wf_samples property on a waveform channel in the channel group is not present or is less than 1.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.GetDigitalWaveforms">
+      <summary>
+            Returns DigitalWaveform data from all the channels in the channel group.
+            </summary>
+      <returns>
+            A DigitalWaveform array containing the digital waveform data from 
+            all the channels in the channel group.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.- or -The channel layout does not match the layout specified in WaveformLayout.- or -The wf_samples property on a waveform channel in the channel group is not present or is less than 1.</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroup.ToString">
+      <summary>
+            Returns a string representation of the object.
+            </summary>
+      <returns>
+            Returns a string representation of the object.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannelGroup has not yet been added to
+            a TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelGroup.Parent">
+      <summary>
+            Gets the parent object of a TDMS channel group.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelGroup.Name">
+      <summary>
+            Gets or sets the name of a TDMS channel group.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelGroup.Description">
+      <summary>
+            Gets or sets the description of a TDMS channel group.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelGroup.WaveformLayout">
+      <summary>
+            Gets or sets the waveform layout of a TDMS channel group.
+            </summary>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsChannelGroup has not yet been added to a TdmsChannelGroupCollection.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsChannelGroup has been disposed.
+            </exception>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsChannelGroupCollection">
+      <summary>
+            Represents a strongly typed collection of TdmsChannelGroup objects.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.Add(NationalInstruments.Tdms.TdmsChannelGroup)">
+      <summary>
+            Adds a TdmsChannelGroup to the end of the collection.
+            </summary>
+      <param name="value">TdmsChannelGroup to add to the collection.
+            </param>
+      <returns>
+            The array index of the added item.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) is already in this collection.
+            
+            - or -
+            value (parameter) is in another TdmsChannelGroupCollection.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.Contains(NationalInstruments.Tdms.TdmsChannelGroup)">
+      <summary>
+            Determines if the specified TdmsChannelGroup is in the collection.
+            </summary>
+      <param name="item">TdmsChannelGroup to locate in the collection.
+            </param>
+      <returns>true if the collection contains item (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">item (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">item (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.Contains(System.String)">
+      <summary>
+            Determines if a TdmsChannelGroup with the specified name is in the collection.
+            </summary>
+      <param name="name">
+            Name of the TdmsChannelGroup to locate in the collection.
+            </param>
+      <returns>true if the collection contains a TdmsChannelGroup named name (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.IndexOf(NationalInstruments.Tdms.TdmsChannelGroup)">
+      <summary>
+            Returns the zero-based index of a TdmsChannelGroup in the collection.
+            </summary>
+      <param name="value">TdmsChannelGroup to search for.
+            </param>
+      <returns>
+            Index of the item.  If the item is not found, returns -1.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.CopyTo(NationalInstruments.Tdms.TdmsChannelGroup[],System.Int32)">
+      <summary>
+            Copies the elements of the TdmsChannelGroupCollection to
+            an array, starting at a particular array index.
+            </summary>
+      <param name="array">
+            The one-dimensional array of TdmsChannelGroup objects that is the
+            destination of the elements copied from the TdmsChannelGroupCollection.
+            </param>
+      <param name="arrayIndex">
+            The zero-based index in array (parameter) at which copying begins.
+            </param>
+      <exception cref="T:System.ArgumentNullException">array (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">arrayIndex (parameter) is less than zero.
+            </exception>
+      <exception cref="T:System.ArgumentException">arrayIndex (parameter) is equal to or greater than the length of array (parameter).-orThe number of elements in the source TdmsChannelGroupCollection
+            is greater than the space available from arrayIndex (parameter) to the end of the destination
+            array (parameter).</exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.ToString">
+      <summary>
+            Returns a string representation of the object.
+            </summary>
+      <returns>
+            Returns a string representation of the object.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#IList#Clear">
+      <summary>
+            This method is not supported by TdmsChannelGroupCollection.
+            </summary>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#IList#Insert(System.Int32,System.Object)">
+      <summary>
+            This method is not supported by TdmsChannelGroupCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#IList#Remove(System.Object)">
+      <summary>
+            This method is not supported by TdmsChannelGroupCollection.
+            </summary>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+      <returns>This return value is not documented because this method is not supported.</returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#IList#RemoveAt(System.Int32)">
+      <summary>
+            This method is not supported by TdmsChannelGroupCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#ITdmsContainerObject}#IndexOf(NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            Returns the zero-based index of a TdmsChannelGroup in the collection.
+            </summary>
+      <param name="value">TdmsChannelGroup to search for.
+            </param>
+      <returns>
+            Index of the item.  If the item is not found, returns -1.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#ITdmsContainerObject}#Insert(System.Int32,NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            This method is not supported by TdmsChannelGroupCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#ITdmsContainerObject}#RemoveAt(System.Int32)">
+      <summary>
+            This method is not supported by TdmsChannelGroupCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#Add(NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            Adds an ITdmsContainerObject to the end of the collection.
+            </summary>
+      <param name="value">ITdmsContainerObject to add to the collection.
+            </param>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.NotSupportedException">value (parameter) is not of type TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) is already in this collection.
+            
+            - or -
+            value (parameter) is in another TdmsChannelGroupCollection.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#Remove(NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            This method is not supported by TdmsChannelGroupCollection.
+            </summary>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+      <returns>This return value is not documented because this method is not supported.</returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#Clear">
+      <summary>
+            This method is not supported by TdmsChannelGroupCollection.
+            </summary>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#CopyTo(NationalInstruments.Tdms.ITdmsContainerObject[],System.Int32)">
+      <summary>
+            Copies the elements of the TdmsChannelGroupCollection to
+            an array, starting at a particular array index.
+            </summary>
+      <param name="array">
+            The one-dimensional array of ITdmsContainerObject objects that is the
+            destination of the elements copied from the TdmsChannelGroupCollection.
+            </param>
+      <param name="arrayIndex">
+            The zero-based index in array (parameter) at which copying begins.
+            </param>
+      <exception cref="T:System.ArgumentNullException">array (parameter) is null.
+            </exception>
+      <exception cref="T:System.NotSupportedException">array (parameter) is not an array of type TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">arrayIndex (parameter) is less than zero.
+            </exception>
+      <exception cref="T:System.ArgumentException">arrayIndex (parameter) is equal to or greater than the length of array (parameter).-orThe number of elements in the source TdmsChannelGroupCollection
+            is greater than the space available from arrayIndex (parameter) to the end of the destination
+            array (parameter).</exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#Contains(NationalInstruments.Tdms.ITdmsContainerObject)">
+      <summary>
+            Determines if the specified ITdmsContainerObject is in the collection.
+            </summary>
+      <param name="item">ITdmsContainerObject to locate in the collection.
+            </param>
+      <returns>true if the collection contains item (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">item (parameter) is null.
+            </exception>
+      <exception cref="T:System.NotSupportedException">item (parameter) is not of type TdmsChannelGroup.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">item (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#IEnumerable{NationalInstruments#Tdms#ITdmsContainerObject}#GetEnumerator">
+      <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+      <returns>
+            An IEnumerator&lt;T&gt;  that can be used to iterate through the collection.
+            </returns>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelGroupCollection.Item(System.Int32)">
+      <summary>
+            Gets the TdmsChannelGroup at the specified index.
+            </summary>
+      <param name="index">
+            The zero-based index of the entry to locate in the collection.
+            </param>
+      <exception cref="T:System.ArgumentOutOfRangeException">index (parameter) is less than zero.
+            
+            - or -
+            index (parameter) is greater than Count.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelGroupCollection.Item(System.String)">
+      <summary>
+            Gets the TdmsChannelGroup with the specified name.
+            </summary>
+      <param name="name">
+            The name of the entry to locate in the collection.
+            </param>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelGroupCollection.Count">
+      <summary>
+            Gets the number of elements in the TdmsChannelGroupCollection.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#ITdmsContainerObject}#Item(System.Int32)">
+      <summary>
+            Gets the TdmsChannelGroup at the specified index.
+            </summary>
+      <param name="index">
+            The zero-based index of the entry to locate in the collection.
+            </param>
+      <exception cref="T:System.ArgumentOutOfRangeException">index (parameter) is less than zero.
+            
+            - or -
+            index (parameter) is greater than Count.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsChannelGroupCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#ITdmsContainerObject}#IsReadOnly">
+      <summary>
+            Gets a value indicating whether the ICollection&lt;T&gt;  is read-only.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsDataLayout">
+      <summary>
+            Specifies the order that data should be written to multiple TDMS channels.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataLayout.NonInterleaved">
+      <summary>
+            The data layout is not interleaved.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataLayout.Interleaved">
+      <summary>
+            The data layout is interleaved.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsDataType">
+      <summary>
+            Specifies a data type for TDMS channel data.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.Int8">
+      <summary>
+            The TDMS data type is SByte.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.UInt8">
+      <summary>
+            The TDMS data type is Byte.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.Int16">
+      <summary>
+            The TDMS data type is Int16.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.UInt16">
+      <summary>
+            The TDMS data type is UInt16.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.Int32">
+      <summary>
+            The TDMS data type is Int32.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.UInt32">
+      <summary>
+            The TDMS data type is UInt32.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.Int64">
+      <summary>
+            The TDMS data type is Int64.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.UInt64">
+      <summary>
+            The TDMS data type is UInt64.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.Float">
+      <summary>
+            The TDMS data type is Single.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.Double">
+      <summary>
+            The TDMS data type is Double.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.String">
+      <summary>
+            The TDMS data type is String.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.Boolean">
+      <summary>
+            The TDMS data type is Boolean.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsDataType.DateTime">
+      <summary>
+            The TDMS data type is DateTime.  PrecisionDateTime data
+            can also be written to and read from channels of this type.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsException">
+      <summary>
+            Represents an error code received from the underlying driver.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsException.#ctor">
+      <summary>
+            Initializes a new instance of the TdmsException class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsException.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of the TdmsException class using the 
+            given error message.
+            </summary>
+      <param name="message">
+            An error message describing this exception.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of the TdmsException class using the 
+            given error message and inner exception.
+            </summary>
+      <param name="message">
+            An error message describing this exception.
+            </param>
+      <param name="inner">
+            The inner exception that causes this exception to be thrown.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsException.#ctor(System.String,System.Int32)">
+      <summary>
+            Initializes a new instance of the TdmsException class
+            with the given error message and error code.
+            </summary>
+      <param name="message">
+            An error message describing this exception.
+            </param>
+      <param name="errorCode">
+            The error code associated with this exception.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsException.#ctor(System.String,System.Exception,System.Int32)">
+      <summary>
+            Initializes a new instance of the TdmsException class using the 
+            given error message, inner exception, and error code.
+            </summary>
+      <param name="message">
+            An error message describing this exception.
+            </param>
+      <param name="inner">
+            The inner exception that caused this exception to be thrown.
+            </param>
+      <param name="errorCode">
+            The error code associated with this exception.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of TdmsException using
+            serialized data.
+            </summary>
+      <param name="info">
+            Object that holds the serialized object data.
+            </param>
+      <param name="context">
+            Contextual information about the source or destination.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Sets the SerializationInfo object with information about the exception.
+            </summary>
+      <param name="info">
+            The object that holds the serialized object data.
+            </param>
+      <param name="context">
+            Contextual information about the source or destination.
+            </param>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsException.ErrorCode">
+      <summary>
+            Gets the error code associated with the error.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsFile">
+      <summary>
+            Provides support for creating new TDMS files and reading from and writing to existing TDMS files.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.#ctor(System.String)">
+      <summary>
+            Opens a TDMS file.  If the file does not exist, a new TDMS file is created.
+            </summary>
+      <param name="path">
+            The absolute or relative TDMS file path.
+            </param>
+      <exception cref="T:System.ArgumentNullException">path (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">path (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.#ctor(System.String,NationalInstruments.Tdms.TdmsFileAccess)">
+      <summary>
+            Opens a TDMS file with the specified file access.  If the file does not exist, a new TDMS file is created.
+            </summary>
+      <param name="path">
+            The absolute or relative TDMS file path.
+            </param>
+      <param name="access">
+            A TdmsFileAccess value that specifies the file access for the TDMS file.
+            </param>
+      <exception cref="T:System.ArgumentNullException">path (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">path (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">access (parameter) is not a member of TdmsFileAccess.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">path (parameter) refers to a non-existent file and access (parameter) is Read.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.#ctor(System.String,NationalInstruments.Tdms.TdmsFileOptions)">
+      <summary>
+            Opens a TDMS file with the specified file options.  If the file does not exist, a new TDMS file is created.
+            </summary>
+      <param name="path">
+            The absolute or relative TDMS file path.
+            </param>
+      <param name="fileOptions">
+            A TdmsFileOptions value that specifies the file options for the TDMS file.
+            </param>
+      <exception cref="T:System.ArgumentNullException">path (parameter) is null.
+            - or -
+
+fileOptions (parameter) is not a member of TdmsFileOptions.
+            
+
+- or -fileOptions (parameter) is not a member of TdmsFileOptions.
+            </exception>
+      <exception cref="T:System.ArgumentException">path (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">path (parameter) refers to a non-existent file and the Access property of the  fileOptions (parameter) parameter is Read.
+            </exception>
+      <exception cref="T:System.NotSupportedException">TdmsFileOptions is set to Version10
+             and ByteOrder is BigEndian 
+            or LittleEndian.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.Dispose">
+      <summary>
+            Releases the resources used by TdmsFile.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.Dispose(System.Boolean)">
+      <summary>
+            Releases the unmanaged resources used by the TdmsFile and optionally 
+            releases the managed resources.
+            </summary>
+      <param name="disposing">true to release both managed and unmanaged resources; false to release 
+            only unmanaged resources.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.GetFileFormat(System.String)">
+      <summary>
+            Gets the file format of the specified TDMS file.
+            </summary>
+      <param name="path">
+            The absolute or relative TDMS file path.
+            </param>
+      <returns>
+            A TdmsFileFormat
+            indicating the file format of the TDMS file specified by path (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">path (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">path (parameter) is an empty string.
+            - or - 
+            The file path specified by path (parameter) does not exist.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.Open">
+      <summary>
+            Opens a TDMS file with ReadWrite access.  If the file does not exist, a new TDMS file is created.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.Open(NationalInstruments.Tdms.TdmsFileAccess)">
+      <summary>
+            Opens a TDMS file with the specified TdmsFileAccess.  If the file does not exist, a new TDMS file is created.
+            </summary>
+      <param name="access">
+            A TdmsFileAccess value that specifies the file access for the opened TDMS file.
+            </param>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">access (parameter) is not a member of TdmsFileAccess.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">access (parameter) is Read and the file specified by Path does not exist anymore.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.GetChannelGroups">
+      <summary>
+            Returns the collection of channel groups in the TDMS file.
+            </summary>
+      <returns>
+            A TdmsChannelGroupCollection that contains the 
+            TdmsChannelGroup objects in the TDMS file.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.GetProperties">
+      <summary>
+            Returns the collection of properties for the TDMS file.
+            </summary>
+      <returns>
+            A TdmsPropertyCollection that contains the 
+            TdmsProperty objects for the TDMS file.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.AddChannelGroup(System.String)">
+      <summary>
+            Adds a new TdmsChannelGroup with the specified name
+            to the TdmsFile.
+            </summary>
+      <param name="name">
+            The name of the TdmsChannelGroup.
+            </param>
+      <returns>
+            The newly added TdmsChannelGroup.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.AddChannelGroup(System.String,System.String)">
+      <summary>
+            Adds a new TdmsChannelGroup with the specified name
+            and description to the TdmsFile.
+            </summary>
+      <param name="name">
+            The name of the TdmsChannelGroup.
+            </param>
+      <param name="description">
+            The description of the TdmsChannelGroup.
+            </param>
+      <returns>
+            The newly added TdmsChannelGroup.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            - or -description (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.AddChannelGroup(NationalInstruments.Tdms.TdmsChannelGroup)">
+      <summary>
+            Adds the specified TdmsChannelGroup 
+            to the TdmsFile.
+            </summary>
+      <param name="channelGroup">
+            The TdmsChannelGroup to add.
+            </param>
+      <exception cref="T:System.ArgumentNullException">channelGroup (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">channelGroup (parameter) already belongs to another TDMS file.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.GetChannelGroup(System.String)">
+      <summary>
+            Returns the specified TDMS channel group associated with this 
+            TdmsFile.
+            </summary>
+      <param name="name">
+            The name of the channel group.
+            </param>
+      <returns>
+            If the channel group exists in the TDMS file, returns a 
+            TdmsChannelGroup
+            that represents the channel group specified by name (parameter);
+            otherwise, returns null.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.AddProperty(System.String,NationalInstruments.Tdms.TdmsPropertyDataType,System.Object)">
+      <summary>
+            Adds a new TdmsProperty with the specified name, data type,
+            and value to the TdmsFile.
+            </summary>
+      <param name="name">
+            The name of the property.
+            </param>
+      <param name="dataType">
+            A TdmsPropertyDataType value that specifies the data type of the TDMS property.
+            </param>
+      <param name="value">
+            The value of the property.
+            </param>
+      <returns>
+            The newly added TdmsProperty.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            - or -value (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            
+            - or -
+            value (parameter) is an unsupported type.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsPropertyDataType.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">dataType (parameter) does not match value (parameter)'s data type.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.AddProperty(NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            Adds the specified TdmsProperty 
+            to the TdmsFile.
+            </summary>
+      <param name="property">
+            The TdmsProperty to add.
+            </param>
+      <exception cref="T:System.ArgumentNullException">property (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">property (parameter) already belongs to another TDMS file, channel group, or channel.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.GetProperty(System.String)">
+      <summary>
+            Returns the specified TDMS property associated with this 
+            TdmsFile.
+            </summary>
+      <param name="name">
+            The name of the property.
+            </param>
+      <returns>
+            If the property exists on the TDMS file, returns a 
+            TdmsProperty
+            that represents the property specified by name (parameter);
+            otherwise, returns null.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.Close">
+      <summary>
+            Closes the TdmsFile handle.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.Save">
+      <summary>
+            Saves the TDMS file to disk.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.Delete(System.String)">
+      <summary>
+            Deletes a TDMS file.
+            </summary>
+      <param name="path">
+            The TDMS file path.
+            </param>
+      <exception cref="T:System.ArgumentNullException">path (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">path (parameter) is an empty string.
+            
+            - or -
+            path (parameter) is not a TDMS file.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.Defragment(System.String)">
+      <summary>
+            Defragments a TDMS file on disk.
+            </summary>
+      <param name="path">
+            The absolute or relative TDMS file path.  The TDMS file must be closed.
+            </param>
+      <exception cref="T:System.ArgumentNullException">path (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">path (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.ConvertFileFormat(System.String,NationalInstruments.Tdms.TdmsFileFormat)">
+      <summary>
+            Converts the file format of a TDMS file.
+            </summary>
+      <param name="path">
+            The absolute or relative TDMS file path.  The TDMS file must be closed.
+            </param>
+      <param name="fileFormat">
+            The TdmsFileFormat
+            you want to convert the TdmsFile
+            to.
+            </param>
+      <exception cref="T:System.ArgumentNullException">path (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">path (parameter) is an empty string.
+            - or -
+
+The file path specified by path (parameter) does not exist.
+            
+
+- or -The file path specified by path (parameter) does not exist.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">fileFormat (parameter) is not a member of TdmsFileFormat.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFile.ToString">
+      <summary>
+            Returns a string representation of the object.
+            </summary>
+      <returns>
+            Returns a string representation of the object.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.IsOpen">
+      <summary>
+            Gets a value indicating if the TdmsFile is open.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.IsModified">
+      <summary>
+            Gets a value indicating if the TdmsFile has been modified and is in an unsaved state.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.AutoSave">
+      <summary>
+            Gets or sets a value indicating if the TdmsFile should automatically be saved after it is changed.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.Path">
+      <summary>
+            Gets the absolute or relative TDMS file path.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.Access">
+      <summary>
+            Returns a TdmsFileAccess value that specifies the file access for the opened TDMS file.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.FileFormat">
+      <summary>
+            Gets a value indicating the file format of the TdmsFile.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.Name">
+      <summary>
+            Gets or sets the name of a TDMS file.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.Description">
+      <summary>
+            Gets or sets the description of a TDMS file.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.Title">
+      <summary>
+            Gets or sets the title of a TDMS file.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.Author">
+      <summary>
+            Gets or sets the author of a TDMS file.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The TdmsFile is not open.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">
+            The value is null.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFile.DateTimeKind">
+      <summary>
+            Gets or sets a value that indicates whether timing values read from this 
+            TdmsFile are based on 
+            local time or Coordinated Universal Time (UTC).
+            </summary>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            The value is not a valid DateTimeKind value.
+            </exception>
+      <exception cref="T:System.NotSupportedException">
+            The value is Unspecified.
+            </exception>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsFileAccess">
+      <summary>
+            Specifies whether a TDMS file's access is read-only or read/write.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsFileAccess.Read">
+      <summary>
+            The TDMS file has read-only permissions.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsFileAccess.ReadWrite">
+      <summary>
+            The TDMS file has read/write permissions.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsFileFormat">
+      <summary>
+            Specifies the file format for the TDMS file.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsFileFormat.Version10">
+      <summary>
+            The file format of the TDMS file is version 1.0.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsFileFormat.Version20">
+      <summary>
+            The file format of the TDMS file is version 2.0.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsFileOptions">
+      <summary>
+            Provides options to use when creating or opening a TDMS file.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFileOptions.#ctor">
+      <summary>
+            Initializes a new instance of the TdmsFileOptions 
+            class with the default values.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFileOptions.#ctor(NationalInstruments.Tdms.TdmsFileFormat)">
+      <summary>
+            Initializes a new instance of the TdmsFileOptions 
+            class with the default values and the specified file format.
+            </summary>
+      <param name="fileFormat">
+            A TdmsFileFormat value which specifies 
+            the file format to use when creating a new TdmsFile.
+            </param>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">fileFormat (parameter) is not a member of TdmsFileFormat.</exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFileOptions.#ctor(NationalInstruments.Tdms.TdmsFileFormat,NationalInstruments.Tdms.TdmsFileAccess)">
+      <summary>
+            Initializes a new instance of the TdmsFileOptions 
+            class with the default values and the specified file format and file access.
+            </summary>
+      <param name="fileFormat">
+            A TdmsFileFormat value which specifies 
+            the file format to use when creating a new TdmsFile.
+            </param>
+      <param name="access">
+            A TdmsFileAccess value which specifies the
+            file access for the TdmsFile.
+            </param>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">fileFormat (parameter) is not a member of TdmsFileFormat.- or -access (parameter) is not a member of TdmsFileAccess.</exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFileOptions.#ctor(NationalInstruments.Tdms.TdmsFileFormat,NationalInstruments.Tdms.TdmsFileAccess,System.Boolean)">
+      <summary>
+            Initializes a new instance of the TdmsFileOptions 
+            class with the default values and the specified file format, file access, and buffering disabled preference.
+            </summary>
+      <param name="fileFormat">
+            A TdmsFileFormat value which specifies 
+            the file format to use when creating a new TdmsFile.
+            </param>
+      <param name="access">
+            A TdmsFileAccess value which specifies the
+            file access for the TdmsFile.
+            </param>
+      <param name="bufferingDisabled">
+            A Boolean which specifies whether or not to disable Windows file buffering when reading
+            from or writing to the TdmsFile.
+            </param>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">fileFormat (parameter) is not a member of TdmsFileFormat.- or -access (parameter) is not a member of TdmsFileAccess.</exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsFileOptions.#ctor(NationalInstruments.Tdms.TdmsFileFormat,NationalInstruments.Tdms.TdmsFileAccess,System.Boolean,NationalInstruments.Tdms.TdmsByteOrder)">
+      <summary>
+            Initializes a new instance of the TdmsFileOptions 
+            class with the specified values.
+            </summary>
+      <param name="fileFormat">
+            A TdmsFileFormat value which specifies 
+            the file format to use when creating a new TdmsFile.
+            </param>
+      <param name="access">
+            A TdmsFileAccess value which specifies the
+            file access for the TdmsFile.
+            </param>
+      <param name="bufferingDisabled">
+            A Boolean which specifies whether or not to disable Windows file buffering when reading
+            from or writing to the TdmsFile.
+            </param>
+      <param name="byteOrder">
+            A TdmsByteOrder value which specifies the byte order to use when
+            writing data to the TdmsFile.
+            </param>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">fileFormat (parameter) is not a member of TdmsFileFormat.- or -access (parameter) is not a member of TdmsFileAccess.- or -byteOrder (parameter) is not a member of TdmsByteOrder.</exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFileOptions.FileFormat">
+      <summary>
+            Gets or sets a value that specifies the file format to use when creating a new
+            TdmsFile.
+            </summary>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            	The value is not a member of TdmsFileFormat.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFileOptions.Access">
+      <summary>
+            Gets or sets a value that specifies the file access for the
+            TdmsFile.
+            </summary>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            	The value is not a member of TdmsFileAccess.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFileOptions.BufferingDisabled">
+      <summary>
+            Gets or sets a value indicating whether or not to disable Windows file buffering for the
+            TdmsFile.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsFileOptions.ByteOrder">
+      <summary>
+            Gets or sets a value that specifies the byte order to use when creating a new
+            TdmsFile.
+            </summary>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            	The value is not a member of TdmsByteOrder.
+            </exception>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsProperty">
+      <summary>
+            Provides a way to create a TDMS property which can be added to a TDMS file, channel group, or channel.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsProperty.#ctor(System.String,NationalInstruments.Tdms.TdmsPropertyDataType,System.Object)">
+      <summary>
+            Initializes a new instance of a TDMS property that can be added to a TDMS file, channel group, or channel.
+            </summary>
+      <param name="name">
+            The name of the property.
+            </param>
+      <param name="dataType">
+            A TdmsPropertyDataType value that specifies the data type of the TDMS property.
+            </param>
+      <param name="value">
+            The value of the property.
+            </param>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">dataType (parameter) is not a member of TdmsPropertyDataType.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">dataType (parameter) does not match value (parameter)'s data type.
+            
+            - or -
+            value (parameter) is an unsupported type.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsProperty.GetDataType">
+      <summary>
+            Returns the data type of the TDMS property.
+            </summary>
+      <returns>
+            A Type object that represents the data type of the TDMS property.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsProperty has not yet been added to a 
+            TdmsPropertyCollection.
+            
+            - or -
+            
+            The TDMS property data type is an unsupported type.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsProperty.GetValue">
+      <summary>
+            Returns the value of the TDMS property.
+            </summary>
+      <returns>
+            An Object that represents the value of the TDMS property.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsProperty has not yet been added to a 
+            TdmsPropertyCollection.
+            
+            - or -
+            
+            The TDMS property data type is an unsupported type.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsProperty.GetValue``1">
+      <summary>
+            Returns the value of the TDMS property.
+            </summary>
+      <typeparam name="TValue">
+            The data type of the TDMS property value.
+            </typeparam>
+      <returns>
+            A TValue (generic type parameter) that represents the value of the TDMS property.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsProperty has not yet been added to a 
+            TdmsPropertyCollection.
+            
+            - or -
+            TValue (generic type parameter) does not match the TDMS property data type.
+            
+            - or -
+            
+            The TDMS property data type is an unsupported type.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsProperty.SetValue``1(``0)">
+      <summary>
+            Sets the value of the TDMS property.
+            </summary>
+      <param name="value">
+            The value to set the TDMS property to.
+            </param>
+      <typeparam name="TValue">
+            The data type of the TDMS property's value.
+            </typeparam>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">TValue (generic type parameter) is an unsupported type.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsProperty has not yet been added to a 
+            TdmsPropertyCollection.
+            
+            - or -
+            TValue (generic type parameter) does not match the TDMS property's data type.
+            
+            - or -
+            
+            The TDMS property data type is an unsupported type.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsProperty.ToString">
+      <summary>
+            Returns a string representation of the object.
+            </summary>
+      <returns>
+            Returns a string representation of the object.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The TdmsProperty has not yet been added to a 
+            TdmsPropertyCollection.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsProperty.Parent">
+      <summary>
+            Gets the parent object of a TDMS property.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsProperty.Name">
+      <summary>
+            Gets the name of a TDMS property.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsProperty.TdmsDataType">
+      <summary>
+            Gets the data type of a TDMS property.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsPropertyCollection">
+      <summary>
+            Represents a strongly typed collection of TdmsProperty objects.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.GetNames">
+      <summary>
+            Returns a list of names of TdmsProperty objects in the collection.
+            </summary>
+      <returns>
+            The list of names of TdmsProperty objects in the collection.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.GetValues">
+      <summary>
+            Returns a list of values of all the TdmsProperty objects in the collection.
+            </summary>
+      <returns>
+            The list of values of all the TdmsProperty objects in the collection.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The list of TDMS property data types for the TdmsProperty objects contains an unsupported type.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.GetValues(System.String[])">
+      <summary>
+            Returns a list of values of the specified TdmsProperty objects in the collection.
+            </summary>
+      <param name="propertyNames">
+            An array containing the names of the properties for which to return values.
+            </param>
+      <returns>
+            The list of values of the specified TdmsProperty objects in the collection.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The list of TDMS property data types for the TdmsProperty objects contains an unsupported type.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.GetDataTypes">
+      <summary>
+            Returns a list of data types of all the TdmsProperty objects in the collection.
+            </summary>
+      <returns>
+            The list of data types of all the TdmsProperty objects in the collection.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The list of TDMS property data types contains an unsupported type.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.GetDataTypes(System.String[])">
+      <summary>
+            Returns a list of data types of the specified TdmsProperty objects in the collection.
+            </summary>
+      <param name="propertyNames">
+            An array containing the names of the properties for which to return data types.
+            </param>
+      <returns>
+            The list of data types of the specified TdmsProperty objects in the collection.
+            </returns>
+      <exception cref="T:System.InvalidOperationException">
+            The list of TDMS property data types contains an unsupported type.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.GetTdmsDataTypes">
+      <summary>
+            Returns a list of data types of all the TdmsProperty objects in the collection.
+            </summary>
+      <returns>
+            An array of TdmsPropertyDataType values that represents
+            the list of data types of all the TdmsProperty objects in the collection.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.GetTdmsDataTypes(System.String[])">
+      <summary>
+            Returns a list of data types of the specified TdmsProperty objects in the collection.
+            </summary>
+      <param name="propertyNames">
+            An array containing the names of the properties for which to return data types.
+            </param>
+      <returns>
+            An array of TdmsPropertyDataType values that represents
+            the list of data types of the specified TdmsProperty objects in the collection.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.Contains(System.String)">
+      <summary>
+            Determines if a TdmsProperty with the specified name is in the collection.
+            </summary>
+      <param name="name">
+            Name of the TdmsProperty to locate in the collection.
+            </param>
+      <returns>true if the collection contains a TdmsProperty named name (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.Add(NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            Adds a TdmsProperty to the end of the collection.
+            </summary>
+      <param name="value">TdmsProperty to add to the collection.
+            </param>
+      <returns>
+            The array index of the added item.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) is already in this collection.
+            
+            - or -
+            value (parameter) is in another TdmsPropertyCollection.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.Contains(NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            Determines if the specified TdmsProperty is in the collection.
+            </summary>
+      <param name="item">TdmsProperty to locate in the collection.
+            </param>
+      <returns>true if the collection contains item (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">item (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">item (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.IndexOf(NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            Returns the zero-based index of a TdmsProperty in the collection.
+            </summary>
+      <param name="value">TdmsProperty to search for.
+            </param>
+      <returns>
+            Index of the item.  If the item is not found, returns -1.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.CopyTo(NationalInstruments.Tdms.TdmsProperty[],System.Int32)">
+      <summary>
+            Copies the elements of the TdmsPropertyCollection to
+            an array, starting at a particular array index.
+            </summary>
+      <param name="array">
+            The one-dimensional array of TdmsProperty objects that is the
+            destination of the elements copied from the TdmsPropertyCollection.
+            </param>
+      <param name="arrayIndex">
+            The zero-based index in array (parameter) at which copying begins.
+            </param>
+      <exception cref="T:System.ArgumentNullException">array (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">arrayIndex (parameter) is less than zero.
+            </exception>
+      <exception cref="T:System.ArgumentException">arrayIndex (parameter) is equal to or greater than the length of array (parameter).-orThe number of elements in the source TdmsPropertyCollection
+            is greater than the space available from arrayIndex (parameter) to the end of the destination
+            array (parameter).</exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.ToString">
+      <summary>
+            Returns a string representation of the object.
+            </summary>
+      <returns>
+            Returns a string representation of the object.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#IList#Clear">
+      <summary>
+            This method is not supported by TdmsPropertyCollection.
+            </summary>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#IList#Insert(System.Int32,System.Object)">
+      <summary>
+            This method is not supported by TdmsPropertyCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#IList#Remove(System.Object)">
+      <summary>
+            This method is not supported by TdmsPropertyCollection.
+            </summary>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+      <returns>This return value is not documented because this method is not supported.</returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#IList#RemoveAt(System.Int32)">
+      <summary>
+            This method is not supported by TdmsPropertyCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#TdmsProperty}#IndexOf(NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            Returns the zero-based index of a TdmsProperty in the collection.
+            </summary>
+      <param name="value">TdmsProperty to search for.
+            </param>
+      <returns>
+            Index of the item.  If the item is not found, returns -1.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) has not been initialized.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#TdmsProperty}#Insert(System.Int32,NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            This method is not supported by TdmsPropertyCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#TdmsProperty}#RemoveAt(System.Int32)">
+      <summary>
+            This method is not supported by TdmsPropertyCollection.
+            </summary>
+      <param name="index">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#TdmsProperty}#Add(NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            Adds a TdmsProperty to the end of the collection.
+            </summary>
+      <param name="value">TdmsProperty to add to the collection.
+            </param>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.InvalidOperationException">value (parameter) is already in this collection.
+            
+            - or -
+            value (parameter) is in another TdmsPropertyCollection.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#TdmsProperty}#Remove(NationalInstruments.Tdms.TdmsProperty)">
+      <summary>
+            This method is not supported by TdmsPropertyCollection.
+            </summary>
+      <param name="value">
+            This parameter is not documented because this method is not supported.
+            </param>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+      <returns>This return value is not documented because this method is not supported.</returns>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#TdmsProperty}#Clear">
+      <summary>
+            This method is not supported by TdmsPropertyCollection.
+            </summary>
+      <exception cref="T:System.NotSupportedException">
+            This exception is always thrown.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#Generic#IEnumerable{NationalInstruments#Tdms#TdmsProperty}#GetEnumerator">
+      <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+      <returns>
+            An IEnumerator&lt;T&gt;  that can be used to iterate through the collection.
+            </returns>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsPropertyCollection.Item(System.String)">
+      <summary>
+            Gets the TdmsProperty with the specified name.
+            </summary>
+      <param name="name">
+            The name of the entry to locate in the collection.
+            </param>
+      <exception cref="T:System.ArgumentNullException">name (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">name (parameter) is an empty string.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsPropertyCollection.Item(System.Int32)">
+      <summary>
+            Gets the TdmsProperty at the specified index.
+            </summary>
+      <param name="index">
+            The zero-based index of the entry to locate in the collection.
+            </param>
+      <exception cref="T:System.ArgumentOutOfRangeException">index (parameter) is less than zero.
+            
+            - or -
+            index (parameter) is greater than Count.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsPropertyCollection.Count">
+      <summary>
+            Gets the number of elements in the TdmsPropertyCollection.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#Generic#IList{NationalInstruments#Tdms#TdmsProperty}#Item(System.Int32)">
+      <summary>
+            Gets the TdmsProperty at the specified index.
+            </summary>
+      <param name="index">
+            The zero-based index of the entry to locate in the collection.
+            </param>
+      <exception cref="T:System.ArgumentOutOfRangeException">index (parameter) is less than zero.
+            
+            - or -
+            index (parameter) is greater than Count.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Tdms.TdmsPropertyCollection.System#Collections#Generic#ICollection{NationalInstruments#Tdms#TdmsProperty}#IsReadOnly">
+      <summary>
+            Gets a value indicating whether the ICollection&lt;T&gt;  is read-only.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsPropertyDataType">
+      <summary>
+            Specifies a TDMS property's data type.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.Int8">
+      <summary>
+            The TDMS property's data type is SByte.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.UInt8">
+      <summary>
+            The TDMS property's data type is Byte.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.Int16">
+      <summary>
+            The TDMS property's data type is Int16.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.UInt16">
+      <summary>
+            The TDMS property's data type is UInt16.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.Int32">
+      <summary>
+            The TDMS property's data type is Int32.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.UInt32">
+      <summary>
+            The TDMS property's data type is UInt32.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.Int64">
+      <summary>
+            The TDMS property's data type is Int64.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.UInt64">
+      <summary>
+            The TDMS property's data type is UInt64.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.Float">
+      <summary>
+            The TDMS property's data type is Single.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.Double">
+      <summary>
+            The TDMS property's data type is Double.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.String">
+      <summary>
+            The TDMS property's data type is String.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.Boolean">
+      <summary>
+            The TDMS property's data type is Boolean.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsPropertyDataType.DateTime">
+      <summary>
+            The TDMS property's data type is PrecisionDateTime.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsSaveFile">
+      <summary>
+            Specifies whether a TDMS file should be saved after data is written.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsSaveFile.UseGlobalAutoSaveValue">
+      <summary>
+            Specifies that the TDMS file should be saved based on the value of 
+            AutoSave.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsSaveFile.SaveFile">
+      <summary>
+            Specifies that the TDMS file should be saved after data is written.  This overrides the value of 
+            AutoSave.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsSaveFile.DoNotSaveFile">
+      <summary>
+            Specifies that the TDMS file should not be saved after data is written.  This overrides the value of 
+            AutoSave.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsWaveformLayout">
+      <summary>
+            Specifies how the waveform channels and any timing channels should be laid out 
+            in a TdmsChannelGroup.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsWaveformLayout.NoTimeChannel">
+      <summary>
+            Specifies a waveform layout which does not have a dedicated timing channel.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsWaveformLayout.SingleTimeChannel">
+      <summary>
+            Specifies a waveform layout which has a single dedicated timing channel that applies to one or more 
+            waveforms in the channel group.  The timing channel must be the first channel in the channel group. 
+            This mode is only included for compatibility with other tools that can produce data using this type of layout.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsWaveformLayout.PairedTimeAndSampleChannels">
+      <summary>
+            Specifies a waveform layout which contains pairs of dedicated timing channels and waveform channels.  Each 
+            waveform must have its own timing channel, which must come before the waveform channel or channels in the channel group.
+            Use this layout when writing waveforms that have the timing SampleIntervalMode
+            set to Irregular.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Tdms.TdmsWaveformTimingType">
+      <summary>
+            Specifies how the timing for a waveform is measured.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsWaveformTimingType.Relative">
+      <summary>
+            Specifies that the start time for the timing is a relative time stamp.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Tdms.TdmsWaveformTimingType.Absolute">
+      <summary>
+            Specifies that the start time for the timing is an absolute time stamp.
+            </summary>
+    </member>
+  </members>
+</doc>

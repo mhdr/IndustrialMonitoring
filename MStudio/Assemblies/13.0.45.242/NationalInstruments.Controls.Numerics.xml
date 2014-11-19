@@ -1,0 +1,2550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc xmlns:ni="urn:ni">
+  <assembly>
+    <name>NationalInstruments.Controls.Numerics</name>
+  </assembly>
+  <members>
+    <member name="T:NationalInstruments.Controls.HorizontalLocation">
+      <summary>
+            Specifies the location of a control to be on the left or on the right. 
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.HorizontalLocation.Left">
+      <summary>
+            The control is positioned on the left.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.HorizontalLocation.Right">
+      <summary>
+            The control is positioned on the right.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.ComboBoxContentDisplay.SelectionContentProperty">
+      <summary>
+            Identifies the SelectionContent dependency property.
+            </summary>
+      <returns>
+            The identifier for the SelectionContent dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.ComboBoxContentDisplay.ItemContentProperty">
+      <summary>
+            Identifies the ItemContent dependency property.
+            </summary>
+      <returns>
+            The identifier for the ItemContent dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.ComboBoxContentDisplay.#ctor">
+      <summary>
+            Initializes a new instance of the ComboBoxContentDisplay class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.ComboBoxContentDisplay.OnApplyTemplate" />
+    <member name="P:NationalInstruments.Controls.Primitives.ComboBoxContentDisplay.SelectionContent">
+      <summary>Gets or sets the content that is displayed in the selection area of the combo box.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.ComboBoxContentDisplay.ItemContent">
+      <summary>Gets or sets the list of items that is displayed in the combo box.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.ComboBoxContentDisplay.ContentPresenter">
+      <summary>
+            Gets the ContentPresenter responsible for displaying the appropriate content.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.INumericScale">
+      <summary>
+            Defines the interface for all Measurement Studio Windows Presentation Foundation (WPF) numeric scales.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.INumericScale.GetDivisions``1(System.Object)">
+      <summary>
+            Gets the current divisions on a scale.
+            </summary>
+      <param name="context">
+            The owner of the scale.
+            </param>
+      <typeparam name="TData">
+            The type of the data used on the scale.
+            </typeparam>
+      <returns>
+            An IList&lt;T&gt; of all of the divisions on the scale.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.INumericScale.CleanScale(System.Object)">
+      <summary>
+            Cleans all references cleans all references to the scale from the owner control
+            </summary>
+      <param name="context">
+            The owner control of the scale.
+            </param>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.Spinner.AspectRatioProperty">
+      <summary>
+            Identifies the AspectRatio dependency property.
+            </summary>
+      <returns>
+            The identifier for the AspectRatio dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.Spinner.IncreaseCommandProperty">
+      <summary>
+            Identifies the IncreaseCommand dependency property.
+            </summary>
+      <returns>
+            The identifier for the IncreaseCommand dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.Spinner.DecreaseCommandProperty">
+      <summary>
+            Identifies the DecreaseCommand dependency property.
+            </summary>
+      <returns>
+            The identifier for the DecreaseCommand dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.Spinner.IncreaseContentProperty">
+      <summary>
+            Identifies the IncreaseContent dependency property.
+            </summary>
+      <returns>
+            The identifier for the IncreaseContent dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.Spinner.DecreaseContentProperty">
+      <summary>
+            Identifies the DecreaseContent dependency property.
+            </summary>
+      <returns>
+            The identifier for the DecreaseContent dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.Spinner.ContentTemplateProperty">
+      <summary>
+            Identifies the ContentTemplate dependency property.
+            </summary>
+      <returns>
+            The identifier for the ContentTemplate dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.Spinner.ButtonStyleProperty">
+      <summary>
+            Identifies the ButtonStyle dependency property.
+            </summary>
+      <returns>
+            The identifier for the ButtonStyle dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.Spinner.#ctor">
+      <summary>
+            Initializes a new instance of the Spinner class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.Spinner.MeasureOverride(System.Windows.Size)" />
+    <member name="M:NationalInstruments.Controls.Primitives.Spinner.ArrangeOverride(System.Windows.Size)" />
+    <member name="P:NationalInstruments.Controls.Primitives.Spinner.AspectRatio">
+      <summary>Gets or sets the aspect ratio of the buttons.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.Spinner.IncreaseCommand">
+      <summary>Gets or sets the command that is executed when the increase button is clicked.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.Spinner.DecreaseCommand">
+      <summary>Gets or sets the command that executes when the decrease button is clicked.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.Spinner.IncreaseContent">
+      <summary>Gets or sets the content to display in the increase button.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.Spinner.DecreaseContent">
+      <summary>Gets or sets the content to display in the decrease button.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.Spinner.ContentTemplate">
+      <summary>Gets or sets the template to use for the content of the buttons.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.Spinner.ButtonStyle">
+      <summary>Gets or sets the style to use for the buttons.</summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Converters.ArcSweepConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)" />
+    <member name="M:NationalInstruments.Controls.Converters.ArcSweepConverter.CanConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Type)" />
+    <member name="M:NationalInstruments.Controls.Converters.ArcSweepConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)" />
+    <member name="M:NationalInstruments.Controls.Converters.ArcSweepConverter.ConvertTo(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object,System.Type)" />
+    <member name="T:NationalInstruments.Controls.DependentNumericScale">
+      <summary>
+            Represents the dependent scale in a control with a primary and secondary scale. 
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.DependentNumericScale.MajorDivisionsProperty">
+      <summary>
+            Identifies the MajorDivisions dependency property.
+            </summary>
+      <returns>
+            The identifier for the MajorDivisions dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.DependentNumericScale.MinorDivisionsProperty">
+      <summary>
+            Identifies the MinorDivisions dependency property.
+            </summary>
+      <returns>
+            The identifier for the MinorDivisions dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.DependentNumericScale.MapProperty">
+      <summary>
+            Identifies the Map dependency property.
+            </summary>
+      <returns>
+            The identifier for the Map dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.DependentNumericScale.OnMajorDivisionsChanged(NationalInstruments.Controls.RangeLabeledDivisions,NationalInstruments.Controls.RangeLabeledDivisions)">
+      <summary>
+            Called when the MajorDivisions property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the MajorDivisions property.
+            </param>
+      <param name="newValue">
+            New value of the MajorDivisions property.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.DependentNumericScale.OnMinorDivisionsChanged(NationalInstruments.Controls.RangeDivisions,NationalInstruments.Controls.RangeDivisions)">
+      <summary>
+            Called when the MinorDivisions property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the MinorDivisions property.
+            </param>
+      <param name="newValue">
+            New value of the MinorDivisions property.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.DependentNumericScale.CreateInstanceCore" />
+    <member name="M:NationalInstruments.Controls.DependentNumericScale.GetDataMapper(System.Object)" />
+    <member name="M:NationalInstruments.Controls.DependentNumericScale.IsVisible(NationalInstruments.Controls.Primitives.ScalePresenter)" />
+    <member name="M:NationalInstruments.Controls.DependentNumericScale.Present(NationalInstruments.Controls.Primitives.ScalePresenter)" />
+    <member name="M:NationalInstruments.Controls.DependentNumericScale.Clean(NationalInstruments.Controls.Primitives.ScalePresenter)" />
+    <member name="M:NationalInstruments.Controls.DependentNumericScale.OnMapChanged">
+      <summary>
+            Raised when Map changes.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.DependentNumericScale.MajorDivisions">
+      <summary>Gets or sets the major divisions for the scale.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.DependentNumericScale.MinorDivisions">
+      <summary>Gets or sets the minor divisions for the scale.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.DependentNumericScale.Map">
+      <summary>Gets or sets whether a data mapper can be created from the primary scale this scale is associated with.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxDouble">
+      <summary>Provides the Double implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBox`1">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) control to display and manipulate decimal numeric values as text.
+            </summary>
+      <typeparam name="TData">The type of data used by the control.</typeparam>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.NumericTextBase`2">
+      <summary>
+            Represents a control that can display and manipulate numeric values as text.
+            </summary>
+      <typeparam name="TValue">The type of data held by the control.</typeparam>
+      <typeparam name="TOffset">The type of data used as an offset.</typeparam>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.NumericControl`2">
+      <summary>
+            Represents a control that can display and manipulate numeric values.
+            </summary>
+      <typeparam name="TValue">The type of data held by the control.</typeparam>
+      <typeparam name="TOffset">The type of data used for an offset by the control.</typeparam>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.INumericControl`2">
+      <summary>
+            Defines the interface for all Measurement Studio Windows Presentation Foundation (WPF) controls that display a numeric value. 
+            </summary>
+      <typeparam name="TValue">The type of data held by the control.</typeparam>
+      <typeparam name="TOffset">The type of data used for an offset by the control.</typeparam>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.INumericControl`2.Value">
+      <summary>
+            Gets or sets the value of the control.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.INumericControl`2.CoercedValue">
+      <summary>
+            Gets the adjusted value displayed by the control, coerced to fall within range.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.INumericControl`2.ActualRange">
+      <summary>
+            Gets the range of values that can be displayed by the control.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.INumericControl`2.Interval">
+      <summary>
+            Gets or sets the interval amount of the control.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.#ctor">
+      <summary>
+            Initializes a new instance of the NumericControl&lt;T1,T2&gt; class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.OnKeyDown(System.Windows.Input.KeyEventArgs)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.MoveNext">
+      <summary>
+            Increases CoercedValue
+             by the same amount as Interval and assigns
+             the result to Value.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.MovePrevious">
+      <summary>
+            Decreases CoercedValue by the same 
+            amount as Interval and assigns the result
+             to Value.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.BindCommand(System.Windows.Controls.Control,System.Windows.Input.RoutedCommand,System.Collections.Generic.IEnumerable{System.Windows.Input.InputGesture})">
+      <summary>
+            Creates an input binding on the given control such that when a given gesture fires, the provided command executes.
+            </summary>
+      <param name="control">
+            The Control on which to set up input bindings.
+            </param>
+      <param name="command">
+            The RoutedCommand to execute when gestures (parameter) is executed.
+            </param>
+      <param name="gestures">
+            The InputGesture to trigger command (parameter).
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.IncrementByMultiple(System.Int32,NationalInstruments.Controls.PropertyChangeSource)">
+      <summary>
+            Increases or decreases the coerced value
+            by the specified multiple of Interval and assigns 
+            the result to Value.
+            </summary>
+      <param name="multiple">The multiple by which the Interval is multiplied.</param>
+      <param name="changeSource">The source of the change.</param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.GetMultipleIncrementValue(`0,System.Int32)">
+      <summary>
+            Increases or decreases a value by the specified multiple.
+            </summary>
+      <param name="value">The value to adjust.</param>
+      <param name="multiple">The multiple used to adjust value (parameter).</param>
+      <returns>The new value.</returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.ChangeValue(`0,NationalInstruments.Controls.PropertyChangeSource)">
+      <summary>
+            Changes Value, after calling 
+            CoercedValue and raising the 
+            ValueChanging event.
+            </summary>
+      <param name="newValue">The new value to assign to Value,
+             after it has been coerced.</param>
+      <param name="changeSource">The source of the change.</param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.CoerceValue(`0)">
+      <summary>
+            Coerces the specified value according to the policy of the control, and clips the value to fall within 
+            ActualRange.
+            </summary>
+      <param name="value">The value to coerce.</param>
+      <returns>The value after coercion. </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.ClipCoercedValue(`0)">
+      <summary>
+            Clips the coerced value to the ActualRange.
+            </summary>
+      <param name="coercedValue">The value after it has been coerced.</param>
+      <returns>The clipped value.</returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.CoerceValueCore(`0)">
+      <summary>
+            Performs custom coercion logic before a value is clipped to fall within ActualRange.
+            </summary>
+      <param name="value">The value to coerce.</param>
+      <returns>The value after coercion. </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.InvalidateCoercedValue">
+      <summary>
+            Re-calculates the value of CoercedValue 
+            from Value using the 
+            CoerceValue method 
+            when a property affecting the CoercedValue changes.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.CommitValueChange">
+      <summary>
+            Called when the user commits the current Value,
+             or before a user interaction causes an update to Value 
+            to allow any pending interaction to complete before the next one starts.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.CancelValueChange">
+      <summary>
+            Called when the user commits the current Value 
+            to allow any pending user interaction to complete before the next user interaction starts.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.OnApplyTemplate" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)" />
+    <member name="F:NationalInstruments.Controls.Primitives.NumericControl`2.CoercedValueProperty">
+      <summary>
+            Identifies the CoercedValue dependency property.
+            </summary>
+      <returns>
+            The identifier for the CoercedValue dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericControl`2.ValueProperty">
+      <summary>
+            Identifies the Value dependency property.
+            </summary>
+      <returns>
+            The identifier for the Value dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericControl`2.IntervalProperty">
+      <summary>
+            Identifies the Interval dependency property.
+            </summary>
+      <returns>
+            The identifier for the Interval dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericControl`2.IsReadOnlyProperty">
+      <summary>
+            Identifies the IsReadOnly dependency property.
+            </summary>
+      <returns>
+            The identifier for the IsReadOnly dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.OnCoercedValueChanged(`0,`0)">
+      <summary>
+            Called when the CoercedValue property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the CoercedValue property.
+            </param>
+      <param name="newValue">
+            New value of the CoercedValue property.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.OnIsReadOnlyChanged(System.Boolean,System.Boolean)">
+      <summary>
+            Called when the IsReadOnly property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the IsReadOnly property.
+            </param>
+      <param name="newValue">
+            New value of the IsReadOnly property.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.OnValueChanging(NationalInstruments.Controls.ValueChangingEventArgs{`0})">
+      <summary>
+            Raises the ValueChanging event.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">e (parameter) is null.
+            </exception>
+      <param name="e">
+            An instance of ValueChangingEventArgs&lt;T&gt; that contains the event data.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.OnValueChanged(NationalInstruments.Controls.ValueChangedEventArgs{`0})">
+      <summary>
+            Raises the ValueChanged event.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">e (parameter) is null.
+            </exception>
+      <param name="e">
+            An instance of ValueChangedEventArgs&lt;T&gt; that contains the event data.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.OnValueChanged(`0,`0)">
+      <summary>
+            Called when the Value property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the Value property.
+            </param>
+      <param name="newValue">
+            New value of the Value property.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericControl`2.OnIntervalChanged(`1,`1)">
+      <summary>
+            Called when the Interval property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the Interval property.
+            </param>
+      <param name="newValue">
+            New value of the Interval property.
+            </param>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.IncrementGestures">
+      <summary>
+            Gets the collection of input gestures that execute the IncrementCommand.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.DecrementGestures">
+      <summary>
+            Gets the collection of input gestures that execute the DecrementCommand.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.IsKeyboardIncrementDecrementEnabled">
+      <summary>
+            Gets or sets a value indicating whether to enable IncrementCommand 
+            and DecrementCommand for interacting with
+             Value.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.IsScrollWheelIncrementDecrementEnabled">
+      <summary>
+            Gets or sets a value indicating whether to enable the mouse wheel for interacting with Value.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.ActualRange">
+      <summary>
+            Gets the range that Value
+             is clipped to to produce CoercedValue.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.IsChangePending">
+      <summary>
+            Gets whether there is a value that requires committal or reversion.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.CoercedValue">
+      <summary>Gets or sets the adjusted numeric value displayed by the control, which is 
+Value clipped by 
+ActualRange.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.IsReadOnly">
+      <summary>Gets or sets a value indicating whether the control is in a read-only state. </summary>
+    </member>
+    <member name="E:NationalInstruments.Controls.Primitives.NumericControl`2.ValueChanging">
+      <summary>Occurs when Value  
+is about to change as a result of an interactive change. </summary>
+    </member>
+    <member name="E:NationalInstruments.Controls.Primitives.NumericControl`2.ValueChanged">
+      <summary>Occurs when Value changes.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.Value">
+      <summary>Gets or sets the numeric value assigned to the control. </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControl`2.Interval">
+      <summary>Gets or sets the amount applied by increment or decrement operations. </summary>
+      <exception cref="T:System.ArgumentException">value (parameter) is NaN, NegativeInfinity, or 
+PositiveInfinity.</exception>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.InvalidateFormattedValue">
+      <summary>
+            Re-calculates the value of FormattedValue
+             from CoercedValue using the 
+            FormatValue method 
+            when a property affecting CoercedValue has changed.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.FormatValue(`0)">
+      <summary>
+            Formats a data value into a string representation.
+            </summary>
+      <param name="value">The value to format.</param>
+      <returns>A string representation of the value.</returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.ParseFormattedValue(System.String)">
+      <summary>
+            Parses a data value from a string representation.
+            </summary>
+      <param name="input">The string value to parse.</param>
+      <returns>The data value equivalent of input (parameter).</returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.ShouldCharacterCauseRoundingAwayFromZero(System.Char)">
+      <summary>
+            Determines whether the specified character causes a parsed value to round to the next integer value away from zero.
+            </summary>
+      <param name="firstFractionalCharacter">The first fractional character of the incoming text value.</param>
+      <returns>true if the character should cause the parsed value to round to the next integer value away from zero; 
+            otherwise, false to truncate the parsed value to the current integer.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.InitializeValueInput">
+      <summary>
+            Initializes the ValueInput
+             template part on the NumericTextBase&lt;T1,T2&gt;.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.GetMultipleIncrementValue(`0,System.Int32)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.CoerceValueCore(`0)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.CommitValueChange" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.CancelValueChange" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.OnCoercedValueChanged(`0,`0)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.OnIntervalChanged(`1,`1)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.OnGotFocus(System.Windows.RoutedEventArgs)" />
+    <member name="F:NationalInstruments.Controls.Primitives.NumericTextBase`2.RangeProperty">
+      <summary>
+            Identifies the Range dependency property.
+            </summary>
+      <returns>
+            The identifier for the Range dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericTextBase`2.ButtonsLocationProperty">
+      <summary>
+            Identifies the ButtonsLocation dependency property.
+            </summary>
+      <returns>
+            The identifier for the ButtonsLocation dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericTextBase`2.InteractionModeProperty">
+      <summary>
+            Identifies the InteractionMode dependency property.
+            </summary>
+      <returns>
+            The identifier for the InteractionMode dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericTextBase`2.CoercionModeProperty">
+      <summary>
+            Identifies the CoercionMode dependency property.
+            </summary>
+      <returns>
+            The identifier for the CoercionMode dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericTextBase`2.TextAlignmentProperty">
+      <summary>
+            Identifies the TextAlignment dependency property.
+            </summary>
+      <returns>
+            The identifier for the TextAlignment dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericTextBase`2.SelectOnFocusProperty">
+      <summary>
+            Identifies the SelectOnFocus dependency property.
+            </summary>
+      <returns>
+            The identifier for the SelectOnFocus dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericTextBase`2.FormattedValueProperty">
+      <summary>
+            Identifies the FormattedValue dependency property.
+            </summary>
+      <returns>
+            The identifier for the FormattedValue dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.#ctor">
+      <summary>
+            Initializes a new instance of the NumericTextBase&lt;T1,T2&gt; class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.OnApplyTemplate" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericTextBase`2.OnRangeChanged(NationalInstruments.Controls.Range{`0},NationalInstruments.Controls.Range{`0})">
+      <summary>
+            Called when the Range property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the Range property.
+            </param>
+      <param name="newValue">
+            New value of the Range property.
+            </param>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.ActualRange" />
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.HandleExponentialInput">
+      <summary>
+            Gets a value indicating whether to handle text input in exponential scientific notation if
+             ParseFormattedValue cannot parse it directly.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.IsChangePending" />
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.Range">
+      <summary>Gets or sets the minimum and maximum range allowed for the coerced value of this control. </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.FormattedValue">
+      <summary>Gets or sets the string representation of the
+CoercedValue.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.ButtonsLocation">
+      <summary>Gets or sets which side of the control, left or right, the buttons are on.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.InteractionMode">
+      <summary>Gets or sets a flags field that controls how your end user can interact with the control, using the keyboard or mouse. </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.CoercionMode">
+      <summary>Gets or sets the restrictions on values within the range.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.TextAlignment">
+      <summary>Gets or sets the alignment of the contents of the text box.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.SelectOnFocus">
+      <summary>Gets or sets a value determining whether the text of a control becomes selected when the control receives the keyboard focus.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.Interactor">
+      <summary>
+            Gets the interactor helper for the control.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericTextBase`2.ValueInput">
+      <summary>Gets the area where an end user interacts with the text representation of the numeric value at run time.</summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericTextBox`1.ClipCoercedValue(`0)" />
+    <member name="M:NationalInstruments.Controls.NumericTextBox`1.FormatValue(`0)" />
+    <member name="M:NationalInstruments.Controls.NumericTextBox`1.ParseFormattedValue(System.String)" />
+    <member name="F:NationalInstruments.Controls.NumericTextBox`1.AllowUndefinedValuesProperty">
+      <summary>
+            Identifies the AllowUndefinedValues dependency property.
+            </summary>
+      <returns>
+            The identifier for the AllowUndefinedValues dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericTextBox`1.ValueFormatterProperty">
+      <summary>
+            Identifies the ValueFormatter dependency property.
+            </summary>
+      <returns>
+            The identifier for the ValueFormatter dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericTextBox`1.OnValueFormatterChanged(NationalInstruments.Controls.Primitives.ValueFormatter,NationalInstruments.Controls.Primitives.ValueFormatter)">
+      <summary>
+            Called when the ValueFormatter property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the ValueFormatter property.
+            </param>
+      <param name="newValue">
+            New value of the ValueFormatter property.
+            </param>
+    </member>
+    <member name="P:NationalInstruments.Controls.NumericTextBox`1.AllowUndefinedValues">
+      <summary>Gets or sets a value indicating whether undefined values, such as NaN or null, are displayed. </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.NumericTextBox`1.ValueFormatter">
+      <summary>Gets or sets the ValueFormatter  used to format a data value into a string representation. </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderDouble">
+      <summary>Provides the Double implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Slider`1">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) slider control to indicate a single numeric value through use of a thumb that slides along a track as the value increases.
+            </summary>
+      <typeparam name="TData">The data type of the numeric value the slider presents.</typeparam>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.LinearNumericPointer`2">
+      <summary>
+            Represents a control designed to indicate and manipulate a single numeric value through the use of a sliding element that moves back and forth between two values of a range across a straight line.
+            </summary>
+      <typeparam name="TValue">The type of the numeric value this control presents.</typeparam>
+      <typeparam name="TOffset">The type of data used for an offset by the control.</typeparam>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.NumericPointer`2">
+      <summary>
+            Represents a control designed to indicate and manipulate a single numeric value through use of a sliding element that moves back and forth between two values of a range.
+            </summary>
+      <typeparam name="TValue">The type of the numeric value this control presents.</typeparam>
+      <typeparam name="TOffset">The type of data used for an offset by the control.</typeparam>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.INumericPointerControl`2">
+      <summary>
+            Defines the interface for all Measurement Studio Windows Presentation Foundation (WPF) controls that display numeric values using a pointer and scale.
+            </summary>
+      <typeparam name="TValue">The type of data held by the control.</typeparam>
+      <typeparam name="TOffset">The type of data used for an offset by the control.</typeparam>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.INumericPointerControl`2.Range">
+      <summary>
+            Gets or sets the range of values that can be displayed by the control.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.INumericPointerControl`2.CoercionMode">
+      <summary>
+            Gets or sets the coercion mode of the control.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.INumericPointerControl`2.InteractionMode">
+      <summary>
+            Gets or sets the modes in which you can interactively change the value of the control at run time.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.INumericPointerControl`2.MechanicalAction">
+      <summary>
+            Gets or sets when and how the value of the control updates during an interaction at run time.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.INumericPointerControl`2.Scale">
+      <summary>
+            Gets or sets the scale that is used by the control.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.AddMouseAwareRegion(System.Windows.FrameworkElement)">
+      <summary>
+            Allows additional mouse-aware regions to be added, usually during 
+            OnApplyTemplate.
+            </summary>
+      <param name="region">
+            A mouse-aware region.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.GetMultipleIncrementValue(`0,System.Int32)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.CoerceValueCore(`0)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.CommitValueChange" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.CancelValueChange" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.OnIntervalChanged(`1,`1)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.OnCoercedValueChanged(`0,`0)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.OnClickOrDragStart(System.Windows.Point)">
+      <summary>
+            Informs derived classes when a drag or click operation starts.
+            </summary>
+      <param name="clickPoint">The point where the left mouse button is pressed relative to the mouse aware region.</param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.CalculatePointerValue(System.Windows.Point,System.Windows.Point,System.Boolean)">
+      <summary>
+            Calculates a new value for this control, given a starting point for the mouse and an end point for the mouse. 
+            </summary>
+      <param name="start">Mouse starting point given in coordinates of 
+            AddMouseAwareRegion. </param>
+      <param name="finish">Mouse ending point given in coordinates of 
+            AddMouseAwareRegion. </param>
+      <param name="isDrag">Mouse interaction is a drag operation.</param>
+      <returns>A value within Range
+             calculated from the starting and ending mouse points.</returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.OnMouseInteractionCompleted">
+      <summary>
+            Called when the mouse interaction is complete.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.OnMouseLeftButtonDownInternal(System.Func{System.Windows.Point},System.Func{System.Boolean},System.Boolean)">
+      <summary>----------[INTERNAL FOR TESTING]----------</summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.HandleMouseMoveInternal(System.Func{System.Windows.Point})">
+      <summary>----------[INTERNAL FOR TESTING]----------</summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.HandleMouseMoveResults(System.Func{System.Windows.Point})">
+      <summary>----------[INTERNAL FOR TESTING]----------</summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.HandleLostMouseCaptureInternal(System.Func{System.Windows.Point})">
+      <summary>----------[INTERNAL FOR TESTING]----------</summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.HandleMouseLeftButtonUpInternal(System.Func{System.Windows.Point})">
+      <summary>----------[INTERNAL FOR TESTING]----------</summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointer`2.RangeProperty">
+      <summary>
+            Identifies the Range dependency property.
+            </summary>
+      <returns>
+            The identifier for the Range dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointer`2.PointerTemplateProperty">
+      <summary>
+            Identifies the PointerTemplate dependency property.
+            </summary>
+      <returns>
+            The identifier for the PointerTemplate dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointer`2.MechanicalActionProperty">
+      <summary>
+            Identifies the MechanicalAction dependency property.
+            </summary>
+      <returns>
+            The identifier for the MechanicalAction dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointer`2.CoercionModeProperty">
+      <summary>
+            Identifies the CoercionMode dependency property.
+            </summary>
+      <returns>
+            The identifier for the CoercionMode dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointer`2.PointerBrushProperty">
+      <summary>
+            Identifies the PointerBrush dependency property.
+            </summary>
+      <returns>
+            The identifier for the PointerBrush dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointer`2.InteractionModeProperty">
+      <summary>
+            Identifies the InteractionMode dependency property.
+            </summary>
+      <returns>
+            The identifier for the InteractionMode dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointer`2.ScaleProperty">
+      <summary>
+            Identifies the Scale dependency property.
+            </summary>
+      <returns>
+            The identifier for the Scale dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointer`2.PointerValueProperty">
+      <summary>
+            Identifies the PointerValue dependency property.
+            </summary>
+      <returns>
+            The identifier for the PointerValue dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointer`2.RelativeValueProperty">
+      <summary>
+            Identifies the RelativeValue dependency property.
+            </summary>
+      <returns>
+            The identifier for the RelativeValue dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.#ctor">
+      <summary>
+            Initializes a new instance of the NumericPointer&lt;T1,T2&gt; class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.OnApplyTemplate" />
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointer`2.OnRangeChanged(NationalInstruments.Controls.Range{`0},NationalInstruments.Controls.Range{`0})">
+      <summary>
+            Called when the Range property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the Range property.
+            </param>
+      <param name="newValue">
+            New value of the Range property.
+            </param>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.ActualRange" />
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.IncrementGestures" />
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.DecrementGestures" />
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.IsChangePending" />
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.IsDragging">
+      <summary>----------[INTERNAL FOR TESTING]----------</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.Range">
+      <summary>Gets or sets the minimum and maximum range allowed for the coerced value of this control. </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.PointerValue">
+      <summary>Gets or sets the value the pointer is showing on the scale. </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.RelativeValue">
+      <summary>
+            Gets the same as PointerValue but expressed as a percentage (between 0.0 and 1.0) of the Range.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.PointerTemplate">
+      <summary>Gets or sets the visual structure for the pointer.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.MechanicalAction">
+      <summary>Gets or sets the actions that trigger a value change while your end user is manipulating the pointer.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.CoercionMode">
+      <summary>Gets or sets the restrictions on values within the range.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.PointerBrush">
+      <summary>Gets or sets the brush used to paint the needle part of a control.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.InteractionMode">
+      <summary>Gets or sets a flags field that controls how your end user can interact with the control, using the keyboard or mouse. </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.Scale">
+      <summary>Gets or sets the scale associated with this control.</summary>
+      <exception cref="T:System.ArgumentException">value (parameter) is null.</exception>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.TrackDecorations">
+      <summary>Gets a collection of objects to display in the track.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.RootPanel">
+      <summary>
+            Gets the root panel for the control.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.Track">
+      <summary>Gets the track definition for the control.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.DecorationContainer">
+      <summary>
+            Gets the container for the track decorations.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.PointerContainer">
+      <summary>
+            Gets the container in the pointer visuals.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointer`2.ScaleDataMapperListener">
+      <summary>
+            Gets or sets a weak event listener for the DataMapperChanged event.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.OnClickOrDragStart(System.Windows.Point)" />
+    <member name="M:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.CalculatePointerValue(System.Windows.Point,System.Windows.Point,System.Boolean)" />
+    <member name="F:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.OrientationProperty">
+      <summary>
+            Identifies the Orientation dependency property.
+            </summary>
+      <returns>
+            The identifier for the Orientation dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.IsInvertedProperty">
+      <summary>
+            Identifies the IsInverted dependency property.
+            </summary>
+      <returns>
+            The identifier for the IsInverted dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.FillProperty">
+      <summary>
+            Identifies the Fill dependency property.
+            </summary>
+      <returns>
+            The identifier for the Fill dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.ScaleLocationProperty">
+      <summary>
+            Identifies the ScaleLocation dependency property.
+            </summary>
+      <returns>
+            The identifier for the ScaleLocation dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.OnApplyTemplate" />
+    <member name="P:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.Orientation">
+      <summary>Gets or sets whether the scale displays horizontally or vertically. </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.IsInverted">
+      <summary>Gets or sets a value specifying whether the scale is drawn as inverted.  </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.Fill">
+      <summary>Gets or sets the brush used to paint the track from Minimum to 
+Value.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.ScaleLocation">
+      <summary>Gets or sets the location of the scale on the control, either near or far.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.LinearNumericPointer`2.AlternateMouseAwareRegion">
+      <summary>
+            Gets the alternate element that marks the screen region that maps to the range. Clicking and dragging the mouse over this region triggers value changes, and leaving the region pins the value to Range.Minimum or Range.Maximum.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankDouble">
+      <summary>Provides the Double implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Tank`1">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) tank control that indicates a single numeric value through use of a background that is filled, 
+            like a water tank, as the value increases. 
+            </summary>
+      <typeparam name="TData">The data type of the numeric value the tank presents.</typeparam>
+    </member>
+    <member name="M:NationalInstruments.Controls.Tank`1.#ctor">
+      <summary>
+            Initializes a new instance of the Tank&lt;T&gt; class.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobDouble">
+      <summary>Provides the Double implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Knob`1">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) knob control to display and input numeric values. 
+            </summary>
+      <typeparam name="TData">The data type of the gauge.</typeparam>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.RadialNumericPointer`2">
+      <summary>
+            Represents controls designed to indicate and manipulate a single numeric value through use of a sliding element that moves back and forth between two values of a curved range.
+            </summary>
+      <typeparam name="TValue">The type of the numeric value this control presents.</typeparam>
+      <typeparam name="TOffset">The type of data used for an offset by the control.</typeparam>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.RadialNumericPointer`2.OnClickOrDragStart(System.Windows.Point)" />
+    <member name="M:NationalInstruments.Controls.Primitives.RadialNumericPointer`2.OnMouseInteractionCompleted" />
+    <member name="M:NationalInstruments.Controls.Primitives.RadialNumericPointer`2.CalculatePointerValue(System.Windows.Point,System.Windows.Point,System.Boolean)" />
+    <member name="M:NationalInstruments.Controls.Primitives.RadialNumericPointer`2.GetActualMouseAwareCenterPoint">
+      <summary>[PRIVATE] internal for testing</summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.RadialNumericPointer`2.ScaleArcProperty">
+      <summary>
+            Identifies the ScaleArc dependency property.
+            </summary>
+      <returns>
+            The identifier for the ScaleArc dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.RadialNumericPointer`2.AllowValueWraparoundProperty">
+      <summary>
+            Identifies the AllowValueWraparound dependency property.
+            </summary>
+      <returns>
+            The identifier for the AllowValueWraparound dependency property.
+            </returns>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.RadialNumericPointer`2.ScaleArc">
+      <summary>Gets or sets the definition of the layout of the scale of this control.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.RadialNumericPointer`2.AllowValueWraparound">
+      <summary>Gets or sets a value indicating whether the control allows the value to wrap around when a user drags the needle. 
+</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterDouble">
+      <summary>Provides the Double implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Meter`1">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) meter control to display numeric values on half of a radial dial. 
+            </summary>
+      <typeparam name="TData">The data type of the meter.</typeparam>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeDouble">
+      <summary>Provides the Double implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Gauge`1">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) gauge control to display numeric values. 
+            </summary>
+      <typeparam name="TData">The data type of the gauge.
+            </typeparam>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxSingle">
+      <summary>Provides the Single implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderSingle">
+      <summary>Provides the Single implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankSingle">
+      <summary>Provides the Single implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobSingle">
+      <summary>Provides the Single implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterSingle">
+      <summary>Provides the Single implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeSingle">
+      <summary>Provides the Single implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxInt64">
+      <summary>Provides the Int64 implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderInt64">
+      <summary>Provides the Int64 implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankInt64">
+      <summary>Provides the Int64 implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobInt64">
+      <summary>Provides the Int64 implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterInt64">
+      <summary>Provides the Int64 implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeInt64">
+      <summary>Provides the Int64 implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixNumericTextBoxInt64">
+      <summary>Provides the Int64 implementation for RadixNumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixNumericTextBox`1">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) control to display and manipulate numeric values in various bases.
+            </summary>
+      <typeparam name="TData">The type of data used by the control.</typeparam>
+    </member>
+    <member name="M:NationalInstruments.Controls.RadixNumericTextBox`1.FormatValue(`0)" />
+    <member name="M:NationalInstruments.Controls.RadixNumericTextBox`1.ParseFormattedValue(System.String)" />
+    <member name="M:NationalInstruments.Controls.RadixNumericTextBox`1.ShouldCharacterCauseRoundingAwayFromZero(System.Char)" />
+    <member name="F:NationalInstruments.Controls.RadixNumericTextBox`1.RadixVisibilityProperty">
+      <summary>
+            Identifies the RadixVisibility dependency property.
+            </summary>
+      <returns>
+            The identifier for the RadixVisibility dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.RadixNumericTextBox`1.RadixBaseProperty">
+      <summary>
+            Identifies the RadixBase dependency property.
+            </summary>
+      <returns>
+            The identifier for the RadixBase dependency property.
+            </returns>
+    </member>
+    <member name="P:NationalInstruments.Controls.RadixNumericTextBox`1.HandleExponentialInput" />
+    <member name="P:NationalInstruments.Controls.RadixNumericTextBox`1.RadixVisibility">
+      <summary>Gets or sets the visibility of the radix drop list.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.RadixNumericTextBox`1.RadixBase">
+      <summary>Gets or sets the base (binary, decimal, hexadecimal, or octal) to use when displaying the CoercedValue in the textbox.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxInt32">
+      <summary>Provides the Int32 implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderInt32">
+      <summary>Provides the Int32 implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankInt32">
+      <summary>Provides the Int32 implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobInt32">
+      <summary>Provides the Int32 implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterInt32">
+      <summary>Provides the Int32 implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeInt32">
+      <summary>Provides the Int32 implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixNumericTextBoxInt32">
+      <summary>Provides the Int32 implementation for RadixNumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxInt16">
+      <summary>Provides the Int16 implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderInt16">
+      <summary>Provides the Int16 implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankInt16">
+      <summary>Provides the Int16 implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobInt16">
+      <summary>Provides the Int16 implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterInt16">
+      <summary>Provides the Int16 implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeInt16">
+      <summary>Provides the Int16 implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixNumericTextBoxInt16">
+      <summary>Provides the Int16 implementation for RadixNumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxInt8">
+      <summary>Provides the SByte implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderInt8">
+      <summary>Provides the SByte implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankInt8">
+      <summary>Provides the SByte implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobInt8">
+      <summary>Provides the SByte implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterInt8">
+      <summary>Provides the SByte implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeInt8">
+      <summary>Provides the SByte implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixNumericTextBoxInt8">
+      <summary>Provides the SByte implementation for RadixNumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxUInt64">
+      <summary>Provides the UInt64 implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderUInt64">
+      <summary>Provides the UInt64 implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankUInt64">
+      <summary>Provides the UInt64 implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobUInt64">
+      <summary>Provides the UInt64 implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterUInt64">
+      <summary>Provides the UInt64 implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeUInt64">
+      <summary>Provides the UInt64 implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixNumericTextBoxUInt64">
+      <summary>Provides the UInt64 implementation for RadixNumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxUInt32">
+      <summary>Provides the UInt32 implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderUInt32">
+      <summary>Provides the UInt32 implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankUInt32">
+      <summary>Provides the UInt32 implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobUInt32">
+      <summary>Provides the UInt32 implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterUInt32">
+      <summary>Provides the UInt32 implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeUInt32">
+      <summary>Provides the UInt32 implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixNumericTextBoxUInt32">
+      <summary>Provides the UInt32 implementation for RadixNumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxUInt16">
+      <summary>Provides the UInt16 implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderUInt16">
+      <summary>Provides the UInt16 implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankUInt16">
+      <summary>Provides the UInt16 implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobUInt16">
+      <summary>Provides the UInt16 implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterUInt16">
+      <summary>Provides the UInt16 implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeUInt16">
+      <summary>Provides the UInt16 implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixNumericTextBoxUInt16">
+      <summary>Provides the UInt16 implementation for RadixNumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxUInt8">
+      <summary>Provides the Byte implementation for NumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.SliderUInt8">
+      <summary>Provides the Byte implementation for Slider&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.TankUInt8">
+      <summary>Provides the Byte implementation for Tank&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.KnobUInt8">
+      <summary>Provides the Byte implementation for Knob&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MeterUInt8">
+      <summary>Provides the Byte implementation for Meter&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.GaugeUInt8">
+      <summary>Provides the Byte implementation for Gauge&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixNumericTextBoxUInt8">
+      <summary>Provides the Byte implementation for RadixNumericTextBox&lt;T&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericScale">
+      <summary>
+            Represents the scale on a numeric control.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericScale.DataMapperProxyProperty">
+      <summary>
+            Identifies the DataMapperProxy attached property.
+            </summary>
+      <returns>
+            The identifier for the DataMapperProxy attached property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericScale.ScaleKindListenerProperty">
+      <summary>
+            Identifies the ScaleKindListener attached property.
+            </summary>
+      <returns>
+            The identifier for the ScaleKindListener attached property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericScale.MajorDivisionValuesProperty">
+      <summary>
+            Identifies the MajorDivisionValues attached property.
+            </summary>
+      <returns>
+            The identifier for the MajorDivisionValues attached property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericScale.ScaleKindProperty">
+      <summary>
+            Identifies the ScaleKind dependency property.
+            </summary>
+      <returns>
+            The identifier for the ScaleKind dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.#ctor">
+      <summary>
+            Initializes a new instance of the NumericScale class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.OnScaleKindChanged(NationalInstruments.Controls.RangeScaleKind,NationalInstruments.Controls.RangeScaleKind)">
+      <summary>
+            Called when the ScaleKind property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the ScaleKind property.
+            </param>
+      <param name="newValue">
+            New value of the ScaleKind property.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.GetDataMapperProxy(System.Windows.Controls.Control)">
+      <summary>
+            Gets the value of the DataMapperProxy attached property for a specified UIElement.
+            </summary>
+      <returns>
+            The DataMapperProxy property value for the element.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element from which the property value is read.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.SetDataMapperProxy(System.Windows.Controls.Control,NationalInstruments.Controls.Data.IDataMapper)">
+      <summary>
+            Sets the value of the DataMapperProxy attached property to a specified element.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element to which the attached property is written.
+            </param>
+      <param name="value">
+            The needed IDataMapper value.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.GetScaleKindListener(System.Windows.Controls.Control)">
+      <summary>
+            Gets the value of the ScaleKindListener attached property for a specified UIElement.
+            </summary>
+      <returns>
+            The ScaleKindListener property value for the element.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element from which the property value is read.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.SetScaleKindListener(System.Windows.Controls.Control,NationalInstruments.Controls.RangeScaleKind)">
+      <summary>
+            Sets the value of the ScaleKindListener attached property to a specified element.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element to which the attached property is written.
+            </param>
+      <param name="value">
+            The needed RangeScaleKind value.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.GetMajorDivisionValues(System.Windows.Controls.Control)">
+      <summary>
+            Gets the value of the MajorDivisionValues attached property for a specified UIElement.
+            </summary>
+      <returns>
+            The MajorDivisionValues property value for the element.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element from which the property value is read.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.SetMajorDivisionValues(System.Windows.Controls.Control,System.Collections.IList)">
+      <summary>
+            Sets the value of the MajorDivisionValues attached property to a specified element.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element to which the attached property is written.
+            </param>
+      <param name="value">
+            The needed IList value.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.CreateInstanceCore" />
+    <member name="M:NationalInstruments.Controls.NumericScale.GetDataMapper(System.Object)" />
+    <member name="M:NationalInstruments.Controls.NumericScale.IsVisible(NationalInstruments.Controls.Primitives.ScalePresenter)" />
+    <member name="M:NationalInstruments.Controls.NumericScale.Present(NationalInstruments.Controls.Primitives.ScalePresenter)" />
+    <member name="M:NationalInstruments.Controls.NumericScale.Present``1(NationalInstruments.Controls.Primitives.ScalePresenter,NationalInstruments.Controls.Data.IRangeDataMapper{``0},System.Boolean)" />
+    <member name="M:NationalInstruments.Controls.NumericScale.OnDataMapperChanged(System.Object,NationalInstruments.Controls.Data.DataMapperChangedEventArgs)">
+      <summary>
+            Called when a data mapper created by the scale updates.
+            </summary>
+      <param name="sender">The source of the event.</param>
+      <param name="e">A  DataMapperChangedEventArgs that contains event data.</param>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericScale.CleanScale(System.Object)" />
+    <member name="M:NationalInstruments.Controls.NumericScale.GetDivisions``1(System.Object)" />
+    <member name="P:NationalInstruments.Controls.NumericScale.ScaleKind">
+      <summary>
+Gets or sets the minor divisions for the scale.
+</summary>
+      <exception cref="T:System.ArgumentException">value (parameter) cannot be null.
+    </exception>
+    </member>
+    <member name="T:NationalInstruments.Controls.PrimaryNumericScale">
+      <summary>
+            Represents the scale on a numeric control that can have a DependentNumericScale.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.PrimaryNumericScale.DependentScaleProperty">
+      <summary>
+            Identifies the DependentScale dependency property.
+            </summary>
+      <returns>
+            The identifier for the DependentScale dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.PrimaryNumericScale.OnDependentScaleChanged(NationalInstruments.Controls.DependentNumericScale,NationalInstruments.Controls.DependentNumericScale)">
+      <summary>
+            Called when the DependentScale property changes.
+            </summary>
+      <param name="oldValue">
+            Old value of the DependentScale property.
+            </param>
+      <param name="newValue">
+            New value of the DependentScale property.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.PrimaryNumericScale.CreateInstanceCore" />
+    <member name="M:NationalInstruments.Controls.PrimaryNumericScale.IsVisible(NationalInstruments.Controls.Primitives.ScalePresenter)" />
+    <member name="M:NationalInstruments.Controls.PrimaryNumericScale.Present(NationalInstruments.Controls.Primitives.ScalePresenter)" />
+    <member name="M:NationalInstruments.Controls.PrimaryNumericScale.Clean(NationalInstruments.Controls.Primitives.ScalePresenter)">
+      <summary>Implements the Clean method.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.PrimaryNumericScale.DependentScale">
+      <summary>Gets or sets the dependent scale associated with this scale.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.NumericPointerScale">
+      <summary>
+            Provides the attached properties used by the ScalePresenter used during 
+            a scale's Present methods.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerScale.PresenterLocationProperty">
+      <summary>
+            Identifies the PresenterLocation attached property.
+            </summary>
+      <returns>
+            The identifier for the PresenterLocation attached property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerScale.ScaleLocationProperty">
+      <summary>
+            Identifies the ScaleLocation attached property.
+            </summary>
+      <returns>
+            The identifier for the ScaleLocation attached property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerScale.RangeProperty">
+      <summary>
+            Identifies the Range attached property.
+            </summary>
+      <returns>
+            The identifier for the Range attached property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerScale.IsRangeEditableProperty">
+      <summary>
+            Identifies the IsRangeEditable attached property.
+            </summary>
+      <returns>
+            The identifier for the IsRangeEditable attached property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerScale.GetPresenterLocation(System.Windows.UIElement)">
+      <summary>
+            Gets the value of the PresenterLocation attached property for a specified UIElement.
+            </summary>
+      <returns>
+            The PresenterLocation property value for the element.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element from which the property value is read.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerScale.SetPresenterLocation(System.Windows.UIElement,NationalInstruments.Controls.RelativeLocation)">
+      <summary>
+            Sets the value of the PresenterLocation attached property to a specified element.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element to which the attached property is written.
+            </param>
+      <param name="value">
+            The needed RelativeLocation value.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerScale.GetScaleLocation(NationalInstruments.Controls.Primitives.ScalePresenter)">
+      <summary>
+            Gets the value of the ScaleLocation attached property for a specified UIElement.
+            </summary>
+      <returns>
+            The ScaleLocation property value for the element.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element from which the property value is read.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerScale.SetScaleLocation(NationalInstruments.Controls.Primitives.ScalePresenter,NationalInstruments.Controls.RelativeLocation)">
+      <summary>
+            Sets the value of the ScaleLocation attached property to a specified element.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element to which the attached property is written.
+            </param>
+      <param name="value">
+            The needed RelativeLocation value.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerScale.GetRange(NationalInstruments.Controls.Primitives.ScalePresenter)">
+      <summary>
+            Gets the value of the Range attached property for a specified UIElement.
+            </summary>
+      <returns>
+            The Range property value for the element.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element from which the property value is read.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerScale.SetRange(NationalInstruments.Controls.Primitives.ScalePresenter,NationalInstruments.Controls.Primitives.IRange)">
+      <summary>
+            Sets the value of the Range attached property to a specified element.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element to which the attached property is written.
+            </param>
+      <param name="value">
+            The needed IRange value.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerScale.GetIsRangeEditable(NationalInstruments.Controls.Primitives.ScalePresenter)">
+      <summary>
+            Gets the value of the IsRangeEditable attached property for a specified UIElement.
+            </summary>
+      <returns>
+            The IsRangeEditable property value for the element.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element from which the property value is read.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerScale.SetIsRangeEditable(NationalInstruments.Controls.Primitives.ScalePresenter,System.Boolean)">
+      <summary>
+            Sets the value of the IsRangeEditable attached property to a specified element.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element to which the attached property is written.
+            </param>
+      <param name="value">
+            The needed Boolean value.
+            </param>
+    </member>
+    <member name="T:NationalInstruments.Controls.ArcSweep">
+      <summary>
+            Represents the length of the visual arc.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.ArcSweep.StartAngleProperty">
+      <summary>
+            Identifies the StartAngle dependency property.
+            </summary>
+      <returns>
+            The identifier for the StartAngle dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.ArcSweep.SweepAngleProperty">
+      <summary>
+            Identifies the SweepAngle dependency property.
+            </summary>
+      <returns>
+            The identifier for the SweepAngle dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArcSweep.CreateInstanceCore" />
+    <member name="M:NationalInstruments.Controls.ArcSweep.#ctor">
+      <summary>
+            Initializes a new instance of the ArcSweep class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArcSweep.#ctor(System.Double,System.Double)">
+      <summary>
+            Initializes a new instance of the ArcSweep class that contains the specified start angle and sweep angle.
+            </summary>
+      <param name="startAngle">The angle in degrees where the arc begins.</param>
+      <param name="sweepAngle">The measured length of the arc in degrees.</param>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArcSweep.ToString" />
+    <member name="M:NationalInstruments.Controls.ArcSweep.ToString(System.IFormatProvider)">
+      <param name="formatProvider">A format provider that supplies culture-specific formatting information. This parameter can be null.</param>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArcSweep.ToString(System.String,System.IFormatProvider)">
+      <param name="format">Specifies how the arc sweep is formatted.   Valid values are in the same format as Double.</param>
+      <param name="formatProvider">A format provider that supplies culture-specific formatting information. This parameter can be null.</param>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArcSweep.Parse(System.String)">
+      <summary>
+            Constructs an ArcSweep from the specified String.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArcSweep.Parse(System.String,System.IFormatProvider)">
+      <summary>
+            Constructs an ArcSweep from the specified String using the specified culture-specific format.
+            </summary>
+      <param name="value">A string containing the arc sweep to convert.</param>
+      <param name="formatProvider">A format provider that supplies culture-specific formatting information about the string.</param>
+      <returns>An ArcSweep equivalent to the string specified in value (parameter).</returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+      <exception cref="T:System.FormatException">value (parameter) is not in the [value],[value] format returned by ToString.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArcSweep.TryParse(System.String,NationalInstruments.Controls.ArcSweep@)">
+      <summary>
+            Constructs an ArcSweep from the specified String.
+            The return value indicates whether the conversion succeeded or failed.
+            </summary>
+      <param name="value">A string containing the arc sweep to convert.</param>
+      <param name="arcSweep">An ArcSweep equivalent to the string specified in value (parameter).</param>
+      <returns>true if value (parameter) was converted successfully; otherwise, false.</returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArcSweep.TryParse(System.String,System.IFormatProvider,NationalInstruments.Controls.ArcSweep@)">
+      <summary>
+            Constructs an ArcSweep from the specified String using the specified culture-specific format.
+            A return value indicates whether the conversion succeeded or failed.
+            </summary>
+      <param name="value">A string containing the arc sweep to convert.</param>
+      <param name="formatProvider">A format provider that supplies culture-specific formatting information about the string.</param>
+      <param name="arcSweep">An ArcSweep equivalent to the string specified in value (parameter).</param>
+      <returns>true if value (parameter) was converted successfully; otherwise, false.</returns>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Controls.ArcSweep.StartAngle">
+      <summary>Gets or sets the angle in degrees where the arc begins.</summary>
+      <exception cref="T:System.ArgumentException">value (parameter) is NaN, NegativeInfinity, or PositiveInfinity.
+</exception>
+    </member>
+    <member name="P:NationalInstruments.Controls.ArcSweep.SweepAngle">
+      <summary>Gets or sets the measured length of the arc in degrees, measured from the start angle.</summary>
+      <exception cref="T:System.ArgumentException">value (parameter) is NaN, NegativeInfinity, or
+ PositiveInfinity.</exception>
+    </member>
+    <member name="M:NationalInstruments.Controls.Internal.NumericTextBaseInteractor.OnValueInputGotFocus(System.Object,System.Windows.RoutedEventArgs)">
+      <summary>Implements a RoutedEventHandler for tracking edit mode of NumericTextBase&lt;T1,T2&gt;'s value input control.</summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Internal.NumericTextBaseInteractor.OnValueInputLostFocus(System.Object,System.Windows.RoutedEventArgs)">
+      <summary>Implements a RoutedEventHandler for tracking edit mode of NumericTextBase&lt;T1,T2&gt;'s value input control.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Internal.NumericTextBaseInteractor.ValueInput">
+      <summary>Gets or sets the value input control that the interactor should use for edit tracking.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Internal.NumericTextBaseInteractor.Text">
+      <summary>Gets or sets the text of the value input control, or null if the value input control has not been assigned.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Internal.NumericTextBaseInteractor.IsEditing">
+      <summary>Gets a value indicating whether the user is editing the value input of the NumericTextBase&lt;T1,T2&gt;.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Internal.NumericTextBaseInteractor.CommitRequired">
+      <summary>Gets a value indicating whether the user has edited the value input of the NumericTextBase&lt;T1,T2&gt;.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Primitives.NumericControlCommands">
+      <summary>
+            Contains the commands used by the NumericControl&lt;T1,T2&gt;.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericControlCommands.KeyboardInteractionIdentifier">
+      <summary>
+            The command parameter used to identify commands that should be treated as keyboard interactions, such as those raised through key bindings.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControlCommands.IncrementCommand">
+      <summary>
+            Gets a command that increases the value of the NumericControl&lt;T1,T2&gt;
+            by the same amount as the Interval property.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericControlCommands.DecrementCommand">
+      <summary>
+            Gets a command that decreases the value of the NumericControl&lt;T1,T2&gt;
+            by the same amount as the Interval property.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Internal.NumericControlInteractor.CanExecuteCommand(System.Object,System.Windows.Input.CanExecuteRoutedEventArgs)">
+      <summary>Implements a CanExecuteRoutedEventHandler for NumericControl&lt;T1,T2&gt;'s commands.</summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Internal.NumericControlInteractor.ExecuteCommand(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
+      <summary>Implements a ExecutedRoutedEventHandler for NumericControl&lt;T1,T2&gt;'s commands.</summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Internal.NumericControlInteractor.ExecuteScrollWheelInteraction(System.Object,System.Windows.Input.MouseWheelEventArgs)">
+      <summary>Implements a MouseWheelEventHandler for NumericControl&lt;T1,T2&gt;'s mouse wheel interaction.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Internal.NumericControlInteractor.EnableKeyboard">
+      <summary>
+            Gets or sets a value indicating whether IncrementCommand
+            or DecrementCommand should perform the interaction.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Internal.NumericControlInteractor.EnableScrollWheel">
+      <summary>Gets or sets a value indicating whether ExecuteScrollWheelInteraction should perform the interaction.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Internal.NumericControlInteractor.IsReadOnly">
+      <summary>Gets a value indicating whether the target is read only.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Internal.NumericControlInteractor.IsKeyboardInteractionEnabled">
+      <summary>
+            Gets a value indicating whether IncrementCommand
+            or DecrementCommand should perform the interaction,
+            as indicated by CanExecuteCommand.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Internal.NumericControlInteractor.IsScrollWheelInteractionEnabled">
+      <summary>Gets a value indicating whether ExecuteScrollWheelInteraction will perform the interaction when the MouseWheel event is fired.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Converters.DoubleToScaledDouble">
+      <summary>
+            Provides a conversion to and from a value to a scaled value.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Converters.DoubleToScaledDouble.#ctor">
+      <summary>
+            Initializes a new instance of the DoubleToScaledDouble class. 
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Converters.DoubleToScaledDouble.#ctor(System.Double)">
+      <summary>
+            Initializes a new instance of the DoubleToScaledDouble class. 
+            </summary>
+      <param name="scaleFactor">
+            The scale factor specified.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Converters.DoubleToScaledDouble.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>Multiplies a Double value by the ScaleFactor.</summary>
+      <param name="value">The Double value to scale.</param>
+      <param name="targetType">This parameter is not used.</param>
+      <param name="parameter">This parameter is not used.</param>
+      <param name="culture">This parameter is not used.</param>
+      <returns>A scaled Double value.</returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Converters.DoubleToScaledDouble.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+      <summary>Divides a Double value by the ScaleFactor.
+            </summary>
+      <param name="value">The Double value to un-scale.
+            </param>
+      <param name="targetType">This parameter is not used.
+            </param>
+      <param name="parameter">This parameter is not used.
+            </param>
+      <param name="culture">This parameter is not used.
+            </param>
+      <returns>An un-scaled Double value.
+            </returns>
+    </member>
+    <member name="P:NationalInstruments.Controls.Converters.DoubleToScaledDouble.ScaleFactor">
+      <summary>
+            Gets or sets the scale factor used in a binding. 
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericPointerCoercionMode">
+      <summary>
+            Represents an algorithm used to coerce the value of a numeric pointer control.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericPointerCoercionMode.#ctor">
+      <summary>
+            Initializes a new instance of the NumericPointerCoercionMode class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericPointerCoercionMode.CreateToIntervalFromBaseMode(System.Object)">
+      <summary>
+            Gets a mode that coerces the value to the nearest Interval
+             multiple, 
+            starting at the specified base value.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">intervalBase (parameter) is null.
+            </exception>
+      <param name="intervalBase">
+            The base value from which to start when coercing a value to the nearest Interval multiple.
+            </param>
+      <returns>
+            A mode that coerces the value to the nearest Interval  multiple.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericPointerCoercionMode.FromNumericCoercionMode(NationalInstruments.Controls.NumericCoercionMode)">
+      <summary>
+            Converts a NumericCoercionMode to an equivalent NumericPointerCoercionMode.
+            </summary>
+      <param name="mode">The NumericCoercionMode instance to use.</param>
+      <returns>The equivalent NumericPointerCoercionMode for mode (parameter).</returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericPointerCoercionMode.op_Implicit(NationalInstruments.Controls.NumericCoercionMode)~NationalInstruments.Controls.NumericPointerCoercionMode" />
+    <member name="M:NationalInstruments.Controls.NumericPointerCoercionMode.CoerceValue``2(NationalInstruments.Controls.Primitives.INumericPointerControl{``0,``1},``0)">
+      <summary>
+            Coerces the specified value with respect to the specified context.
+            </summary>
+      <typeparam name="TValue">The type of the data value.</typeparam>
+      <typeparam name="TOffset">The type of the offset value.</typeparam>
+      <param name="context">An INumericPointerControl&lt;T1,T2&gt;
+             implementation that specifies the context in which CoerceValue``2
+             is called.</param>
+      <param name="value">The value to coerce.</param>
+      <returns>
+            The result of coercing value (parameter) according to the mode's algorithm.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">context (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericPointerCoercionMode.CoerceValueCore``2(NationalInstruments.Controls.Primitives.INumericPointerControl{``0,``1},``0)" />
+    <member name="M:NationalInstruments.Controls.NumericPointerCoercionMode.GetMultipleIncrementValue``2(NationalInstruments.Controls.Primitives.INumericPointerControl{``0,``1},``0,System.Int32)">
+      <summary>
+            Gets the value after increasing or decreasing by the specified multiple.
+            </summary>
+      <typeparam name="TValue">The type of the data value.</typeparam>
+      <typeparam name="TOffset">A numeric data type capable of representing an offset. </typeparam>
+      <param name="context">An INumericPointerControl&lt;T1,T2&gt; 
+            implementation that specifies the context in which GetMultipleIncrementValue``2 is called.</param>
+      <param name="value">The value to adjust.</param>
+      <param name="multiple">The multiple used to adjust value.</param>
+      <returns>The new value to use.</returns>
+      <exception cref="T:System.ArgumentNullException">context (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericPointerCoercionMode.GetMultipleIncrementValueCore``2(NationalInstruments.Controls.Primitives.INumericPointerControl{``0,``1},``0,System.Int32)" />
+    <member name="P:NationalInstruments.Controls.NumericPointerCoercionMode.None">
+      <summary>
+            Gets a mode that applies no coercion, returning the given value unchanged.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.NumericPointerCoercionMode.ToIntervalFromMinimum">
+      <summary>
+            Gets a mode that coerces the value to the nearest Interval multiple, 
+            starting at the 
+            Minimum value of 
+            Range.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.NumericPointerCoercionMode.ToDivisions">
+      <summary>
+            Gets a mode that coerces the value to the divisions visible on a control. 
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.NumericPointerCoercionMode.UnderlyingType" />
+    <member name="T:NationalInstruments.Controls.NumericPointerInteractionModes">
+      <summary>
+            Specifies how the numeric pointer controls respond to user input.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericPointerInteractionModes.ReadOnly">
+      <summary>
+            The control does not change value when keyboard or mouse input is detected.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericPointerInteractionModes.ArrowKeys">
+      <summary>
+            Keyboard arrow keys change the value of the control.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericPointerInteractionModes.Drag">
+      <summary>
+            The pointer can be dragged to a value.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericPointerInteractionModes.Snap">
+      <summary>
+            The face of the control can be clicked to move the pointer directly to a value.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericPointerInteractionModes.ScrollWheel">
+      <summary>
+            Scroll wheel input changes the value of the control.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericPointerInteractionModes.EditRange">
+      <summary>
+            The range can be edited at run time.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.MechanicalAction">
+      <summary>
+            Specifies when the Value 
+             property of a control updates during a user drag operation.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.MechanicalAction.SwitchWhileDragging">
+      <summary>
+            Updates the value property continuously while the user drags the pointer, and keeps the location value for the last location where the pointer was released. 
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.MechanicalAction.SwitchWhenReleased">
+      <summary>Maintains the original location value while being dragged by the user at run time, then updates the location value when the pointer is released. </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.MechanicalAction.SwitchUntilReleased">
+      <summary>
+            Updates the value while being dragged by the user at run time, then returns to the original value at release.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.NumericTextBoxInteractionModes">
+      <summary>
+            Specifies how the numeric text box controls respond to user input.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericTextBoxInteractionModes.ReadOnly">
+      <summary>
+            The control does not change value when keyboard or mouse input is detected.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericTextBoxInteractionModes.ArrowKeys">
+      <summary>
+            Keyboard up and down arrow keys change the value of the control.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericTextBoxInteractionModes.ScrollWheel">
+      <summary>
+            Scroll wheel input changes the value of the control.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericTextBoxInteractionModes.ButtonClicks">
+      <summary>
+            The increment and decrement buttons change the value of the control.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.NumericTextBoxInteractionModes.TextInput">
+      <summary>
+            Keyboard text entry changes the value of the control.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceProperty">
+      <summary>
+            Identifies the Source attached property.
+            </summary>
+      <returns>
+            The identifier for the Source attached property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceRelativeValueProperty">
+      <summary>
+            Identifies the SourceRelativeValue dependency property.
+            </summary>
+      <returns>
+            The identifier for the SourceRelativeValue dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceBorderThicknessProperty">
+      <summary>
+            Identifies the SourceBorderThickness dependency property.
+            </summary>
+      <returns>
+            The identifier for the SourceBorderThickness dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceIsInvertedProperty">
+      <summary>
+            Identifies the SourceIsInverted dependency property.
+            </summary>
+      <returns>
+            The identifier for the SourceIsInverted dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceOrientationProperty">
+      <summary>
+            Identifies the SourceOrientation dependency property.
+            </summary>
+      <returns>
+            The identifier for the SourceOrientation dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceScaleArcProperty">
+      <summary>
+            Identifies the SourceScaleArc dependency property.
+            </summary>
+      <returns>
+            The identifier for the SourceScaleArc dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.RelativeValueProperty">
+      <summary>
+            Identifies the RelativeValue dependency property.
+            </summary>
+      <returns>
+            The identifier for the RelativeValue dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.ScalarBorderThicknessProperty">
+      <summary>
+            Identifies the ScalarBorderThickness dependency property.
+            </summary>
+      <returns>
+            The identifier for the ScalarBorderThickness dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.LayoutModeProperty">
+      <summary>
+            Identifies the LayoutMode dependency property.
+            </summary>
+      <returns>
+            The identifier for the LayoutMode dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.FillOpacityMaskProperty">
+      <summary>
+            Identifies the FillOpacityMask dependency property.
+            </summary>
+      <returns>
+            The identifier for the FillOpacityMask dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.BorderCornerRadiusProperty">
+      <summary>
+            Identifies the BorderCornerRadius dependency property.
+            </summary>
+      <returns>
+            The identifier for the BorderCornerRadius dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.RegionPanelPaddingProperty">
+      <summary>
+            Identifies the RegionPanelPadding dependency property.
+            </summary>
+      <returns>
+            The identifier for the RegionPanelPadding dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.RelativeOffsetProperty">
+      <summary>
+            Identifies the RelativeOffset dependency property.
+            </summary>
+      <returns>
+            The identifier for the RelativeOffset dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.NumericPointerViewModel.RelativeLengthProperty">
+      <summary>
+            Identifies the RelativeLength dependency property.
+            </summary>
+      <returns>
+            The identifier for the RelativeLength dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerViewModel.GetSource(System.Windows.UIElement)">
+      <summary>
+            Gets the value of the Source attached property for a specified UIElement.
+            </summary>
+      <returns>
+            The Source property value for the element.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element from which the property value is read.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SetSource(System.Windows.UIElement,System.Windows.Controls.Control)">
+      <summary>
+            Sets the value of the Source attached property to a specified element.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">element (parameter) is null.
+            </exception>
+      <param name="element">
+            The element to which the attached property is written.
+            </param>
+      <param name="value">
+            The needed Control value.
+            </param>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.RelativeValue">
+      <summary>Gets the relative value of the current range, from 0.0 to 1.0.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.ScalarBorderThickness">
+      <summary>
+Gets or sets the scalar thickness of the border. 
+</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceRelativeValue">
+      <summary>
+            Gets or sets the relative value of the NumericPointer.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceBorderThickness">
+      <summary>
+            Gets or sets the border thickness of the NumericPointer.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.LayoutMode">
+      <summary>Gets or sets the Cartesian layout mode to be used in the control's layout.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.FillOpacityMask">
+      <summary>
+Gets or sets the fill color for an opacity mask.
+</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.BorderCornerRadius">
+      <summary>Gets or sets the radius for the corner of a border.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.RegionPanelPadding">
+      <summary>Gets or sets the thickness of the internal spacing of the region panel. </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceIsInverted">
+      <summary>
+            Gets or sets the inversion of the LinearNumericPointer.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceOrientation">
+      <summary>
+            Gets or sets the orientation of the LinearNumericPointer.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.RelativeOffset">
+      <summary>Gets the relative offset, or starting position, of a radial control.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.RelativeLength">
+      <summary>Gets or sets the relative length from the starting position of a radial control.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.NumericPointerViewModel.SourceScaleArc">
+      <summary>
+            Gets or sets the arc of the RadialNumericPointer.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.PointerViewModel.RelativeValueProperty">
+      <summary>
+            Identifies the RelativeValue dependency property.
+            </summary>
+      <returns>
+            The identifier for the RelativeValue dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.PointerViewModel.BorderBrushProperty">
+      <summary>
+            Identifies the BorderBrush dependency property.
+            </summary>
+      <returns>
+            The identifier for the BorderBrush dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.PointerViewModel.ForegroundProperty">
+      <summary>
+            Identifies the Foreground dependency property.
+            </summary>
+      <returns>
+            The identifier for the Foreground dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.PointerViewModel.BorderThicknessProperty">
+      <summary>
+            Identifies the BorderThickness dependency property.
+            </summary>
+      <returns>
+            The identifier for the BorderThickness dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.PointerViewModel.BackgroundProperty">
+      <summary>
+            Identifies the Background dependency property.
+            </summary>
+      <returns>
+            The identifier for the Background dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.Primitives.PointerViewModel.PointerBrushProperty">
+      <summary>
+            Identifies the PointerBrush dependency property.
+            </summary>
+      <returns>
+            The identifier for the PointerBrush dependency property.
+            </returns>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.PointerViewModel.RelativeValue">
+      <summary>Gets or sets the relative position of the pointer.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.PointerViewModel.BorderBrush">
+      <summary>Gets or sets the border brush of the pointer.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.PointerViewModel.Foreground">
+      <summary>Gets or sets the foreground brush of the pointer.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.PointerViewModel.BorderThickness">
+      <summary>Gets or sets the border thickness of the pointer.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.PointerViewModel.Background">
+      <summary>Gets or sets the background brush of the pointer.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Primitives.PointerViewModel.PointerBrush">
+      <summary>Gets or sets the brush of the pointer.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.PropertyChangeSource">
+      <summary>
+            Specifies the different sources of a property value change.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.PropertyChangeSource.Programmatic">
+      <summary>
+            Indicates the property value was changed by a programmatic assignment of the value from code.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.PropertyChangeSource.Interactive">
+      <summary>
+            Indicates the property value was changed as the result of a user interaction with the control.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.RadixBase">
+      <summary>
+            Defines the set of numeric bases that can be used in a radix numeric control.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.RadixBase.Binary">
+      <summary>
+            Binary numeric base.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.RadixBase.Octal">
+      <summary>
+            Octal numeric base.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.RadixBase.Decimal">
+      <summary>
+            Decimal numeric base.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.RadixBase.Hexadecimal">
+      <summary>
+            Hexadecimal numeric base.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.ScaleToScaleMap">
+      <summary>
+            Represents the mapping between a PrimaryNumericScale
+            and a DependentNumericScale.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.ScaleToScaleMap.CreateConstantFactor(System.String)">
+      <summary>
+            Creates a mapping between two scales that differ by a constant factor.
+            </summary>
+      <param name="factorText">
+            The numeric factor, converted to the underlying data types of the scales being mapped.
+            </param>
+      <returns>
+            The mapping between two scales that differ by a constant factor.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.ScaleToScaleMap.CreateDependentMapper``1(NationalInstruments.Controls.Data.IRangeDataMapper{``0},System.Boolean)">
+      <summary>
+            Creates a dependent mapper based on the primary mapper provided.
+            </summary>
+      <param name="primaryMapper">
+            The 
+            IRangeDataMapper&lt;T&gt; used by the primary scale.
+            </param>
+      <param name="isPrimaryInverted">
+            Defines the inversion state of the primary scale.
+            </param>
+      <typeparam name="TData">
+            The data type used on the scales and mappers.
+            </typeparam>
+      <returns>
+            An IRangeDataMapper&lt;T&gt; object that is dependent on the primaryMapper (parameter).
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.ScaleToScaleMap.PrimaryToDependent``1(NationalInstruments.Controls.Data.IRangeDataMapper{``0},``0)">
+      <summary>
+            Maps a value from the primary scale to the dependent scale.
+            </summary>
+      <param name="primaryMapper">
+            The IRangeDataMapper&lt;T&gt; for the PrimaryNumericScale.
+            </param>
+      <param name="value">
+            The value to be mapped.
+            </param>
+      <typeparam name="TData">
+            The data type used by the scales and mapper.
+            </typeparam>
+      <returns>
+            The value (parameter) mapped to the DependentNumericScale.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.ScaleToScaleMap.DependentToPrimary``1(NationalInstruments.Controls.Data.IRangeDataMapper{``0},``0)">
+      <summary>
+            Maps a value from the dependent scale to the primary scale.
+            </summary>
+      <param name="primaryMapper">
+            The IRangeDataMapper&lt;T&gt; for the 
+            PrimaryNumericScale.
+            </param>
+      <param name="value">
+            The value to be mapped.
+            </param>
+      <typeparam name="TData">
+            The data type used by the scales and mapper.
+            </typeparam>
+      <returns>
+            The value (parameter) mapped to the PrimaryNumericScale.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.ScaleToScaleMap.CreateNewMapperOfSameType``1(NationalInstruments.Controls.Data.IRangeDataMapper{``0})">
+      <summary>
+            Creates a new mapper of the same type as the given, primary mapper.
+            </summary>
+      <typeparam name="TData">Type of the data in the scale.</typeparam>
+      <param name="primaryMapper">The primary scale whose type will be replicated.</param>
+      <returns>A new mapper of the same type as primaryMapper (parameter).</returns>
+    </member>
+    <member name="P:NationalInstruments.Controls.ScaleToScaleMap.UnderlyingType" />
+    <member name="T:NationalInstruments.Controls.NumericCoercionMode">
+      <summary>
+            Represents an algorithm used to coerce the value of a numeric text box. 
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericCoercionMode.#ctor">
+      <summary>
+            Initializes a new instance of the NumericCoercionMode class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericCoercionMode.CreateToIntervalFromBaseMode(System.Object)">
+      <summary>
+            Gets a mode that coerces the value to the nearest Interval multiple, 
+            starting at the specified base value.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">intervalBase (parameter) is null.
+            </exception>
+      <param name="intervalBase">
+            The base value from which to start when coercing a value to the nearest Interval multiple.
+            </param>
+      <returns>
+            A mode that coerces the value to the nearest Interval  multiple.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericCoercionMode.CoerceValue``2(NationalInstruments.Controls.Primitives.INumericControl{``0,``1},``0)">
+      <summary>
+            Coerces the specified value with respect to the specified context.
+            </summary>
+      <typeparam name="TValue">The type of the data value.</typeparam>
+      <typeparam name="TOffset">The type of data used for an offset by the control.</typeparam>
+      <param name="context">An INumericControl&lt;T1,T2&gt; implementation that specifies the context in 
+            which CoerceValue``2 is called.</param>
+      <param name="value">The value to coerce.</param>
+      <returns>
+            The result of coercing value (parameter) according to the mode's algorithm.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">context (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericCoercionMode.CoerceValueCore``2(NationalInstruments.Controls.Primitives.INumericControl{``0,``1},``0)" />
+    <member name="M:NationalInstruments.Controls.NumericCoercionMode.GetMultipleIncrementValue``2(NationalInstruments.Controls.Primitives.INumericControl{``0,``1},``0,System.Int32)">
+      <summary>
+            Gets the value after increasing or decreasing by the specified multiple.
+            </summary>
+      <typeparam name="TValue">The type of the data value.</typeparam>
+      <typeparam name="TOffset">The type of data used for an offset by the control.</typeparam>
+      <param name="context">An INumericControl&lt;T1,T2&gt; implementation that specifies the context in 
+            which GetMultipleIncrementValue``2 is called.</param>
+      <param name="value">The value to adjust.</param>
+      <param name="multiple">The multiple used to adjust value.</param>
+      <returns>The new value to use.</returns>
+      <exception cref="T:System.ArgumentNullException">context (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Controls.NumericCoercionMode.GetMultipleIncrementValueCore``2(NationalInstruments.Controls.Primitives.INumericControl{``0,``1},``0,System.Int32)" />
+    <member name="P:NationalInstruments.Controls.NumericCoercionMode.None">
+      <summary>
+            Gets a mode that applies no coercion, returning the given value unchanged.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.NumericCoercionMode.ToIntervalFromMinimum">
+      <summary>
+            Gets a mode that coerces the value to the nearest Interval multiple, 
+            starting at the  
+            Minimum value of 
+            Range.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.NumericCoercionMode.UnderlyingType" />
+    <member name="T:NationalInstruments.Controls.ValueChangedEventArgs`1">
+      <summary>Gets the arguments to the source event raised when the value changes. 
+            </summary>
+      <typeparam name="TData">The data type of the ValueChangedEventArgs&lt;T&gt; object.
+            </typeparam>
+    </member>
+    <member name="M:NationalInstruments.Controls.ValueChangedEventArgs`1.#ctor(`0,NationalInstruments.Controls.PropertyChangeSource)">
+      <summary>
+            Initializes a new instance of the ValueChangedEventArgs&lt;T&gt; class.
+            </summary>
+      <param name="value">The value of the property.
+            </param>
+      <param name="source">The source of the change, either programmatic or via a user interface.
+            </param>
+    </member>
+    <member name="P:NationalInstruments.Controls.ValueChangedEventArgs`1.NewValue">
+      <summary>
+            Gets the new value of the Value property.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.ValueChangedEventArgs`1.Source">
+      <summary>
+            Gets a value indicating whether an event originated from the user interface 
+            or from a programmatic write to the property. 
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.ValueChangingEventArgs`1">
+      <summary>Gets the arguments to the source event as the value changes. 
+            </summary>
+      <typeparam name="TData">The data type of the ValueChangingEventArgs&lt;T&gt; object.
+            </typeparam>
+    </member>
+    <member name="M:NationalInstruments.Controls.ValueChangingEventArgs`1.#ctor(`0,`0)">
+      <summary>
+            Initializes a new instance of the ValueChangingEventArgs&lt;T&gt; class.
+            </summary>
+      <param name="oldValue">The value before any changes.
+            </param>
+      <param name="newValue">The value after this event.
+            </param>
+    </member>
+    <member name="P:NationalInstruments.Controls.ValueChangingEventArgs`1.OldValue">
+      <summary>
+            Gets the value of the property as it stands before any change happens.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.ValueChangingEventArgs`1.NewValue">
+      <summary>
+            Gets the value that is assigned to the property if this event is not cancelled.
+            </summary>
+    </member>
+  </members>
+</doc>

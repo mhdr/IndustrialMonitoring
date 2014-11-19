@@ -1,0 +1,2269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc xmlns:ni="urn:ni">
+  <assembly>
+    <name>NationalInstruments.Net</name>
+  </assembly>
+  <members>
+    <member name="M:NationalInstruments.Internal.Design.TimeSpanUI.Dispose(System.Boolean)">
+      <summary> 
+            Clean up any resources being used.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Internal.Design.TimeSpanUI.InitializeComponent">
+      <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.AccessMode">
+      <summary>
+            Specifies how a DataSocket object transfers data.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.AccessMode.Read">
+      <summary>
+            Transfers data from the data source to the local DataSocket object
+            when you establish the connection.  Call Update to cause
+            subsequent data transfers.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.AccessMode.ReadAutoUpdate">
+      <summary>
+            Transfers data from the data source to the local DataSocket object when 
+            you establish the connection. When the data at the data source is updated, the data is transferred again automatically. 
+            This mode is valid only for DSTP and logos and OPC data sources.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.AccessMode.ReadWriteAutoUpdate">
+      <summary>
+            Transfers data from the data source to the local DataSocket object when you establish
+             the connection. When the data at the data source is updated, the data is transferred again automatically. The DataSocket 
+            object automatically transfers data to the data target when you change any value or attribute on the local
+             DataSocketData object. This mode is valid only for DSTP and logos data sources and targets.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.AccessMode.Write">
+      <summary>
+            Transfers data from the local DataSocket object to the data target at the time you establish 
+            the connection. Call Update to cause subsequent data transfers.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.AccessMode.WriteAutoUpdate">
+      <summary>
+            Transfers data from the local DataSocket object to the data target when you establish 
+            the connection. When you change any value or attribute on the local DataSocketData object, the 
+            DataSocket object automatically transfers data to the data target. This mode is valid only
+            for DSTP and logos data targets.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.AccessMode.ReadBuffered">
+      <summary>
+            Specifies that DataSocket is configured for manual
+            updating with buffering. DataSocket gets the next
+            value in the buffer from the DataSocket data source when the connection is established and when you call
+            Update.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.AccessMode.ReadBufferedAutoUpdate">
+      <summary>
+            Specifies that DataSocket is configured for
+            automatic updating with buffering.  DataSocket gets
+            the next value from the DataSocket data source when the connection is established, when the data value changes, and when any of the
+            data attributes change.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.AccessMode.ReadWriteBufferedAutoUpdate">
+      <summary>
+            Specifies that  DataSocket is configured for automatic
+            updating with buffering.  DataSocket transfers data to
+            the DataSocket data source when the
+            connection is established, when the data value changes, and when any of the data attributes
+            change.  DataSocket gets the data from the
+            DataSocket data source when the data value changes and
+            when any of the data attributes change.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.BindingDataUpdatedEventArgs">
+      <summary>
+            Provides data for the
+            BindingDataUpdated event.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.BindingDataUpdatedEventArgs.#ctor(NationalInstruments.Net.DataSocketBinding)">
+      <summary>
+            Initializes a new instance of BindingDataUpdatedEventArgs.
+            </summary>
+      <param name="binding">
+            The DataSocketBinding instance that generated the
+            event.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.BindingDataUpdatedEventArgs.ToString">
+      <summary>Overrides ToString.</summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="P:NationalInstruments.Net.BindingDataUpdatedEventArgs.Binding">
+      <summary>
+            Gets the DataSocketBinding that generated the
+            event.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.BindingDataUpdatedEventHandler">
+      <summary>
+            Represents a method that handles the
+            BindingDataUpdated event of a
+            DataSocketSource object.
+            </summary>
+      <param name="sender">
+            The source of the event.
+            </param>
+      <param name="e">
+            A BindingDataUpdatedEventArgs object that contains the
+            event data.
+            </param>
+    </member>
+    <member name="T:NationalInstruments.Net.BindingStatusUpdatedEventArgs">
+      <summary>
+            Provides data for the BindingStatusUpdated
+            event.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.ConnectionStatusUpdatedEventArgs">
+      <summary>
+            Provides data for the ConnectionStatusUpdated event.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.ConnectionStatusUpdatedEventArgs.#ctor(NationalInstruments.Net.ConnectionStatus,System.Int32,System.String)">
+      <summary>
+            Initializes a new instance of ConnectionStatusUpdatedEventArgs.
+            </summary>
+      <param name="status">
+            The status of the DataSocket connection.
+            </param>
+      <param name="errorCode">
+            Error of the DataSocket connection, if an error exists. Refer to 
+            DataSocket Error Codes for a list of possible
+            values.
+            </param>
+      <param name="message">
+            Descriptive message about the connection status.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.ConnectionStatusUpdatedEventArgs.ToString">
+      <summary>
+            Overrides ToString.
+            </summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="P:NationalInstruments.Net.ConnectionStatusUpdatedEventArgs.Status">
+      <summary>
+            Gets the status of the DataSocket connection.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Net.ConnectionStatusUpdatedEventArgs.ErrorCode">
+      <summary>
+            Gets the error of the DataSocket connection, if an error exists.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Net.ConnectionStatusUpdatedEventArgs.Message">
+      <summary>
+            Gets a descriptive message about the connection status.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.BindingStatusUpdatedEventArgs.#ctor(NationalInstruments.Net.DataSocketBinding,NationalInstruments.Net.ConnectionStatus,System.Int32,System.String)">
+      <summary>
+            Initializes a new instance of BindingStatusUpdatedEventArgs.
+            </summary>
+      <param name="binding">
+            The DataSocketBinding instance that generated the event.
+            </param>
+      <param name="status">
+            The status of the DataSocketBinding connection.
+            </param>
+      <param name="errorCode">
+            Error of the DataSocketBinding connection, if one exists. Refer to 
+            DataSocket Error Codes for a list of possible
+            values.
+            </param>
+      <param name="message">
+            Descriptive message of the connection status.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.BindingStatusUpdatedEventArgs.ToString">
+      <summary>Overrides ToString.</summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="P:NationalInstruments.Net.BindingStatusUpdatedEventArgs.Binding">
+      <summary>
+            Gets the DataSocketBinding that generated the
+            event.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.BindingStatusUpdatedEventHandler">
+      <summary>
+            Represents a method that handles the
+            BindingStatusUpdated event of a
+            DataSocketSource object.
+            </summary>
+      <param name="sender">
+            The source of the event.
+            </param>
+      <param name="e">
+            A BindingStatusUpdatedEventArgs object that contains the
+            event data.
+            </param>
+    </member>
+    <member name="T:NationalInstruments.Net.ConnectionStatus">
+      <summary>
+            Indicates the current status of the DataSocket connection.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.ConnectionStatus.Connecting">
+      <summary>
+            	The DataSocket object is in the process of connecting
+            to the data source or target.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.ConnectionStatus.ConnectionActive">
+      <summary>
+            	The DataSocket object is connected to the data source or target and is transferring the data or
+            waiting for an update.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.ConnectionStatus.ConnectionError">
+      <summary>
+            	TheDataSocket object encountered an error while connecting
+            to the data source or target.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.ConnectionStatus.ConnectionIdle">
+      <summary>
+            	The DataSocket object is connected to the data source or target
+            and is not currently transferring data or is waiting for an update.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.ConnectionStatus.Unconnected">
+      <summary>
+            	The DataSocket object is not connected to any data source
+            or data target.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.ConnectionStatusUpdatedEventHandler">
+      <summary>
+            Represents a method that handles the
+            ConnectionStatusUpdated event of a
+            DataSocket object.
+            </summary>
+      <param name="sender">
+            The source of the event.
+            </param>
+      <param name="e">
+            A ConnectionStatusUpdatedEventArgs object that contains the event data.
+            </param>
+    </member>
+    <member name="T:NationalInstruments.Net.DataSocket">
+      <summary>
+            Represents a connection to a data source or target.
+            
+            		
+            You can use the NetworkVariable class library or the DataSocket class library to transfer live measurement data between applications over a network. 
+            You can use NetworkVariable or DataSocket to exchange different types of data between Measurement Studio, LabVIEW, LabWindows/CVI, and other applications that support NI-Publish Subscribe Protocol (psp:). 
+            NetworkVariable is the preferred method for transferring data between these applications, and, in these cases, NetworkVariable supersedes DataSocket. 
+            You can also use NetworkVariable and DataSocket to exchange different types of data between OLE for Process Control (opc:) servers. Exchanging data between Measurement Studio applications and OPC servers with NetworkVariable requires LabVIEW DSC Run-Time System. Use DataSocket to communicate directly with an OPC server.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.#ctor">
+      <summary>
+            Initializes a new instance of DataSocket.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.#ctor(System.ComponentModel.IContainer)">
+      <summary>
+            Initializes a new instance of DataSocket
+            with the specified container.
+            </summary>
+      <param name="container">
+            An IContainer that represents the container for the
+            object.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.ToString">
+      <summary>
+            Overrides ToString.
+            </summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.Dispose(System.Boolean)">
+      <summary>
+            Releases the resources used by the DataSocket object.
+            </summary>
+      <param name="disposing">
+            If true, this method releases managed and unmanaged resources. If false, this method releases
+            only unmanaged resources.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.Connect">
+      <summary>
+            Connects the DataSocket object to a data source or target.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.Connect(System.String)">
+      <summary>
+            Connects the DataSocket object to the specified data source or target.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocket must connect.
+            </param>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.Connect(System.String,NationalInstruments.Net.AccessMode)">
+      <summary>
+            Connects the DataSocket object to the specified data source or target with the specified
+            access mode.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocket object must connect.
+            </param>
+      <param name="accessMode">
+            An AccessMode value that specifies the type of connection the 
+            DataSocket object makes when it connects to the data source or
+            target.
+            </param>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">accessMode (parameter) is not a member of AccessMode.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncConnect(System.Int32)">
+      <summary>
+            Synchronously connects the DataSocket object to a
+            data source or target with the specified timeout.
+            </summary>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncConnect(System.TimeSpan)">
+      <summary>
+            Synchronously connects the DataSocket object to a
+            data source or target with the specified TimeSpan.
+            </summary>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncConnect(System.String,System.Int32)">
+      <summary>
+            Synchronously connects the DataSocket object to a
+            data source or target with the specified URL and timeout.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocket must connect.
+            </param>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncConnect(System.String,System.TimeSpan)">
+      <summary>
+            Synchronously connects the DataSocket object to a
+            data source or target with the specified URL and TimeSpan.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocket must connect.
+            </param>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncConnect(System.String,NationalInstruments.Net.AccessMode,System.Int32)">
+      <summary>
+            Synchronously connects the DataSocket object to a
+            data source or target with the specified URL, access mode, and timeout.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocket must connect.
+            </param>
+      <param name="accessMode">
+            An AccessMode value that specifies the type of connection the 
+            DataSocket object makes when it connects to the data source or
+            target.
+            </param>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">accessMode (parameter) is not a member of AccessMode.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncConnect(System.String,NationalInstruments.Net.AccessMode,System.TimeSpan)">
+      <summary>
+            Synchronously connects the DataSocket object to a
+            data source or target with the specified URL, access mode, and TimeSpan.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocket must connect.
+            </param>
+      <param name="accessMode">
+            An AccessMode value that specifies the type of connection the 
+            DataSocket object makes when it connects to the data source or
+            target.
+            </param>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">accessMode (parameter) is not a member of AccessMode.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.Disconnect">
+      <summary>
+            Disconnects the DataSocket object from the data source or target to which it is
+            currently connected.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncDisconnect(System.Int32)">
+      <summary>
+            Synchronously disconnects the DataSocket object from
+            the data source or target to which it is currently connected using the specified timeout.
+            </summary>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncDisconnect(System.TimeSpan)">
+      <summary>
+            Synchronously disconnects the DataSocket object from
+            the data source or target to which it is currently connected using the specified TimeSpan.
+            </summary>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncWrite(System.Object,System.Int32)">
+      <summary>
+            Initiates a write to the server with the specified data and timeout.
+            </summary>
+      <param name="data">
+            The data to write to the server.
+            </param>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncWrite(System.Object,System.TimeSpan)">
+      <summary>
+            Initiates a write to the server with the specified data and TimeSpan.
+            </summary>
+      <param name="data">
+            The data to write to the server.
+            </param>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncRead(System.Int32)">
+      <summary>
+            Synchronously polls the client-side buffer for unprocessed values using the specified timeout.
+            </summary>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SyncRead(System.TimeSpan)">
+      <summary>
+            Synchronously polls the client-side buffer for unprocessed values using the specified TimeSpan.
+            </summary>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.Update">
+      <summary>
+            Causes the DataSocket object to transfer data from a data source or to
+            a data target.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:NationalInstruments.Net.DataSocketException">
+            The DataSocket is not connected.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SelectUrl">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SelectUrl(System.String)">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets and configures the dialog box with a specified URL.
+            </summary>
+      <param name="startUrl">
+            String that contains the URL.  If the startUrl (parameter) protocol is opc:, 
+            dstp:, logos:,
+            or file, or if you omit this parameter, this method opens a dialog box in which the user can
+            find and select a data source or target.  You can prompt the user to create a Web or FTP
+            location with the http: or ftp: protocols.  You also can use a complete URL, such
+            as dstp://localhost/wave.
+            </param>
+      <exception cref="T:System.ArgumentNullException">startUrl (parameter) is null</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SelectUrl(System.String,System.String)">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets and configures the dialog box URL and title.
+            </summary>
+      <param name="startUrl">
+            String that contains the URL.  If the startUrl (parameter) protocol is opc:, 
+            dstp:, logos:,
+            or file, or if you omit this parameter, this method opens a dialog box in which the user can
+            find and select a data source or target.  You can prompt the user to create a Web or FTP
+            location with the http: or ftp: protocols.  You also can use a complete URL, such
+            as dstp://localhost/wave.
+            </param>
+      <param name="title">
+            Title of the dialog box.
+            </param>
+      <exception cref="T:System.ArgumentNullException">startUrl (parameter) is null-or-title (parameter) is null</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SelectUrl(System.String,System.String,NationalInstruments.Net.SelectOptions)">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets and configures the dialog box URL, title, and options.
+            </summary>
+      <param name="startUrl">
+            String that contains the URL.  If the startUrl (parameter) protocol is opc:, 
+            dstp:, logos:,
+            or file, or if you omit this parameter, this method opens a dialog box in which the user can
+            find and select a data source or target.  You can prompt the user to create a Web or FTP
+            location with the http: or ftp: protocols.  You also can use a complete URL, such
+            as dstp://localhost/wave.
+            </param>
+      <param name="title">
+            Title of the dialog box.
+            </param>
+      <param name="options">
+            Flags that control the behavior of the dialog box.
+            </param>
+      <exception cref="T:System.ArgumentNullException">startUrl (parameter) is null-or-title (parameter) is null</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">options (parameter) is not a member of SelectOptions.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.SelectUrl(System.String,System.String,NationalInstruments.Net.SelectOptions,System.String)">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets and configures the dialog box URL, title, options, and filter.
+            </summary>
+      <param name="startUrl">
+            String that contains the URL.  If the startUrl (parameter) protocol is opc:, 
+            dstp:, logos:,
+            or file, or if you omit this parameter, this method opens a dialog box in which the user can
+            find and select a data source or target.  You can prompt the user to create a Web or FTP
+            location with the http: or ftp: protocols.  You also can use a complete URL, such
+            as dstp://localhost/wave.
+            </param>
+      <param name="title">
+            Title of the dialog box.
+            </param>
+      <param name="options">
+            Flags that control the behavior of the dialog box.
+            </param>
+      <param name="filter">
+            Filter string passed to the dialog box, as shown in the following example: DataSocket Data files (*.dsd)|*.dsd|All files (*.*)|*.*</param>
+      <exception cref="T:System.ArgumentNullException">startUrl (parameter) is null-or-title (parameter) is null-or-filter (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">options (parameter) is not a member of SelectOptions.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.OnDataUpdated(NationalInstruments.Net.DataUpdatedEventArgs)">
+      <summary>
+            Raises the DataUpdated event.
+            </summary>
+      <param name="e">
+            A DataUpdatedEventArgs object that contains the event data.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocket.OnConnectionStatusUpdated(NationalInstruments.Net.ConnectionStatusUpdatedEventArgs)">
+      <summary>
+            Raises the ConnectionStatusUpdated event.
+            </summary>
+      <param name="e">
+            A ConnectionStatusUpdatedEventArgs object that contains the event
+            data.
+            </param>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.AccessMode">
+      <summary>
+            Gets or sets the access mode for the connection.
+            </summary>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            Value is not a member of AccessMode.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.ActualUrl">
+      <summary>
+            Gets the actual URL of the current data source or target.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.AutoConnect">
+      <summary>
+            Gets or sets a value indicating if the DataSocket object connects to a data source or target 
+            when the form loads.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.ClientBufferMaxBytes">
+      <summary>
+            Gets or sets the maximum number of bytes that is allowed in the
+            Data property buffer.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified value is less than 0.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.ClientBufferMaxPackets">
+      <summary>
+            Gets or sets the maximum number of packets that is allowed in the
+            Data property buffer.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified value is less than 0.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.ClientBufferUtilizationBytes">
+      <summary>
+            Gets the total number of bytes that is currently in the buffer divided by the maximum number of
+            bytes allowed in the buffer.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.ClientBufferUtilizationPackets">
+      <summary>
+            Gets the total number of packets that is currently in the buffer divided by the maximum number of
+            bytes allowed in the buffer.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.ConnectionStatus">
+      <summary>
+            Gets the current status of the data connection.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.Data">
+      <summary>
+            Gets the current value and attributes that the DataSocket object received 
+            from the data source or target
+            or that were set locally.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.IsConnected">
+      <summary>
+            Gets if the DataSocket object is in a connected or disconnected
+            state.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.IsDataUpdated">
+      <summary>
+            Gets a value indicating if values or attributes on the local DataSocket object have changed
+            since the last data transfer.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.IsConnectionStatusUpdated">
+      <summary>
+            Gets a value indicating if the connection status has changed or an error has occurred.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.LastError">
+      <summary>
+            Gets the error code associated with the last
+            ConnectionStatusUpdated event.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.LastMessage">
+      <summary>
+            Gets the message associated with the last
+            ConnectionStatusUpdated event.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.ReadMode">
+      <summary>
+            Gets or sets the mode that specifies how DataSocket reads
+            data.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocket.Url">
+      <summary>
+            Gets or sets the location of a data source or target.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocket has been disposed.
+            </exception>
+    </member>
+    <member name="E:NationalInstruments.Net.DataSocket.ConnectionStatusUpdated">
+      <summary>
+            Occurs when the status of the connection changes.
+            </summary>
+    </member>
+    <member name="E:NationalInstruments.Net.DataSocket.DataUpdated">
+      <summary>
+            Occurs when the value or attributes of the Data property is
+            updated.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.DataSocketAttribute">
+      <summary>
+            Contains the name of a DataSocketData attribute and its associated
+            data.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketAttribute.ToString">
+      <summary>
+            Overrides ToString.
+            </summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketAttribute.Name">
+      <summary>
+            Gets the name of the DataSocketAttribute object.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketAttribute.Data">
+      <summary>
+            Gets the data of the DataSocketAttribute object.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.DataSocketAttributeDictionary">
+      <summary>
+            Encapsulates the collection of the attributes of a
+            DataSocketData object.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketAttributeDictionary.ToString">
+      <summary>Overrides ToString.</summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketAttributeDictionary.GetNames">
+      <summary>
+            Gets the names of the attributes that are associated with the DataSocketData object.
+            </summary>
+      <returns>An array of strings that indicate the names of the attributes that are associated with
+            the DataSocketData object.</returns>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketAttributeDictionary.Add(System.String,System.Object)">
+      <summary>
+            Creates an attribute of a DataSocketData object.
+            </summary>
+      <param name="attributeName">
+            The name of the attribute to add.
+            </param>
+      <param name="value">
+            The value of the attribute.
+            </param>
+      <returns>
+            The DataSocketData object that represents
+            the value of the added attribute.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">attributeName (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            An element with the same key already exists in the collection.
+            </exception>
+      <exception cref="T:System.NotSupportedException">value (parameter) is a data type that is not supported by DataSocketData.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketAttributeDictionary.Clear">
+      <summary>Removes all items from the collection.</summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketAttributeDictionary.Contains(System.String)">
+      <summary>Returns if the specified attribute is in the collection.</summary>
+      <param name="attributeName">The name of the item to locate in the collection.</param>
+      <returns>
+            Returns true if the collection contains attributeName (parameter).
+            </returns>
+      <exception cref="T:System.ArgumentNullException">attributeName (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketAttributeDictionary.GetEnumerator">
+      <summary>Returns an enumerator that you can use to iterate through the collection.</summary>
+      <returns>Enumerator for the collection.</returns>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketAttributeDictionary.Remove(System.String)">
+      <summary>
+            Removes the first occurrence of the specified attribute from the collection.
+            </summary>
+      <param name="attributeName">
+            The name of the attribute to remove from the collection.
+            </param>
+      <exception cref="T:System.ArgumentNullException">attributeName (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentException">
+            An attribute with the specified name was not found in the collection.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketAttributeDictionary.Item(System.String)">
+      <summary>
+            Gets the attribute in the collection with the specified name.  In Visual C#, this
+            property is the indexer.
+            </summary>
+      <exception cref="T:System.ArgumentNullException">
+            The specified attribute name is null.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            There is no attribute in the collection with the specified range.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketAttributeDictionary.Count">
+      <summary>
+            Gets the number of elements in the collection.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.DataSocketBinding">
+      <summary>
+            Represents a data source or target that you can bind to a property of a control.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.#ctor">
+      <summary>
+            Initializes a new instance of DataSocketBinding.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.ToString">
+      <summary>
+            Overrides ToString.
+            </summary>
+      <returns>
+            A string representation of the object.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.Dispose">
+      <summary>
+            Releases all resources used by the
+            DataSocketBinding object.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.Dispose(System.Boolean)">
+      <summary>
+            Releases the resources used by the DataSocketBinding object.
+            </summary>
+      <param name="disposing">
+            If true, this method releases managed and unmanaged resources. If false, this method
+            releases only unmanaged resources.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.Finalize">
+      <summary>
+            Finalizes the instance of the DataSocketBinding object.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.Connect">
+      <summary>
+            Connects the DataSocketBinding object to a data source or target.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.Connect(System.String)">
+      <summary>
+            Connects the DataSocketBinding object to the specified data source or target.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocketBinding must connect.
+            </param>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.Connect(System.String,NationalInstruments.Net.AccessMode)">
+      <summary>
+            Connects the DataSocketBinding object to the specified data source or target with the
+            specified access mode.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocketBinding object must connect.
+            </param>
+      <param name="accessMode">
+            An AccessMode value that specifies the type of connection the
+            DataSocketBinding object makes when it connects to the data source or
+            target.
+            </param>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">accessMode (parameter) is not a member of AccessMode.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncConnect(System.Int32)">
+      <summary>
+            Synchronously connects the DataSocketBinding object to a
+            data source or target with the specified timeout.
+            </summary>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncConnect(System.TimeSpan)">
+      <summary>
+            Synchronously connects the DataSocketBinding object to a
+            data source or target with the specified TimeSpan.
+            </summary>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncConnect(System.String,System.Int32)">
+      <summary>
+            Synchronously connects the DataSocketBinding object to a
+            data source or target with the specified URL and timeout.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocketBinding must connect.
+            </param>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncConnect(System.String,System.TimeSpan)">
+      <summary>
+            Synchronously connects the DataSocketBinding object to a
+            data source or target with the specified URL and TimeSpan.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocketBinding must connect.
+            </param>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncConnect(System.String,NationalInstruments.Net.AccessMode,System.Int32)">
+      <summary>
+            Synchronously connects the DataSocketBinding object to a
+            data source or target with the specified URL, access mode, and timeout.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocketBinding must connect.
+            </param>
+      <param name="accessMode">
+            An AccessMode value that specifies the type of connection the 
+            DataSocketBinding object makes when it connects to the data source or
+            target.
+            </param>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">accessMode (parameter) is not a member of AccessMode.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncConnect(System.String,NationalInstruments.Net.AccessMode,System.TimeSpan)">
+      <summary>
+            Synchronously connects the DataSocketBinding object to a
+            data source or target with the specified URL, access mode, and TimeSpan.
+            </summary>
+      <param name="url">
+            Location of the data source or target to which the
+            DataSocketBinding must connect.
+            </param>
+      <param name="accessMode">
+            An AccessMode value that specifies the type of connection the 
+            DataSocketBinding object makes when it connects to the data source or
+            target.
+            </param>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">url (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">accessMode (parameter) is not a member of AccessMode.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.Disconnect">
+      <summary>
+            Disconnects the DataSocketBinding object from the data source or target to which it is
+            currently connected.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncDisconnect(System.Int32)">
+      <summary>
+            Synchronously disconnects the DataSocketBinding object from
+            the data source or target to which it is currently connected using the specified timeout.
+            </summary>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncDisconnect(System.TimeSpan)">
+      <summary>
+            Synchronously disconnects the DataSocketBinding object from
+            the data source or target to which it is currently connected using the specified TimeSpan.
+            </summary>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncWrite(System.Object,System.Int32)">
+      <summary>
+            Initiates a write to the server with the specified data and timeout.
+            </summary>
+      <param name="data">
+            The data to write to the server.
+            </param>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncWrite(System.Object,System.TimeSpan)">
+      <summary>
+            Initiates a write to the server with the specified data and TimeSpan.
+            </summary>
+      <param name="data">
+            The data to write to the server.
+            </param>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncRead(System.Int32)">
+      <summary>
+            Synchronously polls the client-side buffer for unprocessed values using the specified timeout.
+            </summary>
+      <param name="timeout">
+            The timeout period specified in milliseconds.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SyncRead(System.TimeSpan)">
+      <summary>
+            Synchronously polls the client-side buffer for unprocessed values using the specified TimeSpan.
+            </summary>
+      <param name="timeout">
+            The timeout period specified as a TimeSpan.
+            </param>
+      <returns>true if the operation timed out.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified timeout is less than 0.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.Update">
+      <summary>
+            Causes the DataSocketBinding object to transfer data from a data source or to
+            a data target.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:NationalInstruments.Net.DataSocketException">
+            The DataSocketBinding is not connected.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SelectUrl">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SelectUrl(System.String)">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets and configures the dialog box with a specified URL.
+            </summary>
+      <param name="startUrl">
+            String that contains the URL.  If the startUrl (parameter) protocol is opc:, 
+            dstp:, logos:,
+            or file, or if you omit this parameter, this method opens a dialog box in which the user can
+            find and select a data source or target.  You can prompt the user to create a Web or FTP
+            location with the http: or ftp: protocols.  You also can use a complete URL, such
+            as dstp://localhost/wave.
+            </param>
+      <exception cref="T:System.ArgumentNullException">startUrl (parameter) is null</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SelectUrl(System.String,System.String)">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets and configures the dialog box URL and title.
+            </summary>
+      <param name="startUrl">
+            String that contains the URL.  If the startUrl (parameter) protocol is opc:, 
+            dstp:, logos:,
+            or file, or if you omit this parameter, this method opens a dialog box in which the user can
+            find and select a data source or target.  You can prompt the user to create a Web or FTP
+            location with the http: or ftp: protocols.  You also can use a complete URL, such
+            as dstp://localhost/wave.
+            </param>
+      <param name="title">
+            Title of the dialog box.
+            </param>
+      <exception cref="T:System.ArgumentNullException">startUrl (parameter) is null-or-title (parameter) is null</exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SelectUrl(System.String,System.String,NationalInstruments.Net.SelectOptions)">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets and configures the dialog box URL, title, and options.
+            </summary>
+      <param name="startUrl">
+            String that contains the URL.  If the startUrl (parameter) protocol is opc:, 
+            dstp:, logos:,
+            or file, or if you omit this parameter, this method opens a dialog box in which the user can
+            find and select a data source or target.  You can prompt the user to create a Web or FTP
+            location with the http: or ftp: protocols.  You also can use a complete URL, such
+            as dstp://localhost/wave.
+            </param>
+      <param name="title">
+            Title of the dialog box.
+            </param>
+      <param name="options">
+            Flags that control the behavior of the dialog box.
+            </param>
+      <exception cref="T:System.ArgumentNullException">startUrl (parameter) is null-or-title (parameter) is null</exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">options (parameter) is not a member of SelectOptions.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBinding.SelectUrl(System.String,System.String,NationalInstruments.Net.SelectOptions,System.String)">
+      <summary>
+            Enables interactive browsing and selection of data sources or targets and configures the dialog box URL, title, options, and filter.
+            </summary>
+      <param name="startUrl">
+            String that contains the URL.  If the startUrl (parameter) protocol is opc:, 
+            dstp:, logos:,
+            or file, or if you omit this parameter, this method opens a dialog box in which the user can
+            find and select a data source or target.  You can prompt the user to create a Web or FTP
+            location with the http: or ftp: protocols.  You also can use a complete URL, such
+            as dstp://localhost/wave.
+            </param>
+      <param name="title">
+            Title of the dialog box.
+            </param>
+      <param name="options">
+            Flags that control the behavior of the dialog box.
+            </param>
+      <param name="filter">
+            Filter string passed to the dialog box, as shown in the following example: DataSocket Data files (*.dsd)|*.dsd|All files (*.*)|*.*</param>
+      <exception cref="T:System.ArgumentNullException">startUrl (parameter) is null-or-title (parameter) is null-or-filter (parameter) is null.
+            </exception>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">options (parameter) is not a member of SelectOptions.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.AccessMode">
+      <summary>
+            Gets or sets the access mode for the connection.
+            </summary>
+      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            The value is not a member of AccessMode.
+            </exception>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.Name">
+      <summary>
+            Gets or sets the name of the binding.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.ActualUrl">
+      <summary>
+            Gets the actual URL of the current data source or target.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.ClientBufferMaxBytes">
+      <summary>
+            Gets or sets the maximum number of bytes that is allowed in the
+            Data property buffer.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified value is less than 0.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.ClientBufferMaxPackets">
+      <summary>
+            Gets or sets the maximum number of packets that is allowed in the
+            Data property buffer.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The specified value is less than 0.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.ClientBufferUtilizationBytes">
+      <summary>
+            Gets the total number of bytes that is currently in the buffer divided by the maximum number of
+            bytes allowed in the buffer.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.ClientBufferUtilizationPackets">
+      <summary>
+            Gets the total number of packets that is currently in the buffer divided by the maximum number of
+            bytes allowed in the buffer.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.ConnectionStatus">
+      <summary>
+            Gets the current status of the data connection.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.IsConnected">
+      <summary>
+            Gets a value indicating if the DataSocketBinding object is in a connected or disconnected
+            state.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.LastError">
+      <summary>
+            Gets the error code associated with the last binding connection.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.LastMessage">
+      <summary>
+            Gets the message associated with the last the binding connection.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.ReadMode">
+      <summary>
+            Gets or sets the mode that specifies how DataSocketBinding reads
+            data.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.Url">
+      <summary>
+            Gets or sets the location of the data source or target to which the
+            DataSocketBinding object is connecting.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBinding.Data">
+      <summary>
+            Gets the current value and attributes that the
+            DataSocketBinding object received from the data source or target or
+            that have been set locally.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketBinding has been disposed.
+            </exception>
+    </member>
+    <member name="T:NationalInstruments.Net.DataSocketBindingCollection">
+      <summary>
+            Represents a strongly-typed collection of DataSocketBinding objects.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.ToString">
+      <summary>Overrides ToString.</summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.Add(NationalInstruments.Net.DataSocketBinding)">
+      <summary>
+            Adds an item to the end of the collection.
+            </summary>
+      <param name="item">
+            Item to add to the collection.
+            </param>
+      <returns>
+            The array index of the added item.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">item (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.AddRange(NationalInstruments.Net.DataSocketBinding[])">
+      <summary>
+            Adds an array of DataSocketBinding objects to the end of the collection.
+            </summary>
+      <param name="item">
+            Array of DataSocketBinding objects to add to the collection.
+            </param>
+      <exception cref="T:System.ArgumentNullException">item (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.AddRange(NationalInstruments.Net.DataSocketBindingCollection)">
+      <summary>
+            Adds a collection of DataSocketBinding objects to the end of the collection.
+            </summary>
+      <param name="item">
+            Collection of DataSocketBinding objects to add to the collection.
+            </param>
+      <exception cref="T:System.ArgumentNullException">item (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.Clear">
+      <summary>Removes all items from the collection.</summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.Contains(NationalInstruments.Net.DataSocketBinding)">
+      <summary>
+            Returns if the specified element is in the collection.
+            </summary>
+      <param name="item">
+            Item to locate in the collection.
+            </param>
+      <returns>
+            Returns true if the collection contains item (parameter).
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.CopyTo(NationalInstruments.Net.DataSocketBinding[],System.Int32)">
+      <summary>Copies the collection to an array or a portion of an array.</summary>
+      <param name="array">Destination array for the collection.</param>
+      <param name="index">Index in the target array at which you want to begin copying the collection to.</param>
+      <exception cref="T:System.ArgumentException">array (parameter) is multidimensional.
+            
+            - or -
+            index (parameter) is greater than or equal to the array length.
+            
+            - or -
+            
+            The number of elements in the collection is greater than the available space between
+            index (parameter) and the end of array (parameter).
+            </exception>
+      <exception cref="T:System.ArgumentNullException">array (parameter) is null.
+            </exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">index (parameter) is less than zero.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.IndexOf(NationalInstruments.Net.DataSocketBinding)">
+      <summary>
+            Returns the zero-based index of the first occurrence of an item in the collection.
+            </summary>
+      <param name="item">Item to search for.</param>
+      <returns>Index of the item. If the item is not found, returns -1.</returns>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.Insert(System.Int32,NationalInstruments.Net.DataSocketBinding)">
+      <summary>Inserts an item into the collection at the specified index.</summary>
+      <param name="index">Index to insert the item at.</param>
+      <param name="item">Item to insert into the collection.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">index (parameter) is not a valid index in the IList.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">item (parameter) is null.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.GetEnumerator">
+      <summary>Returns an enumerator that you can use to iterate through the collection.</summary>
+      <returns>Enumerator for the collection.</returns>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.Remove(NationalInstruments.Net.DataSocketBinding)">
+      <summary>Removes the first occurrence of the specified item.</summary>
+      <param name="item">Item to remove from the collection.</param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketBindingCollection.RemoveAt(System.Int32)">
+      <summary>Removes the item at the specified index.</summary>
+      <param name="index">Zero-based index of the item to remove.</param>
+      <exception cref="T:System.ArgumentOutOfRangeException">index (parameter) is not a valid index in the IList.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBindingCollection.Item(System.Int32)">
+      <summary>Gets or sets the DataSocketBinding at the specified index. In Visual C#, this property is the indexer.</summary>
+      <param name="index">
+            The zero-based index of the entry to locate in the collection.
+            </param>
+      <exception cref="T:System.ArgumentOutOfRangeException">index (parameter) is outside the valid range of indexes for the collection.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBindingCollection.Item(System.String)">
+      <summary>Gets an entry in the collection with the specified name. In Visual C#, this property is the indexer.</summary>
+      <param name="bindingName">
+            Name of the entry to find in the collection.
+            </param>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+            The binding with the specified name was not found in the collection.
+            </exception>
+      <exception cref="T:System.ArgumentNullException">value (parameter) is null.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketBindingCollection.Count">
+      <summary>
+            Gets the number of elements in the collection.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.DataSocketData">
+      <summary>
+            Contains the value and attributes associated with the value.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketData.#ctor">
+      <summary>
+            Initializes a new instance of DataSocketData.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketData.ToString">
+      <summary>
+            Overrides ToString.
+            </summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketData.Dispose">
+      <summary>
+            Releases all resources used by the DataSocketData object.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketData.System#IDisposable#Dispose">
+      <summary>
+            Releases all resources used by the DataSocketData object.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketData.Dispose(System.Boolean)">
+      <summary>
+            Releases the unmanaged resources used by the DataSocketData object and
+            optionally releases the managed resources.
+            </summary>
+      <param name="disposing">
+            If true, releases both managed and unmanaged resources.  If false, only releases
+            unmanaged resources.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketData.Finalize">
+      <summary>Finalizes the instance of the DataSocketData object.</summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketData.Reset">
+      <summary>
+            Clears the Value property and
+            all attributes.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketData.IsDisposed">
+      <summary>
+            Gets a value indicating if the DataSocketData object has been disposed.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketData.Attributes">
+      <summary>
+            Gets a list of attributes that are associated with the data.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketData.Value">
+      <summary>
+            Gets or sets the value of the DataSocketData object.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.DataSocketException">
+      <summary>Represents the exception that is thrown when a DataSocket
+            error occurs.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketException.#ctor">
+      <summary>
+            Initializes a new instance of DataSocketException.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketException.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of DataSocketException 
+            with the specified error message.
+            </summary>
+      <param name="message">
+            The error message that explains the cause of the exception.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketException.#ctor(System.String,System.Exception)">
+      <summary>
+            Initializes a new instance of DataSocketException 
+            with the specified error message and a reference to the inner exception that is the
+            cause of the exception.
+            </summary>
+      <param name="message">
+            The error message that explains the cause of the exception.
+            </param>
+      <param name="innerException">
+            The exception that caused this exception.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+      <summary>
+            Initializes a new instance of DataSocketException with serialized data.
+            </summary>
+      <param name="info">
+            The object that holds the serialized object data.
+            </param>
+      <param name="context">
+            The contextual information about the source or destination of a serialized stream.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketException.ToString">
+      <summary>Overrides ToString.</summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="T:NationalInstruments.Net.DataSocketServer">
+      <summary>
+            Encapsulates the interface to the National Instruments DataSocket Server.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.#ctor">
+      <summary>
+            Initializes a new instance of DataSocketServer.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.#ctor(System.ComponentModel.IContainer)">
+      <summary>
+            Initializes a new instance of DataSocketServer
+            with the specified container.
+            </summary>
+      <param name="container">IContainer that represents the object container.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.#ctor(System.Boolean)">
+      <summary>
+            Initializes a new instance of DataSocketServer with the specified 
+            auto-start value.
+            </summary>
+      <param name="autoStart">
+            Specifies if the server automatically starts when the object is constructed.
+            </param>
+      <exception cref="T:NationalInstruments.Net.DataSocketException">
+            The DataSocket Server is not installed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.#ctor(System.Boolean,System.Boolean)">
+      <summary>
+            Initializes a new instance of DataSocketServer with the specified auto-start and
+            auto-shutdown values.
+            </summary>
+      <param name="autoStart">
+            Specifies if the server automatically starts when the object is constructed.
+            </param>
+      <param name="autoShutdown">
+            Specifies if the server automatically shuts down when the object is disposed.
+            </param>
+      <exception cref="T:NationalInstruments.Net.DataSocketException">
+            The DataSocket Server is not installed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.ToString">
+      <summary>
+            Overrides ToString.
+            </summary>
+      <returns>
+            A string representation of the object.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketServer has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.Dispose(System.Boolean)">
+      <summary>
+            Releases the resources used by DataSocketServer object.
+            </summary>
+      <param name="disposing">
+            If true, this method releases managed and unmanaged resources. If false, this method
+            releases only unmanaged resources.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.Start">
+      <summary>
+            Launches the local DataSocket Server.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketServer has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.Show">
+      <summary>
+            Displays the local DataSocket Server.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketServer has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.Hide">
+      <summary>
+            Hides the local DataSocket Server.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketServer has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketServer.Shutdown">
+      <summary>
+            Shuts down the local DataSocket Server.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketServer has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketServer.AutoStart">
+      <summary>
+            Gets or sets a value indicating if the DataSocket Server automatically starts when the form loads.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketServer has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketServer.AutoShutdown">
+      <summary>
+            Gets or sets a value indicating if the DataSocket Server automatically shuts down when the object is disposed.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketServer has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketServer.IsOpen">
+      <summary>
+            Gets a value indicating if the DataSocket Server is running.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketServer has been disposed.
+            </exception>
+    </member>
+    <member name="T:NationalInstruments.Net.DataSocketSource">
+      <summary>
+            Exposes DataSocket data sources or targets as a bindable data items that you can bind to properties of Windows Forms controls.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketSource.#ctor">
+      <summary>
+            Initializes a new instance of DataSocketSource.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketSource.#ctor(System.ComponentModel.IContainer)">
+      <summary>
+            Initializes a new instance of the DataSocketSource class
+            with the specified container.
+            </summary>
+      <param name="container">IContainer that represents the object container.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketSource.ToString">
+      <summary>
+            Overrides ToString.
+            </summary>
+      <returns>
+            A string representation of the object.
+            </returns>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketSource has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketSource.Dispose(System.Boolean)">
+      <summary>
+            Releases the resources used by DataSocketSource object.
+            </summary>
+      <param name="disposing">
+            If true, this method releases managed and unmanaged resources. If false, this method releases
+            only unmanaged resources.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketSource.Connect">
+      <summary>
+            Calls the Connect method on all 
+            DataSocketBinding objects in the 
+            Bindings
+             collection.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketSource has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketSource.Disconnect">
+      <summary>
+            Calls the Disconnect method on all 
+            DataSocketBinding objects in the 
+            Bindings collection.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketSource has been disposed.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketSource.Update">
+      <summary>
+            Calls the Update  method on all
+            DataSocketBinding objects in the 
+            Bindings collection.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketSource has been disposed.
+            </exception>
+      <exception cref="T:NationalInstruments.Net.DataSocketException">
+            A DataSocket object in the Bindings
+            collection is not connected.
+            </exception>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketSource.OnBindingDataUpdated(NationalInstruments.Net.BindingDataUpdatedEventArgs)">
+      <summary>
+            Raises the BindingDataUpdated event.
+            </summary>
+      <param name="e">
+            A BindingDataUpdatedEventArgs object that contains the event data.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataSocketSource.OnBindingStatusUpdated(NationalInstruments.Net.BindingStatusUpdatedEventArgs)">
+      <summary>
+            Raises the BindingStatusUpdated event.
+            </summary>
+      <param name="e">
+            A BindingStatusUpdatedEventArgs object that contains the event data.
+            </param>
+    </member>
+    <member name="E:NationalInstruments.Net.DataSocketSource.BindingDataUpdated">
+      <summary>
+            Occurs when the data of any DataSocketBinding object in the
+            Bindings collection is updated.
+            </summary>
+    </member>
+    <member name="E:NationalInstruments.Net.DataSocketSource.BindingStatusUpdated">
+      <summary>
+            Occurs when the connection status of any DataSocketBinding object in the
+            Bindings collection is updated.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketSource.AutoConnect">
+      <summary>
+            Gets or sets a value indicating if all bindings in the Bindings collection
+             connect to associated data sources or targets when the form loads.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketSource has been disposed.
+            </exception>
+    </member>
+    <member name="P:NationalInstruments.Net.DataSocketSource.Bindings">
+      <summary>
+            Gets the DataSocket DataSocketBindingCollection object.
+            </summary>
+      <exception cref="T:System.ObjectDisposedException">
+            The DataSocketSource has been disposed.
+            </exception>
+    </member>
+    <member name="T:NationalInstruments.Net.DataUpdatedEventArgs">
+      <summary>
+            Provides data for the DataUpdated event.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Net.DataUpdatedEventArgs.#ctor(NationalInstruments.Net.DataSocketData)">
+      <summary>
+            Initializes a new instance of DataUpdatedEventArgs.
+            </summary>
+      <param name="data">
+            A reference to the DataSocketData that was updated.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Net.DataUpdatedEventArgs.ToString">
+      <summary>Overrides ToString.</summary>
+      <returns>Returns a string representation of the object.</returns>
+    </member>
+    <member name="P:NationalInstruments.Net.DataUpdatedEventArgs.Data">
+      <summary>
+            Gets a reference to the data that was updated when the event was generated.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.DataUpdatedEventHandler">
+      <summary>
+            Represents a method that handles the
+            DataUpdated event of a
+            DataSocket object.
+            </summary>
+      <param name="sender">
+            The source of the event.
+            </param>
+      <param name="e">
+            A DataUpdatedEventArgs object that contains the event data.
+            </param>
+    </member>
+    <member name="T:NationalInstruments.Net.OpcStatus">
+      <summary>
+            Defines valid values for the status subfield of the OPC quality attribute.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.Bad">
+      <summary>
+            The value is bad.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.CommunicationFailure">
+      <summary>
+            The communication failed, and no last known value
+            is available.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.ConfigurationError">
+      <summary>
+            There is a server-specific problem with the configuration.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.DeviceFailure">
+      <summary>
+            A device failure has been detected.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.EguExceeded">
+      <summary>
+            The value is outside the limits defined for this parameter.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.Good">
+      <summary>
+            The value is good.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.LastKnownValue">
+      <summary>
+            Communication has failed, but the last known value is available.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.LastUsableValue">
+      <summary>
+            The value is no longer being written.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.LocalOverride">
+      <summary>
+            The value has been overridden.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.NotConnected">
+      <summary>
+            The input must be logically connected to a server but it
+            is disconnected.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.OutOfService">
+      <summary>
+            The block is off scan or locked.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.SensorCalibration">
+      <summary>
+            The value has been pegged at one of the sensor limits or
+            an internal diagnostics has detected that the sensor is out of calibration.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.SensorFailure">
+      <summary>
+            A sensor failure has been detected.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.SubNormal">
+      <summary>
+            The value is derived from multiple sources and has less than the
+            required number of good sources.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.OpcStatus.Uncertain">
+      <summary>
+            The value cannot be determined.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.ReadMode">
+      <summary>
+            Specifies how a DataSocket object reads data.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.ReadMode.Asynchronous">
+      <summary>
+            Specifies that DataSocket raises the
+            DataUpdated event to notify
+            when new data arrives.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.ReadMode.Synchronous">
+      <summary>
+            Specifies that you must call SyncRead
+            to poll and dequeue buffered data into the Data
+            property.  DataSocket does not raise the
+            DataUpdated event in this mode.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Net.SelectOptions">
+      <summary>
+            Controls the behavior of the dialog box that
+            SelectUrl displays.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.Default">
+      <summary>
+            Specifies that SelectUrl dialog box is displayed
+            with the default options.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.CreatePrompt">
+      <summary>
+            Opens a dialog box to prompt the user for permission to create the file if that file
+            does not exist.  If the user chooses to create the file, the dialog box closes
+            and the method returns the specified name; otherwise, the dialog box remains open.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.FileMustExist">
+      <summary>
+            Specifies that the user can enter the names only of existing files in the Filename field.
+            If this flag is specified and the user enters an invalid name, the dialog box
+            displays a warning in a message box.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.HideReadonly">
+      <summary>
+            Hides the read-only checkbox.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.NoChangeDir">
+      <summary>
+            Restores the current directory to its original value if the user changed the directory
+            while searching for files.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.NoDereferenceLinks">
+      <summary>
+            Directs the dialog box to return the path and filename of the selected shortcut
+            (.lnk) file.  If this value is not provided, the dialog box returns the path and
+            filename of the file referenced by the shortcut.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.NoReadonlyReturn">
+      <summary>
+            Specifies that the returned file does not have the read-only checkbox selected and is
+            not in a write-protected directory.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.NoTestFileCreate">
+      <summary>
+            Specifies that the file is not created before the dialog box is closed.  Use this value if the application 
+            saves the file on a create-nonmodify network
+            share.  When an application specifies this flag, DataSocket
+            does not check for write protection, a full disk, an open drive door, or network protection.
+            Applications that use this flag must perform file operations carefully because a file
+            cannot be reopened after it is closed.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.OverWritePrompt">
+      <summary>
+            Causes the Save As dialog box to generate a message box if the selected file already
+            exists.  The user must confirm overwriting the file.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.PathMustExist">
+      <summary>
+            Specifies that the user can enter only valid paths and filenames.  If you use this value and
+            the user enters an invalid path or filename in the Filename field, the dialog box method
+            displays a warning in a message box.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.Readonly">
+      <summary>
+            Causes the read-only checkbox to be checked when the dialog box is created.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Net.SelectOptions.SaveAs">
+      <summary>
+            Causes the file dialog box to be a Save As dialog box instead of an Open File
+            dialog box.
+            </summary>
+    </member>
+  </members>
+</doc>

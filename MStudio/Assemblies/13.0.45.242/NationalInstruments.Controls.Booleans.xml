@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc xmlns:ni="urn:ni">
+  <assembly>
+    <name>NationalInstruments.Controls.Booleans</name>
+  </assembly>
+  <members>
+    <member name="T:NationalInstruments.Controls.ArrowButton">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) button control that displays Boolean data and is in the shape of an arrow.   
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.BooleanButton">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) button control that displays Boolean data.   
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.BooleanButton.ToggleValue">
+      <summary>
+            Toggles the value of a Boolean control.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.BooleanButton.OnIsPressedChanged(System.Windows.DependencyPropertyChangedEventArgs)" />
+    <member name="M:NationalInstruments.Controls.BooleanButton.OnApplyTemplate" />
+    <member name="M:NationalInstruments.Controls.BooleanButton.OnValueChanged(System.Boolean,System.Boolean)">
+      <summary>
+            Raises the ValueChanged event. 
+            </summary>
+      <param name="oldValue">
+            The old value.
+            </param>
+      <param name="newValue">
+            The new value.
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.BooleanButton.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)" />
+    <member name="M:NationalInstruments.Controls.BooleanButton.OnMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs)" />
+    <member name="M:NationalInstruments.Controls.BooleanButton.OnMouseEnter(System.Windows.Input.MouseEventArgs)" />
+    <member name="M:NationalInstruments.Controls.BooleanButton.OnMouseLeave(System.Windows.Input.MouseEventArgs)" />
+    <member name="M:NationalInstruments.Controls.BooleanButton.OnKeyUp(System.Windows.Input.KeyEventArgs)">
+      <summary>
+            Raises the key up event when a key is pressed while the control has focus.
+            </summary>
+      <param name="e">
+            A KeyEventArgs that contains the event data. 
+            </param>
+    </member>
+    <member name="M:NationalInstruments.Controls.BooleanButton.OnKeyDown(System.Windows.Input.KeyEventArgs)">
+      <summary>
+            Raises the key down event when a key is pressed while the control has focus.
+            </summary>
+      <param name="e">
+            A KeyEventArgs that contains the event data. 
+            </param>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanButton.PreviewValueChangedEvent">
+      <summary>
+            Identifies the PreviewValueChanged routed event.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanButton.ValueChangedEvent">
+      <summary>
+            Identifies the ValueChanged routed event.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanButton.ValueProperty">
+      <summary>
+            Identifies the Value dependency property.
+            </summary>
+      <returns>
+            The identifier for the Value dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanButton.IsMomentaryProperty">
+      <summary>
+            Identifies the IsMomentary dependency property.
+            </summary>
+      <returns>
+            The identifier for the IsMomentary dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanButton.IsReadOnlyProperty">
+      <summary>
+            Identifies the IsReadOnly dependency property.
+            </summary>
+      <returns>
+            The identifier for the IsReadOnly dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanButton.ContentVisibilityProperty">
+      <summary>
+            Identifies the ContentVisibility dependency property.
+            </summary>
+      <returns>
+            The identifier for the ContentVisibility dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanButton.RenderPressedProperty">
+      <summary>
+            Identifies the RenderPressed dependency property.
+            </summary>
+      <returns>
+            The identifier for the RenderPressed dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.BooleanButton.#ctor">
+      <summary>
+            Initializes a new instance of the BooleanButton class.
+            </summary>
+    </member>
+    <member name="E:NationalInstruments.Controls.BooleanButton.PreviewValueChanged">
+      <summary>
+            Occurs before the Value 
+            property is interactively changed. 
+            </summary>
+    </member>
+    <member name="E:NationalInstruments.Controls.BooleanButton.ValueChanged">
+      <summary>
+            Occurs when Value changes 
+            from false to true or vice versa.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.BooleanButton.RenderPressed">
+      <summary>
+Gets or sets whether the control should render the 'pressed' state visuals.
+</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.BooleanButton.Value">
+      <summary>Gets or sets the value of the button.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.BooleanButton.IsMomentary">
+      <summary>Gets or sets a value indicating whether Value 
+ changes only while the button is pressed.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.BooleanButton.IsReadOnly">
+      <summary>Gets or sets a value indicating whether Value 
+can be changed at run time.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.BooleanButton.ContentVisibility">
+      <summary>Gets or sets the visibility of Content.</summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.ArrowButton.DirectionProperty">
+      <summary>
+            Identifies the Direction dependency property.
+            </summary>
+      <returns>
+            The identifier for the Direction dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArrowButton.#ctor">
+      <summary>
+            Initializes a new instance of the ArrowButton class.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.ArrowButton.OnApplyTemplate" />
+    <member name="M:NationalInstruments.Controls.ArrowButton.OnDirectionChanged">
+      <summary>
+            Called when Direction changes.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.ArrowButton.Direction">
+      <summary>Gets or sets the direction that the arrow button is pointing: up, down, left, or right. 
+</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.ArrowDirection">
+      <summary>Determines the direction of the arrow for an ArrowButton.</summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.ArrowDirection.Up">
+      <summary>Indicates an upward-pointing arrow.</summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.ArrowDirection.Down">
+      <summary>Indicates a downward-pointing arrow.</summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.ArrowDirection.Right">
+      <summary>Indicates a right-pointing arrow.</summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.ArrowDirection.Left">
+      <summary>Indicates a left-pointing arrow.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.BooleanContentButton">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) button control that supports different content for the 
+            true and false states.
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanContentButton.FalseContentProperty">
+      <summary>
+            Identifies the FalseContent dependency property.
+            </summary>
+      <returns>
+            The identifier for the FalseContent dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanContentButton.TrueContentProperty">
+      <summary>
+            Identifies the TrueContent dependency property.
+            </summary>
+      <returns>
+            The identifier for the TrueContent dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanContentButton.FalseBrushProperty">
+      <summary>
+            Identifies the FalseBrush dependency property.
+            </summary>
+      <returns>
+            The identifier for the FalseBrush dependency property.
+            </returns>
+    </member>
+    <member name="F:NationalInstruments.Controls.BooleanContentButton.TrueBrushProperty">
+      <summary>
+            Identifies the TrueBrush dependency property.
+            </summary>
+      <returns>
+            The identifier for the TrueBrush dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.BooleanContentButton.#ctor">
+      <summary>
+            Initializes a new instance of the BooleanContentButton class.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.BooleanContentButton.FalseContent">
+      <summary>Gets or sets the content to display when Value is false.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.BooleanContentButton.TrueContent">
+      <summary>Gets or sets the content to display when Value  is true.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.BooleanContentButton.FalseBrush">
+      <summary>Gets or sets the brush that is used to alter the color of the BooleanContentButton when 
+Value is false.</summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.BooleanContentButton.TrueBrush">
+      <summary>Gets or sets the brush that is used to alter the color of the BooleanContentButton when Value is true.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Switch">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) switch control to display and input Boolean states. 
+            </summary>
+    </member>
+    <member name="F:NationalInstruments.Controls.Switch.OrientationProperty">
+      <summary>
+            Identifies the Orientation dependency property.
+            </summary>
+      <returns>
+            The identifier for the Orientation dependency property.
+            </returns>
+    </member>
+    <member name="M:NationalInstruments.Controls.Switch.#ctor">
+      <summary>
+            Initializes a new instance of the Switch class.
+            </summary>
+    </member>
+    <member name="P:NationalInstruments.Controls.Switch.Orientation">
+      <summary>Gets or sets the vertical or horizontal orientation of the switch.</summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.Internal.AssemblyReferenceEnforcer">
+      <summary>
+            Ensures Visual Studio includes a reference to the Controls assembly,
+            as Controls types are only referenced in xaml, not code.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleIsPressedChanged(System.Boolean)">
+      <summary>
+            Internal for testing only
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.PowerButton">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) Boolean control in the shape of a power button.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.PowerButton.#ctor">
+      <summary>
+            Initializes a new instance of the PowerButton class.
+            </summary>
+    </member>
+    <member name="T:NationalInstruments.Controls.LED">
+      <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) button control in the shape of a light emitting diode.
+            </summary>
+    </member>
+    <member name="M:NationalInstruments.Controls.LED.#ctor">
+      <summary>
+            Initializes a new instance of the LED class.
+            </summary>
+    </member>
+  </members>
+</doc>

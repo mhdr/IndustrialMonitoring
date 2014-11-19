@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<DotNETComponent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ToolBoxPriority>3</ToolBoxPriority>
+  <Visible>true</Visible>
+  <SupportedProjectTypes>
+    <string>AspApplication2012</string>
+    <string>CppCLI2012</string>
+    <string>WindowsFormsApplication2012</string>
+  </SupportedProjectTypes>
+  <LicensedEditions>
+    <string>Professional</string>
+    <string>Enterprise</string>
+  </LicensedEditions>
+  <SelectedByDefault>true</SelectedByDefault>
+  <Title>NetworkVariable Communication Library</Title>
+  <Description>Contains classes to publish and subscribe to live measurement data over the Internet. Provides better scalability and higher performance than DataSocket.</Description>
+  <Name2012>NationalInstruments.NetworkVariable</Name2012>
+  <Licensed>true</Licensed>
+  <Dependencies>
+    <DotNETAssembly>
+      <Name>NationalInstruments.Common</Name>
+    </DotNETAssembly>
+  </Dependencies>
+  <Namespaces>
+    <string>NationalInstruments.NetworkVariable</string>
+    <string>NationalInstruments.NetworkVariable.WindowsForms</string>
+    <string>NationalInstruments.NetworkVariable.WebForms</string>
+  </Namespaces>
+  <ToolBoxItems>
+    <string>NationalInstruments.NetworkVariable.WebForms.NetworkVariableDataSource</string>
+    <string>NationalInstruments.NetworkVariable.WindowsForms.NetworkVariableDataSource</string>
+    <string>NationalInstruments.NetworkVariable.WindowsForms.NetworkVariableBrowserDialog</string>
+  </ToolBoxItems>
+</DotNETComponent>

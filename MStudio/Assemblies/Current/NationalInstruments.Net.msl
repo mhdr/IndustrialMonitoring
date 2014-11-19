@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<DotNETComponent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ToolBoxPriority>3</ToolBoxPriority>
+  <Visible>true</Visible>
+  <SupportedProjectTypes>
+    <string>CppCLI2012</string>
+    <string>WindowsFormsApplication2012</string>
+  </SupportedProjectTypes>
+  <LicensedEditions>
+    <string>Professional</string>
+    <string>Enterprise</string>
+  </LicensedEditions>
+  <SelectedByDefault>false</SelectedByDefault>
+  <Title>DataSocket Communication Library</Title>
+  <Description>Contains classes to publish and subscribe to live measurement data over the Internet. Provides easier connectivity to OPC servers than Network Variable.</Description>
+  <Name2012>NationalInstruments.Net</Name2012>
+  <Licensed>true</Licensed>
+  <Dependencies>
+    <DotNETAssembly>
+      <Name>NationalInstruments.Common</Name>
+    </DotNETAssembly>
+  </Dependencies>
+  <Namespaces>
+    <string>NationalInstruments.Net</string>
+  </Namespaces>
+  <ToolBoxItems>
+    <string>NationalInstruments.Net.DataSocket</string>
+    <string>NationalInstruments.Net.DataSocketServer</string>
+    <string>NationalInstruments.Net.DataSocketSource</string>
+  </ToolBoxItems>
+</DotNETComponent>

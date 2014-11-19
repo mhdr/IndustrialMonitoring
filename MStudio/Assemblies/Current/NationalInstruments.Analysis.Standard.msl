@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<DotNETComponent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Visible>true</Visible>
+  <SupportedProjectTypes>
+    <string>AspApplication2012</string>
+    <string>CppCLI2012</string>
+    <string>WindowsFormsApplication2012</string>
+  </SupportedProjectTypes>
+  <LicensedEditions>
+    <string>Standard</string>
+  </LicensedEditions>
+  <SelectedByDefault>true</SelectedByDefault>
+  <Title>Standard Analysis Library</Title>
+  <Description>Contains the Standard Analysis classes that provide easy-to-use mathematical analysis tools for measurement applications written for the Microsoft .NET platform.</Description>
+  <Name2012>NationalInstruments.Analysis.Standard</Name2012>
+  <Licensed>true</Licensed>
+  <Dependencies>
+    <DotNETAssembly>
+      <Name>NationalInstruments.Common</Name>
+    </DotNETAssembly>
+  </Dependencies>
+  <Namespaces>
+    <string>NationalInstruments.Analysis</string>
+    <string>NationalInstruments.Analysis.Conversion</string>
+    <string>NationalInstruments.Analysis.SignalGeneration</string>
+  </Namespaces>
+</DotNETComponent>

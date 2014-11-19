@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<DotNETComponent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Visible>false</Visible>
+  <SupportedProjectTypes>
+    <string>WindowsFormsApplication2012</string>
+  </SupportedProjectTypes>
+  <LicensedEditions>
+    <string>Standard</string>
+    <string>Professional</string>
+    <string>Enterprise</string>
+  </LicensedEditions>
+  <SelectedByDefault>true</SelectedByDefault>
+  <Title>WPF User Interface Control Libraries/Controls Base Library</Title>
+  <Description>Contains the common functionality of the Measurement Studio WPF controls.</Description>
+  <Name2012>NationalInstruments.Controls</Name2012>
+  <Licensed>true</Licensed>
+  <Dependencies>
+    <DotNETAssembly>
+      <Name>NationalInstruments.Common</Name>
+    </DotNETAssembly>
+  </Dependencies>
+  <Namespaces>
+    <string>NationalInstruments.Controls</string>
+  </Namespaces>
+  <ProjectTypesWithLibraryUnchecked>
+	<string>WindowsApplication</string>
+	<string>ClassLibrary</string>
+  </ProjectTypesWithLibraryUnchecked> 
+</DotNETComponent>

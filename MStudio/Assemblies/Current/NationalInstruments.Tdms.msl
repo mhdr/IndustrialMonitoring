@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<DotNETComponent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ToolBoxPriority>4</ToolBoxPriority>
+  <Visible>true</Visible>
+  <SupportedProjectTypes>
+    <string>AspApplication2012</string>
+    <string>CppCLI2012</string>
+    <string>WindowsFormsApplication2012</string>
+  </SupportedProjectTypes>
+  <LicensedEditions>
+    <string>Professional</string>
+    <string>Enterprise</string>
+  </LicensedEditions>
+  <SelectedByDefault>true</SelectedByDefault>
+  <Title>TDM Streaming Library</Title>
+  <Description>Contains classes to read from and write to TDMS files.</Description>
+  <Name2012>NationalInstruments.Tdms</Name2012>
+  <Licensed>true</Licensed>
+  <Dependencies>
+    <DotNETAssembly>
+      <Name>NationalInstruments.Common</Name>
+    </DotNETAssembly>
+  </Dependencies>
+  <Namespaces>
+    <string>NationalInstruments.Tdms</string>
+  </Namespaces>
+  <ToolBoxItems>
+    <string>NationalInstruments.Tdms.WindowsForms.TdmsDataSource</string>
+  </ToolBoxItems>
+</DotNETComponent>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<DotNETComponent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ToolBoxPriority>2</ToolBoxPriority>
+  <Visible>true</Visible>
+  <SupportedProjectTypes>
+    <string>AspApplication2012</string>
+  </SupportedProjectTypes>
+  <LicensedEditions>
+    <string>Professional</string>
+    <string>Enterprise</string>
+  </LicensedEditions>
+  <SelectedByDefault>true</SelectedByDefault>
+  <Title>Web Forms User Interface Control Library</Title>
+  <Description>Contains the Measurement Studio Web Forms user interface controls.</Description>
+  <Name2012>NationalInstruments.UI.WebForms</Name2012>
+  <Licensed>true</Licensed>
+  <HttpHandler>
+    <Verb>GET</Verb>
+    <Path>ImageStateHandler.axd</Path>
+    <TypeName>ImageStateHandler</TypeName>
+  </HttpHandler>
+  <Control>
+    <TagPrefix>ni</TagPrefix>
+  </Control>
+  <Dependencies>
+    <DotNETAssembly>
+      <Name>NationalInstruments.UI</Name>
+    </DotNETAssembly>
+  </Dependencies>
+  <Namespaces>
+    <string>NationalInstruments.UI.WebForms</string>
+  </Namespaces>
+  <ToolBoxItems>
+    <string>NationalInstruments.UI.WebForms.WaveformGraph</string>
+    <string>NationalInstruments.UI.WebForms.ScatterGraph</string>
+    <string>NationalInstruments.UI.WebForms.DigitalWaveformGraph</string>
+    <string>NationalInstruments.UI.WebForms.ComplexGraph</string>
+    <string>NationalInstruments.UI.WebForms.Legend</string>
+    <string>NationalInstruments.UI.WebForms.Gauge</string>
+    <string>NationalInstruments.UI.WebForms.Knob</string>
+    <string>NationalInstruments.UI.WebForms.Meter</string>
+    <string>NationalInstruments.UI.WebForms.Slide</string>
+    <string>NationalInstruments.UI.WebForms.Tank</string>
+    <string>NationalInstruments.UI.WebForms.Thermometer</string>
+    <string>NationalInstruments.UI.WebForms.NumericEdit</string>
+    <string>NationalInstruments.UI.WebForms.Switch</string>
+    <string>NationalInstruments.UI.WebForms.Led</string>
+    <string>NationalInstruments.UI.WebForms.AutoRefresh</string>
+  </ToolBoxItems>
+</DotNETComponent>
