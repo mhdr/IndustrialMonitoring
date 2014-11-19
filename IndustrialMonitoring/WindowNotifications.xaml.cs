@@ -23,5 +23,20 @@ namespace IndustrialMonitoring
         {
             InitializeComponent();
         }
+
+        private void MenuItemShowSetTimeDialog_OnClick(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemShowSetTimeDialog_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

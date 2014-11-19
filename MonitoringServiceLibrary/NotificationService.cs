@@ -109,5 +109,74 @@ namespace MonitoringServiceLibrary
 
             return false;
         }
+
+        public List<NotificationLog> GetNotificationLogs(int userId, DateTime startTime, DateTime endTime)
+        {
+            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+            List<NotificationItemsLog> notificationItemsLogs =
+                entities.NotificationItemsLogs.Where(x => x.Time >= startTime && x.Time <= endTime).ToList();
+
+            List<UsersItemsPermission> usersItemsPermissions =
+                entities.UsersItemsPermissions.Where(x => x.UserId == userId).ToList();
+
+            List<NotificationLog> result=new List<NotificationLog>();
+
+
+            foreach (NotificationItemsLog log in notificationItemsLogs)
+            {
+                if (usersItemsPermissions.Any(x => x.ItemId == log.NotificationItem.ItemId))
+                {
+                    int itemId = log.NotificationItem.ItemId;
+                    string itemName = log.NotificationItem.Item.ItemName;
+                    string notificationMsg = log.NotificationItem.NotificationMsg;
+                    DateTime dateTime = log.Time;
+                    bool hasFault = !log.Value;
+
+                    NotificationLog notificationLog=new NotificationLog(itemId,itemName,notificationMsg,dateTime,hasFault);
+
+                    result.Add(notificationLog);
+                }
+                
+            }
+
+            return result;
+        }
+
+        public List<NotificationLog> GetNotificationLog(int userId, int itemId, DateTime startTime, DateTime endTime)
+        {
+            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+            List<NotificationItemsLog> notificationItemsLogs =
+                entities.NotificationItemsLogs.Where(x => x.Time >= startTime && x.Time <= endTime).ToList();
+
+            List<UsersItemsPermission> usersItemsPermissions =
+                entities.UsersItemsPermissions.Where(x => x.UserId == userId).ToList();
+
+            List<NotificationLog> result = new List<NotificationLog>();
+
+
+            foreach (NotificationItemsLog log in notificationItemsLogs)
+            {
+                if (log.NotificationItem.ItemId == itemId)
+                {
+                    if (usersItemsPermissions.Any(x => x.ItemId == log.NotificationItem.ItemId))
+                    {
+                        int itemId2 = log.NotificationItem.ItemId;
+                        string itemName = log.NotificationItem.Item.ItemName;
+                        string notificationMsg = log.NotificationItem.NotificationMsg;
+                        DateTime dateTime = log.Time;
+                        bool hasFault = !log.Value;
+
+                        NotificationLog notificationLog = new NotificationLog(itemId2, itemName, notificationMsg, dateTime, hasFault);
+
+                        result.Add(notificationLog);
+                    }
+                }
+
+            }
+
+            return result;
+        }
     }
 }

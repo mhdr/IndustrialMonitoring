@@ -19,5 +19,11 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         bool SystemHasNotification(int userId);
+
+        [OperationContract]
+        List<NotificationLog> GetNotificationLogs(int userId,DateTime startTime,DateTime endTime);
+
+        [OperationContract]
+        List<NotificationLog> GetNotificationLog(int userId,int itemId,DateTime startTime,DateTime endTime);
     }
 }
