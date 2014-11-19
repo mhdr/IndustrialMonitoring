@@ -230,6 +230,9 @@
     <None Include="Service References\NotificationServiceReference\IndustrialMonitoring.NotificationServiceReference.Notification1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\NotificationServiceReference\IndustrialMonitoring.NotificationServiceReference.NotificationLog.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\NotificationServiceReference\MonitoringServiceLibrary.ViewModels.xsd">
       <SubType>Designer</SubType>
     </None>

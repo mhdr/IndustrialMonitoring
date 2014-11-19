@@ -90,6 +90,115 @@ namespace IndustrialMonitoring.NotificationServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NotificationLog", Namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels")]
+    [System.SerializableAttribute()]
+    public partial class NotificationLog : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool HasFaultField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ItemIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ItemNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NotificationMsgField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateTime {
+            get {
+                return this.DateTimeField;
+            }
+            set {
+                if ((this.DateTimeField.Equals(value) != true)) {
+                    this.DateTimeField = value;
+                    this.RaisePropertyChanged("DateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool HasFault {
+            get {
+                return this.HasFaultField;
+            }
+            set {
+                if ((this.HasFaultField.Equals(value) != true)) {
+                    this.HasFaultField = value;
+                    this.RaisePropertyChanged("HasFault");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ItemId {
+            get {
+                return this.ItemIdField;
+            }
+            set {
+                if ((this.ItemIdField.Equals(value) != true)) {
+                    this.ItemIdField = value;
+                    this.RaisePropertyChanged("ItemId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ItemName {
+            get {
+                return this.ItemNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemNameField, value) != true)) {
+                    this.ItemNameField = value;
+                    this.RaisePropertyChanged("ItemName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NotificationMsg {
+            get {
+                return this.NotificationMsgField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NotificationMsgField, value) != true)) {
+                    this.NotificationMsgField = value;
+                    this.RaisePropertyChanged("NotificationMsg");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="NotificationServiceReference.INotificationService")]
     public interface INotificationService {
@@ -111,6 +220,18 @@ namespace IndustrialMonitoring.NotificationServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotificationService/SystemHasNotification", ReplyAction="http://tempuri.org/INotificationService/SystemHasNotificationResponse")]
         System.Threading.Tasks.Task<bool> SystemHasNotificationAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotificationService/GetNotificationLogs", ReplyAction="http://tempuri.org/INotificationService/GetNotificationLogsResponse")]
+        System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog> GetNotificationLogs(int userId, System.DateTime startTime, System.DateTime endTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotificationService/GetNotificationLogs", ReplyAction="http://tempuri.org/INotificationService/GetNotificationLogsResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog>> GetNotificationLogsAsync(int userId, System.DateTime startTime, System.DateTime endTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotificationService/GetNotificationLog", ReplyAction="http://tempuri.org/INotificationService/GetNotificationLogResponse")]
+        System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog> GetNotificationLog(int userId, int itemId, System.DateTime startTime, System.DateTime endTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotificationService/GetNotificationLog", ReplyAction="http://tempuri.org/INotificationService/GetNotificationLogResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog>> GetNotificationLogAsync(int userId, int itemId, System.DateTime startTime, System.DateTime endTime);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -162,6 +283,22 @@ namespace IndustrialMonitoring.NotificationServiceReference {
         
         public System.Threading.Tasks.Task<bool> SystemHasNotificationAsync(int userId) {
             return base.Channel.SystemHasNotificationAsync(userId);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog> GetNotificationLogs(int userId, System.DateTime startTime, System.DateTime endTime) {
+            return base.Channel.GetNotificationLogs(userId, startTime, endTime);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog>> GetNotificationLogsAsync(int userId, System.DateTime startTime, System.DateTime endTime) {
+            return base.Channel.GetNotificationLogsAsync(userId, startTime, endTime);
+        }
+        
+        public System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog> GetNotificationLog(int userId, int itemId, System.DateTime startTime, System.DateTime endTime) {
+            return base.Channel.GetNotificationLog(userId, itemId, startTime, endTime);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog>> GetNotificationLogAsync(int userId, int itemId, System.DateTime startTime, System.DateTime endTime) {
+            return base.Channel.GetNotificationLogAsync(userId, itemId, startTime, endTime);
         }
     }
 }
