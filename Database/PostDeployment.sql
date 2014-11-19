@@ -92,7 +92,7 @@ INSERT INTO TabsItems(ItemId,TabId) VALUES(13,2);
 INSERT INTO UsersItemsPermissions(UserId,ItemId) VALUES(1,13);
 
 INSERT INTO NotificationItems(ItemId,NotificationType,Low,NotificationMsg) 
-VALUES(9,3,50,'Temperature is too high');
+VALUES(9,3,30,'Temperature is low');
 
 INSERT INTO NotificationItems(ItemId,NotificationType,Low,NotificationMsg) 
-VALUES(12,3,700,'Temperature is too high');
+VALUES(12,3,300,'Temperature is low');

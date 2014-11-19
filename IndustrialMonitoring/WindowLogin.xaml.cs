@@ -25,7 +25,7 @@ namespace IndustrialMonitoring
 
         public WindowLogin()
         {
-            StyleManager.ApplicationTheme = new Windows8Theme();
+            StyleManager.ApplicationTheme =new Windows8Theme();
             InitializeComponent();
         }
 
