@@ -436,5 +436,15 @@ namespace IndustrialMonitoring
                 MenuItemClearItems.IsEnabled = true;
             }
         }
+
+        private void MenuItemShowNotifications_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void MenuItemShowNotificationForCurrentItem_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

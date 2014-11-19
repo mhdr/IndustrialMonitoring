@@ -34,6 +34,11 @@
                         <telerik:RadMenuItem Name="MenuItemCompare" Header="Compare Items" Click="MenuItemCompare_OnClick"/>
                     </telerik:RadMenuItem>
                 </telerik:RadMenuItem>
+                
+                <telerik:RadMenuItem Header="Notification">
+                    <telerik:RadMenuItem Name="MenuItemShowNotifications" Header="Notifications" ToolTip="Show notifications for all items" Click="MenuItemShowNotifications_OnClick"/>
+                    <telerik:RadMenuItem Name="MenuItemShowNotificationForCurrentItem" Header="Notification" ToolTip="Show notifications for current item" Click="MenuItemShowNotificationForCurrentItem_OnClick"/>
+                </telerik:RadMenuItem>
 
             </telerik:RadMenu>
 
