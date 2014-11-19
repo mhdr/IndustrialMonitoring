@@ -72,9 +72,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C__RefactorLog.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataCollector.cs" />
     <Compile Include="DataCollectorService.cs" />
     <Compile Include="IDataCollectorService.cs" />
