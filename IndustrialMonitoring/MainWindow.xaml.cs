@@ -130,11 +130,6 @@ namespace IndustrialMonitoring
                     Dispatcher.BeginInvoke(new Action(() => GenerateTab(model)));   
                 }
             }
-
-            Dispatcher.BeginInvoke(new Action(() =>
-            {
-                TabControlIOs.Items.Add(new TabHeaderUserControl());
-            }));
             
             Dispatcher.BeginInvoke(new Action(OnStartAsyncCompleted));
 
@@ -150,7 +145,11 @@ namespace IndustrialMonitoring
             radTabItem.Name = string.Format("TabItem{0}", tabsViewModel.TabName);
             radTabItem.Width = 80;
             radTabItem.Height = 25;
-            radTabItem.Header = tabsViewModel.TabName;
+
+            TabHeaderUserControl tabHeader=new TabHeaderUserControl();
+            tabHeader.SetHeader(tabsViewModel.TabName);
+
+            radTabItem.Header = tabHeader;
             radTabItem.HorizontalContentAlignment = HorizontalAlignment.Center;
             radTabItem.VerticalContentAlignment = VerticalAlignment.Center;
 
@@ -355,11 +354,16 @@ namespace IndustrialMonitoring
                     foreach (var item in TabControlIOs.Items)
                     {
                         RadTabItem tabItem = (RadTabItem)item;
+                        TabHeaderUserControl tabHeader = (TabHeaderUserControl) tabItem.Header;
+                        string header = tabHeader.GetHeader();
 
-                        if (tabs.Any(x=>x.Equals(tabItem.Header)))
+                        if (tabs.Any(x=>x.Equals(header)))
                         {
-                            tabItem.HeaderForeground = Brushes.Red;
-                            tabItem.FontWeight=FontWeights.Bold;
+                            tabHeader.ShowAlarmIcon();
+                        }
+                        else
+                        {
+                            tabHeader.HideAlarmIcon();
                         }
                     }
 
@@ -374,9 +378,8 @@ namespace IndustrialMonitoring
                         foreach (var item in TabControlIOs.Items)
                         {
                             RadTabItem tabItem = (RadTabItem)item;
-
-                            tabItem.HeaderForeground=Brushes.White;
-                            tabItem.FontWeight = FontWeights.Normal;
+                            TabHeaderUserControl tabHeader = (TabHeaderUserControl)tabItem.Header;
+                            tabHeader.HideAlarmIcon();
                         }
 
                         BlackAllTabs = false;

@@ -24,5 +24,25 @@ namespace IndustrialMonitoring
         {
             InitializeComponent();
         }
+
+        public void SetHeader(string header)
+        {
+            TextBlockMain.Text = header;
+        }
+
+        public string GetHeader()
+        {
+            return TextBlockMain.Text;
+        }
+
+        public void ShowAlarmIcon()
+        {
+            ImageMain.Visibility=Visibility.Visible;
+        }
+
+        public void HideAlarmIcon()
+        {
+            ImageMain.Visibility=Visibility.Collapsed;
+        }
     }
 }
