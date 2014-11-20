@@ -242,6 +242,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\NotificationServiceReference\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\NotificationServiceReference\IndustrialMonitoring.NotificationServiceReference.Notification1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

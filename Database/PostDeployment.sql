@@ -96,3 +96,9 @@ VALUES(9,3,30,'Temperature is low');
 
 INSERT INTO NotificationItems(ItemId,NotificationType,Low,NotificationMsg) 
 VALUES(12,3,300,'Temperature is low');
+
+INSERT INTO NotificationItems(ItemId,NotificationType,High,NotificationMsg) 
+VALUES(12,1,800,'Temperature is high');
+
+INSERT INTO NotificationItems(ItemId,NotificationType,Low,High,NotificationMsg) 
+VALUES(2,2,400,500,'Temperature is out of range');

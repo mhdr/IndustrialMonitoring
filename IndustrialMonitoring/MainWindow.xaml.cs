@@ -36,6 +36,7 @@ namespace IndustrialMonitoring
         private NotificationServiceClient _notificationServiceClient=new NotificationServiceClient();
         private Timer timerNotifications;
         private Horn horn;
+        private bool BlackAllTabs = false;
         
 
         protected virtual void OnStartAsyncCompleted()
@@ -131,6 +132,8 @@ namespace IndustrialMonitoring
             }
 
             Dispatcher.BeginInvoke(new Action(OnStartAsyncCompleted));
+
+            InitializeHorn();
         }
 
         private void GenerateTab(Tab1 tabsViewModel)
@@ -321,10 +324,15 @@ namespace IndustrialMonitoring
 
             MenuItemStart.IsEnabled = false;
             MenuItemStop.IsEnabled = true;
+        }
 
-            
-            timerNotifications=new Timer(CheckNotifications,null,0,2000);
-            horn = Horn.GetInstance();
+        private void InitializeHorn()
+        {
+            timerNotifications = new Timer(CheckNotifications, null, 0, 1000);
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                horn = Horn.GetInstance();    
+            }));
         }
 
         private void CheckNotifications(object state)
@@ -336,10 +344,38 @@ namespace IndustrialMonitoring
                 if (hastNotification)
                 {
                     horn.Start();
+                    List<string> tabs =
+                        NotificationServiceClient.TabsWithActiveNotification(Lib.Static.CurrentUser.UserId);
+
+                    foreach (var item in TabControlIOs.Items)
+                    {
+                        RadTabItem tabItem = (RadTabItem)item;
+
+                        if (tabs.Any(x=>x.Equals(tabItem.Header)))
+                        {
+                            tabItem.HeaderForeground = Brushes.Red;
+                            tabItem.FontWeight=FontWeights.Bold;
+                        }
+                    }
+
+                    BlackAllTabs = true;
                 }
                 else
                 {
                     horn.Stop();
+
+                    if (BlackAllTabs)
+                    {
+                        foreach (var item in TabControlIOs.Items)
+                        {
+                            RadTabItem tabItem = (RadTabItem)item;
+
+                            tabItem.HeaderForeground=Brushes.White;
+                            tabItem.FontWeight = FontWeights.Normal;
+                        }
+
+                        BlackAllTabs = false;
+                    }
                 }
             }));
         }
