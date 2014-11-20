@@ -130,6 +130,11 @@ namespace IndustrialMonitoring
                 }
             }
 
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                TabControlIOs.Items.Add(new TabHeaderUserControl());
+            }));
+            
             Dispatcher.BeginInvoke(new Action(OnStartAsyncCompleted));
         }
 
