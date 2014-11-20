@@ -221,6 +221,12 @@ namespace IndustrialMonitoring.NotificationServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotificationService/SystemHasNotification", ReplyAction="http://tempuri.org/INotificationService/SystemHasNotificationResponse")]
         System.Threading.Tasks.Task<bool> SystemHasNotificationAsync(int userId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotificationService/TabsWithActiveNotification", ReplyAction="http://tempuri.org/INotificationService/TabsWithActiveNotificationResponse")]
+        System.Collections.Generic.List<string> TabsWithActiveNotification(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotificationService/TabsWithActiveNotification", ReplyAction="http://tempuri.org/INotificationService/TabsWithActiveNotificationResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<string>> TabsWithActiveNotificationAsync(int userId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotificationService/GetNotificationLogs", ReplyAction="http://tempuri.org/INotificationService/GetNotificationLogsResponse")]
         System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog> GetNotificationLogs(int userId, System.DateTime startTime, System.DateTime endTime);
         
@@ -283,6 +289,14 @@ namespace IndustrialMonitoring.NotificationServiceReference {
         
         public System.Threading.Tasks.Task<bool> SystemHasNotificationAsync(int userId) {
             return base.Channel.SystemHasNotificationAsync(userId);
+        }
+        
+        public System.Collections.Generic.List<string> TabsWithActiveNotification(int userId) {
+            return base.Channel.TabsWithActiveNotification(userId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<string>> TabsWithActiveNotificationAsync(int userId) {
+            return base.Channel.TabsWithActiveNotificationAsync(userId);
         }
         
         public System.Collections.Generic.List<IndustrialMonitoring.NotificationServiceReference.NotificationLog> GetNotificationLogs(int userId, System.DateTime startTime, System.DateTime endTime) {

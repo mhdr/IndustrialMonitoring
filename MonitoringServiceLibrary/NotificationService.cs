@@ -15,28 +15,14 @@ namespace MonitoringServiceLibrary
             int count = 0;
             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
-            List<NotificationItem> notificationItems = entities.NotificationItems.Where(x => x.ItemId == itemId).ToList();
+            List<NotificationItemsLogLatest> notificationItemsLogLatests = entities.NotificationItemsLogLatests.ToList();
 
-            if (notificationItems == null || notificationItems.Count == 0)
+            foreach (NotificationItemsLogLatest item in notificationItemsLogLatests)
             {
-                return false;
-            }
-
-            foreach (var notificationItem in notificationItems)
-            {
-                NotificationItemsLogLatest notificationItemsLogLatest =
-                    entities.NotificationItemsLogLatests.FirstOrDefault(
-                        x => x.NotificationId == notificationItem.NotificationId);
-
-                if (notificationItemsLogLatest.Value)
+                if (item.NotificationItem.ItemId == itemId && item.Value==false)
                 {
-                    count++;
+                    return true;
                 }
-            }
-
-            if (count == 0)
-            {
-                return true;
             }
 
             return false;
@@ -108,6 +94,43 @@ namespace MonitoringServiceLibrary
             }
 
             return false;
+        }
+
+        public List<string> TabsWithActiveNotification(int userId)
+        {
+            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+            List<string> result=new List<string>();
+
+            var notifications = entities.NotificationItemsLogLatests.ToList();
+
+            if (notifications == null || notifications.Count == 0)
+            {
+                return result;
+            }
+
+            List<int> ItemIds = new List<int>();
+
+            foreach (NotificationItemsLogLatest notification in notifications)
+            {
+                if (!notification.Value)
+                {
+                    ItemIds.Add(notification.NotificationItem.ItemId);
+                }
+            }
+
+            foreach (int itemId in ItemIds)
+            {
+                if (entities.UsersItemsPermissions.Any(x => x.UserId == userId && x.ItemId == itemId))
+                {
+                    var tabItem = entities.TabsItems.FirstOrDefault(x => x.ItemId == itemId);
+                    if (tabItem != null)
+                        result.Add(tabItem.Tab.TabName);
+                }
+            }
+
+
+            return result;
         }
 
         public List<NotificationLog> GetNotificationLogs(int userId, DateTime startTime, DateTime endTime)

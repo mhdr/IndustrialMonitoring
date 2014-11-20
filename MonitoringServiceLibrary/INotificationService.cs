@@ -21,6 +21,9 @@ namespace MonitoringServiceLibrary
         bool SystemHasNotification(int userId);
 
         [OperationContract]
+        List<string> TabsWithActiveNotification(int userId);
+
+        [OperationContract]
         List<NotificationLog> GetNotificationLogs(int userId,DateTime startTime,DateTime endTime);
 
         [OperationContract]
