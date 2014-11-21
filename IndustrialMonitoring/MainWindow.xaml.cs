@@ -359,11 +359,11 @@ namespace IndustrialMonitoring
 
                         if (tabs.Any(x=>x.Equals(header)))
                         {
-                            tabHeader.ShowAlarmIcon();
+                            tabHeader.ShowAlarmAnimation();
                         }
                         else
                         {
-                            tabHeader.HideAlarmIcon();
+                            tabHeader.HideAlarmAnimation();
                         }
                     }
 
@@ -379,7 +379,7 @@ namespace IndustrialMonitoring
                         {
                             RadTabItem tabItem = (RadTabItem)item;
                             TabHeaderUserControl tabHeader = (TabHeaderUserControl)tabItem.Header;
-                            tabHeader.HideAlarmIcon();
+                            tabHeader.HideAlarmAnimation();
                         }
 
                         BlackAllTabs = false;

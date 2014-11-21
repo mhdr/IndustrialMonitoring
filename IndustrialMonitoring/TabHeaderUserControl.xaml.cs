@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -20,6 +21,9 @@ namespace IndustrialMonitoring
     /// </summary>
     public partial class TabHeaderUserControl : UserControl
     {
+        private bool isAnimationActive = false;
+        private Storyboard storyboard;
+
         public TabHeaderUserControl()
         {
             InitializeComponent();
@@ -35,14 +39,37 @@ namespace IndustrialMonitoring
             return TextBlockMain.Text;
         }
 
-        public void ShowAlarmIcon()
+        public void ShowAlarmAnimation()
         {
-            ImageMain.Visibility=Visibility.Visible;
+            if (storyboard == null)
+            {
+                storyboard = (Storyboard)FindResource("StoryboardAnim");
+            }
+
+            if (isAnimationActive == false)
+            {
+                storyboard.Begin();
+                isAnimationActive = true;
+            }
         }
 
-        public void HideAlarmIcon()
+        public void HideAlarmAnimation()
         {
-            ImageMain.Visibility=Visibility.Collapsed;
+            if (storyboard == null)
+            {
+                storyboard = (Storyboard)FindResource("StoryboardAnim");
+            }
+
+            storyboard.Stop();
+            isAnimationActive = false;
+        }
+
+        private void TabHeaderUserControl_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            if (storyboard == null)
+            {
+                storyboard = (Storyboard)FindResource("StoryboardAnim");
+            }
         }
     }
 }

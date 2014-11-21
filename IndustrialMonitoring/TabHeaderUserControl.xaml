@@ -3,15 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             mc:Ignorable="d" Loaded="TabHeaderUserControl_OnLoaded"
               d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Storyboard Name="StoryboardNotification" x:Key="StoryboardAnim" AutoReverse="True" RepeatBehavior="Forever">
+            <DoubleAnimation Name="FadeInAnimation"
+                                        Storyboard.TargetName="ImageMain"
+                                        Storyboard.TargetProperty="Opacity" 
+                                        From="0" To="1" Duration="0:0:1" 
+                                        >
+            </DoubleAnimation>
+            <DoubleAnimation Name="FadeOutAnimation"
+                                        Storyboard.TargetName="ImageMain"
+                                        Storyboard.TargetProperty="Opacity" 
+                                        From="1" To="0" Duration="0:0:1" 
+                                        >
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Name="TextBlockMain" Text="Header" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-        <Image Name="ImageMain" Source="Resources/alarm.ico" Grid.Column="1" Width="16" Height="16" 
-               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2,0" Visibility="Collapsed"/>
+        <Image Name="ImageMain" Source="Resources/alarm.ico" Grid.Column="1" Width="16" Height="16" Opacity="0"
+               VerticalAlignment="Center" HorizontalAlignment="Left" Margin="2,0" Visibility="Visible"/>
     </Grid>
 </UserControl>
