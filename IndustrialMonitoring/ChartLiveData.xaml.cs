@@ -117,8 +117,10 @@ namespace IndustrialMonitoring
 
             if (this.ItemsAioViewModel.ItemType == ItemType.Digital)
             {
-                Chart.Series.Add(new AreaSeries());
-                AreaSeries series = (AreaSeries)this.Chart.Series[0];
+                Chart.Series.Add(new StepAreaSeries());
+                //Chart.Series.Add(new AreaSeries());
+                //AreaSeries series = (AreaSeries)this.Chart.Series[0];
+                StepAreaSeries series = (StepAreaSeries) this.Chart.Series[0];
                 series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
                 series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
                 series.Stroke = Brushes.LightBlue;
