@@ -30,9 +30,10 @@ namespace IndustrialMonitoring
         private ProcessDataServiceClient _processDataServiceClient;
         private DateTime _startTime;
         private DateTime _endTime;
-        private Dictionary<int,int> _itemsId;
+        private Dictionary<int, int> _itemsId;
         //private List<ItemsLogChartHistoryViewModel> _itemsLog;
         private event EventHandler<ShowDataCompletedEventArgs> ShowDataCompleted;
+        private ChartType _chartType = ChartType.LineSeries;
 
         protected virtual void OnShowDataCompleted(ShowDataCompletedEventArgs e)
         {
@@ -65,7 +66,7 @@ namespace IndustrialMonitoring
             set { _endTime = value; }
         }
 
-        public Dictionary<int,int> ItemsId
+        public Dictionary<int, int> ItemsId
         {
             get { return _itemsId; }
             set { _itemsId = value; }
@@ -77,10 +78,16 @@ namespace IndustrialMonitoring
             set { _chartBrushes = value; }
         }
 
+        public ChartType ChartType
+        {
+            get { return _chartType; }
+            set { _chartType = value; }
+        }
+
 
         private void InitChart()
         {
-            ChartBrushes=new List<Brush>();
+            ChartBrushes = new List<Brush>();
             ChartBrushes.Add(Brushes.Blue);
             ChartBrushes.Add(Brushes.Green);
             ChartBrushes.Add(Brushes.LightSalmon);
@@ -96,6 +103,10 @@ namespace IndustrialMonitoring
             ChartBrushes.Add(Brushes.OrangeRed);
             ChartBrushes.Add(Brushes.Purple);
             ChartBrushes.Add(Brushes.Fuchsia);
+            ChartBrushes.Add(Brushes.AliceBlue);
+            ChartBrushes.Add(Brushes.Orange);
+            ChartBrushes.Add(Brushes.Purple);
+            ChartBrushes.Add(Brushes.Chartreuse);
 
             int countItems = ItemsId.Count;
 
@@ -104,12 +115,63 @@ namespace IndustrialMonitoring
 
                 for (int i = 0; i < countItems; i++)
                 {
-                    Chart.Series.Add(new LineSeries());
-                    LineSeries series = (LineSeries)this.Chart.Series[i];
-                    series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-                    series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                    series.Stroke = ChartBrushes[i];
-                    series.StrokeThickness = 2;   
+                    switch (ChartType)
+                    {
+                        case ChartType.AreaSeries:
+                            Chart.Series.Add(new AreaSeries());
+                            AreaSeries series1 = (AreaSeries)this.Chart.Series[i];
+                            series1.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                            series1.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                            series1.Stroke = ChartBrushes[i];
+                            series1.StrokeThickness = 2;
+                            break;
+                        case ChartType.LineSeries:
+                            Chart.Series.Add(new LineSeries());
+                            LineSeries series2 = (LineSeries)this.Chart.Series[i];
+                            series2.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                            series2.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                            series2.Stroke = ChartBrushes[i];
+                            series2.StrokeThickness = 2;
+                            break;
+                        case ChartType.PointSeries:
+                            Chart.Series.Add(new PointSeries());
+                            PointSeries series3 = (PointSeries)this.Chart.Series[i];
+                            series3.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                            series3.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                            break;
+                        case ChartType.SplineAreaSeries:
+                            Chart.Series.Add(new SplineAreaSeries());
+                            SplineAreaSeries series4 = (SplineAreaSeries)this.Chart.Series[i];
+                            series4.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                            series4.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                            series4.Stroke = ChartBrushes[i];
+                            series4.StrokeThickness = 2;
+                            break;
+                        case ChartType.SplineSeries:
+                            Chart.Series.Add(new SplineSeries());
+                            SplineSeries series5 = (SplineSeries)this.Chart.Series[i];
+                            series5.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                            series5.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                            series5.Stroke = ChartBrushes[i];
+                            series5.StrokeThickness = 2;
+                            break;
+                        case ChartType.StepAreaSeries:
+                            Chart.Series.Add(new StepAreaSeries());
+                            StepAreaSeries series6 = (StepAreaSeries)this.Chart.Series[i];
+                            series6.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                            series6.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                            series6.Stroke = ChartBrushes[i];
+                            series6.StrokeThickness = 2;
+                            break;
+                        case ChartType.StepLineSeries:
+                            Chart.Series.Add(new StepLineSeries());
+                            StepLineSeries series7 = (StepLineSeries)this.Chart.Series[i];
+                            series7.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                            series7.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                            series7.Stroke = ChartBrushes[i];
+                            series7.StrokeThickness = 2;
+                            break;
+                    }
                 }
             }
         }
@@ -125,44 +187,74 @@ namespace IndustrialMonitoring
         {
             if (ItemsId.Count == 1)
             {
-                TextBlockTitle.Text = string.Format("{0} {1}-{2}", e.CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());    
+                TextBlockTitle.Text = string.Format("{0} {1}-{2}", e.CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());
             }
             else
             {
 
-                TextBlockTitle.Text = string.Format("Compare {0}-{1}", this.StartTime.ToString(), this.EndTime.ToString());    
+                TextBlockTitle.Text = string.Format("Compare {0}-{1}", this.StartTime.ToString(), this.EndTime.ToString());
             }
 
-            LineSeries series = (LineSeries)this.Chart.Series[e.ItemId.Key];
-            series.ItemsSource =e.Data ;
-            Chart.Zoom=new Size(1,1);
+            switch (ChartType)
+            {
+                case ChartType.AreaSeries:
+                    AreaSeries series1 = (AreaSeries)this.Chart.Series[e.ItemId.Key];
+                    series1.ItemsSource = e.Data;
+                    break;
+                case ChartType.LineSeries:
+                    LineSeries series2 = (LineSeries)this.Chart.Series[e.ItemId.Key];
+                    series2.ItemsSource = e.Data;
+                    break;
+                case ChartType.PointSeries:
+                    PointSeries series3 = (PointSeries)this.Chart.Series[e.ItemId.Key];
+                    series3.ItemsSource = e.Data;
+                    break;
+                case ChartType.SplineAreaSeries:
+                    SplineAreaSeries series4 = (SplineAreaSeries)this.Chart.Series[e.ItemId.Key];
+                    series4.ItemsSource = e.Data;
+                    break;
+                case ChartType.SplineSeries:
+                    SplineSeries series5 = (SplineSeries)this.Chart.Series[e.ItemId.Key];
+                    series5.ItemsSource = e.Data;
+                    break;
+                case ChartType.StepAreaSeries:
+                    StepAreaSeries series6 = (StepAreaSeries)this.Chart.Series[e.ItemId.Key];
+                    series6.ItemsSource = e.Data;
+                    break;
+                case ChartType.StepLineSeries:
+                    StepLineSeries series7 = (StepLineSeries)this.Chart.Series[e.ItemId.Key];
+                    series7.ItemsSource = e.Data;
+                    break;
+            }
+
+            Chart.Zoom = new Size(1, 1);
 
             if (e.GenerateLegend)
             {
-                ChartLegend.Items.Add(new LegendItem() { MarkerFill = ChartBrushes[e.ItemId.Key], Title = e.CurrentItem.ItemName });    
+                ChartLegend.Items.Add(new LegendItem() { MarkerFill = ChartBrushes[e.ItemId.Key], Title = e.CurrentItem.ItemName });
             }
 
             BusyIndicator.IsBusy = false;
         }
 
-        public void ShowData(bool generateLegend=true)
+        public void ShowData(bool generateLegend = true)
         {
             BusyIndicator.IsBusy = true;
 
             foreach (var dic in ItemsId)
             {
                 KeyValuePair<int, int> dic1 = dic;
-                Thread t1 = new Thread(()=>ShowDataAsync(dic1,generateLegend));
+                Thread t1 = new Thread(() => ShowDataAsync(dic1, generateLegend));
                 t1.Start();
             }
         }
 
-        private void ShowDataAsync(KeyValuePair<int,int> itemId,bool generateLegend)
+        private void ShowDataAsync(KeyValuePair<int, int> itemId, bool generateLegend)
         {
             Item1 CurrentItem = ProcessDataServiceClient.GetItem(itemId.Value);
             List<ItemsLogChartHistoryViewModel> ItemsLog = ProcessDataServiceClient.GetItemLogs(itemId.Value, StartTime, EndTime);
 
-            Dispatcher.BeginInvoke(new Action(()=>OnShowDataCompleted(new ShowDataCompletedEventArgs( itemId,ItemsLog,CurrentItem,generateLegend))));
+            Dispatcher.BeginInvoke(new Action(() => OnShowDataCompleted(new ShowDataCompletedEventArgs(itemId, ItemsLog, CurrentItem, generateLegend))));
         }
 
         private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)

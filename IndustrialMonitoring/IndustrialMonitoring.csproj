@@ -145,6 +145,7 @@
       <DependentUpon>DialogSetTime.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\ChartLiveData.cs" />
+    <Compile Include="Lib\Enums.cs" />
     <Compile Include="Lib\Horn.cs" />
     <Compile Include="Lib\ShowDataCompletedEventArgs.cs" />
     <Compile Include="Lib\Static.cs" />

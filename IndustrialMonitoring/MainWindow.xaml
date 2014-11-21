@@ -23,7 +23,15 @@
                 </telerik:RadMenuItem>
 
                 <telerik:RadMenuItem Header="Archive">
-                    <telerik:RadMenuItem Header="Show Chart" Name="MenuItemChart" Click="MenuItemChart_OnClick"/>
+                    <telerik:RadMenuItem Header="Show Chart" Name="MenuItemChart">
+                        <telerik:RadMenuItem Header="Line Series" Name="MenuItemLineSeries" Click="MenuItemLineSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Spline Series" Name="MenuItemSplineSeries" Click="MenuItemSplineSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Step Line Series" Name="MenuItemStepLineSeries" Click="MenuItemStepLineSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Point Series" Name="MenuItemPointSeries" Click="MenuItemPointSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Area Series" Name="MenuItemAreaSeries" Click="MenuItemAreaSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Spline Area Series" Name="MenuItemSplineAreaSeries" Click="MenuItemSplineAreaSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Step Area Series" Name="MenuItemStepAreaSeries" Click="MenuItemStepAreaSeries_OnClick"/>
+                    </telerik:RadMenuItem>
                     <telerik:RadMenuItem Header="Show Grid" Name="MenuItemGrid" Click="MenuItemGrid_OnClick"/>
                     <telerik:RadMenuItem Header="Compare" Name="MenuItemCompareData" Click="MenuItemCompareData_OnClick">
                         <telerik:RadMenuItem Header="Add Item" Name="MenuItemAddItem" Click="MenuItemAddItem_Click"/>
@@ -31,7 +39,15 @@
                         <telerik:RadMenuItem Header="Items" Name="MenuItemItems">
 
                         </telerik:RadMenuItem>
-                        <telerik:RadMenuItem Name="MenuItemCompare" Header="Compare Items" Click="MenuItemCompare_OnClick"/>
+                        <telerik:RadMenuItem Name="MenuItemCompare" Header="Compare Items">
+                            <telerik:RadMenuItem Header="Line Series" Name="MenuItemLineSeriesCompare" Click="ContextMenuItemLineSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Spline Series" Name="MenuItemSplineSeriesCompare" Click="ContextMenuItemSplineSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Step Line Series" Name="MenuItemStepLineSeriesCompare" Click="ContextMenuItemStepLineSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Point Series" Name="MenuItemPointSeriesCompare" Click="ContextMenuItemPointSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Area Series" Name="MenuItemAreaSeriesCompare" Click="ContextMenuItemAreaSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Spline Area Series" Name="MenuItemSplineAreaSeriesCompare" Click="ContextMenuItemSplineAreaSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Step Area Series" Name="MenuItemStepAreaSeriesCompare" Click="ContextMenuItemStepAreaSeriesCompare_OnClick"/>
+                        </telerik:RadMenuItem>
                     </telerik:RadMenuItem>
                 </telerik:RadMenuItem>
                 
@@ -46,7 +62,15 @@
                 <telerik:RadTabControl Name="TabControlIOs">
                     <telerik:RadContextMenu.ContextMenu>
                         <telerik:RadContextMenu>
-                            <telerik:RadMenuItem Header="Show Chart" Name="ContextMenuItemChart" Click="MenuItemChart_OnClick"/>
+                            <telerik:RadMenuItem Header="Show Chart" Name="ContextMenuItemChart">
+                                <telerik:RadMenuItem Header="Line Series" Name="ContextMenuItemLineSeries" Click="MenuItemLineSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Spline Series" Name="ContextMenuItemSplineSeries" Click="MenuItemSplineSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Step Line Series" Name="ContextMenuItemStepLineSeries" Click="MenuItemStepLineSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Point Series" Name="ContextMenuItemPointSeries" Click="MenuItemPointSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Area Series" Name="ContextMenuItemAreaSeries" Click="MenuItemAreaSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Spline Area Series" Name="ContextMenuItemSplineAreaSeries" Click="MenuItemSplineAreaSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Step Area Series" Name="ContextMenuItemStepAreaSeries" Click="MenuItemStepAreaSeries_OnClick"/>
+                                </telerik:RadMenuItem>
                             <telerik:RadMenuItem Header="Show Grid" Name="ContextMenuItemGrid" Click="MenuItemGrid_OnClick"/>
                             <telerik:RadMenuItem Header="Compare" Name="ContextMenuItemCompareData" Click="MenuItemCompareData_OnClick">
                                 <telerik:RadMenuItem Header="Add Item" Name="ContextMenuItemAddItem" Click="MenuItemAddItem_Click"/>
@@ -54,7 +78,15 @@
                                 <telerik:RadMenuItem Header="Items" Name="ContextMenuItemItems">
 
                                 </telerik:RadMenuItem>
-                                <telerik:RadMenuItem Name="ContextMenuItemCompare" Header="Compare Items" Click="MenuItemCompare_OnClick"/>
+                                <telerik:RadMenuItem Name="ContextMenuItemCompare" Header="Compare Items">
+                                    <telerik:RadMenuItem Header="Line Series" Name="ContextMenuItemLineSeriesCompare" Click="ContextMenuItemLineSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Spline Series" Name="ContextMenuItemSplineSeriesCompare" Click="ContextMenuItemSplineSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Step Line Series" Name="ContextMenuItemStepLineSeriesCompare" Click="ContextMenuItemStepLineSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Point Series" Name="ContextMenuItemPointSeriesCompare" Click="ContextMenuItemPointSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Area Series" Name="ContextMenuItemAreaSeriesCompare" Click="ContextMenuItemAreaSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Spline Area Series" Name="ContextMenuItemSplineAreaSeriesCompare" Click="ContextMenuItemSplineAreaSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Step Area Series" Name="ContextMenuItemStepAreaSeriesCompare" Click="ContextMenuItemStepAreaSeriesCompare_OnClick"/>
+                                </telerik:RadMenuItem>
                             </telerik:RadMenuItem>
                         </telerik:RadContextMenu>
                     </telerik:RadContextMenu.ContextMenu>

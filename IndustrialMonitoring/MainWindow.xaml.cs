@@ -280,26 +280,28 @@ namespace IndustrialMonitoring
             ContextMenuItemClearItems.IsEnabled = false;
         }
 
-        private void MenuItemCompare_OnClick(object sender, RadRoutedEventArgs e)
+        private void OpenWindowChartHistoryInCompareMode(ChartType chartType)
         {
             if (ItemsForCompare.Count < 2)
             {
-                ShowMsgOnStatusBar(string.Format("At least 2 Item is needed for Compare,you have selected {0}",ItemsForCompare.Count));
+                ShowMsgOnStatusBar(string.Format("At least 2 Item is needed for Compare,you have selected {0}",
+                    ItemsForCompare.Count));
                 return;
             }
 
-            Dictionary<int,int> dictionary=new Dictionary<int, int>();
+            Dictionary<int, int> dictionary = new Dictionary<int, int>();
 
             int i = 0;
             foreach (var chartLiveData in ItemsForCompare)
             {
-                dictionary.Add(i,chartLiveData.ItemsAioViewModel.ItemId);
+                dictionary.Add(i, chartLiveData.ItemsAioViewModel.ItemId);
                 i++;
             }
 
             WindowChartHistory windowChartHistory = new WindowChartHistory();
             windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
             windowChartHistory.ItemsId = dictionary;
+            windowChartHistory.ChartType = chartType;
 
             // TODO Parameter
             windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
@@ -404,42 +406,6 @@ namespace IndustrialMonitoring
             MenuItemStop.IsEnabled = false;
         }
 
-        private void MenuItemChart_OnClick(object sender, RadRoutedEventArgs e)
-        {
-            ChartLiveData selected = null;
-
-            foreach (var chartLiveData in AllCharts)
-            {
-                if (chartLiveData.IsSelected)
-                {
-                    selected = chartLiveData;
-                    break;
-                }
-            }
-
-            if (selected == null)
-            {
-                ShowMsgOnStatusBar("First select a item");
-                return;
-            }
-
-
-            Dictionary<int, int> dictionary = new Dictionary<int, int>();
-            dictionary.Add(0, selected.ItemsAioViewModel.ItemId);
-            WindowChartHistory windowChartHistory = new WindowChartHistory();
-            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
-            windowChartHistory.ItemsId = dictionary;
-
-            // TODO Parameter
-            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
-
-            // TODO Parameter
-            windowChartHistory.EndTime = DateTime.Now;
-
-            windowChartHistory.Show();
-            windowChartHistory.ShowData();
-        }
-
         private void MenuItemGrid_OnClick(object sender, RadRoutedEventArgs e)
         {
             ChartLiveData selected = null;
@@ -489,6 +455,113 @@ namespace IndustrialMonitoring
         private void MenuItemShowNotificationForCurrentItem_OnClick(object sender, RadRoutedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void MenuItemLineSeries_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowsCharthistory(ChartType.LineSeries);
+        }
+
+        private void OpenWindowsCharthistory(ChartType chartType)
+        {
+            ChartLiveData selected = null;
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                if (chartLiveData.IsSelected)
+                {
+                    selected = chartLiveData;
+                    break;
+                }
+            }
+
+            if (selected == null)
+            {
+                ShowMsgOnStatusBar("First select a item");
+                return;
+            }
+
+
+            Dictionary<int, int> dictionary = new Dictionary<int, int>();
+            dictionary.Add(0, selected.ItemsAioViewModel.ItemId);
+            WindowChartHistory windowChartHistory = new WindowChartHistory();
+            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
+            windowChartHistory.ItemsId = dictionary;
+
+            // TODO Parameter
+            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+            // TODO Parameter
+            windowChartHistory.EndTime = DateTime.Now;
+            windowChartHistory.ChartType = chartType;
+
+            windowChartHistory.Show();
+            windowChartHistory.ShowData();
+        }
+
+        private void MenuItemSplineSeries_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowsCharthistory(ChartType.SplineSeries);
+        }
+
+        private void MenuItemStepLineSeries_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowsCharthistory(ChartType.StepLineSeries);
+        }
+
+        private void MenuItemPointSeries_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowsCharthistory(ChartType.PointSeries);
+        }
+
+        private void MenuItemAreaSeries_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowsCharthistory(ChartType.AreaSeries);
+        }
+
+        private void MenuItemSplineAreaSeries_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowsCharthistory(ChartType.SplineAreaSeries);
+        }
+
+        private void MenuItemStepAreaSeries_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowsCharthistory(ChartType.StepAreaSeries);
+        }
+
+        private void ContextMenuItemLineSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowChartHistoryInCompareMode(ChartType.LineSeries);
+        }
+
+        private void ContextMenuItemSplineSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowChartHistoryInCompareMode(ChartType.SplineSeries);
+        }
+
+        private void ContextMenuItemStepLineSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowChartHistoryInCompareMode(ChartType.StepLineSeries);
+        }
+
+        private void ContextMenuItemPointSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowChartHistoryInCompareMode(ChartType.PointSeries);
+        }
+
+        private void ContextMenuItemAreaSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowChartHistoryInCompareMode(ChartType.AreaSeries);
+        }
+
+        private void ContextMenuItemSplineAreaSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowChartHistoryInCompareMode(ChartType.SplineAreaSeries);
+        }
+
+        private void ContextMenuItemStepAreaSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            OpenWindowChartHistoryInCompareMode(ChartType.StepAreaSeries);
         }
     }
 }
