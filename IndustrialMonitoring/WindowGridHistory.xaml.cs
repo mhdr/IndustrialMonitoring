@@ -89,6 +89,7 @@ namespace IndustrialMonitoring
             ItemsLog=new List<ItemsLogChartHistoryViewModel>();
 
             Thread t1=new Thread(ShowDataAsync);
+            t1.Priority=ThreadPriority.AboveNormal;
             t1.Start();
         }
 

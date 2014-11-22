@@ -245,6 +245,7 @@ namespace IndustrialMonitoring
             {
                 KeyValuePair<int, int> dic1 = dic;
                 Thread t1 = new Thread(() => ShowDataAsync(dic1, generateLegend));
+                t1.Priority=ThreadPriority.AboveNormal;
                 t1.Start();
             }
         }
