@@ -150,6 +150,9 @@
     <Compile Include="Lib\ShowDataCompletedEventArgs.cs" />
     <Compile Include="Lib\Static.cs" />
     <Compile Include="Lib\TimeChangedEventArgs.cs" />
+    <Compile Include="NotificationListBoxUserControl.xaml.cs">
+      <DependentUpon>NotificationListBoxUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Service References\NotificationServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -204,6 +207,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NotificationListBoxUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TabHeaderUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

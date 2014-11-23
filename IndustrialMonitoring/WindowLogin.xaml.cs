@@ -74,7 +74,8 @@ namespace IndustrialMonitoring
 
         private void WindowLogin_OnLoaded(object sender, RoutedEventArgs e)
         {
-
+            WindowNotifications windowNotifications=new WindowNotifications();
+            windowNotifications.Show();
         }
     }
 }
