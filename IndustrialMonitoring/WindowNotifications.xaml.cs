@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using IndustrialMonitoring.Lib;
+using IndustrialMonitoring.NotificationServiceReference;
 
 namespace IndustrialMonitoring
 {
@@ -19,9 +21,24 @@ namespace IndustrialMonitoring
     /// </summary>
     public partial class WindowNotifications : Window
     {
+        private int _itemId = 0;
+        private NotificationServiceClient _notificationServiceClient;
+
         public WindowNotifications()
         {
             InitializeComponent();
+        }
+
+        public int ItemId
+        {
+            get { return _itemId; }
+            set { _itemId = value; }
+        }
+
+        public NotificationServiceClient NotificationServiceClient
+        {
+            get { return _notificationServiceClient; }
+            set { _notificationServiceClient = value; }
         }
 
         private void MenuItemShowSetTimeDialog_OnClick(object sender, Telerik.Windows.RadRoutedEventArgs e)
@@ -41,27 +58,24 @@ namespace IndustrialMonitoring
 
         private void WindowNotifications_OnLoaded(object sender, RoutedEventArgs e)
         {
-            NotificationListBoxUserControl notificationListBoxUserControl1=new NotificationListBoxUserControl();
-            notificationListBoxUserControl1.SetItemName("Item 1");
-            notificationListBoxUserControl1.SetTime(DateTime.Now);
-            notificationListBoxUserControl1.SetDesription("Item 1 description");
-            notificationListBoxUserControl1.SetHasFault(false);
+            var notifications= NotificationServiceClient.GetNotificationLogs(Static.CurrentUser.UserId,
+                DateTime.Now - new TimeSpan(0, 24, 0, 0), DateTime.Now);
 
-            NotificationListBoxUserControl notificationListBoxUserControl2 = new NotificationListBoxUserControl();
-            notificationListBoxUserControl2.SetItemName("Item 2");
-            notificationListBoxUserControl2.SetTime(DateTime.Now);
-            notificationListBoxUserControl2.SetDesription("Item 2 description");
-            notificationListBoxUserControl2.SetHasFault(true);
+            if (notifications == null)
+            {
+                return;
+            }
 
-            NotificationListBoxUserControl notificationListBoxUserControl3 = new NotificationListBoxUserControl();
-            notificationListBoxUserControl3.SetItemName("Item 2");
-            notificationListBoxUserControl3.SetTime(DateTime.Now);
-            notificationListBoxUserControl3.SetDesription("Item 2 description");
-            notificationListBoxUserControl3.SetHasFault(true);
+            foreach (NotificationLog notification in notifications)
+            {
+                NotificationListBoxUserControl notificationListBoxUserControl=new NotificationListBoxUserControl();
+                notificationListBoxUserControl.SetItemName(notification.ItemName);
+                notificationListBoxUserControl.SetTime(notification.DateTime);
+                notificationListBoxUserControl.SetDesription(notification.NotificationMsg);
+                notificationListBoxUserControl.SetHasFault(notification.HasFault);
 
-            ListBoxNotification.Items.Add(notificationListBoxUserControl1);
-            ListBoxNotification.Items.Add(notificationListBoxUserControl2);
-            ListBoxNotification.Items.Add(notificationListBoxUserControl3);
+                ListBoxNotification.Items.Add(notificationListBoxUserControl);
+            }
 
         }
     }

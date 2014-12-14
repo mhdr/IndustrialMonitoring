@@ -449,7 +449,9 @@ namespace IndustrialMonitoring
 
         private void MenuItemShowNotifications_OnClick(object sender, RadRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            WindowNotifications windowNotifications=new WindowNotifications();
+            windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
+            windowNotifications.Show();
         }
 
         private void MenuItemShowNotificationForCurrentItem_OnClick(object sender, RadRoutedEventArgs e)

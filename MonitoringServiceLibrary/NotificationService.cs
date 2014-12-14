@@ -138,7 +138,9 @@ namespace MonitoringServiceLibrary
             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
             List<NotificationItemsLog> notificationItemsLogs =
-                entities.NotificationItemsLogs.Where(x => x.Time >= startTime && x.Time <= endTime).ToList();
+                entities.NotificationItemsLogs.Where(x => x.Time >= startTime && x.Time <= endTime)
+                    .OrderByDescending(x => x.Time)
+                    .ToList();
 
             List<UsersItemsPermission> usersItemsPermissions =
                 entities.UsersItemsPermissions.Where(x => x.UserId == userId).ToList();
@@ -160,7 +162,6 @@ namespace MonitoringServiceLibrary
 
                     result.Add(notificationLog);
                 }
-                
             }
 
             return result;
@@ -171,7 +172,7 @@ namespace MonitoringServiceLibrary
             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
             List<NotificationItemsLog> notificationItemsLogs =
-                entities.NotificationItemsLogs.Where(x => x.Time >= startTime && x.Time <= endTime).ToList();
+                entities.NotificationItemsLogs.Where(x => x.Time >= startTime && x.Time <= endTime).OrderByDescending(x=>x.Time).ToList();
 
             List<UsersItemsPermission> usersItemsPermissions =
                 entities.UsersItemsPermissions.Where(x => x.UserId == userId).ToList();
