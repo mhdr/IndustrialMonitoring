@@ -452,11 +452,33 @@ namespace IndustrialMonitoring
             WindowNotifications windowNotifications=new WindowNotifications();
             windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
             windowNotifications.Show();
+            windowNotifications.ShowData();
         }
 
         private void MenuItemShowNotificationForCurrentItem_OnClick(object sender, RadRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ChartLiveData selected = null;
+
+            foreach (var chartLiveData in AllCharts)
+            {
+                if (chartLiveData.IsSelected)
+                {
+                    selected = chartLiveData;
+                    break;
+                }
+            }
+
+            if (selected == null)
+            {
+                ShowMsgOnStatusBar("First select a item");
+                return;
+            }
+
+            WindowNotifications windowNotifications = new WindowNotifications();
+            windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
+            windowNotifications.ItemId = selected.ItemsAioViewModel.ItemId;
+            windowNotifications.Show();
+            windowNotifications.ShowData();
         }
 
         private void MenuItemLineSeries_OnClick(object sender, RadRoutedEventArgs e)
