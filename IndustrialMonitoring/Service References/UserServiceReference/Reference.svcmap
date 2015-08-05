@@ -21,14 +21,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9011/MonitoringService/UserService" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://172.20.63.234:9011/MonitoringService/UserService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="b33d63fd-5211-42e4-a06d-34167dafad6c" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?xsd=xsd2" />
-    <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="f396f3e7-be47-4384-88ab-7d3607b99926" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?xsd=xsd1" />
-    <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="b10a315c-65e8-444d-b8e0-25d8c8320e17" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?disco" />
-    <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="b0f09977-33e5-4ec2-9409-4d77ef94c5bb" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?xsd=xsd0" />
-    <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="d12e5312-6a71-4229-bca8-1a56d7b76764" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?wsdl" />
+    <MetadataFile FileName="UserService3.xsd" MetadataType="Schema" ID="b18de755-ee80-440d-b3dd-1f08800e6b45" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd1" />
+    <MetadataFile FileName="UserService31.xsd" MetadataType="Schema" ID="2692965a-10f4-4629-889f-5c029b0af6be" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd2" />
+    <MetadataFile FileName="UserService1.wsdl" MetadataType="Wsdl" ID="88ee342e-a3b8-4fd9-bb02-a90f0d8926d4" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?wsdl" />
+    <MetadataFile FileName="UserService32.xsd" MetadataType="Schema" ID="575a8fea-79fb-4412-9ec0-1c5a2fb40a61" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd0" />
+    <MetadataFile FileName="UserService1.disco" MetadataType="Disco" ID="44921128-4dc6-40fa-aa89-d50660c8cfd4" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

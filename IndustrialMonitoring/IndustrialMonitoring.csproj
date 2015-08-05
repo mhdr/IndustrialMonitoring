@@ -13,24 +13,29 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <PublishUrl>\\rs\Storage\Department\Technical\Public\Ramezani\IndustrialMonitoring\Client\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -41,6 +46,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +56,19 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>D04E5F2319B96C77C001AE5C290E1EB59E75862E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>IndustrialMonitoring_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
@@ -250,6 +269,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="IndustrialMonitoring_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -262,17 +282,17 @@
     <None Include="Service References\NotificationServiceReference\IndustrialMonitoring.NotificationServiceReference.NotificationLog.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\NotificationServiceReference\NotificationService.wsdl" />
-    <None Include="Service References\NotificationServiceReference\NotificationService.xsd">
+    <None Include="Service References\NotificationServiceReference\NotificationService1.wsdl" />
+    <None Include="Service References\NotificationServiceReference\NotificationService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NotificationServiceReference\NotificationService1.xsd">
+    <None Include="Service References\NotificationServiceReference\NotificationService41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NotificationServiceReference\NotificationService2.xsd">
+    <None Include="Service References\NotificationServiceReference\NotificationService42.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NotificationServiceReference\NotificationService3.xsd">
+    <None Include="Service References\NotificationServiceReference\NotificationService43.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.Item1.datasource">
@@ -296,23 +316,23 @@
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.wsdl" />
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.wsdl" />
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService2.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService3.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService4.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService5.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService65.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserServiceReference\IndustrialMonitoring.UserServiceReference.User2.datasource">
@@ -321,14 +341,14 @@
     <None Include="Service References\UserServiceReference\IndustrialMonitoring.UserServiceReference.UserViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\UserServiceReference\UserService.wsdl" />
-    <None Include="Service References\UserServiceReference\UserService.xsd">
+    <None Include="Service References\UserServiceReference\UserService1.wsdl" />
+    <None Include="Service References\UserServiceReference\UserService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServiceReference\UserService1.xsd">
+    <None Include="Service References\UserServiceReference\UserService31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServiceReference\UserService2.xsd">
+    <None Include="Service References\UserServiceReference\UserService32.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -382,9 +402,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -397,11 +417,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.4.0">
-      <Visible>False</Visible>
-      <ProductName>SQL Server Compact 4.0 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\alarm.ico">
@@ -410,9 +425,9 @@
     <Content Include="Resources\horn.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Service References\UserServiceReference\UserService.disco" />
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.disco" />
-    <None Include="Service References\NotificationServiceReference\NotificationService.disco" />
+    <None Include="Service References\UserServiceReference\UserService1.disco" />
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.disco" />
+    <None Include="Service References\NotificationServiceReference\NotificationService1.disco" />
     <None Include="Service References\NotificationServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

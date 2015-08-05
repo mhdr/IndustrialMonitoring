@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="4f4Ezf17XscHB90rfjuypW1GgFQ=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Lq5G3VC67HVP+0r20UXl1ce96gM=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_INotificationService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_INotificationService" contract="NotificationServiceReference.INotificationService" bindingType="basicHttpBinding" address="http://localhost:9011/MonitoringService/NotificationService" bindingConfiguration="BasicHttpBinding_INotificationService">
+    <endpoint name="BasicHttpBinding_INotificationService" contract="NotificationServiceReference.INotificationService" bindingType="basicHttpBinding" address="http://172.20.63.234:9011/MonitoringService/NotificationService" bindingConfiguration="BasicHttpBinding_INotificationService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:9011/MonitoringService/NotificationService</serializedValue>
+          <serializedValue>http://172.20.63.234:9011/MonitoringService/NotificationService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

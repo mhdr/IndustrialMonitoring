@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="KCJLJl8DSORr9JASGtnKJyzCQMQ=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="PkrBKyUHn1aLz7IeA2pIa/xcT9k=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IDataCollectorService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IDataCollectorService" contract="DataCollectorServiceReference.IDataCollectorService" bindingType="basicHttpBinding" address="http://localhost:9011/MonitoringService/DataCollectorService" bindingConfiguration="BasicHttpBinding_IDataCollectorService">
+    <endpoint name="BasicHttpBinding_IDataCollectorService" contract="DataCollectorServiceReference.IDataCollectorService" bindingType="basicHttpBinding" address="http://172.20.63.234:9011/MonitoringService/DataCollectorService" bindingConfiguration="BasicHttpBinding_IDataCollectorService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:9011/MonitoringService/DataCollectorService</serializedValue>
+          <serializedValue>http://172.20.63.234:9011/MonitoringService/DataCollectorService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

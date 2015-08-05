@@ -21,17 +21,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9011/MonitoringService/ProcessDataService" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://172.20.63.234:9011/MonitoringService/ProcessDataService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ProcessDataService.xsd" MetadataType="Schema" ID="3c930875-2a99-4953-b597-0fa9c6f93b8c" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd5" />
-    <MetadataFile FileName="ProcessDataService1.xsd" MetadataType="Schema" ID="d92655d5-1b89-4230-8e81-0c0eab7f16e0" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd3" />
-    <MetadataFile FileName="ProcessDataService.wsdl" MetadataType="Wsdl" ID="2e0d2cb8-cd70-4e06-a478-dd4e73b12b72" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/ProcessDataService?wsdl" />
-    <MetadataFile FileName="ProcessDataService2.xsd" MetadataType="Schema" ID="c4197ccf-6073-46bc-bb02-d3b47cbf6268" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd2" />
-    <MetadataFile FileName="ProcessDataService3.xsd" MetadataType="Schema" ID="4aebc9f6-e6b9-4200-9f9c-656e37ef84e6" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd0" />
-    <MetadataFile FileName="ProcessDataService4.xsd" MetadataType="Schema" ID="71aeb482-4abc-4ea2-83a1-1829d0cd30bd" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd1" />
-    <MetadataFile FileName="ProcessDataService.disco" MetadataType="Disco" ID="1fcab3a0-ab80-4302-861c-737133c31f83" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/ProcessDataService?disco" />
-    <MetadataFile FileName="ProcessDataService5.xsd" MetadataType="Schema" ID="37c5752c-6eb0-45be-b5dc-04a13a0f37bc" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd4" />
+    <MetadataFile FileName="ProcessDataService6.xsd" MetadataType="Schema" ID="742a7103-65fe-4736-8cac-1410f562d081" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd3" />
+    <MetadataFile FileName="ProcessDataService61.xsd" MetadataType="Schema" ID="e074d4c6-a349-4073-bec3-56aa0a9ce429" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd5" />
+    <MetadataFile FileName="ProcessDataService62.xsd" MetadataType="Schema" ID="7a8c6a78-ba93-44cd-8050-8439bd165a4e" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd0" />
+    <MetadataFile FileName="ProcessDataService1.wsdl" MetadataType="Wsdl" ID="d0404c31-32fc-4165-8174-87b302648708" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?wsdl" />
+    <MetadataFile FileName="ProcessDataService63.xsd" MetadataType="Schema" ID="bef30dfe-6cc8-4d66-bce1-d81c6021e248" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd2" />
+    <MetadataFile FileName="ProcessDataService64.xsd" MetadataType="Schema" ID="ff72dca3-29a2-4fcb-9934-13c06e0796d4" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd1" />
+    <MetadataFile FileName="ProcessDataService65.xsd" MetadataType="Schema" ID="4ab6193a-3060-4146-8fb8-d323a5f38938" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd4" />
+    <MetadataFile FileName="ProcessDataService1.disco" MetadataType="Disco" ID="0440d5cf-b516-41a0-b915-a7d67ccdabf1" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

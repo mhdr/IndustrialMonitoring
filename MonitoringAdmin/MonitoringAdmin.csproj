@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -40,6 +40,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +50,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>C065E9CD0190A7188036E72EEA41F360CF3456D7</ManifestCertificateThumbprint>
@@ -178,14 +180,14 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\DataCollectorServiceReference\DataCollectorService.wsdl" />
-    <None Include="Service References\DataCollectorServiceReference\DataCollectorService.xsd">
+    <None Include="Service References\DataCollectorServiceReference\DataCollectorService1.wsdl" />
+    <None Include="Service References\DataCollectorServiceReference\DataCollectorService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DataCollectorServiceReference\DataCollectorService1.xsd">
+    <None Include="Service References\DataCollectorServiceReference\DataCollectorService31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\DataCollectorServiceReference\DataCollectorService2.xsd">
+    <None Include="Service References\DataCollectorServiceReference\DataCollectorService32.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.Item1.datasource">
@@ -209,23 +211,23 @@
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabsItemsViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.wsdl" />
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.wsdl" />
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService61.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService2.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService62.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService3.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService63.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService4.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService64.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService5.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService65.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.User2.datasource">
@@ -234,14 +236,14 @@
     <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.UserViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\UsersServiceReference\UserService.wsdl" />
-    <None Include="Service References\UsersServiceReference\UserService.xsd">
+    <None Include="Service References\UsersServiceReference\UserService1.wsdl" />
+    <None Include="Service References\UsersServiceReference\UserService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UsersServiceReference\UserService1.xsd">
+    <None Include="Service References\UsersServiceReference\UserService31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UsersServiceReference\UserService2.xsd">
+    <None Include="Service References\UsersServiceReference\UserService32.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -319,13 +321,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\DataCollectorServiceReference\DataCollectorService.disco" />
+    <None Include="Service References\DataCollectorServiceReference\DataCollectorService1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.disco" />
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\UsersServiceReference\UserService.disco" />
+    <None Include="Service References\UsersServiceReference\UserService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

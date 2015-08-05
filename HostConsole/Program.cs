@@ -13,10 +13,10 @@ namespace HostConsole
     {
         static void Main(string[] args)
         {
-            Uri baseAddress1 = new Uri("http://localhost:9011/MonitoringService/DataCollectorService");
-            Uri baseAddress2 = new Uri("http://localhost:9011/MonitoringService/NotificationService");
-            Uri baseAddress3 = new Uri("http://localhost:9011/MonitoringService/ProcessDataService");
-            Uri baseAddress4 = new Uri("http://localhost:9011/MonitoringService/UserService");
+            Uri baseAddress1 = new Uri("http://172.20.63.234:9011/MonitoringService/DataCollectorService");
+            Uri baseAddress2 = new Uri("http://172.20.63.234:9011/MonitoringService/NotificationService");
+            Uri baseAddress3 = new Uri("http://172.20.63.234:9011/MonitoringService/ProcessDataService");
+            Uri baseAddress4 = new Uri("http://172.20.63.234:9011/MonitoringService/UserService");
 
             ServiceHost host1 = new ServiceHost(typeof (DataCollectorService),
                 baseAddress1);

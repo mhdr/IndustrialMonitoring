@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SharedLibrary" />
+  <xs:import schemaLocation="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SharedLibrary" />
   <xs:complexType name="ItemsLogLatestAIOViewModel">
     <xs:sequence>
       <xs:element minOccurs="0" name="ItemId" type="xs:int" />
