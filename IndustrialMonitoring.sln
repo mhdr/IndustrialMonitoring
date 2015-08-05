@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialMonitoring", "IndustrialMonitoring\IndustrialMonitoring.csproj", "{6DC5D2C4-BB92-4BBE-9769-86758C45FE71}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -19,13 +19,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringAdmin", "Monitori
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringServiceLibrary", "MonitoringServiceLibrary\MonitoringServiceLibrary.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringHostService", "MonitoringHostService\MonitoringHostService.csproj", "{3E06EC9D-681E-421A-87C3-0B903387D638}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6BF6DD4F-6346-485F-9AFA-47C1E7444A98}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostConsole", "HostConsole\HostConsole.csproj", "{E1170C43-F8DD-4570-B5E4-9B064B75267A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{15B3E0D2-6217-493A-A690-158C497F5318} = {15B3E0D2-6217-493A-A690-158C497F5318}
 	EndProjectSection
 EndProject
 Global
@@ -56,10 +59,10 @@ Global
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15B3E0D2-6217-493A-A690-158C497F5318}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E06EC9D-681E-421A-87C3-0B903387D638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E06EC9D-681E-421A-87C3-0B903387D638}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E06EC9D-681E-421A-87C3-0B903387D638}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E06EC9D-681E-421A-87C3-0B903387D638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1170C43-F8DD-4570-B5E4-9B064B75267A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1170C43-F8DD-4570-B5E4-9B064B75267A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1170C43-F8DD-4570-B5E4-9B064B75267A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1170C43-F8DD-4570-B5E4-9B064B75267A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

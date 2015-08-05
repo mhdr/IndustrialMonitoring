@@ -21,13 +21,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9010/MonitoringService/UserService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:9011/MonitoringService/UserService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="c1f4a2c3-356d-4123-91c7-3e693108a0ee" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/UserService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="48684386-f6da-4f63-af08-ff18554a5581" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/UserService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="8c5b491a-e125-4744-8a6b-3ede71c9c233" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/UserService/mex" />
-    <MetadataFile FileName="MonitoringServiceLibrary.ViewModels.xsd" MetadataType="Schema" ID="0c94043b-5fd0-41e6-879f-f1542f044e69" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/UserService/mex" />
+    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="6d882d3a-6b2d-4f17-9f66-fe9bea1dd71f" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?xsd=xsd2" />
+    <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="2bd730cd-7fb5-49e8-a95a-7d4564f8c779" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?xsd=xsd1" />
+    <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="47fbbf12-b099-42ef-b47f-1e71567d4751" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?disco" />
+    <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="cac3c077-976c-4616-b234-36a1031edab5" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?xsd=xsd0" />
+    <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="ef404896-5186-417a-9508-f22926363022" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/UserService?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

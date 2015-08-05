@@ -21,13 +21,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:9010/MonitoringService/DataCollectorService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:9011/MonitoringService/DataCollectorService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="23b50131-59b6-43a0-bea3-d7b7f9169c4b" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/DataCollectorService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="0cf1bdf4-9029-4773-8aae-88b9886185af" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/DataCollectorService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="95e8a566-3baf-4b32-a5aa-fb76d8221be1" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/DataCollectorService/mex" />
-    <MetadataFile FileName="SharedLibrary.xsd" MetadataType="Schema" ID="25121541-322d-49bb-8fbb-d9828752a1dd" SourceId="1" SourceUrl="http://localhost:9010/MonitoringService/DataCollectorService/mex" />
+    <MetadataFile FileName="DataCollectorService.disco" MetadataType="Disco" ID="58c4cce5-edbd-415c-a06c-0a8850590744" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/DataCollectorService?disco" />
+    <MetadataFile FileName="DataCollectorService.xsd" MetadataType="Schema" ID="ec4d90f8-4a09-41b6-9a4f-250d454d2c8c" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/DataCollectorService?xsd=xsd1" />
+    <MetadataFile FileName="DataCollectorService.wsdl" MetadataType="Wsdl" ID="6c83432c-1ae5-4c27-8050-ec43bea5becb" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/DataCollectorService?wsdl" />
+    <MetadataFile FileName="DataCollectorService1.xsd" MetadataType="Schema" ID="b116be1d-abac-43d7-b0fc-c9f839f047e1" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/DataCollectorService?xsd=xsd0" />
+    <MetadataFile FileName="DataCollectorService2.xsd" MetadataType="Schema" ID="b1bf4900-3a94-4d21-8568-c7993d14329c" SourceId="1" SourceUrl="http://localhost:9011/MonitoringService/DataCollectorService?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -53,13 +53,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="NationalInstruments.Common, Version=13.0.40.188, Culture=neutral, PublicKeyToken=dc6ad606294fc298, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -102,32 +100,32 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Telerik.Windows.Controls, Version=2014.3.1021.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2014.3.1021.45\Telerik.Windows.Controls.dll</HintPath>
+    <Reference Include="Telerik.Windows.Controls, Version=2015.2.623.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.2.623.45\Telerik.Windows.Controls.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Windows.Controls.Chart, Version=2014.3.1021.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2014.3.1021.45\Telerik.Windows.Controls.Chart.dll</HintPath>
+    <Reference Include="Telerik.Windows.Controls.Chart, Version=2015.2.623.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.2.623.45\Telerik.Windows.Controls.Chart.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Windows.Controls.GridView, Version=2014.3.1021.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2014.3.1021.45\Telerik.Windows.Controls.GridView.dll</HintPath>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2015.2.623.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.2.623.45\Telerik.Windows.Controls.GridView.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Windows.Controls.Input, Version=2014.3.1021.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2014.3.1021.45\Telerik.Windows.Controls.Input.dll</HintPath>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2015.2.623.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.2.623.45\Telerik.Windows.Controls.Input.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2014.3.1021.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2014.3.1021.45\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2015.2.623.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.2.623.45\Telerik.Windows.Controls.Navigation.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2014.3.1021.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2014.3.1021.45\Telerik.Windows.Controls.RibbonView.dll</HintPath>
+    <Reference Include="Telerik.Windows.Controls.RibbonView, Version=2015.2.623.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.2.623.45\Telerik.Windows.Controls.RibbonView.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Windows.Data, Version=2014.3.1021.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
-      <HintPath>..\lib\RCWPF\2014.3.1021.45\Telerik.Windows.Data.dll</HintPath>
+    <Reference Include="Telerik.Windows.Data, Version=2015.2.623.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <HintPath>..\lib\RCWPF\2015.2.623.45\Telerik.Windows.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="UIAutomationProvider" />
@@ -258,26 +256,23 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\NotificationServiceReference\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\NotificationServiceReference\IndustrialMonitoring.NotificationServiceReference.Notification1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\NotificationServiceReference\IndustrialMonitoring.NotificationServiceReference.NotificationLog.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\NotificationServiceReference\MonitoringServiceLibrary.ViewModels.xsd">
+    <None Include="Service References\NotificationServiceReference\NotificationService.wsdl" />
+    <None Include="Service References\NotificationServiceReference\NotificationService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NotificationServiceReference\service.wsdl" />
-    <None Include="Service References\NotificationServiceReference\service.xsd">
+    <None Include="Service References\NotificationServiceReference\NotificationService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\NotificationServiceReference\service1.xsd">
+    <None Include="Service References\NotificationServiceReference\NotificationService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\Arrays.xsd">
+    <None Include="Service References\NotificationServiceReference\NotificationService3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.Item1.datasource">
@@ -301,20 +296,23 @@
     <None Include="Service References\ProcessDataServiceReference\IndustrialMonitoring.ProcessDataServiceReference.TabsItemsViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\MonitoringServiceLibrary.ViewModels.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.wsdl" />
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\service.wsdl" />
-    <None Include="Service References\ProcessDataServiceReference\service.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\service1.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\SharedLibrary.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\System.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UserServiceReference\IndustrialMonitoring.UserServiceReference.User2.datasource">
@@ -323,14 +321,14 @@
     <None Include="Service References\UserServiceReference\IndustrialMonitoring.UserServiceReference.UserViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\UserServiceReference\MonitoringServiceLibrary.ViewModels.xsd">
+    <None Include="Service References\UserServiceReference\UserService.wsdl" />
+    <None Include="Service References\UserServiceReference\UserService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServiceReference\service.wsdl" />
-    <None Include="Service References\UserServiceReference\service.xsd">
+    <None Include="Service References\UserServiceReference\UserService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\UserServiceReference\service1.xsd">
+    <None Include="Service References\UserServiceReference\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -412,6 +410,9 @@
     <Content Include="Resources\horn.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Service References\UserServiceReference\UserService.disco" />
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.disco" />
+    <None Include="Service References\NotificationServiceReference\NotificationService.disco" />
     <None Include="Service References\NotificationServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

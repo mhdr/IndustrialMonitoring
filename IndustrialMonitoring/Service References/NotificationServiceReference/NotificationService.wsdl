@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NotificationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/NotificationService?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/NotificationService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/NotificationService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" />
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/NotificationService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="INotificationService_HasNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:HasNotification" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_HasNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HasNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetNotifications_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotifications" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetNotifications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotificationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SystemHasNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:SystemHasNotification" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_SystemHasNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SystemHasNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_TabsWithActiveNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:TabsWithActiveNotification" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_TabsWithActiveNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TabsWithActiveNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetNotificationLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotificationLogs" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetNotificationLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotificationLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetNotificationLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotificationLog" />
+  </wsdl:message>
+  <wsdl:message name="INotificationService_GetNotificationLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNotificationLogResponse" />
+  </wsdl:message>
+  <wsdl:portType name="INotificationService">
+    <wsdl:operation name="HasNotification">
+      <wsdl:input wsam:Action="http://tempuri.org/INotificationService/HasNotification" message="tns:INotificationService_HasNotification_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/INotificationService/HasNotificationResponse" message="tns:INotificationService_HasNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotifications">
+      <wsdl:input wsam:Action="http://tempuri.org/INotificationService/GetNotifications" message="tns:INotificationService_GetNotifications_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/INotificationService/GetNotificationsResponse" message="tns:INotificationService_GetNotifications_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SystemHasNotification">
+      <wsdl:input wsam:Action="http://tempuri.org/INotificationService/SystemHasNotification" message="tns:INotificationService_SystemHasNotification_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/INotificationService/SystemHasNotificationResponse" message="tns:INotificationService_SystemHasNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TabsWithActiveNotification">
+      <wsdl:input wsam:Action="http://tempuri.org/INotificationService/TabsWithActiveNotification" message="tns:INotificationService_TabsWithActiveNotification_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/INotificationService/TabsWithActiveNotificationResponse" message="tns:INotificationService_TabsWithActiveNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotificationLogs">
+      <wsdl:input wsam:Action="http://tempuri.org/INotificationService/GetNotificationLogs" message="tns:INotificationService_GetNotificationLogs_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/INotificationService/GetNotificationLogsResponse" message="tns:INotificationService_GetNotificationLogs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotificationLog">
+      <wsdl:input wsam:Action="http://tempuri.org/INotificationService/GetNotificationLog" message="tns:INotificationService_GetNotificationLog_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/INotificationService/GetNotificationLogResponse" message="tns:INotificationService_GetNotificationLog_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_INotificationService" type="tns:INotificationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HasNotification">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/HasNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotifications">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetNotifications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SystemHasNotification">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/SystemHasNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TabsWithActiveNotification">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/TabsWithActiveNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotificationLogs">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetNotificationLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotificationLog">
+      <soap:operation soapAction="http://tempuri.org/INotificationService/GetNotificationLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NotificationService">
+    <wsdl:port name="BasicHttpBinding_INotificationService" binding="tns:BasicHttpBinding_INotificationService">
+      <soap:address location="http://localhost:9011/MonitoringService/NotificationService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

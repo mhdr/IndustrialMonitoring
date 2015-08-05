@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProcessDataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" />
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/SharedLibrary" />
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:9011/MonitoringService/ProcessDataService?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProcessDataService_GeItemsLogLatest_InputMessage">
+    <wsdl:part name="parameters" element="tns:GeItemsLogLatest" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GeItemsLogLatest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GeItemsLogLatestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItems" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItems2_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItems2" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItems2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItems2Response" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItems3_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItems3" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItems3_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItems3Response" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItem" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetTabsAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTabsAll" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetTabsAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTabsAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetTab_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTab" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetTab_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTabResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetTabItemsAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTabItemsAll" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetTabItemsAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTabItemsAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetTabItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTabItems" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetTabItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTabItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItemsForTab_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsForTab" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItemsForTab_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemsForTabResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItemLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemLogs" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetItemLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetItemLogsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_AddItem2_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddItem2" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_AddItem2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddItem2Response" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_DeleteItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteItem" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_DeleteItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_EditItem2_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditItem2" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_EditItem2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditItem2Response" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_AddItemsToTab_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddItemsToTab" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_AddItemsToTab_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddItemsToTabResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IProcessDataService">
+    <wsdl:operation name="GeItemsLogLatest">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GeItemsLogLatest" message="tns:IProcessDataService_GeItemsLogLatest_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GeItemsLogLatestResponse" message="tns:IProcessDataService_GeItemsLogLatest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItems">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetItems" message="tns:IProcessDataService_GetItems_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetItemsResponse" message="tns:IProcessDataService_GetItems_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItems2">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetItems2" message="tns:IProcessDataService_GetItems2_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetItems2Response" message="tns:IProcessDataService_GetItems2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItems3">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetItems3" message="tns:IProcessDataService_GetItems3_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetItems3Response" message="tns:IProcessDataService_GetItems3_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItem">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetItem" message="tns:IProcessDataService_GetItem_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetItemResponse" message="tns:IProcessDataService_GetItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTabsAll">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetTabsAll" message="tns:IProcessDataService_GetTabsAll_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetTabsAllResponse" message="tns:IProcessDataService_GetTabsAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTab">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetTab" message="tns:IProcessDataService_GetTab_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetTabResponse" message="tns:IProcessDataService_GetTab_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTabItemsAll">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetTabItemsAll" message="tns:IProcessDataService_GetTabItemsAll_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetTabItemsAllResponse" message="tns:IProcessDataService_GetTabItemsAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTabItems">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetTabItems" message="tns:IProcessDataService_GetTabItems_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetTabItemsResponse" message="tns:IProcessDataService_GetTabItems_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsForTab">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetItemsForTab" message="tns:IProcessDataService_GetItemsForTab_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetItemsForTabResponse" message="tns:IProcessDataService_GetItemsForTab_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemLogs">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetItemLogs" message="tns:IProcessDataService_GetItemLogs_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetItemLogsResponse" message="tns:IProcessDataService_GetItemLogs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddItem2">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/AddItem2" message="tns:IProcessDataService_AddItem2_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/AddItem2Response" message="tns:IProcessDataService_AddItem2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteItem">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/DeleteItem" message="tns:IProcessDataService_DeleteItem_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/DeleteItemResponse" message="tns:IProcessDataService_DeleteItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditItem2">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/EditItem2" message="tns:IProcessDataService_EditItem2_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/EditItem2Response" message="tns:IProcessDataService_EditItem2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddItemsToTab">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/AddItemsToTab" message="tns:IProcessDataService_AddItemsToTab_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/AddItemsToTabResponse" message="tns:IProcessDataService_AddItemsToTab_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IProcessDataService" type="tns:IProcessDataService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GeItemsLogLatest">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GeItemsLogLatest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItems">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItems2">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItems2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItems3">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItems3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItem">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTabsAll">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetTabsAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTab">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetTab" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTabItemsAll">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetTabItemsAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTabItems">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetTabItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemsForTab">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItemsForTab" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemLogs">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItemLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddItem2">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/AddItem2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteItem">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/DeleteItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditItem2">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/EditItem2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddItemsToTab">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/AddItemsToTab" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProcessDataService">
+    <wsdl:port name="BasicHttpBinding_IProcessDataService" binding="tns:BasicHttpBinding_IProcessDataService">
+      <soap:address location="http://localhost:9011/MonitoringService/ProcessDataService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
