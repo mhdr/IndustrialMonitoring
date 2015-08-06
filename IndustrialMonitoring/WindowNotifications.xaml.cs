@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -104,29 +105,36 @@ namespace IndustrialMonitoring
 
         private void ShowDataAsync()
         {
-            if (ItemId == 0)
+            try
             {
-                var notifications = NotificationServiceClient.GetNotificationLogs(Static.CurrentUser.UserId,
+                if (ItemId == 0)
+                {
+                    var notifications = NotificationServiceClient.GetNotificationLogs(Static.CurrentUser.UserId,
+        DateTime.Now - new TimeSpan(0, 24, 0, 0), DateTime.Now);
+
+                    if (notifications == null)
+                    {
+                        return;
+                    }
+
+                    Dispatcher.BeginInvoke(new Action(() => OnShowDataCompleted(new ShowNotificationsCompletedEventArgs(notifications))));
+                }
+                else
+                {
+                    List<NotificationLog> notifications = NotificationServiceClient.GetNotificationLog(Static.CurrentUser.UserId, ItemId,
     DateTime.Now - new TimeSpan(0, 24, 0, 0), DateTime.Now);
 
-                if (notifications == null)
-                {
-                    return;
-                }
+                    if (notifications == null)
+                    {
+                        return;
+                    }
 
-                Dispatcher.BeginInvoke(new Action(() => OnShowDataCompleted(new ShowNotificationsCompletedEventArgs(notifications))));
+                    Dispatcher.BeginInvoke(new Action(() => OnShowDataCompleted(new ShowNotificationsCompletedEventArgs(notifications))));
+                }
             }
-            else
+            catch (CommunicationException ex)
             {
-                List<NotificationLog> notifications = NotificationServiceClient.GetNotificationLog(Static.CurrentUser.UserId,ItemId,
-DateTime.Now - new TimeSpan(0, 24, 0, 0), DateTime.Now);
-
-                if (notifications == null)
-                {
-                    return;
-                }
-
-                Dispatcher.BeginInvoke(new Action(() => OnShowDataCompleted(new ShowNotificationsCompletedEventArgs(notifications))));
+                MessageBox.Show(ex.Message);
             }
         }
 
