@@ -1,0 +1,28 @@
+<!DOCTYPE System-Monitor-Workspace>
+<System-Monitor-Workspace path="D:/Users/ma.ramezani.SBO/Documents/Visual Studio 2012/Projects/IndustrialMonitoring/MonitoringPLCs/PLC1.smw" >
+ <state w="-1" x="0" y="0" h="-1" max="true" >AAAA/wAAAAD9AAAAAgAAAAEAAAGcAAACHfwCAAAAAfsAAAAcAEEAdQB0AG8AIABWAGkAZQB3AF8ARABvAGMAawEAAAA4AAACHQAAAh0A////AAAAAwAABaAAAADY/AEAAAAB+wAAACwAQQBsAGEAcgBtAHMAIABhAG4AZAAgAEUAdgBlAG4AdABzAF8ARABvAGMAawEAAAAAAAAFoAAAAsUA////AAAEAAAAAh0AAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAf////8BAAAAAP////8AAAAAAAAAAA==</state>
+ <Tree>
+  <system>localhost</system>
+  <selection>\\localhost\Project01\OPC\PLCS71200\Device2\TemperatureAccelerated</selection>
+ </Tree>
+ <System-Event-Window>
+  <Alarms-Window>
+   <column width="226" shown="1" index="0" />
+   <column width="0" shown="0" index="1" />
+   <column width="0" shown="0" index="2" />
+   <column width="139" shown="1" index="3" />
+   <column width="0" shown="0" index="4" />
+   <column width="0" shown="0" index="5" />
+   <column width="0" shown="0" index="6" />
+   <column width="0" shown="0" index="7" />
+   <column width="0" shown="0" index="8" />
+   <column width="0" shown="0" index="9" />
+   <column width="0" shown="0" index="10" />
+   <column width="0" shown="0" index="11" />
+   <column width="873" shown="1" index="12" />
+   <column width="0" shown="0" index="13" />
+   <column width="0" shown="0" index="14" />
+   <filter flags="0" desc="" setuser="" showalarm="1" showevent="1" url="" min="0" comment="" max="0" area="" ackuser="" />
+  </Alarms-Window>
+ </System-Event-Window>
+</System-Monitor-Workspace>
