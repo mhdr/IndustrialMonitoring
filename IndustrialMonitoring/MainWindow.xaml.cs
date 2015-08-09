@@ -143,7 +143,7 @@ namespace IndustrialMonitoring
 
             RadTabItem radTabItem = new RadTabItem();
             radTabItem.Name = string.Format("TabItem{0}", tabsViewModel.TabName);
-            radTabItem.Width = 80;
+            radTabItem.MinWidth= 80;
             radTabItem.Height = 25;
 
             TabHeaderUserControl tabHeader=new TabHeaderUserControl();
