@@ -88,6 +88,8 @@
                                     <telerik:RadMenuItem Header="Step Area Series" Name="ContextMenuItemStepAreaSeriesCompare" Click="ContextMenuItemStepAreaSeriesCompare_OnClick"/>
                                 </telerik:RadMenuItem>
                             </telerik:RadMenuItem>
+
+                            <telerik:RadMenuItem Name="ContextItemShowNotificationForCurrentItem" Header="Notification" ToolTip="Show notifications for current item" Click="MenuItemShowNotificationForCurrentItem_OnClick"/>
                         </telerik:RadContextMenu>
                     </telerik:RadContextMenu.ContextMenu>
                     </telerik:RadTabControl>
