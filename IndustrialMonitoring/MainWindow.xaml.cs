@@ -451,6 +451,11 @@ namespace IndustrialMonitoring
         {
             WindowNotifications windowNotifications=new WindowNotifications();
             windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
+            // TODO Parameter
+            windowNotifications.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+            // TODO Parameter
+            windowNotifications.EndTime = DateTime.Now;
             windowNotifications.Show();
             windowNotifications.ShowData();
         }
@@ -475,6 +480,12 @@ namespace IndustrialMonitoring
             }
 
             WindowNotifications windowNotifications = new WindowNotifications();
+            windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
+            // TODO Parameter
+            windowNotifications.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+            // TODO Parameter
+            windowNotifications.EndTime = DateTime.Now;
             windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
             windowNotifications.ItemId = selected.ItemsAioViewModel.ItemId;
             windowNotifications.Show();

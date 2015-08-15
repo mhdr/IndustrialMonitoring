@@ -28,6 +28,9 @@ namespace IndustrialMonitoring
         private NotificationServiceClient _notificationServiceClient;
         public event EventHandler<ShowNotificationsCompletedEventArgs> ShowDataCompleted;
 
+        private DateTime _startTime;
+        private DateTime _endTime;
+
         protected virtual void OnShowDataCompleted(ShowNotificationsCompletedEventArgs e)
         {
             EventHandler<ShowNotificationsCompletedEventArgs> handler = ShowDataCompleted;
@@ -37,6 +40,18 @@ namespace IndustrialMonitoring
         public WindowNotifications()
         {
             InitializeComponent();
+        }
+
+        public DateTime StartTime
+        {
+            get { return _startTime; }
+            set { _startTime = value; }
+        }
+
+        public DateTime EndTime
+        {
+            get { return _endTime; }
+            set { _endTime = value; }
         }
 
         public int ItemId
@@ -53,17 +68,60 @@ namespace IndustrialMonitoring
 
         private void MenuItemShowSetTimeDialog_OnClick(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
+            DialogSetTime dialogSetTime = new DialogSetTime();
+            dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
+            dialogSetTime.StartTime = StartTime;
+            dialogSetTime.EndTime = EndTime;
+            dialogSetTime.ShowDialog();
+        }
 
+        void dialogSetTime_TimeChanged(object sender, Lib.TimeChangedEventArgs e)
+        {
+            this.StartTime = e.StartTime;
+            this.EndTime = e.EndTime;
+
+            ShowData();
         }
 
         private void MenuItemShowSetTimeDialog_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            
+
+            TextBlock textBlock1 = new TextBlock();
+            textBlock1.Text = "Start Time : ";
+            textBlock1.FontWeight = FontWeights.Bold;
+
+            TextBlock textBlock2 = new TextBlock();
+            textBlock2.Text = StartTime.ToString();
+
+            StackPanel stackPanel1 = new StackPanel();
+            stackPanel1.Orientation = Orientation.Horizontal;
+
+            stackPanel1.Children.Add(textBlock1);
+            stackPanel1.Children.Add(textBlock2);
+
+            TextBlock textBlock3 = new TextBlock();
+            textBlock3.Text = "End Time : ";
+            textBlock3.FontWeight = FontWeights.Bold;
+
+            TextBlock textBlock4 = new TextBlock();
+            textBlock4.Text = EndTime.ToString();
+
+            StackPanel stackPanel2 = new StackPanel();
+            stackPanel2.Orientation = Orientation.Horizontal;
+
+            stackPanel2.Children.Add(textBlock3);
+            stackPanel2.Children.Add(textBlock4);
+
+            StackPanel stackPanel3 = new StackPanel();
+            stackPanel3.Children.Add(stackPanel1);
+            stackPanel3.Children.Add(stackPanel2);
+
+            MenuItemShowSetTimeDialog.ToolTip = stackPanel3;
         }
 
         private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            ClearStatusBar();
         }
 
         private void WindowNotifications_OnLoaded(object sender, RoutedEventArgs e)
@@ -73,6 +131,7 @@ namespace IndustrialMonitoring
 
         void WindowNotifications_ShowDataCompleted(object sender, ShowNotificationsCompletedEventArgs e)
         {
+            ListBoxNotification.Items.Clear();
             var notifications = e.Notifications;
 
             foreach (NotificationLog notification in notifications)
@@ -109,8 +168,7 @@ namespace IndustrialMonitoring
             {
                 if (ItemId == 0)
                 {
-                    var notifications = NotificationServiceClient.GetNotificationLogs(Static.CurrentUser.UserId,
-        DateTime.Now - new TimeSpan(0, 24, 0, 0), DateTime.Now);
+                    var notifications = NotificationServiceClient.GetNotificationLogs(Static.CurrentUser.UserId,this.StartTime, this.EndTime);
 
                     if (notifications == null)
                     {
@@ -122,7 +180,7 @@ namespace IndustrialMonitoring
                 else
                 {
                     List<NotificationLog> notifications = NotificationServiceClient.GetNotificationLog(Static.CurrentUser.UserId, ItemId,
-    DateTime.Now - new TimeSpan(0, 24, 0, 0), DateTime.Now);
+    this.StartTime, this.EndTime);
 
                     if (notifications == null)
                     {
