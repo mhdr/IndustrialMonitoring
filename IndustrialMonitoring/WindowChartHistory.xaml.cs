@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.ProcessDataServiceReference;
+using SharedLibrary;
 using Telerik.Windows;
 using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.ChartView;
@@ -254,7 +255,7 @@ namespace IndustrialMonitoring
         {
             Item1 CurrentItem = ProcessDataServiceClient.GetItem(itemId.Value);
             List<ItemsLogChartHistoryViewModel> ItemsLog = ProcessDataServiceClient.GetItemLogs(itemId.Value, StartTime, EndTime);
-
+            
             Dispatcher.BeginInvoke(new Action(() => OnShowDataCompleted(new ShowDataCompletedEventArgs(itemId, ItemsLog, CurrentItem, generateLegend))));
         }
 
