@@ -1,7 +1,7 @@
 ﻿<Window xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  x:Class="IndustrialMonitoring.WindowChartHistory"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WindowChartHistory" Height="596" Width="946" WindowState="Maximized" WindowStartupLocation="CenterScreen"
+        Title="History - Graph" Height="596" Width="946" WindowState="Maximized" WindowStartupLocation="CenterScreen"
         Loaded="WindowChartHistory_OnLoaded">
     <Grid>
 

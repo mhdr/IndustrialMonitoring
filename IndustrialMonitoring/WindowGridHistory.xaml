@@ -1,7 +1,7 @@
 ﻿<Window xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  x:Class="IndustrialMonitoring.WindowGridHistory"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="WindowGridHistory" Height="300" Width="300" WindowState="Maximized" WindowStartupLocation="CenterScreen" Loaded="WindowGridHistory_OnLoaded">
+        Title="History - Grid" Height="300" Width="300" WindowState="Maximized" WindowStartupLocation="CenterScreen" Loaded="WindowGridHistory_OnLoaded">
     <Grid>
 
         <Grid.RowDefinitions>
