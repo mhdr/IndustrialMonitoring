@@ -222,6 +222,12 @@ namespace IndustrialMonitoring.UserServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers2", ReplyAction="http://tempuri.org/IUserService/GetUsers2Response")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.UserServiceReference.User2>> GetUsers2Async();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/SetPassword", ReplyAction="http://tempuri.org/IUserService/SetPasswordResponse")]
+        int SetPassword(int userId, string oldPassword, string newPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/SetPassword", ReplyAction="http://tempuri.org/IUserService/SetPasswordResponse")]
+        System.Threading.Tasks.Task<int> SetPasswordAsync(int userId, string oldPassword, string newPassword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -297,6 +303,14 @@ namespace IndustrialMonitoring.UserServiceReference {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<IndustrialMonitoring.UserServiceReference.User2>> GetUsers2Async() {
             return base.Channel.GetUsers2Async();
+        }
+        
+        public int SetPassword(int userId, string oldPassword, string newPassword) {
+            return base.Channel.SetPassword(userId, oldPassword, newPassword);
+        }
+        
+        public System.Threading.Tasks.Task<int> SetPasswordAsync(int userId, string oldPassword, string newPassword) {
+            return base.Channel.SetPasswordAsync(userId, oldPassword, newPassword);
         }
     }
 }

@@ -56,6 +56,9 @@
                     <telerik:RadMenuItem Name="MenuItemShowNotificationForCurrentItem" Header="Notification" ToolTip="Show notifications for current item" Click="MenuItemShowNotificationForCurrentItem_OnClick"/>
                 </telerik:RadMenuItem>
 
+                <telerik:RadMenuItem Name="MenuItemTools" SubmenuOpened="MenuItemTools_OnSubmenuOpened" Header="Tools">
+                    <telerik:RadMenuItem Name="MenuItemChangePasswordWindow" Header="Change password" Click="MenuItemChangePasswordWindow_OnClick"/>
+                </telerik:RadMenuItem>
             </telerik:RadMenu>
 
             <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True" Grid.Row="1">

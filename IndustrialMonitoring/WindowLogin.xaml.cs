@@ -74,7 +74,7 @@ namespace IndustrialMonitoring
 
         private void WindowLogin_OnLoaded(object sender, RoutedEventArgs e)
         {
-            
+            TextBoxUserName.Focus();
         }
     }
 }

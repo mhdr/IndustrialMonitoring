@@ -87,5 +87,33 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
+        public int SetPassword(int userId, string oldPassword, string newPassword)
+        {
+            try
+            {
+                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+                var user = entities.Users.FirstOrDefault(x => x.UserId == userId);
+
+                if (user == null)
+                {
+                    return -1;
+                }
+
+                if (user.Password != oldPassword)
+                {
+                    return -2;
+                }
+
+                user.Password = newPassword;
+
+                entities.SaveChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                // TODO log
+                return 0;
+            }
+        }
     }
 }

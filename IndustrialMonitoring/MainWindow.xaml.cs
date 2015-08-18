@@ -598,5 +598,28 @@ namespace IndustrialMonitoring
         {
             OpenWindowChartHistoryInCompareMode(ChartType.StepAreaSeries);
         }
+
+        private void MenuItemChangePasswordWindow_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            WindowChangePassword windowChangePassword=new WindowChangePassword();
+            windowChangePassword.UserServiceClient = this.UserServiceClient;
+            windowChangePassword.ShowDialog();
+            Application.Current.Shutdown();
+        }
+
+        private void MenuItemTools_OnSubmenuOpened(object sender, RadRoutedEventArgs e)
+        {
+            if (Static.CurrentUser == null)
+            {
+                MenuItemChangePasswordWindow.IsEnabled = false;
+            }
+
+            if (string.IsNullOrEmpty(Static.CurrentUser.UserName))
+            {
+                MenuItemChangePasswordWindow.IsEnabled = false;
+            }
+
+            MenuItemChangePasswordWindow.IsEnabled = true;
+        }
     }
 }

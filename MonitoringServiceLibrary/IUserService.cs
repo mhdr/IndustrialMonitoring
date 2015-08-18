@@ -28,5 +28,8 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         List<User2> GetUsers2();
+
+        [OperationContract]
+        int SetPassword(int userId, string oldPassword, string newPassword);
     }
 }
