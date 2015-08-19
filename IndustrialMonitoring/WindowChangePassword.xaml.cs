@@ -44,45 +44,54 @@ namespace IndustrialMonitoring
             ChangePassword();
         }
 
-        private void ChangePassword()
+        private bool ChangePassword()
         {
-            string oldPassword = PasswordBoxOldPassword.Password;
-            string newPassword = PasswordBoxNewPassword.Password;
-            string confirmPassword = PasswordBoxConfirmPassword.Password;
-
-            if (string.IsNullOrEmpty(oldPassword))
+            try
             {
-                MessageBox.Show("Old password can not be empty");
-                return;
+                string oldPassword = PasswordBoxOldPassword.Password;
+                string newPassword = PasswordBoxNewPassword.Password;
+                string confirmPassword = PasswordBoxConfirmPassword.Password;
+
+                if (string.IsNullOrEmpty(oldPassword))
+                {
+                    MessageBox.Show("Old password can not be empty");
+                    return false;
+                }
+
+                if (Static.CurrentUser.Password != oldPassword)
+                {
+                    MessageBox.Show("Old password is not correct");
+                    return false;
+                }
+
+                if (string.IsNullOrEmpty(newPassword))
+                {
+                    MessageBox.Show("password can not be empty");
+                    return false;
+                }
+
+                if (newPassword != confirmPassword)
+                {
+                    MessageBox.Show("New password and confirm passwprd does not match");
+                    return false;
+                }
+
+                int result = UserServiceClient.SetPassword(Static.CurrentUser.UserId, oldPassword, newPassword);
+
+                if (result != 1)
+                {
+                    MessageBox.Show("Error in saving password");
+                    return false;
+                }
+                else
+                {
+                    MessageBox.Show("Password saved successfully");
+                    return true;
+                }
             }
-
-            if (Static.CurrentUser.Password != oldPassword)
+            catch (Exception ex)
             {
-                MessageBox.Show("Old password is not correct");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(newPassword))
-            {
-                MessageBox.Show("password can not be empty");
-                return;
-            }
-
-            if (newPassword != confirmPassword)
-            {
-                MessageBox.Show("New password and confirm passwprd does not match");
-                return;
-            }
-
-            int result = UserServiceClient.SetPassword(Static.CurrentUser.UserId, oldPassword, newPassword);
-
-            if (result != 1)
-            {
-                MessageBox.Show("Error in saving password");
-            }
-            else
-            {
-                MessageBox.Show("Password saved successfully");
+                return false;
             }
         }
 

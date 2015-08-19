@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -620,6 +621,23 @@ namespace IndustrialMonitoring
             }
 
             MenuItemChangePasswordWindow.IsEnabled = true;
+        }
+
+        private void MenuItemIssues_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            Process.Start("https://github.com/mhdr/IndustrialMonitoring/issues");
+        }
+
+        private void MenuItemNewIssue_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            Process.Start("https://github.com/mhdr/IndustrialMonitoring/issues/new");
+        }
+
+        private void MenuItemHorn_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            WindowHorn windowHorn=new WindowHorn();
+            windowHorn.ProcessDataService = this.ProcessDataServiceClient;
+            windowHorn.Show();
         }
     }
 }

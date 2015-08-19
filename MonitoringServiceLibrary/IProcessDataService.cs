@@ -55,5 +55,20 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         bool AddItemsToTab(string tabName, List<string> items);
+
+        [OperationContract]
+        bool GetHorn();
+
+        [OperationContract]
+        bool GetHornHMI();
+
+        [OperationContract]
+        bool GetMuteHorn();
+
+        [OperationContract]
+        void MuteHorn();
+
+        [OperationContract]
+        void UnMuteHorn();
     }
 }

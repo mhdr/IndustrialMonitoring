@@ -821,6 +821,36 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/AddItemsToTab", ReplyAction="http://tempuri.org/IProcessDataService/AddItemsToTabResponse")]
         System.Threading.Tasks.Task<bool> AddItemsToTabAsync(string tabName, System.Collections.Generic.List<string> items);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetHorn", ReplyAction="http://tempuri.org/IProcessDataService/GetHornResponse")]
+        bool GetHorn();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetHorn", ReplyAction="http://tempuri.org/IProcessDataService/GetHornResponse")]
+        System.Threading.Tasks.Task<bool> GetHornAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetHornHMI", ReplyAction="http://tempuri.org/IProcessDataService/GetHornHMIResponse")]
+        bool GetHornHMI();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetHornHMI", ReplyAction="http://tempuri.org/IProcessDataService/GetHornHMIResponse")]
+        System.Threading.Tasks.Task<bool> GetHornHMIAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetMuteHorn", ReplyAction="http://tempuri.org/IProcessDataService/GetMuteHornResponse")]
+        bool GetMuteHorn();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetMuteHorn", ReplyAction="http://tempuri.org/IProcessDataService/GetMuteHornResponse")]
+        System.Threading.Tasks.Task<bool> GetMuteHornAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/MuteHorn", ReplyAction="http://tempuri.org/IProcessDataService/MuteHornResponse")]
+        void MuteHorn();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/MuteHorn", ReplyAction="http://tempuri.org/IProcessDataService/MuteHornResponse")]
+        System.Threading.Tasks.Task MuteHornAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/UnMuteHorn", ReplyAction="http://tempuri.org/IProcessDataService/UnMuteHornResponse")]
+        void UnMuteHorn();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/UnMuteHorn", ReplyAction="http://tempuri.org/IProcessDataService/UnMuteHornResponse")]
+        System.Threading.Tasks.Task UnMuteHornAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -968,6 +998,46 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         
         public System.Threading.Tasks.Task<bool> AddItemsToTabAsync(string tabName, System.Collections.Generic.List<string> items) {
             return base.Channel.AddItemsToTabAsync(tabName, items);
+        }
+        
+        public bool GetHorn() {
+            return base.Channel.GetHorn();
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetHornAsync() {
+            return base.Channel.GetHornAsync();
+        }
+        
+        public bool GetHornHMI() {
+            return base.Channel.GetHornHMI();
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetHornHMIAsync() {
+            return base.Channel.GetHornHMIAsync();
+        }
+        
+        public bool GetMuteHorn() {
+            return base.Channel.GetMuteHorn();
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetMuteHornAsync() {
+            return base.Channel.GetMuteHornAsync();
+        }
+        
+        public void MuteHorn() {
+            base.Channel.MuteHorn();
+        }
+        
+        public System.Threading.Tasks.Task MuteHornAsync() {
+            return base.Channel.MuteHornAsync();
+        }
+        
+        public void UnMuteHorn() {
+            base.Channel.UnMuteHorn();
+        }
+        
+        public System.Threading.Tasks.Task UnMuteHornAsync() {
+            return base.Channel.UnMuteHornAsync();
         }
     }
 }

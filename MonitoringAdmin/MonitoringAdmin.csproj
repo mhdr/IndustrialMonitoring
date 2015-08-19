@@ -126,17 +126,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Service References\ProcessDataServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\UsersServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\DataCollectorServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ProcessDataServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -211,23 +211,23 @@
     <None Include="Service References\ProcessDataServiceReference\MonitoringAdmin.ProcessDataServiceReference.TabsItemsViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.wsdl" />
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService6.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.wsdl" />
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService61.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService62.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService63.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService64.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService65.xsd">
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.User2.datasource">
@@ -277,18 +277,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProcessDataServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProcessDataServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProcessDataServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\UsersServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -324,10 +312,22 @@
     <None Include="Service References\DataCollectorServiceReference\DataCollectorService1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProcessDataServiceReference\ProcessDataService1.disco" />
+    <None Include="Service References\UsersServiceReference\UserService1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\UsersServiceReference\UserService1.disco" />
+    <None Include="Service References\ProcessDataServiceReference\ProcessDataService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProcessDataServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

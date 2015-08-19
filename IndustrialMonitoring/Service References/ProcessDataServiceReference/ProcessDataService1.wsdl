@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProcessDataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProcessDataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -100,6 +100,36 @@
   <wsdl:message name="IProcessDataService_AddItemsToTab_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddItemsToTabResponse" />
   </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetHorn_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHorn" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetHorn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHornResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetHornHMI_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHornHMI" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetHornHMI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHornHMIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetMuteHorn_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMuteHorn" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_GetMuteHorn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMuteHornResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_MuteHorn_InputMessage">
+    <wsdl:part name="parameters" element="tns:MuteHorn" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_MuteHorn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MuteHornResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_UnMuteHorn_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnMuteHorn" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_UnMuteHorn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnMuteHornResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProcessDataService">
     <wsdl:operation name="GeItemsLogLatest">
       <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GeItemsLogLatest" message="tns:IProcessDataService_GeItemsLogLatest_InputMessage" />
@@ -160,6 +190,26 @@
     <wsdl:operation name="AddItemsToTab">
       <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/AddItemsToTab" message="tns:IProcessDataService_AddItemsToTab_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/AddItemsToTabResponse" message="tns:IProcessDataService_AddItemsToTab_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHorn">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetHorn" message="tns:IProcessDataService_GetHorn_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetHornResponse" message="tns:IProcessDataService_GetHorn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHornHMI">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetHornHMI" message="tns:IProcessDataService_GetHornHMI_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetHornHMIResponse" message="tns:IProcessDataService_GetHornHMI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMuteHorn">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetMuteHorn" message="tns:IProcessDataService_GetMuteHorn_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetMuteHornResponse" message="tns:IProcessDataService_GetMuteHorn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MuteHorn">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/MuteHorn" message="tns:IProcessDataService_MuteHorn_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/MuteHornResponse" message="tns:IProcessDataService_MuteHorn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnMuteHorn">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/UnMuteHorn" message="tns:IProcessDataService_UnMuteHorn_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/UnMuteHornResponse" message="tns:IProcessDataService_UnMuteHorn_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProcessDataService" type="tns:IProcessDataService">
@@ -292,6 +342,51 @@
     </wsdl:operation>
     <wsdl:operation name="AddItemsToTab">
       <soap:operation soapAction="http://tempuri.org/IProcessDataService/AddItemsToTab" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorn">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetHorn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHornHMI">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetHornHMI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMuteHorn">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetMuteHorn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MuteHorn">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/MuteHorn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnMuteHorn">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/UnMuteHorn" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

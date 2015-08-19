@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using MonitoringServiceLibrary.ViewModels;
+using NationalInstruments.NetworkVariable;
 
 namespace MonitoringServiceLibrary
 {
@@ -338,5 +339,55 @@ namespace MonitoringServiceLibrary
             return success;
         }
 
+        public bool GetHorn()
+        {
+            var  subscriberBool = new NetworkVariableBufferedSubscriber<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\Horn");
+            subscriberBool.Connect();
+            var variable = subscriberBool.ReadData();
+            bool result= variable.GetValue();
+            subscriberBool.Disconnect();
+
+            return result;
+        }
+
+        public bool GetHornHMI()
+        {
+            var subscriberBool = new NetworkVariableBufferedSubscriber<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\HornHMI");
+            subscriberBool.Connect();
+            var variable = subscriberBool.ReadData();
+            bool result = variable.GetValue();
+            subscriberBool.Disconnect();
+
+            return result;
+        }
+
+        public bool GetMuteHorn()
+        {
+            var subscriberBool = new NetworkVariableBufferedSubscriber<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\MuteHorn");
+            subscriberBool.Connect();
+            var variable = subscriberBool.ReadData();
+            bool result = variable.GetValue();
+            subscriberBool.Disconnect();
+
+            return result;
+        }
+
+        public void MuteHorn()
+        {
+            var writer = new NetworkVariableBufferedWriter<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\MuteHorn");
+            writer.Connect();
+            writer.WriteValue(true);
+            
+            writer.Disconnect();
+        }
+
+        public void UnMuteHorn()
+        {
+            var writer = new NetworkVariableBufferedWriter<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\MuteHorn");
+            writer.Connect();
+            writer.WriteValue(false);
+
+            writer.Disconnect();
+        }
     }
 }

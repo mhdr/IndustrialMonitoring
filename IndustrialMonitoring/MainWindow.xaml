@@ -59,6 +59,15 @@
                 <telerik:RadMenuItem Name="MenuItemTools" SubmenuOpened="MenuItemTools_OnSubmenuOpened" Header="Tools">
                     <telerik:RadMenuItem Name="MenuItemChangePasswordWindow" Header="Change password" Click="MenuItemChangePasswordWindow_OnClick"/>
                 </telerik:RadMenuItem>
+
+                <telerik:RadMenuItem Header="Services">
+                    <telerik:RadMenuItem Name="MenuItemHorn" Header="Horn" Click="MenuItemHorn_OnClick"/>
+                </telerik:RadMenuItem>
+                
+                <telerik:RadMenuItem Name="MenuItemHelp" Header="Help">
+                    <telerik:RadMenuItem Name="MenuItemIssues" Header="Show Issues" ToolTip="Show issues" Click="MenuItemIssues_OnClick"/>
+                    <telerik:RadMenuItem Name="MenuItemNewIssue" Header="New issue" ToolTip="Report a new issue" Click="MenuItemNewIssue_OnClick"/>
+                </telerik:RadMenuItem>
             </telerik:RadMenu>
 
             <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True" Grid.Row="1">
