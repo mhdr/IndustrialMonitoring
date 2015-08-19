@@ -67,7 +67,7 @@ namespace IndustrialMonitoring
         {
             if (PowerButtonState.Value)
             {
-                TextBlockState.Text = "Muted";
+                TextBlockState.Text = "Mute";
             }
             else
             {
