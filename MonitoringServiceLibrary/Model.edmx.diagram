@@ -24,6 +24,8 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItemsLogLatest_NotificationItems" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Service" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersServicesPermission" Width="1.5" PointX="6.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

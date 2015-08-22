@@ -18,6 +18,11 @@ namespace HostConsole
             Uri baseAddress3 = new Uri("http://172.20.63.234:9011/MonitoringService/ProcessDataService");
             Uri baseAddress4 = new Uri("http://172.20.63.234:9011/MonitoringService/UserService");
 
+            Uri baseAddress5 = new Uri("net.tcp://172.20.63.234:9012/MonitoringService/DataCollectorService");
+            Uri baseAddress6 = new Uri("net.tcp://172.20.63.234:9012/MonitoringService/NotificationService");
+            Uri baseAddress7 = new Uri("net.tcp://172.20.63.234:9012/MonitoringService/ProcessDataService");
+            Uri baseAddress8 = new Uri("net.tcp://172.20.63.234:9012/MonitoringService/UserService");
+
             ServiceHost host1 = new ServiceHost(typeof (DataCollectorService),
                 baseAddress1);
 
@@ -29,6 +34,18 @@ namespace HostConsole
 
             ServiceHost host4 = new ServiceHost(typeof(UserService),
     baseAddress4);
+
+            ServiceHost host5 = new ServiceHost(typeof(DataCollectorService),
+    baseAddress5);
+
+            ServiceHost host6 = new ServiceHost(typeof(NotificationService),
+    baseAddress6);
+
+            ServiceHost host7 = new ServiceHost(typeof(ProcessDataService),
+    baseAddress7);
+
+            ServiceHost host8 = new ServiceHost(typeof(UserService),
+    baseAddress8);
 
             ServiceMetadataBehavior smb1 = new ServiceMetadataBehavior();
             smb1.HttpGetEnabled = true;
@@ -50,10 +67,31 @@ namespace HostConsole
             smb4.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
             host4.Description.Behaviors.Add(smb4);
 
+            ServiceMetadataBehavior smb5 = new ServiceMetadataBehavior();
+            smb5.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+            host5.Description.Behaviors.Add(smb5);
+
+            ServiceMetadataBehavior smb6 = new ServiceMetadataBehavior();
+            smb6.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+            host6.Description.Behaviors.Add(smb6);
+
+            ServiceMetadataBehavior smb7 = new ServiceMetadataBehavior();
+            smb7.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+            host7.Description.Behaviors.Add(smb7);
+
+            ServiceMetadataBehavior smb8 = new ServiceMetadataBehavior();
+            smb8.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
+            host8.Description.Behaviors.Add(smb8);
+
             host1.Open();
             host2.Open();
             host3.Open();
             host4.Open();
+
+            host5.Open();
+            host6.Open();
+            host7.Open();
+            host8.Open();
 
             Console.ReadKey();
 
@@ -61,6 +99,11 @@ namespace HostConsole
             host2.Close();
             host3.Close();
             host4.Close();
+
+            host5.Close();
+            host6.Close();
+            host7.Close();
+            host8.Close();
         }
     }
 }

@@ -32,4 +32,10 @@ namespace SharedLibrary
         Between=2,
         Higher=3,
     }
+
+    public enum ItemDefinationType
+    {
+        SqlDefined=1,
+        CustomDefiend=2,
+    }
 }

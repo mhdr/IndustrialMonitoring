@@ -9,5 +9,6 @@
     [ShowInUITimeInterval] INT NOT NULL DEFAULT 5, 
     [ScanCycle] INT NOT NULL DEFAULT 100, 
     [SaveInItemsLogWhen] INT NOT NULL DEFAULT 1, 
-    [SaveInItemsLogLastWhen] INT NOT NULL DEFAULT 1
+    [SaveInItemsLogLastWhen] INT NOT NULL DEFAULT 1, 
+    [DefinationType] INT NULL DEFAULT 1
 )

@@ -24,7 +24,8 @@ namespace MonitoringServiceLibrary
         private IndustrialMonitoringEntities _entities = new IndustrialMonitoringEntities();
         private object padlock=new object();
         private NetworkVariableBufferedSubscriber<dynamic> _subscriberInt;
-        private NetworkVariableBufferedSubscriber<Boolean> _subscriberBool; 
+        private NetworkVariableBufferedSubscriber<Boolean> _subscriberBool;
+        private ItemDefinationType _itemDefinationType;
 
         private ItemsLog _lastItemLog;
         private ItemsLogLatest _lastItemLogLatest;
@@ -125,6 +126,12 @@ namespace MonitoringServiceLibrary
             set { _subscriberBool = value; }
         }
 
+        public ItemDefinationType DefinationType
+        {
+            get { return _itemDefinationType; }
+            set { _itemDefinationType = value; }
+        }
+
         public ItemCollector(Item item)
         {
             this.ItemId = item.ItemId;
@@ -136,6 +143,7 @@ namespace MonitoringServiceLibrary
             this.ScanCycle = item.ScanCycle;
             this.SaveInItemsLogWhen = (WhenToLog) item.SaveInItemsLogWhen;
             this.SaveInItemsLogLastWhen = (WhenToLog) item.SaveInItemsLogLastWhen;
+            this.DefinationType = (ItemDefinationType) item.DefinationType;
         }
 
         public void Start()
@@ -173,15 +181,22 @@ namespace MonitoringServiceLibrary
         {
             string value = null;
 
-            if (this.Type == ItemType.Digital)
+            if (this.DefinationType == ItemDefinationType.SqlDefined)
             {
-                var data = SubscriberBool.ReadData();
-                value = Convert.ToInt32(data.GetValue()).ToString();
+                if (this.Type == ItemType.Digital)
+                {
+                    var data = SubscriberBool.ReadData();
+                    value = Convert.ToInt32(data.GetValue()).ToString();
+                }
+                else if (this.Type == ItemType.Analog)
+                {
+                    var data = SubscriberInt.ReadData();
+                    value = data.GetValue().ToString();
+                }   
             }
-            else if (this.Type == ItemType.Analog)
+            else if (this.DefinationType == ItemDefinationType.CustomDefiend)
             {
-                var data = SubscriberInt.ReadData();
-                value = data.GetValue().ToString();
+                
             }
 
             lock (padlock)

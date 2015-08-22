@@ -43,25 +43,48 @@ namespace IndustrialMonitoring
 
         private void WindowHorn_OnLoaded(object sender, RoutedEventArgs e)
         {
-            var horn = ProcessDataService.GetMuteHorn();
-            PowerButtonState.Value = horn;
-
-            Timer1=new Timer(Fetch,null,0,2000);
-        }
-
-        private void Fetch(object state)
-        {
-            bool hornHMI = ProcessDataService.GetHornHMI();
-            bool horn = ProcessDataService.GetHorn();
-            var muteHorn = ProcessDataService.GetMuteHorn();
-
-            Dispatcher.BeginInvoke(new Action(() =>
+            Thread t1=new Thread(() =>
             {
-                LedHorn.Value = horn;
-                LedAlarm.Value = hornHMI;
-                PowerButtonState.Value = muteHorn;
-            }));
+                var horn = ProcessDataService.GetMuteHorn();
+
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    PowerButtonState.Value = horn;
+                }));
+            });
+
+            t1.Start();
+
+            //Timer1=new Timer(Fetch,null,0,2000);
+            
+            Timer1=new Timer(state =>
+            {
+                bool hornHMI = ProcessDataService.GetHornHMI();
+                bool horn2 = ProcessDataService.GetHorn();
+                bool muteHorn = ProcessDataService.GetMuteHorn();
+
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    LedHorn.Value = horn2;
+                    LedAlarm.Value = hornHMI;
+                    PowerButtonState.Value = muteHorn;
+                }));
+            },null,0,2000);
         }
+
+        //private void Fetch(object state)
+        //{
+        //    bool hornHMI = ProcessDataService.GetHornHMI();
+        //    bool horn2 = ProcessDataService.GetHorn();
+        //    var muteHorn = ProcessDataService.GetMuteHorn();
+
+        //    Dispatcher.BeginInvoke(new Action(() =>
+        //    {
+        //        LedHorn.Value = horn2;
+        //        LedAlarm.Value = hornHMI;
+        //        PowerButtonState.Value = muteHorn;
+        //    }));
+        //}
 
         private void PowerButtonState_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<bool> e)
         {

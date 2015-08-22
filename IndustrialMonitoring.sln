@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostConsole", "HostConsole\
 		{15B3E0D2-6217-493A-A690-158C497F5318} = {15B3E0D2-6217-493A-A690-158C497F5318}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FillingServiceLibrary", "FillingServiceLibrary\FillingServiceLibrary.csproj", "{3B72EA36-9901-49C2-B37D-D34D2BDA5138}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{E1170C43-F8DD-4570-B5E4-9B064B75267A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1170C43-F8DD-4570-B5E4-9B064B75267A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1170C43-F8DD-4570-B5E4-9B064B75267A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B72EA36-9901-49C2-B37D-D34D2BDA5138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B72EA36-9901-49C2-B37D-D34D2BDA5138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B72EA36-9901-49C2-B37D-D34D2BDA5138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B72EA36-9901-49C2-B37D-D34D2BDA5138}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

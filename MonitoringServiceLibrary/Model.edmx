@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Items">
           <Key>
             <PropertyRef Name="ItemId" />
@@ -19,6 +19,7 @@
           <Property Name="ScanCycle" Type="int" Nullable="false" />
           <Property Name="SaveInItemsLogWhen" Type="int" Nullable="false" />
           <Property Name="SaveInItemsLogLastWhen" Type="int" Nullable="false" />
+          <Property Name="DefinationType" Type="int" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -71,6 +72,13 @@
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Tabs">
           <Key>
             <PropertyRef Name="TabId" />
@@ -103,6 +111,14 @@
           <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersServicesPermissions">
+          <Key>
+            <PropertyRef Name="UserServicePermissionId" />
+          </Key>
+          <Property Name="UserServicePermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_ItemsLog_Items">
           <End Role="Items" Type="Self.Items" Multiplicity="1" />
@@ -219,10 +235,12 @@
           <EntitySet Name="NotificationItems" EntityType="Self.NotificationItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLog" EntityType="Self.NotificationItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLogLatest" EntityType="Self.NotificationItemsLogLatest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tabs" EntityType="Self.Tabs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TabsItems" EntityType="Self.TabsItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersItemsPermissions" EntityType="Self.UsersItemsPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersServicesPermissions" EntityType="Self.UsersServicesPermissions" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ItemsLog_Items" Association="Self.FK_ItemsLog_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLog" EntitySet="ItemsLog" />
@@ -260,8 +278,7 @@
             <End Role="UsersItemsPermissions" EntitySet="UsersItemsPermissions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IndustrialMonitoringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -284,6 +301,7 @@
           <NavigationProperty Name="NotificationItems" Relationship="Self.FK_NotificationItems_Items" FromRole="Items" ToRole="NotificationItems" />
           <NavigationProperty Name="TabsItems" Relationship="Self.FK_TabsItems_Items" FromRole="Items" ToRole="TabsItems" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="Items" ToRole="UsersItemsPermissions" />
+          <Property Name="DefinationType" Type="Int32" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -537,7 +555,24 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersItemsPermissions" EntitySet="UsersItemsPermissions" />
           </AssociationSet>
+          <EntitySet Name="Services" EntityType="IndustrialMonitoringModel.Service" />
+          <EntitySet Name="UsersServicesPermissions" EntityType="IndustrialMonitoringModel.UsersServicesPermission" />
         </EntityContainer>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UsersServicesPermission">
+          <Key>
+            <PropertyRef Name="UserServicePermissionId" />
+          </Key>
+          <Property Name="UserServicePermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -547,6 +582,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="DefinationType" ColumnName="DefinationType" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
                 <ScalarProperty Name="ItemType" ColumnName="ItemType" />
@@ -650,6 +686,23 @@
                 <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.Service">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersServicesPermissions">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.UsersServicesPermission">
+              <MappingFragment StoreEntitySet="UsersServicesPermissions">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserServicePermissionId" ColumnName="UserServicePermissionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
