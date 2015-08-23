@@ -68,18 +68,22 @@ namespace HostConsole
             host4.Description.Behaviors.Add(smb4);
 
             ServiceMetadataBehavior smb5 = new ServiceMetadataBehavior();
+            smb5.HttpGetEnabled = false;
             smb5.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
             host5.Description.Behaviors.Add(smb5);
 
             ServiceMetadataBehavior smb6 = new ServiceMetadataBehavior();
+            smb6.HttpGetEnabled = false;
             smb6.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
             host6.Description.Behaviors.Add(smb6);
 
             ServiceMetadataBehavior smb7 = new ServiceMetadataBehavior();
+            smb7.HttpGetEnabled = false;
             smb7.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
             host7.Description.Behaviors.Add(smb7);
 
             ServiceMetadataBehavior smb8 = new ServiceMetadataBehavior();
+            smb8.HttpGetEnabled = false;
             smb8.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
             host8.Description.Behaviors.Add(smb8);
 

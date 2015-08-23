@@ -11,45 +11,86 @@ namespace FillingServiceLibrary
     {
         public double GetPreHeatingZoneTemperature()
         {
-            SqlConnection connection=new SqlConnection(Statics.WinCC_ConnectionString);
-            string cmd = @"SELECT TOP 1 * FROM Logs WHERE Logs.ItemId=1 ORDER BY LogId DESC;";
-            SqlCommand command = new SqlCommand(cmd,connection);
+            double value = 0;
+            try
+            {
+                SqlConnection connection = new SqlConnection(Statics.WinCC_ConnectionString);
+                connection.Open();
+                string cmd = @"SELECT TOP 1 * FROM Logs WHERE Logs.ItemId=1 ORDER BY LogId DESC;";
+                SqlCommand command = new SqlCommand(cmd, connection);
 
-            SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
 
-            double value = (double) reader["ItemValue"];
+                value = (double)reader["ItemValue"];
 
-            connection.Close();
+                connection.Close();
+
+                string output = string.Format("Pre Heating Zone Temperature : {0} , Time : {1}", value, DateTime.Now);
+                Console.WriteLine(output);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             return value;
         }
 
         public double GetSterilizerZoneTemperature()
         {
-            SqlConnection connection = new SqlConnection(Statics.WinCC_ConnectionString);
-            string cmd = @"SELECT TOP 1 * FROM Logs WHERE Logs.ItemId=2 ORDER BY LogId DESC;";
-            SqlCommand command = new SqlCommand(cmd, connection);
+            double value = 0;
+            try
+            {
+                SqlConnection connection = new SqlConnection(Statics.WinCC_ConnectionString);
+                connection.Open();
+                string cmd = @"SELECT TOP 1 * FROM Logs WHERE Logs.ItemId=2 ORDER BY LogId DESC;";
+                SqlCommand command = new SqlCommand(cmd, connection);
 
-            SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
 
-            double value = (double)reader["ItemValue"];
+                value = (double)reader["ItemValue"];
 
-            connection.Close();
+                connection.Close();
+
+                string output = string.Format("Sterilizer Zone Temperature : {0} , Time : {1}", value, DateTime.Now);
+                Console.WriteLine(output);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
 
             return value;
         }
 
         public double GetCoolingZoneTemperature()
         {
-            SqlConnection connection = new SqlConnection(Statics.WinCC_ConnectionString);
-            string cmd = @"SELECT TOP 1 * FROM Logs WHERE Logs.ItemId=3 ORDER BY LogId DESC;";
-            SqlCommand command = new SqlCommand(cmd, connection);
+            double value = 0;
+            try
+            {
+                SqlConnection connection = new SqlConnection(Statics.WinCC_ConnectionString);
+                connection.Open();
+                string cmd = @"SELECT TOP 1 * FROM Logs WHERE Logs.ItemId=3 ORDER BY LogId DESC;";
+                SqlCommand command = new SqlCommand(cmd, connection);
 
-            SqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
 
-            double value = (double)reader["ItemValue"];
+                value = (double)reader["ItemValue"];
 
-            connection.Close();
+                connection.Close();
+
+                string output = string.Format("Cooling Zone Temperature : {0} , Time : {1}", value, DateTime.Now);
+                Console.WriteLine(output);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
 
             return value;
         }

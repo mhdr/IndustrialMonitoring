@@ -9,6 +9,6 @@ namespace FillingServiceLibrary
     public class Statics
     {
         public static string WinCC_ConnectionString =
-           @"Data Source=(local)\WINCCFLEXEXPRESS;initial catalog=BSLogger;Integrated Security=True;MultipleActiveResultSets=True";
+           @"Data Source=(local)\WINCCFLEXEXPRESS;initial catalog=TemperatureRecorder;Integrated Security=True;MultipleActiveResultSets=True";
     }
 }

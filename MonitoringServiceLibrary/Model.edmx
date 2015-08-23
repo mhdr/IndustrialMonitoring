@@ -12,7 +12,7 @@
           <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ItemType" Type="int" Nullable="false" />
-          <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Location" Type="nvarchar(max)" />
           <Property Name="SaveInItemsLogTimeInterval" Type="int" Nullable="false" />
           <Property Name="SaveInItemsLogLastesTimeInterval" Type="int" Nullable="false" />
           <Property Name="ShowInUITimeInterval" Type="int" Nullable="false" />
@@ -289,7 +289,7 @@
           <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ItemType" Type="Int32" Nullable="false" />
-          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SaveInItemsLogTimeInterval" Type="Int32" Nullable="false" />
           <Property Name="SaveInItemsLogLastesTimeInterval" Type="Int32" Nullable="false" />
           <Property Name="ShowInUITimeInterval" Type="Int32" Nullable="false" />

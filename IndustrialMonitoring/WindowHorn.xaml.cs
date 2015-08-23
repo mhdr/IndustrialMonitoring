@@ -68,23 +68,10 @@ namespace IndustrialMonitoring
                     LedHorn.Value = horn2;
                     LedAlarm.Value = hornHMI;
                     PowerButtonState.Value = muteHorn;
+                    BusyIndicator2.IsBusy = false;
                 }));
             },null,0,2000);
         }
-
-        //private void Fetch(object state)
-        //{
-        //    bool hornHMI = ProcessDataService.GetHornHMI();
-        //    bool horn2 = ProcessDataService.GetHorn();
-        //    var muteHorn = ProcessDataService.GetMuteHorn();
-
-        //    Dispatcher.BeginInvoke(new Action(() =>
-        //    {
-        //        LedHorn.Value = horn2;
-        //        LedAlarm.Value = hornHMI;
-        //        PowerButtonState.Value = muteHorn;
-        //    }));
-        //}
 
         private void PowerButtonState_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<bool> e)
         {
@@ -100,6 +87,8 @@ namespace IndustrialMonitoring
 
         private void PowerButtonState_OnClick(object sender, RoutedEventArgs e)
         {
+            BusyIndicator2.IsBusy = true;
+
             if (PowerButtonState.Value)
             {
                 ProcessDataService.MuteHorn();

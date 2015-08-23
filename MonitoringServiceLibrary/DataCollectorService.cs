@@ -15,6 +15,11 @@ namespace MonitoringServiceLibrary
             //DataCollector dataCollector = DataCollector.Collector;
             //dataCollector.Start();
 
+            //Thread.Sleep(1000 * 10);
+            //NotificationCollector notificationCollector = new NotificationCollector();
+            //notificationCollector.Start();
+
+
             try
             {
                 DataCollector dataCollector = DataCollector.Collector;

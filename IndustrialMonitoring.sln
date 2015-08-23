@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostConsole", "HostConsole\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FillingServiceLibrary", "FillingServiceLibrary\FillingServiceLibrary.csproj", "{3B72EA36-9901-49C2-B37D-D34D2BDA5138}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FillingHostConsole", "FillingHostConsole\FillingHostConsole.csproj", "{19ABB103-8F93-4D76-8B9E-F53A99D5473A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{D6523067-ECC7-4A69-A13D-A4E2F96DD975}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{3B72EA36-9901-49C2-B37D-D34D2BDA5138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B72EA36-9901-49C2-B37D-D34D2BDA5138}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B72EA36-9901-49C2-B37D-D34D2BDA5138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19ABB103-8F93-4D76-8B9E-F53A99D5473A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19ABB103-8F93-4D76-8B9E-F53A99D5473A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19ABB103-8F93-4D76-8B9E-F53A99D5473A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19ABB103-8F93-4D76-8B9E-F53A99D5473A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6523067-ECC7-4A69-A13D-A4E2F96DD975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6523067-ECC7-4A69-A13D-A4E2F96DD975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6523067-ECC7-4A69-A13D-A4E2F96DD975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6523067-ECC7-4A69-A13D-A4E2F96DD975}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

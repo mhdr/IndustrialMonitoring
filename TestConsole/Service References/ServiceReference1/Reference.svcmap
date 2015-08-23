@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="310efc2c-f655-4b27-8731-12555984becb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.10.5:9011/MonitoringService/ProcessDataService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProcessDataService.xsd" MetadataType="Schema" ID="fa647582-510a-4c6f-bc2b-4d24d6f70f01" SourceId="1" SourceUrl="http://192.168.10.5:9011/MonitoringService/ProcessDataService?xsd=xsd1" />
+    <MetadataFile FileName="ProcessDataService1.xsd" MetadataType="Schema" ID="cc856e1e-b4aa-4c17-83e3-790518ac5be5" SourceId="1" SourceUrl="http://192.168.10.5:9011/MonitoringService/ProcessDataService?xsd=xsd0" />
+    <MetadataFile FileName="ProcessDataService.disco" MetadataType="Disco" ID="121bf4ca-3b36-46c9-9eae-67dd97cacc6b" SourceId="1" SourceUrl="http://192.168.10.5:9011/MonitoringService/ProcessDataService?disco" />
+    <MetadataFile FileName="ProcessDataService.wsdl" MetadataType="Wsdl" ID="d2ba4ce7-385b-48e5-978a-e9ecd1878246" SourceId="1" SourceUrl="http://192.168.10.5:9011/MonitoringService/ProcessDataService?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
