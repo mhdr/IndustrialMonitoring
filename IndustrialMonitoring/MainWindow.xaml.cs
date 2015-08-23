@@ -86,7 +86,10 @@ namespace IndustrialMonitoring
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            
+            if (Lib.Static.UserServicesPermission.Contains(1))
+            {
+                MenuItemHorn.IsEnabled = true;
+            }
         }
 
         private void Resume()

@@ -115,5 +115,29 @@ namespace MonitoringServiceLibrary
                 return 0;
             }
         }
+
+        public List<int> GetUserServicesPermission(int userId)
+        {
+            try
+            {
+                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+                var permissions = entities.UsersServicesPermissions.Where(x => x.UserId == userId).ToList();
+
+                var ids=new List<int>();
+
+                foreach (UsersServicesPermission u in permissions)
+                {
+                    ids.Add(u.ServiceId);
+                }
+
+                return ids;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return null;
+        }
     }
 }

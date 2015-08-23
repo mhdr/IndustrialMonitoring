@@ -10,5 +10,6 @@ namespace IndustrialMonitoring.Lib
     public class Static
     {
         public static UserViewModel CurrentUser { get; set; }
+        public static List<int> UserServicesPermission { get; set; }
     }
 }

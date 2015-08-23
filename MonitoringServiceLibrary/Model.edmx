@@ -228,6 +228,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UsersServicesPermissions_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="UsersServicesPermissions" Type="Self.UsersServicesPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="UsersServicesPermissions">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersServicesPermissions_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UsersServicesPermissions" Type="Self.UsersServicesPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersServicesPermissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="IndustrialMonitoringModelStoreContainer">
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLog" EntityType="Self.ItemsLog" Schema="dbo" store:Type="Tables" />
@@ -276,6 +300,14 @@
           <AssociationSet Name="FK_UsersItemsPermissions_Users" Association="Self.FK_UsersItemsPermissions_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersItemsPermissions" EntitySet="UsersItemsPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersServicesPermissions_Services" Association="Self.FK_UsersServicesPermissions_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersServicesPermissions_Users" Association="Self.FK_UsersServicesPermissions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -389,6 +421,7 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="Users" ToRole="UsersItemsPermissions" />
+          <NavigationProperty Name="UsersServicesPermissions" Relationship="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" FromRole="User" ToRole="UsersServicesPermission" />
         </EntityType>
         <EntityType Name="UsersItemsPermission">
           <Key>
@@ -557,6 +590,14 @@
           </AssociationSet>
           <EntitySet Name="Services" EntityType="IndustrialMonitoringModel.Service" />
           <EntitySet Name="UsersServicesPermissions" EntityType="IndustrialMonitoringModel.UsersServicesPermission" />
+          <AssociationSet Name="FK_UsersServicesPermissions_Services" Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Services">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="UsersServicesPermission" EntitySet="UsersServicesPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersServicesPermissions_Users" Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UsersServicesPermission" EntitySet="UsersServicesPermissions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Service">
           <Key>
@@ -564,6 +605,7 @@
           </Key>
           <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ServiceName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UsersServicesPermissions" Relationship="IndustrialMonitoringModel.FK_UsersServicesPermissions_Services" FromRole="Service" ToRole="UsersServicesPermission" />
         </EntityType>
         <EntityType Name="UsersServicesPermission">
           <Key>
@@ -572,7 +614,33 @@
           <Property Name="UserServicePermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Service" Relationship="IndustrialMonitoringModel.FK_UsersServicesPermissions_Services" FromRole="UsersServicesPermission" ToRole="Service" />
+          <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" FromRole="UsersServicesPermission" ToRole="User" />
         </EntityType>
+        <Association Name="FK_UsersServicesPermissions_Services">
+          <End Type="IndustrialMonitoringModel.Service" Role="Service" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.UsersServicesPermission" Role="UsersServicesPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="UsersServicesPermission">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersServicesPermissions_Users">
+          <End Type="IndustrialMonitoringModel.User" Role="User" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.UsersServicesPermission" Role="UsersServicesPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersServicesPermission">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

@@ -14,7 +14,14 @@ namespace MonitoringServiceLibrary
     
     public partial class Service
     {
+        public Service()
+        {
+            this.UsersServicesPermissions = new HashSet<UsersServicesPermission>();
+        }
+    
         public int ServiceId { get; set; }
         public string ServiceName { get; set; }
+    
+        public virtual ICollection<UsersServicesPermission> UsersServicesPermissions { get; set; }
     }
 }

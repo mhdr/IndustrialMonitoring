@@ -60,8 +60,8 @@
                     <telerik:RadMenuItem Name="MenuItemChangePasswordWindow" Header="Change password" Click="MenuItemChangePasswordWindow_OnClick"/>
                 </telerik:RadMenuItem>
 
-                <telerik:RadMenuItem Header="Services">
-                    <telerik:RadMenuItem Name="MenuItemHorn" Header="Horn" Click="MenuItemHorn_OnClick"/>
+                <telerik:RadMenuItem Name="MenuItemServices" Header="Services">
+                    <telerik:RadMenuItem Name="MenuItemHorn" Header="Horn" Click="MenuItemHorn_OnClick" IsEnabled="False"/>
                 </telerik:RadMenuItem>
                 
                 <telerik:RadMenuItem Name="MenuItemHelp" Header="Help">

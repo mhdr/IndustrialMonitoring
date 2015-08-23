@@ -45,6 +45,9 @@ namespace IndustrialMonitoring
             if (result)
             {
                 Lib.Static.CurrentUser = UserServiceClient.GetUserByUserName(userName);
+                Lib.Static.UserServicesPermission =
+                    UserServiceClient.GetUserServicesPermission(Lib.Static.CurrentUser.UserId);
+
                 MainWindow mainWindow=new MainWindow();
                 mainWindow.Show();
                 this.Close();
