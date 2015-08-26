@@ -10,10 +10,8 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            ServiceReference1.ProcessDataServiceClient processDataServiceClient =
-                new ServiceReference1.ProcessDataServiceClient();
-
-            Console.WriteLine(processDataServiceClient.GetSterilizerZoneTemperature());
+            UserManagement userManagement=new UserManagement();
+            userManagement.ChangePassword(4,"test");
 
             Console.ReadKey();
         }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.UserServiceReference;
+using SharedLibrary;
 
 namespace IndustrialMonitoring
 {
@@ -58,7 +59,7 @@ namespace IndustrialMonitoring
                     return false;
                 }
 
-                if (Static.CurrentUser.Password != oldPassword)
+                if (Static.CurrentUser.Password != Hash.GetHash(oldPassword))
                 {
                     MessageBox.Show("Old password is not correct");
                     return false;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using MonitoringServiceLibrary.ViewModels;
@@ -34,7 +35,8 @@ namespace MonitoringServiceLibrary
         public bool Authorize(string userName, string password)
         {
             var Entities = new IndustrialMonitoringEntities();
-            if (Entities.Users.Any(x => x.UserName == userName && x.Password == password))
+            string pass2 = GetHash(password);
+            if (Entities.Users.Any(x => x.UserName == userName && x.Password ==pass2))
             {
                 return true;
             }
@@ -99,12 +101,13 @@ namespace MonitoringServiceLibrary
                     return -1;
                 }
 
-                if (user.Password != oldPassword)
+                string pass2 = GetHash(oldPassword);
+                if (user.Password != pass2)
                 {
                     return -2;
                 }
 
-                user.Password = newPassword;
+                user.Password = GetHash(newPassword);
 
                 entities.SaveChanges();
                 return 1;
@@ -114,6 +117,17 @@ namespace MonitoringServiceLibrary
                 // TODO log
                 return 0;
             }
+        }
+
+        private string GetHash(string str)
+        {
+            SHA256 sha256 = SHA256Managed.Create();
+
+            byte[] passBytes = Encoding.UTF8.GetBytes(str);
+            byte[] hashedBytes = sha256.ComputeHash(passBytes);
+            string hashed = Encoding.UTF8.GetString(hashedBytes);
+
+            return hashed;
         }
 
         public List<int> GetUserServicesPermission(int userId)
