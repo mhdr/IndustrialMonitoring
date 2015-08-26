@@ -608,7 +608,11 @@ namespace IndustrialMonitoring
             WindowChangePassword windowChangePassword=new WindowChangePassword();
             windowChangePassword.UserServiceClient = this.UserServiceClient;
             windowChangePassword.ShowDialog();
-            Application.Current.Shutdown();
+
+            if (windowChangePassword.ChangePasswordCount>0)
+            {
+                Application.Current.Shutdown();    
+            }
         }
 
         private void MenuItemTools_OnSubmenuOpened(object sender, RadRoutedEventArgs e)

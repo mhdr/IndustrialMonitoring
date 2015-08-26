@@ -22,6 +22,7 @@ namespace IndustrialMonitoring
     /// </summary>
     public partial class WindowChangePassword : Window
     {
+        private int _changePasswordCount = 0;
         private UserServiceClient _userServiceClient;
         public WindowChangePassword()
         {
@@ -34,6 +35,12 @@ namespace IndustrialMonitoring
             set { _userServiceClient = value; }
         }
 
+        public int ChangePasswordCount
+        {
+            get { return _changePasswordCount; }
+            set { _changePasswordCount = value; }
+        }
+
         private void WindowChangePassword_OnLoaded(object sender, RoutedEventArgs e)
         {
             PasswordBoxOldPassword.Focus();
@@ -42,7 +49,10 @@ namespace IndustrialMonitoring
 
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
-            ChangePassword();
+            if (ChangePassword())
+            {
+                ChangePasswordCount++;
+            }
         }
 
         private bool ChangePassword()
@@ -98,8 +108,11 @@ namespace IndustrialMonitoring
 
         private void ButtonSaveAndClose_OnClick(object sender, RoutedEventArgs e)
         {
-            ChangePassword();
-            this.Close();
+            if (ChangePassword())
+            {
+                ChangePasswordCount++;
+                this.Close();
+            }
         }
 
         private void ButtonClose_OnClick(object sender, RoutedEventArgs e)
