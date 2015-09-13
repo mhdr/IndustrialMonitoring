@@ -146,7 +146,7 @@ namespace IndustrialMonitoring
             var items = ProcessDataServiceClient.GetItemsForTab(model.TabId);
 
             RadTabItem radTabItem = new RadTabItem();
-            radTabItem.Name = string.Format("TabItem{0}", tabsViewModel.TabName);
+            radTabItem.Name = string.Format("TabItem{0}", tabsViewModel.TabName).Replace(" ","");
             radTabItem.MinWidth= 80;
             radTabItem.Height = 25;
 
@@ -158,7 +158,7 @@ namespace IndustrialMonitoring
             radTabItem.VerticalContentAlignment = VerticalAlignment.Center;
 
             WrapPanel wrapPanel = new WrapPanel();
-            wrapPanel.Name = string.Format("WrapPanel{0}", tabsViewModel.TabName);
+            wrapPanel.Name = string.Format("WrapPanel{0}", tabsViewModel.TabName).Replace(" ","");
 
             radTabItem.Content = wrapPanel;
 
