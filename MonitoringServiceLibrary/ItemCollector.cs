@@ -210,7 +210,7 @@ namespace MonitoringServiceLibrary
                     else if (this.Type == ItemType.Analog)
                     {
                         var data = SubscriberInt.ReadData();
-                        value = data.GetValue().ToString();
+                        value = Math.Round(data.GetValue(),2).ToString();
                     }
                 }
                 else if (this.DefinationType == ItemDefinationType.CustomDefiend)
@@ -218,13 +218,13 @@ namespace MonitoringServiceLibrary
                     switch (this.ItemId)
                     {
                         case 10:
-                            value = BSProcessDataServiceClient.GetPreHeatingZoneTemperature().ToString();
+                            value = (BSProcessDataServiceClient.GetPreHeatingZoneTemperature()/10).ToString();
                             break;
                         case 13:
                             value = BSProcessDataServiceClient.GetSterilizerZoneTemperature().ToString();
                             break;
                         case 14:
-                            value = BSProcessDataServiceClient.GetCoolingZoneTemperature().ToString();
+                            value = (BSProcessDataServiceClient.GetCoolingZoneTemperature()/10).ToString();
                             break;
                     }
 
