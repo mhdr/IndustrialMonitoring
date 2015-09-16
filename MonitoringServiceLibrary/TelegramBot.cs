@@ -140,7 +140,11 @@ Has Alarm : {3}
                                                     output += c;
                                                 }
 
-                                                await bot.SendTextMessage(update.Message.Chat.Id, output);
+                                                if (!string.IsNullOrWhiteSpace(output))
+                                                {
+                                                    await bot.SendTextMessage(update.Message.Chat.Id, output);
+                                                }
+                                                
                                             }
                                         }
                                     }
