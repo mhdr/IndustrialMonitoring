@@ -233,6 +233,11 @@ namespace MonitoringServiceLibrary
 
                 lock (padlock)
                 {
+                    if (value == null)
+                    {
+                        return;
+                    }
+
                     if (LastItemLog == null)
                     {
                         SaveValueInItemsLog(value);

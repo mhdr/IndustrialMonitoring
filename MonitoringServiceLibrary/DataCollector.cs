@@ -78,6 +78,9 @@ namespace MonitoringServiceLibrary
                 Thread.Sleep(1);
             }
 
+            TelegramBot telegramBot=TelegramBot.Initialize();
+            telegramBot.StartResponseServer();
+
             this._serverStatus = ServerStatus.Run;
         }
 
