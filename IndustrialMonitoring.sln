@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialMonitoring", "IndustrialMonitoring\IndustrialMonitoring.csproj", "{6DC5D2C4-BB92-4BBE-9769-86758C45FE71}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -36,6 +36,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FillingHostConsole", "FillingHostConsole\FillingHostConsole.csproj", "{19ABB103-8F93-4D76-8B9E-F53A99D5473A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{D6523067-ECC7-4A69-A13D-A4E2F96DD975}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramBot", "TelegramBot\TelegramBot.csproj", "{C2A9C7D8-785D-4F8B-828A-9763878FCD75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{D6523067-ECC7-4A69-A13D-A4E2F96DD975}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6523067-ECC7-4A69-A13D-A4E2F96DD975}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6523067-ECC7-4A69-A13D-A4E2F96DD975}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2A9C7D8-785D-4F8B-828A-9763878FCD75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A9C7D8-785D-4F8B-828A-9763878FCD75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A9C7D8-785D-4F8B-828A-9763878FCD75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A9C7D8-785D-4F8B-828A-9763878FCD75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
