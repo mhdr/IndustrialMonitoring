@@ -118,6 +118,9 @@ namespace MonitoringServiceLibrary
 
                                 entities.NotificationItemsLogs.Add(notificationItemsLog);
                                 entities.SaveChanges();
+
+                                var bot = NotificationsBot.Instance;
+                                bot.SendNotification(notificationItemsLog.NotificationLogId);
                             }
                         }
                         else
@@ -131,6 +134,9 @@ namespace MonitoringServiceLibrary
 
                                 entities.NotificationItemsLogs.Add(notificationItemsLog);
                                 entities.SaveChanges();
+
+                                var bot = NotificationsBot.Instance;
+                                bot.SendNotification(notificationItemsLog.NotificationLogId);
                             }
                         }
 

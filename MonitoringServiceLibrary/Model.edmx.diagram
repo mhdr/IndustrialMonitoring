@@ -28,6 +28,8 @@
         <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersServicesPermission" Width="1.5" PointX="6.75" PointY="0.75" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Services" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Bot" Width="1.5" PointX="8" PointY="4" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_Bot_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

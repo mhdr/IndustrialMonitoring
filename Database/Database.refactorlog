@@ -217,4 +217,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UserServicePermissionId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="413b6f61-dff9-4d87-a8ef-6a69412bf1f7" ChangeDateTime="09/19/2015 06:28:07">
+    <Property Name="ElementName" Value="[dbo].[Bot].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BotProcessId" />
+  </Operation>
 </Operations>

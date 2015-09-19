@@ -39,10 +39,33 @@ namespace TelegramBot
                             string log = string.Format("{0}", msg);
                             Console.WriteLine(log);
 
+                            IndustrialMonitoringEntities entities=new IndustrialMonitoringEntities();
+
+                            int chatId = update.Message.From.Id;
+
+                            if (!entities.Bots.Any(x => x.ChatId == chatId))
+                            {
+                                var matched = entities.Bots.FirstOrDefault(x => x.Token == msg);
+
+                                if (matched != null)
+                                {
+                                    matched.ChatId = chatId;
+                                    matched.IsAuthorized = true;
+                                    entities.SaveChanges();
+
+                                    await bot.SendTextMessage(update.Message.Chat.Id, "Your token is saved");
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(update.Message.Chat.Id, "Your aren't authorized to access,please send your token.");
+                                }
+
+                                offset = update.Id + 1;
+                                continue;
+                            }
+
                             if (msg == "/list")
                             {
-                                var entities = new IndustrialMonitoringEntities();
-
                                 string output = "";
 
                                 var items = entities.Items;
@@ -69,7 +92,6 @@ Item Id : {1}
 
                                     if (int.TryParse(parts[1], out id))
                                     {
-                                        var entities = new IndustrialMonitoringEntities();
                                         if (entities.Items.Any(x => x.ItemId == id))
                                         {
                                             var item = entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == id);
@@ -125,10 +147,10 @@ Date : {2}", item.Item.ItemName, item.Value, item.Time);
                                             {
                                                 string c = string.Format(@"Item : {0}
 Description : {1}
-Date : {2}
-Has Alarm : {3}
+Has Alarm : {2}
+Date : {3}
 
-", notificationLog.ItemName, notificationLog.NotificationMsg, notificationLog.DateTime, notificationLog.HasFault);
+", notificationLog.ItemName, notificationLog.NotificationMsg, notificationLog.HasFault, notificationLog.DateTime);
 
                                                 output += c;
                                             }

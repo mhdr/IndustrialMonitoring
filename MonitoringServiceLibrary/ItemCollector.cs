@@ -198,7 +198,7 @@ namespace MonitoringServiceLibrary
         {
             try
             {
-                string value = null;
+                string value = "-1000";
 
                 if (this.DefinationType == ItemDefinationType.SqlDefined)
                 {
@@ -234,6 +234,11 @@ namespace MonitoringServiceLibrary
                 lock (padlock)
                 {
                     if (value == null)
+                    {
+                        return;
+                    }
+
+                    if (value == "-1000")
                     {
                         return;
                     }

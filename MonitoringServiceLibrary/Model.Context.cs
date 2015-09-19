@@ -37,5 +37,6 @@ namespace MonitoringServiceLibrary
         public virtual DbSet<UsersItemsPermission> UsersItemsPermissions { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<UsersServicesPermission> UsersServicesPermissions { get; set; }
+        public virtual DbSet<Bot> Bots { get; set; }
     }
 }

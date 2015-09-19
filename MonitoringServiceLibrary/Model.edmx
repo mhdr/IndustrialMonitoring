@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bot">
+          <Key>
+            <PropertyRef Name="BotProcessId" />
+          </Key>
+          <Property Name="BotProcessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsAuthorized" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Items">
           <Key>
             <PropertyRef Name="ItemId" />
@@ -120,6 +130,18 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ServiceId" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Bot_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Bot" Type="Self.Bot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Bot">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemsLog_Items">
           <End Role="Items" Type="Self.Items" Multiplicity="1" />
           <End Role="ItemsLog" Type="Self.ItemsLog" Multiplicity="*" />
@@ -253,6 +275,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="IndustrialMonitoringModelStoreContainer">
+          <EntitySet Name="Bot" EntityType="Self.Bot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLog" EntityType="Self.ItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogLatest" EntityType="Self.ItemsLogLatest" Schema="dbo" store:Type="Tables" />
@@ -265,6 +288,10 @@
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersItemsPermissions" EntityType="Self.UsersItemsPermissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersServicesPermissions" EntityType="Self.UsersServicesPermissions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bot_Users" Association="Self.FK_Bot_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Bot" EntitySet="Bot" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemsLog_Items" Association="Self.FK_ItemsLog_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLog" EntitySet="ItemsLog" />
@@ -422,6 +449,7 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="Users" ToRole="UsersItemsPermissions" />
           <NavigationProperty Name="UsersServicesPermissions" Relationship="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" FromRole="User" ToRole="UsersServicesPermission" />
+          <NavigationProperty Name="Bots" Relationship="IndustrialMonitoringModel.FK_Bot_Users" FromRole="User" ToRole="Bot" />
         </EntityType>
         <EntityType Name="UsersItemsPermission">
           <Key>
@@ -598,6 +626,11 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UsersServicesPermission" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
+          <EntitySet Name="Bots" EntityType="IndustrialMonitoringModel.Bot" />
+          <AssociationSet Name="FK_Bot_Users" Association="IndustrialMonitoringModel.FK_Bot_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Bot" EntitySet="Bots" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Service">
           <Key>
@@ -637,6 +670,29 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="UsersServicesPermission">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Bot">
+          <Key>
+            <PropertyRef Name="BotProcessId" />
+          </Key>
+          <Property Name="BotProcessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_Bot_Users" FromRole="Bot" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Bot_Users">
+          <End Type="IndustrialMonitoringModel.User" Role="User" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.Bot" Role="Bot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Bot">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -771,6 +827,17 @@
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserServicePermissionId" ColumnName="UserServicePermissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bots">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.Bot">
+              <MappingFragment StoreEntitySet="Bot">
+                <ScalarProperty Name="IsAuthorized" ColumnName="IsAuthorized" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="BotProcessId" ColumnName="BotProcessId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
