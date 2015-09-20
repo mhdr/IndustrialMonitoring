@@ -54,6 +54,7 @@ namespace TelegramBot
                             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
                             int chatId = update.Message.From.Id;
+                            var user = entities.Bots.FirstOrDefault(x => x.ChatId == chatId).User;
 
                             if (!entities.Bots.Any(x => x.ChatId == chatId))
                             {
@@ -69,7 +70,7 @@ namespace TelegramBot
                                 }
                                 else
                                 {
-                                    await bot.SendTextMessage(update.Message.Chat.Id, "Your aren't authorized to access,please send your token.");
+                                    await bot.SendTextMessage(update.Message.Chat.Id, "You aren't authorized to access,please send your token.");
                                 }
 
                                 offset = update.Id + 1;
@@ -79,10 +80,10 @@ namespace TelegramBot
                             if (msg == "/list")
                             {
                                 string output = "";
+                                
+                                var items = entities.UsersItemsPermissions.Where(x=>x.UserId==user.UserId);
 
-                                var items = entities.Items;
-
-                                foreach (Item item in items)
+                                foreach (var item in items)
                                 {
                                     var category =
                                         entities.TabsItems.FirstOrDefault(x => x.ItemId == item.ItemId).Tab.TabName;
@@ -91,12 +92,36 @@ namespace TelegramBot
 Item Id : {1}
 Category : {2}
 
-", item.ItemName, item.ItemId, category);
+", item.Item.ItemName, item.ItemId, category);
 
                                     output += c;
                                 }
 
                                 await bot.SendTextMessage(update.Message.Chat.Id, output);
+                            }
+                            else if (msg == "/get all")
+                            {
+                                var items = entities.UsersItemsPermissions.Where(x => x.UserId == user.UserId);
+
+                                string output = "";
+
+                                foreach (UsersItemsPermission item in items)
+                                {
+                                    var itemLog = entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == item.ItemId);
+                                    var category = entities.TabsItems.FirstOrDefault(x => x.ItemId == item.ItemId).Tab.TabName;
+
+                                    string c = string.Format(@"Item Name : {0}
+Item Id : {1}
+Category : {2}
+Value : {3}
+Date : {4}
+
+", item.Item.ItemName, item.ItemId, category, itemLog.Value, itemLog.Time);
+
+                                    output += c;
+                                }
+
+                                await bot.SendTextMessage(chatId, output);
                             }
                             else if (msg.StartsWith("/get "))
                             {
@@ -114,6 +139,15 @@ Category : {2}
 
                                             if (item != null)
                                             {
+                                                if (!
+                                                    entities.UsersItemsPermissions.Any(
+                                                        x => x.UserId == user.UserId && x.ItemId == item.ItemId))
+                                                {
+                                                    await bot.SendTextMessage(chatId, "You don't have access to this item");
+                                                    offset = update.Id + 1;
+                                                    continue;
+                                                }
+
                                                 var category =
     entities.TabsItems.FirstOrDefault(x => x.ItemId == item.ItemId).Tab.TabName;
 
@@ -154,7 +188,7 @@ Date : {4}", item.Item.ItemName, item.ItemId, category, item.Value, item.Time);
                                         if (int.TryParse(hourStr, out hour))
                                         {
                                             NotificationService notificationService = new NotificationService();
-                                            var notifications = notificationService.GetNotificationLogs(1,
+                                            var notifications = notificationService.GetNotificationLogs(user.UserId,
                                                 DateTime.Now - new TimeSpan(hour, 0, 0),
                                                 DateTime.Now).OrderBy(x => x.DateTime);
 
@@ -177,7 +211,7 @@ Description : {3}
 Has Alarm : {4}
 Date : {5}
 
-", notificationLog.ItemName, notificationLog.ItemId, category,notificationLog.NotificationMsg, notificationLog.HasFault, notificationLog.DateTime);
+", notificationLog.ItemName, notificationLog.ItemId, category, notificationLog.NotificationMsg, notificationLog.HasFault, notificationLog.DateTime);
 
                                                 output += c;
                                             }
