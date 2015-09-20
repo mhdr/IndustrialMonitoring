@@ -119,8 +119,15 @@ namespace MonitoringServiceLibrary
                                 entities.NotificationItemsLogs.Add(notificationItemsLog);
                                 entities.SaveChanges();
 
-                                var bot = NotificationsBot.Instance;
-                                bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                try
+                                {
+                                    var bot = NotificationsBot.Instance;
+                                    bot.HandleSendNotification(notificationItemsLog.NotificationLogId);
+                                }
+                                catch (Exception)
+                                {
+                                    
+                                }
                             }
                         }
                         else
@@ -135,8 +142,15 @@ namespace MonitoringServiceLibrary
                                 entities.NotificationItemsLogs.Add(notificationItemsLog);
                                 entities.SaveChanges();
 
-                                var bot = NotificationsBot.Instance;
-                                bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                try
+                                {
+                                    var bot = NotificationsBot.Instance;
+                                    bot.HandleSendNotification(notificationItemsLog.NotificationLogId);
+                                }
+                                catch (Exception)
+                                {
+                                    
+                                }
                             }
                         }
 

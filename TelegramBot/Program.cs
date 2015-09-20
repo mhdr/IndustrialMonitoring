@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MonitoringServiceLibrary;
 using MonitoringServiceLibrary.ViewModels;
+using SharedLibrary;
 using Telegram.Bot.Types;
 
 namespace TelegramBot
@@ -18,7 +19,7 @@ namespace TelegramBot
             Console.ReadKey();
         }
 
-        public static async void StartResponseServer()
+        public static async Task StartResponseServer()
         {
             var bot = new Telegram.Bot.Api("133038323:AAFXVhA9Htj3p0a0Sl3hydt65Y7fl2AOVEI");
 
@@ -26,7 +27,18 @@ namespace TelegramBot
 
             while (true)
             {
-                var result = await bot.GetUpdates(offset);
+                Update[] result = new Update[] { };
+
+                try
+                {
+                    result = await bot.GetUpdates(offset);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogTelegramBot(ex);
+                    continue;
+                }
+
 
                 foreach (Update update in result)
                 {
@@ -39,7 +51,7 @@ namespace TelegramBot
                             string log = string.Format("{0}", msg);
                             Console.WriteLine(log);
 
-                            IndustrialMonitoringEntities entities=new IndustrialMonitoringEntities();
+                            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
                             int chatId = update.Message.From.Id;
 
@@ -72,10 +84,14 @@ namespace TelegramBot
 
                                 foreach (Item item in items)
                                 {
+                                    var category =
+                                        entities.TabsItems.FirstOrDefault(x => x.ItemId == item.ItemId).Tab.TabName;
+
                                     string c = string.Format(@"Item Name : {0}
 Item Id : {1}
+Category : {2}
 
-", item.ItemName, item.ItemId);
+", item.ItemName, item.ItemId, category);
 
                                     output += c;
                                 }
@@ -98,9 +114,14 @@ Item Id : {1}
 
                                             if (item != null)
                                             {
+                                                var category =
+    entities.TabsItems.FirstOrDefault(x => x.ItemId == item.ItemId).Tab.TabName;
+
                                                 string output = string.Format(@"Item Name : {0}
-Value : {1}
-Date : {2}", item.Item.ItemName, item.Value, item.Time);
+Item Id : {1}
+Category : {2}
+Value : {3}
+Date : {4}", item.Item.ItemName, item.ItemId, category, item.Value, item.Time);
                                                 await bot.SendTextMessage(update.Message.Chat.Id, output);
                                             }
                                         }
@@ -133,7 +154,8 @@ Date : {2}", item.Item.ItemName, item.Value, item.Time);
                                         if (int.TryParse(hourStr, out hour))
                                         {
                                             NotificationService notificationService = new NotificationService();
-                                            var notifications = notificationService.GetNotificationLogs(1, DateTime.Now - new TimeSpan(hour, 0, 0),
+                                            var notifications = notificationService.GetNotificationLogs(1,
+                                                DateTime.Now - new TimeSpan(hour, 0, 0),
                                                 DateTime.Now).OrderBy(x => x.DateTime);
 
                                             string output = "";
@@ -145,12 +167,17 @@ Date : {2}", item.Item.ItemName, item.Value, item.Time);
 
                                             foreach (NotificationLog notificationLog in notifications)
                                             {
-                                                string c = string.Format(@"Item : {0}
-Description : {1}
-Has Alarm : {2}
-Date : {3}
+                                                var category =
+    entities.TabsItems.FirstOrDefault(x => x.ItemId == notificationLog.ItemId).Tab.TabName;
 
-", notificationLog.ItemName, notificationLog.NotificationMsg, notificationLog.HasFault, notificationLog.DateTime);
+                                                string c = string.Format(@"Item : {0}
+Item Id : {1}
+Category : {2}
+Description : {3}
+Has Alarm : {4}
+Date : {5}
+
+", notificationLog.ItemName, notificationLog.ItemId, category,notificationLog.NotificationMsg, notificationLog.HasFault, notificationLog.DateTime);
 
                                                 output += c;
                                             }
@@ -164,11 +191,15 @@ Date : {3}
                                     }
                                 }
                             }
+                            else
+                            {
+                                await bot.SendTextMessage(update.Message.Chat.Id, "Wrong command");
+                            }
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        
+                        Logger.LogTelegramBot(ex);
                     }
                     finally
                     {

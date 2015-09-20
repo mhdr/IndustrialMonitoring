@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SharedLibrary;
 
 namespace MonitoringServiceLibrary
 {
@@ -32,7 +33,36 @@ namespace MonitoringServiceLibrary
             }
         }
 
-        public async void SendNotification(int notificationLogId)
+        public async Task HandleSendNotification(int notificationLogId)
+        {
+            try
+            {
+                int i = 0;
+                var result = false;
+                int delay = 1000;
+
+                while (!result)
+                {
+                    if (i > 5)
+                    {
+                        return;
+                    }
+
+                    result = await SendNotification(notificationLogId);
+
+                    await Task.Delay(delay);
+
+                    delay += 1000;
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+            }
+        }
+
+        private async Task<bool> SendNotification(int notificationLogId)
         {
             try
             {
@@ -43,7 +73,7 @@ namespace MonitoringServiceLibrary
 
                 if (notificationItemsLog == null)
                 {
-                    return;
+                    return false;
                 }
 
                 int itemId = notificationItemsLog.NotificationItem.ItemId;
@@ -60,7 +90,7 @@ namespace MonitoringServiceLibrary
 
                     if (!ids.Any())
                     {
-                        return;
+                        return false;
                     }
 
                     foreach (Bot id in ids)
@@ -88,12 +118,15 @@ Date : {4}", notificationItemsLog.NotificationItem.Item.ItemName, notificationIt
                 {
                     await bot.SendTextMessage(chatId, output);
                 }
+
+                return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                Logger.LogMonitoringServiceLibrary(ex);
             }
-            
+
+            return false;
         }
     }
 }
