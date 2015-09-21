@@ -122,11 +122,11 @@ namespace MonitoringServiceLibrary
                                 try
                                 {
                                     var bot = NotificationsBot.Instance;
-                                    bot.HandleSendNotification(notificationItemsLog.NotificationLogId);
+                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
                                 }
-                                catch (Exception)
+                                catch (Exception ex)
                                 {
-                                    
+                                    Logger.LogMonitoringServiceLibrary(ex);
                                 }
                             }
                         }
@@ -145,11 +145,11 @@ namespace MonitoringServiceLibrary
                                 try
                                 {
                                     var bot = NotificationsBot.Instance;
-                                    bot.HandleSendNotification(notificationItemsLog.NotificationLogId);
+                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
                                 }
-                                catch (Exception)
+                                catch (Exception ex)
                                 {
-                                    
+                                    Logger.LogMonitoringServiceLibrary(ex);
                                 }
                             }
                         }

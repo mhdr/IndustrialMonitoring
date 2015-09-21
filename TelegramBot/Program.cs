@@ -54,7 +54,6 @@ namespace TelegramBot
                             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
                             int chatId = update.Message.From.Id;
-                            var user = entities.Bots.FirstOrDefault(x => x.ChatId == chatId).User;
 
                             if (!entities.Bots.Any(x => x.ChatId == chatId))
                             {
@@ -76,6 +75,8 @@ namespace TelegramBot
                                 offset = update.Id + 1;
                                 continue;
                             }
+
+                            var user = entities.Bots.FirstOrDefault(x => x.ChatId == chatId).User;
 
                             if (msg == "/list")
                             {

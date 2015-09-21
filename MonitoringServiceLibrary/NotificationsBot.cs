@@ -62,7 +62,7 @@ namespace MonitoringServiceLibrary
             }
         }
 
-        private async Task<bool> SendNotification(int notificationLogId)
+        public async Task<bool> SendNotification(int notificationLogId)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace MonitoringServiceLibrary
 
                     if (!ids.Any())
                     {
-                        return false;
+                        continue;
                     }
 
                     foreach (Bot id in ids)
@@ -117,6 +117,7 @@ Date : {4}", notificationItemsLog.NotificationItem.Item.ItemName, notificationIt
                 foreach (int chatId in chatIds)
                 {
                     await bot.SendTextMessage(chatId, output);
+                    await Task.Delay(100);
                 }
 
                 return true;

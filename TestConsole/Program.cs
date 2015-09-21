@@ -11,7 +11,7 @@ namespace TestConsole
         static void Main(string[] args)
         {
             UserManagement userManagement=new UserManagement();
-            userManagement.ChangePassword(4,"test");
+            userManagement.ChangePassword(7,"12345");
 
             Console.ReadKey();
         }
