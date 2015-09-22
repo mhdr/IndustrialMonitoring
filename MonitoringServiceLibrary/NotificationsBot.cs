@@ -86,7 +86,7 @@ namespace MonitoringServiceLibrary
                 {
                     int userId = usersItemsPermission.UserId;
 
-                    var ids = entities.Bots.Where(x => x.UserId == userId);
+                    var ids = entities.Bots.Where(x => x.UserId == userId & x.ReceiveAlarms==true);
 
                     if (!ids.Any())
                     {

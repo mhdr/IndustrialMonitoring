@@ -19,6 +19,7 @@ namespace MonitoringServiceLibrary
         public int UserId { get; set; }
         public string Token { get; set; }
         public bool IsAuthorized { get; set; }
+        public Nullable<bool> ReceiveAlarms { get; set; }
     
         public virtual User User { get; set; }
     }

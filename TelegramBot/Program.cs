@@ -147,6 +147,30 @@ Date : {7}",i,count, item.Item.ItemName, item.ItemId, category, itemLog.Value, u
                                 await bot.SendTextMessage(update.Message.Chat.Id, "** End **");
 
                             }
+                            else if (msg == "/alarms on")
+                            {
+                                var chat = entities.Bots.FirstOrDefault(x => x.ChatId == chatId);
+
+                                if (chat != null)
+                                {
+                                    chat.ReceiveAlarms = true;
+                                    entities.SaveChanges();
+
+                                    await bot.SendTextMessage(chatId, "You will receive alarms from now on");
+                                }
+                            }
+                            else if (msg == "/alarms off")
+                            {
+                                var chat = entities.Bots.FirstOrDefault(x => x.ChatId == chatId);
+
+                                if (chat != null)
+                                {
+                                    chat.ReceiveAlarms = false;
+                                    entities.SaveChanges();
+
+                                    await bot.SendTextMessage(chatId, "You won't receive alarms from now on");
+                                }
+                            }
                             else if (msg.StartsWith("/get "))
                             {
                                 var parts = msg.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
@@ -195,10 +219,6 @@ Date : {5}", item.Item.ItemName, item.ItemId, category, item.Value, unit,item.Ti
                                         }
                                     }
                                 }
-                            }
-                            else if (msg == "alarms")
-                            {
-
                             }
                             else if (msg.StartsWith("/alarms "))
                             {

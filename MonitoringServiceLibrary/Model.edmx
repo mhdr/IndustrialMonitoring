@@ -14,6 +14,7 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IsAuthorized" Type="bit" Nullable="false" />
+          <Property Name="ReceiveAlarms" Type="bit" />
         </EntityType>
         <EntityType Name="Items">
           <Key>
@@ -738,6 +739,7 @@
           <Property Name="Token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_Bot_Users" FromRole="Bot" ToRole="User" />
+          <Property Name="ReceiveAlarms" Type="Boolean" />
         </EntityType>
         <Association Name="FK_Bot_Users">
           <End Type="IndustrialMonitoringModel.User" Role="User" Multiplicity="1" />
@@ -922,6 +924,7 @@
           <EntitySetMapping Name="Bots">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Bot">
               <MappingFragment StoreEntitySet="Bot">
+                <ScalarProperty Name="ReceiveAlarms" ColumnName="ReceiveAlarms" />
                 <ScalarProperty Name="IsAuthorized" ColumnName="IsAuthorized" />
                 <ScalarProperty Name="Token" ColumnName="Token" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
