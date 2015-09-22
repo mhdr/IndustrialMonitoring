@@ -80,49 +80,72 @@ namespace TelegramBot
 
                             if (msg == "/list")
                             {
-                                string output = "";
-                                
                                 var items = entities.UsersItemsPermissions.Where(x=>x.UserId==user.UserId);
+
+                                int i = 1;
+                                int count = items.Count();
+
+                                await bot.SendTextMessage(update.Message.Chat.Id, "** Start **");
 
                                 foreach (var item in items)
                                 {
                                     var category =
                                         entities.TabsItems.FirstOrDefault(x => x.ItemId == item.ItemId).Tab.TabName;
 
-                                    string c = string.Format(@"Item Name : {0}
-Item Id : {1}
-Category : {2}
+                                    string output = string.Format(@"Number : {0}/{1}
+Item Name : {2}
+Item Id : {3}
+Category : {4}",i,count, item.Item.ItemName, item.ItemId, category);
 
-", item.Item.ItemName, item.ItemId, category);
-
-                                    output += c;
+                                    if (!string.IsNullOrEmpty(output))
+                                    {
+                                        await bot.SendTextMessage(update.Message.Chat.Id, output);
+                                        await Task.Delay(10);
+                                    }
+                                    
+                                    i++;
                                 }
 
-                                await bot.SendTextMessage(update.Message.Chat.Id, output);
+                                await bot.SendTextMessage(update.Message.Chat.Id, "** End **");
                             }
                             else if (msg == "/get all")
                             {
                                 var items = entities.UsersItemsPermissions.Where(x => x.UserId == user.UserId);
 
-                                string output = "";
+                                int i = 1;
+                                int count = items.Count();
+
+                                await bot.SendTextMessage(update.Message.Chat.Id, "** Start **");
 
                                 foreach (UsersItemsPermission item in items)
                                 {
                                     var itemLog = entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == item.ItemId);
                                     var category = entities.TabsItems.FirstOrDefault(x => x.ItemId == item.ItemId).Tab.TabName;
 
-                                    string c = string.Format(@"Item Name : {0}
-Item Id : {1}
-Category : {2}
-Value : {3}
-Date : {4}
+                                    string unit = "";
+                                    if (!string.IsNullOrEmpty(item.Item.Unit))
+                                    {
+                                        unit = item.Item.Unit;
+                                    }
 
-", item.Item.ItemName, item.ItemId, category, itemLog.Value, itemLog.Time);
+                                    string output = string.Format(@"Number : {0}/{1} 
+Item Name : {2}
+Item Id : {3}
+Category : {4}
+Value : {5} {6}
+Date : {7}",i,count, item.Item.ItemName, item.ItemId, category, itemLog.Value, unit,itemLog.Time);
 
-                                    output += c;
+                                    if (!string.IsNullOrEmpty(output))
+                                    {
+                                        await bot.SendTextMessage(chatId, output);
+                                        await Task.Delay(10);
+                                    }
+                                    
+                                    i++;
                                 }
 
-                                await bot.SendTextMessage(chatId, output);
+                                await bot.SendTextMessage(update.Message.Chat.Id, "** End **");
+
                             }
                             else if (msg.StartsWith("/get "))
                             {
@@ -149,14 +172,20 @@ Date : {4}
                                                     continue;
                                                 }
 
+                                                string unit = "";
+                                                if (!string.IsNullOrEmpty(item.Item.Unit))
+                                                {
+                                                    unit = item.Item.Unit;
+                                                }
+
                                                 var category =
     entities.TabsItems.FirstOrDefault(x => x.ItemId == item.ItemId).Tab.TabName;
 
                                                 string output = string.Format(@"Item Name : {0}
 Item Id : {1}
 Category : {2}
-Value : {3}
-Date : {4}", item.Item.ItemName, item.ItemId, category, item.Value, item.Time);
+Value : {3} {4}
+Date : {5}", item.Item.ItemName, item.ItemId, category, item.Value, unit,item.Time);
                                                 await bot.SendTextMessage(update.Message.Chat.Id, output);
                                             }
                                         }
@@ -193,34 +222,42 @@ Date : {4}", item.Item.ItemName, item.ItemId, category, item.Value, item.Time);
                                                 DateTime.Now - new TimeSpan(hour, 0, 0),
                                                 DateTime.Now).OrderBy(x => x.DateTime);
 
-                                            string output = "";
 
                                             if (!notifications.Any())
                                             {
                                                 await bot.SendTextMessage(update.Message.Chat.Id, "No Alarm");
+                                                offset = update.Id + 1;
+                                                continue;
                                             }
+
+                                            await bot.SendTextMessage(update.Message.Chat.Id, "** Start **");
+
+                                            int i = 1;
+                                            int count = notifications.Count();
 
                                             foreach (NotificationLog notificationLog in notifications)
                                             {
                                                 var category =
     entities.TabsItems.FirstOrDefault(x => x.ItemId == notificationLog.ItemId).Tab.TabName;
 
-                                                string c = string.Format(@"Item : {0}
-Item Id : {1}
-Category : {2}
-Description : {3}
-Has Alarm : {4}
-Date : {5}
+                                                string output = string.Format(@"Alarm :
+Number : {0}/{1}
+Item : {2}
+Item Id : {3}
+Category : {4}
+Description : {5}
+Has Alarm : {6}
+Date : {7}",i ,count,notificationLog.ItemName, notificationLog.ItemId, category, notificationLog.NotificationMsg, notificationLog.HasFault, notificationLog.DateTime);
 
-", notificationLog.ItemName, notificationLog.ItemId, category, notificationLog.NotificationMsg, notificationLog.HasFault, notificationLog.DateTime);
-
-                                                output += c;
+                                                i++;
+                                                if (!string.IsNullOrWhiteSpace(output))
+                                                {
+                                                    await bot.SendTextMessage(update.Message.Chat.Id, output);
+                                                    await Task.Delay(10);
+                                                }
                                             }
 
-                                            if (!string.IsNullOrWhiteSpace(output))
-                                            {
-                                                await bot.SendTextMessage(update.Message.Chat.Id, output);
-                                            }
+                                            await bot.SendTextMessage(update.Message.Chat.Id, "** End **");
 
                                         }
                                     }

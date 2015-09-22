@@ -224,4 +224,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="BotProcessId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="02878e19-6754-45f1-b307-dc5e29d3a62c" ChangeDateTime="09/22/2015 07:07:23">
+    <Property Name="ElementName" Value="[dbo].[RelatedNotifications].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RelatedNotifications]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RelationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5217cfb2-c906-42dc-82c1-cbd0f6559c3f" ChangeDateTime="09/22/2015 07:08:38">
+    <Property Name="ElementName" Value="[dbo].[RelatedNotifications].[Notif]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RelatedNotifications]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationIdParent" />
+  </Operation>
 </Operations>

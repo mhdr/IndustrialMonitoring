@@ -18,6 +18,8 @@ namespace MonitoringServiceLibrary
         {
             this.NotificationItemsLogs = new HashSet<NotificationItemsLog>();
             this.NotificationItemsLogLatests = new HashSet<NotificationItemsLogLatest>();
+            this.RelatedNotifications = new HashSet<RelatedNotification>();
+            this.RelatedNotifications1 = new HashSet<RelatedNotification>();
         }
     
         public int NotificationId { get; set; }
@@ -30,5 +32,7 @@ namespace MonitoringServiceLibrary
         public virtual Item Item { get; set; }
         public virtual ICollection<NotificationItemsLog> NotificationItemsLogs { get; set; }
         public virtual ICollection<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
+        public virtual ICollection<RelatedNotification> RelatedNotifications { get; set; }
+        public virtual ICollection<RelatedNotification> RelatedNotifications1 { get; set; }
     }
 }

@@ -30,6 +30,9 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.Bot" Width="1.5" PointX="8" PointY="4" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_Bot_Users" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.RelatedNotification" Width="1.5" PointX="5.25" PointY="17" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

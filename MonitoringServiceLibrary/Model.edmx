@@ -30,6 +30,7 @@
           <Property Name="SaveInItemsLogWhen" Type="int" Nullable="false" />
           <Property Name="SaveInItemsLogLastWhen" Type="int" Nullable="false" />
           <Property Name="DefinationType" Type="int" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -81,6 +82,14 @@
           <Property Name="Value" Type="bit" Nullable="false" />
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelatedNotifications">
+          <Key>
+            <PropertyRef Name="RelationId" />
+          </Key>
+          <Property Name="RelationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NotificationIdParent" Type="int" Nullable="false" />
+          <Property Name="NotificationIdChild" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -202,6 +211,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RelatedNotifications_NotificationItems">
+          <End Role="NotificationItems" Type="Self.NotificationItems" Multiplicity="1" />
+          <End Role="RelatedNotifications" Type="Self.RelatedNotifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItems">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="RelatedNotifications">
+              <PropertyRef Name="NotificationIdParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelatedNotifications_NotificationItems2">
+          <End Role="NotificationItems" Type="Self.NotificationItems" Multiplicity="1" />
+          <End Role="RelatedNotifications" Type="Self.RelatedNotifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItems">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="RelatedNotifications">
+              <PropertyRef Name="NotificationIdChild" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TabsItems_Items">
           <End Role="Items" Type="Self.Items" Multiplicity="1" />
           <End Role="TabsItems" Type="Self.TabsItems" Multiplicity="*" />
@@ -282,6 +315,7 @@
           <EntitySet Name="NotificationItems" EntityType="Self.NotificationItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLog" EntityType="Self.NotificationItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLogLatest" EntityType="Self.NotificationItemsLogLatest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelatedNotifications" EntityType="Self.RelatedNotifications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tabs" EntityType="Self.Tabs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TabsItems" EntityType="Self.TabsItems" Schema="dbo" store:Type="Tables" />
@@ -311,6 +345,14 @@
           <AssociationSet Name="FK_NotificationItemsLogLatest_NotificationItems" Association="Self.FK_NotificationItemsLogLatest_NotificationItems">
             <End Role="NotificationItems" EntitySet="NotificationItems" />
             <End Role="NotificationItemsLogLatest" EntitySet="NotificationItemsLogLatest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelatedNotifications_NotificationItems" Association="Self.FK_RelatedNotifications_NotificationItems">
+            <End Role="NotificationItems" EntitySet="NotificationItems" />
+            <End Role="RelatedNotifications" EntitySet="RelatedNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelatedNotifications_NotificationItems2" Association="Self.FK_RelatedNotifications_NotificationItems2">
+            <End Role="NotificationItems" EntitySet="NotificationItems" />
+            <End Role="RelatedNotifications" EntitySet="RelatedNotifications" />
           </AssociationSet>
           <AssociationSet Name="FK_TabsItems_Items" Association="Self.FK_TabsItems_Items">
             <End Role="Items" EntitySet="Items" />
@@ -361,6 +403,7 @@
           <NavigationProperty Name="TabsItems" Relationship="Self.FK_TabsItems_Items" FromRole="Items" ToRole="TabsItems" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="Items" ToRole="UsersItemsPermissions" />
           <Property Name="DefinationType" Type="Int32" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -397,6 +440,8 @@
           <NavigationProperty Name="Item" Relationship="Self.FK_NotificationItems_Items" FromRole="NotificationItems" ToRole="Items" />
           <NavigationProperty Name="NotificationItemsLogs" Relationship="Self.FK_NotificationItemsLog_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLog" />
           <NavigationProperty Name="NotificationItemsLogLatests" Relationship="Self.FK_NotificationItemsLogLatest_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLogLatest" />
+          <NavigationProperty Name="RelatedNotifications" Relationship="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems" FromRole="NotificationItem" ToRole="RelatedNotification" />
+          <NavigationProperty Name="RelatedNotifications1" Relationship="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2" FromRole="NotificationItem" ToRole="RelatedNotification" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -631,6 +676,15 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Bot" EntitySet="Bots" />
           </AssociationSet>
+          <EntitySet Name="RelatedNotifications" EntityType="IndustrialMonitoringModel.RelatedNotification" />
+          <AssociationSet Name="FK_RelatedNotifications_NotificationItems" Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems">
+            <End Role="NotificationItem" EntitySet="NotificationItems" />
+            <End Role="RelatedNotification" EntitySet="RelatedNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelatedNotifications_NotificationItems2" Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2">
+            <End Role="NotificationItem" EntitySet="NotificationItems" />
+            <End Role="RelatedNotification" EntitySet="RelatedNotifications" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Service">
           <Key>
@@ -697,6 +751,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="RelatedNotification">
+          <Key>
+            <PropertyRef Name="RelationId" />
+          </Key>
+          <Property Name="RelationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationIdParent" Type="Int32" Nullable="false" />
+          <Property Name="NotificationIdChild" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NotificationItem" Relationship="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems" FromRole="RelatedNotification" ToRole="NotificationItem" />
+          <NavigationProperty Name="NotificationItem1" Relationship="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2" FromRole="RelatedNotification" ToRole="NotificationItem" />
+        </EntityType>
+        <Association Name="FK_RelatedNotifications_NotificationItems">
+          <End Type="IndustrialMonitoringModel.NotificationItem" Role="NotificationItem" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.RelatedNotification" Role="RelatedNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItem">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="RelatedNotification">
+              <PropertyRef Name="NotificationIdParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelatedNotifications_NotificationItems2">
+          <End Type="IndustrialMonitoringModel.NotificationItem" Role="NotificationItem" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.RelatedNotification" Role="RelatedNotification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItem">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="RelatedNotification">
+              <PropertyRef Name="NotificationIdChild" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -706,6 +794,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="DefinationType" ColumnName="DefinationType" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
@@ -838,6 +927,15 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ChatId" ColumnName="ChatId" />
                 <ScalarProperty Name="BotProcessId" ColumnName="BotProcessId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelatedNotifications">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.RelatedNotification">
+              <MappingFragment StoreEntitySet="RelatedNotifications">
+                <ScalarProperty Name="NotificationIdChild" ColumnName="NotificationIdChild" />
+                <ScalarProperty Name="NotificationIdParent" ColumnName="NotificationIdParent" />
+                <ScalarProperty Name="RelationId" ColumnName="RelationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
