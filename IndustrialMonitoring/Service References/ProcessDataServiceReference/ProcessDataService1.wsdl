@@ -76,6 +76,12 @@
   <wsdl:message name="IProcessDataService_GetItemLogs_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetItemLogsResponse" />
   </wsdl:message>
+  <wsdl:message name="IProcessDataService_DeleteItemLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteItemLog" />
+  </wsdl:message>
+  <wsdl:message name="IProcessDataService_DeleteItemLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteItemLogResponse" />
+  </wsdl:message>
   <wsdl:message name="IProcessDataService_AddItem2_InputMessage">
     <wsdl:part name="parameters" element="tns:AddItem2" />
   </wsdl:message>
@@ -174,6 +180,10 @@
     <wsdl:operation name="GetItemLogs">
       <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/GetItemLogs" message="tns:IProcessDataService_GetItemLogs_InputMessage" />
       <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/GetItemLogsResponse" message="tns:IProcessDataService_GetItemLogs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteItemLog">
+      <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/DeleteItemLog" message="tns:IProcessDataService_DeleteItemLog_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IProcessDataService/DeleteItemLogResponse" message="tns:IProcessDataService_DeleteItemLog_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="AddItem2">
       <wsdl:input wsam:Action="http://tempuri.org/IProcessDataService/AddItem2" message="tns:IProcessDataService_AddItem2_InputMessage" />
@@ -306,6 +316,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetItemLogs">
       <soap:operation soapAction="http://tempuri.org/IProcessDataService/GetItemLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteItemLog">
+      <soap:operation soapAction="http://tempuri.org/IProcessDataService/DeleteItemLog" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

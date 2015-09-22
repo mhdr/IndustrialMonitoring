@@ -52,6 +52,11 @@
                         MinWidth="400" Header="Time" HeaderTextAlignment="Center">
                                 </telerik:GridViewDataColumn>
                             </telerik:RadGridView.Columns>
+                            <telerik:RadContextMenu.ContextMenu>
+                                <telerik:RadContextMenu>
+                                    <telerik:RadMenuItem Header="Delete" Name="MenuItemDelete" Click="MenuItemDelete_OnClick" IsEnabled="False"/>
+                                </telerik:RadContextMenu>
+                            </telerik:RadContextMenu.ContextMenu>
                         </telerik:RadGridView>
                     </Grid>
                 </Grid>

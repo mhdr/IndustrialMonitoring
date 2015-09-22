@@ -45,6 +45,9 @@ namespace MonitoringServiceLibrary
         List<ItemsLogChartHistoryViewModel> GetItemLogs(int itemId, DateTime startDate, DateTime endDate);
 
         [OperationContract]
+        bool DeleteItemLog(int itemLogId);
+
+        [OperationContract]
         bool AddItem2(Item2 item);
 
         [OperationContract]

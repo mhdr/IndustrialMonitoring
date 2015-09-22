@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using MonitoringServiceLibrary.ViewModels;
 using NationalInstruments.NetworkVariable;
+using SharedLibrary;
 
 namespace MonitoringServiceLibrary
 {
@@ -185,6 +186,29 @@ namespace MonitoringServiceLibrary
             }
 
             return result;
+        }
+
+        public bool DeleteItemLog(int itemLogId)
+        {
+            try
+            {
+                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+                var Item= entities.ItemsLogs.FirstOrDefault(x => x.ItemLogId == itemLogId);
+
+                if (Item != null)
+                {
+                    entities.ItemsLogs.Remove(Item);
+                    entities.SaveChanges();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return false;
+            }
         }
 
         public bool AddItem2(Item2 item)

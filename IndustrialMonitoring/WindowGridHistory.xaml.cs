@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.ProcessDataServiceReference;
 using Telerik.Windows;
 using Telerik.Windows.Controls.ChartView;
@@ -130,6 +131,11 @@ namespace IndustrialMonitoring
 
         private void WindowGridHistory_OnLoaded(object sender, RoutedEventArgs e)
         {
+            if (Static.UserServicesPermission.Contains(2))
+            {
+                MenuItemDelete.IsEnabled = true;
+            }
+
             this.ShowDataCompleted += WindowChartHistory_ShowDataCompleted;
         }
 
@@ -176,5 +182,22 @@ namespace IndustrialMonitoring
             dialogSetTime.EndTime = EndTime;
             dialogSetTime.ShowDialog();
         }
+
+        private void MenuItemDelete_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            if (GridView.SelectedItem != null)
+            {
+                ItemsLogChartHistoryViewModel item = (ItemsLogChartHistoryViewModel)GridView.SelectedItem;
+
+                var result = MessageBox.Show("Are you sure you want to delete this item?","Delete",MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    ProcessDataServiceClient.DeleteItemLog(item.ItemLogId);
+                    ShowData();
+                }
+            }
+        }
+        
     }
 }

@@ -798,6 +798,12 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/GetItemLogs", ReplyAction="http://tempuri.org/IProcessDataService/GetItemLogsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.ItemsLogChartHistoryViewModel>> GetItemLogsAsync(int itemId, System.DateTime startDate, System.DateTime endDate);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/DeleteItemLog", ReplyAction="http://tempuri.org/IProcessDataService/DeleteItemLogResponse")]
+        bool DeleteItemLog(int itemLogId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/DeleteItemLog", ReplyAction="http://tempuri.org/IProcessDataService/DeleteItemLogResponse")]
+        System.Threading.Tasks.Task<bool> DeleteItemLogAsync(int itemLogId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcessDataService/AddItem2", ReplyAction="http://tempuri.org/IProcessDataService/AddItem2Response")]
         bool AddItem2(MonitoringAdmin.ProcessDataServiceReference.Item2 item);
         
@@ -966,6 +972,14 @@ namespace MonitoringAdmin.ProcessDataServiceReference {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<MonitoringAdmin.ProcessDataServiceReference.ItemsLogChartHistoryViewModel>> GetItemLogsAsync(int itemId, System.DateTime startDate, System.DateTime endDate) {
             return base.Channel.GetItemLogsAsync(itemId, startDate, endDate);
+        }
+        
+        public bool DeleteItemLog(int itemLogId) {
+            return base.Channel.DeleteItemLog(itemLogId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteItemLogAsync(int itemLogId) {
+            return base.Channel.DeleteItemLogAsync(itemLogId);
         }
         
         public bool AddItem2(MonitoringAdmin.ProcessDataServiceReference.Item2 item) {
