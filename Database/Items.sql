@@ -11,5 +11,6 @@
     [SaveInItemsLogWhen] INT NOT NULL DEFAULT 1, 
     [SaveInItemsLogLastWhen] INT NOT NULL DEFAULT 1, 
     [DefinationType] INT NULL DEFAULT 1, 
-    [Unit] NVARCHAR(50) NULL
+    [Unit] NVARCHAR(50) NULL, 
+    [Order] INT NULL
 )

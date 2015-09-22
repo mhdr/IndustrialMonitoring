@@ -35,6 +35,7 @@ namespace MonitoringServiceLibrary
         public int SaveInItemsLogLastWhen { get; set; }
         public Nullable<int> DefinationType { get; set; }
         public string Unit { get; set; }
+        public Nullable<int> Order { get; set; }
     
         public virtual ICollection<ItemsLog> ItemsLogs { get; set; }
         public virtual ICollection<ItemsLogLatest> ItemsLogLatests { get; set; }

@@ -32,7 +32,7 @@ namespace MonitoringServiceLibrary
         {
             List<Item1> result = new List<Item1>();
             var Entities = new IndustrialMonitoringEntities();
-            var items = Entities.Items;
+            var items = Entities.Items.OrderBy(x=>x.Order);
 
             foreach (var item in items)
             {
@@ -46,7 +46,7 @@ namespace MonitoringServiceLibrary
         {
             List<Item2> result = new List<Item2>();
             var Entities = new IndustrialMonitoringEntities();
-            var items = Entities.Items;
+            var items = Entities.Items.OrderBy(x=>x.Order);
 
             foreach (var item in items)
             {
@@ -60,7 +60,7 @@ namespace MonitoringServiceLibrary
         {
             List<Item3> result = new List<Item3>();
             var Entities = new IndustrialMonitoringEntities();
-            var items = Entities.Items;
+            var items = Entities.Items.OrderBy(x=>x.Order);
 
             foreach (var item in items)
             {
@@ -83,7 +83,7 @@ namespace MonitoringServiceLibrary
         {
             List<Tab1> result = new List<Tab1>();
             var Entities = new IndustrialMonitoringEntities();
-            var tabs = Entities.Tabs;
+            var tabs = Entities.Tabs.OrderBy(x=>x.Order);
 
             foreach (var tab in tabs)
             {
@@ -100,7 +100,7 @@ namespace MonitoringServiceLibrary
             var Entities = new IndustrialMonitoringEntities();
             List<Tab1> result = new List<Tab1>();
 
-            var tabs = Entities.Tabs;
+            var tabs = Entities.Tabs.OrderBy(x=>x.Order);
 
             foreach (var tab in tabs)
             {
@@ -120,7 +120,7 @@ namespace MonitoringServiceLibrary
             var Entities = new IndustrialMonitoringEntities();
             List<TabsItemsViewModel> result = new List<TabsItemsViewModel>();
 
-            var tabItems = Entities.TabsItems;
+            var tabItems = Entities.TabsItems.OrderBy(x=>x.Item.Order);
 
             foreach (var tabsItem in tabItems)
             {
@@ -136,7 +136,7 @@ namespace MonitoringServiceLibrary
             var Entities = new IndustrialMonitoringEntities();
             List<TabsItemsViewModel> result = new List<TabsItemsViewModel>();
 
-            var tabItems = Entities.TabsItems;
+            var tabItems = Entities.TabsItems.OrderBy(x=>x.Item.Order);
 
             foreach (var tabsItem in tabItems)
             {
@@ -156,7 +156,7 @@ namespace MonitoringServiceLibrary
             var Entities = new IndustrialMonitoringEntities();
             List<Item1> result = new List<Item1>();
 
-            var tabsItem = Entities.TabsItems.Where(x => x.TabId == tabId);
+            var tabsItem = Entities.TabsItems.Where(x => x.TabId == tabId).OrderBy(x=>x.Item.Order);
 
             foreach (var item in tabsItem)
             {

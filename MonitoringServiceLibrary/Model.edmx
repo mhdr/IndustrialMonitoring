@@ -32,6 +32,7 @@
           <Property Name="SaveInItemsLogLastWhen" Type="int" Nullable="false" />
           <Property Name="DefinationType" Type="int" />
           <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="Order" Type="int" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -105,6 +106,7 @@
           </Key>
           <Property Name="TabId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TabName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order" Type="int" />
         </EntityType>
         <EntityType Name="TabsItems">
           <Key>
@@ -405,6 +407,7 @@
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="Items" ToRole="UsersItemsPermissions" />
           <Property Name="DefinationType" Type="Int32" />
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -473,6 +476,7 @@
           <Property Name="TabId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TabName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="TabsItems" Relationship="Self.FK_TabsItems_Tabs" FromRole="Tabs" ToRole="TabsItems" />
+          <Property Name="Order" Type="Int32" />
         </EntityType>
         <EntityType Name="TabsItem">
           <Key>
@@ -796,6 +800,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="DefinationType" ColumnName="DefinationType" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
@@ -870,6 +875,7 @@
           <EntitySetMapping Name="Tabs">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Tab">
               <MappingFragment StoreEntitySet="Tabs">
+                <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="TabId" ColumnName="TabId" />
                 <ScalarProperty Name="TabName" ColumnName="TabName" />
               </MappingFragment>

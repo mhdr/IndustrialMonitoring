@@ -80,7 +80,7 @@ namespace TelegramBot
 
                             if (msg == "/list")
                             {
-                                var items = entities.UsersItemsPermissions.Where(x=>x.UserId==user.UserId);
+                                var items = entities.UsersItemsPermissions.Where(x => x.UserId == user.UserId).OrderBy(x => x.Item.Order);
 
                                 int i = 1;
                                 int count = items.Count();
@@ -95,14 +95,14 @@ namespace TelegramBot
                                     string output = string.Format(@"Number : {0}/{1}
 Item Name : {2}
 Item Id : {3}
-Category : {4}",i,count, item.Item.ItemName, item.ItemId, category);
+Category : {4}", i, count, item.Item.ItemName, item.ItemId, category);
 
                                     if (!string.IsNullOrEmpty(output))
                                     {
                                         await bot.SendTextMessage(update.Message.Chat.Id, output);
                                         await Task.Delay(10);
                                     }
-                                    
+
                                     i++;
                                 }
 
@@ -110,7 +110,7 @@ Category : {4}",i,count, item.Item.ItemName, item.ItemId, category);
                             }
                             else if (msg == "/get all")
                             {
-                                var items = entities.UsersItemsPermissions.Where(x => x.UserId == user.UserId);
+                                var items = entities.UsersItemsPermissions.Where(x => x.UserId == user.UserId).OrderBy(x => x.Item.Order);
 
                                 int i = 1;
                                 int count = items.Count();
@@ -133,14 +133,14 @@ Item Name : {2}
 Item Id : {3}
 Category : {4}
 Value : {5} {6}
-Date : {7}",i,count, item.Item.ItemName, item.ItemId, category, itemLog.Value, unit,itemLog.Time);
+Date : {7}", i, count, item.Item.ItemName, item.ItemId, category, itemLog.Value, unit, itemLog.Time);
 
                                     if (!string.IsNullOrEmpty(output))
                                     {
                                         await bot.SendTextMessage(chatId, output);
                                         await Task.Delay(10);
                                     }
-                                    
+
                                     i++;
                                 }
 
@@ -209,7 +209,7 @@ Date : {7}",i,count, item.Item.ItemName, item.ItemId, category, itemLog.Value, u
 Item Id : {1}
 Category : {2}
 Value : {3} {4}
-Date : {5}", item.Item.ItemName, item.ItemId, category, item.Value, unit,item.Time);
+Date : {5}", item.Item.ItemName, item.ItemId, category, item.Value, unit, item.Time);
                                                 await bot.SendTextMessage(update.Message.Chat.Id, output);
                                             }
                                         }
@@ -267,7 +267,7 @@ Item Id : {3}
 Category : {4}
 Description : {5}
 Has Alarm : {6}
-Date : {7}",i ,count,notificationLog.ItemName, notificationLog.ItemId, category, notificationLog.NotificationMsg, notificationLog.HasFault, notificationLog.DateTime);
+Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, category, notificationLog.NotificationMsg, notificationLog.HasFault, notificationLog.DateTime);
 
                                                 i++;
                                                 if (!string.IsNullOrWhiteSpace(output))

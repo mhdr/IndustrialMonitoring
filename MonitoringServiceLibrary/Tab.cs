@@ -21,6 +21,7 @@ namespace MonitoringServiceLibrary
     
         public int TabId { get; set; }
         public string TabName { get; set; }
+        public Nullable<int> Order { get; set; }
     
         public virtual ICollection<TabsItem> TabsItems { get; set; }
     }
