@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.NotificationServiceReference;
 using IndustrialMonitoring.ProcessDataServiceReference;
+using SharedLibrary;
 
 namespace IndustrialMonitoring
 {
@@ -68,60 +69,92 @@ namespace IndustrialMonitoring
 
         private void MenuItemShowSetTimeDialog_OnClick(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
-            DialogSetTime dialogSetTime = new DialogSetTime();
-            dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
-            dialogSetTime.StartTime = StartTime;
-            dialogSetTime.EndTime = EndTime;
-            dialogSetTime.ShowDialog();
+            try
+            {
+                DialogSetTime dialogSetTime = new DialogSetTime();
+                dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
+                dialogSetTime.StartTime = StartTime;
+                dialogSetTime.EndTime = EndTime;
+                dialogSetTime.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         void dialogSetTime_TimeChanged(object sender, Lib.TimeChangedEventArgs e)
         {
-            this.StartTime = e.StartTime;
-            this.EndTime = e.EndTime;
+            try
+            {
+                this.StartTime = e.StartTime;
+                this.EndTime = e.EndTime;
 
-            ShowData();
+                ShowData();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemShowSetTimeDialog_OnMouseEnter(object sender, MouseEventArgs e)
         {
 
-            TextBlock textBlock1 = new TextBlock();
-            textBlock1.Text = "Start Time : ";
-            textBlock1.FontWeight = FontWeights.Bold;
+            try
+            {
+                TextBlock textBlock1 = new TextBlock();
+                textBlock1.Text = "Start Time : ";
+                textBlock1.FontWeight = FontWeights.Bold;
 
-            TextBlock textBlock2 = new TextBlock();
-            textBlock2.Text = StartTime.ToString();
+                TextBlock textBlock2 = new TextBlock();
+                textBlock2.Text = StartTime.ToString();
 
-            StackPanel stackPanel1 = new StackPanel();
-            stackPanel1.Orientation = Orientation.Horizontal;
+                StackPanel stackPanel1 = new StackPanel();
+                stackPanel1.Orientation = Orientation.Horizontal;
 
-            stackPanel1.Children.Add(textBlock1);
-            stackPanel1.Children.Add(textBlock2);
+                stackPanel1.Children.Add(textBlock1);
+                stackPanel1.Children.Add(textBlock2);
 
-            TextBlock textBlock3 = new TextBlock();
-            textBlock3.Text = "End Time : ";
-            textBlock3.FontWeight = FontWeights.Bold;
+                TextBlock textBlock3 = new TextBlock();
+                textBlock3.Text = "End Time : ";
+                textBlock3.FontWeight = FontWeights.Bold;
 
-            TextBlock textBlock4 = new TextBlock();
-            textBlock4.Text = EndTime.ToString();
+                TextBlock textBlock4 = new TextBlock();
+                textBlock4.Text = EndTime.ToString();
 
-            StackPanel stackPanel2 = new StackPanel();
-            stackPanel2.Orientation = Orientation.Horizontal;
+                StackPanel stackPanel2 = new StackPanel();
+                stackPanel2.Orientation = Orientation.Horizontal;
 
-            stackPanel2.Children.Add(textBlock3);
-            stackPanel2.Children.Add(textBlock4);
+                stackPanel2.Children.Add(textBlock3);
+                stackPanel2.Children.Add(textBlock4);
 
-            StackPanel stackPanel3 = new StackPanel();
-            stackPanel3.Children.Add(stackPanel1);
-            stackPanel3.Children.Add(stackPanel2);
+                StackPanel stackPanel3 = new StackPanel();
+                stackPanel3.Children.Add(stackPanel1);
+                stackPanel3.Children.Add(stackPanel2);
 
-            MenuItemShowSetTimeDialog.ToolTip = stackPanel3;
+                MenuItemShowSetTimeDialog.ToolTip = stackPanel3;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ClearStatusBar();
+            try
+            {
+                ClearStatusBar();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void WindowNotifications_OnLoaded(object sender, RoutedEventArgs e)
@@ -131,21 +164,29 @@ namespace IndustrialMonitoring
 
         void WindowNotifications_ShowDataCompleted(object sender, ShowNotificationsCompletedEventArgs e)
         {
-            ListBoxNotification.Items.Clear();
-            var notifications = e.Notifications;
-
-            foreach (NotificationLog notification in notifications)
+            try
             {
-                NotificationListBoxUserControl notificationListBoxUserControl = new NotificationListBoxUserControl();
-                notificationListBoxUserControl.SetItemName(notification.ItemName);
-                notificationListBoxUserControl.SetTime(notification.DateTime);
-                notificationListBoxUserControl.SetDesription(notification.NotificationMsg);
-                notificationListBoxUserControl.SetHasFault(notification.HasFault);
+                ListBoxNotification.Items.Clear();
+                var notifications = e.Notifications;
 
-                ListBoxNotification.Items.Add(notificationListBoxUserControl);
+                foreach (NotificationLog notification in notifications)
+                {
+                    NotificationListBoxUserControl notificationListBoxUserControl = new NotificationListBoxUserControl();
+                    notificationListBoxUserControl.SetItemName(notification.ItemName);
+                    notificationListBoxUserControl.SetTime(notification.DateTime);
+                    notificationListBoxUserControl.SetDesription(notification.NotificationMsg);
+                    notificationListBoxUserControl.SetHasFault(notification.HasFault);
+
+                    ListBoxNotification.Items.Add(notificationListBoxUserControl);
+                }
+
+                BusyIndicator.IsBusy = false;
             }
-
-            BusyIndicator.IsBusy = false;
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ClearStatusBar()
@@ -155,11 +196,19 @@ namespace IndustrialMonitoring
 
         public void ShowData()
         {
-            BusyIndicator.IsBusy = true;
+            try
+            {
+                BusyIndicator.IsBusy = true;
 
-            Thread t1 = new Thread(() => ShowDataAsync());
-            t1.Priority = ThreadPriority.AboveNormal;
-            t1.Start();
+                Thread t1 = new Thread(() => ShowDataAsync());
+                t1.Priority = ThreadPriority.AboveNormal;
+                t1.Start();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ShowDataAsync()
@@ -190,17 +239,26 @@ namespace IndustrialMonitoring
                     Dispatcher.BeginInvoke(new Action(() => OnShowDataCompleted(new ShowNotificationsCompletedEventArgs(notifications))));
                 }
             }
-            catch (CommunicationException ex)
+            catch (Exception ex)
             {
+                Logger.LogIndustrialMonitoring(ex);
                 MessageBox.Show(ex.Message);
             }
         }
 
         private void ShowMsgOnStatusBar(string msg)
         {
-            ClearStatusBar();
+            try
+            {
+                ClearStatusBar();
 
-            StatusBarBottom.Items.Add(msg);
+                StatusBarBottom.Items.Add(msg);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

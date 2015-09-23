@@ -113,128 +113,192 @@ namespace IndustrialMonitoring
 
         private void InitChart()
         {
-            Chart.Series.Clear();
-
-            if (this.ItemsAioViewModel.ItemType == ItemType.Digital)
+            try
             {
-                Chart.Series.Add(new StepAreaSeries());
-                //Chart.Series.Add(new AreaSeries());
-                //AreaSeries series = (AreaSeries)this.Chart.Series[0];
-                StepAreaSeries series = (StepAreaSeries) this.Chart.Series[0];
-                series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
-                series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                series.Stroke = Brushes.LightBlue;
-                series.Fill = Brushes.LightBlue;
-                series.StrokeThickness = 2;
+                Chart.Series.Clear();
 
-                series.ItemsSource = ObservableCollection;
+                if (this.ItemsAioViewModel.ItemType == ItemType.Digital)
+                {
+                    Chart.Series.Add(new StepAreaSeries());
+                    //Chart.Series.Add(new AreaSeries());
+                    //AreaSeries series = (AreaSeries)this.Chart.Series[0];
+                    StepAreaSeries series = (StepAreaSeries)this.Chart.Series[0];
+                    series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
+                    series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                    series.Stroke = Brushes.LightBlue;
+                    series.Fill = Brushes.LightBlue;
+                    series.StrokeThickness = 2;
+
+                    series.ItemsSource = ObservableCollection;
+                }
+                else if (this.ItemsAioViewModel.ItemType == ItemType.Analog)
+                {
+
+                    Chart.Series.Add(new LineSeries());
+                    LineSeries series = (LineSeries)this.Chart.Series[0];
+                    series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
+                    series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                    series.Stroke = Brushes.Blue;
+                    series.StrokeThickness = 2;
+
+                    series.ItemsSource = ObservableCollection;
+                }
             }
-            else if (this.ItemsAioViewModel.ItemType == ItemType.Analog)
+            catch (Exception ex)
             {
-
-                Chart.Series.Add(new LineSeries());
-                LineSeries series = (LineSeries)this.Chart.Series[0];
-                series.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Date" };
-                series.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                series.Stroke = Brushes.Blue;
-                series.StrokeThickness = 2;
-
-                series.ItemsSource = ObservableCollection;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void AIO_OnLoaded(object sender, RoutedEventArgs e)
         {
-            TextBlockTitle.Text = this.ItemsAioViewModel.ItemName;
+            try
+            {
+                TextBlockTitle.Text = this.ItemsAioViewModel.ItemName;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void Start()
         {
-            if (storyboard == null)
+            try
             {
-                storyboard = (Storyboard)FindResource("StoryboardAnim");    
-            }
-            
-            Timer = new Timer(ShowLiveData, new object(), 0, this.ItemsAioViewModel.ShowInUITimeInterval * 1000);
-            //TimerAnimation = new Timer(ShowAnimation, new object(),0,3*1000);
-            ObservableCollection = new ObservableCollection<Lib.ChartLiveData>();
+                if (storyboard == null)
+                {
+                    storyboard = (Storyboard)FindResource("StoryboardAnim");
+                }
 
-            InitChart();
+                Timer = new Timer(ShowLiveData, new object(), 0, this.ItemsAioViewModel.ShowInUITimeInterval * 1000);
+                //TimerAnimation = new Timer(ShowAnimation, new object(),0,3*1000);
+                ObservableCollection = new ObservableCollection<Lib.ChartLiveData>();
+
+                InitChart();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void Stop()
         {
-            Timer.Dispose();
-            //TimerAnimation.Dispose();
-            storyboard.Stop();
+            try
+            {
+                Timer.Dispose();
+                //TimerAnimation.Dispose();
+                storyboard.Stop();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ShowLiveData(object state)
         {
-            LatestData = ProcessDataServiceClient.GeItemsLogLatest(this.ItemsAioViewModel.ItemId);
-            HasNotification = NotificationServiceClient.HasNotification(this.ItemsAioViewModel.ItemId);
-
-            if (LatestData == null)
+            try
             {
-                return;
-            }
+                LatestData = ProcessDataServiceClient.GeItemsLogLatest(this.ItemsAioViewModel.ItemId);
+                HasNotification = NotificationServiceClient.HasNotification(this.ItemsAioViewModel.ItemId);
 
-            Dispatcher.Invoke(new Action(ShowLiveDataUI));
+                if (LatestData == null)
+                {
+                    return;
+                }
+
+                Dispatcher.Invoke(new Action(ShowLiveDataUI));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ShowLiveDataUI()
         {
-            // TODO Parameter
-            if (ObservableCollection.Count > 49)
+            try
             {
-                ObservableCollection.RemoveAt(0);
-            }
-
-            ObservableCollection.Add(new Lib.ChartLiveData() { Value = Convert.ToDouble(LatestData.Value), Date = DateTime.Now });
-
-            TextBlockValue.Text = LatestData.Value;
-
-            System.Diagnostics.Debug.WriteLine("Item Name : {0} , Count ObservableCollection : {1}",
-                this.ItemsAioViewModel.ItemName, ObservableCollection.Count);
-
-            if (HasNotification)
-            {
-                if (isAnimationActive == false)
+                // TODO Parameter
+                if (ObservableCollection.Count > 49)
                 {
-                    storyboard.Begin();
-                    isAnimationActive = true;
+                    ObservableCollection.RemoveAt(0);
                 }
 
+                ObservableCollection.Add(new Lib.ChartLiveData() { Value = Convert.ToDouble(LatestData.Value), Date = DateTime.Now });
+
+                TextBlockValue.Text = LatestData.Value;
+
+                System.Diagnostics.Debug.WriteLine("Item Name : {0} , Count ObservableCollection : {1}",
+                    this.ItemsAioViewModel.ItemName, ObservableCollection.Count);
+
+                if (HasNotification)
+                {
+                    if (isAnimationActive == false)
+                    {
+                        storyboard.Begin();
+                        isAnimationActive = true;
+                    }
+
+                }
+                else
+                {
+                    storyboard.Stop();
+                    isAnimationActive = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                storyboard.Stop();
-                isAnimationActive = false;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void ShowAnimation(object state)
         {
-            HasNotification = NotificationServiceClient.HasNotification(this.ItemsAioViewModel.ItemId);
+            try
+            {
+                HasNotification = NotificationServiceClient.HasNotification(this.ItemsAioViewModel.ItemId);
 
-            Dispatcher.Invoke(new Action(ShowAnimationUI));
+                Dispatcher.Invoke(new Action(ShowAnimationUI));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ShowAnimationUI()
         {
-            if (HasNotification)
+            try
             {
-                if (isAnimationActive==false)
+                if (HasNotification)
                 {
-                    storyboard.Begin();
-                    isAnimationActive = true;
+                    if (isAnimationActive == false)
+                    {
+                        storyboard.Begin();
+                        isAnimationActive = true;
+                    }
+
                 }
-                
+                else
+                {
+                    storyboard.Stop();
+                    isAnimationActive = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                storyboard.Stop();
-                isAnimationActive = false;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
     }

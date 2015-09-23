@@ -88,243 +88,331 @@ namespace IndustrialMonitoring
 
         private void InitChart()
         {
-            ChartBrushes = new List<Brush>();
-            ChartBrushes.Add(Brushes.Blue);
-            ChartBrushes.Add(Brushes.Green);
-            ChartBrushes.Add(Brushes.LightSalmon);
-            ChartBrushes.Add(Brushes.DarkRed);
-            ChartBrushes.Add(Brushes.Gold);
-            ChartBrushes.Add(Brushes.MediumBlue);
-            ChartBrushes.Add(Brushes.CadetBlue);
-            ChartBrushes.Add(Brushes.Coral);
-            ChartBrushes.Add(Brushes.Chocolate);
-            ChartBrushes.Add(Brushes.Crimson);
-            ChartBrushes.Add(Brushes.Indigo);
-            ChartBrushes.Add(Brushes.PaleGreen);
-            ChartBrushes.Add(Brushes.OrangeRed);
-            ChartBrushes.Add(Brushes.Purple);
-            ChartBrushes.Add(Brushes.Fuchsia);
-            ChartBrushes.Add(Brushes.AliceBlue);
-            ChartBrushes.Add(Brushes.Orange);
-            ChartBrushes.Add(Brushes.Purple);
-            ChartBrushes.Add(Brushes.Chartreuse);
-
-            int countItems = ItemsId.Count;
-
-            if (ItemsId != null)
+            try
             {
+                ChartBrushes = new List<Brush>();
+                ChartBrushes.Add(Brushes.Blue);
+                ChartBrushes.Add(Brushes.Green);
+                ChartBrushes.Add(Brushes.LightSalmon);
+                ChartBrushes.Add(Brushes.DarkRed);
+                ChartBrushes.Add(Brushes.Gold);
+                ChartBrushes.Add(Brushes.MediumBlue);
+                ChartBrushes.Add(Brushes.CadetBlue);
+                ChartBrushes.Add(Brushes.Coral);
+                ChartBrushes.Add(Brushes.Chocolate);
+                ChartBrushes.Add(Brushes.Crimson);
+                ChartBrushes.Add(Brushes.Indigo);
+                ChartBrushes.Add(Brushes.PaleGreen);
+                ChartBrushes.Add(Brushes.OrangeRed);
+                ChartBrushes.Add(Brushes.Purple);
+                ChartBrushes.Add(Brushes.Fuchsia);
+                ChartBrushes.Add(Brushes.AliceBlue);
+                ChartBrushes.Add(Brushes.Orange);
+                ChartBrushes.Add(Brushes.Purple);
+                ChartBrushes.Add(Brushes.Chartreuse);
 
-                for (int i = 0; i < countItems; i++)
+                int countItems = ItemsId.Count;
+
+                if (ItemsId != null)
                 {
-                    switch (ChartType)
+
+                    for (int i = 0; i < countItems; i++)
                     {
-                        case ChartType.AreaSeries:
-                            Chart.Series.Add(new AreaSeries());
-                            AreaSeries series1 = (AreaSeries)this.Chart.Series[i];
-                            series1.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-                            series1.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                            series1.Stroke = ChartBrushes[i];
-                            series1.StrokeThickness = 2;
-                            break;
-                        case ChartType.LineSeries:
-                            Chart.Series.Add(new LineSeries());
-                            LineSeries series2 = (LineSeries)this.Chart.Series[i];
-                            series2.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-                            series2.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                            series2.Stroke = ChartBrushes[i];
-                            series2.StrokeThickness = 2;
-                            break;
-                        case ChartType.PointSeries:
-                            Chart.Series.Add(new PointSeries());
-                            PointSeries series3 = (PointSeries)this.Chart.Series[i];
-                            series3.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-                            series3.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                            break;
-                        case ChartType.SplineAreaSeries:
-                            Chart.Series.Add(new SplineAreaSeries());
-                            SplineAreaSeries series4 = (SplineAreaSeries)this.Chart.Series[i];
-                            series4.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-                            series4.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                            series4.Stroke = ChartBrushes[i];
-                            series4.StrokeThickness = 2;
-                            break;
-                        case ChartType.SplineSeries:
-                            Chart.Series.Add(new SplineSeries());
-                            SplineSeries series5 = (SplineSeries)this.Chart.Series[i];
-                            series5.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-                            series5.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                            series5.Stroke = ChartBrushes[i];
-                            series5.StrokeThickness = 2;
-                            break;
-                        case ChartType.StepAreaSeries:
-                            Chart.Series.Add(new StepAreaSeries());
-                            StepAreaSeries series6 = (StepAreaSeries)this.Chart.Series[i];
-                            series6.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-                            series6.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                            series6.Stroke = ChartBrushes[i];
-                            series6.StrokeThickness = 2;
-                            break;
-                        case ChartType.StepLineSeries:
-                            Chart.Series.Add(new StepLineSeries());
-                            StepLineSeries series7 = (StepLineSeries)this.Chart.Series[i];
-                            series7.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
-                            series7.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
-                            series7.Stroke = ChartBrushes[i];
-                            series7.StrokeThickness = 2;
-                            break;
+                        switch (ChartType)
+                        {
+                            case ChartType.AreaSeries:
+                                Chart.Series.Add(new AreaSeries());
+                                AreaSeries series1 = (AreaSeries)this.Chart.Series[i];
+                                series1.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                                series1.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                                series1.Stroke = ChartBrushes[i];
+                                series1.StrokeThickness = 2;
+                                break;
+                            case ChartType.LineSeries:
+                                Chart.Series.Add(new LineSeries());
+                                LineSeries series2 = (LineSeries)this.Chart.Series[i];
+                                series2.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                                series2.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                                series2.Stroke = ChartBrushes[i];
+                                series2.StrokeThickness = 2;
+                                break;
+                            case ChartType.PointSeries:
+                                Chart.Series.Add(new PointSeries());
+                                PointSeries series3 = (PointSeries)this.Chart.Series[i];
+                                series3.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                                series3.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                                break;
+                            case ChartType.SplineAreaSeries:
+                                Chart.Series.Add(new SplineAreaSeries());
+                                SplineAreaSeries series4 = (SplineAreaSeries)this.Chart.Series[i];
+                                series4.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                                series4.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                                series4.Stroke = ChartBrushes[i];
+                                series4.StrokeThickness = 2;
+                                break;
+                            case ChartType.SplineSeries:
+                                Chart.Series.Add(new SplineSeries());
+                                SplineSeries series5 = (SplineSeries)this.Chart.Series[i];
+                                series5.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                                series5.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                                series5.Stroke = ChartBrushes[i];
+                                series5.StrokeThickness = 2;
+                                break;
+                            case ChartType.StepAreaSeries:
+                                Chart.Series.Add(new StepAreaSeries());
+                                StepAreaSeries series6 = (StepAreaSeries)this.Chart.Series[i];
+                                series6.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                                series6.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                                series6.Stroke = ChartBrushes[i];
+                                series6.StrokeThickness = 2;
+                                break;
+                            case ChartType.StepLineSeries:
+                                Chart.Series.Add(new StepLineSeries());
+                                StepLineSeries series7 = (StepLineSeries)this.Chart.Series[i];
+                                series7.CategoryBinding = new PropertyNameDataPointBinding() { PropertyName = "Time" };
+                                series7.ValueBinding = new PropertyNameDataPointBinding() { PropertyName = "Value" };
+                                series7.Stroke = ChartBrushes[i];
+                                series7.StrokeThickness = 2;
+                                break;
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
-
+        
         private void WindowChartHistory_OnLoaded(object sender, RoutedEventArgs e)
         {
-            InitChart();
+            try
+            {
+                InitChart();
 
-            this.ShowDataCompleted += WindowChartHistory_ShowDataCompleted;
+                this.ShowDataCompleted += WindowChartHistory_ShowDataCompleted;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         void WindowChartHistory_ShowDataCompleted(object sender, ShowDataCompletedEventArgs e)
         {
-            if (ItemsId.Count == 1)
+            try
             {
-                TextBlockTitle.Text = string.Format("{0} {1}-{2}", e.CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());
+                if (ItemsId.Count == 1)
+                {
+                    TextBlockTitle.Text = string.Format("{0} {1}-{2}", e.CurrentItem.ItemName, this.StartTime.ToString(), this.EndTime.ToString());
+                }
+                else
+                {
+
+                    TextBlockTitle.Text = string.Format("Compare {0}-{1}", this.StartTime.ToString(), this.EndTime.ToString());
+                }
+
+                switch (ChartType)
+                {
+                    case ChartType.AreaSeries:
+                        AreaSeries series1 = (AreaSeries)this.Chart.Series[e.ItemId.Key];
+                        series1.ItemsSource = e.Data;
+                        break;
+                    case ChartType.LineSeries:
+                        LineSeries series2 = (LineSeries)this.Chart.Series[e.ItemId.Key];
+                        series2.ItemsSource = e.Data;
+                        break;
+                    case ChartType.PointSeries:
+                        PointSeries series3 = (PointSeries)this.Chart.Series[e.ItemId.Key];
+                        series3.ItemsSource = e.Data;
+                        break;
+                    case ChartType.SplineAreaSeries:
+                        SplineAreaSeries series4 = (SplineAreaSeries)this.Chart.Series[e.ItemId.Key];
+                        series4.ItemsSource = e.Data;
+                        break;
+                    case ChartType.SplineSeries:
+                        SplineSeries series5 = (SplineSeries)this.Chart.Series[e.ItemId.Key];
+                        series5.ItemsSource = e.Data;
+                        break;
+                    case ChartType.StepAreaSeries:
+                        StepAreaSeries series6 = (StepAreaSeries)this.Chart.Series[e.ItemId.Key];
+                        series6.ItemsSource = e.Data;
+                        break;
+                    case ChartType.StepLineSeries:
+                        StepLineSeries series7 = (StepLineSeries)this.Chart.Series[e.ItemId.Key];
+                        series7.ItemsSource = e.Data;
+                        break;
+                }
+
+                Chart.Zoom = new Size(1, 1);
+
+                if (e.GenerateLegend)
+                {
+                    ChartLegend.Items.Add(new LegendItem() { MarkerFill = ChartBrushes[e.ItemId.Key], Title = e.CurrentItem.ItemName });
+                }
+
+                BusyIndicator.IsBusy = false;
             }
-            else
+            catch (Exception ex)
             {
-
-                TextBlockTitle.Text = string.Format("Compare {0}-{1}", this.StartTime.ToString(), this.EndTime.ToString());
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
-
-            switch (ChartType)
-            {
-                case ChartType.AreaSeries:
-                    AreaSeries series1 = (AreaSeries)this.Chart.Series[e.ItemId.Key];
-                    series1.ItemsSource = e.Data;
-                    break;
-                case ChartType.LineSeries:
-                    LineSeries series2 = (LineSeries)this.Chart.Series[e.ItemId.Key];
-                    series2.ItemsSource = e.Data;
-                    break;
-                case ChartType.PointSeries:
-                    PointSeries series3 = (PointSeries)this.Chart.Series[e.ItemId.Key];
-                    series3.ItemsSource = e.Data;
-                    break;
-                case ChartType.SplineAreaSeries:
-                    SplineAreaSeries series4 = (SplineAreaSeries)this.Chart.Series[e.ItemId.Key];
-                    series4.ItemsSource = e.Data;
-                    break;
-                case ChartType.SplineSeries:
-                    SplineSeries series5 = (SplineSeries)this.Chart.Series[e.ItemId.Key];
-                    series5.ItemsSource = e.Data;
-                    break;
-                case ChartType.StepAreaSeries:
-                    StepAreaSeries series6 = (StepAreaSeries)this.Chart.Series[e.ItemId.Key];
-                    series6.ItemsSource = e.Data;
-                    break;
-                case ChartType.StepLineSeries:
-                    StepLineSeries series7 = (StepLineSeries)this.Chart.Series[e.ItemId.Key];
-                    series7.ItemsSource = e.Data;
-                    break;
-            }
-
-            Chart.Zoom = new Size(1, 1);
-
-            if (e.GenerateLegend)
-            {
-                ChartLegend.Items.Add(new LegendItem() { MarkerFill = ChartBrushes[e.ItemId.Key], Title = e.CurrentItem.ItemName });
-            }
-
-            BusyIndicator.IsBusy = false;
         }
 
         public void ShowData(bool generateLegend = true)
         {
-            BusyIndicator.IsBusy = true;
-
-            foreach (var dic in ItemsId)
+            try
             {
-                KeyValuePair<int, int> dic1 = dic;
-                Thread t1 = new Thread(() => ShowDataAsync(dic1, generateLegend));
-                t1.Priority=ThreadPriority.AboveNormal;
-                t1.Start();
+                BusyIndicator.IsBusy = true;
+
+                foreach (var dic in ItemsId)
+                {
+                    KeyValuePair<int, int> dic1 = dic;
+                    Thread t1 = new Thread(() => ShowDataAsync(dic1, generateLegend));
+                    t1.Priority = ThreadPriority.AboveNormal;
+                    t1.Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void ShowDataAsync(KeyValuePair<int, int> itemId, bool generateLegend)
         {
-            Item1 CurrentItem = ProcessDataServiceClient.GetItem(itemId.Value);
-            List<ItemsLogChartHistoryViewModel> ItemsLog = ProcessDataServiceClient.GetItemLogs(itemId.Value, StartTime, EndTime);
-            
-            Dispatcher.BeginInvoke(new Action(() => OnShowDataCompleted(new ShowDataCompletedEventArgs(itemId, ItemsLog, CurrentItem, generateLegend))));
+            try
+            {
+                Item1 CurrentItem = ProcessDataServiceClient.GetItem(itemId.Value);
+                List<ItemsLogChartHistoryViewModel> ItemsLog = ProcessDataServiceClient.GetItemLogs(itemId.Value, StartTime, EndTime);
+
+                Dispatcher.BeginInvoke(new Action(() => OnShowDataCompleted(new ShowDataCompletedEventArgs(itemId, ItemsLog, CurrentItem, generateLegend))));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ClearStatusBar();
+            try
+            {
+                ClearStatusBar();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ShowMsgOnStatusBar(string msg)
         {
-            ClearStatusBar();
+            try
+            {
+                ClearStatusBar();
 
-            StatusBarBottom.Items.Add(msg);
+                StatusBarBottom.Items.Add(msg);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ClearStatusBar()
         {
-            StatusBarBottom.Items.Clear();
+            try
+            {
+                StatusBarBottom.Items.Clear();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         void dialogSetTime_TimeChanged(object sender, Lib.TimeChangedEventArgs e)
         {
-            this.StartTime = e.StartTime;
-            this.EndTime = e.EndTime;
-            ShowData(false);
+            try
+            {
+                this.StartTime = e.StartTime;
+                this.EndTime = e.EndTime;
+                ShowData(false);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemShowSetTimeDialog_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            TextBlock textBlock1 = new TextBlock();
-            textBlock1.Text = "Start Time : ";
-            textBlock1.FontWeight = FontWeights.Bold;
+            try
+            {
+                TextBlock textBlock1 = new TextBlock();
+                textBlock1.Text = "Start Time : ";
+                textBlock1.FontWeight = FontWeights.Bold;
 
-            TextBlock textBlock2 = new TextBlock();
-            textBlock2.Text = StartTime.ToString();
+                TextBlock textBlock2 = new TextBlock();
+                textBlock2.Text = StartTime.ToString();
 
-            StackPanel stackPanel1 = new StackPanel();
-            stackPanel1.Orientation = Orientation.Horizontal;
+                StackPanel stackPanel1 = new StackPanel();
+                stackPanel1.Orientation = Orientation.Horizontal;
 
-            stackPanel1.Children.Add(textBlock1);
-            stackPanel1.Children.Add(textBlock2);
+                stackPanel1.Children.Add(textBlock1);
+                stackPanel1.Children.Add(textBlock2);
 
-            TextBlock textBlock3 = new TextBlock();
-            textBlock3.Text = "End Time : ";
-            textBlock3.FontWeight = FontWeights.Bold;
+                TextBlock textBlock3 = new TextBlock();
+                textBlock3.Text = "End Time : ";
+                textBlock3.FontWeight = FontWeights.Bold;
 
-            TextBlock textBlock4 = new TextBlock();
-            textBlock4.Text = EndTime.ToString();
+                TextBlock textBlock4 = new TextBlock();
+                textBlock4.Text = EndTime.ToString();
 
-            StackPanel stackPanel2 = new StackPanel();
-            stackPanel2.Orientation = Orientation.Horizontal;
+                StackPanel stackPanel2 = new StackPanel();
+                stackPanel2.Orientation = Orientation.Horizontal;
 
-            stackPanel2.Children.Add(textBlock3);
-            stackPanel2.Children.Add(textBlock4);
+                stackPanel2.Children.Add(textBlock3);
+                stackPanel2.Children.Add(textBlock4);
 
-            StackPanel stackPanel3 = new StackPanel();
-            stackPanel3.Children.Add(stackPanel1);
-            stackPanel3.Children.Add(stackPanel2);
+                StackPanel stackPanel3 = new StackPanel();
+                stackPanel3.Children.Add(stackPanel1);
+                stackPanel3.Children.Add(stackPanel2);
 
-            MenuItemShowSetTimeDialog.ToolTip = stackPanel3;
+                MenuItemShowSetTimeDialog.ToolTip = stackPanel3;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemShowSetTimeDialog_OnClick(object sender, RadRoutedEventArgs e)
         {
-            DialogSetTime dialogSetTime = new DialogSetTime();
-            dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
-            dialogSetTime.StartTime = StartTime;
-            dialogSetTime.EndTime = EndTime;
-            dialogSetTime.ShowDialog();
+            try
+            {
+                DialogSetTime dialogSetTime = new DialogSetTime();
+                dialogSetTime.TimeChanged += dialogSetTime_TimeChanged;
+                dialogSetTime.StartTime = StartTime;
+                dialogSetTime.EndTime = EndTime;
+                dialogSetTime.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

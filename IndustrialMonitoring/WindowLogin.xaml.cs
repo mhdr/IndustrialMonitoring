@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IndustrialMonitoring.UserServiceReference;
+using SharedLibrary;
 using Telerik.Windows.Controls;
 
 namespace IndustrialMonitoring
@@ -37,47 +38,87 @@ namespace IndustrialMonitoring
 
         private void ButtonLogin_OnClick(object sender, RoutedEventArgs e)
         {
-            string userName = TextBoxUserName.Text;
-            string password = PasswordBox.Password;
-
-            bool result = UserServiceClient.Authorize(userName, password);
-
-            if (result)
+            try
             {
-                Lib.Static.CurrentUser = UserServiceClient.GetUserByUserName(userName);
-                Lib.Static.UserServicesPermission =
-                    UserServiceClient.GetUserServicesPermission(Lib.Static.CurrentUser.UserId);
+                string userName = TextBoxUserName.Text;
+                string password = PasswordBox.Password;
 
-                MainWindow mainWindow=new MainWindow();
-                mainWindow.Show();
-                this.Close();
+                bool result = UserServiceClient.Authorize(userName, password);
+
+                if (result)
+                {
+                    Lib.Static.CurrentUser = UserServiceClient.GetUserByUserName(userName);
+                    Lib.Static.UserServicesPermission =
+                        UserServiceClient.GetUserServicesPermission(Lib.Static.CurrentUser.UserId);
+
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    ShowMsgOnStatusBar("Username or Password is wrong");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ShowMsgOnStatusBar("Username or Password is wrong");
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void ShowMsgOnStatusBar(string msg)
         {
-            ClearStatusBar();
+            try
+            {
+                ClearStatusBar();
 
-            StatusBarBottom.Items.Add(msg);
+                StatusBarBottom.Items.Add(msg);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ClearStatusBar()
         {
-            StatusBarBottom.Items.Clear();
+            try
+            {
+                StatusBarBottom.Items.Clear();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ClearStatusBar();
+            try
+            {
+                ClearStatusBar();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void WindowLogin_OnLoaded(object sender, RoutedEventArgs e)
         {
-            TextBoxUserName.Focus();
+            try
+            {
+                TextBoxUserName.Focus();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

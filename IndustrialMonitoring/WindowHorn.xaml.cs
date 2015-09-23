@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IndustrialMonitoring.ProcessDataServiceReference;
+using SharedLibrary;
 
 namespace IndustrialMonitoring
 {
@@ -43,59 +44,83 @@ namespace IndustrialMonitoring
 
         private void WindowHorn_OnLoaded(object sender, RoutedEventArgs e)
         {
-            Thread t1=new Thread(() =>
+            try
             {
-                var horn = ProcessDataService.GetMuteHorn();
+                Thread t1 = new Thread(() =>
+                      {
+                          var horn = ProcessDataService.GetMuteHorn();
 
-                Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    PowerButtonState.Value = horn;
-                }));
-            });
+                          Dispatcher.BeginInvoke(new Action(() =>
+                          {
+                              PowerButtonState.Value = horn;
+                          }));
+                      });
 
-            t1.Start();
+                t1.Start();
 
-            //Timer1=new Timer(Fetch,null,0,2000);
-            
-            Timer1=new Timer(state =>
+                //Timer1=new Timer(Fetch,null,0,2000);
+
+                Timer1 = new Timer(state =>
+                  {
+                      bool hornHMI = ProcessDataService.GetHornHMI();
+                      bool horn2 = ProcessDataService.GetHorn();
+                      bool muteHorn = ProcessDataService.GetMuteHorn();
+
+                      Dispatcher.BeginInvoke(new Action(() =>
+                      {
+                          LedHorn.Value = horn2;
+                          LedAlarm.Value = hornHMI;
+                          PowerButtonState.Value = muteHorn;
+                          BusyIndicator2.IsBusy = false;
+                      }));
+                  }, null, 0, 2000);
+            }
+            catch (Exception ex)
             {
-                bool hornHMI = ProcessDataService.GetHornHMI();
-                bool horn2 = ProcessDataService.GetHorn();
-                bool muteHorn = ProcessDataService.GetMuteHorn();
-
-                Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    LedHorn.Value = horn2;
-                    LedAlarm.Value = hornHMI;
-                    PowerButtonState.Value = muteHorn;
-                    BusyIndicator2.IsBusy = false;
-                }));
-            },null,0,2000);
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void PowerButtonState_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<bool> e)
         {
-            if (PowerButtonState.Value)
+            try
             {
-                TextBlockState.Text = "Mute";
+                if (PowerButtonState.Value)
+                {
+                    TextBlockState.Text = "Mute";
+                }
+                else
+                {
+                    TextBlockState.Text = "Normal";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TextBlockState.Text = "Normal";
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void PowerButtonState_OnClick(object sender, RoutedEventArgs e)
         {
-            BusyIndicator2.IsBusy = true;
+            try
+            {
+                BusyIndicator2.IsBusy = true;
 
-            if (PowerButtonState.Value)
-            {
-                ProcessDataService.MuteHorn();
+                if (PowerButtonState.Value)
+                {
+                    ProcessDataService.MuteHorn();
+                }
+                else
+                {
+                    ProcessDataService.UnMuteHorn();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ProcessDataService.UnMuteHorn();
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
     }

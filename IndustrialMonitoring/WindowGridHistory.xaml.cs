@@ -185,15 +185,18 @@ namespace IndustrialMonitoring
 
         private void MenuItemDelete_OnClick(object sender, RadRoutedEventArgs e)
         {
-            if (GridView.SelectedItem != null)
+            if (GridView.SelectedItems != null)
             {
-                ItemsLogChartHistoryViewModel item = (ItemsLogChartHistoryViewModel)GridView.SelectedItem;
-
-                var result = MessageBox.Show("Are you sure you want to delete this item?","Delete",MessageBoxButton.YesNo);
+                var result = MessageBox.Show("Are you sure you want to delete this item?", "Delete", MessageBoxButton.YesNo);
 
                 if (result == MessageBoxResult.Yes)
                 {
-                    ProcessDataServiceClient.DeleteItemLog(item.ItemLogId);
+                    foreach (var selectedItem in GridView.SelectedItems)
+                    {
+                        ItemsLogChartHistoryViewModel item = (ItemsLogChartHistoryViewModel)selectedItem;
+                        ProcessDataServiceClient.DeleteItemLog(item.ItemLogId);
+                    }
+
                     ShowData();
                 }
             }

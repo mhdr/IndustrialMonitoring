@@ -19,6 +19,7 @@ using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.ProcessDataServiceReference;
 using IndustrialMonitoring.UserServiceReference;
 using IndustrialMonitoring.NotificationServiceReference;
+using SharedLibrary;
 using Telerik.Windows;
 using Telerik.Windows.Controls;
 
@@ -86,565 +87,893 @@ namespace IndustrialMonitoring
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (Lib.Static.UserServicesPermission.Contains(1))
+            try
             {
-                MenuItemHorn.IsEnabled = true;
+                if (Lib.Static.UserServicesPermission.Contains(1))
+                {
+                    MenuItemHorn.IsEnabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void Resume()
         {
-            if (AllCharts == null)
+            try
             {
-                return;
-            }
+                if (AllCharts == null)
+                {
+                    return;
+                }
 
-            foreach (var chartLiveData in AllCharts)
+                foreach (var chartLiveData in AllCharts)
+                {
+                    chartLiveData.Start();
+                }
+            }
+            catch (Exception ex)
             {
-                chartLiveData.Start();
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void StartAsync()
         {
-            Thread t1=new Thread(Start);
+            try
+            {
+                Thread t1 = new Thread(Start);
 
-            this.StartAsyncCompleted += MainWindow_StartAsyncCompleted;
-            BusyIndicator.IsBusy = true;
+                this.StartAsyncCompleted += MainWindow_StartAsyncCompleted;
+                BusyIndicator.IsBusy = true;
 
-            t1.Start();
+                t1.Start();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         void MainWindow_StartAsyncCompleted(object sender, EventArgs e)
         {
-            // TODO Parameter
-            TabControlIOs.SelectedIndex = 0;
-            BusyIndicator.IsBusy = false;
+            try
+            {
+                // TODO Parameter
+                TabControlIOs.SelectedIndex = 0;
+                BusyIndicator.IsBusy = false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Start()
         {
-            var tabs = ProcessDataServiceClient.GetTabsAll();
-
-            foreach (var tabsViewModel in tabs)
+            try
             {
-                if (UserServiceClient.UserHaveItemInTab(Lib.Static.CurrentUser.UserId, tabsViewModel.TabId))
-                {
-                    Tab1 model = tabsViewModel;
-                    Dispatcher.BeginInvoke(new Action(() => GenerateTab(model)));   
-                }
-            }
-            
-            Dispatcher.BeginInvoke(new Action(OnStartAsyncCompleted));
+                var tabs = ProcessDataServiceClient.GetTabsAll();
 
-            InitializeHorn();
+                foreach (var tabsViewModel in tabs)
+                {
+                    if (UserServiceClient.UserHaveItemInTab(Lib.Static.CurrentUser.UserId, tabsViewModel.TabId))
+                    {
+                        Tab1 model = tabsViewModel;
+                        Dispatcher.BeginInvoke(new Action(() => GenerateTab(model)));
+                    }
+                }
+
+                Dispatcher.BeginInvoke(new Action(OnStartAsyncCompleted));
+
+                InitializeHorn();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void GenerateTab(Tab1 tabsViewModel)
         {
-            Tab1 model = tabsViewModel;
-            var items = ProcessDataServiceClient.GetItemsForTab(model.TabId);
-
-            RadTabItem radTabItem = new RadTabItem();
-            radTabItem.Name = string.Format("TabItem{0}", tabsViewModel.TabName).Replace(" ","");
-            radTabItem.MinWidth= 80;
-            radTabItem.Height = 25;
-
-            TabHeaderUserControl tabHeader=new TabHeaderUserControl();
-            tabHeader.SetHeader(tabsViewModel.TabName);
-
-            radTabItem.Header = tabHeader;
-            radTabItem.HorizontalContentAlignment = HorizontalAlignment.Center;
-            radTabItem.VerticalContentAlignment = VerticalAlignment.Center;
-
-            WrapPanel wrapPanel = new WrapPanel();
-            wrapPanel.Name = string.Format("WrapPanel{0}", tabsViewModel.TabName).Replace(" ","");
-
-            radTabItem.Content = wrapPanel;
-
-            TabControlIOs.Items.Add(radTabItem);
-
-            foreach (var itemsAioViewModel in items)
+            try
             {
-                if (!UserServiceClient.CheckPermission(Lib.Static.CurrentUser.UserId, itemsAioViewModel.ItemId))
+                Tab1 model = tabsViewModel;
+                var items = ProcessDataServiceClient.GetItemsForTab(model.TabId);
+
+                RadTabItem radTabItem = new RadTabItem();
+                radTabItem.Name = string.Format("TabItem{0}", tabsViewModel.TabName).Replace(" ", "");
+                radTabItem.MinWidth = 80;
+                radTabItem.Height = 25;
+
+                TabHeaderUserControl tabHeader = new TabHeaderUserControl();
+                tabHeader.SetHeader(tabsViewModel.TabName);
+
+                radTabItem.Header = tabHeader;
+                radTabItem.HorizontalContentAlignment = HorizontalAlignment.Center;
+                radTabItem.VerticalContentAlignment = VerticalAlignment.Center;
+
+                WrapPanel wrapPanel = new WrapPanel();
+                wrapPanel.Name = string.Format("WrapPanel{0}", tabsViewModel.TabName).Replace(" ", "");
+
+                radTabItem.Content = wrapPanel;
+
+                TabControlIOs.Items.Add(radTabItem);
+
+                foreach (var itemsAioViewModel in items)
                 {
-                    continue;
+                    if (!UserServiceClient.CheckPermission(Lib.Static.CurrentUser.UserId, itemsAioViewModel.ItemId))
+                    {
+                        continue;
+                    }
+
+                    ChartLiveData chartLiveData = new ChartLiveData();
+                    chartLiveData.ItemsAioViewModel = itemsAioViewModel;
+                    chartLiveData.ProcessDataServiceClient = this.ProcessDataServiceClient;
+                    chartLiveData.NotificationServiceClient = this.NotificationServiceClient;
+                    chartLiveData.MouseDoubleClick += chartLiveData_MouseDoubleClick;
+
+
+                    // TODO Parameter
+                    chartLiveData.Width = 200;
+
+                    // TODO Parameter
+                    chartLiveData.Height = 200;
+
+                    // TODO Parameter
+                    chartLiveData.Margin = new Thickness(4, 2, 4, 2);
+
+                    wrapPanel.Children.Add(chartLiveData);
+                    AllCharts.Add(chartLiveData);
+                    chartLiveData.Start();
                 }
-
-                ChartLiveData chartLiveData = new ChartLiveData();
-                chartLiveData.ItemsAioViewModel = itemsAioViewModel;
-                chartLiveData.ProcessDataServiceClient = this.ProcessDataServiceClient;
-                chartLiveData.NotificationServiceClient = this.NotificationServiceClient;
-                chartLiveData.MouseDoubleClick += chartLiveData_MouseDoubleClick;
-
-
-                // TODO Parameter
-                chartLiveData.Width = 200;
-
-                // TODO Parameter
-                chartLiveData.Height = 200;
-
-                // TODO Parameter
-                chartLiveData.Margin = new Thickness(4, 2, 4, 2);
-
-                wrapPanel.Children.Add(chartLiveData);
-                AllCharts.Add(chartLiveData);
-                chartLiveData.Start();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         void chartLiveData_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var current = sender as ChartLiveData;
-
-            if (current.IsSelected)
+            try
             {
-                current.IsSelected = false;
-                return;
-            }
+                var current = sender as ChartLiveData;
 
-            foreach (var chartLiveData in AllCharts)
+                if (current.IsSelected)
+                {
+                    current.IsSelected = false;
+                    return;
+                }
+
+                foreach (var chartLiveData in AllCharts)
+                {
+                    chartLiveData.IsSelected = false;
+                }
+
+
+                current.IsSelected = true;
+            }
+            catch (Exception ex)
             {
-                chartLiveData.IsSelected = false;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
-
-            
-            current.IsSelected = true;
         }
 
         private void ShowMsgOnStatusBar(string msg)
         {
-            ClearStatusBar();
+            try
+            {
+                ClearStatusBar();
 
-            StatusBarBottom.Items.Add(msg);
+                StatusBarBottom.Items.Add(msg);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ClearStatusBar()
         {
-            StatusBarBottom.Items.Clear();
+            try
+            {
+                StatusBarBottom.Items.Clear();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void StatusBarBottom_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ClearStatusBar();
+            try
+            {
+                ClearStatusBar();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemAddItem_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
-            ChartLiveData selected = null;
-
-            foreach (var chartLiveData in AllCharts)
+            try
             {
-                if (chartLiveData.IsSelected)
+                ChartLiveData selected = null;
+
+                foreach (var chartLiveData in AllCharts)
                 {
-                    selected = chartLiveData;
-                    break;
+                    if (chartLiveData.IsSelected)
+                    {
+                        selected = chartLiveData;
+                        break;
+                    }
                 }
-            }
 
-            if (selected == null)
+                if (selected == null)
+                {
+                    ShowMsgOnStatusBar("First select a item");
+                    return;
+                }
+
+                //TODO Parameters
+                if (ItemsForCompare.Count >= 15)
+                {
+                    ShowMsgOnStatusBar(string.Format("Maximum number of items(={0}) for Compare is reached", 15));
+                    return;
+                }
+
+                if (ItemsForCompare.IndexOf(selected) >= 0)
+                {
+                    ShowMsgOnStatusBar("This item already exists in Compare List");
+                    return;
+                }
+
+                ItemsForCompare.Add(selected);
+
+                MenuItem newMenuItem = new MenuItem();
+                newMenuItem.Header = selected.ItemsAioViewModel.ItemName;
+
+                MenuItem newContextMenuItem = new MenuItem();
+                newContextMenuItem.Header = selected.ItemsAioViewModel.ItemName;
+
+                MenuItemItems.Items.Add(newMenuItem);
+                ContextMenuItemItems.Items.Add(newContextMenuItem);
+                MenuItemClearItems.IsEnabled = true;
+                ContextMenuItemClearItems.IsEnabled = true;
+            }
+            catch (Exception ex)
             {
-                ShowMsgOnStatusBar("First select a item");
-                return;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
-
-            //TODO Parameters
-            if (ItemsForCompare.Count >= 15)
-            {
-                ShowMsgOnStatusBar(string.Format("Maximum number of items(={0}) for Compare is reached", 15));
-                return;
-            }
-
-            if (ItemsForCompare.IndexOf(selected) >= 0)
-            {
-                ShowMsgOnStatusBar("This item already exists in Compare List");
-                return;
-            }
-
-            ItemsForCompare.Add(selected);
-
-            MenuItem newMenuItem=new MenuItem();
-            newMenuItem.Header = selected.ItemsAioViewModel.ItemName;
-
-            MenuItem newContextMenuItem = new MenuItem();
-            newContextMenuItem.Header = selected.ItemsAioViewModel.ItemName;
-
-            MenuItemItems.Items.Add(newMenuItem);
-            ContextMenuItemItems.Items.Add(newContextMenuItem);
-            MenuItemClearItems.IsEnabled = true;
-            ContextMenuItemClearItems.IsEnabled = true;
         }
 
         private void MenuItemClearItems_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
-        	ItemsForCompare.Clear();
-            MenuItemItems.Items.Clear();
-            ContextMenuItemItems.Items.Clear();
-            MenuItemClearItems.IsEnabled = false;
-            ContextMenuItemClearItems.IsEnabled = false;
+            try
+            {
+                ItemsForCompare.Clear();
+                MenuItemItems.Items.Clear();
+                ContextMenuItemItems.Items.Clear();
+                MenuItemClearItems.IsEnabled = false;
+                ContextMenuItemClearItems.IsEnabled = false;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void OpenWindowChartHistoryInCompareMode(ChartType chartType)
         {
-            if (ItemsForCompare.Count < 2)
+            try
             {
-                ShowMsgOnStatusBar(string.Format("At least 2 Item is needed for Compare,you have selected {0}",
-                    ItemsForCompare.Count));
-                return;
+                if (ItemsForCompare.Count < 2)
+                {
+                    ShowMsgOnStatusBar(string.Format("At least 2 Item is needed for Compare,you have selected {0}",
+                        ItemsForCompare.Count));
+                    return;
+                }
+
+                Dictionary<int, int> dictionary = new Dictionary<int, int>();
+
+                int i = 0;
+                foreach (var chartLiveData in ItemsForCompare)
+                {
+                    dictionary.Add(i, chartLiveData.ItemsAioViewModel.ItemId);
+                    i++;
+                }
+
+                WindowChartHistory windowChartHistory = new WindowChartHistory();
+                windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
+                windowChartHistory.ItemsId = dictionary;
+                windowChartHistory.ChartType = chartType;
+
+                // TODO Parameter
+                windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+                // TODO Parameter
+                windowChartHistory.EndTime = DateTime.Now;
+
+                windowChartHistory.Show();
+                windowChartHistory.ShowData();
             }
-
-            Dictionary<int, int> dictionary = new Dictionary<int, int>();
-
-            int i = 0;
-            foreach (var chartLiveData in ItemsForCompare)
+            catch (Exception ex)
             {
-                dictionary.Add(i, chartLiveData.ItemsAioViewModel.ItemId);
-                i++;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
-
-            WindowChartHistory windowChartHistory = new WindowChartHistory();
-            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
-            windowChartHistory.ItemsId = dictionary;
-            windowChartHistory.ChartType = chartType;
-
-            // TODO Parameter
-            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
-
-            // TODO Parameter
-            windowChartHistory.EndTime = DateTime.Now;
-
-            windowChartHistory.Show();
-            windowChartHistory.ShowData();
         }
 
         private void MenuItemStart_OnClick(object sender, RadRoutedEventArgs e)
         {
-            if (AllCharts == null)
+            try
             {
-                StartAsync();
-            }
-            else if (AllCharts.Count == 0)
-            {
-                StartAsync();
-            }
-            else if (AllCharts.Count > 0)
-            {
-                Resume();
-            }
+                if (AllCharts == null)
+                {
+                    StartAsync();
+                }
+                else if (AllCharts.Count == 0)
+                {
+                    StartAsync();
+                }
+                else if (AllCharts.Count > 0)
+                {
+                    Resume();
+                }
 
-            MenuItemStart.IsEnabled = false;
-            MenuItemStop.IsEnabled = true;
+                MenuItemStart.IsEnabled = false;
+                MenuItemStop.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void InitializeHorn()
         {
-            timerNotifications = new Timer(CheckNotifications, null, 0, 1000);
-            Dispatcher.BeginInvoke(new Action(() =>
+            try
             {
-                horn = Horn.GetInstance();    
-            }));
+                timerNotifications = new Timer(CheckNotifications, null, 0, 1000);
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    horn = Horn.GetInstance();
+                }));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CheckNotifications(object state)
         {
-            Dispatcher.BeginInvoke(new Action(() =>
+            try
             {
-                bool hastNotification = NotificationServiceClient.SystemHasNotification(Lib.Static.CurrentUser.UserId);
-
-                if (hastNotification)
-                {
-                    horn.Start();
-                    List<string> tabs =
-                        NotificationServiceClient.TabsWithActiveNotification(Lib.Static.CurrentUser.UserId);
-
-                    foreach (var item in TabControlIOs.Items)
+                Dispatcher.BeginInvoke(new Action(() =>
                     {
-                        RadTabItem tabItem = (RadTabItem)item;
-                        TabHeaderUserControl tabHeader = (TabHeaderUserControl) tabItem.Header;
-                        string header = tabHeader.GetHeader();
+                        bool hastNotification = NotificationServiceClient.SystemHasNotification(Lib.Static.CurrentUser.UserId);
 
-                        if (tabs.Any(x=>x.Equals(header)))
+                        if (hastNotification)
                         {
-                            tabHeader.ShowAlarmAnimation();
+                            horn.Start();
+                            List<string> tabs =
+                                NotificationServiceClient.TabsWithActiveNotification(Lib.Static.CurrentUser.UserId);
+
+                            foreach (var item in TabControlIOs.Items)
+                            {
+                                RadTabItem tabItem = (RadTabItem)item;
+                                TabHeaderUserControl tabHeader = (TabHeaderUserControl)tabItem.Header;
+                                string header = tabHeader.GetHeader();
+
+                                if (tabs.Any(x => x.Equals(header)))
+                                {
+                                    tabHeader.ShowAlarmAnimation();
+                                }
+                                else
+                                {
+                                    tabHeader.HideAlarmAnimation();
+                                }
+                            }
+
+                            BlackAllTabs = true;
                         }
                         else
                         {
-                            tabHeader.HideAlarmAnimation();
+                            horn.Stop();
+
+                            if (BlackAllTabs)
+                            {
+                                foreach (var item in TabControlIOs.Items)
+                                {
+                                    RadTabItem tabItem = (RadTabItem)item;
+                                    TabHeaderUserControl tabHeader = (TabHeaderUserControl)tabItem.Header;
+                                    tabHeader.HideAlarmAnimation();
+                                }
+
+                                BlackAllTabs = false;
+                            }
                         }
-                    }
-
-                    BlackAllTabs = true;
-                }
-                else
-                {
-                    horn.Stop();
-
-                    if (BlackAllTabs)
-                    {
-                        foreach (var item in TabControlIOs.Items)
-                        {
-                            RadTabItem tabItem = (RadTabItem)item;
-                            TabHeaderUserControl tabHeader = (TabHeaderUserControl)tabItem.Header;
-                            tabHeader.HideAlarmAnimation();
-                        }
-
-                        BlackAllTabs = false;
-                    }
-                }
-            }));
+                    }));
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemStop_OnClick(object sender, RadRoutedEventArgs e)
         {
-            if (AllCharts == null)
+            try
             {
-                return;
-            }
+                if (AllCharts == null)
+                {
+                    return;
+                }
 
-            foreach (var chartLiveData in AllCharts)
+                foreach (var chartLiveData in AllCharts)
+                {
+                    chartLiveData.Stop();
+                }
+
+                MenuItemStart.IsEnabled = true;
+                MenuItemStop.IsEnabled = false;
+            }
+            catch (Exception ex)
             {
-                chartLiveData.Stop();
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
-
-            MenuItemStart.IsEnabled = true;
-            MenuItemStop.IsEnabled = false;
         }
 
         private void MenuItemGrid_OnClick(object sender, RadRoutedEventArgs e)
         {
-            ChartLiveData selected = null;
-
-            foreach (var chartLiveData in AllCharts)
+            try
             {
-                if (chartLiveData.IsSelected)
+                ChartLiveData selected = null;
+
+                foreach (var chartLiveData in AllCharts)
                 {
-                    selected = chartLiveData;
-                    break;
+                    if (chartLiveData.IsSelected)
+                    {
+                        selected = chartLiveData;
+                        break;
+                    }
                 }
-            }
 
-            if (selected == null)
+                if (selected == null)
+                {
+                    ShowMsgOnStatusBar("First select a item");
+                    return;
+                }
+
+                WindowGridHistory windowChartHistory = new WindowGridHistory();
+                windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
+                windowChartHistory.ItemId = selected.ItemsAioViewModel.ItemId;
+
+                // TODO Parameter
+                windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+                // TODO Parameter
+                windowChartHistory.EndTime = DateTime.Now;
+
+                windowChartHistory.Show();
+                windowChartHistory.ShowData();
+            }
+            catch (Exception ex)
             {
-                ShowMsgOnStatusBar("First select a item");
-                return;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
-
-            WindowGridHistory windowChartHistory = new WindowGridHistory();
-            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
-            windowChartHistory.ItemId = selected.ItemsAioViewModel.ItemId;
-
-            // TODO Parameter
-            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
-
-            // TODO Parameter
-            windowChartHistory.EndTime = DateTime.Now;
-
-            windowChartHistory.Show();
-            windowChartHistory.ShowData();
         }
 
         private void MenuItemCompareData_OnClick(object sender, RadRoutedEventArgs e)
         {
-            if (ItemsForCompare.Any())
+            try
             {
-                MenuItemClearItems.IsEnabled = true;
+                if (ItemsForCompare.Any())
+                {
+                    MenuItemClearItems.IsEnabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void MenuItemShowNotifications_OnClick(object sender, RadRoutedEventArgs e)
         {
-            WindowNotifications windowNotifications=new WindowNotifications();
-            windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
-            // TODO Parameter
-            windowNotifications.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+            try
+            {
+                WindowNotifications windowNotifications = new WindowNotifications();
+                windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
+                // TODO Parameter
+                windowNotifications.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
 
-            // TODO Parameter
-            windowNotifications.EndTime = DateTime.Now;
-            windowNotifications.Show();
-            windowNotifications.ShowData();
+                // TODO Parameter
+                windowNotifications.EndTime = DateTime.Now;
+                windowNotifications.Show();
+                windowNotifications.ShowData();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemShowNotificationForCurrentItem_OnClick(object sender, RadRoutedEventArgs e)
         {
-            ChartLiveData selected = null;
-
-            foreach (var chartLiveData in AllCharts)
+            try
             {
-                if (chartLiveData.IsSelected)
+                ChartLiveData selected = null;
+
+                foreach (var chartLiveData in AllCharts)
                 {
-                    selected = chartLiveData;
-                    break;
+                    if (chartLiveData.IsSelected)
+                    {
+                        selected = chartLiveData;
+                        break;
+                    }
                 }
-            }
 
-            if (selected == null)
+                if (selected == null)
+                {
+                    ShowMsgOnStatusBar("First select a item");
+                    return;
+                }
+
+                WindowNotifications windowNotifications = new WindowNotifications();
+                windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
+                // TODO Parameter
+                windowNotifications.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+                // TODO Parameter
+                windowNotifications.EndTime = DateTime.Now;
+                windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
+                windowNotifications.ItemId = selected.ItemsAioViewModel.ItemId;
+                windowNotifications.Show();
+                windowNotifications.ShowData();
+            }
+            catch (Exception ex)
             {
-                ShowMsgOnStatusBar("First select a item");
-                return;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
-
-            WindowNotifications windowNotifications = new WindowNotifications();
-            windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
-            // TODO Parameter
-            windowNotifications.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
-
-            // TODO Parameter
-            windowNotifications.EndTime = DateTime.Now;
-            windowNotifications.NotificationServiceClient = this.NotificationServiceClient;
-            windowNotifications.ItemId = selected.ItemsAioViewModel.ItemId;
-            windowNotifications.Show();
-            windowNotifications.ShowData();
         }
 
         private void MenuItemLineSeries_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowsCharthistory(ChartType.LineSeries);
+            try
+            {
+                OpenWindowsCharthistory(ChartType.LineSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void OpenWindowsCharthistory(ChartType chartType)
         {
-            ChartLiveData selected = null;
-
-            foreach (var chartLiveData in AllCharts)
+            try
             {
-                if (chartLiveData.IsSelected)
+                ChartLiveData selected = null;
+
+                foreach (var chartLiveData in AllCharts)
                 {
-                    selected = chartLiveData;
-                    break;
+                    if (chartLiveData.IsSelected)
+                    {
+                        selected = chartLiveData;
+                        break;
+                    }
                 }
-            }
 
-            if (selected == null)
+                if (selected == null)
+                {
+                    ShowMsgOnStatusBar("First select a item");
+                    return;
+                }
+
+
+                Dictionary<int, int> dictionary = new Dictionary<int, int>();
+                dictionary.Add(0, selected.ItemsAioViewModel.ItemId);
+                WindowChartHistory windowChartHistory = new WindowChartHistory();
+                windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
+                windowChartHistory.ItemsId = dictionary;
+
+                // TODO Parameter
+                windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
+
+                // TODO Parameter
+                windowChartHistory.EndTime = DateTime.Now;
+                windowChartHistory.ChartType = chartType;
+
+                windowChartHistory.Show();
+                windowChartHistory.ShowData();
+            }
+            catch (Exception ex)
             {
-                ShowMsgOnStatusBar("First select a item");
-                return;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
-
-
-            Dictionary<int, int> dictionary = new Dictionary<int, int>();
-            dictionary.Add(0, selected.ItemsAioViewModel.ItemId);
-            WindowChartHistory windowChartHistory = new WindowChartHistory();
-            windowChartHistory.ProcessDataServiceClient = this.ProcessDataServiceClient;
-            windowChartHistory.ItemsId = dictionary;
-
-            // TODO Parameter
-            windowChartHistory.StartTime = DateTime.Now - new TimeSpan(0, 24, 0, 0);
-
-            // TODO Parameter
-            windowChartHistory.EndTime = DateTime.Now;
-            windowChartHistory.ChartType = chartType;
-
-            windowChartHistory.Show();
-            windowChartHistory.ShowData();
         }
 
         private void MenuItemSplineSeries_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowsCharthistory(ChartType.SplineSeries);
+            try
+            {
+                OpenWindowsCharthistory(ChartType.SplineSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemStepLineSeries_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowsCharthistory(ChartType.StepLineSeries);
+            try
+            {
+                OpenWindowsCharthistory(ChartType.StepLineSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemPointSeries_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowsCharthistory(ChartType.PointSeries);
+            try
+            {
+                OpenWindowsCharthistory(ChartType.PointSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemAreaSeries_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowsCharthistory(ChartType.AreaSeries);
+            try
+            {
+                OpenWindowsCharthistory(ChartType.AreaSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemSplineAreaSeries_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowsCharthistory(ChartType.SplineAreaSeries);
+            try
+            {
+                OpenWindowsCharthistory(ChartType.SplineAreaSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemStepAreaSeries_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowsCharthistory(ChartType.StepAreaSeries);
+            try
+            {
+                OpenWindowsCharthistory(ChartType.StepAreaSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ContextMenuItemLineSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowChartHistoryInCompareMode(ChartType.LineSeries);
+            try
+            {
+                OpenWindowChartHistoryInCompareMode(ChartType.LineSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ContextMenuItemSplineSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowChartHistoryInCompareMode(ChartType.SplineSeries);
+            try
+            {
+                OpenWindowChartHistoryInCompareMode(ChartType.SplineSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ContextMenuItemStepLineSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowChartHistoryInCompareMode(ChartType.StepLineSeries);
+            try
+            {
+                OpenWindowChartHistoryInCompareMode(ChartType.StepLineSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ContextMenuItemPointSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowChartHistoryInCompareMode(ChartType.PointSeries);
+            try
+            {
+                OpenWindowChartHistoryInCompareMode(ChartType.PointSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ContextMenuItemAreaSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowChartHistoryInCompareMode(ChartType.AreaSeries);
+            try
+            {
+                OpenWindowChartHistoryInCompareMode(ChartType.AreaSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ContextMenuItemSplineAreaSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowChartHistoryInCompareMode(ChartType.SplineAreaSeries);
+            try
+            {
+                OpenWindowChartHistoryInCompareMode(ChartType.SplineAreaSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ContextMenuItemStepAreaSeriesCompare_OnClick(object sender, RadRoutedEventArgs e)
         {
-            OpenWindowChartHistoryInCompareMode(ChartType.StepAreaSeries);
+            try
+            {
+                OpenWindowChartHistoryInCompareMode(ChartType.StepAreaSeries);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemChangePasswordWindow_OnClick(object sender, RadRoutedEventArgs e)
         {
-            WindowChangePassword windowChangePassword=new WindowChangePassword();
-            windowChangePassword.UserServiceClient = this.UserServiceClient;
-            windowChangePassword.ShowDialog();
-
-            if (windowChangePassword.ChangePasswordCount>0)
+            try
             {
-                Application.Current.Shutdown();    
+                WindowChangePassword windowChangePassword = new WindowChangePassword();
+                windowChangePassword.UserServiceClient = this.UserServiceClient;
+                windowChangePassword.ShowDialog();
+
+                if (windowChangePassword.ChangePasswordCount > 0)
+                {
+                    Application.Current.Shutdown();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void MenuItemTools_OnSubmenuOpened(object sender, RadRoutedEventArgs e)
         {
-            if (Static.CurrentUser == null)
+            try
             {
-                MenuItemChangePasswordWindow.IsEnabled = false;
-            }
+                if (Static.CurrentUser == null)
+                {
+                    MenuItemChangePasswordWindow.IsEnabled = false;
+                }
 
-            if (string.IsNullOrEmpty(Static.CurrentUser.UserName))
+                if (string.IsNullOrEmpty(Static.CurrentUser.UserName))
+                {
+                    MenuItemChangePasswordWindow.IsEnabled = false;
+                }
+
+                MenuItemChangePasswordWindow.IsEnabled = true;
+            }
+            catch (Exception ex)
             {
-                MenuItemChangePasswordWindow.IsEnabled = false;
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
             }
-
-            MenuItemChangePasswordWindow.IsEnabled = true;
         }
 
         private void MenuItemIssues_OnClick(object sender, RadRoutedEventArgs e)
         {
-            Process.Start("https://github.com/mhdr/IndustrialMonitoring/issues");
+            try
+            {
+                Process.Start("https://github.com/mhdr/IndustrialMonitoring/issues");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemNewIssue_OnClick(object sender, RadRoutedEventArgs e)
         {
-            Process.Start("https://github.com/mhdr/IndustrialMonitoring/issues/new");
+            try
+            {
+                Process.Start("https://github.com/mhdr/IndustrialMonitoring/issues/new");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void MenuItemHorn_OnClick(object sender, RadRoutedEventArgs e)
         {
-            WindowHorn windowHorn=new WindowHorn();
-            windowHorn.ProcessDataService = this.ProcessDataServiceClient;
-            windowHorn.Show();
+            try
+            {
+                WindowHorn windowHorn = new WindowHorn();
+                windowHorn.ProcessDataService = this.ProcessDataServiceClient;
+                windowHorn.Show();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogIndustrialMonitoring(ex);
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
