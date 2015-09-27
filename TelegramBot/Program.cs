@@ -78,7 +78,19 @@ namespace TelegramBot
 
                             var user = entities.Bots.FirstOrDefault(x => x.ChatId == chatId).User;
 
-                            if (msg == "/list")
+                            if (msg=="/help")
+                            {
+                                string output = @"Examples :
+/list : get list of items ( notice the itemId for items here )
+/get all : get values for all items
+/get 13 : get value for item with itemId13
+/alarms 24h : get alarms in last 24 hours
+/alarms 6h : get alarms in last 6 hours
+";
+
+                                await bot.SendTextMessage(chatId, output);
+                            }
+                            else if (msg == "/list")
                             {
                                 var items = entities.UsersItemsPermissions.Where(x => x.UserId == user.UserId).OrderBy(x => x.Item.Order);
 

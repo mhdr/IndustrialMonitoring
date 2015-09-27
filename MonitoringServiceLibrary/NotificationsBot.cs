@@ -86,7 +86,7 @@ namespace MonitoringServiceLibrary
                 {
                     int userId = usersItemsPermission.UserId;
 
-                    var ids = entities.Bots.Where(x => x.UserId == userId & x.ReceiveAlarms==true);
+                    var ids = entities.Bots.Where(x => x.UserId == userId & x.ReceiveAlarms == true);
 
                     if (!ids.Any())
                     {
@@ -106,12 +106,16 @@ namespace MonitoringServiceLibrary
                     }
                 }
 
+                var category =
+    entities.TabsItems.FirstOrDefault(x => x.ItemId == notificationItemsLog.NotificationItem.ItemId).Tab.TabName;
+
                 string output = string.Format(@"Alarm :
 Item Name : {0}
 Item Id : {1}
-Description : {2}
-Has Alarm : {3}
-Date : {4}", notificationItemsLog.NotificationItem.Item.ItemName, notificationItemsLog.NotificationItem.ItemId
+Category : {2}
+Description : {3}
+Has Alarm : {4}
+Date : {5}", notificationItemsLog.NotificationItem.Item.ItemName, notificationItemsLog.NotificationItem.ItemId, category
     , notificationItemsLog.NotificationItem.NotificationMsg, !notificationItemsLog.Value, notificationItemsLog.Time);
 
                 foreach (int chatId in chatIds)
