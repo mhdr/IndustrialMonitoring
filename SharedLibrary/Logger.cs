@@ -30,6 +30,15 @@ namespace SharedLibrary
             Log(path, ex);
         }
 
+        public static void LogBacnetTest(Exception ex)
+        {
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string fileName = "BacnetTest.log";
+            string path = Path.Combine(folder, fileName);
+
+            Log(path, ex);
+        }
+
         private static void Log(string filePath, Exception ex)
         {
             FileStream fileStream = new FileStream(filePath, FileMode.Append);
