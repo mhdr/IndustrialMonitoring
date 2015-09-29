@@ -19,6 +19,62 @@ namespace TelegramBot
             Console.ReadKey();
         }
 
+        public static async Task StartServer()
+        {
+            var bot = new Telegram.Bot.Api("133038323:AAFXVhA9Htj3p0a0Sl3hydt65Y7fl2AOVEI");
+
+            var offset = 0;
+            Update[] result = null;
+            IndustrialMonitoringEntities entities = null;
+
+            while (true)
+            {
+                try
+                {
+                    entities = new IndustrialMonitoringEntities();
+                    result = new Update[] { };
+
+                    result = await bot.GetUpdates(offset);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogTelegramBot(ex);
+                }
+
+                if (result != null)
+                {
+                    foreach (Update u in result)
+                    {
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(u.Message.Text))
+                            {
+                                BotQueue botQueue = new BotQueue();
+                                botQueue.ChatId = u.Message.Chat.Id;
+                                botQueue.QueueDirection = (int)QueueDirection.In;
+                                botQueue.Date = DateTime.Now;
+                                botQueue.MessageText = u.Message.Text;
+                                botQueue.IsCompleted = false;
+
+                                entities.BotQueues.Add(botQueue);
+                                entities.SaveChanges();
+
+                                offset = u.Id + 1;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.LogTelegramBot(ex);
+                        }
+
+                    }
+                }
+
+                await Task.Delay(1000);
+            }
+
+        }
+
         public static async Task StartResponseServer()
         {
             var bot = new Telegram.Bot.Api("133038323:AAFXVhA9Htj3p0a0Sl3hydt65Y7fl2AOVEI");
@@ -78,7 +134,7 @@ namespace TelegramBot
 
                             var user = entities.Bots.FirstOrDefault(x => x.ChatId == chatId).User;
 
-                            if (msg=="/help")
+                            if (msg == "/help")
                             {
                                 string output = @"Examples :
 /list : get list of items ( notice the itemId for items here )
@@ -89,6 +145,10 @@ namespace TelegramBot
 ";
 
                                 await bot.SendTextMessage(chatId, output);
+                            }
+                            else if (msg == "/ping")
+                            {
+                                await bot.SendTextMessage(chatId, string.Format("{0} : Server is alive",DateTime.Now));
                             }
                             else if (msg == "/list")
                             {

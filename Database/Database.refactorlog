@@ -238,4 +238,39 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="NotificationIdParent" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="2723e1bd-6877-4dbd-a272-c6b74895c2d7" ChangeDateTime="09/27/2015 07:41:58">
+    <Property Name="ElementName" Value="[dbo].[BotQueueIn].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BotQueueIn]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QueueInId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7c436f7c-63e6-459e-a774-cf79ce865c42" ChangeDateTime="09/27/2015 07:43:19">
+    <Property Name="ElementName" Value="[dbo].[BotQueueIn].[Message]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BotQueueIn]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MessageText" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="745f9baf-4975-4634-8790-9613a158f7a5" ChangeDateTime="09/27/2015 07:46:16">
+    <Property Name="ElementName" Value="[dbo].[BotQueueIn].[IsProcessed]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BotQueueIn]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsCompleted" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5210157e-b7ad-4378-8edd-d08bb1ea8486" ChangeDateTime="09/27/2015 08:23:57">
+    <Property Name="ElementName" Value="[dbo].[BotQueueOut].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BotQueueOut]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QueueOutId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ef25fee6-2a7d-4dce-9b83-2534613a8d6d" ChangeDateTime="09/27/2015 09:11:18">
+    <Property Name="ElementName" Value="[dbo].[BotQueue].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BotQueue]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BotQueueId" />
+  </Operation>
 </Operations>

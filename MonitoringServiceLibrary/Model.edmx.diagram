@@ -33,6 +33,7 @@
         <EntityTypeShape EntityType="IndustrialMonitoringModel.RelatedNotification" Width="1.5" PointX="5.25" PointY="17" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.BotQueue" Width="1.5" PointX="9.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

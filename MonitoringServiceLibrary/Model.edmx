@@ -16,6 +16,17 @@
           <Property Name="IsAuthorized" Type="bit" Nullable="false" />
           <Property Name="ReceiveAlarms" Type="bit" />
         </EntityType>
+        <EntityType Name="BotQueue">
+          <Key>
+            <PropertyRef Name="BotQueueId" />
+          </Key>
+          <Property Name="BotQueueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QueueDirection" Type="int" Nullable="false" />
+          <Property Name="ChatId" Type="int" Nullable="false" />
+          <Property Name="MessageText" Type="nvarchar(max)" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
         <EntityType Name="Items">
           <Key>
             <PropertyRef Name="ItemId" />
@@ -312,6 +323,7 @@
         </Association>
         <EntityContainer Name="IndustrialMonitoringModelStoreContainer">
           <EntitySet Name="Bot" EntityType="Self.Bot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BotQueue" EntityType="Self.BotQueue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLog" EntityType="Self.ItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogLatest" EntityType="Self.ItemsLogLatest" Schema="dbo" store:Type="Tables" />
@@ -690,6 +702,7 @@
             <End Role="NotificationItem" EntitySet="NotificationItems" />
             <End Role="RelatedNotification" EntitySet="RelatedNotifications" />
           </AssociationSet>
+          <EntitySet Name="BotQueues" EntityType="IndustrialMonitoringModel.BotQueue" />
         </EntityContainer>
         <EntityType Name="Service">
           <Key>
@@ -791,6 +804,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BotQueue">
+          <Key>
+            <PropertyRef Name="BotQueueId" />
+          </Key>
+          <Property Name="BotQueueId" Type="Int32" Nullable="false" />
+          <Property Name="QueueDirection" Type="Int32" Nullable="false" />
+          <Property Name="ChatId" Type="Int32" Nullable="false" />
+          <Property Name="MessageText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -945,6 +969,18 @@
                 <ScalarProperty Name="NotificationIdChild" ColumnName="NotificationIdChild" />
                 <ScalarProperty Name="NotificationIdParent" ColumnName="NotificationIdParent" />
                 <ScalarProperty Name="RelationId" ColumnName="RelationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BotQueues">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.BotQueue">
+              <MappingFragment StoreEntitySet="BotQueue">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="QueueDirection" ColumnName="QueueDirection" />
+                <ScalarProperty Name="BotQueueId" ColumnName="BotQueueId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
