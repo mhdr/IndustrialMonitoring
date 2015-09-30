@@ -328,15 +328,18 @@ namespace MonitoringServiceLibrary
         {
             try
             {
-                ItemsLog itemsLog = new ItemsLog();
-                itemsLog.ItemId = this.ItemId;
-                itemsLog.Time = DateTime.Now;
-                itemsLog.Value = value;
-                Entities.ItemsLogs.Add(itemsLog);
+                if (string.IsNullOrEmpty(value))
+                {
+                    ItemsLog itemsLog = new ItemsLog();
+                    itemsLog.ItemId = this.ItemId;
+                    itemsLog.Time = DateTime.Now;
+                    itemsLog.Value = value;
+                    Entities.ItemsLogs.Add(itemsLog);
 
-                Entities.SaveChanges();
+                    Entities.SaveChanges();
 
-                this.LastItemLog = itemsLog;
+                    this.LastItemLog = itemsLog;
+                }
             }
             catch (Exception ex)
             {
