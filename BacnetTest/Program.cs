@@ -13,21 +13,39 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BACnetTest
 {
-  static class Program
-  {
-    /// <summary>
-    /// The main entry point for the application.
-    /// </summary>
-    [STAThread]
-    static void Main()
+    static class Program
     {
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new MainForm());
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+
+            //            Application.ThreadException += new
+            //ThreadExceptionEventHandler(ErrorHandlerForm.Form1_UIThreadException);
+
+            // Set the unhandled exception mode to force all Windows Forms errors
+            // to go through our handler.
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+
+            // Add the event handler for handling non-UI thread exceptions to the event. 
+            AppDomain.CurrentDomain.UnhandledException += new
+            UnhandledExceptionEventHandler(HandleExceptions);
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
+        }
+
+        private static void HandleExceptions(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            Logger.LogBacnetTest((Exception)unhandledExceptionEventArgs.ExceptionObject);
+        }
     }
-  }
 }

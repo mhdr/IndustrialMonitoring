@@ -863,24 +863,28 @@ namespace BACnet
 
             foreach (NetworkInterface Interface in Interfaces)
             {
-                if (Interface.NetworkInterfaceType == NetworkInterfaceType.Loopback) continue;
+                //if (Interface.NetworkInterfaceType == NetworkInterfaceType.Loopback) continue;
                 //MessageBox.Show(Interface.Description);
-                UnicastIPAddressInformationCollection UnicastIPInfoCol = Interface.GetIPProperties().UnicastAddresses;
-                foreach (UnicastIPAddressInformation UnicatIPInfo in UnicastIPInfoCol)
+
+                if (Interface.Name== "Ethernet")
                 {
-                    //MessageBox.Show("\tIP Address is {0}" + UnicatIPInfo.Address);
-                    //MessageBox.Show("\tSubnet Mask is {0}" + UnicatIPInfo.IPv4Mask);
-                    if (UnicatIPInfo.IPv4Mask != null)
+                    UnicastIPAddressInformationCollection UnicastIPInfoCol = Interface.GetIPProperties().UnicastAddresses;
+                    foreach (UnicastIPAddressInformation UnicatIPInfo in UnicastIPInfoCol)
                     {
-                        byte[] tempbytes = UnicatIPInfo.IPv4Mask.GetAddressBytes();
-                        if (tempbytes[0] == 255)
+                        //MessageBox.Show("\tIP Address is {0}" + UnicatIPInfo.Address);
+                        //MessageBox.Show("\tSubnet Mask is {0}" + UnicatIPInfo.IPv4Mask);
+                        if (UnicatIPInfo.IPv4Mask != null)
                         {
-                            // We found the correct subnet mask, and probably the correct IP address
-                            addrbytes = UnicatIPInfo.Address.GetAddressBytes();
-                            maskbytes = UnicatIPInfo.IPv4Mask.GetAddressBytes();
-                            break;
+                            byte[] tempbytes = UnicatIPInfo.IPv4Mask.GetAddressBytes();
+                            if (tempbytes[0] == 255)
+                            {
+                                // We found the correct subnet mask, and probably the correct IP address
+                                addrbytes = UnicatIPInfo.Address.GetAddressBytes();
+                                maskbytes = UnicatIPInfo.IPv4Mask.GetAddressBytes();
+                                break;
+                            }
                         }
-                    }
+                    } 
                 }
             }
             // Set up broadcast address
