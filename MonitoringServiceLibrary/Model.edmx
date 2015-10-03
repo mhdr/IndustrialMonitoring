@@ -75,6 +75,7 @@
           <Property Name="Low" Type="float" />
           <Property Name="High" Type="float" />
           <Property Name="NotificationMsg" Type="nvarchar(max)" />
+          <Property Name="Priority" Type="int" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -458,6 +459,7 @@
           <NavigationProperty Name="NotificationItemsLogLatests" Relationship="Self.FK_NotificationItemsLogLatest_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLogLatest" />
           <NavigationProperty Name="RelatedNotifications" Relationship="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems" FromRole="NotificationItem" ToRole="RelatedNotification" />
           <NavigationProperty Name="RelatedNotifications1" Relationship="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2" FromRole="NotificationItem" ToRole="RelatedNotification" />
+          <Property Name="Priority" Type="Int32" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -865,6 +867,7 @@
           <EntitySetMapping Name="NotificationItems">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationItem">
               <MappingFragment StoreEntitySet="NotificationItems">
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />

@@ -122,14 +122,32 @@ namespace MonitoringServiceLibrary
 
                 string emojiAlarm = "\u2757";
 
+                string emojiRating = "";
+
+                int priority = 0;
+
+                if (notificationItemsLog.NotificationItem.Priority != null)
+                {
+                    priority = (int) notificationItemsLog.NotificationItem.Priority;
+                }
+
+                if (priority > 0)
+                {
+                    for (int i = 1; i <= priority; i++)
+                    {
+                        emojiRating += "\u2B50";
+                    }    
+                }
+                
                 string output = string.Format(@"{0} Alarm {0}
 Item Name : {1}
 Item Id : {2}
 Category : {3}
 Description : {4}
 Status : {5}
-Date : {6}", emojiAlarm, notificationItemsLog.NotificationItem.Item.ItemName, notificationItemsLog.NotificationItem.ItemId, category
-    , notificationItemsLog.NotificationItem.NotificationMsg, emojiStatus, notificationItemsLog.Time);
+Priority : {6}
+Date : {7}", emojiAlarm, notificationItemsLog.NotificationItem.Item.ItemName, notificationItemsLog.NotificationItem.ItemId, category
+    , notificationItemsLog.NotificationItem.NotificationMsg, emojiStatus,emojiRating, notificationItemsLog.Time);
 
                 foreach (int chatId in chatIds)
                 {
