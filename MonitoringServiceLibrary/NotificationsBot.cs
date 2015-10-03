@@ -109,14 +109,27 @@ namespace MonitoringServiceLibrary
                 var category =
     entities.TabsItems.FirstOrDefault(x => x.ItemId == notificationItemsLog.NotificationItem.ItemId).Tab.TabName;
 
-                string output = string.Format(@"Alarm :
-Item Name : {0}
-Item Id : {1}
-Category : {2}
-Description : {3}
-Has Alarm : {4}
-Date : {5}", notificationItemsLog.NotificationItem.Item.ItemName, notificationItemsLog.NotificationItem.ItemId, category
-    , notificationItemsLog.NotificationItem.NotificationMsg, !notificationItemsLog.Value, notificationItemsLog.Time);
+                string emojiStatus = "";
+
+                if (notificationItemsLog.Value)
+                {
+                    emojiStatus = "\u2705";
+                }
+                else
+                {
+                    emojiStatus = "\u274C";
+                }
+
+                string emojiAlarm = "\u2757";
+
+                string output = string.Format(@"{0} Alarm {0}
+Item Name : {1}
+Item Id : {2}
+Category : {3}
+Description : {4}
+Status : {5}
+Date : {6}", emojiAlarm, notificationItemsLog.NotificationItem.Item.ItemName, notificationItemsLog.NotificationItem.ItemId, category
+    , notificationItemsLog.NotificationItem.NotificationMsg, emojiStatus, notificationItemsLog.Time);
 
                 foreach (int chatId in chatIds)
                 {

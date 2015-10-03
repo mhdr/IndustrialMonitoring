@@ -289,7 +289,7 @@ namespace MonitoringServiceLibrary
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.LogMonitoringServiceLibrary(ex);
             }
         }
 
@@ -319,7 +319,7 @@ namespace MonitoringServiceLibrary
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.LogMonitoringServiceLibrary(ex);
             }
         }
 
@@ -343,7 +343,7 @@ namespace MonitoringServiceLibrary
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Logger.LogMonitoringServiceLibrary(ex);
             }
 
         }
