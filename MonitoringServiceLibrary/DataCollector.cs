@@ -71,8 +71,12 @@ namespace MonitoringServiceLibrary
 
             foreach (var item in Items)
             {
-                ItemCollector itemCollector=new ItemCollector(item);
-                itemCollector.Start();
+                ItemCollector itemCollector = new ItemCollector(item);
+                Thread thread=new Thread(() =>
+                {
+                    itemCollector.ReadValue();
+                });
+                thread.Start();
 
                 ItemCollectors.Add(itemCollector);
                 Thread.Sleep(1);

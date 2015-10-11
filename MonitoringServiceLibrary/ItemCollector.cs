@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Threading;
+using System.Threading.Tasks;
 using MonitoringServiceLibrary.BSProcessDataServiceReference;
 using SharedLibrary;
 using NationalInstruments.NetworkVariable;
@@ -166,27 +167,155 @@ namespace MonitoringServiceLibrary
             this.BSProcessDataServiceClient=new ProcessDataServiceClient();
         }
 
+        [Obsolete]
         public void Start()
         {
-            if (this.DefinationType == ItemDefinationType.SqlDefined)
+            try
             {
-                if (this.Type == ItemType.Digital)
+                if (this.DefinationType == ItemDefinationType.SqlDefined)
                 {
-                    SubscriberBool = new NetworkVariableBufferedSubscriber<bool>(this.Location);
-                    SubscriberBool.Connect();
+                    if (this.Type == ItemType.Digital)
+                    {
+                        SubscriberBool = new NetworkVariableBufferedSubscriber<bool>(this.Location);
+                        SubscriberBool.Connect();
+                    }
+                    else if (this.Type == ItemType.Analog)
+                    {
+                        SubscriberInt = new NetworkVariableBufferedSubscriber<dynamic>(this.Location);
+                        SubscriberInt.Connect();
+                    }
                 }
-                else if (this.Type == ItemType.Analog)
+                else if (this.DefinationType == ItemDefinationType.CustomDefiend)
                 {
-                    SubscriberInt = new NetworkVariableBufferedSubscriber<dynamic>(this.Location);
-                    SubscriberInt.Connect();
-                }    
+
+                }
+
+                Timer = new Timer(CheckValue, new object(), 0,ScanCycle);
             }
-            else if (this.DefinationType == ItemDefinationType.CustomDefiend)
+            catch (Exception ex)
             {
-                
+                Logger.LogMonitoringServiceLibrary(ex);
+            } 
+        }
+
+        public async Task ReadValue()
+        {
+            while (true)
+            {
+                try
+                {
+                    if (this.DefinationType == ItemDefinationType.SqlDefined)
+                    {
+                        if (this.Type == ItemType.Digital)
+                        {
+                            SubscriberBool = new NetworkVariableBufferedSubscriber<bool>(this.Location);
+                            SubscriberBool.Connect();
+                        }
+                        else if (this.Type == ItemType.Analog)
+                        {
+                            SubscriberInt = new NetworkVariableBufferedSubscriber<dynamic>(this.Location);
+                            SubscriberInt.Connect();
+                        }
+                    }
+                    else if (this.DefinationType == ItemDefinationType.CustomDefiend)
+                    {
+
+                    }
+
+
+                    string value = "-1000";
+
+                    if (this.DefinationType == ItemDefinationType.SqlDefined)
+                    {
+                        if (this.Type == ItemType.Digital)
+                        {
+                            var data = SubscriberBool.ReadData();
+                            value = Convert.ToInt32(data.GetValue()).ToString();
+                        }
+                        else if (this.Type == ItemType.Analog)
+                        {
+                            var data = SubscriberInt.ReadData();
+                            value = Math.Round(data.GetValue(), 2).ToString();
+                        }
+                    }
+                    else if (this.DefinationType == ItemDefinationType.CustomDefiend)
+                    {
+                        switch (this.ItemId)
+                        {
+                            case 10:
+                                value = (BSProcessDataServiceClient.GetPreHeatingZoneTemperature() / 10).ToString();
+                                break;
+                            case 13:
+                                value = BSProcessDataServiceClient.GetSterilizerZoneTemperature().ToString();
+                                break;
+                            case 14:
+                                value = (BSProcessDataServiceClient.GetCoolingZoneTemperature() / 10).ToString();
+                                break;
+                        }
+                    }
+
+                    lock (padlock)
+                    {
+                        if (value == null)
+                        {
+                            return;
+                        }
+
+                        if (value == "-1000")
+                        {
+                            return;
+                        }
+
+                        if (LastItemLog == null)
+                        {
+                            SaveValueInItemsLog(value);
+                        }
+                        else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
+                        {
+                            TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
+
+                            if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
+                            {
+                                SaveValueInItemsLog(value);
+                            }
+                        }
+                        else if (SaveInItemsLogWhen == WhenToLog.OnChange)
+                        {
+                            if (LastItemLog.Value != value)
+                            {
+                                SaveValueInItemsLog(value);
+                            }
+                        }
+
+                        if (LastItemLogLatest == null)
+                        {
+                            SaveValueInItemsLogLatest(value);
+                        }
+                        else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
+                        {
+                            TimeSpan timeSpan = DateTime.Now - LastItemLogLatest.Time;
+
+                            if (timeSpan.TotalSeconds >= SaveInItemsLogLastesTimeInterval)
+                            {
+                                SaveValueInItemsLogLatest(value);
+                            }
+                        }
+                        else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
+                        {
+                            if (LastItemLogLatest.Value != value)
+                            {
+                                SaveValueInItemsLogLatest(value);
+                            }
+                        }
+                    }
+
+                    await Task.Delay(ScanCycle);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogMonitoringServiceLibrary(ex);
+                }
             }
-            
-            Timer = new Timer(CheckValue, new object(), 0, ScanCycle);   
         }
 
         public void Stop()
@@ -194,6 +323,7 @@ namespace MonitoringServiceLibrary
             Timer.Dispose();
         }
 
+        [Obsolete]
         private void CheckValue(object state)
         {
             try
@@ -328,7 +458,7 @@ namespace MonitoringServiceLibrary
         {
             try
             {
-                if (string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(value))
                 {
                     ItemsLog itemsLog = new ItemsLog();
                     itemsLog.ItemId = this.ItemId;

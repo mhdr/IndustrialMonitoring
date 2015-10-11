@@ -184,6 +184,7 @@
     <Compile Include="ViewModels\ItemsLogLatestAIOViewModel.cs" />
     <Compile Include="ViewModels\Notification1.cs" />
     <Compile Include="ViewModels\NotificationLog.cs" />
+    <Compile Include="ViewModels\NotificationLogLatest.cs" />
     <Compile Include="ViewModels\TabsItemsViewModel.cs" />
     <Compile Include="ViewModels\Tab1.cs" />
     <Compile Include="ViewModels\User2.cs" />

@@ -866,7 +866,7 @@ namespace BACnet
                 //if (Interface.NetworkInterfaceType == NetworkInterfaceType.Loopback) continue;
                 //MessageBox.Show(Interface.Description);
 
-                if (Interface.Name== "Ethernet")
+                if (Interface.Name== "Ethernet 2")
                 {
                     UnicastIPAddressInformationCollection UnicastIPInfoCol = Interface.GetIPProperties().UnicastAddresses;
                     foreach (UnicastIPAddressInformation UnicatIPInfo in UnicastIPInfoCol)
