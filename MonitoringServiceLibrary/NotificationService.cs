@@ -167,15 +167,6 @@ namespace MonitoringServiceLibrary
             return result;
         }
 
-        public List<NotificationLogLatest> GetActiveNotifications(int userId)
-        {
-            List<NotificationLogLatest> result=new List<NotificationLogLatest>();
-
-            
-
-            return result;
-        }
-
         public List<NotificationLog> GetNotificationLog(int userId, int itemId, DateTime startTime, DateTime endTime)
         {
             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();

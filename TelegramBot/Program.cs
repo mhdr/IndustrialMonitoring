@@ -148,7 +148,7 @@ namespace TelegramBot
                             }
                             else if (msg == "/ping")
                             {
-                                await bot.SendTextMessage(chatId, string.Format("{0} : Server is alive",DateTime.Now));
+                                await bot.SendTextMessage(chatId, string.Format("{0} : Server is alive", DateTime.Now));
                             }
                             else if (msg == "/list")
                             {
@@ -218,6 +218,95 @@ Date : {7}", i, count, item.Item.ItemName, item.ItemId, category, itemLog.Value,
 
                                 await bot.SendTextMessage(update.Message.Chat.Id, "** End **");
 
+                            }
+                            else if (msg == "/alarms")
+                            {
+                                var allActiveNotifications = entities.NotificationItemsLogLatests.Where(x => x.Value == false);
+
+                                var items = entities.UsersItemsPermissions.Where(x => x.UserId == user.UserId);
+
+                                List<int> notificationIds = new List<int>();
+
+                                foreach (UsersItemsPermission usersItemsPermission in items)
+                                {
+                                    var notifications = entities.NotificationItems.Where(x => x.ItemId == usersItemsPermission.ItemId);
+
+                                    foreach (NotificationItem notification in notifications)
+                                    {
+                                        notificationIds.Add(notification.NotificationId);
+                                    }
+                                }
+
+                                List<NotificationItemsLogLatest> result2=new List<NotificationItemsLogLatest>();
+                                
+                                foreach (NotificationItemsLogLatest notification in allActiveNotifications)
+                                {
+                                    if (notificationIds.Contains(notification.NotificationId))
+                                    {
+                                        result2.Add(notification);
+                                    }
+                                }
+
+                                if (!result2.Any())
+                                {
+                                    await bot.SendTextMessage(update.Message.Chat.Id, "No active alarm");
+                                    offset = update.Id + 1;
+                                    continue;
+                                }
+
+                                await bot.SendTextMessage(update.Message.Chat.Id, "** Start **");
+
+                                foreach (NotificationItemsLogLatest notification in result2)
+                                {
+
+                                    var category =
+entities.TabsItems.FirstOrDefault(x => x.ItemId == notification.NotificationItem.ItemId).Tab.TabName;
+
+                                    string emojiStatus = "";
+
+                                    if (notification.Value)
+                                    {
+                                        emojiStatus = "\u2705";
+                                    }
+                                    else
+                                    {
+                                        emojiStatus = "\u274C";
+                                    }
+
+                                    string emojiAlarm = "\u2757";
+
+                                    string emojiRating = "";
+
+                                    int priority = 0;
+
+                                    if (notification.NotificationItem.Priority != null)
+                                    {
+                                        priority = (int)notification.NotificationItem.Priority;
+                                    }
+
+                                    if (priority > 0)
+                                    {
+                                        for (int i = 1; i <= priority; i++)
+                                        {
+                                            emojiRating += "\u2B50";
+                                        }
+                                    }
+
+                                    string output = string.Format(@"{0} Alarm {0}
+Item Name : {1}
+Item Id : {2}
+Category : {3}
+Description : {4}
+Status : {5}
+Priority : {6}
+Date : {7}", emojiAlarm, notification.NotificationItem.Item.ItemName, notification.NotificationItem.ItemId, category
+                        , notification.NotificationItem.NotificationMsg, emojiStatus, emojiRating, notification.Time);
+
+                                    await bot.SendTextMessage(update.Message.Chat.Id, output);
+                                    await Task.Delay(10);
+                                }
+
+                                await bot.SendTextMessage(update.Message.Chat.Id, "** End **");
                             }
                             else if (msg == "/alarms on")
                             {

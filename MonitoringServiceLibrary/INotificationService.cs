@@ -27,9 +27,6 @@ namespace MonitoringServiceLibrary
         List<NotificationLog> GetNotificationLogs(int userId,DateTime startTime,DateTime endTime);
 
         [OperationContract]
-        List<NotificationLogLatest> GetActiveNotifications(int userId);
-
-        [OperationContract]
         List<NotificationLog> GetNotificationLog(int userId,int itemId,DateTime startTime,DateTime endTime);
     }
 }
