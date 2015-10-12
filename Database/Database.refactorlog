@@ -273,4 +273,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="BotQueueId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="ceeb73a4-23b7-41c2-a982-7c890db662a8" ChangeDateTime="10/12/2015 11:36:23">
+    <Property Name="ElementName" Value="[dbo].[Items].[BAcnetInstance]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BACnetInstance" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="909cfcd3-ad4b-406a-aa02-1f4f1c311627" ChangeDateTime="10/12/2015 11:37:13">
+    <Property Name="ElementName" Value="[dbo].[Items].[BACnet]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BACnetItem" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="47b3edd9-a91f-4146-9739-d11091130e5f" ChangeDateTime="10/12/2015 11:37:21">
+    <Property Name="ElementName" Value="[dbo].[Items].[BACnetInstance]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BACnetControllerInstance" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3a24e7c9-2a1d-4576-83fc-c94ac7e36a30" ChangeDateTime="10/12/2015 11:37:35">
+    <Property Name="ElementName" Value="[dbo].[Items].[BACnetItem]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BACnetItemInstance" />
+  </Operation>
 </Operations>

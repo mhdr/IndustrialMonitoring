@@ -92,6 +92,7 @@ namespace TelegramBot
                 catch (Exception ex)
                 {
                     Logger.LogTelegramBot(ex);
+                    offset +=1;
                     continue;
                 }
 
@@ -100,6 +101,12 @@ namespace TelegramBot
                 {
                     try
                     {
+                        if (update.Message.Type != MessageType.TextMessage)
+                        {
+                            offset = update.Id + 1;
+                            continue;
+                        }
+
                         if (update.Message.Text != null)
                         {
                             string msg = update.Message.Text.Trim().ToLower();

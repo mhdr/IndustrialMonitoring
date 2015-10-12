@@ -44,6 +44,11 @@
           <Property Name="DefinationType" Type="int" />
           <Property Name="Unit" Type="nvarchar" MaxLength="50" />
           <Property Name="Order" Type="int" />
+          <Property Name="BACnetIP" Type="nvarchar(max)" />
+          <Property Name="BACnetPort" Type="int" />
+          <Property Name="BACnetControllerInstance" Type="int" />
+          <Property Name="BACnetItemInstance" Type="int" />
+          <Property Name="BACnetItemType" Type="int" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -421,6 +426,11 @@
           <Property Name="DefinationType" Type="Int32" />
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Order" Type="Int32" />
+          <Property Name="BACnetIP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BACnetPort" Type="Int32" />
+          <Property Name="BACnetControllerInstance" Type="Int32" />
+          <Property Name="BACnetItemInstance" Type="Int32" />
+          <Property Name="BACnetItemType" Type="Int32" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -826,6 +836,11 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="BACnetItemType" ColumnName="BACnetItemType" />
+                <ScalarProperty Name="BACnetItemInstance" ColumnName="BACnetItemInstance" />
+                <ScalarProperty Name="BACnetControllerInstance" ColumnName="BACnetControllerInstance" />
+                <ScalarProperty Name="BACnetPort" ColumnName="BACnetPort" />
+                <ScalarProperty Name="BACnetIP" ColumnName="BACnetIP" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="DefinationType" ColumnName="DefinationType" />

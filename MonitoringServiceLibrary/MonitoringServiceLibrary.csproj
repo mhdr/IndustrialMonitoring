@@ -219,6 +219,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BACnetLib\BACnetLib.csproj">
+      <Project>{57ab9df9-ae59-4452-9838-38248c315481}</Project>
+      <Name>BACnetLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj">
       <Project>{cc6f55e9-ddbe-46ce-8045-74c5326f1f84}</Project>
       <Name>SharedLibrary</Name>

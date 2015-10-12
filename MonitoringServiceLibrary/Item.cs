@@ -36,6 +36,11 @@ namespace MonitoringServiceLibrary
         public Nullable<int> DefinationType { get; set; }
         public string Unit { get; set; }
         public Nullable<int> Order { get; set; }
+        public string BACnetIP { get; set; }
+        public Nullable<int> BACnetPort { get; set; }
+        public Nullable<int> BACnetControllerInstance { get; set; }
+        public Nullable<int> BACnetItemInstance { get; set; }
+        public Nullable<int> BACnetItemType { get; set; }
     
         public virtual ICollection<ItemsLog> ItemsLogs { get; set; }
         public virtual ICollection<ItemsLogLatest> ItemsLogLatests { get; set; }

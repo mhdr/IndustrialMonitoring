@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using BACnetLib;
 using MonitoringServiceLibrary.BSProcessDataServiceReference;
 using SharedLibrary;
 using NationalInstruments.NetworkVariable;
@@ -24,13 +26,16 @@ namespace MonitoringServiceLibrary
         private WhenToLog _saveInItemsLogWhen;
         private WhenToLog _saveInItemsLogLastWhen;
         private IndustrialMonitoringEntities _entities = new IndustrialMonitoringEntities();
-        private object padlock=new object();
+        private object padlock = new object();
         private NetworkVariableBufferedSubscriber<dynamic> _subscriberInt;
         private NetworkVariableBufferedSubscriber<Boolean> _subscriberBool;
         private ItemDefinationType _itemDefinationType;
+        private Device _deviceBACnet;
+        private BACnetDevice _baCnetDevice;
 
         private ItemsLog _lastItemLog;
         private ItemsLogLatest _lastItemLogLatest;
+        private Item _item;
 
         private ProcessDataServiceClient _bSProcessDataServiceClient;
 
@@ -142,29 +147,49 @@ namespace MonitoringServiceLibrary
             set { _bSProcessDataServiceClient = value; }
         }
 
+        public Device DeviceBaCnet
+        {
+            get { return _deviceBACnet; }
+            set { _deviceBACnet = value; }
+        }
+
+        public Item ItemObj
+        {
+            get { return _item; }
+            set { _item = value; }
+        }
+
+        public BACnetDevice BACnetDevice
+        {
+            get { return _baCnetDevice; }
+            set { _baCnetDevice = value; }
+        }
+
         public ItemCollector(Item item)
         {
+            this.ItemObj = item;
+
             this.ItemId = item.ItemId;
             this.ItemName = ItemName;
             this.Type = (ItemType)item.ItemType;
 
             if (item.Location != null)
             {
-                this.Location = item.Location;    
+                this.Location = item.Location;
             }
             else
             {
                 this.Location = "";
             }
-            
+
             this.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
             this.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
             this.ScanCycle = item.ScanCycle;
-            this.SaveInItemsLogWhen = (WhenToLog) item.SaveInItemsLogWhen;
-            this.SaveInItemsLogLastWhen = (WhenToLog) item.SaveInItemsLogLastWhen;
-            this.DefinationType = (ItemDefinationType) item.DefinationType;
+            this.SaveInItemsLogWhen = (WhenToLog)item.SaveInItemsLogWhen;
+            this.SaveInItemsLogLastWhen = (WhenToLog)item.SaveInItemsLogLastWhen;
+            this.DefinationType = (ItemDefinationType)item.DefinationType;
 
-            this.BSProcessDataServiceClient=new ProcessDataServiceClient();
+            this.BSProcessDataServiceClient = new ProcessDataServiceClient();
         }
 
         [Obsolete]
@@ -185,17 +210,17 @@ namespace MonitoringServiceLibrary
                         SubscriberInt.Connect();
                     }
                 }
-                else if (this.DefinationType == ItemDefinationType.CustomDefiend)
+                else if (this.DefinationType == ItemDefinationType.BACnet)
                 {
 
                 }
 
-                Timer = new Timer(CheckValue, new object(), 0,ScanCycle);
+                Timer = new Timer(CheckValue, new object(), 0, ScanCycle);
             }
             catch (Exception ex)
             {
                 Logger.LogMonitoringServiceLibrary(ex);
-            } 
+            }
         }
 
         public async Task ReadValue()
@@ -217,9 +242,19 @@ namespace MonitoringServiceLibrary
                             SubscriberInt.Connect();
                         }
                     }
-                    else if (this.DefinationType == ItemDefinationType.CustomDefiend)
+                    else if (this.DefinationType == ItemDefinationType.BACnet)
                     {
+                        if (BACnetDevice == null)
+                        {
+                            this.BACnetDevice = BACnetDevice.Instance;
+                        }
+                        
+                        string ip = ItemObj.BACnetIP;
+                        int port = ItemObj.BACnetPort.Value;
+                        IPEndPoint endPoint=new IPEndPoint(IPAddress.Parse(ip),port);
+                        uint instance = (uint) ItemObj.BACnetControllerInstance.Value;
 
+                        DeviceBaCnet = new Device("Device",0,0,endPoint,0,instance);
                     }
 
 
@@ -252,6 +287,25 @@ namespace MonitoringServiceLibrary
                                 value = (BSProcessDataServiceClient.GetCoolingZoneTemperature() / 10).ToString();
                                 break;
                         }
+                    }
+                    else if (this.DefinationType == ItemDefinationType.BACnet)
+                    {
+                        if (this.Type == ItemType.Digital)
+                        {
+                            BACnetEnums.BACNET_OBJECT_TYPE bacnetType = (BACnetEnums.BACNET_OBJECT_TYPE)ItemObj.BACnetItemType.Value;
+                            uint itemInstance = (uint)ItemObj.BACnetItemInstance.Value;
+                            value = BACnetDevice.ReadValue(DeviceBaCnet, bacnetType, itemInstance).ToString();
+                        }
+                        else if (Type==ItemType.Analog)
+                        {
+                            BACnetEnums.BACNET_OBJECT_TYPE bacnetType = (BACnetEnums.BACNET_OBJECT_TYPE)ItemObj.BACnetItemType.Value;
+                            uint itemInstance = (uint)ItemObj.BACnetItemInstance.Value;
+
+                            string preValue = BACnetDevice.ReadValue(DeviceBaCnet, bacnetType, itemInstance).ToString();
+                            double preValueDouble = double.Parse(preValue);
+                            value =Math.Round(preValueDouble,2).ToString();
+                        }
+                        
                     }
 
                     lock (padlock)
@@ -340,7 +394,7 @@ namespace MonitoringServiceLibrary
                     else if (this.Type == ItemType.Analog)
                     {
                         var data = SubscriberInt.ReadData();
-                        value = Math.Round(data.GetValue(),2).ToString();
+                        value = Math.Round(data.GetValue(), 2).ToString();
                     }
                 }
                 else if (this.DefinationType == ItemDefinationType.CustomDefiend)
@@ -348,13 +402,13 @@ namespace MonitoringServiceLibrary
                     switch (this.ItemId)
                     {
                         case 10:
-                            value = (BSProcessDataServiceClient.GetPreHeatingZoneTemperature()/10).ToString();
+                            value = (BSProcessDataServiceClient.GetPreHeatingZoneTemperature() / 10).ToString();
                             break;
                         case 13:
                             value = BSProcessDataServiceClient.GetSterilizerZoneTemperature().ToString();
                             break;
                         case 14:
-                            value = (BSProcessDataServiceClient.GetCoolingZoneTemperature()/10).ToString();
+                            value = (BSProcessDataServiceClient.GetCoolingZoneTemperature() / 10).ToString();
                             break;
                     }
 
@@ -444,7 +498,7 @@ namespace MonitoringServiceLibrary
                 }
 
                 Entities.SaveChanges();
-                
+
                 this.LastItemLogLatest = itemsLogLatest;
             }
             catch (Exception ex)

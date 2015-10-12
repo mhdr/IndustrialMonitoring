@@ -12,5 +12,10 @@
     [SaveInItemsLogLastWhen] INT NOT NULL DEFAULT 1, 
     [DefinationType] INT NULL DEFAULT 1, 
     [Unit] NVARCHAR(50) NULL, 
-    [Order] INT NULL
+    [Order] INT NULL, 
+    [BACnetIP] NVARCHAR(MAX) NULL, 
+    [BACnetPort] INT NULL, 
+    [BACnetControllerInstance] INT NULL, 
+    [BACnetItemInstance] INT NULL, 
+    [BACnetItemType] INT NULL
 )

@@ -37,6 +37,7 @@ namespace SharedLibrary
     {
         SqlDefined = 1,
         CustomDefiend = 2,
+        BACnet=3,
     }
 
     public enum QueueDirection
