@@ -234,7 +234,15 @@ namespace IndustrialMonitoring
 
                 ObservableCollection.Add(new Lib.ChartLiveData() { Value = Convert.ToDouble(LatestData.Value), Date = DateTime.Now });
 
-                TextBlockValue.Text = LatestData.Value;
+                if (ItemsAioViewModel.Unit.Length > 0)
+                {
+                    TextBlockValue.Text = string.Format("{0} {1}", LatestData.Value, ItemsAioViewModel.Unit);
+                }
+                else
+                {
+                    TextBlockValue.Text = string.Format("{0}", LatestData.Value);
+                }
+                
 
                 System.Diagnostics.Debug.WriteLine("Item Name : {0} , Count ObservableCollection : {1}",
                     this.ItemsAioViewModel.ItemName, ObservableCollection.Count);

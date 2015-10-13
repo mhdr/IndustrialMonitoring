@@ -22,6 +22,7 @@
       <xs:element minOccurs="0" name="ItemName" nillable="true" type="xs:string" />
       <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SharedLibrary" minOccurs="0" name="ItemType" type="q1:ItemType" />
       <xs:element minOccurs="0" name="ShowInUITimeInterval" type="xs:int" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Item1" nillable="true" type="tns:Item1" />

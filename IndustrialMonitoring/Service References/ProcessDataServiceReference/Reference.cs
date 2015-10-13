@@ -127,6 +127,9 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ShowInUITimeIntervalField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UnitField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -185,6 +188,19 @@ namespace IndustrialMonitoring.ProcessDataServiceReference {
                 if ((this.ShowInUITimeIntervalField.Equals(value) != true)) {
                     this.ShowInUITimeIntervalField = value;
                     this.RaisePropertyChanged("ShowInUITimeInterval");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Unit {
+            get {
+                return this.UnitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnitField, value) != true)) {
+                    this.UnitField = value;
+                    this.RaisePropertyChanged("Unit");
                 }
             }
         }

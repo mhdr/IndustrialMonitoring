@@ -18,6 +18,9 @@ namespace MonitoringServiceLibrary.ViewModels
         [DataMember]
         public int ShowInUITimeInterval { get; set; }
 
+        [DataMember]
+        public string Unit { get; set; }
+
         public Item1()
         {
             
@@ -29,6 +32,15 @@ namespace MonitoringServiceLibrary.ViewModels
             this.ItemName = item.ItemName;
             this.ItemType = (ItemType) item.ItemType;
             this.ShowInUITimeInterval = item.ShowInUITimeInterval;
+
+            if (string.IsNullOrEmpty(item.Unit))
+            {
+                this.Unit = "";
+            }
+            else
+            {
+                this.Unit = item.Unit;
+            }
         }
     }
 }
