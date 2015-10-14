@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -16,7 +17,71 @@ namespace TelegramBot
         static void Main(string[] args)
         {
             StartResponseServer();
+            StartLatestLogMonitor();
             Console.ReadKey();
+        }
+
+        public static async Task StartLatestLogMonitor()
+        {
+            IndustrialMonitoringEntities entities = null;
+            string previousTimeStamp = "";
+            var bot = new Telegram.Bot.Api("133038323:AAFXVhA9Htj3p0a0Sl3hydt65Y7fl2AOVEI");
+
+            while (true)
+            {
+                entities=new IndustrialMonitoringEntities();
+
+                string timestamp = "";
+
+                var items = entities.ItemsLogLatests;
+
+                foreach (ItemsLogLatest item in items)
+                {
+                    timestamp += item.Time.ToBinary();
+                }
+                timestamp = Hash.GetHash(timestamp);
+
+                var service =
+                        entities.Services.FirstOrDefault(x => x.ServiceName == "RecieveLatesLogMonitorInTelegram");
+
+                var users = entities.UsersServicesPermissions.Where(x => x.ServiceId == service.ServiceId);
+
+                List<int> chatIds = new List<int>();
+
+                foreach (UsersServicesPermission user in users)
+                {
+                    var userBot = entities.Bots.Where(x => x.UserId == user.UserId);
+
+                    foreach (Bot bt in userBot)
+                    {
+                        if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
+                    }
+                }
+
+                if (previousTimeStamp == timestamp)
+                {
+                    foreach (int chatId in chatIds)
+                    {
+                        var emoji = "\u2734";
+                        await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
+Time : {1}",emoji,DateTime.Now));
+                        await Task.Delay(100);
+                    }
+                }
+                else
+                {
+                    foreach (int chatId in chatIds)
+                    {
+                        var emoji = "\u2733";
+                        await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
+Time : {1}", emoji, DateTime.Now));
+                        await Task.Delay(100);
+                    }
+                }
+
+                previousTimeStamp = timestamp;
+                await Task.Delay(1*60*60*1000);
+            }
         }
 
         public static async Task StartServer()
