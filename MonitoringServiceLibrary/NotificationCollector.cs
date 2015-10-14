@@ -82,14 +82,30 @@ namespace MonitoringServiceLibrary
                         ItemsLogLatest itemLogLatest =
         entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == notificationItem.ItemId);
 
+                        var items = entities.ItemsLogs.Where(x => x.ItemId == notificationItem.ItemId).OrderByDescending(x=>x.ItemLogId).ToList();
+                        var items2 = items.Skip(1).ToList();
+                        var previousItem = items2.FirstOrDefault();
+
                         double currentValue = double.Parse(itemLogLatest.Value);
 
                         bool hasNotification = false;
+                        bool previousLogHasNotification = false;
+
                         if (notificationItem.NotificationType == (int)NotificationType.Lower)
                         {
                             if (currentValue < notificationItem.High)
                             {
                                 hasNotification = true;
+                            }
+
+                            if (previousItem != null)
+                            {
+                                double privousValue = double.Parse(previousItem.Value);
+
+                                if (privousValue < notificationItem.High)
+                                {
+                                    previousLogHasNotification = true;
+                                }
                             }
                         }
                         else if (notificationItem.NotificationType == (int)NotificationType.Between)
@@ -98,12 +114,30 @@ namespace MonitoringServiceLibrary
                             {
                                 hasNotification = true;
                             }
+
+                            if (previousItem != null)
+                            {
+                                double privousValue = double.Parse(previousItem.Value);
+                                if (privousValue > notificationItem.Low && privousValue < notificationItem.High)
+                                {
+                                    previousLogHasNotification = true;
+                                }
+                            }
                         }
                         else if (notificationItem.NotificationType == (int)NotificationType.Higher)
                         {
                             if (currentValue > notificationItem.Low)
                             {
                                 hasNotification = true;
+                            }
+
+                            if (previousItem != null)
+                            {
+                                double privousValue = double.Parse(previousItem.Value);
+                                if (privousValue > notificationItem.Low)
+                                {
+                                    previousLogHasNotification = true;
+                                }
                             }
                         }
 
@@ -119,15 +153,34 @@ namespace MonitoringServiceLibrary
                                 entities.NotificationItemsLogs.Add(notificationItemsLog);
                                 entities.SaveChanges();
 
-                                try
+                                if (notificationItem.Item.ItemType == (int) ItemType.Analog)
                                 {
-                                    var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                    if (previousLogHasNotification)
+                                    {
+                                        try
+                                        {
+                                            var bot = NotificationsBot.Instance;
+                                            bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Logger.LogMonitoringServiceLibrary(ex);
+                                        }
+                                    }
                                 }
-                                catch (Exception ex)
+                                else if (notificationItem.Item.ItemType == (int)ItemType.Digital)
                                 {
-                                    Logger.LogMonitoringServiceLibrary(ex);
+                                    try
+                                    {
+                                        var bot = NotificationsBot.Instance;
+                                        bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Logger.LogMonitoringServiceLibrary(ex);
+                                    }
                                 }
+                                
                             }
                         }
                         else
@@ -142,14 +195,32 @@ namespace MonitoringServiceLibrary
                                 entities.NotificationItemsLogs.Add(notificationItemsLog);
                                 entities.SaveChanges();
 
-                                try
+                                if (notificationItem.Item.ItemType == (int)ItemType.Analog)
                                 {
-                                    var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                    if (previousLogHasNotification)
+                                    {
+                                        try
+                                        {
+                                            var bot = NotificationsBot.Instance;
+                                            bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Logger.LogMonitoringServiceLibrary(ex);
+                                        }
+                                    }
                                 }
-                                catch (Exception ex)
+                                else if (notificationItem.Item.ItemType == (int)ItemType.Digital)
                                 {
-                                    Logger.LogMonitoringServiceLibrary(ex);
+                                    try
+                                    {
+                                        var bot = NotificationsBot.Instance;
+                                        bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Logger.LogMonitoringServiceLibrary(ex);
+                                    }
                                 }
                             }
                         }

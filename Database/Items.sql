@@ -17,5 +17,7 @@
     [BACnetPort] INT NULL, 
     [BACnetControllerInstance] INT NULL, 
     [BACnetItemInstance] INT NULL, 
-    [BACnetItemType] INT NULL
+    [BACnetItemType] INT NULL, 
+    [MinRange] NVARCHAR(50) NULL, 
+    [MaxRange] NVARCHAR(50) NULL
 )
