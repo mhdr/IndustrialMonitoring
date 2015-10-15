@@ -74,7 +74,7 @@ namespace MonitoringServiceLibrary
                 ItemCollector itemCollector = new ItemCollector(item);
                 Thread thread=new Thread(() =>
                 {
-                    itemCollector.ReadValue();
+                    itemCollector.ReadValueInfinite();
                 });
                 thread.Start();
 
