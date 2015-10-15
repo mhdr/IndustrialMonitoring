@@ -195,32 +195,14 @@ namespace MonitoringServiceLibrary
                                 entities.NotificationItemsLogs.Add(notificationItemsLog);
                                 entities.SaveChanges();
 
-                                if (notificationItem.Item.ItemType == (int)ItemType.Analog)
+                                try
                                 {
-                                    if (previousLogHasNotification)
-                                    {
-                                        try
-                                        {
-                                            var bot = NotificationsBot.Instance;
-                                            bot.SendNotification(notificationItemsLog.NotificationLogId);
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            Logger.LogMonitoringServiceLibrary(ex);
-                                        }
-                                    }
+                                    var bot = NotificationsBot.Instance;
+                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
                                 }
-                                else if (notificationItem.Item.ItemType == (int)ItemType.Digital)
+                                catch (Exception ex)
                                 {
-                                    try
-                                    {
-                                        var bot = NotificationsBot.Instance;
-                                        bot.SendNotification(notificationItemsLog.NotificationLogId);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Logger.LogMonitoringServiceLibrary(ex);
-                                    }
+                                    Logger.LogMonitoringServiceLibrary(ex);
                                 }
                             }
                         }
