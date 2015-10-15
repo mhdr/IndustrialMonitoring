@@ -51,6 +51,7 @@
           <Property Name="BACnetItemType" Type="int" />
           <Property Name="MinRange" Type="nvarchar" MaxLength="50" />
           <Property Name="MaxRange" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreadGroup" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -435,6 +436,7 @@
           <Property Name="BACnetItemType" Type="Int32" />
           <Property Name="MinRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaxRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreadGroup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -840,6 +842,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="ThreadGroup" ColumnName="ThreadGroup" />
                 <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
                 <ScalarProperty Name="MinRange" ColumnName="MinRange" />
                 <ScalarProperty Name="BACnetItemType" ColumnName="BACnetItemType" />
