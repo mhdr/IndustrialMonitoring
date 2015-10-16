@@ -12,13 +12,18 @@ namespace MonitoringServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class TabsItem
+    public partial class ThreadGroup
     {
-        public int TabItemId { get; set; }
-        public int TabId { get; set; }
-        public int ItemId { get; set; }
+        public ThreadGroup()
+        {
+            this.Items = new HashSet<Item>();
+        }
     
-        public virtual Tab Tab { get; set; }
-        public virtual Item Item { get; set; }
+        public int ThreadGroupId { get; set; }
+        public string ThreadGroupName { get; set; }
+        public int IntervalBetweenItems { get; set; }
+        public int IntervalBetweenCycle { get; set; }
+    
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

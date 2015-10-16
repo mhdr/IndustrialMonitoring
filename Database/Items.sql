@@ -20,5 +20,6 @@
     [BACnetItemType] INT NULL, 
     [MinRange] NVARCHAR(50) NULL, 
     [MaxRange] NVARCHAR(50) NULL, 
-    [ThreadGroup] NVARCHAR(MAX) NULL
+    [ThreadGroupId] INT NULL, 
+    CONSTRAINT [FK_Items_ThreadGroup] FOREIGN KEY ([ThreadGroupId]) REFERENCES [ThreadGroup]([ThreadGroupId])
 )

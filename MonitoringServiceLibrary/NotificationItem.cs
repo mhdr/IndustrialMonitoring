@@ -30,10 +30,10 @@ namespace MonitoringServiceLibrary
         public string NotificationMsg { get; set; }
         public Nullable<int> Priority { get; set; }
     
-        public virtual Item Item { get; set; }
         public virtual ICollection<NotificationItemsLog> NotificationItemsLogs { get; set; }
         public virtual ICollection<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
         public virtual ICollection<RelatedNotification> RelatedNotifications { get; set; }
         public virtual ICollection<RelatedNotification> RelatedNotifications1 { get; set; }
+        public virtual Item Item { get; set; }
     }
 }

@@ -43,8 +43,9 @@ namespace MonitoringServiceLibrary
         public Nullable<int> BACnetItemType { get; set; }
         public string MinRange { get; set; }
         public string MaxRange { get; set; }
-        public string ThreadGroup { get; set; }
+        public Nullable<int> ThreadGroupId { get; set; }
     
+        public virtual ThreadGroup ThreadGroup { get; set; }
         public virtual ICollection<ItemsLog> ItemsLogs { get; set; }
         public virtual ICollection<ItemsLogLatest> ItemsLogLatests { get; set; }
         public virtual ICollection<NotificationItem> NotificationItems { get; set; }

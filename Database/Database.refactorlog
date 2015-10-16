@@ -301,4 +301,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="BACnetItemInstance" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="f2a9747d-5e43-4ba7-bf7e-4d5f35c32c59" ChangeDateTime="10/16/2015 08:08:23">
+    <Property Name="ElementName" Value="[dbo].[ThreadGroup].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ThreadGroup]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ThreadGroupId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b210d752-6312-4781-9192-500c124ee47d" ChangeDateTime="10/16/2015 08:09:01">
+    <Property Name="ElementName" Value="[dbo].[Items].[ThreadGroup]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ThreadGroupId" />
+  </Operation>
 </Operations>

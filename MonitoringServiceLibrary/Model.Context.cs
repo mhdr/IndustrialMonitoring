@@ -25,7 +25,6 @@ namespace MonitoringServiceLibrary
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemsLog> ItemsLogs { get; set; }
         public virtual DbSet<ItemsLogLatest> ItemsLogLatests { get; set; }
         public virtual DbSet<NotificationItem> NotificationItems { get; set; }
@@ -40,5 +39,7 @@ namespace MonitoringServiceLibrary
         public virtual DbSet<Bot> Bots { get; set; }
         public virtual DbSet<RelatedNotification> RelatedNotifications { get; set; }
         public virtual DbSet<BotQueue> BotQueues { get; set; }
+        public virtual DbSet<ThreadGroup> ThreadGroups { get; set; }
+        public virtual DbSet<Item> Items { get; set; }
     }
 }

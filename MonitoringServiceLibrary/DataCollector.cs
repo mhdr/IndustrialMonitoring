@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using SharedLibrary;
 
@@ -71,18 +72,63 @@ namespace MonitoringServiceLibrary
 
             foreach (var item in Items)
             {
-                ItemCollector itemCollector = new ItemCollector(item);
-                Thread thread=new Thread(() =>
+                if (item.ThreadGroupId==null)
                 {
-                    itemCollector.ReadValueInfinite();
-                });
-                thread.Start();
+                    ItemCollector itemCollector = new ItemCollector(item);
+                    Thread thread = new Thread(() =>
+                    {
+                        itemCollector.ReadValueInfinite();
+                    });
+                    thread.Start();
 
-                ItemCollectors.Add(itemCollector);
-                Thread.Sleep(1);
+                    ItemCollectors.Add(itemCollector);
+                    Thread.Sleep(1);
+                }
+            }
+
+            var groups = Items.GroupBy(x => x.ThreadGroup).Select(x => x.First());
+
+            foreach (Item item in groups)
+            {
+                if (item.ThreadGroupId!=null & item.ThreadGroupId>0)
+                {
+                    var itemsInGroup = Entities.Items.Where(x => x.ThreadGroupId == item.ThreadGroupId).ToList();
+
+                    Thread thread=new Thread(() =>
+                    {
+                        ReadValues(itemsInGroup);
+                    });
+
+                    thread.Start();
+                }
             }
 
             this._serverStatus = ServerStatus.Run;
+        }
+
+        public async Task ReadValues(List<Item> items)
+        {
+            var threadGroup = items.First().ThreadGroup;
+
+            while (true)
+            {
+                foreach (Item item in items)
+                {
+                    try
+                    {
+                        var collector=new ItemCollector(item);
+                        await collector.ReadValue();
+
+                        await Task.Delay(threadGroup.IntervalBetweenItems);
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                }
+
+                await Task.Delay(threadGroup.IntervalBetweenCycle);
+            }
         }
 
         public void Stop()

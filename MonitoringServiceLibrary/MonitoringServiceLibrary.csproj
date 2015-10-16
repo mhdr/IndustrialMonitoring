@@ -167,6 +167,9 @@
     <Compile Include="TabsItem.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ThreadGroup.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
