@@ -52,6 +52,7 @@
           <Property Name="MinRange" Type="nvarchar" MaxLength="50" />
           <Property Name="MaxRange" Type="nvarchar" MaxLength="50" />
           <Property Name="ThreadGroupId" Type="int" />
+          <Property Name="NormalizeWhenOutOfRange" Type="bit" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -814,6 +815,7 @@
           <NavigationProperty Name="NotificationItems" Relationship="IndustrialMonitoringModel.FK_NotificationItems_Items" FromRole="Item" ToRole="NotificationItem" />
           <NavigationProperty Name="TabsItems" Relationship="IndustrialMonitoringModel.FK_TabsItems_Items" FromRole="Item" ToRole="TabsItem" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" FromRole="Item" ToRole="UsersItemsPermission" />
+          <Property Name="NormalizeWhenOutOfRange" Type="Boolean" />
         </EntityType>
         <Association Name="FK_Items_ThreadGroup">
           <End Type="IndustrialMonitoringModel.ThreadGroup" Role="ThreadGroup" Multiplicity="0..1" />
@@ -1051,6 +1053,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="NormalizeWhenOutOfRange" ColumnName="NormalizeWhenOutOfRange" />
                 <ScalarProperty Name="ThreadGroupId" ColumnName="ThreadGroupId" />
                 <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
                 <ScalarProperty Name="MinRange" ColumnName="MinRange" />

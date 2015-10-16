@@ -312,12 +312,50 @@ namespace MonitoringServiceLibrary
                     {
                         if (value == null)
                         {
-                            return;
+                            continue;
                         }
 
                         if (value == "-1000")
                         {
-                            return;
+                            continue;
+                        }
+
+                        if (ItemObj.MinRange != null && ItemObj.MaxRange != null)
+                        {
+                            double valueDouble = double.Parse(value);
+                            double minRange=double.Parse(ItemObj.MinRange);
+                            double maxRange= double.Parse(ItemObj.MaxRange);
+
+                            bool shouldNormalize = false;
+
+                            if (ItemObj.NormalizeWhenOutOfRange != null)
+                            {
+                                shouldNormalize = ItemObj.NormalizeWhenOutOfRange.Value;
+                            }
+
+                            if (valueDouble < minRange)
+                            {
+                                if (shouldNormalize)
+                                {
+                                    value = ItemObj.MinRange;
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+                            }
+
+                            if (valueDouble > maxRange)
+                            {
+                                if (shouldNormalize)
+                                {
+                                    value = ItemObj.MaxRange;
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+                            }
                         }
 
                         if (LastItemLog == null)
