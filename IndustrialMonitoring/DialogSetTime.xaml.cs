@@ -55,7 +55,7 @@ namespace IndustrialMonitoring
             catch (Exception ex)
             {
                 Logger.LogIndustrialMonitoring(ex);
-                MessageBox.Show(ex.Message);
+                
             }
         }
 
@@ -69,7 +69,7 @@ namespace IndustrialMonitoring
             catch (Exception ex)
             {
                 Logger.LogIndustrialMonitoring(ex);
-                MessageBox.Show(ex.Message);
+                
             }
         }
 
@@ -83,7 +83,7 @@ namespace IndustrialMonitoring
             catch (Exception ex)
             {
                 Logger.LogIndustrialMonitoring(ex);
-                MessageBox.Show(ex.Message);
+                
             }
         }
     }
