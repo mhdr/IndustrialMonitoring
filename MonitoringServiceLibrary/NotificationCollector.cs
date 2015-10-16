@@ -62,100 +62,115 @@ namespace MonitoringServiceLibrary
 
                 foreach (var notificationItem in notificationItems)
                 {
-                    entities = new IndustrialMonitoringEntities();
-                    int notificationId = notificationItem.NotificationId;
-
-                    NotificationItemsLogLatest notificationItemsLogLatest = entities.NotificationItemsLogLatests.FirstOrDefault(x => x.NotificationId == notificationId);
-
-                    if (notificationItemsLogLatest==null)
+                    try
                     {
-                        notificationItemsLogLatest=new NotificationItemsLogLatest();
-                        notificationItemsLogLatest.NotificationId = notificationId;
-                        notificationItemsLogLatest.Value = false;
-                        notificationItemsLogLatest.Time = DateTime.Now;
+                        entities = new IndustrialMonitoringEntities();
+                        int notificationId = notificationItem.NotificationId;
 
-                        entities.NotificationItemsLogLatests.Add(notificationItemsLogLatest);
-                        entities.SaveChanges();
-                    }
-                    else
-                    {
-                        ItemsLogLatest itemLogLatest =
-        entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == notificationItem.ItemId);
+                        NotificationItemsLogLatest notificationItemsLogLatest = entities.NotificationItemsLogLatests.FirstOrDefault(x => x.NotificationId == notificationId);
 
-                        var items = entities.ItemsLogs.Where(x => x.ItemId == notificationItem.ItemId).OrderByDescending(x=>x.ItemLogId).ToList();
-                        var items2 = items.Skip(1).ToList();
-                        var previousItem = items2.FirstOrDefault();
-
-                        double currentValue = double.Parse(itemLogLatest.Value);
-
-                        bool hasNotification = false;
-                        bool previousLogHasNotification = false;
-
-                        if (notificationItem.NotificationType == (int)NotificationType.Lower)
+                        if (notificationItemsLogLatest == null)
                         {
-                            if (currentValue < notificationItem.High)
-                            {
-                                hasNotification = true;
-                            }
+                            notificationItemsLogLatest = new NotificationItemsLogLatest();
+                            notificationItemsLogLatest.NotificationId = notificationId;
+                            notificationItemsLogLatest.Value = false;
+                            notificationItemsLogLatest.Time = DateTime.Now;
 
-                            if (previousItem != null)
-                            {
-                                double privousValue = double.Parse(previousItem.Value);
+                            entities.NotificationItemsLogLatests.Add(notificationItemsLogLatest);
+                            entities.SaveChanges();
+                        }
+                        else
+                        {
+                            ItemsLogLatest itemLogLatest =
+            entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == notificationItem.ItemId);
 
-                                if (privousValue < notificationItem.High)
+                            var items = entities.ItemsLogs.Where(x => x.ItemId == notificationItem.ItemId).OrderByDescending(x => x.ItemLogId).ToList();
+                            var items2 = items.Skip(1).ToList();
+                            var previousItem = items2.FirstOrDefault();
+
+                            double currentValue = double.Parse(itemLogLatest.Value);
+
+                            bool hasNotification = false;
+                            bool previousLogHasNotification = false;
+
+                            if (notificationItem.NotificationType == (int)NotificationType.Lower)
+                            {
+                                if (currentValue < notificationItem.High)
                                 {
-                                    previousLogHasNotification = true;
+                                    hasNotification = true;
+                                }
+
+                                if (previousItem != null)
+                                {
+                                    double privousValue = double.Parse(previousItem.Value);
+
+                                    if (privousValue < notificationItem.High)
+                                    {
+                                        previousLogHasNotification = true;
+                                    }
                                 }
                             }
-                        }
-                        else if (notificationItem.NotificationType == (int)NotificationType.Between)
-                        {
-                            if (currentValue > notificationItem.Low && currentValue < notificationItem.High)
+                            else if (notificationItem.NotificationType == (int)NotificationType.Between)
                             {
-                                hasNotification = true;
-                            }
-
-                            if (previousItem != null)
-                            {
-                                double privousValue = double.Parse(previousItem.Value);
-                                if (privousValue > notificationItem.Low && privousValue < notificationItem.High)
+                                if (currentValue > notificationItem.Low && currentValue < notificationItem.High)
                                 {
-                                    previousLogHasNotification = true;
+                                    hasNotification = true;
+                                }
+
+                                if (previousItem != null)
+                                {
+                                    double privousValue = double.Parse(previousItem.Value);
+                                    if (privousValue > notificationItem.Low && privousValue < notificationItem.High)
+                                    {
+                                        previousLogHasNotification = true;
+                                    }
                                 }
                             }
-                        }
-                        else if (notificationItem.NotificationType == (int)NotificationType.Higher)
-                        {
-                            if (currentValue > notificationItem.Low)
+                            else if (notificationItem.NotificationType == (int)NotificationType.Higher)
                             {
-                                hasNotification = true;
-                            }
-
-                            if (previousItem != null)
-                            {
-                                double privousValue = double.Parse(previousItem.Value);
-                                if (privousValue > notificationItem.Low)
+                                if (currentValue > notificationItem.Low)
                                 {
-                                    previousLogHasNotification = true;
+                                    hasNotification = true;
+                                }
+
+                                if (previousItem != null)
+                                {
+                                    double privousValue = double.Parse(previousItem.Value);
+                                    if (privousValue > notificationItem.Low)
+                                    {
+                                        previousLogHasNotification = true;
+                                    }
                                 }
                             }
-                        }
 
-                        if (hasNotification)
-                        {
-                            if (notificationItemsLogLatest.Value == false)
+                            if (hasNotification)
                             {
-                                NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
-                                notificationItemsLog.NotificationId = notificationId;
-                                notificationItemsLog.Value = true;
-                                notificationItemsLog.Time = DateTime.Now;
-
-                                entities.NotificationItemsLogs.Add(notificationItemsLog);
-                                entities.SaveChanges();
-
-                                if (notificationItem.Item.ItemType == (int) ItemType.Analog)
+                                if (notificationItemsLogLatest.Value == false)
                                 {
-                                    if (previousLogHasNotification)
+                                    NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
+                                    notificationItemsLog.NotificationId = notificationId;
+                                    notificationItemsLog.Value = true;
+                                    notificationItemsLog.Time = DateTime.Now;
+
+                                    entities.NotificationItemsLogs.Add(notificationItemsLog);
+                                    entities.SaveChanges();
+
+                                    if (notificationItem.Item.ItemType == (int)ItemType.Analog)
+                                    {
+                                        if (previousLogHasNotification)
+                                        {
+                                            try
+                                            {
+                                                var bot = NotificationsBot.Instance;
+                                                bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                                Logger.LogMonitoringServiceLibrary(ex);
+                                            }
+                                        }
+                                    }
+                                    else if (notificationItem.Item.ItemType == (int)ItemType.Digital)
                                     {
                                         try
                                         {
@@ -167,9 +182,21 @@ namespace MonitoringServiceLibrary
                                             Logger.LogMonitoringServiceLibrary(ex);
                                         }
                                     }
+
                                 }
-                                else if (notificationItem.Item.ItemType == (int)ItemType.Digital)
+                            }
+                            else
+                            {
+                                if (notificationItemsLogLatest.Value)
                                 {
+                                    NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
+                                    notificationItemsLog.NotificationId = notificationId;
+                                    notificationItemsLog.Value = false;
+                                    notificationItemsLog.Time = DateTime.Now;
+
+                                    entities.NotificationItemsLogs.Add(notificationItemsLog);
+                                    entities.SaveChanges();
+
                                     try
                                     {
                                         var bot = NotificationsBot.Instance;
@@ -180,41 +207,21 @@ namespace MonitoringServiceLibrary
                                         Logger.LogMonitoringServiceLibrary(ex);
                                     }
                                 }
-                                
                             }
-                        }
-                        else
-                        {
-                            if (notificationItemsLogLatest.Value)
-                            {
-                                NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
-                                notificationItemsLog.NotificationId = notificationId;
-                                notificationItemsLog.Value = false;
-                                notificationItemsLog.Time = DateTime.Now;
 
-                                entities.NotificationItemsLogs.Add(notificationItemsLog);
-                                entities.SaveChanges();
 
-                                try
-                                {
-                                    var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Logger.LogMonitoringServiceLibrary(ex);
-                                }
-                            }
+                            notificationItemsLogLatest.Value = hasNotification;
+                            notificationItemsLogLatest.Time = DateTime.Now;
+                            entities.SaveChanges();
                         }
 
+                        Thread.Sleep(10);
 
-                        notificationItemsLogLatest.Value = hasNotification;
-                        notificationItemsLogLatest.Time = DateTime.Now;
-                        entities.SaveChanges();
                     }
-
-                    Thread.Sleep(10);
-
+                    catch (Exception ex)
+                    {
+                        Logger.LogMonitoringServiceLibrary(ex);
+                    }
                 }
 
                 Thread.Sleep(1000);                

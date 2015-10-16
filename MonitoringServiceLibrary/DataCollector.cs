@@ -121,9 +121,9 @@ namespace MonitoringServiceLibrary
 
                         await Task.Delay(threadGroup.IntervalBetweenItems);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        continue;
+                        Logger.LogMonitoringServiceLibrary(ex);
                     }
                 }
 
