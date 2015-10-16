@@ -328,6 +328,9 @@ Date : {7}", i, count, item.Item.ItemName, item.ItemId, category, itemLog.Value,
 
                                 await bot.SendTextMessage(update.Message.Chat.Id, "** Start **");
 
+                                int i = 1;
+                                int count = result2.Count;
+
                                 foreach (NotificationItemsLogLatest notification in result2)
                                 {
 
@@ -358,23 +361,27 @@ entities.TabsItems.FirstOrDefault(x => x.ItemId == notification.NotificationItem
 
                                     if (priority > 0)
                                     {
-                                        for (int i = 1; i <= priority; i++)
+                                        for (int j = 1; j <= priority; j++)
                                         {
                                             emojiRating += "\u2B50";
                                         }
                                     }
 
                                     string output = string.Format(@"{0} Alarm {0}
-Item Name : {1}
-Item Id : {2}
-Category : {3}
-Description : {4}
-Status : {5}
-Priority : {6}
-Date : {7}", emojiAlarm, notification.NotificationItem.Item.ItemName, notification.NotificationItem.ItemId, category
+Number : {1}/{2}
+Item Name : {3}
+Item Id : {4}
+Category : {5}
+Description : {6}
+Status : {7}
+Priority : {8}
+Date : {9}",i,count, emojiAlarm, notification.NotificationItem.Item.ItemName, notification.NotificationItem.ItemId, category
                         , notification.NotificationItem.NotificationMsg, emojiStatus, emojiRating, notification.Time);
 
                                     await bot.SendTextMessage(update.Message.Chat.Id, output);
+
+                                    i++;
+                                    
                                     await Task.Delay(10);
                                 }
 
