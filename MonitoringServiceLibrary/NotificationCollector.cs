@@ -153,10 +153,6 @@ namespace MonitoringServiceLibrary
 
                                         while (currentCount<numberOfDelay)
                                         {
-                                            ItemCollector itemCollector=new ItemCollector(notificationItem.Item);
-                                            string currentResult =itemCollector.ReadValue(true);
-                                            results.Add(currentResult);
-
                                             if (notificationItem.IntervalBetweenItems != null)
                                             {
                                                 Thread.Sleep(notificationItem.IntervalBetweenItems.Value);
@@ -165,6 +161,10 @@ namespace MonitoringServiceLibrary
                                             {
                                                 Thread.Sleep(1000);
                                             }
+
+                                            ItemCollector itemCollector=new ItemCollector(notificationItem.Item);
+                                            string currentResult =itemCollector.ReadValue(true);
+                                            results.Add(currentResult);
 
                                             currentCount++;
                                         }
