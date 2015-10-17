@@ -594,6 +594,137 @@ namespace MonitoringServiceLibrary
             }
         }
 
+        public string ReadValue(bool state)
+        {
+            try
+            {
+                if (this.DefinationType == ItemDefinationType.SqlDefined)
+                {
+                    if (this.Type == ItemType.Digital)
+                    {
+                        SubscriberBool = new NetworkVariableBufferedSubscriber<bool>(this.Location);
+                        SubscriberBool.Connect();
+                    }
+                    else if (this.Type == ItemType.Analog)
+                    {
+                        SubscriberInt = new NetworkVariableBufferedSubscriber<dynamic>(this.Location);
+                        SubscriberInt.Connect();
+                    }
+                }
+                else if (this.DefinationType == ItemDefinationType.BACnet)
+                {
+                    if (BACnetDevice == null)
+                    {
+                        this.BACnetDevice = BACnetDevice.Instance;
+                    }
+
+                    string ip = ItemObj.BACnetIP;
+                    int port = ItemObj.BACnetPort.Value;
+                    IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ip), port);
+                    uint instance = (uint)ItemObj.BACnetControllerInstance.Value;
+
+                    DeviceBaCnet = new Device("Device", 0, 0, endPoint, 0, instance);
+                }
+
+
+                string value = "-1000000";
+
+                if (this.DefinationType == ItemDefinationType.SqlDefined)
+                {
+                    if (this.Type == ItemType.Digital)
+                    {
+                        var data = SubscriberBool.ReadData();
+                        value = Convert.ToInt32(data.GetValue()).ToString();
+                    }
+                    else if (this.Type == ItemType.Analog)
+                    {
+                        var data = SubscriberInt.ReadData();
+                        value = Math.Round(data.GetValue(), 2).ToString();
+                    }
+                }
+                else if (this.DefinationType == ItemDefinationType.CustomDefiend)
+                {
+                    switch (this.ItemId)
+                    {
+                        case 10:
+                            value = (BSProcessDataServiceClient.GetPreHeatingZoneTemperature() / 10).ToString();
+                            break;
+                        case 13:
+                            value = BSProcessDataServiceClient.GetSterilizerZoneTemperature().ToString();
+                            break;
+                        case 14:
+                            value = (BSProcessDataServiceClient.GetCoolingZoneTemperature() / 10).ToString();
+                            break;
+                    }
+                }
+                else if (this.DefinationType == ItemDefinationType.BACnet)
+                {
+                    if (this.Type == ItemType.Digital)
+                    {
+                        BACnetEnums.BACNET_OBJECT_TYPE bacnetType = (BACnetEnums.BACNET_OBJECT_TYPE)ItemObj.BACnetItemType.Value;
+                        uint itemInstance = (uint)ItemObj.BACnetItemInstance.Value;
+                        value = BACnetDevice.ReadValue(DeviceBaCnet, bacnetType, itemInstance).ToString();
+                    }
+                    else if (Type == ItemType.Analog)
+                    {
+                        BACnetEnums.BACNET_OBJECT_TYPE bacnetType = (BACnetEnums.BACNET_OBJECT_TYPE)ItemObj.BACnetItemType.Value;
+                        uint itemInstance = (uint)ItemObj.BACnetItemInstance.Value;
+
+                        string preValue = BACnetDevice.ReadValue(DeviceBaCnet, bacnetType, itemInstance).ToString();
+                        double preValueDouble = double.Parse(preValue);
+                        value = Math.Round(preValueDouble, 2).ToString();
+                    }
+
+                }
+
+                lock (padlock)
+                {
+                    if (value == null)
+                    {
+                        value= "-1000000";
+                    }
+
+                    bool condition = !string.IsNullOrEmpty(ItemObj.MinRange) && !string.IsNullOrEmpty(ItemObj.MaxRange);
+                    if (condition)
+                    {
+                        double valueDouble = double.Parse(value);
+                        double minRange = double.Parse(ItemObj.MinRange);
+                        double maxRange = double.Parse(ItemObj.MaxRange);
+
+                        bool shouldNormalize = false;
+
+                        if (ItemObj.NormalizeWhenOutOfRange != null)
+                        {
+                            shouldNormalize = ItemObj.NormalizeWhenOutOfRange.Value;
+                        }
+
+                        if (valueDouble < minRange)
+                        {
+                            if (shouldNormalize)
+                            {
+                                value = ItemObj.MinRange;
+                            }
+                        }
+
+                        if (valueDouble > maxRange)
+                        {
+                            if (shouldNormalize)
+                            {
+                                value = ItemObj.MaxRange;
+                            }
+                        }
+                    }
+
+                    return value;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return "";
+            }
+        }
+
         public void Stop()
         {
             Timer.Dispose();

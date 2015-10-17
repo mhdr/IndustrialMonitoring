@@ -51,6 +51,15 @@ namespace MonitoringServiceLibrary
             this.StopThread = true;
         }
 
+        public async void StartDelayedNotifications()
+        {
+            while (true)
+            {
+                
+
+            }
+        }
+
         private void CheckNotifications()
         {
             IsThreadRunning = true;
@@ -86,31 +95,31 @@ namespace MonitoringServiceLibrary
                             
                             double currentValue = double.Parse(itemLogLatest.Value);
 
-                            bool hasNotification = false;
+                            bool withoutNotification = false;
 
                             if (notificationItem.NotificationType == (int)NotificationType.Lower)
                             {
                                 if (currentValue < notificationItem.High)
                                 {
-                                    hasNotification = true;
+                                    withoutNotification = true;
                                 }
                             }
                             else if (notificationItem.NotificationType == (int)NotificationType.Between)
                             {
                                 if (currentValue > notificationItem.Low && currentValue < notificationItem.High)
                                 {
-                                    hasNotification = true;
+                                    withoutNotification = true;
                                 }
                             }
                             else if (notificationItem.NotificationType == (int)NotificationType.Higher)
                             {
                                 if (currentValue > notificationItem.Low)
                                 {
-                                    hasNotification = true;
+                                    withoutNotification = true;
                                 }
                             }
 
-                            if (hasNotification)
+                            if (withoutNotification)
                             {
                                 if (notificationItemsLogLatest.Value == false)
                                 {
@@ -130,21 +139,95 @@ namespace MonitoringServiceLibrary
                             {
                                 if (notificationItemsLogLatest.Value)
                                 {
-                                    NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
-                                    notificationItemsLog.NotificationId = notificationId;
-                                    notificationItemsLog.Value = false;
-                                    notificationItemsLog.Time = DateTime.Now;
+                                    if (notificationItem.IsDelayed != null && notificationItem.IsDelayed.Value)
+                                    {
+                                        int currentCount = 0;
+                                        List<string> results=new List<string>();
 
-                                    entities.NotificationItemsLogs.Add(notificationItemsLog);
-                                    entities.SaveChanges();
+                                        int numberOfDelay = 2;
 
-                                    var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                        if (notificationItem.NumberOfDelayes != null)
+                                        {
+                                            numberOfDelay = notificationItem.NumberOfDelayes.Value;
+                                        }
+
+                                        while (currentCount<numberOfDelay)
+                                        {
+                                            ItemCollector itemCollector=new ItemCollector(notificationItem.Item);
+                                            string currentResult =itemCollector.ReadValue(true);
+                                            results.Add(currentResult);
+
+                                            if (notificationItem.IntervalBetweenItems != null)
+                                            {
+                                                Thread.Sleep(notificationItem.IntervalBetweenItems.Value);
+                                            }
+                                            else
+                                            {
+                                                Thread.Sleep(1000);
+                                            }
+
+                                            currentCount++;
+                                        }
+
+                                        int numberOfWithoutNotifications = 0;
+
+                                        foreach (string s in results)
+                                        {
+                                            currentValue = double.Parse(s);
+
+                                            if (notificationItem.NotificationType == (int)NotificationType.Lower)
+                                            {
+                                                if (currentValue < notificationItem.High)
+                                                {
+                                                    numberOfWithoutNotifications++;
+                                                }
+                                            }
+                                            else if (notificationItem.NotificationType == (int)NotificationType.Between)
+                                            {
+                                                if (currentValue > notificationItem.Low && currentValue < notificationItem.High)
+                                                {
+                                                    numberOfWithoutNotifications++;
+                                                }
+                                            }
+                                            else if (notificationItem.NotificationType == (int)NotificationType.Higher)
+                                            {
+                                                if (currentValue > notificationItem.Low)
+                                                {
+                                                    numberOfWithoutNotifications++;
+                                                }
+                                            }
+                                        }
+
+                                        if (numberOfWithoutNotifications == notificationItem.NumberOfDelayes.Value)
+                                        {
+                                            withoutNotification = true;
+                                        }
+                                        else
+                                        {
+                                            withoutNotification = false;
+                                        }
+                                    }
+
+                                    if (withoutNotification == false)
+                                    {
+                                        // we have a notification
+
+                                        NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
+                                        notificationItemsLog.NotificationId = notificationId;
+                                        notificationItemsLog.Value = false;
+                                        notificationItemsLog.Time = DateTime.Now;
+
+                                        entities.NotificationItemsLogs.Add(notificationItemsLog);
+                                        entities.SaveChanges();
+
+                                        var bot = NotificationsBot.Instance;
+                                        bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                    }
                                 }
                             }
 
 
-                            notificationItemsLogLatest.Value = hasNotification;
+                            notificationItemsLogLatest.Value = withoutNotification;
                             notificationItemsLogLatest.Time = DateTime.Now;
                             entities.SaveChanges();
                         }

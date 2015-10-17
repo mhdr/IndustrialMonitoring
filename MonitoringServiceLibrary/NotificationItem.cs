@@ -29,6 +29,9 @@ namespace MonitoringServiceLibrary
         public Nullable<double> High { get; set; }
         public string NotificationMsg { get; set; }
         public Nullable<int> Priority { get; set; }
+        public Nullable<bool> IsDelayed { get; set; }
+        public Nullable<int> NumberOfDelayes { get; set; }
+        public Nullable<int> IntervalBetweenItems { get; set; }
     
         public virtual ICollection<NotificationItemsLog> NotificationItemsLogs { get; set; }
         public virtual ICollection<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }

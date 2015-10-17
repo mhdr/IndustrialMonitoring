@@ -51,8 +51,8 @@
           <Property Name="BACnetItemType" Type="int" />
           <Property Name="MinRange" Type="nvarchar" MaxLength="50" />
           <Property Name="MaxRange" Type="nvarchar" MaxLength="50" />
-          <Property Name="ThreadGroupId" Type="int" />
           <Property Name="NormalizeWhenOutOfRange" Type="bit" />
+          <Property Name="ThreadGroupId" Type="int" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -85,6 +85,9 @@
           <Property Name="High" Type="float" />
           <Property Name="NotificationMsg" Type="nvarchar(max)" />
           <Property Name="Priority" Type="int" />
+          <Property Name="IsDelayed" Type="bit" />
+          <Property Name="NumberOfDelayes" Type="int" />
+          <Property Name="IntervalBetweenItems" Type="int" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -472,6 +475,9 @@
           <NavigationProperty Name="RelatedNotifications1" Relationship="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2" FromRole="NotificationItem" ToRole="RelatedNotification" />
           <Property Name="Priority" Type="Int32" />
           <NavigationProperty Name="Item" Relationship="IndustrialMonitoringModel.FK_NotificationItems_Items" FromRole="NotificationItem" ToRole="Item" />
+          <Property Name="IsDelayed" Type="Boolean" />
+          <Property Name="NumberOfDelayes" Type="Int32" />
+          <Property Name="IntervalBetweenItems" Type="Int32" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -920,6 +926,9 @@
           <EntitySetMapping Name="NotificationItems">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationItem">
               <MappingFragment StoreEntitySet="NotificationItems">
+                <ScalarProperty Name="IntervalBetweenItems" ColumnName="IntervalBetweenItems" />
+                <ScalarProperty Name="NumberOfDelayes" ColumnName="NumberOfDelayes" />
+                <ScalarProperty Name="IsDelayed" ColumnName="IsDelayed" />
                 <ScalarProperty Name="Priority" ColumnName="Priority" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />

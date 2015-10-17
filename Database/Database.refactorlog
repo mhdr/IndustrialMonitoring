@@ -315,4 +315,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ThreadGroupId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="dedec4a4-353d-4dbe-a48f-dc4eec59a6d5" ChangeDateTime="10/17/2015 15:12:07">
+    <Property Name="ElementName" Value="[dbo].[DelayedNotification].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DelayedNotification]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DelayId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6d4b2ea8-87c1-43fd-838e-5dab3b1b4abf" ChangeDateTime="10/17/2015 15:30:45">
+    <Property Name="ElementName" Value="[dbo].[DelayedNotification].[Notif]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DelayedNotification]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d4c3ff2b-27a3-4a0f-a1c0-7f3fddf2850a" ChangeDateTime="10/17/2015 15:31:59">
+    <Property Name="ElementName" Value="[dbo].[DelayedNotification].[Time]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DelayedNotification]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RegisterTime" />
+  </Operation>
 </Operations>
