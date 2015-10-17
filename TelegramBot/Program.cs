@@ -375,7 +375,7 @@ Category : {5}
 Description : {6}
 Status : {7}
 Priority : {8}
-Date : {9}",i,count, emojiAlarm, notification.NotificationItem.Item.ItemName, notification.NotificationItem.ItemId, category
+Date : {9}", emojiAlarm, i,count, notification.NotificationItem.Item.ItemName, notification.NotificationItem.ItemId, category
                         , notification.NotificationItem.NotificationMsg, emojiStatus, emojiRating, notification.Time);
 
                                     await bot.SendTextMessage(update.Message.Chat.Id, output);
