@@ -176,6 +176,7 @@ namespace IndustrialMonitoring
                     notificationListBoxUserControl.SetTime(notification.DateTime);
                     notificationListBoxUserControl.SetDesription(notification.NotificationMsg);
                     notificationListBoxUserControl.SetHasFault(notification.HasFault);
+                    notificationListBoxUserControl.SetCategory(notification.Category);
 
                     ListBoxNotification.Items.Add(notificationListBoxUserControl);
                 }

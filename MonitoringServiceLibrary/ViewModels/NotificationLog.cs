@@ -25,13 +25,17 @@ namespace MonitoringServiceLibrary.ViewModels
         [DataMember]
         public bool HasFault { get; set; }
 
-        public NotificationLog(int itemId,string itemName,string notificationMsg,DateTime dateTime,bool hasFault)
+        [DataMember]
+        public string Category { get; set; }
+
+        public NotificationLog(int itemId,string itemName,string notificationMsg,DateTime dateTime,bool hasFault,string category)
         {
             this.ItemId = itemId;
             this.ItemName = itemName;
             this.NotificationMsg = notificationMsg;
             this.DateTime = dateTime;
             this.HasFault = hasFault;
+            this.Category = category;
         }
     }
 }

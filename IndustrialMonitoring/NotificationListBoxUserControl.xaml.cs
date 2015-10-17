@@ -42,6 +42,16 @@ namespace IndustrialMonitoring
             TextBlockDescription.Text = description;
         }
 
+        public void SetCategory(string category)
+        {
+            TextBlockCategory.Text = category;
+        }
+
+        public string GetCategory()
+        {
+            return TextBlockCategory.Text;
+        }
+
         public string GetItemName()
         {
             return TextBlockItemName.Text;

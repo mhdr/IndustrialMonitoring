@@ -158,7 +158,15 @@ namespace MonitoringServiceLibrary
                     DateTime dateTime = log.Time;
                     bool hasFault = !log.Value;
 
-                    NotificationLog notificationLog=new NotificationLog(itemId,itemName,notificationMsg,dateTime,hasFault);
+                    var tabsItem = entities.TabsItems.FirstOrDefault(x => x.ItemId == itemId);
+                    string category = "";
+
+                    if (tabsItem != null)
+                    {
+                        category = tabsItem.Tab.TabName;
+                    }
+
+                    NotificationLog notificationLog=new NotificationLog(itemId,itemName,notificationMsg,dateTime,hasFault,category);
 
                     result.Add(notificationLog);
                 }
@@ -192,7 +200,15 @@ namespace MonitoringServiceLibrary
                         DateTime dateTime = log.Time;
                         bool hasFault = !log.Value;
 
-                        NotificationLog notificationLog = new NotificationLog(itemId2, itemName, notificationMsg, dateTime, hasFault);
+                        var tabsItem = entities.TabsItems.FirstOrDefault(x => x.ItemId == itemId);
+                        string category = "";
+
+                        if (tabsItem != null)
+                        {
+                             category=tabsItem.Tab.TabName;
+                        }
+                        
+                        NotificationLog notificationLog = new NotificationLog(itemId2, itemName, notificationMsg, dateTime, hasFault, category);
 
                         result.Add(notificationLog);
                     }

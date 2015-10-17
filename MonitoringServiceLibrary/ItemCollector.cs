@@ -320,7 +320,8 @@ namespace MonitoringServiceLibrary
                             continue;
                         }
 
-                        if (ItemObj.MinRange != null && ItemObj.MaxRange != null)
+                        bool condition = !string.IsNullOrEmpty(ItemObj.MinRange) && !string.IsNullOrEmpty(ItemObj.MaxRange);
+                        if (condition)
                         {
                             double valueDouble = double.Parse(value);
                             double minRange=double.Parse(ItemObj.MinRange);
@@ -503,6 +504,45 @@ namespace MonitoringServiceLibrary
                     if (value == "-1000")
                     {
                         return;
+                    }
+
+                    bool condition = !string.IsNullOrEmpty(ItemObj.MinRange) && !string.IsNullOrEmpty(ItemObj.MaxRange);
+                    if (condition)
+                    {
+                        double valueDouble = double.Parse(value);
+                        double minRange = double.Parse(ItemObj.MinRange);
+                        double maxRange = double.Parse(ItemObj.MaxRange);
+
+                        bool shouldNormalize = false;
+
+                        if (ItemObj.NormalizeWhenOutOfRange != null)
+                        {
+                            shouldNormalize = ItemObj.NormalizeWhenOutOfRange.Value;
+                        }
+
+                        if (valueDouble < minRange)
+                        {
+                            if (shouldNormalize)
+                            {
+                                value = ItemObj.MinRange;
+                            }
+                            else
+                            {
+                                return ;
+                            }
+                        }
+
+                        if (valueDouble > maxRange)
+                        {
+                            if (shouldNormalize)
+                            {
+                                value = ItemObj.MaxRange;
+                            }
+                            else
+                            {
+                                return ;
+                            }
+                        }
                     }
 
                     if (LastItemLog == null)

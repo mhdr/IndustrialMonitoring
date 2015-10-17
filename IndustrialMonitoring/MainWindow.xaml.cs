@@ -222,7 +222,7 @@ namespace IndustrialMonitoring
 
 
                     // TODO Parameter
-                    chartLiveData.Width = 200;
+                    chartLiveData.Width = 240;
 
                     // TODO Parameter
                     chartLiveData.Height = 200;

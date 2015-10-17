@@ -22,6 +22,7 @@
   <xs:element name="ArrayOfNotificationLog" nillable="true" type="tns:ArrayOfNotificationLog" />
   <xs:complexType name="NotificationLog">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="HasFault" type="xs:boolean" />
       <xs:element minOccurs="0" name="ItemId" type="xs:int" />
