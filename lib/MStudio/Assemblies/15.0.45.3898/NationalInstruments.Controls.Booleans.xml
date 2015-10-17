@@ -1,0 +1,717 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NationalInstruments.Controls.Booleans</name>
+    </assembly>
+    <members>
+        <member name="T:NationalInstruments.Controls.Internal.AssemblyReferenceEnforcer">
+            <summary>
+            Ensures Visual Studio includes a reference to the Controls assembly,
+            as Controls types are only referenced in xaml, not code.
+            </summary>
+        </member>
+        <member name="T:NationalInstruments.Controls.Internal.ButtonInteractor">
+            <summary>Acts as the interactor for Boolean buttons.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.#ctor(NationalInstruments.Controls.Internal.IButtonInteractorTarget)">
+            <exclude/>
+            <summary>Initializes a new instance of the <see cref="T:NationalInstruments.Controls.Internal.ButtonInteractor"/> for the specified target.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleMouseLeftButtonDown">
+            <exclude />
+            <summary>Handles the mouse left button down event for the Boolean control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleMouseLeftButtonUp(System.Boolean)">
+            <exclude />
+            <summary>Handles the mouse left button up event for the Boolean control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleMouseEnter">
+            <exclude />
+            <summary>Handles the mouse enter event for the Boolean control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleMouseLeave">
+            <exclude />
+            <summary>Handles the mouse leave event for the Boolean control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleLostMouseCapture">
+            <exclude />
+            <summary>Handles the mouse leaving the scope of the Boolean control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleValueChanged">
+            <exclude />
+            <summary>Handles the visual state when the value changes on the Boolean control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleIsPressedChanged">
+            <exclude />
+            <summary>Handles the pressed state changing on the Boolean control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleKeyDown(System.Windows.Input.Key)">
+            <exclude />
+            <summary>Handles the key down event for the Boolean control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleKeyUp(System.Windows.Input.Key)">
+            <exclude />
+            <summary>Handles the key up event for the Boolean control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.QueryCursor(System.Object,System.Windows.Input.Cursor@)">
+            <exclude />
+            <summary>Determines what the current mouse cursor should be for the control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.ButtonInteractor.HandleIsPressedChanged(System.Boolean)">
+            <exclude>[INTERNAL FOR TESTING]</exclude>
+        </member>
+        <member name="T:NationalInstruments.Controls.Internal.IButtonInteractorTarget">
+            <exclude/>
+            <summary>Interface used by <see cref="T:NationalInstruments.Controls.Internal.ButtonInteractor"/> to interact with <see cref="T:NationalInstruments.Controls.BooleanButton"/>.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.IButtonInteractorTarget.CaptureMouse">
+            <exclude/><summary>Attempts to capture the mouse.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.IButtonInteractorTarget.ReleaseMouseCapture">
+            <exclude/><summary>Releases mouse capture.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.IButtonInteractorTarget.ToggleValue">
+            <exclude/><summary>Toggles the value of the target control.</summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.Internal.IButtonInteractorTarget.SetRenderPressed(System.Boolean)">
+            <exclude/><summary>Updates the render state of the target control.</summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.Internal.IButtonInteractorTarget.Value">
+            <exclude/><summary>Gets or sets the value of the target control.</summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.Internal.IButtonInteractorTarget.IsPressed">
+            <exclude/><summary>Gets or sets a value indicating whether the target control is pressed.</summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.Internal.IButtonInteractorTarget.IsMouseCaptured">
+            <exclude/><summary>Gets a value indicating whether the mouse has been captured.</summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.Internal.IButtonInteractorTarget.IsReadOnly">
+            <exclude/><summary>Gets a value indicating whether the target control is readonly.</summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.Internal.IButtonInteractorTarget.IsMomentary">
+            <exclude/><summary>Gets a value indicating whether the target control is momentary.</summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.Internal.IButtonInteractorTarget.ClickMode">
+            <exclude/><summary>Gets a value indicating the click mode of the target control.</summary>
+        </member>
+        <member name="T:NationalInstruments.Controls.ArrowButton">
+            <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) button control that displays Boolean data and is in the shape of an arrow.   
+            </summary>
+            <remarks>
+            You can use <see cref="T:NationalInstruments.Controls.ArrowDirection" crefType="Unqualified"/>
+             to set the direction of the <see cref="T:NationalInstruments.Controls.ArrowButton" crefType="Unqualified"/>
+             to <see cref="F:NationalInstruments.Controls.ArrowDirection.Up" crefType="Unqualified"/>,
+            <see cref="F:NationalInstruments.Controls.ArrowDirection.Down" crefType="Unqualified"/>, 
+            <see cref="F:NationalInstruments.Controls.ArrowDirection.Left" crefType="Unqualified"/>, or 
+            <see cref="F:NationalInstruments.Controls.ArrowDirection.Right" crefType="Unqualified"/>.
+            You can set the color of the <see cref="T:NationalInstruments.Controls.ArrowButton" crefType="Unqualified"/>
+             to change depending on the state of the <see cref="T:NationalInstruments.Controls.ArrowButton" crefType="Unqualified"/>
+             by using <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/> and 
+            <see cref="P:System.Windows.Controls.Control.Background"/> to set a different color when the <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/> 
+             is <see langword="true"/> or <see langword="false"/>.
+            Use <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/> to set the 
+            <see cref="T:NationalInstruments.Controls.ArrowButton" crefType="Unqualified"/>
+            to respond to three different types of click events: 
+            <see cref="F:System.Windows.Controls.ClickMode.Hover"/>, 
+            <see cref="F:System.Windows.Controls.ClickMode.Press"/>, and
+            <see cref="F:System.Windows.Controls.ClickMode.Release"/>.
+            <para>
+            To configure the <see cref="T:NationalInstruments.Controls.ArrowButton" crefType="Unqualified"/>
+             for different mechanical actions, use the following settings:
+            <list type="bullet">
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.ArrowButton" crefType="Unqualified"/> to  switch states when pressed, set <see cref="T:System.Windows.Controls.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Press"/> and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/> to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.ArrowButton" crefType="Unqualified"/> to  switch states when released, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Release"/>
+             and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.ArrowButton" crefType="Unqualified"/> to switch states until released, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to N/A and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="true"/>. 
+            </description>
+            </item>
+            </list>
+            </para>
+            </remarks>
+            <threadsafety safety="unsafe"/>
+            <lastupdated>6/19/2012 10:15:46 AM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="T:NationalInstruments.Controls.BooleanButton">
+            <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) button control that displays Boolean data.
+            </summary>
+            <remarks>
+            You can set the color of the <see cref="T:NationalInstruments.Controls.BooleanButton"/>
+             to change depending on the state of the <see cref="T:NationalInstruments.Controls.BooleanButton"/>
+             by using <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/> and
+            <see cref="P:System.Windows.Controls.Control.Background"/> to set a different color when the <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/>
+             is <see langword="true"/> or <see langword="false"/>.
+            Use <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/> to set the
+            <see cref="T:NationalInstruments.Controls.BooleanButton"/>
+            to respond to three different types of click events:
+            <see cref="F:System.Windows.Controls.ClickMode.Hover"/>,
+            <see cref="F:System.Windows.Controls.ClickMode.Press"/>, and
+            <see cref="F:System.Windows.Controls.ClickMode.Release"/>.
+            <para>
+            To configure the <see cref="T:NationalInstruments.Controls.BooleanButton"/>
+             for different mechanical actions, use the following settings:
+            <list type="bullet">
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.BooleanButton"/> to switch states when pressed, set <see cref="T:System.Windows.Controls.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Press"/> and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/> to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.BooleanButton"/> to switch states when released, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Release"/>
+             and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/> to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.BooleanButton"/> to switch states until pressed, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to N/A and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/> to <see langword="true"/>.
+            </description>
+            </item>
+            </list>
+            </para>
+            </remarks>
+            <lastupdated>4/25/2012 12:32:46 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+            <content>[partial class - CAR #397339]</content>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.ToggleValue">
+            <summary>
+            Toggles the value of a Boolean control.
+            </summary>
+            <lastupdated>4/24/2012 5:20:02 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnApplyTemplate">
+            <inheritdoc/>
+            <lastupdated>12/16/2010 2:46:22 PM</lastupdated>
+            <updatedby>Andrew P. Dove</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnValueChanged(System.Boolean,System.Boolean)">
+            <summary>
+            Raises the <see cref="E:NationalInstruments.Controls.BooleanButton.ValueChanged"/> event.
+            </summary>
+            <param name="oldValue">
+            The old value.
+            </param>
+            <param name="newValue">
+            The new value.
+            </param>
+            <lastupdated>4/24/2012 5:17:02 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanButton.RenderPressedProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.BooleanButton.RenderPressed'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.BooleanButton.RenderPressed'/> dependency property.
+            </returns>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanButton.ValueProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.BooleanButton.Value'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.BooleanButton.Value'/> dependency property.
+            </returns>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanButton.IsMomentaryProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.BooleanButton.IsMomentary'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.BooleanButton.IsMomentary'/> dependency property.
+            </returns>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanButton.IsReadOnlyProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.BooleanButton.IsReadOnly'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.BooleanButton.IsReadOnly'/> dependency property.
+            </returns>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanButton.ContentVisibilityProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.BooleanButton.ContentVisibility'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.BooleanButton.ContentVisibility'/> dependency property.
+            </returns>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NationalInstruments.Controls.BooleanButton"/> class.
+            </summary>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnIsPressedChanged(System.Windows.DependencyPropertyChangedEventArgs)">
+            <inheritdoc/>
+            <lastupdated>4/20/2012</lastupdated>
+            <updatedby>Kevin Gray</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
+            <inheritdoc/>
+            <lastupdated>4/24/2012 5:13:41 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnMouseLeftButtonUp(System.Windows.Input.MouseButtonEventArgs)">
+            <inheritdoc/>
+            <lastupdated>4/24/2012 5:13:52 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnMouseEnter(System.Windows.Input.MouseEventArgs)">
+            <inheritdoc/>
+            <lastupdated>5/20/2012 12:55:35 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnMouseLeave(System.Windows.Input.MouseEventArgs)">
+            <inheritdoc/>
+            <lastupdated>5/20/2012 12:55:42 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnKeyUp(System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Raises the key up event when a key is pressed while the control has focus.
+            </summary>
+            <param name="e">
+            A <see cref="T:System.Windows.Input.KeyEventArgs"/> that contains the event data.
+            </param>
+            <lastupdated>4/24/2012 5:04:24 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnKeyDown(System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Raises the key down event when a key is pressed while the control has focus.
+            </summary>
+            <param name="e">
+            A <see cref="T:System.Windows.Input.KeyEventArgs"/> that contains the event data.
+            </param>
+            <lastupdated>4/24/2012 5:04:42 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanButton.PreviewValueChangedEvent">
+            <summary>
+            Identifies the <see cref="E:NationalInstruments.Controls.BooleanButton.PreviewValueChanged"/> routed event.
+            </summary>
+            <value>
+            The identifier for the <see cref="E:NationalInstruments.Controls.BooleanButton.ValueChanged"/> routed event.
+            </value>
+            <lastupdated>4/24/2012 4:01:30 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanButton.ValueChangedEvent">
+            <summary>
+            Identifies the <see cref="E:NationalInstruments.Controls.BooleanButton.ValueChanged"/> routed event.
+            </summary>
+            <value>The identifier for the <see cref="E:NationalInstruments.Controls.BooleanButton.ValueChanged"/> routed event.</value>
+            <lastupdated>11/28/2011 1:20:12 PM</lastupdated>
+            <updatedby>Beth Parrott</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.BooleanButton.OnLostMouseCapture(System.Windows.Input.MouseEventArgs)">
+            <inheritdoc/>
+            <lastupdated>11/17/2012</lastupdated>
+            <updatedby>Kevin Gray</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanButton.RenderPressed">
+            <summary>
+Gets or sets whether the control should render the 'pressed' state visuals.
+</summary><value>
+A Boolean value representing whether or not the control should render the 'pressed' state visuals.
+</value><lastupdated>6/19/2012 10:16:18 AM</lastupdated><updatedby>National Instruments</updatedby><approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanButton.Value">
+            <summary>Gets or sets the value of the button.</summary><value> The default value is <see langword="false"/>.</value><lastupdated>4/25/2012 10:46:59 AM</lastupdated><updatedby>National Instruments</updatedby><approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanButton.IsMomentary">
+            <summary>Gets or sets a value indicating whether <see cref="P:NationalInstruments.Controls.BooleanButton.Value" crefType="Unqualified"/> 
+ changes only while the button is pressed.</summary><value>The default value is <see langword="true"/>, but derived controls may redefine this.
+For example, <see cref="T:NationalInstruments.Controls.PowerButton" crefType="Unqualified"/> and <see cref="T:NationalInstruments.Controls.Switch" crefType="Unqualified"/> have a default <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/> of <see langword="false"/>.</value><lastupdated>5/20/2012 12:39:49 PM</lastupdated><updatedby>National Instruments</updatedby><approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanButton.IsReadOnly">
+            <summary>Gets or sets a value indicating whether <see cref="P:NationalInstruments.Controls.BooleanButton.Value" crefType="Unqualified"/> 
+can be changed at run time.</summary><value>The default value is <see langword="false"/>, but derived controls may redefine this.  
+For example, a <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/> has a default <see cref="P:NationalInstruments.Controls.BooleanButton.IsReadOnly"/> of <see langword="true"/>. </value><lastupdated>5/20/2012 12:40:36 PM</lastupdated><updatedby>National Instruments</updatedby><approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanButton.ContentVisibility">
+            <summary>Gets or sets the visibility of <see cref="P:System.Windows.Controls.ContentControl.Content"/>.</summary><value>The default value is <see cref="F:System.Windows.Visibility.Visible"/>, but derived controls may redefine this.  
+For example, a <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/> has a default <see cref="P:NationalInstruments.Controls.BooleanButton.ContentVisibility"/> of <see cref="F:System.Windows.Visibility.Collapsed"/>.</value><lastupdated>5/20/2012 12:40:02 PM</lastupdated><updatedby>National Instruments</updatedby><approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanButton.NationalInstruments#Controls#Internal#IButtonInteractorTarget#IsPressed">
+            <exclude/>
+            <lastupdated>4/24/2012 4:21:33 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="E:NationalInstruments.Controls.BooleanButton.PreviewValueChanged">
+            <summary>
+            Occurs before the <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/>
+            property is interactively changed.
+            </summary>
+            <remarks>
+            This is a tunneling routed event.  You can use this event to cancel a toggle operation caused by user interaction.
+            Mark the event as handled in the event handler to cancel the operation.
+            </remarks>
+            <lastupdated>6/14/2012 10:11:55 AM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="E:NationalInstruments.Controls.BooleanButton.ValueChanged">
+            <summary>
+            Occurs when <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/> changes
+            from <see langword="false"/> to <see langword="true"/> or vice versa.
+            </summary>
+            <lastupdated>4/25/2012 10:38:23 AM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Controls.ArrowButton.OnDirectionChanged">
+            <summary>
+            Called when <see cref="P:NationalInstruments.Controls.ArrowButton.Direction" crefType="Unqualified"/> changes.
+            </summary>
+            <lastupdated>4/24/2012 3:30:48 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.Controls.ArrowButton.DirectionProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.ArrowButton.Direction'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.ArrowButton.Direction'/> dependency property.
+            </returns>
+        </member>
+        <member name="M:NationalInstruments.Controls.ArrowButton.OnApplyTemplate">
+            <inheritdoc cref="M:System.Windows.FrameworkElement.OnApplyTemplate"/>
+        </member>
+        <member name="P:NationalInstruments.Controls.ArrowButton.Direction">
+            <summary>Gets or sets the direction that the arrow button is pointing: up, down, left, or right. 
+</summary><value>The default value is <see cref="F:NationalInstruments.Controls.ArrowDirection.Up" crefType="Unqualified"/>.</value><lastupdated>4/24/2012 3:29:59 PM</lastupdated><updatedby>National Instruments</updatedby><approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.ArrowButton.ContentGrid">
+            <summary>
+            Gets the grid around the content.
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.ArrowButton.UpButtonFace">
+            <summary>
+            Gets the grid around the face for the up direction.
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.ArrowButton.DownButtonFace">
+            <summary>
+            Gets the grid around the face for the down direction.
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.ArrowButton.LeftButtonFace">
+            <summary>
+            Gets the grid around the face for the left direction.
+            </summary>
+        </member>
+        <member name="P:NationalInstruments.Controls.ArrowButton.RightButtonFace">
+            <summary>
+            Gets the grid around the face for the right direction.
+            </summary>
+        </member>
+        <member name="T:NationalInstruments.Controls.ArrowDirection">
+            <summary>Determines the direction of the arrow for an <see cref="T:NationalInstruments.Controls.ArrowButton" crefType="Unqualified"/>.</summary>
+            <lastupdated>4/25/2012 12:47:47 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.Controls.ArrowDirection.Up">
+            <summary>Indicates an upward-pointing arrow.</summary>
+        </member>
+        <member name="F:NationalInstruments.Controls.ArrowDirection.Down">
+            <summary>Indicates a downward-pointing arrow.</summary>
+        </member>
+        <member name="F:NationalInstruments.Controls.ArrowDirection.Right">
+            <summary>Indicates a right-pointing arrow.</summary>
+        </member>
+        <member name="F:NationalInstruments.Controls.ArrowDirection.Left">
+            <summary>Indicates a left-pointing arrow.</summary>
+        </member>
+        <member name="T:NationalInstruments.Controls.BooleanContentButton">
+            <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) button control that supports different content for the 
+            <see langword="true"/> and <see langword="false"/> states.
+            </summary>
+            <remarks>
+            This class is commonly used to change the color of the button when the button changes
+            from true to false or vice versa, using the <see cref="P:NationalInstruments.Controls.BooleanContentButton.TrueBrush"/> and <see cref="P:NationalInstruments.Controls.BooleanContentButton.FalseBrush"/> properties. 
+            However, you can also use the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/>
+             to display text or images that are different depending on whether the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/>
+            is in a true or false state using the <see cref="P:NationalInstruments.Controls.BooleanContentButton.TrueContent"/> and <see cref="P:NationalInstruments.Controls.BooleanContentButton.FalseContent"/> properties.
+            To display an image, set one of these content properties to be an <see cref="T:System.Windows.Controls.Image"/> control.  To display text, use a <see cref="T:System.String"/>.
+            To display formatted text, use a <see cref="T:System.Windows.Controls.TextBlock"/> control.
+            <para>
+            Alternatively, you can set the color of the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/>
+             to change depending on the state of the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/>
+             by using <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/> and 
+            <see cref="P:System.Windows.Controls.Control.Background"/> by setting a different color when the <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/> 
+             is <see langword="true"/> or <see langword="false"/>.
+            Use <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/> to set the 
+            <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/>
+            to respond to three different types of click events: 
+            <see cref="F:System.Windows.Controls.ClickMode.Hover"/>, 
+            <see cref="F:System.Windows.Controls.ClickMode.Press"/>, and
+            <see cref="F:System.Windows.Controls.ClickMode.Release"/>.
+            </para>
+            <para>
+            To configure the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/>
+             for different mechanical actions, use the following settings:
+            <list type="bullet">
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/> to  switch states when pressed, set <see cref="T:System.Windows.Controls.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Press"/> and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/> to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/> to  switch states when released, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Release"/>
+             and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/> to switch states until released, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to N/A and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="true"/>. 
+            </description>
+            </item>
+            </list>
+            </para>
+            </remarks>
+            <threadsafety safety="unsafe"/>
+            <lastupdated>5/4/2012 11:43:09 AM</lastupdated>
+            <updatedby>LabVIEW</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanContentButton.FalseContentProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.BooleanContentButton.FalseContent'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.BooleanContentButton.FalseContent'/> dependency property.
+            </returns>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanContentButton.TrueContentProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.BooleanContentButton.TrueContent'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.BooleanContentButton.TrueContent'/> dependency property.
+            </returns>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanContentButton.FalseBrushProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.BooleanContentButton.FalseBrush'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.BooleanContentButton.FalseBrush'/> dependency property.
+            </returns>
+        </member>
+        <member name="F:NationalInstruments.Controls.BooleanContentButton.TrueBrushProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.BooleanContentButton.TrueBrush'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.BooleanContentButton.TrueBrush'/> dependency property.
+            </returns>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanContentButton.FalseContent">
+            <summary>Gets or sets the content to display when <see cref="P:NationalInstruments.Controls.BooleanButton.Value" crefType="Unqualified"/> is <see langword="false"/>.</summary><value> The default value is <see langword="null"/>.</value><lastupdated>5/4/2012 10:34:48 AM</lastupdated><updatedby>LabVIEW</updatedby><approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanContentButton.TrueContent">
+            <summary>Gets or sets the content to display when <see cref="P:NationalInstruments.Controls.BooleanButton.Value" crefType="Unqualified"/>  is <see langword="true"/>.</summary><value> The default value is <see langword="null"/>.</value><lastupdated>5/4/2012 10:34:55 AM</lastupdated><updatedby>LabVIEW</updatedby><approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanContentButton.FalseBrush">
+            <summary>Gets or sets the brush that is used to alter the color of the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/> when 
+<see cref="P:NationalInstruments.Controls.BooleanButton.Value" crefType="Unqualified"/> is <see langword="false"/>.</summary><value>The default value is <see langword="null"/>, but derived controls and styles may redefine this.</value><remarks>
+Deriving classes and styles will consume this property differently.  
+For example, <see cref="P:NationalInstruments.Controls.BooleanContentButton.FalseBrush" crefType="Unqualified"/> will only change the color of text content on the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/>,
+but a <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/> with a SquareLED style has its entire color changed.
+</remarks><lastupdated>5/20/2012 12:41:08 PM</lastupdated><updatedby>National Instruments</updatedby><approved>False</approved>
+        </member>
+        <member name="P:NationalInstruments.Controls.BooleanContentButton.TrueBrush">
+            <summary>Gets or sets the brush that is used to alter the color of the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/> when <see cref="P:NationalInstruments.Controls.BooleanButton.Value" crefType="Unqualified"/> is <see langword="true"/>.</summary><value>The default value is <see langword="null"/>, but derived controls and styles may redefine this.</value><remarks>
+Deriving classes and styles  consume this property differently.  
+For example, <see cref="P:NationalInstruments.Controls.BooleanContentButton.TrueBrush" crefType="Unqualified"/> only changes the color of text content on the <see cref="T:NationalInstruments.Controls.BooleanContentButton" crefType="Unqualified"/>,
+but a <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/> with a SquareLED style has its entire color changed.
+</remarks><lastupdated>5/20/2012 12:43:30 PM</lastupdated><updatedby>National Instruments</updatedby><approved>False</approved>
+        </member>
+        <member name="T:NationalInstruments.Controls.LED">
+            <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) button control in the shape of a light emitting diode.
+            </summary>
+            <remarks>
+            Typically, you use an <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/>  control to display Boolean data. You can use 
+            <see cref="T:System.Windows.Style"/>  to change the appearance of the <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/>. 
+            The <see cref="P:NationalInstruments.Controls.BooleanButton.Value" crefType="Unqualified"/>   property of the 
+            <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/>   indicates the current state of the control. You can change the value programmatically, by clicking the control, 
+            or by pressing the space bar when the control has focus.
+            <para>
+            To configure the <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/>
+             for different mechanical actions, use the following settings:
+            <list type="bullet">
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/> to  switch states when pressed, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Press"/> and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/> to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/> to  switch states when released, set <see cref="T:System.Windows.Controls.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Release"/>
+             and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.LED" crefType="Unqualified"/> to switch states until released, set <see cref="T:System.Windows.Controls.ClickMode"/>
+             to N/A and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="true"/>. 
+            </description>
+            </item>
+            </list>
+            </para>
+            </remarks>
+            <threadsafety safety="unsafe"/>
+            <lastupdated>5/20/2012 12:50:43 PM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="T:NationalInstruments.Controls.PowerButton">
+            <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) Boolean control in the shape of a power button.
+            </summary>
+            <threadsafety safety="unsafe"/>
+            <remarks>
+            You can set the color of the <see cref="T:NationalInstruments.Controls.PowerButton" crefType="Unqualified"/>
+             to change depending on the state of the <see cref="T:NationalInstruments.Controls.PowerButton" crefType="Unqualified"/>
+             by using <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/> and 
+            <see cref="P:System.Windows.Controls.Control.Background"/> to set a different color when the <see cref="P:NationalInstruments.Controls.BooleanButton.Value"/> 
+             is <see langword="true"/> or <see langword="false"/>.
+            Use <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/> to set the 
+            <see cref="T:NationalInstruments.Controls.PowerButton" crefType="Unqualified"/>
+            to respond to three different types of click events: 
+            <see cref="F:System.Windows.Controls.ClickMode.Hover"/>, 
+            <see cref="F:System.Windows.Controls.ClickMode.Press"/>, and
+            <see cref="F:System.Windows.Controls.ClickMode.Release"/>.
+            <para>
+            To configure the <see cref="T:NationalInstruments.Controls.PowerButton" crefType="Unqualified"/>
+             for different mechanical actions, use the following settings:
+            <list type="bullet">
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.PowerButton" crefType="Unqualified"/> to  switch states when pressed, set <see cref="T:System.Windows.Controls.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Press"/> and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/> to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.PowerButton" crefType="Unqualified"/> to  switch states when released, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Release"/>
+             and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.PowerButton" crefType="Unqualified"/> to switch states until released, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to N/A and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="true"/>. 
+            </description>
+            </item>
+            </list>
+            </para>
+            </remarks>
+            <lastupdated>4/30/2012 2:12:05 PM</lastupdated>
+            <updatedby>LabVIEW</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="T:NationalInstruments.Controls.Switch">
+            <summary>
+            Represents a Measurement Studio Windows Presentation Foundation (WPF) switch control to display and input Boolean states. 
+            </summary>
+            <remarks>
+            Typically, you use a <see cref="T:NationalInstruments.Controls.Switch" crefType="Unqualified"/>  control to display Boolean data.  You can use 
+            <see cref="T:System.Windows.Style"/>  to change the appearance of the <see cref="T:NationalInstruments.Controls.Switch" crefType="Unqualified"/> . 
+            The <see cref="P:NationalInstruments.Controls.BooleanButton.Value" crefType="Unqualified"/>   property of the <see cref="T:NationalInstruments.Controls.Switch" crefType="Unqualified"/> 
+              indicates the current state of the control. You can change the value programmatically, by clicking the control, 
+            or by pressing the space bar when the control has focus.
+            <para>
+            To configure the <see cref="T:NationalInstruments.Controls.Switch" crefType="Unqualified"/>
+             for different mechanical actions, use the following settings:
+            <list type="bullet">
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.Switch" crefType="Unqualified"/> to  switch states when pressed, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Press"/> and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/> to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.Switch" crefType="Unqualified"/> to  switch states when released, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to <see cref="F:System.Windows.Controls.ClickMode.Release"/>
+             and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="false"/>.
+            </description>
+            </item>
+            <item>
+            <description>
+            To configure the <see cref="T:NationalInstruments.Controls.Switch" crefType="Unqualified"/> to switch states until released, set <see cref="P:System.Windows.Controls.Primitives.ButtonBase.ClickMode"/>
+             to N/A and <see cref="P:NationalInstruments.Controls.BooleanButton.IsMomentary"/>  to <see langword="true"/>. 
+            </description>
+            </item>
+            </list>
+            </para>
+            </remarks>
+            <threadsafety safety="unsafe"/>
+            <lastupdated>4/30/2012 2:12:54 PM</lastupdated>
+            <updatedby>LabVIEW</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="F:NationalInstruments.Controls.Switch.OrientationProperty">
+            <summary>
+            Identifies the <see cref='P:NationalInstruments.Controls.Switch.Orientation'/> dependency property.
+            </summary>
+            <returns>
+            The identifier for the <see cref='P:NationalInstruments.Controls.Switch.Orientation'/> dependency property.
+            </returns>
+        </member>
+        <member name="P:NationalInstruments.Controls.Switch.Orientation">
+            <summary>Gets or sets the vertical or horizontal orientation of the switch.</summary><value>The default value is <see cref="F:System.Windows.Controls.Orientation.Horizontal"/>.</value><lastupdated>4/25/2012 12:46:23 PM</lastupdated><updatedby>National Instruments</updatedby><approved>False</approved>
+        </member>
+    </members>
+</doc>

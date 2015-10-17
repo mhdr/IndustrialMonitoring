@@ -1,1625 +1,2787 @@
-<?xml version="1.0" encoding="utf-8"?>
-<doc xmlns:ni="urn:ni">
-  <assembly>
-    <name>NationalInstruments.Analysis.Standard</name>
-  </assembly>
-  <members>
-    <member name="T:NationalInstruments.Analysis.AnalysisErrorCode">
-      <summary>
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NationalInstruments.Analysis.Standard</name>
+    </assembly>
+    <members>
+        <member name="T:NationalInstruments.Analysis.AnalysisErrorCode">
+            <summary>
             Specifies the types of error codes that can be returned from the Analysis library.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.OutOfMemory">
-      <summary>
+            <seealso keyword="KeyNINETAnalysis" keywordType="mstudio">Key Measurement Studio Analysis .NET Library Concepts</seealso>
+            <lastupdated>9/16/2008 11:00:04 AM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.OutOfMemory">
+            <summary>
             Specified operation does not have enough memory available.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesNotEqual">
-      <summary>
+            <lastupdated>5/27/2003 12:54:44 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesNotEqual">
+            <summary>
             Specified input sequences are not the same size.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGTZero">
-      <summary>
+            <lastupdated>5/27/2003 12:55:16 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGTZero">
+            <summary>
             Specified samples must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGEZero">
-      <summary>
+            <lastupdated>5/27/2003 12:55:12 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGEZero">
+            <summary>
             Specified samples must be greater than or equal to zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGEOne">
-      <summary>
+            <lastupdated>5/27/2003 12:55:09 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGEOne">
+            <summary>
             Specified samples must be greater than or equal to one.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGETwo">
-      <summary>
+            <lastupdated>5/27/2003 12:54:59 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGETwo">
+            <summary>
             Specified samples must be greater than or equal to two.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGEThree">
-      <summary>
+            <lastupdated>5/27/2003 12:55:05 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGEThree">
+            <summary>
             Specified samples must be greater than or equal to three.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ArraySizeIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:55:02 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ArraySizeIncorrect">
+            <summary>
             Specified array size is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ArraySizeNotPowerOfTwo">
-      <summary>
+            <lastupdated>5/27/2003 12:50:47 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ArraySizeNotPowerOfTwo">
+            <summary>
             Specified array size is not a power of 2.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MaximumTransformSizeExceeded">
-      <summary>
+            <lastupdated>5/27/2003 12:50:51 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MaximumTransformSizeExceeded">
+            <summary>
             Maximum transform size has been exceeded.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DutyCycleIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:53:54 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DutyCycleIncorrect">
+            <summary>
             Specified duty cycle value is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberOfCyclesIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:51:35 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberOfCyclesIncorrect">
+            <summary>
             Number of cycles is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.WidthIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:54:20 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.WidthIncorrect">
+            <summary>
             Specified width is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DelayWidthIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:55:44 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DelayWidthIncorrect">
+            <summary>
             Sum of delay and width must be less than number of samples.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DTMustBeGEZero">
-      <summary>
+            <lastupdated>5/27/2003 12:51:20 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DTMustBeGEZero">
+            <summary>
             Dt value must be greater than or equal to zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DTMustBeGTZero">
-      <summary>
+            <lastupdated>5/27/2003 12:51:26 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DTMustBeGTZero">
+            <summary>
             Dt value must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IndexCannotBeLTSamples">
-      <summary>
+            <lastupdated>5/27/2003 12:51:29 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IndexCannotBeLTSamples">
+            <summary>
             Index cannot be less than the number of samples.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IndexLengthIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:52:06 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IndexLengthIncorrect">
+            <summary>
             Index length is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.UpperMustBeGELower">
-      <summary>
+            <lastupdated>5/27/2003 12:52:09 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.UpperMustBeGELower">
+            <summary>
             Upper value must be greater than or equal to the lower value.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NyquistConditionError">
-      <summary>
+            <lastupdated>5/27/2003 12:55:39 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NyquistConditionError">
+            <summary>
             Specified cutoff frequency must be greater than zero and less than half the sampling rate.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.OrderMustBeGTZero">
-      <summary>
+            <lastupdated>5/27/2003 12:54:25 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.OrderMustBeGTZero">
+            <summary>
             Order must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidDecimatingFactor">
-      <summary>
+            <lastupdated>5/27/2003 12:54:37 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidDecimatingFactor">
+            <summary>
             Specified decimating factor is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidBandSpecification">
-      <summary>
+            <lastupdated>5/27/2003 12:52:28 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidBandSpecification">
+            <summary>
             Specified band is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.RippleMustBeGTZero">
-      <summary>
+            <lastupdated>5/27/2003 12:52:19 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.RippleMustBeGTZero">
+            <summary>
             Specified ripple must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.AttenuationMustBeGTZero">
-      <summary>
+            <lastupdated>5/27/2003 12:54:55 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.AttenuationMustBeGTZero">
+            <summary>
             Specified attenuation must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.WidthMustBeGTZero">
-      <summary>
+            <lastupdated>5/27/2003 12:50:57 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.WidthMustBeGTZero">
+            <summary>
             Specified width must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FinalValueMustBeGTZero">
-      <summary>
+            <lastupdated>5/27/2003 12:55:47 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FinalValueMustBeGTZero">
+            <summary>
             Specified final value must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.AttenuationMustBeGTRipple">
-      <summary>
+            <lastupdated>5/27/2003 12:51:47 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.AttenuationMustBeGTRipple">
+            <summary>
             Specified attenuation must be greater than the ripple amplitude.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.StepSizeIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:50:55 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.StepSizeIncorrect">
+            <summary>
             Specified step size is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.LeakageCoefficientIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:55:32 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.LeakageCoefficientIncorrect">
+            <summary>
             Specified leakage coefficient is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.EquiRippleDesignIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:52:50 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.EquiRippleDesignIncorrect">
+            <summary>
             Specified EquiRipple filter design is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FilterRankIncorrect">
-      <summary>
+            <lastupdated>5/27/2003 12:51:38 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FilterRankIncorrect">
+            <summary>
             Specified filter rank is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberOfCoefficientMustBeOdd">
-      <summary>
+            <lastupdated>5/27/2003 12:51:44 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberOfCoefficientMustBeOdd">
+            <summary>
             Number of coefficients must be odd.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberOfCoefficientMustBeEven">
-      <summary>
+            <lastupdated>5/27/2003 12:54:17 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberOfCoefficientMustBeEven">
+            <summary>
             Number of coefficients must be even.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.StandardDeviationMustBeGTZero">
-      <summary>
+            <lastupdated>5/27/2003 12:54:12 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.StandardDeviationMustBeGTZero">
+            <summary>
             Specified standard deviation must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MixedSignsInArray">
-      <summary>
+            <lastupdated>5/27/2003 12:55:29 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MixedSignsInArray">
+            <summary>
             Specified matrix contains mixed signs.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SizeMustBeGTOrder">
-      <summary>
+            <lastupdated>5/27/2003 12:54:02 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SizeMustBeGTOrder">
+            <summary>
             Specified array size must be greater than the order.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IntervalsMustBeGTZero">
-      <summary>
+            <lastupdated>5/27/2003 12:55:27 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IntervalsMustBeGTZero">
+            <summary>
             The number of intervals must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatrixMultiplicationFailed">
-      <summary>
+            <lastupdated>5/27/2003 12:52:16 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatrixMultiplicationFailed">
+            <summary>
             Matrix multiplication failed.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NotSquareMatrix">
-      <summary>
+            <lastupdated>5/27/2003 12:53:51 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NotSquareMatrix">
+            <summary>
             Specified matrix is not a square matrix.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatrixCannotBeSingular">
-      <summary>
+            <lastupdated>5/27/2003 12:54:08 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatrixCannotBeSingular">
+            <summary>
             Specified matrix cannot be singular. A singular matrix is a matrix that has no 
             inverse.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.LevelsOutOfRange">
-      <summary>
+            <lastupdated>5/27/2003 12:53:01 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.LevelsOutOfRange">
+            <summary>
             Specified levels are out of range.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FactorOutOfRange">
-      <summary>
+            <lastupdated>5/27/2003 12:52:56 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FactorOutOfRange">
+            <summary>
             Level of factor is outside the allowable range.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ObservationMissingInLevel">
-      <summary>
+            <lastupdated>5/27/2003 12:51:41 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ObservationMissingInLevel">
+            <summary>
             Specified level has a missing observation.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DataPointsTotalInvalid">
-      <summary>
+            <lastupdated>5/27/2003 12:54:28 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DataPointsTotalInvalid">
+            <summary>
             The total number of data points is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.Overflow">
-      <summary>
+            <lastupdated>5/27/2003 12:51:13 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.Overflow">
+            <summary>
             Specified operation resulted in an overflow error.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DataUnbalanced">
-      <summary>
+            <lastupdated>5/27/2003 12:54:47 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DataUnbalanced">
+            <summary>
             Data is unbalanced.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FixedEffectModelRequired">
-      <summary>
+            <lastupdated>5/27/2003 12:51:16 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FixedEffectModelRequired">
+            <summary>
             Random Effect model was requested when the Fixed Effect model is required.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InputValuesMustBeDistinct">
-      <summary>
+            <lastupdated>5/27/2003 12:51:56 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InputValuesMustBeDistinct">
+            <summary>
             The specified input values must be distinct.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.PoleAtRequestedValue">
-      <summary>
+            <lastupdated>5/27/2003 12:55:52 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.PoleAtRequestedValue">
+            <summary>
             Interpolating method has a pole at the requested value.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FirstColumnNotAllOnes">
-      <summary>
+            <lastupdated>5/27/2003 12:54:52 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FirstColumnNotAllOnes">
+            <summary>
             The first column in the specified matrix cannot be all ones.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidDegreesOfFreedom">
-      <summary>
+            <lastupdated>5/27/2003 12:51:50 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidDegreesOfFreedom">
+            <summary>
             Specified degrees if freedom is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IncorrectProbability">
-      <summary>
+            <lastupdated>5/27/2003 12:52:31 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IncorrectProbability">
+            <summary>
             Specified probability must be between 0 and 1.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidProbability">
-      <summary>
+            <lastupdated>5/27/2003 12:52:03 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidProbability">
+            <summary>
             Specified probability is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.CategoriesInvalid">
-      <summary>
+            <lastupdated>5/27/2003 12:52:45 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.CategoriesInvalid">
+            <summary>
             Specified categories are invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ContingencyTableInvalid">
-      <summary>
+            <lastupdated>5/27/2003 12:51:07 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ContingencyTableInvalid">
+            <summary>
             Invalid number of categories or samples.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidBetaFunctionParameter">
-      <summary>
+            <lastupdated>5/27/2003 12:51:10 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidBetaFunctionParameter">
+            <summary>
             The specified beta method parameter is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidDimension">
-      <summary>
+            <lastupdated>5/27/2003 12:52:22 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidDimension">
+            <summary>
             Specified dimension is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NegativeNumber">
-      <summary>
+            <lastupdated>5/27/2003 12:52:34 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NegativeNumber">
+            <summary>
             Negative number error.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DivideByZero">
-      <summary>
+            <lastupdated>5/27/2003 12:54:05 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DivideByZero">
+            <summary>
              A divide by zero error has occurred.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidSelection">
-      <summary>
+            <lastupdated>5/27/2003 12:51:22 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidSelection">
+            <summary>
             Specified selection is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MaxIterationsExceeded">
-      <summary>
+            <lastupdated>5/27/2003 12:52:47 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MaxIterationsExceeded">
+            <summary>
             Maximum iterations have been exceeded.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidPolynomial">
-      <summary>
+            <lastupdated>5/27/2003 12:53:58 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidPolynomial">
+            <summary>
             Specified polynomial is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InternalMemoryStateInvalid">
-      <summary>
+            <lastupdated>5/27/2003 12:52:42 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InternalMemoryStateInvalid">
+            <summary>
             The internal memory state is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ZeroVector">
-      <summary>
+            <lastupdated>5/27/2003 12:52:14 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ZeroVector">
+            <summary>
             Specified vector cannot have all zero elements.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidIirFilterInfo">
-      <summary>
+            <lastupdated>5/27/2003 12:55:55 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidIirFilterInfo">
+            <summary>
             Specified IIR filter information is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FundamentalFrequencyOrSamplingRateInvalid">
-      <summary>
+            <lastupdated>5/27/2003 12:52:38 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FundamentalFrequencyOrSamplingRateInvalid">
+            <summary>
             Specified fundamental frequency or sampling rate is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatrixContainsInvalidDouble">
-      <summary>
+            <lastupdated>5/27/2003 12:51:58 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatrixContainsInvalidDouble">
+            <summary>
             The input arguments have at least one element that is either infinity, not a number (NaN), double maximum, or double minimum.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGEFour">
-      <summary>
+            <lastupdated>9/13/2005 10:51:03 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesMustBeGEFour">
+            <summary>
             The specified samples must be greater than or equal to four.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatricesMustHaveSameSize">
-      <summary>
+            <lastupdated>9/13/2005 10:52:54 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatricesMustHaveSameSize">
+            <summary>
             The matrices must have the same size.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InputNotPositiveDefinite">
-      <summary>
+            <lastupdated>9/13/2005 10:50:22 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InputNotPositiveDefinite">
+            <summary>
             The input to the Cholesky Decomposition was not positive definite.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.CannotComputeMatrixLogarithm">
-      <summary>
+            <lastupdated>9/13/2005 10:50:03 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.CannotComputeMatrixLogarithm">
+            <summary>
             The logarithm of the input matrix cannot be computed.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.EigenValuesTooClose">
-      <summary>
+            <lastupdated>9/13/2005 10:48:48 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.EigenValuesTooClose">
+            <summary>
             The eigenvalues cannot be reordered because some eigenvalues are too close.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ReorderingChangedEigenValues">
-      <summary>
+            <lastupdated>9/13/2005 10:48:56 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ReorderingChangedEigenValues">
+            <summary>
             Reordering eigenvalues changed some complex eigenvalues.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FilterBufferOverflow">
-      <summary>
+            <lastupdated>9/13/2005 10:52:13 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.FilterBufferOverflow">
+            <summary>
             The filter buffer has overflowed.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ResamplePointCannotBeCalculated">
-      <summary>
+            <lastupdated>9/29/2005 10:10:28 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ResamplePointCannotBeCalculated">
+            <summary>
             The resample point cannot be calculated with the signal behind that of input.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.BaseMustBeLTTop">
-      <summary>
+            <lastupdated>9/13/2005 10:52:35 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.BaseMustBeLTTop">
+            <summary>
             Base must be less than top.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ShiftRangeInvalid">
-      <summary>
+            <lastupdated>9/13/2005 10:48:42 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ShiftRangeInvalid">
+            <summary>
             The specified shift range is invalid. The number of shifts must be less than the length of the shifted array.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NoFeasibleSolution">
-      <summary>
+            <lastupdated>5/27/2003 12:55:22 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NoFeasibleSolution">
+            <summary>
             Feasible solution not found for the given input.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.OrderMustBeGEZero">
-      <summary>
+            <lastupdated>10/13/2009 2:48:32 PM</lastupdated>
+            <updatedby>Staci Heien</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.OrderMustBeGEZero">
+            <summary>
             Order must be greater than or equal to zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberIsNegativeOrZero">
-      <summary>
+            <lastupdated>5/27/2003 12:54:34 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberIsNegativeOrZero">
+            <summary>
             Curve-fitting error. The number is negative or zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberIsZero">
-      <summary>
+            <lastupdated>9/13/2005 10:51:57 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NumberIsZero">
+            <summary>
             Curve-fitting error. The number is zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NotEnoughCrossPoints">
-      <summary>The waveform did not cross the mid reference level enough times to perform this measurement. Check the signal length, reference levels, and reference level units.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.AmplitudeZero">
-      <summary>The amplitude of the waveform is zero and cannot be used to create a histogram.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NotEnoughEdges">
-      <summary>The waveform did not have enough edges to perform this measurement. An edge is defined as a crossing of both the low and high reference levels. Check the signal length, reference levels, and reference level units.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MemoryFull">
-      <summary>Insufficient memory available for waveform measurement.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.WaveformSizeZero">
-      <summary>The input waveform size is zero.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IncorrectReferenceLevels">
-      <summary>Reference levels are inconsistent. The low reference level must be less than or equal to the mid reference level, which must be less than or equal to the high reference level.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IncorrectReferenceLevelUnit">
-      <summary>The reference level units parameter is not a valid ReferenceLevelUnit.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DeltaTimeLEZero">
-      <summary>The waveform sampling interval, defined as the dt parameter, is less than or equal to zero.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidPercentageMethod">
-      <summary>The percent method parameter value is not a valid measurement method.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.HistogramSizeZero">
-      <summary>The histogram size parameter value is less than or equal to zero.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.UndefinedResult">
-      <summary>The result is not a number (NaN) or infinite.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.WaveformPeriodTooShort">
-      <summary>The period of the waveform is too short to perform the measurement.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.EdgeNumberLEZero">
-      <summary>The edge number, pulse number, or cycle parameter value is less than or equal to zero.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InfiniteSlewRate">
-      <summary>The slew rate is infinite due to a zero  rise or fall time.</summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InternalLibraryError">
-      <summary>
+            <lastupdated>9/13/2005 10:52:03 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NotEnoughCrossPoints">
+            <summary>The waveform did not cross the mid reference level enough times to perform this measurement. Check the signal length, reference levels, and reference level units.</summary>
+            <lastupdated>3/25/2008 12:26:26 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.AmplitudeZero">
+            <summary>The amplitude of the waveform is zero and cannot be used to create a histogram.</summary>
+            <lastupdated>3/25/2008 12:21:50 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NotEnoughEdges">
+            <summary>The waveform did not have enough edges to perform this measurement. An edge is defined as a crossing of both the low and high reference levels. Check the signal length, reference levels, and reference level units.</summary>
+            <lastupdated>3/25/2008 12:26:32 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MemoryFull">
+            <summary>Insufficient memory available for waveform measurement.</summary>
+            <lastupdated>3/25/2008 12:26:22 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.WaveformSizeZero">
+            <summary>The input waveform size is zero.</summary>
+            <lastupdated>3/25/2008 12:26:45 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IncorrectReferenceLevels">
+            <summary>Reference levels are inconsistent. The low reference level must be less than or equal to the mid reference level, which must be less than or equal to the high reference level.</summary>
+            <lastupdated>3/25/2008 12:23:52 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.IncorrectReferenceLevelUnit">
+            <summary>The reference level units parameter is not a valid ReferenceLevelUnit.</summary>
+            <lastupdated>3/27/2008 9:43:51 AM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.DeltaTimeLEZero">
+            <summary>The waveform sampling interval, defined as the dt parameter, is less than or equal to zero.</summary>
+            <lastupdated>3/25/2008 12:22:27 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InvalidPercentageMethod">
+            <summary>The percent method parameter value is not a valid measurement method.</summary>
+            <lastupdated>9/16/2008 12:45:46 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.HistogramSizeZero">
+            <summary>The histogram size parameter value is less than or equal to zero.</summary>
+            <lastupdated>3/25/2008 12:23:23 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.UndefinedResult">
+            <summary>The result is not a number (NaN) or infinite.</summary>
+            <lastupdated>3/25/2008 12:26:37 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.WaveformPeriodTooShort">
+            <summary>The period of the waveform is too short to perform the measurement.</summary>
+            <lastupdated>3/25/2008 12:26:40 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.EdgeNumberLEZero">
+            <summary>The edge number, pulse number, or cycle parameter value is less than or equal to zero.</summary>
+            <lastupdated>3/25/2008 12:22:59 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InfiniteSlewRate">
+            <summary>The slew rate is infinite due to a zero  rise or fall time.</summary>
+            <lastupdated>3/25/2008 12:26:01 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InternalLibraryError">
+            <summary>
             An internal library error has occurred.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatrixIsRankDeficient">
-      <summary>
+            <lastupdated>5/27/2003 12:52:11 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.MatrixIsRankDeficient">
+            <summary>
             Specified matrix rank is deficient. The rank of a matrix is the maximum number of independent rows or columns. 
-            A matrix of order n is rank deficient if it has a rank of less than n.
+            A matrix of order <format type="italics">n</format> is rank deficient if it has a rank of less than <format type="italics">n</format>.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesGTZeroWarning">
-      <summary>
+            <lastupdated>5/27/2003 12:53:48 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SamplesGTZeroWarning">
+            <summary>
             A warning that the number of samples must be greater than zero.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SingularMatrixWarning">
-      <summary>
+            <lastupdated>9/13/2005 2:50:50 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.SingularMatrixWarning">
+            <summary>
             A warning that the input matrix is singular.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NotSameSizeWarning">
-      <summary>
+            <lastupdated>9/13/2005 2:51:04 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.NotSameSizeWarning">
+            <summary>
             A warning that the input matrices or vectors do not have the same size.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ReorderNotPerformedWarning">
-      <summary>
+            <lastupdated>9/13/2005 2:50:24 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ReorderNotPerformedWarning">
+            <summary>
             A warning that the reorder procedure could not be performed.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InaccurateComputationWarning">
-      <summary>
+            <lastupdated>9/13/2005 2:50:41 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.InaccurateComputationWarning">
+            <summary>
             A warning that the computation result might be inaccurate.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ArraySizeIncorrectWarning">
-      <summary>
+            <lastupdated>9/13/2005 2:50:05 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.ArraySizeIncorrectWarning">
+            <summary>
             A warning that the array size is incorrect.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.StandardDeviationInvalidWarning">
-      <summary>
+            <lastupdated>9/13/2005 2:47:18 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.StandardDeviationInvalidWarning">
+            <summary>
             A warning that the input standard deviation is invalid.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.EmptyPolynomialWarning">
-      <summary>
+            <lastupdated>9/13/2005 2:51:15 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.AnalysisErrorCode.EmptyPolynomialWarning">
+            <summary>
             A warning that the input polynomial is empty.
             </summary>
-    </member>
-    <member name="T:NationalInstruments.Analysis.AnalysisException">
-      <summary>
+            <lastupdated>9/13/2005 2:49:53 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="T:NationalInstruments.Analysis.AnalysisException">
+            <summary>
             Represents an error code received from the internal Analysis library.
             </summary>
-    </member>
-    <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor">
-      <summary>
-            Initializes a new instance of the AnalysisException  class.
+            <threadsafety safety="unsafe"/>
+            <remarks>
+            When this API makes calls into the underlying Analysis library, occasionally, errors occur due to invalid configuration states, invalid parameters, 
+            and other factors.  When this happens, the errors are exposed through this exception class.  
+            </remarks>
+            <seealso keyword="KeyNINETAnalysis" keywordType="mstudio">Key Measurement Studio Analysis .NET Library Concepts</seealso>
+            <lastupdated>9/16/2008 10:57:00 AM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NationalInstruments.Analysis.AnalysisException"/>  class.
             </summary>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.String)">
-      <summary>
-            Initializes a new instance of the AnalysisException  class using the
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:48:25 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NationalInstruments.Analysis.AnalysisException"/>  class using the
             given error message.
             </summary>
-      <param name="message">
+            <param name="message">
             Error message associated with this exception.
             </param>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.String,NationalInstruments.Analysis.AnalysisErrorCode)">
-      <summary>
-            Initializes a new instance of the AnalysisException class with the 
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:48:29 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.String,NationalInstruments.Analysis.AnalysisErrorCode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NationalInstruments.Analysis.AnalysisException"/> class with the 
             given error message and Analysis library error code.
             </summary>
-      <param name="message">
+            <param name="message">
             Error message associated with this exception.
             </param>
-      <param name="errorCode">
+            <param name="errorCode">
             Analysis library error code that caused this exception to be thrown.
             </param>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.String,System.Exception)">
-      <summary>
-            Initializes a new instance of the AnalysisException  class using the
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:48:31 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NationalInstruments.Analysis.AnalysisException"/>  class using the
             given error message and inner exception.
             </summary>
-      <param name="message">
+            <param name="message">
             Error message associated with this exception.
             </param>
-      <param name="inner">
+            <param name="inner">
             Inner exception that caused this exception to be thrown.
             </param>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.String,System.Exception,NationalInstruments.Analysis.AnalysisErrorCode)">
-      <summary>
-            Initializes a new instance of the AnalysisException class with the 
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:48:34 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.String,System.Exception,NationalInstruments.Analysis.AnalysisErrorCode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NationalInstruments.Analysis.AnalysisException"/> class with the 
             given error message, inner exception, and Analysis library error code.
             </summary>
-      <param name="message">
+            <param name="message">
             Error message associated with this exception.
             </param>
-      <param name="inner">
+            <param name="inner">
             Inner exception that caused this exception to be thrown.
             </param>
-      <param name="errorCode">
+            <param name="errorCode">
             Analysis library error code that caused this exception to be thrown.
             </param>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-      <summary>
-            Initializes a new instance of the AnalysisException object using serialized data.
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:48:36 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.AnalysisException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NationalInstruments.Analysis.AnalysisException"/> object using serialized data.
             </summary>
-      <param name="info">
+            <param name="info">
             Object that holds the serialized object data.
             </param>
-      <param name="context">
+            <param name="context">
             Contextual information about the source or destination.
             </param>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.AnalysisException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-      <summary>
-            Sets the SerializationInfo object with information about the exception.
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:48:27 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.AnalysisException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/> object with information about the exception.
             </summary>
-      <param name="info">
+            <param name="info">
             Object that holds the serialized object data.
             </param>
-      <param name="context">
+            <param name="context">
             Contextual information about the source or destination.
             </param>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="P:NationalInstruments.Analysis.AnalysisException.ErrorCode">
-      <summary>
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:48:39 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.AnalysisException.ErrorCode">
+            <summary>
             Gets a code that indicates what caused the exception.
             </summary>
-    </member>
-    <member name="T:NationalInstruments.Analysis.AnalysisWarning">
-      <summary>
+            <remarks>
+            Every time the API calls an Analysis library operation, it checks to see whether the status of the 
+            operation indicates an error condition.  If an error condition exists, the 
+            <see cref="T:NationalInstruments.Analysis.AnalysisException"/> is thrown, and this error code is set to
+            be the error code of the operation in question.
+            </remarks>
+            <value>
+            A value from the <see cref="T:NationalInstruments.Analysis.AnalysisErrorCode"/> enumeration.
+            </value>
+            <seealso keyword="KeyNINETAnalysis" keywordType="mstudio">Key Measurement Studio Analysis .NET Library Concepts</seealso>
+            <lastupdated>9/16/2008 10:57:19 AM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="T:NationalInstruments.Restricted.AnalysisLicenser">
+            <exclude/>
+            <lastupdated>6/18/2003 7:22:32 PM</lastupdated>
+            <updatedby>Nandan</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Restricted.AnalysisLicenser.#ctor">
+            <exclude/>
+            <lastupdated>6/18/2003 7:23:09 PM</lastupdated>
+            <updatedby>Nandan</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="T:NationalInstruments.Analysis.AnalysisWarning">
+            <summary>
             Represents a warning, or positive error code, received from the internal Analysis library.
             </summary>
-    </member>
-    <member name="E:NationalInstruments.Analysis.AnalysisWarning.Warning">
-      <summary>
+            <threadsafety safety="unsafe"/>
+            <remarks>
+            When this API makes calls into the underlying Analysis library, warnings might occasionally occur due to invalid configuration states, invalid parameters, 
+            and other factors.  When this happens, the errors are exposed through this class. 
+            </remarks>
+            <lastupdated>3/6/2006 9:49:10 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="E:NationalInstruments.Analysis.AnalysisWarning.Warning">
+            <summary>
             Occurs when an analysis method generates a warning.
             </summary>
-      <exception cref="T:System.DllNotFoundException">
+            <remarks>
+            Use this event to check for any warnings that may occur after invoking a method from the Analysis library.
+            </remarks>
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="P:NationalInstruments.Analysis.AnalysisWarning.SynchronizingObject">
-      <summary>
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:50:30 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.AnalysisWarning.SynchronizingObject">
+            <summary>
             Gets or sets the object that marshals calls to event handlers and callbacks. </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.AnalysisWarning.SynchronizeCallbacks">
-      <summary>
+            <value>
+            The <see cref="T:System.ComponentModel.ISynchronizeInvoke"/> that represents the object that marshals calls to event handlers and callbacks. 
+            The default value is <see langword="null"/>.
+            </value>
+            <remarks>
+            When the value of this property is <see langword="null"/>, calls to event handlers and callbacks are raised in the default manner. 
+            As a result, calls might occur in a thread other than the main thread. To avoid this behavior, set this property to an 
+            object that implements the <see cref="T:System.ComponentModel.ISynchronizeInvoke"/> interface object. 
+            	<note type="note">
+            		
+            			<see cref="P:NationalInstruments.Analysis.AnalysisWarning.SynchronizingObject"/> has been superseded by
+            <see cref="P:NationalInstruments.Analysis.AnalysisWarning.SynchronizeCallbacks"/> in .NET Framework 2.0 and later. 
+            For more information, refer to <see keyword="EventsCallbacksThreadSafety" keywordType="mstudio">Events, Callbacks, and Thread Safety in Measurement Studio .NET Class Libraries</see>. 
+            </note>
+            </remarks>
+            <lastupdated>9/16/2008 10:58:02 AM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.AnalysisWarning.SynchronizeCallbacks">
+            <summary>
             Specifies how events and callback delegates are invoked.
             </summary>
-    </member>
-    <member name="T:NationalInstruments.Analysis.AnalysisWarningEventArgs">
-      <summary>
-            Provides data for the Warning event.
+            <value>
+            	<see langword="true"/> if events and callbacks are invoked through the 
+            <see cref="M:System.Threading.SynchronizationContext.Send(System.Threading.SendOrPostCallback,System.Object)"/> or
+            <see cref="M:System.Threading.SynchronizationContext.Post(System.Threading.SendOrPostCallback,System.Object)"/> methods; otherwise, events
+            and callbacks are invoked directly.  The default value is <see langword="true"/>.
+            </value>
+            <remarks>
+            In some cases, callbacks and event handlers are executed in a different thread than the rest of the program. 
+            Therefore, you must take special care when accessing objects that have thread affinity, such as UI controls, 
+            from these callbacks and event handlers. For more information, refer to 
+            <see keyword="EventsCallbacksThreadSafety" keywordType="mstudio">Events, Callbacks, and Thread Safety in Measurement Studio .NET Class Libraries</see>. 
+            </remarks>
+            <lastupdated>3/20/2006 5:56:26 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="T:NationalInstruments.Analysis.AnalysisWarningEventArgs">
+            <summary>
+            Provides data for the <see cref="E:NationalInstruments.Analysis.AnalysisWarning.Warning"/> event.
             </summary>
-    </member>
-    <member name="M:NationalInstruments.Analysis.AnalysisWarningEventArgs.#ctor(System.Int32,System.String)">
-      <summary>
-            Initializes a new instance of the AnalysisWarningEventArgs class.
+            <threadsafety safety="unsafe"/>
+            <remarks>
+            This event occurs when the underlying Analysis library generates a warning.
+            </remarks>
+            <seealso keyword="KeyNINETAnalysis" keywordType="mstudio">Key Measurement Studio Analysis .NET Library Concepts</seealso>
+            <lastupdated>9/16/2008 10:58:40 AM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.AnalysisWarningEventArgs.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NationalInstruments.Analysis.AnalysisWarningEventArgs"/> class.
             </summary>
-      <param name="errorCode">
+            <param name="errorCode">
             The positive error code of the analysis warning that has occurred.
             </param>
-      <param name="message">
+            <param name="message">
             The explanation of the warning that has occurred.
             </param>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.AnalysisWarningEventArgs.ToString">
-      <summary>
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:50:38 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.AnalysisWarningEventArgs.ToString">
+            <summary>
             Returns the string representation of the value of this instance.
             </summary>
-      <returns>
+            <returns>
             A string that represents the value of this instance.
             </returns>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="P:NationalInstruments.Analysis.AnalysisWarningEventArgs.Message">
-      <summary>
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:51:51 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.AnalysisWarningEventArgs.Message">
+            <summary>
             Gets the explanation for the analysis warning that has occurred.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.AnalysisWarningEventArgs.ErrorCode">
-      <summary>
+            <value>
+            The explanation of the analysis warning.
+            </value>
+            <lastupdated>9/29/2005 10:11:11 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.AnalysisWarningEventArgs.ErrorCode">
+            <summary>
             Gets the positive error code for the analysis warning that has occurred.
             </summary>
-    </member>
-    <member name="T:NationalInstruments.Analysis.AnalysisWarningEventHandler">
-      <summary>
-            Represents the method that handles the Warning event.
+            <value>
+            The positive value of the error code.
+            </value>
+            <lastupdated>9/29/2005 10:11:02 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="T:NationalInstruments.Analysis.AnalysisWarningEventHandler">
+            <summary>
+            Represents the method that handles the <see cref="E:NationalInstruments.Analysis.AnalysisWarning.Warning"/> event.
             </summary>
-      <param name="sender">
+            <param name="sender">
             The source of the event.
             </param>
-      <param name="e">
-            An AnalysisWarningEventArgs that contains the event data.
+            <param name="e">
+            An <see cref="T:NationalInstruments.Analysis.AnalysisWarningEventArgs"/> that contains the event data.
             </param>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-    </member>
-    <member name="T:NationalInstruments.Analysis.Conversion.Point2D">
-      <summary>
-            Represents a point in two-dimensional space.  Use Point2D
+            <security condition="unmanagedcode"/>
+            <lastupdated>3/6/2006 9:51:58 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="T:NationalInstruments.Analysis.Conversion.Point2D">
+            <summary>
+            Represents a point in two-dimensional space.  Use <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>
             to convert coordinates between rectangular and polar representations.</summary>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.FromRectangular(System.Double,System.Double)">
-      <summary>
-            Returns a Point2D that represents a two-dimensional point with the specified
+            <threadsafety safety="unsafe"/>
+            <remarks>Represents a point in two-dimensional space.
+            </remarks>
+            <lastupdated>5/27/2012 2:05:14 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.#cctor">
+            <exclude/>
+            <lastupdated>5/12/2008 11:15:54 AM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.#ctor(System.Double,System.Double)">
+            <exclude/>
+            <lastupdated>5/12/2003 4:23:57 PM</lastupdated>
+            <updatedby>Tony Holbert</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <exclude/>
+            <lastupdated>5/12/2003 4:24:01 PM</lastupdated>
+            <updatedby>Tony Holbert</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.FromRectangular(System.Double,System.Double)">
+            <summary>
+            Returns a <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents a two-dimensional point with the specified
             x and y coordinates.
             </summary>
-      <param name="x">
+            <param name="x">
             The x-coordinate.
             </param>
-      <param name="y">
+            <param name="y">
             The y-coordinate.
             </param>
-      <returns>
-            A Point2D that represents a two-dimensional point at the rectangular coordinates 
-            (x (parameter), y (parameter)).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents a two-dimensional point at the rectangular coordinates 
+            (<paramref name="x"/>, <paramref name="y"/>).
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.FromPolar(System.Double,System.Double)">
-      <summary>
-            Returns a Point2D that represents a two-dimensional point with the specified 
+            <lastupdated>5/27/2003 12:27:47 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.FromPolar(System.Double,System.Double)">
+            <summary>
+            Returns a <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents a two-dimensional point with the specified 
             distance and angle.
             </summary>
-      <param name="r">
-            The polar coordinate r, the distance from the origin.
+            <param name="r">
+            The polar coordinate <format type="italics">r</format>, the distance from the origin.
             </param>
-      <param name="theta">
-            The polar coordinate theta, the angle from the positive x-axis.
+            <param name="theta">
+            The polar coordinate <format type="italics">theta</format>, the angle from the positive x-axis.
             </param>
-      <returns>
-            A Point2D that represents a point with the polar coordinates
-            (r (parameter), theta (parameter)).</returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Plus">
-      <summary>
-            Returns this instance of the Point2D (unary plus).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents a point with the polar coordinates
+            (<paramref name="r"/>, <paramref name="theta"/>).</returns>
+            <lastupdated>6/17/2003 10:17:38 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Plus">
+            <summary>
+            Returns this instance of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> (unary plus).
             </summary>
-      <returns>
-            This instance of the Point2D.
+            <returns>
+            This instance of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_UnaryPlus(NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Returns the specified instance of the Point2D (unary plus).
+            <lastupdated>2/21/2003 9:56:51 AM</lastupdated>
+            <updatedby>Beth Parrott</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_UnaryPlus(NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Returns the specified instance of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> (unary plus).
             </summary>
-      <param name="p">
-            A Point2D.
+            <param name="p">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <returns>
-            The specified instance of p (parameter).
+            <returns>
+            The specified instance of <paramref name="p"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Negate">
-      <summary>
-            Returns a Point2D with a value that is 
+            <lastupdated>5/27/2003 12:28:40 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Negate">
+            <summary>
+            Returns a <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with a value that is 
             the negated value of this object (unary minus).
             </summary>
-      <returns>
-            A Point2D with a value that is the negated value 
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with a value that is the negated value 
             of this object.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_UnaryNegation(NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Returns a Point2D with a value that is the negative of the specified 
+            <lastupdated>2/21/2003 9:56:33 AM</lastupdated>
+            <updatedby>Beth Parrott</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_UnaryNegation(NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Returns a <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with a value that is the negative of the specified 
             object (unary minus).
             </summary>
-      <param name="p">
-            A Point2D.
+            <param name="p">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <returns>
-            A Point2D with a value that is the negative of p (parameter).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with a value that is the negative of <paramref name="p"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Add(NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Adds the value of the specified Point2D to this object and returns a 
-            new Point2D that represents the sum.
+            <lastupdated>5/27/2003 12:28:16 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Add(NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Adds the value of the specified <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> to this object and returns a 
+            new <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents the sum.
             </summary>
-      <param name="p">
-            The Point2D to add to this object.
+            <param name="p">
+            The <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> to add to this object.
             </param>
-      <returns>
-            A Point2D that represents the value of this 
-            object plus the value of p (parameter).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents the value of this 
+            object plus the value of <paramref name="p"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Addition(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Adds the values of two Point2D objects.
+            <lastupdated>5/27/2003 12:26:19 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Addition(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Adds the values of two <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> objects.
             </summary>
-      <param name="p1">
-            A Point2D.
+            <param name="p1">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <param name="p2">
-            A Point2D.
+            <param name="p2">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <returns>
-            A Point2D with a value that is the sum of 
-            p1 (parameter) and p2 (parameter).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with a value that is the sum of 
+            <paramref name="p1"/> and <paramref name="p2"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Subtract(NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Subtracts the value of a Point2D from this object and 
-            returns a new Point2D that represents the difference.
+            <lastupdated>5/27/2003 12:28:45 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Subtract(NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Subtracts the value of a <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> from this object and 
+            returns a new <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents the difference.
             </summary>
-      <param name="p">
-            The Point2D to subtract from this object.
+            <param name="p">
+            The <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> to subtract from this object.
             </param>
-      <returns>
-            A Point2D that represents the value of this
-            object minus the value of p (parameter).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents the value of this
+            object minus the value of <paramref name="p"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Subtraction(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Subtracts the value of one Point2D from the value of another Point2D.
+            <lastupdated>5/27/2003 12:28:58 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Subtraction(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Subtracts the value of one <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> from the value of another <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </summary>
-      <param name="p1">
-            A Point2D.
+            <param name="p1">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <param name="p2">
-            A Point2D.
+            <param name="p2">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <returns>
-            A Point2D with a value that is the result of 
-            p1 (parameter) minus p2 (parameter).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with a value that is the result of 
+            <paramref name="p1"/> minus <paramref name="p2"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Multiply(NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Multiplies a Point2D with this object and 
-            returns a new Point2D that represents the product.
+            <lastupdated>5/27/2003 12:28:21 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Multiply(NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Multiplies a <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with this object and 
+            returns a new <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents the product.
             </summary>
-      <param name="p">
-            The Point2D to multiply with this object.
+            <param name="p">
+            The <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> to multiply with this object.
             </param>
-      <returns>
-            A Point2D that represents the value of this
-            object times the value of p (parameter).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents the value of this
+            object times the value of <paramref name="p"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Multiply(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Multiplies the values of two Point2D objects.
+            <lastupdated>5/27/2003 12:27:53 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Multiply(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Multiplies the values of two <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> objects.
             </summary>
-      <param name="p1">
-            A Point2D.
+            <param name="p1">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <param name="p2">
-            A Point2D.
+            <param name="p2">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <returns>
-            A Point2D with a value that is the product of 
-            p1 (parameter) and p2 (parameter).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with a value that is the product of 
+            <paramref name="p1"/> and <paramref name="p2"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Divide(NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Divides this object by a Point2D and returns
-            a new Point2D that represents the result.
+            <lastupdated>5/27/2003 12:28:32 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Divide(NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Divides this object by a <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> and returns
+            a new <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents the result.
             </summary>
-      <param name="p">
-            The Point2D by which to divide this object.
+            <param name="p">
+            The <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> by which to divide this object.
             </param>
-      <returns>
-            A Point2D that represents the value of this
-            object divided by the value of p (parameter).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents the value of this
+            object divided by the value of <paramref name="p"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Division(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Divides the value of a Point2D by the value of another Point2D.
+            <lastupdated>5/27/2003 12:26:28 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Division(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Divides the value of a <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> by the value of another <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </summary>
-      <param name="p1">
-            A Point2D.
+            <param name="p1">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <param name="p2">
-            A Point2D.
+            <param name="p2">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <returns>
-            A Point2D with a value that equal to is 
-            p1 (parameter) divided by p2 (parameter).
+            <returns>
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with a value that equal to is 
+            <paramref name="p1"/> divided by <paramref name="p2"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.GetHashCode">
-      <summary>
+            <lastupdated>5/27/2003 12:28:37 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.GetHashCode">
+            <summary>
             Returns a hash code for this object.
             </summary>
-      <returns>
+            <returns>
             A 32-bit signed integer hash code.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Equality(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Returns if two Point2D objects are 
+            <remarks>
+            Two <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> objects might have the same hash 
+            code even though they represent different values.
+            </remarks>
+            <lastupdated>2/21/2003 9:56:25 AM</lastupdated>
+            <updatedby>Beth Parrott</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Equality(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Returns if two <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> objects are 
             equal.
             </summary>
-      <param name="p1">
-            A Point2D.
+            <param name="p1">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <param name="p2">
-            A Point2D.
+            <param name="p2">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <returns>true if the values of p1 (parameter) and p2 (parameter)
+            <returns>
+            	<see langword="true"/> if the values of <paramref name="p1"/> and <paramref name="p2"/>
             are equal.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Inequality(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Returns if two Point2D objects are 
+            <lastupdated>5/27/2003 12:28:49 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.op_Inequality(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Returns if two <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> objects are 
             not equal.
             </summary>
-      <param name="p1">
-            A Point2D.
+            <param name="p1">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <param name="p2">
-            A Point2D.
+            <param name="p2">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <returns>true if the values of p1 (parameter) and p2 (parameter)
+            <returns>
+            	<see langword="true"/> if the values of <paramref name="p1"/> and <paramref name="p2"/>
             are not equal.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Equals(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
-            Returns a value that indicates if two specified Point2D objects are equal.
+            <lastupdated>5/27/2003 12:28:10 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Equals(NationalInstruments.Analysis.Conversion.Point2D,NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
+            Returns a value that indicates if two specified <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> objects are equal.
             </summary>
-      <param name="p1">
-            A Point2D.
+            <param name="p1">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <param name="p2">
-            A Point2D.
+            <param name="p2">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </param>
-      <returns>true if p1 (parameter) and p2 (parameter) are equal.
+            <returns>
+            	<see langword="true"/> if <paramref name="p1"/> and <paramref name="p2"/> are equal.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Equals(System.Object)">
-      <summary>
+            <lastupdated>5/27/2003 12:26:53 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Equals(System.Object)">
+            <summary>
             Returns a value that indicates if this object is equal to the specified object.
             </summary>
-      <param name="obj">
+            <param name="obj">
             An object to compare with this object.
             </param>
-      <returns>true if obj (parameter) is a
-            Point2D that represents the same value as this object.
+            <returns>
+            	<see langword="true"/> if <paramref name="obj"/> is a
+            <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> that represents the same value as this object.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Equals(NationalInstruments.Analysis.Conversion.Point2D)">
-      <summary>
+            <lastupdated>2/21/2003 9:56:21 AM</lastupdated>
+            <updatedby>Beth Parrott</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.Equals(NationalInstruments.Analysis.Conversion.Point2D)">
+            <summary>
             Returns a value that indicates if this object is equal to the specified 
-            Point2D.
+            <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </summary>
-      <param name="p">
-            A Point2D to compare with this object.
+            <param name="p">
+            A <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> to compare with this object.
             </param>
-      <returns>true if p (parameter) represents the same value  
+            <returns>
+            	<see langword="true"/> if <paramref name="p"/> represents the same value  
             as this object.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.ToString">
-      <summary>
-            Overrides ToString.
+            <lastupdated>5/27/2003 12:26:48 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.ToString">
+            <summary>
+            Overrides <see cref="M:System.Object.ToString"/>.
             </summary>
-      <returns>
+            <returns>
             A string representation of the object.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.ToString(System.String,System.IFormatProvider)">
-      <summary>
-            Returns the String representation of the value of this object using the specified format and culture-specific 
+            <lastupdated>2/21/2003 9:56:56 AM</lastupdated>
+            <updatedby>Beth Parrott</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.ToString(System.String,System.IFormatProvider)">
+            <summary>
+            Returns the <see cref="T:System.String"/> representation of the value of this object using the specified format and culture-specific 
             formatting information.
             </summary>
-      <param name="format">
-            	The String that specifies the format to use.  This value can be any of the numeric format 
-            strings that are defined for Double and is applied to the coordinates of the point.
-             If format (parameter) is null,  the return value uses the default format.</param>
-      <param name="formatProvider">
-            The IFormatProvider to use to format the value.  This IFormatProvider is
-            applied to the coordinates of the point. If formatProvider (parameter) is null, the return value uses
+            <param name="format">
+            	The <see cref="T:System.String"/> that specifies the format to use.  This value can be any of the numeric format 
+            strings that are defined for <see cref="T:System.Double"/> and is applied to the coordinates of the point.
+             If <paramref name="format"/> is <see langword="null"/>,  the return value uses the default format.</param>
+            <param name="formatProvider">
+            The <see cref="T:System.IFormatProvider"/> to use to format the value.  This <see cref="T:System.IFormatProvider"/> is
+            applied to the coordinates of the point. If <paramref name="formatProvider"/> is <see langword="null"/>, the return value uses
             the numeric format information from the current locale setting of the operating system.
             </param>
-      <returns>
-            A string representation of this object as specified by format (parameter) and formatProvider (parameter).
+            <returns>
+            A string representation of this object as specified by <paramref name="format"/> and <paramref name="formatProvider"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.ToString(System.String)">
-      <summary>
-            Returns the String representation of the value of this object using the specified format.
+            <lastupdated>5/27/2003 12:30:37 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.ToString(System.String)">
+            <summary>
+            Returns the <see cref="T:System.String"/> representation of the value of this object using the specified format.
             </summary>
-      <param name="format">
-            The String that specifies the format to use.  This value can be any of the numeric format 
-            strings that are defined for Double and is applied to the coordinates of the point.
-             If format (parameter) is null, the return value uses the default format.
+            <param name="format">
+            The <see cref="T:System.String"/> that specifies the format to use.  This value can be any of the numeric format 
+            strings that are defined for <see cref="T:System.Double"/> and is applied to the coordinates of the point.
+             If <paramref name="format"/> is <see langword="null"/>, the return value uses the default format.
             </param>
-      <returns>
-            A string representation of this object as specified by format (parameter).
+            <returns>
+            A string representation of this object as specified by <paramref name="format"/>.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Conversion.Point2D.ToString(System.IFormatProvider)">
-      <summary>
-            Returns the String representation of the value of this object using the specified culture-specific formatting information.
+            <lastupdated>5/27/2003 12:29:47 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.ToString(System.IFormatProvider)">
+            <summary>
+            Returns the <see cref="T:System.String"/> representation of the value of this object using the specified culture-specific formatting information.
             </summary>
-      <param name="formatProvider">
-            The IFormatProvider to use to format the value.  This IFormatProvider is
-            applied to the coordinates of the point. If formatProvider (parameter) is null, the return value uses
+            <param name="formatProvider">
+            The <see cref="T:System.IFormatProvider"/> to use to format the value.  This <see cref="T:System.IFormatProvider"/> is
+            applied to the coordinates of the point. If <paramref name="formatProvider"/> is <see langword="null"/>, the return value uses
              the numeric format information from the current locale setting of the operating system.
             </param>
-      <returns>
-            A string representation of this object as specified by formatProvider (parameter).
+            <returns>
+            A string representation of this object as specified by <paramref name="formatProvider"/>.
             </returns>
-    </member>
-    <member name="P:NationalInstruments.Analysis.Conversion.Point2D.X">
-      <summary>
-            Gets the rectangular x-coordinate of the Point2D.
+            <lastupdated>5/27/2003 12:29:16 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Conversion.Point2D.System#Runtime#Serialization#ISerializable#GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <exclude/>
+            <lastupdated>1/23/2009 4:35:16 PM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.Conversion.Point2D.X">
+            <summary>
+            Gets the rectangular x-coordinate of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.Conversion.Point2D.Y">
-      <summary>
-            Gets the rectangular y-coordinate of the Point2D.
+            <value>
+            The rectangular x-coordinate of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
+            </value>
+            <lastupdated>5/27/2003 12:25:56 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.Conversion.Point2D.Y">
+            <summary>
+            Gets the rectangular y-coordinate of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.Conversion.Point2D.R">
-      <summary>
-            Gets the polar coordinate r of the Point2D.
+            <value>
+            The rectangular y-coordinate of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
+            </value>
+            <lastupdated>5/27/2003 12:25:59 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.Conversion.Point2D.R">
+            <summary>
+            Gets the polar coordinate <format type="italics">r</format> of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.Conversion.Point2D.Theta">
-      <summary>
-            Gets the polar coordinate theta of the Point2D.
+            <value>
+            The polar coordinate <format type="italics">r</format>, the distance from the origin, of the 
+            <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
+            </value>
+            <lastupdated>5/27/2003 12:25:46 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.Conversion.Point2D.Theta">
+            <summary>
+            Gets the polar coordinate <format type="italics">theta</format> of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.Conversion.Point2D.Origin">
-      <summary>
+            <value>
+            The polar coordinate <format type="italics">theta</format>, the angle from the positive x-axis, of the <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/>.
+            </value>
+            <lastupdated>6/17/2003 10:17:03 AM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.Conversion.Point2D.Origin">
+            <summary>
             Gets the point (0, 0).
             </summary>
-    </member>
-    <member name="M:NationalInstruments.Analysis.Internal.ExceptionBuilder.TranslateAnalysisException(NationalInstruments.Analysis.AnalysisException)">
-      <summary>
+            <value>
+            The point (0, 0).
+            </value>
+            <remarks>
+            This property provides a convenient source for an object of a 
+            <see cref="T:NationalInstruments.Analysis.Conversion.Point2D"/> with a value of (0, 0).
+            </remarks>
+            <lastupdated>5/27/2003 12:24:42 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.Internal.ExceptionBuilder.TranslateAnalysisException(NationalInstruments.Analysis.AnalysisException)">
+            <summary>
                 Translates an Analysis exception to a standard .NET exception (i.e. 
                 InvalidArgumentException), if the translation is appropriate.
             </summary>
-      <param name="exp">
+            <param name="exp">
                 AnalysisException to translate
             </param>
-      <returns>
+            <returns>
                 The AnalysisException exp, or a new standard .NET exception with exp set as the
                 inner exception.
             </returns>
-    </member>
-    <member name="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator">
-      <summary>Generates sine, square, sawtooth, and triangle waveforms.
+        </member>
+        <member name="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator">
+            <summary>Generates sine, square, sawtooth, and triangle waveforms.
             </summary>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor">
-      <summary>Creates a basic function generator.
+            <threadsafety safety="unsafe"/>
+            <remarks>
+            This class provides static and instance methods that you can use to generate waveform arrays.
+            Use the static methods to fill arrays with signal patterns, specified using  <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal"/>.
+            <para>
+            To generate continuous waveforms, create an instance of this class and then use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method to start the waveform generation.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.</para>
+            </remarks>
+            <seealso keyword="KeyNINETAnalysis" keywordType="mstudio">Key Measurement Studio Analysis .NET Library Concepts</seealso>
+            <seealso example="Analysis/Standard/BasicSignalGeneration" launch="false">Standard Edition Basic Signal Generation (All editions)</seealso>
+            <lastupdated>1/31/2013 11:42:29 AM</lastupdated>
+            <updatedby>National Instruments</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#cctor">
+            <exclude/>
+            <lastupdated>5/12/2008 11:16:32 AM</lastupdated>
+            <updatedby>Measurement Studio</updatedby>
+            <approved>False</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor">
+            <summary>Creates a basic function generator.
             </summary>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal)">
-      <summary>Creates a basic function generator with the specified signal type.
+            <remarks>
+            	<para> By default, the <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/> generates a sine wave. 
+            Use the overloads to specify a <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal"/>.</para>
+            	<para>
+            Use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method to start the waveform generation.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave"/>
+            <lastupdated>7/8/2004 6:02:49 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal)">
+            <summary>Creates a basic function generator with the specified signal type.
             </summary>
-      <param name="signalType">
-            The signal type specified using BasicFunctionGeneratorSignal.
+            <param name="signalType">
+            The signal type specified using <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal"/>.
             </param>
-      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            Invalid signalType (parameter) specified.
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            Invalid <paramref name="signalType"/> specified.
             </exception>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal,System.Double,System.Double)">
-      <summary>Creates a basic function generator with the specified signal type, frequency, and amplitude.
+            <remarks>
+            	<para>
+            Use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method to start the waveform generation.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave"/>
+            <lastupdated>7/8/2004 6:03:11 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal,System.Double,System.Double)">
+            <summary>Creates a basic function generator with the specified signal type, frequency, and amplitude.
             </summary>
-      <param name="signalType">
-            The signal type specified using BasicFunctionGeneratorSignal.
+            <param name="signalType">
+            The signal type specified using <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal"/>.
             </param>
-      <param name="frequency">
+            <param name="frequency">
             The frequency of the waveform, in hertz.
             </param>
-      <param name="amplitude">
+            <param name="amplitude">
             The amplitude of the waveform.
             </param>
-      <exception cref="T:System.ArgumentOutOfRangeException">frequency (parameter) is less than or equal to zero.
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<paramref name="frequency"/> is less than or equal to zero.
             </exception>
-      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            Invalid signalType (parameter) specified.
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            Invalid <paramref name="signalType"/> specified.
             </exception>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal,System.Double,System.Double,System.Double)">
-      <summary>Creates a basic function generator with the specified signal type, frequency, amplitude, and phase.
+            <remarks>
+            	<para>
+            Use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method to start the waveform generation.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave"/>
+            <lastupdated>7/8/2004 6:03:35 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal,System.Double,System.Double,System.Double)">
+            <summary>Creates a basic function generator with the specified signal type, frequency, amplitude, and phase.
             </summary>
-      <param name="signalType">
-            The signal type specified using BasicFunctionGeneratorSignal.
+            <param name="signalType">
+            The signal type specified using <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal"/>.
             </param>
-      <param name="frequency">
+            <param name="frequency">
             The frequency of the waveform, in hertz.
             </param>
-      <param name="amplitude">
+            <param name="amplitude">
             The amplitude of the waveform.
             </param>
-      <param name="phase">
+            <param name="phase">
             The phase of the waveform, in degrees.
             </param>
-      <exception cref="T:System.ArgumentOutOfRangeException">frequency (parameter) is less than or equal to zero.
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<para>
+            		<paramref name="frequency"/> is less than or equal to zero.
+            </para>
             </exception>
-      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            Invalid signalType (parameter) specified.
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            Invalid <paramref name="signalType"/> specified.
             </exception>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32)">
-      <summary>Creates a basic function generator 
+            <remarks>
+            	<para>
+            Use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method to start the waveform generation.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave"/>
+            <lastupdated>7/8/2004 6:03:56 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32)">
+            <summary>Creates a basic function generator 
             with the specified signal type, frequency, amplitude, phase, offset, sampling rate, and number of 
             samples.
             </summary>
-      <param name="signalType">
-            The signal type specified using BasicFunctionGeneratorSignal.
+            <param name="signalType">
+            The signal type specified using <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal"/>.
             </param>
-      <param name="frequency">
+            <param name="frequency">
             The frequency of the waveform, in hertz.
             </param>
-      <param name="amplitude">
+            <param name="amplitude">
             The amplitude of the waveform.
             </param>
-      <param name="phase">
+            <param name="phase">
             The phase of the waveform, in degrees.
             </param>
-      <param name="offset">
+            <param name="offset">
             The offset of the waveform.
             </param>
-      <param name="samplingRate">
+            <param name="samplingRate">
             The sampling rate of the waveform, in hertz.
             </param>
-      <param name="numberOfSamples">
+            <param name="numberOfSamples">
             The number of samples of the waveform.
             </param>
-      <exception cref="T:System.ArgumentOutOfRangeException">frequency (parameter) is less than or equal to zero.
-            
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<para>
+            		<paramref name="frequency"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            samplingRate (parameter) is less than or equal to zero.
-            
+            </para>
+            	<para>
+            		<paramref name="samplingRate"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            numberOfSamples (parameter) is less than or equal to zero.
+            </para>
+            	<para>
+            		<paramref name="numberOfSamples"/> is less than or equal to zero.
+            </para>
             </exception>
-      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            Invalid signalType (parameter) specified.
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            Invalid <paramref name="signalType"/> specified.
             </exception>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double)">
-      <summary>Creates a basic function generator 
+            <remarks>
+            	<para>
+            Use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method to start the waveform generation.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave"/>
+            <lastupdated>7/8/2004 6:04:39 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.#ctor(NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double)">
+            <summary>Creates a basic function generator 
             with the specified signal type, frequency, amplitude, phase, offset, sampling rate, number of 
             samples, and duty cycle.
             </summary>
-      <param name="signalType">
-            The signal type specified using BasicFunctionGeneratorSignal.
+            <param name="signalType">
+            The signal type specified using <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal"/>.
             </param>
-      <param name="frequency">
+            <param name="frequency">
             The frequency of the waveform, in hertz.
             </param>
-      <param name="amplitude">
+            <param name="amplitude">
             The amplitude of the waveform.
             </param>
-      <param name="phase">
+            <param name="phase">
             The phase of the waveform, in degrees.
             </param>
-      <param name="offset">
+            <param name="offset">
             The offset of the waveform.
             </param>
-      <param name="samplingRate">
+            <param name="samplingRate">
             The sampling rate of the waveform, in hertz.
             </param>
-      <param name="numberOfSamples">
+            <param name="numberOfSamples">
             The number of samples of the waveform.
             </param>
-      <param name="dutyCycle">
-            The duty cycle of the waveform, as a percentage, if it is a Square signal.
+            <param name="dutyCycle">
+            The duty cycle of the waveform, as a percentage, if it is a <see cref="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Square"/> signal.
             This parameter must be in the range of 0.0 to 100.0, inclusive.
             </param>
-      <exception cref="T:System.ArgumentOutOfRangeException">frequency (parameter) is less than or equal to zero.
-            
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<para>
+            		<paramref name="frequency"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            samplingRate (parameter) is less than or equal to zero.
-            
+            </para>
+            	<para>
+            		<paramref name="samplingRate"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            numberOfSamples (parameter) is less than or equal to zero.
-            
+            </para>
+            	<para>
+            		<paramref name="numberOfSamples"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            dutyCycle (parameter) is not between 0 and 100.
+            </para>
+            	<para>
+            		<paramref name="dutyCycle"/> is not between 0 and 100.
+            </para>
             </exception>
-      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            Invalid signalType (parameter) specified.
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            Invalid <paramref name="signalType"/> specified.
             </exception>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Reset">
-      <summary>
+            <remarks>
+            	<para>
+            Use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method to start the waveform generation.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave"/>
+            <lastupdated>7/8/2004 6:06:33 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Reset">
+            <summary>
             Resets the phase of the signal to its initial phase.
             </summary>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate">
-      <summary>Generates the selected waveform with the specified parameters.
+            <lastupdated>5/27/2003 1:32:49 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate">
+            <summary>Generates the selected waveform with the specified parameters.
             </summary>
-      <returns>
+            <returns>
             The selected waveform.
             </returns>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave">
-      <summary>
+            <security condition="unmanagedcode"/>
+            <remarks>
+            	<para>
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave"/>
+            <lastupdated>7/8/2004 6:06:52 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave">
+            <summary>
             Generates a sine wave.
             </summary>
-      <returns>
+            <returns>
             An array containing the sine wave.
             </returns>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave(System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32)">
-      <summary>
+            <remarks>
+            	<para>
+            Use this method to fill an array with a sine wave pattern.
+            </para>
+            	<para>
+            The waveform is generated using the
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultFrequency"/>, 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultAmplitude"/>,
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultPhase"/>, 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultOffset"/>,
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSamplingRate"/>, and
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultNumberOfSamples"/> properties.
+            </para>
+            	<para>
+            To generate a continuous waveform, create a <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/> and use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method instead.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <security condition="unmanagedcode"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/>
+            <lastupdated>7/23/2004 1:18:40 PM</lastupdated>
+            <updatedby>Whitney Bates</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSineWave(System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
             Generates a sine wave using the specified frequency, amplitude, phase, offset, sampling rate, and number of samples.
             </summary>
-      <param name="frequency">
+            <param name="frequency">
             The frequency, in hertz.
             </param>
-      <param name="amplitude">
+            <param name="amplitude">
             The amplitude of the waveform.
             </param>
-      <param name="phase">
+            <param name="phase">
             The phase of the waveform, in degrees.
             </param>
-      <param name="offset">
+            <param name="offset">
             The offset of the waveform.
             </param>
-      <param name="samplingRate">
+            <param name="samplingRate">
             The sampling rate, in hertz.
             </param>
-      <param name="numberOfSamples">
+            <param name="numberOfSamples">
             The number of samples to generate.
             </param>
-      <exception cref="T:System.ArgumentOutOfRangeException">frequency (parameter) is less than or equal to zero.
-            
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<para>
+            		<paramref name="frequency"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            samplingRate (parameter) is less than or equal to zero.
-            
+            </para>
+            	<para>
+            		<paramref name="samplingRate"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            numberOfSamples (parameter) is less than or equal to zero.
+            </para>
+            	<para>
+            		<paramref name="numberOfSamples"/> is less than or equal to zero.
+            </para>
             </exception>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-      <returns>
+            <remarks>
+            	<para>
+            Use this method to fill an array with a sine wave pattern.
+            </para>
+            	<para>
+            To generate a continuous waveform, create a <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/> and use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method instead.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <returns>
             An array containing the sine waveform.
             </returns>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave">
-      <summary>
+            <security condition="unmanagedcode"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/>
+            <lastupdated>7/23/2004 1:19:51 PM</lastupdated>
+            <updatedby>Whitney Bates</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave">
+            <summary>
             Generates a square wave.
             </summary>
-      <returns>
+            <returns>
             An array containing the square wave.
             </returns>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave(System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double)">
-      <summary>
+            <remarks>
+            	<para>
+            Use this method to fill an array with a square wave pattern.
+            </para>
+            	<para>
+            The waveform is generated using the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultFrequency"/>, 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultAmplitude"/>,
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultPhase"/>, 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultOffset"/>,
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSamplingRate"/>, 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultNumberOfSamples"/>, and 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultDutyCycle"/> properties.
+            </para>
+            	<para>
+            To generate a continuous waveform, create a <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/> and use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method instead.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <security condition="unmanagedcode"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/>
+            <lastupdated>7/23/2004 1:20:56 PM</lastupdated>
+            <updatedby>Whitney Bates</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSquareWave(System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double)">
+            <summary>
             Generates a square wave using the specified frequency, amplitude, phase, 
             offset, sampling rate, number of samples, and duty cycle.
             </summary>
-      <param name="frequency">
+            <param name="frequency">
             The frequency, in hertz.
             </param>
-      <param name="amplitude">
+            <param name="amplitude">
             The amplitude of the waveform.
             </param>
-      <param name="phase">
+            <param name="phase">
             The phase of the waveform, in degrees.
             </param>
-      <param name="offset">
+            <param name="offset">
             The offset of the waveform.
             </param>
-      <param name="samplingRate">
+            <param name="samplingRate">
             The sampling rate, in hertz.
             </param>
-      <param name="numberOfSamples">
+            <param name="numberOfSamples">
             The number of samples to generate.
             </param>
-      <param name="dutyCycle">
+            <param name="dutyCycle">
             The duty cycle of the square waveform, as a percentage. This parameter must be in the range of 0.0 to 100.0, inclusive.
             </param>
-      <returns>
+            <returns>
             An array containing the square waveform.
             </returns>
-      <exception cref="T:System.ArgumentOutOfRangeException">frequency (parameter) is less than or equal to zero.
-            
+            <security condition="unmanagedcode"/>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<para>
+            		<paramref name="frequency"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            samplingRate (parameter) is less than or equal to zero.
-            
+            </para>
+            	<para>
+            		<paramref name="samplingRate"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            numberOfSamples (parameter) is less than or equal to zero.
-            
+            </para>
+            	<para>
+            		<paramref name="numberOfSamples"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            dutyCycle (parameter) is not between 0 and 100.
+            </para>
+            	<para>
+            		<paramref name="dutyCycle"/> is not between 0 and 100.
+            </para>
             </exception>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave">
-      <summary>
+            <remarks>
+            	<para>
+            Use this method to fill an array with a square wave pattern.
+            </para>
+            	<para>
+            To generate a continuous waveform, create a <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/> and use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method instead.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/>
+            <lastupdated>7/23/2004 1:21:24 PM</lastupdated>
+            <updatedby>Whitney Bates</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave">
+            <summary>
             Generates a triangle waveform.
             </summary>
-      <returns>
+            <returns>
             An array containing the triangle waveform.
             </returns>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave(System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32)">
-      <summary>
+            <remarks>
+            	<para>
+            Use this method to fill an array with a triangle wave pattern.
+            </para>
+            	<para>
+            The waveform is generated using the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultFrequency"/>, 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultAmplitude"/>,
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultPhase"/>, 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultOffset"/>,
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSamplingRate"/>, and
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultNumberOfSamples"/> properties.
+            </para>
+            	<para>
+            To generate a continuous waveform, create a <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/> and use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method instead.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <security condition="unmanagedcode"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/>
+            <lastupdated>7/23/2004 1:22:15 PM</lastupdated>
+            <updatedby>Whitney Bates</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateTriangleWave(System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
             Generates a triangle waveform using the specified frequency, amplitude, phase, offset, 
             sampling rate, and number of samples.
             </summary>
-      <param name="frequency">
+            <param name="frequency">
             The frequency, in hertz.
             </param>
-      <param name="amplitude">
+            <param name="amplitude">
             The amplitude of the waveform.
             </param>
-      <param name="phase">
+            <param name="phase">
             The phase of the waveform, in degrees.
             </param>
-      <param name="offset">
+            <param name="offset">
             The offset of the waveform.
             </param>
-      <param name="samplingRate">
+            <param name="samplingRate">
             The sampling rate, in hertz.
             </param>
-      <param name="numberOfSamples">
+            <param name="numberOfSamples">
             The number of samples to generate.
             </param>
-      <returns>
+            <returns>
             An array containing the triangle waveform.
             </returns>
-      <exception cref="T:System.ArgumentOutOfRangeException">frequency (parameter) is less than or equal to zero.
-            
+            <security condition="unmanagedcode"/>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<para>
+            		<paramref name="frequency"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            samplingRate (parameter) is less than or equal to zero.
-            
+            </para>
+            	<para>
+            		<paramref name="samplingRate"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            numberOfSamples (parameter) is less than or equal to zero.
+            </para>
+            	<para>
+            		<paramref name="numberOfSamples"/> is less than or equal to zero.
+            </para>
             </exception>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave">
-      <summary>
+            <remarks>
+            	<para>
+            Use this method to fill an array with a triangle wave pattern.
+            </para>
+            	<para>
+            To generate a continuous waveform, create a <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/> and use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method instead.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that 
+            <format type="bold"> NationalInstruments.Analysis.SignalGeneration.SineSignal.Generate </format>
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/>
+            <lastupdated>7/23/2004 1:23:00 PM</lastupdated>
+            <updatedby>Whitney Bates</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave">
+            <summary>
             Generates a sawtooth waveform.
             </summary>
-      <returns>
+            <returns>
             An array containing the sawtooth waveform.
             </returns>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave(System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32)">
-      <summary>
+            <remarks>
+            	<para>
+            Use this method to fill an array with a sawtooth wave pattern.
+            </para>
+            	<para>
+            The waveform is generated using the
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultFrequency"/>, 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultAmplitude"/>,
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultPhase"/>, 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultOffset"/>,
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSamplingRate"/>, and
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultNumberOfSamples"/> properties.
+            </para>
+            	<para>
+            To generate a continuous waveform, create a <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/> and use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method instead.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <security condition="unmanagedcode"/>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/>
+            <lastupdated>7/23/2004 1:14:01 PM</lastupdated>
+            <updatedby>Whitney Bates</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.GenerateSawtoothWave(System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32)">
+            <summary>
             Generates a sawtooth waveform using the specified frequency, amplitude, phase, offset, sampling rate, and number of samples.
             </summary>
-      <param name="frequency">
+            <param name="frequency">
             The frequency, in hertz.
             </param>
-      <param name="amplitude">
+            <param name="amplitude">
             The amplitude of the waveform.
             </param>
-      <param name="phase">
+            <param name="phase">
             The phase of the waveform, in degrees.
             </param>
-      <param name="offset">
+            <param name="offset">
             The offset of the waveform.
             </param>
-      <param name="samplingRate">
+            <param name="samplingRate">
             The sampling rate, in hertz.
             </param>
-      <param name="numberOfSamples">
+            <param name="numberOfSamples">
             The number of samples to generate.
             </param>
-      <returns>
+            <returns>
             An array containing the sawtooth waveform.
             </returns>
-      <exception cref="T:System.ArgumentOutOfRangeException">frequency (parameter) is less than or equal to zero.
-            
+            <security condition="unmanagedcode"/>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            	<para>
+            		<paramref name="frequency"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            samplingRate (parameter) is less than or equal to zero.
-            
+            </para>
+            	<para>
+            		<paramref name="samplingRate"/> is less than or equal to zero.
+            </para>
+            	<para>
             -or-
-            numberOfSamples (parameter) is less than or equal to zero.
+            </para>
+            	<para>
+            		<paramref name="numberOfSamples"/> is less than or equal to zero.
+            </para>
             </exception>
-      <exception cref="T:System.DllNotFoundException">
+            <exception cref="T:System.DllNotFoundException">
             The analysis library cannot be found.
             </exception>
-      <exception cref="T:System.EntryPointNotFoundException">
+            <exception cref="T:System.EntryPointNotFoundException">
             A required operation in the analysis library cannot be found.
             </exception>
-    </member>
-    <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.ToString">
-      <summary>
+            <remarks>
+            	<para>
+            Use this method to fill an array with a sawtooth wave pattern.
+            </para>
+            	<para>
+            To generate a continuous waveform, create a <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/> and use the <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method instead.
+            The <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> method updates the value of 
+            the <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase"/> property to the phase 
+            of the point after the last one returned. This means that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> 
+            can be called successively to generate a continuous wave 
+            <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> points 
+            at a time.
+            </para>
+            </remarks>
+            <seealso cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/>
+            <lastupdated>7/23/2004 1:18:10 PM</lastupdated>
+            <updatedby>Whitney Bates</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.ToString">
+            <summary>
             Returns the string representation of the value of this instance.
             </summary>
-      <returns>
+            <returns>
             A string that represents the value of this instance.
             </returns>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSignalType">
-      <summary>
+            <lastupdated>7/8/2004 6:13:08 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSignalType">
+            <summary>
             Gets the default signal type.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultFrequency">
-      <summary>
+            <value>
+            The signal type that is used if none is specified. 
+            The default value is <see cref="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Sine"/>.
+            </value>
+            <lastupdated>6/25/2003 2:53:01 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultFrequency">
+            <summary>
             Gets the default frequency of the signal, in hertz.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultAmplitude">
-      <summary>
+            <value>
+            The frequency that is used if none is specified, in hertz. The default value is 100 Hz.
+            </value>
+            <lastupdated>6/25/2003 2:50:57 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultAmplitude">
+            <summary>
             Gets the default amplitude of the signal.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultPhase">
-      <summary>
+            <value>
+            The amplitude that is used if none is specified. The default value is 1.0.
+            </value>
+            <lastupdated>6/25/2003 2:50:06 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultPhase">
+            <summary>
             Gets the default phase of the signal, in degrees.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultOffset">
-      <summary>
+            <value>
+            The phase that is used if none is specified, in degrees. The default value is 0.0 degrees.
+            </value>
+            <lastupdated>6/25/2003 2:52:11 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultOffset">
+            <summary>
             Gets the default offset of the signal.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultDutyCycle">
-      <summary>
+            <value>
+            The offset that is used if none is specified. The default value is 0.0.
+            </value>
+            <lastupdated>6/25/2003 2:51:41 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultDutyCycle">
+            <summary>
             Gets the default duty cycle of the signal, as a percentage.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultNumberOfSamples">
-      <summary>
-            Gets the default number of samples returned from each call to Generate.
+            <value>
+            The duty cycle, as a percentage, that is used if none is specified. The default value is 50.0 percent.
+            </value>
+            <lastupdated>9/12/2005 2:11:38 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultNumberOfSamples">
+            <summary>
+            Gets the default number of samples returned from each call to <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/>.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSamplingRate">
-      <summary>
+            <value>
+            The number of samples that is used if none is specified. The default value is 1000.
+            </value>
+            <lastupdated>6/25/2003 2:51:23 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSamplingRate">
+            <summary>
             Gets the default sampling rate of the signal, in hertz.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.SignalType">
-      <summary>
+            <value>
+            The sampling rate that is used if none is specified, in hertz. The default value is 1000.0 Hz.
+            </value>
+            <lastupdated>6/25/2003 2:52:27 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.SignalType">
+            <summary>
             Gets or sets the type of signal to generate.
             </summary>
-      <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
-            Specified value is not valid enum value. Use BasicFunctionGeneratorSignal to specify a valid value.
+            <value>
+            A value from the <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal"/> enumeration.The default is <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSignalType"/>.
+            </value>
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
+            Specified value is not valid enum value. Use <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal"/> to specify a valid value.
             </exception>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Frequency">
-      <summary>
+            <remarks>
+            This value specifies what type of signal <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> returns.
+            </remarks>
+            <lastupdated>5/27/2003 1:28:54 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Frequency">
+            <summary>
             Gets or sets the waveform frequency, in hertz.
             </summary>
-      <exception cref="T:System.ArgumentException">Frequency cannot be less than 0.0.
+            <value>
+            The frequency of the waveform, in hertz. The default is <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultFrequency"/>.
+            </value>
+            <exception cref="T:System.ArgumentException">
+            	<see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Frequency"/> cannot be less than 0.0.
             </exception>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Amplitude">
-      <summary>
+            <remarks>
+            This value specifies the frequency of the waveform that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> returns.
+            </remarks>
+            <lastupdated>5/27/2003 1:28:28 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Amplitude">
+            <summary>
             Gets or sets the waveform amplitude.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase">
-      <summary>
+            <value>
+            The amplitude of the waveform. The default is <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultAmplitude"/>.
+            </value>
+            <remarks>
+            This value specifies the amplitude of the waveform that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> returns.
+            </remarks>
+            <lastupdated>5/27/2003 1:27:11 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Phase">
+            <summary>
             Gets or sets the phase of the waveform, in degrees.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Offset">
-      <summary>
+            <value>
+            The phase of the waveform, in degrees. The default is <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultPhase"/>.
+            </value>
+            <remarks>
+            This value specifies the phase of the waveform that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> returns.
+            </remarks>
+            <lastupdated>5/27/2003 1:28:42 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Offset">
+            <summary>
             Gets or sets the offset of the waveform.
             </summary>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DutyCycle">
-      <summary>
+            <value>
+            The offset of the waveform. The default is <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultOffset"/>.
+            </value>
+            <remarks>
+            This value specifies the offset of the waveform that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> returns.
+            </remarks>
+            <lastupdated>5/27/2003 1:28:38 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DutyCycle">
+            <summary>
             Gets or sets the square waveform duty cycle, in percent.
             </summary>
-      <exception cref="T:System.ArgumentException">DutyCycle is not between 0.0 and 100.0.
+            <value>
+            The duty cycle of the square waveform, in percent. The default is <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultDutyCycle"/>.
+            This value must be in the range 0.0 to 100.0, inclusive.
+            </value>
+            <exception cref="T:System.ArgumentException">
+            	<see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DutyCycle"/> is not between 0.0 and 100.0.
             </exception>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.SamplingRate">
-      <summary>
+            <remarks>
+            This value specifies the duty cycle of the waveform that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> returns.
+            <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> uses this value only when the value of <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.SignalType"/> is <see cref="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Square"/>. Otherwise, this value is ignored.
+            </remarks>
+            <lastupdated>5/27/2003 1:28:20 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.SamplingRate">
+            <summary>
             Gets or sets the sampling rate, in hertz.
             </summary>
-      <exception cref="T:System.ArgumentException">SamplingRate cannot be less than 0.0.
+            <value>
+            The sampling rate, in hertz. The default is <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultSamplingRate"/>.
+            </value>
+            <exception cref="T:System.ArgumentException">
+            	<see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.SamplingRate"/> cannot be less than 0.0.
             </exception>
-    </member>
-    <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples">
-      <summary>
+            <remarks>
+            This value specifies the sampling rate that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> uses to create the waveform it returns.
+            </remarks>
+            <lastupdated>5/27/2003 1:28:46 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples">
+            <summary>
             Gets or sets the number of samples in the waveform.
             </summary>
-      <exception cref="T:System.ArgumentException">NumberOfSamples cannot be less than zero.
+            <value>
+            The number of samples in the waveform. The default is <see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.DefaultNumberOfSamples"/>.
+            </value>
+            <exception cref="T:System.ArgumentException">
+            	<see cref="P:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.NumberOfSamples"/> cannot be less than zero.
             </exception>
-    </member>
-    <member name="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal">
-      <summary>
-            Specifies the signal types that can be generated using the BasicFunctionGenerator
+            <remarks>
+            This value specifies the number of samples in the waveform that <see cref="M:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator.Generate"/> returns.
+            </remarks>
+            <lastupdated>5/27/2003 1:28:32 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal">
+            <summary>
+            Specifies the signal types that can be generated using the <see cref="T:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGenerator"/>
             class.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Sine">
-      <summary>
+            <lastupdated>5/27/2003 1:49:37 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Sine">
+            <summary>
             Generates a sine waveform.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Triangle">
-      <summary>
+            <lastupdated>5/27/2003 1:49:44 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Triangle">
+            <summary>
             Generates a triangle waveform.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Square">
-      <summary>
+            <lastupdated>5/27/2003 1:49:50 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Square">
+            <summary>
             Generates a square waveform.
             </summary>
-    </member>
-    <member name="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Sawtooth">
-      <summary>
+            <lastupdated>5/27/2003 1:49:47 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+        <member name="F:NationalInstruments.Analysis.SignalGeneration.BasicFunctionGeneratorSignal.Sawtooth">
+            <summary>
             Generates a sawtooth waveform.
             </summary>
-    </member>
-  </members>
+            <lastupdated>5/27/2003 1:49:41 PM</lastupdated>
+            <updatedby>Jennifer Smith</updatedby>
+            <approved>True</approved>
+        </member>
+    </members>
 </doc>

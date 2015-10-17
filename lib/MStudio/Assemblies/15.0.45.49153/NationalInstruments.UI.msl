@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<DotNETComponent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Visible>false</Visible>
+    <SupportedProjectTypes>
+        <string>AspApplication2012</string>
+        <string>CppCLI2012</string>
+        <string>WindowsFormsApplication2012</string>
+    </SupportedProjectTypes>
+    <LicensedEditions>
+        <string>Standard</string>
+        <string>Professional</string>
+        <string>Enterprise</string>
+    </LicensedEditions>
+    <SelectedByDefault>true</SelectedByDefault>
+    <Title>Measurement Studio Class Libraries/UI Library</Title>
+    <Description>Contains the core functionality of the Measurement Studio user interface controls.</Description>
+    <Name2012>NationalInstruments.UI</Name2012>
+    <Licensed>false</Licensed>
+    <Control>
+        <TagPrefix>ni</TagPrefix>
+    </Control>
+    <Dependencies>
+        <DotNETAssembly>
+            <Name>NationalInstruments.Common</Name>
+        </DotNETAssembly>
+    </Dependencies>
+    <Namespaces>
+        <string>NationalInstruments.UI</string>
+    </Namespaces>
+        <ProjectTypesWithLibraryUnchecked>
+        <string>WpfApplication</string>
+        <string>ClassLibrary</string>
+    </ProjectTypesWithLibraryUnchecked>
+</DotNETComponent>

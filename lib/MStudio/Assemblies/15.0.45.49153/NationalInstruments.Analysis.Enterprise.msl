@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<DotNETComponent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Visible>true</Visible>
+  <SupportedProjectTypes>
+    <string>AspApplication2012</string>
+    <string>CppCLI2012</string>
+    <string>WindowsFormsApplication2012</string>
+  </SupportedProjectTypes>
+  <LicensedEditions>
+    <string>Enterprise</string>
+  </LicensedEditions>
+  <SelectedByDefault>true</SelectedByDefault>
+  <Title>Enterprise Analysis Library</Title>
+  <Description>Contains the Enterprise Analysis classes that provide powerful and easy-to-use mathematical analysis tools for measurement applications written for the Microsoft .NET platform.</Description>
+  <Name2012>NationalInstruments.Analysis.Enterprise</Name2012>
+  <Licensed>true</Licensed>
+  <Dependencies>
+    <DotNETAssembly>
+      <Name>NationalInstruments.Common</Name>
+    </DotNETAssembly>
+  </Dependencies>
+  <Namespaces>
+    <string>NationalInstruments.Analysis</string>
+    <string>NationalInstruments.Analysis.Conversion</string>
+    <string>NationalInstruments.Analysis.Dsp</string>
+    <string>NationalInstruments.Analysis.Dsp.Filters</string>
+    <string>NationalInstruments.Analysis.Math</string>
+    <string>NationalInstruments.Analysis.Monitoring</string>
+    <string>NationalInstruments.Analysis.SignalGeneration</string>
+    <string>NationalInstruments.Analysis.SpectralMeasurements</string>
+  </Namespaces>
+</DotNETComponent>
