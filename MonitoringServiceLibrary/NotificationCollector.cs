@@ -139,90 +139,92 @@ namespace MonitoringServiceLibrary
                             {
                                 if (notificationItemsLogLatest.Value)
                                 {
-                                    if (notificationItem.IsDelayed != null && notificationItem.IsDelayed.Value)
-                                    {
-                                        int currentCount = 0;
-                                        List<string> results=new List<string>();
+                                    //if (notificationItem.IsDelayed != null && notificationItem.IsDelayed.Value)
+                                    //{
+                                    //    int currentCount = 0;
+                                    //    List<string> results=new List<string>();
 
-                                        int numberOfDelay = 2;
+                                    //    int numberOfDelay = 2;
 
-                                        if (notificationItem.NumberOfDelayes != null)
-                                        {
-                                            numberOfDelay = notificationItem.NumberOfDelayes.Value;
-                                        }
+                                    //    if (notificationItem.NumberOfDelayes != null)
+                                    //    {
+                                    //        numberOfDelay = notificationItem.NumberOfDelayes.Value;
+                                    //    }
 
-                                        while (currentCount<numberOfDelay)
-                                        {
-                                            if (notificationItem.IntervalBetweenItems != null)
-                                            {
-                                                Thread.Sleep(notificationItem.IntervalBetweenItems.Value);
-                                            }
-                                            else
-                                            {
-                                                Thread.Sleep(1000);
-                                            }
+                                    //    while (currentCount<numberOfDelay)
+                                    //    {
+                                    //        if (notificationItem.IntervalBetweenItems != null)
+                                    //        {
+                                    //            Thread.Sleep(notificationItem.IntervalBetweenItems.Value);
+                                    //        }
+                                    //        else
+                                    //        {
+                                    //            Thread.Sleep(1000);
+                                    //        }
 
-                                            ItemCollector itemCollector=new ItemCollector(notificationItem.Item);
-                                            string currentResult =itemCollector.ReadValue(true);
-                                            results.Add(currentResult);
+                                    //        ItemCollector itemCollector=new ItemCollector(notificationItem.Item);
+                                    //        string currentResult =itemCollector.ReadValue(true);
+                                    //        results.Add(currentResult);
 
-                                            currentCount++;
-                                        }
+                                    //        currentCount++;
+                                    //    }
 
-                                        int numberOfWithoutNotifications = 0;
+                                    //    int numberOfWithoutNotifications = 0;
 
-                                        foreach (string s in results)
-                                        {
-                                            currentValue = double.Parse(s);
+                                    //    foreach (string s in results)
+                                    //    {
+                                    //        currentValue = double.Parse(s);
 
-                                            if (notificationItem.NotificationType == (int)NotificationType.Lower)
-                                            {
-                                                if (currentValue < notificationItem.High)
-                                                {
-                                                    numberOfWithoutNotifications++;
-                                                }
-                                            }
-                                            else if (notificationItem.NotificationType == (int)NotificationType.Between)
-                                            {
-                                                if (currentValue > notificationItem.Low && currentValue < notificationItem.High)
-                                                {
-                                                    numberOfWithoutNotifications++;
-                                                }
-                                            }
-                                            else if (notificationItem.NotificationType == (int)NotificationType.Higher)
-                                            {
-                                                if (currentValue > notificationItem.Low)
-                                                {
-                                                    numberOfWithoutNotifications++;
-                                                }
-                                            }
-                                        }
+                                    //        if (notificationItem.NotificationType == (int)NotificationType.Lower)
+                                    //        {
+                                    //            if (currentValue < notificationItem.High)
+                                    //            {
+                                    //                numberOfWithoutNotifications++;
+                                    //            }
+                                    //        }
+                                    //        else if (notificationItem.NotificationType == (int)NotificationType.Between)
+                                    //        {
+                                    //            if (currentValue > notificationItem.Low && currentValue < notificationItem.High)
+                                    //            {
+                                    //                numberOfWithoutNotifications++;
+                                    //            }
+                                    //        }
+                                    //        else if (notificationItem.NotificationType == (int)NotificationType.Higher)
+                                    //        {
+                                    //            if (currentValue > notificationItem.Low)
+                                    //            {
+                                    //                numberOfWithoutNotifications++;
+                                    //            }
+                                    //        }
+                                    //    }
 
-                                        if (numberOfWithoutNotifications == notificationItem.NumberOfDelayes.Value)
-                                        {
-                                            withoutNotification = true;
-                                        }
-                                        else
-                                        {
-                                            withoutNotification = false;
-                                        }
-                                    }
+                                    //    if (numberOfWithoutNotifications == notificationItem.NumberOfDelayes.Value)
+                                    //    {
+                                    //        withoutNotification = true;
+                                    //    }
+                                    //    else
+                                    //    {
+                                    //        withoutNotification = false;
+                                    //    }
+                                    //}
 
-                                    if (withoutNotification == false)
-                                    {
-                                        // we have a notification
+                                    //if (withoutNotification == false)
+                                    //{
 
-                                        NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
-                                        notificationItemsLog.NotificationId = notificationId;
-                                        notificationItemsLog.Value = false;
-                                        notificationItemsLog.Time = DateTime.Now;
+                                    //}
 
-                                        entities.NotificationItemsLogs.Add(notificationItemsLog);
-                                        entities.SaveChanges();
+                                    // we have a notification
 
-                                        var bot = NotificationsBot.Instance;
-                                        bot.SendNotification(notificationItemsLog.NotificationLogId);
-                                    }
+                                    NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
+                                    notificationItemsLog.NotificationId = notificationId;
+                                    notificationItemsLog.Value = false;
+                                    notificationItemsLog.Time = DateTime.Now;
+
+                                    entities.NotificationItemsLogs.Add(notificationItemsLog);
+                                    entities.SaveChanges();
+
+                                    var bot = NotificationsBot.Instance;
+                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
                                 }
                             }
 

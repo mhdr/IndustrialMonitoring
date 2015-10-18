@@ -19,6 +19,7 @@ namespace MonitoringServiceLibrary
         public string Value { get; set; }
         public System.DateTime Time { get; set; }
         public byte[] TimeStamp { get; set; }
+        public Nullable<bool> PassOutlier { get; set; }
     
         public virtual Item Item { get; set; }
     }

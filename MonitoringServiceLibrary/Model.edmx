@@ -73,6 +73,7 @@
           <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="PassOutlier" Type="bit" />
         </EntityType>
         <EntityType Name="NotificationItems">
           <Key>
@@ -458,6 +459,7 @@
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Item" Relationship="IndustrialMonitoringModel.FK_ItemsLogLatest_Items" FromRole="ItemsLogLatest" ToRole="Item" />
+          <Property Name="PassOutlier" Type="Boolean" />
         </EntityType>
         <EntityType Name="NotificationItem">
           <Key>
@@ -915,6 +917,7 @@
           <EntitySetMapping Name="ItemsLogLatests">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.ItemsLogLatest">
               <MappingFragment StoreEntitySet="ItemsLogLatest">
+                <ScalarProperty Name="PassOutlier" ColumnName="PassOutlier" />
                 <ScalarProperty Name="ItemLogLatestId" ColumnName="ItemLogLatestId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="Value" ColumnName="Value" />

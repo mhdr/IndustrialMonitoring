@@ -6,6 +6,7 @@ using System.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using BACnetLib;
+using MathNet.Numerics.Statistics;
 using MonitoringServiceLibrary.BSProcessDataServiceReference;
 using SharedLibrary;
 using NationalInstruments.NetworkVariable;
@@ -320,10 +321,11 @@ namespace MonitoringServiceLibrary
                             continue;
                         }
 
+                        double valueDouble = double.Parse(value);
+
                         bool condition = !string.IsNullOrEmpty(ItemObj.MinRange) && !string.IsNullOrEmpty(ItemObj.MaxRange);
                         if (condition)
                         {
-                            double valueDouble = double.Parse(value);
                             double minRange=double.Parse(ItemObj.MinRange);
                             double maxRange= double.Parse(ItemObj.MaxRange);
 
@@ -358,6 +360,68 @@ namespace MonitoringServiceLibrary
                                 }
                             }
                         }
+
+                        // detect oulier
+
+                        if (this.Type==ItemType.Analog)
+                        {
+                            var lastThreeData =
+                                                Entities.ItemsLogs.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogId).Take(3).ToList();
+
+                            if (lastThreeData.Count == 3)
+                            {
+                                List<double> lastThreeDataInDouble = new List<double>();
+
+                                foreach (ItemsLog itemsLog in lastThreeData)
+                                {
+                                    double currentValue = double.Parse(itemsLog.Value);
+
+                                    lastThreeDataInDouble.Add(currentValue);
+                                }
+
+                                var iqr = Statistics.InterquartileRange(lastThreeDataInDouble);
+                                var lqr = Statistics.LowerQuartile(lastThreeDataInDouble);
+                                var uqr = Statistics.UpperQuartile(lastThreeDataInDouble);
+
+                                bool isOutlier = false;
+
+                                if (valueDouble > 3 * iqr + uqr)
+                                {
+                                    isOutlier = true;
+                                }
+
+                                if (valueDouble < lqr - 3 * iqr)
+                                {
+                                    isOutlier = true;
+                                }
+
+                                var itemLogLatest = Entities.ItemsLogLatests.First(x => x.ItemId == ItemId);
+
+                                if (isOutlier)
+                                {
+                                    if (itemLogLatest != null)
+                                    {
+                                        if (itemLogLatest.PassOutlier != null)
+                                        {
+                                            if (itemLogLatest.PassOutlier.Value)
+                                            {
+                                                itemLogLatest.PassOutlier = false;
+                                                Entities.SaveChanges();
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (itemLogLatest!=null)
+                                {
+                                    itemLogLatest.PassOutlier = true;
+                                    Entities.SaveChanges();
+                                }
+                            } 
+                        }
+
+                        //
 
                         if (LastItemLog == null)
                         {
@@ -506,10 +570,11 @@ namespace MonitoringServiceLibrary
                         return;
                     }
 
+                    double valueDouble = double.Parse(value);
+
                     bool condition = !string.IsNullOrEmpty(ItemObj.MinRange) && !string.IsNullOrEmpty(ItemObj.MaxRange);
                     if (condition)
                     {
-                        double valueDouble = double.Parse(value);
                         double minRange = double.Parse(ItemObj.MinRange);
                         double maxRange = double.Parse(ItemObj.MaxRange);
 
@@ -544,6 +609,68 @@ namespace MonitoringServiceLibrary
                             }
                         }
                     }
+
+                    // detect oulier
+
+                    if (this.Type == ItemType.Analog)
+                    {
+                        var lastThreeData =
+                                            Entities.ItemsLogs.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogId).Take(3).ToList();
+
+                        if (lastThreeData.Count == 3)
+                        {
+                            List<double> lastThreeDataInDouble = new List<double>();
+
+                            foreach (ItemsLog itemsLog in lastThreeData)
+                            {
+                                double currentValue = double.Parse(itemsLog.Value);
+
+                                lastThreeDataInDouble.Add(currentValue);
+                            }
+
+                            var iqr = Statistics.InterquartileRange(lastThreeDataInDouble);
+                            var lqr = Statistics.LowerQuartile(lastThreeDataInDouble);
+                            var uqr = Statistics.UpperQuartile(lastThreeDataInDouble);
+
+                            bool isOutlier = false;
+
+                            if (valueDouble > 3 * iqr + uqr)
+                            {
+                                isOutlier = true;
+                            }
+
+                            if (valueDouble < lqr - 3 * iqr)
+                            {
+                                isOutlier = true;
+                            }
+
+                            var itemLogLatest = Entities.ItemsLogLatests.First(x => x.ItemId == ItemId);
+
+                            if (isOutlier)
+                            {
+                                if (itemLogLatest != null)
+                                {
+                                    if (itemLogLatest.PassOutlier != null)
+                                    {
+                                        if (itemLogLatest.PassOutlier.Value)
+                                        {
+                                            itemLogLatest.PassOutlier = false;
+                                            Entities.SaveChanges();
+                                            return;
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (itemLogLatest != null)
+                            {
+                                itemLogLatest.PassOutlier = true;
+                                Entities.SaveChanges();
+                            }
+                        }
+                    }
+
+                    //
 
                     if (LastItemLog == null)
                     {
@@ -594,6 +721,7 @@ namespace MonitoringServiceLibrary
             }
         }
 
+        [Obsolete]
         public string ReadValue(bool state)
         {
             try
