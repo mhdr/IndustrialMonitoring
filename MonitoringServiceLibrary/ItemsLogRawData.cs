@@ -12,13 +12,14 @@ namespace MonitoringServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class UsersItemsPermission
+    public partial class ItemsLogRawData
     {
-        public int PermissionId { get; set; }
-        public int UserId { get; set; }
+        public int ItemLogRawDataId { get; set; }
         public int ItemId { get; set; }
+        public string Value { get; set; }
+        public System.DateTime Time { get; set; }
+        public byte[] TimeStamp { get; set; }
     
         public virtual Item Item { get; set; }
-        public virtual User User { get; set; }
     }
 }

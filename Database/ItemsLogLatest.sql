@@ -5,6 +5,5 @@
     [Value] NVARCHAR(50) NOT NULL, 
     [Time] DATETIME2 NOT NULL, 
     [TimeStamp] TIMESTAMP NOT NULL, 
-    [PassOutlier] BIT NULL DEFAULT 1, 
     CONSTRAINT [FK_ItemsLogLatest_Items] FOREIGN KEY ([ItemId]) REFERENCES [Items]([ItemId])
 )

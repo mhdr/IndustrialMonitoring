@@ -18,6 +18,7 @@ namespace MonitoringServiceLibrary
         {
             this.ItemsLogs = new HashSet<ItemsLog>();
             this.ItemsLogLatests = new HashSet<ItemsLogLatest>();
+            this.ItemsLogRawDatas = new HashSet<ItemsLogRawData>();
             this.NotificationItems = new HashSet<NotificationItem>();
             this.TabsItems = new HashSet<TabsItem>();
             this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
@@ -43,12 +44,13 @@ namespace MonitoringServiceLibrary
         public Nullable<int> BACnetItemType { get; set; }
         public string MinRange { get; set; }
         public string MaxRange { get; set; }
-        public Nullable<int> ThreadGroupId { get; set; }
         public Nullable<bool> NormalizeWhenOutOfRange { get; set; }
+        public Nullable<int> ThreadGroupId { get; set; }
     
         public virtual ThreadGroup ThreadGroup { get; set; }
         public virtual ICollection<ItemsLog> ItemsLogs { get; set; }
         public virtual ICollection<ItemsLogLatest> ItemsLogLatests { get; set; }
+        public virtual ICollection<ItemsLogRawData> ItemsLogRawDatas { get; set; }
         public virtual ICollection<NotificationItem> NotificationItems { get; set; }
         public virtual ICollection<TabsItem> TabsItems { get; set; }
         public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }

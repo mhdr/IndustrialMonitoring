@@ -124,6 +124,9 @@
     <Compile Include="ItemsLogLatest.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ItemsLogRawData.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="IUserService.cs" />
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>

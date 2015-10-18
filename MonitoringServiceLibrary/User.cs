@@ -16,9 +16,9 @@ namespace MonitoringServiceLibrary
     {
         public User()
         {
+            this.Bots = new HashSet<Bot>();
             this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
             this.UsersServicesPermissions = new HashSet<UsersServicesPermission>();
-            this.Bots = new HashSet<Bot>();
         }
     
         public int UserId { get; set; }
@@ -27,8 +27,8 @@ namespace MonitoringServiceLibrary
         public string FirstName { get; set; }
         public string LastName { get; set; }
     
+        public virtual ICollection<Bot> Bots { get; set; }
         public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
         public virtual ICollection<UsersServicesPermission> UsersServicesPermissions { get; set; }
-        public virtual ICollection<Bot> Bots { get; set; }
     }
 }

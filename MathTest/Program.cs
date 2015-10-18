@@ -11,7 +11,7 @@ namespace MathTest
     {
         static void Main(string[] args)
         {
-            List<double> data=new List<double>() {550,520,540};
+            List<double> data=new List<double>() {550,520,540,520,500,541,532,522,531,512,567,0,40};
             var result1 = Statistics.InterquartileRange(data);
             Console.WriteLine(result1);
 

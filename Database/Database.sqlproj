@@ -75,6 +75,7 @@
     <Build Include="RelatedNotifications.sql" />
     <Build Include="BotQueue.sql" />
     <Build Include="ThreadGroup.sql" />
+    <Build Include="ItemsLogRawData.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Database.refactorlog" />

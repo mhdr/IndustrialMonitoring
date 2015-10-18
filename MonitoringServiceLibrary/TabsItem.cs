@@ -18,7 +18,7 @@ namespace MonitoringServiceLibrary
         public int TabId { get; set; }
         public int ItemId { get; set; }
     
-        public virtual Tab Tab { get; set; }
         public virtual Item Item { get; set; }
+        public virtual Tab Tab { get; set; }
     }
 }

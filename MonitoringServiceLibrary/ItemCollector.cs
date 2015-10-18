@@ -249,13 +249,13 @@ namespace MonitoringServiceLibrary
                         {
                             this.BACnetDevice = BACnetDevice.Instance;
                         }
-                        
+
                         string ip = ItemObj.BACnetIP;
                         int port = ItemObj.BACnetPort.Value;
-                        IPEndPoint endPoint=new IPEndPoint(IPAddress.Parse(ip),port);
-                        uint instance = (uint) ItemObj.BACnetControllerInstance.Value;
+                        IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ip), port);
+                        uint instance = (uint)ItemObj.BACnetControllerInstance.Value;
 
-                        DeviceBaCnet = new Device("Device",0,0,endPoint,0,instance);
+                        DeviceBaCnet = new Device("Device", 0, 0, endPoint, 0, instance);
                     }
 
 
@@ -297,16 +297,16 @@ namespace MonitoringServiceLibrary
                             uint itemInstance = (uint)ItemObj.BACnetItemInstance.Value;
                             value = BACnetDevice.ReadValue(DeviceBaCnet, bacnetType, itemInstance).ToString();
                         }
-                        else if (Type==ItemType.Analog)
+                        else if (Type == ItemType.Analog)
                         {
                             BACnetEnums.BACNET_OBJECT_TYPE bacnetType = (BACnetEnums.BACNET_OBJECT_TYPE)ItemObj.BACnetItemType.Value;
                             uint itemInstance = (uint)ItemObj.BACnetItemInstance.Value;
 
                             string preValue = BACnetDevice.ReadValue(DeviceBaCnet, bacnetType, itemInstance).ToString();
                             double preValueDouble = double.Parse(preValue);
-                            value =Math.Round(preValueDouble,2).ToString();
+                            value = Math.Round(preValueDouble, 2).ToString();
                         }
-                        
+
                     }
 
                     lock (padlock)
@@ -326,8 +326,8 @@ namespace MonitoringServiceLibrary
                         bool condition = !string.IsNullOrEmpty(ItemObj.MinRange) && !string.IsNullOrEmpty(ItemObj.MaxRange);
                         if (condition)
                         {
-                            double minRange=double.Parse(ItemObj.MinRange);
-                            double maxRange= double.Parse(ItemObj.MaxRange);
+                            double minRange = double.Parse(ItemObj.MinRange);
+                            double maxRange = double.Parse(ItemObj.MaxRange);
 
                             bool shouldNormalize = false;
 
@@ -361,27 +361,28 @@ namespace MonitoringServiceLibrary
                             }
                         }
 
-                        // detect oulier
+                        // detect ouliers
+
+                        bool isOutlier = false;
 
                         if (this.Type == ItemType.Analog)
                         {
-                            var lastThreeData =
-                                                Entities.ItemsLogs.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogId).Take(10).ToList();
+                            var lastData = Entities.ItemsLogRawDatas.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogRawDataId).Take(10).ToList();
 
-                            List<double> lastThreeDataInDouble = new List<double>();
+                            List<double> lastDataInDouble = new List<double>();
 
-                            foreach (ItemsLog itemsLog in lastThreeData)
+                            foreach (var itemsLog in lastData)
                             {
                                 double currentValue = double.Parse(itemsLog.Value);
 
-                                lastThreeDataInDouble.Add(currentValue);
+                                lastDataInDouble.Add(currentValue);
                             }
 
-                            var iqr = Statistics.InterquartileRange(lastThreeDataInDouble);
-                            var lqr = Statistics.LowerQuartile(lastThreeDataInDouble);
-                            var uqr = Statistics.UpperQuartile(lastThreeDataInDouble);
+                            var iqr = Statistics.InterquartileRange(lastDataInDouble);
+                            var lqr = Statistics.LowerQuartile(lastDataInDouble);
+                            var uqr = Statistics.UpperQuartile(lastDataInDouble);
 
-                            bool isOutlier = false;
+                            
 
                             if (valueDouble > 3 * iqr + uqr)
                             {
@@ -392,78 +393,81 @@ namespace MonitoringServiceLibrary
                             {
                                 isOutlier = true;
                             }
-
-                            var itemLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == ItemId);
-
-                            if (isOutlier)
-                            {
-                                if (itemLogLatest != null)
-                                {
-                                    if (itemLogLatest.PassOutlier != null)
-                                    {
-                                        if (itemLogLatest.PassOutlier.Value)
-                                        {
-                                            itemLogLatest.PassOutlier = false;
-                                            Entities.SaveChanges();
-                                            return;
-                                        }
-                                        else
-                                        {
-                                            itemLogLatest.PassOutlier = true;
-                                            Entities.SaveChanges();
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (itemLogLatest != null)
-                            {
-                                itemLogLatest.PassOutlier = true;
-                                Entities.SaveChanges();
-                            }
                         }
 
                         //
 
-                        if (LastItemLog == null)
-                        {
-                            SaveValueInItemsLog(value);
-                        }
-                        else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
+                        // Save in ItemsLogRawData
+                        if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
                         {
                             TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
 
                             if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
                             {
-                                SaveValueInItemsLog(value);
+                                ItemsLogRawData rawData = new ItemsLogRawData();
+                                rawData.ItemId = ItemId;
+                                rawData.Value = value;
+                                rawData.Time = DateTime.Now;
+                                Entities.ItemsLogRawDatas.Add(rawData);
+                                Entities.SaveChanges();
                             }
                         }
                         else if (SaveInItemsLogWhen == WhenToLog.OnChange)
                         {
                             if (LastItemLog.Value != value)
                             {
+                                ItemsLogRawData rawData = new ItemsLogRawData();
+                                rawData.ItemId = ItemId;
+                                rawData.Value = value;
+                                rawData.Time = DateTime.Now;
+                                Entities.ItemsLogRawDatas.Add(rawData);
+                                Entities.SaveChanges();
+                            }
+                        }
+                        //
+
+                        if (!isOutlier)
+                        {
+                            if (LastItemLog == null)
+                            {
                                 SaveValueInItemsLog(value);
                             }
-                        }
+                            else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
+                            {
+                                TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
 
-                        if (LastItemLogLatest == null)
-                        {
-                            SaveValueInItemsLogLatest(value);
-                        }
-                        else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
-                        {
-                            TimeSpan timeSpan = DateTime.Now - LastItemLogLatest.Time;
+                                if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
+                                {
+                                    SaveValueInItemsLog(value);
+                                }
+                            }
+                            else if (SaveInItemsLogWhen == WhenToLog.OnChange)
+                            {
+                                if (LastItemLog.Value != value)
+                                {
+                                    SaveValueInItemsLog(value);
+                                }
+                            }
 
-                            if (timeSpan.TotalSeconds >= SaveInItemsLogLastesTimeInterval)
+                            if (LastItemLogLatest == null)
                             {
                                 SaveValueInItemsLogLatest(value);
                             }
-                        }
-                        else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
-                        {
-                            if (LastItemLogLatest.Value != value)
+                            else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
                             {
-                                SaveValueInItemsLogLatest(value);
+                                TimeSpan timeSpan = DateTime.Now - LastItemLogLatest.Time;
+
+                                if (timeSpan.TotalSeconds >= SaveInItemsLogLastesTimeInterval)
+                                {
+                                    SaveValueInItemsLogLatest(value);
+                                }
+                            }
+                            else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
+                            {
+                                if (LastItemLogLatest.Value != value)
+                                {
+                                    SaveValueInItemsLogLatest(value);
+                                }
                             }
                         }
                     }
@@ -595,7 +599,7 @@ namespace MonitoringServiceLibrary
                             }
                             else
                             {
-                                return ;
+                                return;
                             }
                         }
 
@@ -607,32 +611,33 @@ namespace MonitoringServiceLibrary
                             }
                             else
                             {
-                                return ;
+                                return;
                             }
                         }
                     }
 
-                    // detect oulier
+                    // detect ouliers
+
+                    bool isOutlier = false;
 
                     if (this.Type == ItemType.Analog)
                     {
-                        var lastThreeData =
-                                            Entities.ItemsLogs.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogId).Take(10).ToList();
+                        var lastData = Entities.ItemsLogRawDatas.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogRawDataId).Take(10).ToList();
 
-                        List<double> lastThreeDataInDouble = new List<double>();
+                        List<double> lastDataInDouble = new List<double>();
 
-                        foreach (ItemsLog itemsLog in lastThreeData)
+                        foreach (var itemsLog in lastData)
                         {
                             double currentValue = double.Parse(itemsLog.Value);
 
-                            lastThreeDataInDouble.Add(currentValue);
+                            lastDataInDouble.Add(currentValue);
                         }
 
-                        var iqr = Statistics.InterquartileRange(lastThreeDataInDouble);
-                        var lqr = Statistics.LowerQuartile(lastThreeDataInDouble);
-                        var uqr = Statistics.UpperQuartile(lastThreeDataInDouble);
+                        var iqr = Statistics.InterquartileRange(lastDataInDouble);
+                        var lqr = Statistics.LowerQuartile(lastDataInDouble);
+                        var uqr = Statistics.UpperQuartile(lastDataInDouble);
 
-                        bool isOutlier = false;
+
 
                         if (valueDouble > 3 * iqr + uqr)
                         {
@@ -643,78 +648,81 @@ namespace MonitoringServiceLibrary
                         {
                             isOutlier = true;
                         }
-
-                        var itemLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == ItemId);
-
-                        if (isOutlier)
-                        {
-                            if (itemLogLatest != null)
-                            {
-                                if (itemLogLatest.PassOutlier != null)
-                                {
-                                    if (itemLogLatest.PassOutlier.Value)
-                                    {
-                                        itemLogLatest.PassOutlier = false;
-                                        Entities.SaveChanges();
-                                        return;
-                                    }
-                                    else
-                                    {
-                                        itemLogLatest.PassOutlier = true;
-                                        Entities.SaveChanges();
-                                    }
-                                }
-                            }
-                        }
-
-                        if (itemLogLatest != null)
-                        {
-                            itemLogLatest.PassOutlier = true;
-                            Entities.SaveChanges();
-                        }
                     }
 
                     //
 
-                    if (LastItemLog == null)
-                    {
-                        SaveValueInItemsLog(value);
-                    }
-                    else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
+                    // Save in ItemsLogRawData
+                    if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
                     {
                         TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
 
                         if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
                         {
-                            SaveValueInItemsLog(value);
+                            ItemsLogRawData rawData = new ItemsLogRawData();
+                            rawData.ItemId = ItemId;
+                            rawData.Value = value;
+                            rawData.Time = DateTime.Now;
+                            Entities.ItemsLogRawDatas.Add(rawData);
+                            Entities.SaveChanges();
                         }
                     }
                     else if (SaveInItemsLogWhen == WhenToLog.OnChange)
                     {
                         if (LastItemLog.Value != value)
                         {
+                            ItemsLogRawData rawData = new ItemsLogRawData();
+                            rawData.ItemId = ItemId;
+                            rawData.Value = value;
+                            rawData.Time = DateTime.Now;
+                            Entities.ItemsLogRawDatas.Add(rawData);
+                            Entities.SaveChanges();
+                        }
+                    }
+                    //
+
+                    if (!isOutlier)
+                    {
+                        if (LastItemLog == null)
+                        {
                             SaveValueInItemsLog(value);
                         }
-                    }
+                        else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
+                        {
+                            TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
 
-                    if (LastItemLogLatest == null)
-                    {
-                        SaveValueInItemsLogLatest(value);
-                    }
-                    else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
-                    {
-                        TimeSpan timeSpan = DateTime.Now - LastItemLogLatest.Time;
+                            if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
+                            {
+                                SaveValueInItemsLog(value);
+                            }
+                        }
+                        else if (SaveInItemsLogWhen == WhenToLog.OnChange)
+                        {
+                            if (LastItemLog.Value != value)
+                            {
+                                SaveValueInItemsLog(value);
+                            }
+                        }
 
-                        if (timeSpan.TotalSeconds >= SaveInItemsLogLastesTimeInterval)
+                        if (LastItemLogLatest == null)
                         {
                             SaveValueInItemsLogLatest(value);
                         }
-                    }
-                    else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
-                    {
-                        if (LastItemLogLatest.Value != value)
+                        else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
                         {
-                            SaveValueInItemsLogLatest(value);
+                            TimeSpan timeSpan = DateTime.Now - LastItemLogLatest.Time;
+
+                            if (timeSpan.TotalSeconds >= SaveInItemsLogLastesTimeInterval)
+                            {
+                                SaveValueInItemsLogLatest(value);
+                            }
+                        }
+                        else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
+                        {
+                            if (LastItemLogLatest.Value != value)
+                            {
+                                SaveValueInItemsLogLatest(value);
+                            }
                         }
                     }
                 }
@@ -813,7 +821,7 @@ namespace MonitoringServiceLibrary
                 {
                     if (value == null)
                     {
-                        value= "-1000000";
+                        value = "-1000000";
                     }
 
                     bool condition = !string.IsNullOrEmpty(ItemObj.MinRange) && !string.IsNullOrEmpty(ItemObj.MaxRange);
