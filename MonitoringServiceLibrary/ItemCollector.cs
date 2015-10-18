@@ -363,62 +363,66 @@ namespace MonitoringServiceLibrary
 
                         // detect oulier
 
-                        if (this.Type==ItemType.Analog)
+                        if (this.Type == ItemType.Analog)
                         {
                             var lastThreeData =
-                                                Entities.ItemsLogs.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogId).Take(3).ToList();
+                                                Entities.ItemsLogs.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogId).Take(10).ToList();
 
-                            if (lastThreeData.Count == 3)
+                            List<double> lastThreeDataInDouble = new List<double>();
+
+                            foreach (ItemsLog itemsLog in lastThreeData)
                             {
-                                List<double> lastThreeDataInDouble = new List<double>();
+                                double currentValue = double.Parse(itemsLog.Value);
 
-                                foreach (ItemsLog itemsLog in lastThreeData)
+                                lastThreeDataInDouble.Add(currentValue);
+                            }
+
+                            var iqr = Statistics.InterquartileRange(lastThreeDataInDouble);
+                            var lqr = Statistics.LowerQuartile(lastThreeDataInDouble);
+                            var uqr = Statistics.UpperQuartile(lastThreeDataInDouble);
+
+                            bool isOutlier = false;
+
+                            if (valueDouble > 3 * iqr + uqr)
+                            {
+                                isOutlier = true;
+                            }
+
+                            if (valueDouble < lqr - 3 * iqr)
+                            {
+                                isOutlier = true;
+                            }
+
+                            var itemLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == ItemId);
+
+                            if (isOutlier)
+                            {
+                                if (itemLogLatest != null)
                                 {
-                                    double currentValue = double.Parse(itemsLog.Value);
-
-                                    lastThreeDataInDouble.Add(currentValue);
-                                }
-
-                                var iqr = Statistics.InterquartileRange(lastThreeDataInDouble);
-                                var lqr = Statistics.LowerQuartile(lastThreeDataInDouble);
-                                var uqr = Statistics.UpperQuartile(lastThreeDataInDouble);
-
-                                bool isOutlier = false;
-
-                                if (valueDouble > 3 * iqr + uqr)
-                                {
-                                    isOutlier = true;
-                                }
-
-                                if (valueDouble < lqr - 3 * iqr)
-                                {
-                                    isOutlier = true;
-                                }
-
-                                var itemLogLatest = Entities.ItemsLogLatests.First(x => x.ItemId == ItemId);
-
-                                if (isOutlier)
-                                {
-                                    if (itemLogLatest != null)
+                                    if (itemLogLatest.PassOutlier != null)
                                     {
-                                        if (itemLogLatest.PassOutlier != null)
+                                        if (itemLogLatest.PassOutlier.Value)
                                         {
-                                            if (itemLogLatest.PassOutlier.Value)
-                                            {
-                                                itemLogLatest.PassOutlier = false;
-                                                Entities.SaveChanges();
-                                                return;
-                                            }
+                                            itemLogLatest.PassOutlier = false;
+                                            Entities.SaveChanges();
+                                            return;
+                                        }
+                                        else
+                                        {
+                                            itemLogLatest.PassOutlier = true;
+                                            Entities.SaveChanges();
                                         }
                                     }
                                 }
-
-                                if (itemLogLatest!=null)
+                            }
+                            else
+                            {
+                                if (itemLogLatest != null)
                                 {
                                     itemLogLatest.PassOutlier = true;
                                     Entities.SaveChanges();
                                 }
-                            } 
+                            }
                         }
 
                         //
@@ -615,53 +619,57 @@ namespace MonitoringServiceLibrary
                     if (this.Type == ItemType.Analog)
                     {
                         var lastThreeData =
-                                            Entities.ItemsLogs.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogId).Take(3).ToList();
+                                            Entities.ItemsLogs.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogId).Take(10).ToList();
 
-                        if (lastThreeData.Count == 3)
+                        List<double> lastThreeDataInDouble = new List<double>();
+
+                        foreach (ItemsLog itemsLog in lastThreeData)
                         {
-                            List<double> lastThreeDataInDouble = new List<double>();
+                            double currentValue = double.Parse(itemsLog.Value);
 
-                            foreach (ItemsLog itemsLog in lastThreeData)
+                            lastThreeDataInDouble.Add(currentValue);
+                        }
+
+                        var iqr = Statistics.InterquartileRange(lastThreeDataInDouble);
+                        var lqr = Statistics.LowerQuartile(lastThreeDataInDouble);
+                        var uqr = Statistics.UpperQuartile(lastThreeDataInDouble);
+
+                        bool isOutlier = false;
+
+                        if (valueDouble > 3 * iqr + uqr)
+                        {
+                            isOutlier = true;
+                        }
+
+                        if (valueDouble < lqr - 3 * iqr)
+                        {
+                            isOutlier = true;
+                        }
+
+                        var itemLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == ItemId);
+
+                        if (isOutlier)
+                        {
+                            if (itemLogLatest != null)
                             {
-                                double currentValue = double.Parse(itemsLog.Value);
-
-                                lastThreeDataInDouble.Add(currentValue);
-                            }
-
-                            var iqr = Statistics.InterquartileRange(lastThreeDataInDouble);
-                            var lqr = Statistics.LowerQuartile(lastThreeDataInDouble);
-                            var uqr = Statistics.UpperQuartile(lastThreeDataInDouble);
-
-                            bool isOutlier = false;
-
-                            if (valueDouble > 3 * iqr + uqr)
-                            {
-                                isOutlier = true;
-                            }
-
-                            if (valueDouble < lqr - 3 * iqr)
-                            {
-                                isOutlier = true;
-                            }
-
-                            var itemLogLatest = Entities.ItemsLogLatests.First(x => x.ItemId == ItemId);
-
-                            if (isOutlier)
-                            {
-                                if (itemLogLatest != null)
+                                if (itemLogLatest.PassOutlier != null)
                                 {
-                                    if (itemLogLatest.PassOutlier != null)
+                                    if (itemLogLatest.PassOutlier.Value)
                                     {
-                                        if (itemLogLatest.PassOutlier.Value)
-                                        {
-                                            itemLogLatest.PassOutlier = false;
-                                            Entities.SaveChanges();
-                                            return;
-                                        }
+                                        itemLogLatest.PassOutlier = false;
+                                        Entities.SaveChanges();
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        itemLogLatest.PassOutlier = true;
+                                        Entities.SaveChanges();
                                     }
                                 }
                             }
-
+                        }
+                        else
+                        {
                             if (itemLogLatest != null)
                             {
                                 itemLogLatest.PassOutlier = true;
