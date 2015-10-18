@@ -415,13 +415,11 @@ namespace MonitoringServiceLibrary
                                     }
                                 }
                             }
-                            else
+
+                            if (itemLogLatest != null)
                             {
-                                if (itemLogLatest != null)
-                                {
-                                    itemLogLatest.PassOutlier = true;
-                                    Entities.SaveChanges();
-                                }
+                                itemLogLatest.PassOutlier = true;
+                                Entities.SaveChanges();
                             }
                         }
 
@@ -668,13 +666,11 @@ namespace MonitoringServiceLibrary
                                 }
                             }
                         }
-                        else
+
+                        if (itemLogLatest != null)
                         {
-                            if (itemLogLatest != null)
-                            {
-                                itemLogLatest.PassOutlier = true;
-                                Entities.SaveChanges();
-                            }
+                            itemLogLatest.PassOutlier = true;
+                            Entities.SaveChanges();
                         }
                     }
 
