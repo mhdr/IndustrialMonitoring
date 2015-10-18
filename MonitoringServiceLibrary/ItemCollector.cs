@@ -369,29 +369,32 @@ namespace MonitoringServiceLibrary
                         {
                             var lastData = Entities.ItemsLogRawDatas.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogRawDataId).Take(10).ToList();
 
-                            List<double> lastDataInDouble = new List<double>();
-
-                            foreach (var itemsLog in lastData)
+                            if (lastData.Count > 3)
                             {
-                                double currentValue = double.Parse(itemsLog.Value);
+                                List<double> lastDataInDouble = new List<double>();
 
-                                lastDataInDouble.Add(currentValue);
-                            }
+                                foreach (var itemsLog in lastData)
+                                {
+                                    double currentValue = double.Parse(itemsLog.Value);
 
-                            var iqr = Statistics.InterquartileRange(lastDataInDouble);
-                            var lqr = Statistics.LowerQuartile(lastDataInDouble);
-                            var uqr = Statistics.UpperQuartile(lastDataInDouble);
+                                    lastDataInDouble.Add(currentValue);
+                                }
 
-                            
+                                var iqr = Statistics.InterquartileRange(lastDataInDouble);
+                                var lqr = Statistics.LowerQuartile(lastDataInDouble);
+                                var uqr = Statistics.UpperQuartile(lastDataInDouble);
 
-                            if (valueDouble > 3 * iqr + uqr)
-                            {
-                                isOutlier = true;
-                            }
 
-                            if (valueDouble < lqr - 3 * iqr)
-                            {
-                                isOutlier = true;
+
+                                if (valueDouble > 3 * iqr + uqr)
+                                {
+                                    isOutlier = true;
+                                }
+
+                                if (valueDouble < lqr - 3 * iqr)
+                                {
+                                    isOutlier = true;
+                                }
                             }
                         }
 
@@ -624,29 +627,32 @@ namespace MonitoringServiceLibrary
                     {
                         var lastData = Entities.ItemsLogRawDatas.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogRawDataId).Take(10).ToList();
 
-                        List<double> lastDataInDouble = new List<double>();
-
-                        foreach (var itemsLog in lastData)
+                        if (lastData.Count > 3)
                         {
-                            double currentValue = double.Parse(itemsLog.Value);
+                            List<double> lastDataInDouble = new List<double>();
 
-                            lastDataInDouble.Add(currentValue);
-                        }
+                            foreach (var itemsLog in lastData)
+                            {
+                                double currentValue = double.Parse(itemsLog.Value);
 
-                        var iqr = Statistics.InterquartileRange(lastDataInDouble);
-                        var lqr = Statistics.LowerQuartile(lastDataInDouble);
-                        var uqr = Statistics.UpperQuartile(lastDataInDouble);
+                                lastDataInDouble.Add(currentValue);
+                            }
+
+                            var iqr = Statistics.InterquartileRange(lastDataInDouble);
+                            var lqr = Statistics.LowerQuartile(lastDataInDouble);
+                            var uqr = Statistics.UpperQuartile(lastDataInDouble);
 
 
 
-                        if (valueDouble > 3 * iqr + uqr)
-                        {
-                            isOutlier = true;
-                        }
+                            if (valueDouble > 3 * iqr + uqr)
+                            {
+                                isOutlier = true;
+                            }
 
-                        if (valueDouble < lqr - 3 * iqr)
-                        {
-                            isOutlier = true;
+                            if (valueDouble < lqr - 3 * iqr)
+                            {
+                                isOutlier = true;
+                            }
                         }
                     }
 
