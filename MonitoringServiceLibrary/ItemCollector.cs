@@ -319,36 +319,43 @@ namespace MonitoringServiceLibrary
                         // detect ouliers
 
                         bool isOutlier = false;
+                        int numberOfDataForBoxplot = 0;
 
-                        if (this.Type == ItemType.Analog)
+                        if (ItemObj.NumberOfDataForBoxplot != null)
                         {
-                            var lastData = Entities.ItemsLogRawDatas.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogRawDataId).Take(10).ToList();
+                            numberOfDataForBoxplot = ItemObj.NumberOfDataForBoxplot.Value;
+                        }
 
-                            if (lastData.Count > 3)
+                        if (numberOfDataForBoxplot > 2)
+                        {
+                            if (this.Type == ItemType.Analog)
                             {
-                                List<double> lastDataInDouble = new List<double>();
+                                var lastData = Entities.ItemsLogRawDatas.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogRawDataId).Take(numberOfDataForBoxplot).ToList();
 
-                                foreach (var itemsLog in lastData)
+                                if (lastData.Count > 3)
                                 {
-                                    double currentValue = double.Parse(itemsLog.Value);
+                                    List<double> lastDataInDouble = new List<double>();
 
-                                    lastDataInDouble.Add(currentValue);
-                                }
+                                    foreach (var itemsLog in lastData)
+                                    {
+                                        double currentValue = double.Parse(itemsLog.Value);
 
-                                var iqr = Statistics.InterquartileRange(lastDataInDouble);
-                                var lqr = Statistics.LowerQuartile(lastDataInDouble);
-                                var uqr = Statistics.UpperQuartile(lastDataInDouble);
+                                        lastDataInDouble.Add(currentValue);
+                                    }
 
+                                    var iqr = Statistics.InterquartileRange(lastDataInDouble);
+                                    var lqr = Statistics.LowerQuartile(lastDataInDouble);
+                                    var uqr = Statistics.UpperQuartile(lastDataInDouble);
 
+                                    if (valueDouble > 3 * iqr + uqr)
+                                    {
+                                        isOutlier = true;
+                                    }
 
-                                if (valueDouble > 3 * iqr + uqr)
-                                {
-                                    isOutlier = true;
-                                }
-
-                                if (valueDouble < lqr - 3 * iqr)
-                                {
-                                    isOutlier = true;
+                                    if (valueDouble < lqr - 3 * iqr)
+                                    {
+                                        isOutlier = true;
+                                    }
                                 }
                             }
                         }
@@ -669,40 +676,49 @@ namespace MonitoringServiceLibrary
                     // detect ouliers
 
                     bool isOutlier = false;
+                    int numberOfDataForBoxplot = 0;
 
-                    if (this.Type == ItemType.Analog)
+                    if (ItemObj.NumberOfDataForBoxplot != null)
                     {
-                        var lastData = Entities.ItemsLogRawDatas.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogRawDataId).Take(10).ToList();
+                        numberOfDataForBoxplot = ItemObj.NumberOfDataForBoxplot.Value;
+                    }
 
-                        if (lastData.Count > 3)
+                    if (numberOfDataForBoxplot > 2)
+                    {
+                        if (this.Type == ItemType.Analog)
                         {
-                            List<double> lastDataInDouble = new List<double>();
+                            var lastData = Entities.ItemsLogRawDatas.Where(x => x.ItemId == ItemId).OrderByDescending(x => x.ItemLogRawDataId).Take(numberOfDataForBoxplot).ToList();
 
-                            foreach (var itemsLog in lastData)
+                            if (lastData.Count > 3)
                             {
-                                double currentValue = double.Parse(itemsLog.Value);
+                                List<double> lastDataInDouble = new List<double>();
 
-                                lastDataInDouble.Add(currentValue);
-                            }
+                                foreach (var itemsLog in lastData)
+                                {
+                                    double currentValue = double.Parse(itemsLog.Value);
 
-                            var iqr = Statistics.InterquartileRange(lastDataInDouble);
-                            var lqr = Statistics.LowerQuartile(lastDataInDouble);
-                            var uqr = Statistics.UpperQuartile(lastDataInDouble);
+                                    lastDataInDouble.Add(currentValue);
+                                }
+
+                                var iqr = Statistics.InterquartileRange(lastDataInDouble);
+                                var lqr = Statistics.LowerQuartile(lastDataInDouble);
+                                var uqr = Statistics.UpperQuartile(lastDataInDouble);
 
 
 
-                            if (valueDouble > 3 * iqr + uqr)
-                            {
-                                isOutlier = true;
-                            }
+                                if (valueDouble > 3 * iqr + uqr)
+                                {
+                                    isOutlier = true;
+                                }
 
-                            if (valueDouble < lqr - 3 * iqr)
-                            {
-                                isOutlier = true;
+                                if (valueDouble < lqr - 3 * iqr)
+                                {
+                                    isOutlier = true;
+                                }
                             }
                         }
                     }
-
+                    
                     //
 
                     // Save in ItemsLogRawData

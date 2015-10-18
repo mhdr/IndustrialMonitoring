@@ -22,5 +22,6 @@
     [MaxRange] NVARCHAR(50) NULL, 
 	[NormalizeWhenOutOfRange] BIT NULL DEFAULT 0, 
     [ThreadGroupId] INT NULL, 
+    [NumberOfDataForBoxplot] INT NULL DEFAULT 0, 
     CONSTRAINT [FK_Items_ThreadGroup] FOREIGN KEY ([ThreadGroupId]) REFERENCES [ThreadGroup]([ThreadGroupId])
 )

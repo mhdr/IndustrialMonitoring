@@ -53,6 +53,7 @@
           <Property Name="MaxRange" Type="nvarchar" MaxLength="50" />
           <Property Name="NormalizeWhenOutOfRange" Type="bit" />
           <Property Name="ThreadGroupId" Type="int" />
+          <Property Name="NumberOfDataForBoxplot" Type="int" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -600,6 +601,7 @@
           <NavigationProperty Name="NotificationItems" Relationship="IndustrialMonitoringModel.FK_NotificationItems_Items" FromRole="Item" ToRole="NotificationItem" />
           <NavigationProperty Name="TabsItems" Relationship="IndustrialMonitoringModel.FK_TabsItems_Items" FromRole="Item" ToRole="TabsItem" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" FromRole="Item" ToRole="UsersItemsPermission" />
+          <Property Name="NumberOfDataForBoxplot" Type="Int32" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -978,6 +980,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="NumberOfDataForBoxplot" ColumnName="NumberOfDataForBoxplot" />
                 <ScalarProperty Name="ThreadGroupId" ColumnName="ThreadGroupId" />
                 <ScalarProperty Name="NormalizeWhenOutOfRange" ColumnName="NormalizeWhenOutOfRange" />
                 <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />

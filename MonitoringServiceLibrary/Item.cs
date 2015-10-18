@@ -46,6 +46,7 @@ namespace MonitoringServiceLibrary
         public string MaxRange { get; set; }
         public Nullable<bool> NormalizeWhenOutOfRange { get; set; }
         public Nullable<int> ThreadGroupId { get; set; }
+        public Nullable<int> NumberOfDataForBoxplot { get; set; }
     
         public virtual ThreadGroup ThreadGroup { get; set; }
         public virtual ICollection<ItemsLog> ItemsLogs { get; set; }
