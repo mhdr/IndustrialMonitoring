@@ -34,8 +34,6 @@ namespace MonitoringServiceLibrary
         private Device _deviceBACnet;
         private BACnetDevice _baCnetDevice;
 
-        private ItemsLog _lastItemLog;
-        private ItemsLogLatest _lastItemLogLatest;
         private Item _item;
 
         private ProcessDataServiceClient _bSProcessDataServiceClient;
@@ -98,18 +96,6 @@ namespace MonitoringServiceLibrary
         {
             get { return _scanCycle; }
             set { _scanCycle = value; }
-        }
-
-        public ItemsLog LastItemLog
-        {
-            get { return _lastItemLog; }
-            set { _lastItemLog = value; }
-        }
-
-        public ItemsLogLatest LastItemLogLatest
-        {
-            get { return _lastItemLogLatest; }
-            set { _lastItemLogLatest = value; }
         }
 
         public WhenToLog SaveInItemsLogWhen
@@ -191,37 +177,6 @@ namespace MonitoringServiceLibrary
             this.DefinationType = (ItemDefinationType)item.DefinationType;
 
             this.BSProcessDataServiceClient = new ProcessDataServiceClient();
-        }
-
-        [Obsolete]
-        public void Start()
-        {
-            try
-            {
-                if (this.DefinationType == ItemDefinationType.SqlDefined)
-                {
-                    if (this.Type == ItemType.Digital)
-                    {
-                        SubscriberBool = new NetworkVariableBufferedSubscriber<bool>(this.Location);
-                        SubscriberBool.Connect();
-                    }
-                    else if (this.Type == ItemType.Analog)
-                    {
-                        SubscriberInt = new NetworkVariableBufferedSubscriber<dynamic>(this.Location);
-                        SubscriberInt.Connect();
-                    }
-                }
-                else if (this.DefinationType == ItemDefinationType.BACnet)
-                {
-
-                }
-
-                Timer = new Timer(CheckValue, new object(), 0, ScanCycle);
-            }
-            catch (Exception ex)
-            {
-                Logger.LogMonitoringServiceLibrary(ex);
-            }
         }
 
         public async Task ReadValueInfinite()
@@ -401,9 +356,24 @@ namespace MonitoringServiceLibrary
                         //
 
                         // Save in ItemsLogRawData
+
+                        var lastItemLogRaw = Entities.ItemsLogRawDatas.OrderByDescending(x => x.ItemLogRawDataId).FirstOrDefault(x => x.ItemId == ItemId);
+
+                        if (lastItemLogRaw == null)
+                        {
+                            ItemsLogRawData rawData = new ItemsLogRawData();
+                            rawData.ItemId = ItemId;
+                            rawData.Value = value;
+                            rawData.Time = DateTime.Now;
+                            Entities.ItemsLogRawDatas.Add(rawData);
+                            Entities.SaveChanges();
+
+                            lastItemLogRaw = rawData;
+                        }
+
                         if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
                         {
-                            TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
+                            TimeSpan timeSpan = DateTime.Now - lastItemLogRaw.Time;
 
                             if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
                             {
@@ -417,7 +387,7 @@ namespace MonitoringServiceLibrary
                         }
                         else if (SaveInItemsLogWhen == WhenToLog.OnChange)
                         {
-                            if (LastItemLog.Value != value)
+                            if (lastItemLogRaw.Value != value)
                             {
                                 ItemsLogRawData rawData = new ItemsLogRawData();
                                 rawData.ItemId = ItemId;
@@ -431,45 +401,122 @@ namespace MonitoringServiceLibrary
 
                         if (!isOutlier)
                         {
-                            if (LastItemLog == null)
+                            var lastItemLog = Entities.ItemsLogs.OrderByDescending(x => x.ItemLogId).FirstOrDefault(x => x.ItemId == ItemId);
+
+                            if (lastItemLog == null)
                             {
-                                SaveValueInItemsLog(value);
+                                ItemsLog itemsLog = new ItemsLog();
+                                itemsLog.ItemId = this.ItemId;
+                                itemsLog.Time = DateTime.Now;
+                                itemsLog.Value = value;
+                                Entities.ItemsLogs.Add(itemsLog);
+
+                                Entities.SaveChanges();
+
+                                lastItemLog = itemsLog;
                             }
-                            else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
+
+                            if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
                             {
-                                TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
+                                TimeSpan timeSpan = DateTime.Now - lastItemLog.Time;
 
                                 if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
                                 {
-                                    SaveValueInItemsLog(value);
+                                    ItemsLog itemsLog = new ItemsLog();
+                                    itemsLog.ItemId = this.ItemId;
+                                    itemsLog.Time = DateTime.Now;
+                                    itemsLog.Value = value;
+                                    Entities.ItemsLogs.Add(itemsLog);
+
+                                    Entities.SaveChanges();
                                 }
                             }
                             else if (SaveInItemsLogWhen == WhenToLog.OnChange)
                             {
-                                if (LastItemLog.Value != value)
+                                if (lastItemLog.Value != value)
                                 {
-                                    SaveValueInItemsLog(value);
+                                    ItemsLog itemsLog = new ItemsLog();
+                                    itemsLog.ItemId = this.ItemId;
+                                    itemsLog.Time = DateTime.Now;
+                                    itemsLog.Value = value;
+                                    Entities.ItemsLogs.Add(itemsLog);
+
+                                    Entities.SaveChanges();
                                 }
                             }
 
-                            if (LastItemLogLatest == null)
+
+                            var lastItemLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == ItemId);
+
+                            if (lastItemLogLatest == null)
                             {
-                                SaveValueInItemsLogLatest(value);
+                                ItemsLogLatest itemsLogLatest = null;
+                                if (Entities.ItemsLogLatests.Any(x => x.ItemId == this.ItemId))
+                                {
+                                    itemsLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == this.ItemId);
+                                    itemsLogLatest.Time = DateTime.Now;
+                                    itemsLogLatest.Value = value;
+                                }
+                                else
+                                {
+                                    itemsLogLatest = new ItemsLogLatest();
+                                    itemsLogLatest.ItemId = this.ItemId;
+                                    itemsLogLatest.Time = DateTime.Now;
+                                    itemsLogLatest.Value = value;
+                                    Entities.ItemsLogLatests.Add(itemsLogLatest);
+                                }
+
+                                Entities.SaveChanges();
+
+                                lastItemLogLatest = itemsLogLatest;
                             }
-                            else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
+
+                            if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
                             {
-                                TimeSpan timeSpan = DateTime.Now - LastItemLogLatest.Time;
+                                TimeSpan timeSpan = DateTime.Now - lastItemLogLatest.Time;
 
                                 if (timeSpan.TotalSeconds >= SaveInItemsLogLastesTimeInterval)
                                 {
-                                    SaveValueInItemsLogLatest(value);
+                                    ItemsLogLatest itemsLogLatest = null;
+                                    if (Entities.ItemsLogLatests.Any(x => x.ItemId == this.ItemId))
+                                    {
+                                        itemsLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == this.ItemId);
+                                        itemsLogLatest.Time = DateTime.Now;
+                                        itemsLogLatest.Value = value;
+                                    }
+                                    else
+                                    {
+                                        itemsLogLatest = new ItemsLogLatest();
+                                        itemsLogLatest.ItemId = this.ItemId;
+                                        itemsLogLatest.Time = DateTime.Now;
+                                        itemsLogLatest.Value = value;
+                                        Entities.ItemsLogLatests.Add(itemsLogLatest);
+                                    }
+
+                                    Entities.SaveChanges();
                                 }
                             }
                             else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
                             {
-                                if (LastItemLogLatest.Value != value)
+                                if (lastItemLogLatest.Value != value)
                                 {
-                                    SaveValueInItemsLogLatest(value);
+                                    ItemsLogLatest itemsLogLatest = null;
+                                    if (Entities.ItemsLogLatests.Any(x => x.ItemId == this.ItemId))
+                                    {
+                                        itemsLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == this.ItemId);
+                                        itemsLogLatest.Time = DateTime.Now;
+                                        itemsLogLatest.Value = value;
+                                    }
+                                    else
+                                    {
+                                        itemsLogLatest = new ItemsLogLatest();
+                                        itemsLogLatest.ItemId = this.ItemId;
+                                        itemsLogLatest.Time = DateTime.Now;
+                                        itemsLogLatest.Value = value;
+                                        Entities.ItemsLogLatests.Add(itemsLogLatest);
+                                    }
+
+                                    Entities.SaveChanges();
                                 }
                             }
                         }
@@ -659,9 +706,24 @@ namespace MonitoringServiceLibrary
                     //
 
                     // Save in ItemsLogRawData
+
+                    var lastItemLogRaw = Entities.ItemsLogRawDatas.OrderByDescending(x=>x.ItemLogRawDataId).FirstOrDefault(x => x.ItemId == ItemId);
+
+                    if (lastItemLogRaw == null)
+                    {
+                        ItemsLogRawData rawData = new ItemsLogRawData();
+                        rawData.ItemId = ItemId;
+                        rawData.Value = value;
+                        rawData.Time = DateTime.Now;
+                        Entities.ItemsLogRawDatas.Add(rawData);
+                        Entities.SaveChanges();
+
+                        lastItemLogRaw = rawData;
+                    }
+
                     if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
                     {
-                        TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
+                        TimeSpan timeSpan = DateTime.Now - lastItemLogRaw.Time;
 
                         if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
                         {
@@ -675,7 +737,7 @@ namespace MonitoringServiceLibrary
                     }
                     else if (SaveInItemsLogWhen == WhenToLog.OnChange)
                     {
-                        if (LastItemLog.Value != value)
+                        if (lastItemLogRaw.Value != value)
                         {
                             ItemsLogRawData rawData = new ItemsLogRawData();
                             rawData.ItemId = ItemId;
@@ -689,45 +751,122 @@ namespace MonitoringServiceLibrary
 
                     if (!isOutlier)
                     {
-                        if (LastItemLog == null)
+                        var lastItemLog = Entities.ItemsLogs.OrderByDescending(x => x.ItemLogId).FirstOrDefault(x => x.ItemId == ItemId);
+
+                        if (lastItemLog == null)
                         {
-                            SaveValueInItemsLog(value);
+                            ItemsLog itemsLog = new ItemsLog();
+                            itemsLog.ItemId = this.ItemId;
+                            itemsLog.Time = DateTime.Now;
+                            itemsLog.Value = value;
+                            Entities.ItemsLogs.Add(itemsLog);
+
+                            Entities.SaveChanges();
+
+                            lastItemLog = itemsLog;
                         }
-                        else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
+
+                        if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
                         {
-                            TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
+                            TimeSpan timeSpan = DateTime.Now - lastItemLog.Time;
 
                             if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
                             {
-                                SaveValueInItemsLog(value);
+                                ItemsLog itemsLog = new ItemsLog();
+                                itemsLog.ItemId = this.ItemId;
+                                itemsLog.Time = DateTime.Now;
+                                itemsLog.Value = value;
+                                Entities.ItemsLogs.Add(itemsLog);
+
+                                Entities.SaveChanges();
                             }
                         }
                         else if (SaveInItemsLogWhen == WhenToLog.OnChange)
                         {
-                            if (LastItemLog.Value != value)
+                            if (lastItemLog.Value != value)
                             {
-                                SaveValueInItemsLog(value);
+                                ItemsLog itemsLog = new ItemsLog();
+                                itemsLog.ItemId = this.ItemId;
+                                itemsLog.Time = DateTime.Now;
+                                itemsLog.Value = value;
+                                Entities.ItemsLogs.Add(itemsLog);
+
+                                Entities.SaveChanges();
                             }
                         }
 
-                        if (LastItemLogLatest == null)
+
+                        var lastItemLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == ItemId);
+
+                        if (lastItemLogLatest == null)
                         {
-                            SaveValueInItemsLogLatest(value);
+                            ItemsLogLatest itemsLogLatest = null;
+                            if (Entities.ItemsLogLatests.Any(x => x.ItemId == this.ItemId))
+                            {
+                                itemsLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == this.ItemId);
+                                itemsLogLatest.Time = DateTime.Now;
+                                itemsLogLatest.Value = value;
+                            }
+                            else
+                            {
+                                itemsLogLatest = new ItemsLogLatest();
+                                itemsLogLatest.ItemId = this.ItemId;
+                                itemsLogLatest.Time = DateTime.Now;
+                                itemsLogLatest.Value = value;
+                                Entities.ItemsLogLatests.Add(itemsLogLatest);
+                            }
+
+                            Entities.SaveChanges();
+
+                            lastItemLogLatest = itemsLogLatest;
                         }
-                        else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
+
+                        if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
                         {
-                            TimeSpan timeSpan = DateTime.Now - LastItemLogLatest.Time;
+                            TimeSpan timeSpan = DateTime.Now - lastItemLogLatest.Time;
 
                             if (timeSpan.TotalSeconds >= SaveInItemsLogLastesTimeInterval)
                             {
-                                SaveValueInItemsLogLatest(value);
+                                ItemsLogLatest itemsLogLatest = null;
+                                if (Entities.ItemsLogLatests.Any(x => x.ItemId == this.ItemId))
+                                {
+                                    itemsLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == this.ItemId);
+                                    itemsLogLatest.Time = DateTime.Now;
+                                    itemsLogLatest.Value = value;
+                                }
+                                else
+                                {
+                                    itemsLogLatest = new ItemsLogLatest();
+                                    itemsLogLatest.ItemId = this.ItemId;
+                                    itemsLogLatest.Time = DateTime.Now;
+                                    itemsLogLatest.Value = value;
+                                    Entities.ItemsLogLatests.Add(itemsLogLatest);
+                                }
+
+                                Entities.SaveChanges();
                             }
                         }
                         else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
                         {
-                            if (LastItemLogLatest.Value != value)
+                            if (lastItemLogLatest.Value != value)
                             {
-                                SaveValueInItemsLogLatest(value);
+                                ItemsLogLatest itemsLogLatest = null;
+                                if (Entities.ItemsLogLatests.Any(x => x.ItemId == this.ItemId))
+                                {
+                                    itemsLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == this.ItemId);
+                                    itemsLogLatest.Time = DateTime.Now;
+                                    itemsLogLatest.Value = value;
+                                }
+                                else
+                                {
+                                    itemsLogLatest = new ItemsLogLatest();
+                                    itemsLogLatest.ItemId = this.ItemId;
+                                    itemsLogLatest.Time = DateTime.Now;
+                                    itemsLogLatest.Value = value;
+                                    Entities.ItemsLogLatests.Add(itemsLogLatest);
+                                }
+
+                                Entities.SaveChanges();
                             }
                         }
                     }
@@ -736,138 +875,6 @@ namespace MonitoringServiceLibrary
             catch (Exception ex)
             {
                 Logger.LogMonitoringServiceLibrary(ex);
-            }
-        }
-
-        [Obsolete]
-        public string ReadValue(bool state)
-        {
-            try
-            {
-                if (this.DefinationType == ItemDefinationType.SqlDefined)
-                {
-                    if (this.Type == ItemType.Digital)
-                    {
-                        SubscriberBool = new NetworkVariableBufferedSubscriber<bool>(this.Location);
-                        SubscriberBool.Connect();
-                    }
-                    else if (this.Type == ItemType.Analog)
-                    {
-                        SubscriberInt = new NetworkVariableBufferedSubscriber<dynamic>(this.Location);
-                        SubscriberInt.Connect();
-                    }
-                }
-                else if (this.DefinationType == ItemDefinationType.BACnet)
-                {
-                    if (BACnetDevice == null)
-                    {
-                        this.BACnetDevice = BACnetDevice.Instance;
-                    }
-
-                    string ip = ItemObj.BACnetIP;
-                    int port = ItemObj.BACnetPort.Value;
-                    IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ip), port);
-                    uint instance = (uint)ItemObj.BACnetControllerInstance.Value;
-
-                    DeviceBaCnet = new Device("Device", 0, 0, endPoint, 0, instance);
-                }
-
-
-                string value = "-1000000";
-
-                if (this.DefinationType == ItemDefinationType.SqlDefined)
-                {
-                    if (this.Type == ItemType.Digital)
-                    {
-                        var data = SubscriberBool.ReadData();
-                        value = Convert.ToInt32(data.GetValue()).ToString();
-                    }
-                    else if (this.Type == ItemType.Analog)
-                    {
-                        var data = SubscriberInt.ReadData();
-                        value = Math.Round(data.GetValue(), 2).ToString();
-                    }
-                }
-                else if (this.DefinationType == ItemDefinationType.CustomDefiend)
-                {
-                    switch (this.ItemId)
-                    {
-                        case 10:
-                            value = (BSProcessDataServiceClient.GetPreHeatingZoneTemperature() / 10).ToString();
-                            break;
-                        case 13:
-                            value = BSProcessDataServiceClient.GetSterilizerZoneTemperature().ToString();
-                            break;
-                        case 14:
-                            value = (BSProcessDataServiceClient.GetCoolingZoneTemperature() / 10).ToString();
-                            break;
-                    }
-                }
-                else if (this.DefinationType == ItemDefinationType.BACnet)
-                {
-                    if (this.Type == ItemType.Digital)
-                    {
-                        BACnetEnums.BACNET_OBJECT_TYPE bacnetType = (BACnetEnums.BACNET_OBJECT_TYPE)ItemObj.BACnetItemType.Value;
-                        uint itemInstance = (uint)ItemObj.BACnetItemInstance.Value;
-                        value = BACnetDevice.ReadValue(DeviceBaCnet, bacnetType, itemInstance).ToString();
-                    }
-                    else if (Type == ItemType.Analog)
-                    {
-                        BACnetEnums.BACNET_OBJECT_TYPE bacnetType = (BACnetEnums.BACNET_OBJECT_TYPE)ItemObj.BACnetItemType.Value;
-                        uint itemInstance = (uint)ItemObj.BACnetItemInstance.Value;
-
-                        string preValue = BACnetDevice.ReadValue(DeviceBaCnet, bacnetType, itemInstance).ToString();
-                        double preValueDouble = double.Parse(preValue);
-                        value = Math.Round(preValueDouble, 2).ToString();
-                    }
-
-                }
-
-                lock (padlock)
-                {
-                    if (value == null)
-                    {
-                        value = "-1000000";
-                    }
-
-                    bool condition = !string.IsNullOrEmpty(ItemObj.MinRange) && !string.IsNullOrEmpty(ItemObj.MaxRange);
-                    if (condition)
-                    {
-                        double valueDouble = double.Parse(value);
-                        double minRange = double.Parse(ItemObj.MinRange);
-                        double maxRange = double.Parse(ItemObj.MaxRange);
-
-                        bool shouldNormalize = false;
-
-                        if (ItemObj.NormalizeWhenOutOfRange != null)
-                        {
-                            shouldNormalize = ItemObj.NormalizeWhenOutOfRange.Value;
-                        }
-
-                        if (valueDouble < minRange)
-                        {
-                            if (shouldNormalize)
-                            {
-                                value = ItemObj.MinRange;
-                            }
-                        }
-
-                        if (valueDouble > maxRange)
-                        {
-                            if (shouldNormalize)
-                            {
-                                value = ItemObj.MaxRange;
-                            }
-                        }
-                    }
-
-                    return value;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.LogMonitoringServiceLibrary(ex);
-                return "";
             }
         }
 
@@ -875,161 +882,5 @@ namespace MonitoringServiceLibrary
         {
             Timer.Dispose();
         }
-
-        [Obsolete]
-        private void CheckValue(object state)
-        {
-            try
-            {
-                string value = "-1000";
-
-                if (this.DefinationType == ItemDefinationType.SqlDefined)
-                {
-                    if (this.Type == ItemType.Digital)
-                    {
-                        var data = SubscriberBool.ReadData();
-                        value = Convert.ToInt32(data.GetValue()).ToString();
-                    }
-                    else if (this.Type == ItemType.Analog)
-                    {
-                        var data = SubscriberInt.ReadData();
-                        value = Math.Round(data.GetValue(), 2).ToString();
-                    }
-                }
-                else if (this.DefinationType == ItemDefinationType.CustomDefiend)
-                {
-                    switch (this.ItemId)
-                    {
-                        case 10:
-                            value = (BSProcessDataServiceClient.GetPreHeatingZoneTemperature() / 10).ToString();
-                            break;
-                        case 13:
-                            value = BSProcessDataServiceClient.GetSterilizerZoneTemperature().ToString();
-                            break;
-                        case 14:
-                            value = (BSProcessDataServiceClient.GetCoolingZoneTemperature() / 10).ToString();
-                            break;
-                    }
-
-                    //Console.WriteLine("{0} : {1}",this.ItemId,value);
-                }
-
-                lock (padlock)
-                {
-                    if (value == null)
-                    {
-                        return;
-                    }
-
-                    if (value == "-1000")
-                    {
-                        return;
-                    }
-
-                    if (LastItemLog == null)
-                    {
-                        SaveValueInItemsLog(value);
-                    }
-                    else if (SaveInItemsLogWhen == WhenToLog.OnTimerElapsed)
-                    {
-                        TimeSpan timeSpan = DateTime.Now - LastItemLog.Time;
-
-                        if (timeSpan.TotalSeconds >= SaveInItemsLogTimeInterval)
-                        {
-                            SaveValueInItemsLog(value);
-                        }
-                    }
-                    else if (SaveInItemsLogWhen == WhenToLog.OnChange)
-                    {
-                        if (LastItemLog.Value != value)
-                        {
-                            SaveValueInItemsLog(value);
-                        }
-                    }
-
-                    if (LastItemLogLatest == null)
-                    {
-                        SaveValueInItemsLogLatest(value);
-                    }
-                    else if (SaveInItemsLogLastWhen == WhenToLog.OnTimerElapsed)
-                    {
-                        TimeSpan timeSpan = DateTime.Now - LastItemLogLatest.Time;
-
-                        if (timeSpan.TotalSeconds >= SaveInItemsLogLastesTimeInterval)
-                        {
-                            SaveValueInItemsLogLatest(value);
-                        }
-                    }
-                    else if (SaveInItemsLogLastWhen == WhenToLog.OnChange)
-                    {
-                        if (LastItemLogLatest.Value != value)
-                        {
-                            SaveValueInItemsLogLatest(value);
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Logger.LogMonitoringServiceLibrary(ex);
-            }
-        }
-
-        private void SaveValueInItemsLogLatest(string value)
-        {
-            try
-            {
-                ItemsLogLatest itemsLogLatest = null;
-                if (Entities.ItemsLogLatests.Any(x => x.ItemId == this.ItemId))
-                {
-                    itemsLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == this.ItemId);
-                    itemsLogLatest.Time = DateTime.Now;
-                    itemsLogLatest.Value = value;
-                }
-                else
-                {
-                    itemsLogLatest = new ItemsLogLatest();
-                    itemsLogLatest.ItemId = this.ItemId;
-                    itemsLogLatest.Time = DateTime.Now;
-                    itemsLogLatest.Value = value;
-                    Entities.ItemsLogLatests.Add(itemsLogLatest);
-                }
-
-                Entities.SaveChanges();
-
-                this.LastItemLogLatest = itemsLogLatest;
-            }
-            catch (Exception ex)
-            {
-                Logger.LogMonitoringServiceLibrary(ex);
-            }
-        }
-
-
-        private void SaveValueInItemsLog(string value)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    ItemsLog itemsLog = new ItemsLog();
-                    itemsLog.ItemId = this.ItemId;
-                    itemsLog.Time = DateTime.Now;
-                    itemsLog.Value = value;
-                    Entities.ItemsLogs.Add(itemsLog);
-
-                    Entities.SaveChanges();
-
-                    this.LastItemLog = itemsLog;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.LogMonitoringServiceLibrary(ex);
-            }
-
-        }
-
     }
 }
