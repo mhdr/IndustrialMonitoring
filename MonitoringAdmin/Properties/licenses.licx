@@ -5,3 +5,4 @@ NationalInstruments.Controls.Internal.WpfEnterpriseLicenser, NationalInstruments
 NationalInstruments.Controls.Internal.WpfProfessionalLicenser, NationalInstruments.Controls, Version=13.0.45.242, Culture=neutral, PublicKeyToken=4febd62461bf11a4
 NationalInstruments.Controls.Internal.WpfStandardLicenser, NationalInstruments.Controls, Version=13.0.45.242, Culture=neutral, PublicKeyToken=4febd62461bf11a4
 # End Measurement Studio licenses
+Telerik.Windows.Controls.RadDataForm, Telerik.Windows.Controls.Data, Version=2015.3.930.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7

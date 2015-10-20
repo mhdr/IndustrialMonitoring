@@ -22,6 +22,10 @@
                     <telerik:RadMenuItem Header="Start Data Collector Service" Name="MenuItemStart" Click="MenuItemStart_OnClick"/>
                     <telerik:RadMenuItem Header="Stop Data Collector Service" Name="MenuItemStop" Click="MenuItemStop_OnClick"/>
                 </telerik:RadMenuItem>
+                <telerik:RadMenuItem Header="Tools">
+                    <telerik:RadMenuItem Header="Permissions" Name="MenuItemPermissions" Click="MenuItemPermissions_OnClick"/>
+                    <telerik:RadMenuItem Header="Notifications" Name="MenuItemNotifications" Click="MenuItemNotifications_OnClick"/>
+                </telerik:RadMenuItem>
             </telerik:RadMenu>
             <StackPanel Name="StackPanelMain" Grid.Row="1">
 

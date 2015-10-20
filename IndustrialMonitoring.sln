@@ -45,8 +45,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostEMS2", "HostEMS2\HostEM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BACnetLib", "BACnetLib\BACnetLib.csproj", "{57AB9DF9-AE59-4452-9838-38248C315481}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathTest", "MathTest\MathTest.csproj", "{F534549C-2CCB-4148-846C-ACB01A1F96CB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,10 +105,6 @@ Global
 		{57AB9DF9-AE59-4452-9838-38248C315481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57AB9DF9-AE59-4452-9838-38248C315481}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57AB9DF9-AE59-4452-9838-38248C315481}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F534549C-2CCB-4148-846C-ACB01A1F96CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F534549C-2CCB-4148-846C-ACB01A1F96CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F534549C-2CCB-4148-846C-ACB01A1F96CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F534549C-2CCB-4148-846C-ACB01A1F96CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
