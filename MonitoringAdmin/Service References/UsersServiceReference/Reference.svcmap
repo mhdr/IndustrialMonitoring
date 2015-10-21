@@ -25,10 +25,11 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="UserService3.xsd" MetadataType="Schema" ID="3a0c9714-9a2d-4c54-996a-ab37744da977" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd1" />
-    <MetadataFile FileName="UserService31.xsd" MetadataType="Schema" ID="78b86f03-a105-4db0-8031-fbd29780fd10" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd2" />
+    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="3f00a39f-2c92-4c50-a80e-6d5e0d9c392e" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd3" />
+    <MetadataFile FileName="UserService1.disco" MetadataType="Disco" ID="4b0139e7-4478-4bcf-b38f-d89eed5dd5df" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?disco" />
     <MetadataFile FileName="UserService1.wsdl" MetadataType="Wsdl" ID="db10f002-6224-4ee7-976c-1029d2d8a421" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?wsdl" />
     <MetadataFile FileName="UserService32.xsd" MetadataType="Schema" ID="e84cb2c3-7989-4288-ad2d-48e672e07a4f" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd0" />
-    <MetadataFile FileName="UserService1.disco" MetadataType="Disco" ID="4b0139e7-4478-4bcf-b38f-d89eed5dd5df" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?disco" />
+    <MetadataFile FileName="UserService31.xsd" MetadataType="Schema" ID="78b86f03-a105-4db0-8031-fbd29780fd10" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

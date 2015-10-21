@@ -96,8 +96,8 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Telegram.Bot, Version=3.2.1.42167, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telegram.Bot.3.2.1.42167\lib\portable-net45+win\Telegram.Bot.dll</HintPath>
+    <Reference Include="Telegram.Bot, Version=4.0.0.27039, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telegram.Bot.4.0.0.27039\lib\net45\Telegram.Bot.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

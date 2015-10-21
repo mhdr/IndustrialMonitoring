@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MonitoringServiceLibrary.ViewModels" />
+  <xs:import schemaLocation="http://172.20.63.234:9011/MonitoringService/UserService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="GetUserByUserName">
     <xs:complexType>
       <xs:sequence>
@@ -99,6 +100,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SetPasswordResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserServicesPermission">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserServicesPermissionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetUserServicesPermissionResult" nillable="true" type="q4:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

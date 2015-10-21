@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>49</ApplicationRevision>
+    <ApplicationRevision>50</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -342,6 +342,9 @@
     </None>
     <None Include="Service References\UsersServiceReference\MonitoringAdmin.UsersServiceReference.UserViewModel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UsersServiceReference\UserService.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UsersServiceReference\UserService1.wsdl" />
     <None Include="Service References\UsersServiceReference\UserService3.xsd">
