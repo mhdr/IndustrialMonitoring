@@ -66,12 +66,12 @@ namespace MonitoringServiceLibrary
 
             while (!StopThread)
             {
-                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
-                List<NotificationItem> notificationItems = entities.NotificationItems.ToList();
-
-                foreach (var notificationItem in notificationItems)
+                try
                 {
-                    try
+                    IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+                    List<NotificationItem> notificationItems = entities.NotificationItems.ToList();
+
+                    foreach (var notificationItem in notificationItems)
                     {
                         entities = new IndustrialMonitoringEntities();
                         int notificationId = notificationItem.NotificationId;
@@ -92,7 +92,7 @@ namespace MonitoringServiceLibrary
                         {
                             ItemsLogLatest itemLogLatest =
             entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == notificationItem.ItemId);
-                            
+
                             double currentValue = double.Parse(itemLogLatest.Value);
 
                             bool withoutNotification = false;
@@ -139,80 +139,6 @@ namespace MonitoringServiceLibrary
                             {
                                 if (notificationItemsLogLatest.Value)
                                 {
-                                    //if (notificationItem.IsDelayed != null && notificationItem.IsDelayed.Value)
-                                    //{
-                                    //    int currentCount = 0;
-                                    //    List<string> results=new List<string>();
-
-                                    //    int numberOfDelay = 2;
-
-                                    //    if (notificationItem.NumberOfDelayes != null)
-                                    //    {
-                                    //        numberOfDelay = notificationItem.NumberOfDelayes.Value;
-                                    //    }
-
-                                    //    while (currentCount<numberOfDelay)
-                                    //    {
-                                    //        if (notificationItem.IntervalBetweenItems != null)
-                                    //        {
-                                    //            Thread.Sleep(notificationItem.IntervalBetweenItems.Value);
-                                    //        }
-                                    //        else
-                                    //        {
-                                    //            Thread.Sleep(1000);
-                                    //        }
-
-                                    //        ItemCollector itemCollector=new ItemCollector(notificationItem.Item);
-                                    //        string currentResult =itemCollector.ReadValue(true);
-                                    //        results.Add(currentResult);
-
-                                    //        currentCount++;
-                                    //    }
-
-                                    //    int numberOfWithoutNotifications = 0;
-
-                                    //    foreach (string s in results)
-                                    //    {
-                                    //        currentValue = double.Parse(s);
-
-                                    //        if (notificationItem.NotificationType == (int)NotificationType.Lower)
-                                    //        {
-                                    //            if (currentValue < notificationItem.High)
-                                    //            {
-                                    //                numberOfWithoutNotifications++;
-                                    //            }
-                                    //        }
-                                    //        else if (notificationItem.NotificationType == (int)NotificationType.Between)
-                                    //        {
-                                    //            if (currentValue > notificationItem.Low && currentValue < notificationItem.High)
-                                    //            {
-                                    //                numberOfWithoutNotifications++;
-                                    //            }
-                                    //        }
-                                    //        else if (notificationItem.NotificationType == (int)NotificationType.Higher)
-                                    //        {
-                                    //            if (currentValue > notificationItem.Low)
-                                    //            {
-                                    //                numberOfWithoutNotifications++;
-                                    //            }
-                                    //        }
-                                    //    }
-
-                                    //    if (numberOfWithoutNotifications == notificationItem.NumberOfDelayes.Value)
-                                    //    {
-                                    //        withoutNotification = true;
-                                    //    }
-                                    //    else
-                                    //    {
-                                    //        withoutNotification = false;
-                                    //    }
-                                    //}
-
-                                    //if (withoutNotification == false)
-                                    //{
-
-                                    //}
-
                                     // we have a notification
 
                                     NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
@@ -235,15 +161,14 @@ namespace MonitoringServiceLibrary
                         }
 
                         Thread.Sleep(10);
+                    }
 
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.LogMonitoringServiceLibrary(ex);
-                    }
+                    Thread.Sleep(1000);
                 }
-
-                Thread.Sleep(1000);                
+                catch (Exception ex)
+                {
+                    Logger.LogMonitoringServiceLibrary(ex);
+                }             
             }
 
             IsThreadRunning = false;

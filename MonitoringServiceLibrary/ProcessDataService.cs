@@ -14,61 +14,93 @@ namespace MonitoringServiceLibrary
     {
         public ItemsLogLatestAIOViewModel GeItemsLogLatest(int itemId)
         {
-            ItemsLogLatestAIOViewModel result = null;
-
-            var Entities=new IndustrialMonitoringEntities();
-            ItemsLogLatest current = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == itemId);
-
-            if (current == null)
+            try
             {
+                ItemsLogLatestAIOViewModel result = null;
+
+                var Entities = new IndustrialMonitoringEntities();
+                ItemsLogLatest current = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == itemId);
+
+                if (current == null)
+                {
+                    return null;
+                }
+
+                result = new ItemsLogLatestAIOViewModel(current);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
                 return null;
             }
-
-            result = new ItemsLogLatestAIOViewModel(current);
-
-            return result;
         }
 
         public List<Item1> GetItems()
         {
-            List<Item1> result = new List<Item1>();
-            var Entities = new IndustrialMonitoringEntities();
-            var items = Entities.Items.OrderBy(x=>x.Order);
-
-            foreach (var item in items)
+            try
             {
-                result.Add(new Item1(item));
-            }
+                List<Item1> result = new List<Item1>();
+                var Entities = new IndustrialMonitoringEntities();
+                var items = Entities.Items.OrderBy(x => x.Order);
 
-            return result;
+                foreach (var item in items)
+                {
+                    result.Add(new Item1(item));
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return null;
+            }
         }
 
         public List<Item2> GetItems2()
         {
-            List<Item2> result = new List<Item2>();
-            var Entities = new IndustrialMonitoringEntities();
-            var items = Entities.Items.OrderBy(x=>x.Order);
-
-            foreach (var item in items)
+            try
             {
-                result.Add(new Item2(item));
-            }
+                List<Item2> result = new List<Item2>();
+                var Entities = new IndustrialMonitoringEntities();
+                var items = Entities.Items.OrderBy(x => x.Order);
 
-            return result;
+                foreach (var item in items)
+                {
+                    result.Add(new Item2(item));
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return null;
+            }
         }
 
         public List<Item3> GetItems3()
         {
-            List<Item3> result = new List<Item3>();
-            var Entities = new IndustrialMonitoringEntities();
-            var items = Entities.Items.OrderBy(x=>x.Order);
-
-            foreach (var item in items)
+            try
             {
-                result.Add(new Item3(item));
-            }
+                List<Item3> result = new List<Item3>();
+                var Entities = new IndustrialMonitoringEntities();
+                var items = Entities.Items.OrderBy(x => x.Order);
 
-            return result;
+                foreach (var item in items)
+                {
+                    result.Add(new Item3(item));
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return null;
+            }
         }
 
         public Item1 GetItem(int itemId)
@@ -213,39 +245,47 @@ namespace MonitoringServiceLibrary
 
         public bool AddItem2(Item2 item)
         {
-            IndustrialMonitoringEntities entities=new IndustrialMonitoringEntities();
-            
-            Item newItem=new Item();
-            newItem.ItemName = item.ItemName;
-            newItem.ItemType = (int) item.ItemType;
-            newItem.Location = item.Location;
-            newItem.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
-            newItem.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
-            newItem.ShowInUITimeInterval = item.ShowInUITimeInterval;
-            newItem.ScanCycle = item.ScanCycle;
-            newItem.SaveInItemsLogWhen = (int) item.SaveInItemsLogWhen;
-            newItem.SaveInItemsLogLastWhen = (int) item.SaveInItemsLogLastWhen;
-
-            entities.Items.Add(newItem);
-
-            if (entities.SaveChanges() > 0)
+            try
             {
-                return true;
+                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+                Item newItem = new Item();
+                newItem.ItemName = item.ItemName;
+                newItem.ItemType = (int)item.ItemType;
+                newItem.Location = item.Location;
+                newItem.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
+                newItem.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
+                newItem.ShowInUITimeInterval = item.ShowInUITimeInterval;
+                newItem.ScanCycle = item.ScanCycle;
+                newItem.SaveInItemsLogWhen = (int)item.SaveInItemsLogWhen;
+                newItem.SaveInItemsLogLastWhen = (int)item.SaveInItemsLogLastWhen;
+
+                entities.Items.Add(newItem);
+
+                if (entities.SaveChanges() > 0)
+                {
+                    return true;
+                }
+
+
+                return false;
             }
-
-
-            return false;
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return false;
+            }
         }
 
         public bool DeleteItem(int itemId)
         {
-            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
-
-            bool success = false;
-
-            using (TransactionScope transaction=new TransactionScope())
+            try
             {
-                try
+                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+                bool success = false;
+
+                using (TransactionScope transaction = new TransactionScope())
                 {
                     var itemsLogQuery = entities.ItemsLogs.Where(x => x.ItemId == itemId);
 
@@ -289,129 +329,184 @@ namespace MonitoringServiceLibrary
                     transaction.Complete();
                     success = true;
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
 
-            return success;
+                return success;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return false;
+            }
         }
 
         public bool EditItem2(Item2 item)
         {
-            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
-
-            Item itemToEdit = entities.Items.FirstOrDefault(x => x.ItemId == item.ItemId);
-
-            if (itemToEdit == null)
+            try
             {
+                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+                Item itemToEdit = entities.Items.FirstOrDefault(x => x.ItemId == item.ItemId);
+
+                if (itemToEdit == null)
+                {
+                    return false;
+                }
+
+                itemToEdit.ItemName = item.ItemName;
+                itemToEdit.ItemType = (int)item.ItemType;
+                itemToEdit.Location = item.Location;
+                itemToEdit.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
+                itemToEdit.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
+                itemToEdit.ShowInUITimeInterval = item.ShowInUITimeInterval;
+                itemToEdit.ScanCycle = item.ScanCycle;
+                itemToEdit.SaveInItemsLogWhen = (int)item.SaveInItemsLogWhen;
+                itemToEdit.SaveInItemsLogLastWhen = (int)item.SaveInItemsLogLastWhen;
+
+                if (entities.SaveChanges() > 0)
+                {
+                    return true;
+                }
+
+
                 return false;
             }
-
-            itemToEdit.ItemName = item.ItemName;
-            itemToEdit.ItemType = (int)item.ItemType;
-            itemToEdit.Location = item.Location;
-            itemToEdit.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
-            itemToEdit.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
-            itemToEdit.ShowInUITimeInterval = item.ShowInUITimeInterval;
-            itemToEdit.ScanCycle = item.ScanCycle;
-            itemToEdit.SaveInItemsLogWhen = (int)item.SaveInItemsLogWhen;
-            itemToEdit.SaveInItemsLogLastWhen = (int)item.SaveInItemsLogLastWhen;
-
-            if (entities.SaveChanges() > 0)
+            catch (Exception ex)
             {
-                return true;
+                Logger.LogMonitoringServiceLibrary(ex);
+                return false;
             }
-
-
-            return false;
         }
 
         public bool AddItemsToTab(string tabName, List<string> items)
         {
-            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
-
-            bool success = false;
-
-            using (TransactionScope transaction = new TransactionScope())
+            try
             {
-                try
-                {
-                    Tab currenTab = entities.Tabs.FirstOrDefault(x => x.TabName == tabName);
+                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
-                    foreach (var item in items)
+                bool success = false;
+
+                using (TransactionScope transaction = new TransactionScope())
+                {
+                    try
                     {
-                        Item currentItem = entities.Items.FirstOrDefault(x => x.ItemName == item);
-                        TabsItem newTabsItem=new TabsItem();
-                        newTabsItem.ItemId = currentItem.ItemId;
-                        newTabsItem.TabId = currenTab.TabId;
+                        Tab currenTab = entities.Tabs.FirstOrDefault(x => x.TabName == tabName);
 
-                        entities.TabsItems.Add(newTabsItem);
-                        entities.SaveChanges();
+                        foreach (var item in items)
+                        {
+                            Item currentItem = entities.Items.FirstOrDefault(x => x.ItemName == item);
+                            TabsItem newTabsItem = new TabsItem();
+                            newTabsItem.ItemId = currentItem.ItemId;
+                            newTabsItem.TabId = currenTab.TabId;
+
+                            entities.TabsItems.Add(newTabsItem);
+                            entities.SaveChanges();
+                        }
+
+                        transaction.Complete();
+                        success = true;
                     }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                }
 
-                    transaction.Complete();
-                    success = true;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                return success;
             }
-
-            return success;
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return false;
+            }
         }
 
         public bool GetHorn()
         {
-            var  subscriberBool = new NetworkVariableBufferedSubscriber<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\Horn");
-            subscriberBool.Connect();
-            var variable = subscriberBool.ReadData();
-            bool result= variable.GetValue();
-            subscriberBool.Disconnect();
+            try
+            {
+                var subscriberBool = new NetworkVariableBufferedSubscriber<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\Horn");
+                subscriberBool.Connect();
+                var variable = subscriberBool.ReadData();
+                bool result = variable.GetValue();
+                subscriberBool.Disconnect();
 
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return false;
+            }
         }
 
         public bool GetHornHMI()
         {
-            var subscriberBool = new NetworkVariableBufferedSubscriber<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\HornHMI");
-            subscriberBool.Connect();
-            var variable = subscriberBool.ReadData();
-            bool result = variable.GetValue();
-            subscriberBool.Disconnect();
+            try
+            {
+                var subscriberBool = new NetworkVariableBufferedSubscriber<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\HornHMI");
+                subscriberBool.Connect();
+                var variable = subscriberBool.ReadData();
+                bool result = variable.GetValue();
+                subscriberBool.Disconnect();
 
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return false;
+            }
         }
 
         public bool GetMuteHorn()
         {
-            var subscriberBool = new NetworkVariableBufferedSubscriber<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\MuteHorn");
-            subscriberBool.Connect();
-            var variable = subscriberBool.ReadData();
-            bool result = variable.GetValue();
-            subscriberBool.Disconnect();
+            try
+            {
+                var subscriberBool = new NetworkVariableBufferedSubscriber<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\MuteHorn");
+                subscriberBool.Connect();
+                var variable = subscriberBool.ReadData();
+                bool result = variable.GetValue();
+                subscriberBool.Disconnect();
 
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return false;
+            }
         }
 
         public void MuteHorn()
         {
-            var writer = new NetworkVariableBufferedWriter<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\MuteHorn");
-            writer.Connect();
-            writer.WriteValue(true);
-            
-            writer.Disconnect();
+            try
+            {
+                var writer = new NetworkVariableBufferedWriter<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\MuteHorn");
+                writer.Connect();
+                writer.WriteValue(true);
+
+                writer.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+            }
         }
 
         public void UnMuteHorn()
         {
-            var writer = new NetworkVariableBufferedWriter<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\MuteHorn");
-            writer.Connect();
-            writer.WriteValue(false);
+            try
+            {
+                var writer = new NetworkVariableBufferedWriter<bool>(@"\\localhost\Simulation\OPC\Channel1\Device1\MuteHorn");
+                writer.Connect();
+                writer.WriteValue(false);
 
-            writer.Disconnect();
+                writer.Disconnect();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+            }
         }
     }
 }

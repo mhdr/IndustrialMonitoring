@@ -154,29 +154,36 @@ namespace MonitoringServiceLibrary
 
         public ItemCollector(Item item)
         {
-            this.ItemObj = item;
-
-            this.ItemId = item.ItemId;
-            this.ItemName = ItemName;
-            this.Type = (ItemType)item.ItemType;
-
-            if (item.Location != null)
+            try
             {
-                this.Location = item.Location;
+                this.ItemObj = item;
+
+                this.ItemId = item.ItemId;
+                this.ItemName = ItemName;
+                this.Type = (ItemType)item.ItemType;
+
+                if (item.Location != null)
+                {
+                    this.Location = item.Location;
+                }
+                else
+                {
+                    this.Location = "";
+                }
+
+                this.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
+                this.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
+                this.ScanCycle = item.ScanCycle;
+                this.SaveInItemsLogWhen = (WhenToLog)item.SaveInItemsLogWhen;
+                this.SaveInItemsLogLastWhen = (WhenToLog)item.SaveInItemsLogLastWhen;
+                this.DefinationType = (ItemDefinationType)item.DefinationType;
+
+                this.BSProcessDataServiceClient = new ProcessDataServiceClient();
             }
-            else
+            catch (Exception ex)
             {
-                this.Location = "";
+                Logger.LogMonitoringServiceLibrary(ex);
             }
-
-            this.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
-            this.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
-            this.ScanCycle = item.ScanCycle;
-            this.SaveInItemsLogWhen = (WhenToLog)item.SaveInItemsLogWhen;
-            this.SaveInItemsLogLastWhen = (WhenToLog)item.SaveInItemsLogLastWhen;
-            this.DefinationType = (ItemDefinationType)item.DefinationType;
-
-            this.BSProcessDataServiceClient = new ProcessDataServiceClient();
         }
 
         public async Task ReadValueInfinite()

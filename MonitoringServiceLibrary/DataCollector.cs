@@ -67,22 +67,37 @@ namespace MonitoringServiceLibrary
 
         private void DoStart()
         {
-            IndustrialMonitoringEntities Entities=new IndustrialMonitoringEntities();
-            Items = Entities.Items.ToList();
+            IndustrialMonitoringEntities Entities = null;
+            try
+            {
+                Entities = new IndustrialMonitoringEntities();
+                Items = Entities.Items.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+            }
 
             foreach (var item in Items)
             {
-                if (item.ThreadGroupId==null)
+                try
                 {
-                    ItemCollector itemCollector = new ItemCollector(item);
-                    Thread thread = new Thread(() =>
+                    if (item.ThreadGroupId == null)
                     {
-                        itemCollector.ReadValueInfinite();
-                    });
-                    thread.Start();
+                        ItemCollector itemCollector = new ItemCollector(item);
+                        Thread thread = new Thread(() =>
+                        {
+                            itemCollector.ReadValueInfinite();
+                        });
+                        thread.Start();
 
-                    ItemCollectors.Add(itemCollector);
-                    Thread.Sleep(1);
+                        ItemCollectors.Add(itemCollector);
+                        Thread.Sleep(1);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogMonitoringServiceLibrary(ex);
                 }
             }
 
@@ -90,16 +105,23 @@ namespace MonitoringServiceLibrary
 
             foreach (Item item in groups)
             {
-                if (item.ThreadGroupId!=null & item.ThreadGroupId>0)
+                try
                 {
-                    var itemsInGroup = Entities.Items.Where(x => x.ThreadGroupId == item.ThreadGroupId).ToList();
-
-                    Thread thread=new Thread(() =>
+                    if (item.ThreadGroupId != null & item.ThreadGroupId > 0)
                     {
-                        ReadValues(itemsInGroup);
-                    });
+                        var itemsInGroup = Entities.Items.Where(x => x.ThreadGroupId == item.ThreadGroupId).ToList();
 
-                    thread.Start();
+                        Thread thread = new Thread(() =>
+                          {
+                              ReadValues(itemsInGroup);
+                          });
+
+                        thread.Start();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogMonitoringServiceLibrary(ex);
                 }
             }
 
@@ -112,22 +134,29 @@ namespace MonitoringServiceLibrary
 
             while (true)
             {
-                foreach (Item item in items)
+                try
                 {
-                    try
+                    foreach (Item item in items)
                     {
-                        var collector=new ItemCollector(item);
-                        await collector.ReadValue();
+                        try
+                        {
+                            var collector = new ItemCollector(item);
+                            await collector.ReadValue();
 
-                        await Task.Delay(threadGroup.IntervalBetweenItems);
+                            await Task.Delay(threadGroup.IntervalBetweenItems);
+                        }
+                        catch (Exception ex)
+                        {
+                            Logger.LogMonitoringServiceLibrary(ex);
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        Logger.LogMonitoringServiceLibrary(ex);
-                    }
+
+                    await Task.Delay(threadGroup.IntervalBetweenCycle);
                 }
-
-                await Task.Delay(threadGroup.IntervalBetweenCycle);
+                catch (Exception ex)
+                {
+                    Logger.LogMonitoringServiceLibrary(ex);
+                }
             }
         }
 
