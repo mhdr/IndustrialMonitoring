@@ -38,6 +38,9 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.LogOutlier" Width="1.5" PointX="5.25" PointY="20.75" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_LogOutliers_Items" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogRawData_LogOutleirs" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

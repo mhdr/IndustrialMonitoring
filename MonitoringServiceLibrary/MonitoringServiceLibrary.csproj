@@ -128,6 +128,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="IUserService.cs" />
+    <Compile Include="LogOutlier.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

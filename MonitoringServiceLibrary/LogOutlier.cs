@@ -12,16 +12,22 @@ namespace MonitoringServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class ItemsLogRawData
+    public partial class LogOutlier
     {
-        public int ItemLogRawDataId { get; set; }
+        public LogOutlier()
+        {
+            this.ItemsLogRawDatas = new HashSet<ItemsLogRawData>();
+        }
+    
+        public int OutlierId { get; set; }
         public int ItemId { get; set; }
+        public string IQR { get; set; }
+        public string LQR { get; set; }
+        public string UQR { get; set; }
         public string Value { get; set; }
         public System.DateTime Time { get; set; }
-        public byte[] TimeStamp { get; set; }
-        public Nullable<int> OutlierId { get; set; }
     
         public virtual Item Item { get; set; }
-        public virtual LogOutlier LogOutlier { get; set; }
+        public virtual ICollection<ItemsLogRawData> ItemsLogRawDatas { get; set; }
     }
 }

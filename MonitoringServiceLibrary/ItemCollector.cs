@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -326,6 +327,8 @@ namespace MonitoringServiceLibrary
                         // detect ouliers
 
                         bool isOutlier = false;
+                        int outlierId = 0;
+
                         int numberOfDataForBoxplot = 0;
 
                         if (ItemObj.NumberOfDataForBoxplot != null)
@@ -363,10 +366,26 @@ namespace MonitoringServiceLibrary
                                     {
                                         isOutlier = true;
                                     }
+
+                                    if (isOutlier)
+                                    {
+                                        LogOutlier logOutlier = new LogOutlier();
+                                        logOutlier.ItemId = this.ItemId;
+                                        logOutlier.IQR = iqr.ToString();
+                                        logOutlier.LQR = lqr.ToString();
+                                        logOutlier.UQR = uqr.ToString();
+                                        logOutlier.Value = valueDouble.ToString();
+                                        logOutlier.Time = DateTime.Now;
+
+                                        Entities.LogOutliers.Add(logOutlier);
+                                        Entities.SaveChanges();
+
+                                        outlierId = logOutlier.OutlierId;
+                                    }
                                 }
                             }
                         }
-
+                        
                         //
 
                         // Save in ItemsLogRawData
@@ -380,6 +399,12 @@ namespace MonitoringServiceLibrary
                             rawData.Value = value;
                             rawData.Time = DateTime.Now;
                             Entities.ItemsLogRawDatas.Add(rawData);
+
+                            if (outlierId > 0)
+                            {
+                                rawData.OutlierId = outlierId;
+                            }
+
                             Entities.SaveChanges();
 
                             lastItemLogRaw = rawData;
@@ -395,6 +420,12 @@ namespace MonitoringServiceLibrary
                                 rawData.ItemId = ItemId;
                                 rawData.Value = value;
                                 rawData.Time = DateTime.Now;
+
+                                if (outlierId > 0)
+                                {
+                                    rawData.OutlierId = outlierId;
+                                }
+
                                 Entities.ItemsLogRawDatas.Add(rawData);
                                 Entities.SaveChanges();
                             }
@@ -407,6 +438,12 @@ namespace MonitoringServiceLibrary
                                 rawData.ItemId = ItemId;
                                 rawData.Value = value;
                                 rawData.Time = DateTime.Now;
+
+                                if (outlierId > 0)
+                                {
+                                    rawData.OutlierId = outlierId;
+                                }
+
                                 Entities.ItemsLogRawDatas.Add(rawData);
                                 Entities.SaveChanges();
                             }
@@ -680,9 +717,11 @@ namespace MonitoringServiceLibrary
                         }
                     }
 
-                    // detect ouliers
+                    // detect outliers
 
                     bool isOutlier = false;
+                    int outlierId = 0;
+
                     int numberOfDataForBoxplot = 0;
 
                     if (ItemObj.NumberOfDataForBoxplot != null)
@@ -710,8 +749,7 @@ namespace MonitoringServiceLibrary
                                 var iqr = Statistics.InterquartileRange(lastDataInDouble);
                                 var lqr = Statistics.LowerQuartile(lastDataInDouble);
                                 var uqr = Statistics.UpperQuartile(lastDataInDouble);
-
-
+                                
 
                                 if (valueDouble > 3 * iqr + uqr)
                                 {
@@ -722,11 +760,28 @@ namespace MonitoringServiceLibrary
                                 {
                                     isOutlier = true;
                                 }
+
+                                if (isOutlier)
+                                {
+                                    LogOutlier logOutlier=new LogOutlier();
+                                    logOutlier.ItemId = this.ItemId;
+                                    logOutlier.IQR = iqr.ToString();
+                                    logOutlier.LQR = lqr.ToString();
+                                    logOutlier.UQR = uqr.ToString();
+                                    logOutlier.Value = valueDouble.ToString();
+                                    logOutlier.Time = DateTime.Now;
+
+                                    Entities.LogOutliers.Add(logOutlier);
+                                    Entities.SaveChanges();
+
+                                    outlierId = logOutlier.OutlierId;
+                                }
                             }
                         }
                     }
                     
                     //
+
 
                     // Save in ItemsLogRawData
 
@@ -738,6 +793,12 @@ namespace MonitoringServiceLibrary
                         rawData.ItemId = ItemId;
                         rawData.Value = value;
                         rawData.Time = DateTime.Now;
+
+                        if (outlierId > 0)
+                        {
+                            rawData.OutlierId = outlierId;
+                        }
+
                         Entities.ItemsLogRawDatas.Add(rawData);
                         Entities.SaveChanges();
 
@@ -754,6 +815,12 @@ namespace MonitoringServiceLibrary
                             rawData.ItemId = ItemId;
                             rawData.Value = value;
                             rawData.Time = DateTime.Now;
+
+                            if (outlierId > 0)
+                            {
+                                rawData.OutlierId = outlierId;
+                            }
+
                             Entities.ItemsLogRawDatas.Add(rawData);
                             Entities.SaveChanges();
                         }
@@ -766,6 +833,12 @@ namespace MonitoringServiceLibrary
                             rawData.ItemId = ItemId;
                             rawData.Value = value;
                             rawData.Time = DateTime.Now;
+
+                            if (outlierId > 0)
+                            {
+                                rawData.OutlierId = outlierId;
+                            }
+
                             Entities.ItemsLogRawDatas.Add(rawData);
                             Entities.SaveChanges();
                         }

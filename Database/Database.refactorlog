@@ -336,4 +336,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RegisterTime" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="73d424f6-7e0b-4946-a1cf-b9664bdc36da" ChangeDateTime="10/25/2015 07:19:27">
+    <Property Name="ElementName" Value="[dbo].[LogOutliers].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[LogOutliers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OutlierId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a5680abc-675e-4e94-a2ed-7a0696b81ea1" ChangeDateTime="10/25/2015 09:01:39">
+    <Property Name="ElementName" Value="[dbo].[FK_ItemsLogRawData_LogOutleir]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[ItemsLogRawData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_ItemsLogRawData_LogOutleirs]" />
+  </Operation>
 </Operations>

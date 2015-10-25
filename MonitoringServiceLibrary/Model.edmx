@@ -84,6 +84,19 @@
           <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="OutlierId" Type="int" />
+        </EntityType>
+        <EntityType Name="LogOutliers">
+          <Key>
+            <PropertyRef Name="OutlierId" />
+          </Key>
+          <Property Name="OutlierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="IQR" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LQR" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UQR" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="NotificationItems">
           <Key>
@@ -243,6 +256,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ItemsLogRawData_LogOutleirs">
+          <End Role="LogOutliers" Type="Self.LogOutliers" Multiplicity="0..1" />
+          <End Role="ItemsLogRawData" Type="Self.ItemsLogRawData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogOutliers">
+              <PropertyRef Name="OutlierId" />
+            </Principal>
+            <Dependent Role="ItemsLogRawData">
+              <PropertyRef Name="OutlierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogOutliers_Items">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="LogOutliers" Type="Self.LogOutliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="LogOutliers">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NotificationItems_Items">
           <End Role="Items" Type="Self.Items" Multiplicity="1" />
           <End Role="NotificationItems" Type="Self.NotificationItems" Multiplicity="*" />
@@ -382,6 +419,7 @@
           <EntitySet Name="ItemsLog" EntityType="Self.ItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogLatest" EntityType="Self.ItemsLogLatest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogRawData" EntityType="Self.ItemsLogRawData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogOutliers" EntityType="Self.LogOutliers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItems" EntityType="Self.NotificationItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLog" EntityType="Self.NotificationItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLogLatest" EntityType="Self.NotificationItemsLogLatest" Schema="dbo" store:Type="Tables" />
@@ -412,6 +450,14 @@
           <AssociationSet Name="FK_ItemsLogRawData_Items" Association="Self.FK_ItemsLogRawData_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLogRawData" EntitySet="ItemsLogRawData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsLogRawData_LogOutleirs" Association="Self.FK_ItemsLogRawData_LogOutleirs">
+            <End Role="LogOutliers" EntitySet="LogOutliers" />
+            <End Role="ItemsLogRawData" EntitySet="ItemsLogRawData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogOutliers_Items" Association="Self.FK_LogOutliers_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="LogOutliers" EntitySet="LogOutliers" />
           </AssociationSet>
           <AssociationSet Name="FK_NotificationItems_Items" Association="Self.FK_NotificationItems_Items">
             <End Role="Items" EntitySet="Items" />
@@ -544,6 +590,15 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UsersServicesPermission" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
+          <EntitySet Name="LogOutliers" EntityType="IndustrialMonitoringModel.LogOutlier" />
+          <AssociationSet Name="FK_LogOutliers_Items" Association="IndustrialMonitoringModel.FK_LogOutliers_Items">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="LogOutlier" EntitySet="LogOutliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsLogRawData_LogOutleirs" Association="IndustrialMonitoringModel.FK_ItemsLogRawData_LogOutleirs">
+            <End Role="LogOutlier" EntitySet="LogOutliers" />
+            <End Role="ItemsLogRawData" EntitySet="ItemsLogRawDatas" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Bot">
           <Key>
@@ -602,6 +657,7 @@
           <NavigationProperty Name="TabsItems" Relationship="IndustrialMonitoringModel.FK_TabsItems_Items" FromRole="Item" ToRole="TabsItem" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" FromRole="Item" ToRole="UsersItemsPermission" />
           <Property Name="NumberOfDataForBoxplot" Type="Int32" />
+          <NavigationProperty Name="LogOutliers" Relationship="IndustrialMonitoringModel.FK_LogOutliers_Items" FromRole="Item" ToRole="LogOutlier" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -635,6 +691,8 @@
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Item" Relationship="IndustrialMonitoringModel.FK_ItemsLogRawData_Items" FromRole="ItemsLogRawData" ToRole="Item" />
+          <Property Name="OutlierId" Type="Int32" />
+          <NavigationProperty Name="LogOutlier" Relationship="IndustrialMonitoringModel.FK_ItemsLogRawData_LogOutleirs" FromRole="ItemsLogRawData" ToRole="LogOutlier" />
         </EntityType>
         <EntityType Name="NotificationItem">
           <Key>
@@ -947,6 +1005,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="LogOutlier">
+          <Key>
+            <PropertyRef Name="OutlierId" />
+          </Key>
+          <Property Name="OutlierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="IQR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LQR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UQR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Item" Relationship="IndustrialMonitoringModel.FK_LogOutliers_Items" FromRole="LogOutlier" ToRole="Item" />
+          <NavigationProperty Name="ItemsLogRawDatas" Relationship="IndustrialMonitoringModel.FK_ItemsLogRawData_LogOutleirs" FromRole="LogOutlier" ToRole="ItemsLogRawData" />
+        </EntityType>
+        <Association Name="FK_LogOutliers_Items">
+          <End Type="IndustrialMonitoringModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.LogOutlier" Role="LogOutlier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="LogOutlier">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsLogRawData_LogOutleirs">
+          <End Type="IndustrialMonitoringModel.LogOutlier" Role="LogOutlier" Multiplicity="0..1" />
+          <End Type="IndustrialMonitoringModel.ItemsLogRawData" Role="ItemsLogRawData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogOutlier">
+              <PropertyRef Name="OutlierId" />
+            </Principal>
+            <Dependent Role="ItemsLogRawData">
+              <PropertyRef Name="OutlierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1031,6 +1127,7 @@
           <EntitySetMapping Name="ItemsLogRawDatas">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.ItemsLogRawData">
               <MappingFragment StoreEntitySet="ItemsLogRawData">
+                <ScalarProperty Name="OutlierId" ColumnName="OutlierId" />
                 <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
@@ -1145,6 +1242,19 @@
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserServicePermissionId" ColumnName="UserServicePermissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogOutliers">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.LogOutlier">
+              <MappingFragment StoreEntitySet="LogOutliers">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="UQR" ColumnName="UQR" />
+                <ScalarProperty Name="LQR" ColumnName="LQR" />
+                <ScalarProperty Name="IQR" ColumnName="IQR" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="OutlierId" ColumnName="OutlierId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

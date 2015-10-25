@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[LogOutliers]
+(
+	[OutlierId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [ItemId] INT NOT NULL, 
+    [IQR] NVARCHAR(50) NOT NULL, 
+    [LQR] NVARCHAR(50) NOT NULL, 
+    [UQR] NVARCHAR(50) NOT NULL, 
+    [Value] NVARCHAR(50) NOT NULL,
+	[Time] DATETIME2 NOT NULL, 
+    CONSTRAINT [FK_LogOutliers_Items] FOREIGN KEY ([ItemId]) REFERENCES [Items]([ItemId]), 
+)
