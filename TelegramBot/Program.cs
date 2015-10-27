@@ -26,6 +26,8 @@ namespace TelegramBot
             IndustrialMonitoringEntities entities = null;
             string previousTimeStamp = "";
             var bot = new Telegram.Bot.Api("133038323:AAFXVhA9Htj3p0a0Sl3hydt65Y7fl2AOVEI");
+            DateTime lastPeriodicSendTime = DateTime.MinValue;
+            bool earlyAlertSent = false;
 
             while (true)
             {
@@ -60,27 +62,52 @@ namespace TelegramBot
 
                 if (previousTimeStamp == timestamp)
                 {
-                    foreach (int chatId in chatIds)
+                    if (DateTime.Now - lastPeriodicSendTime > TimeSpan.FromHours(1))
                     {
-                        var emoji = "\u2734";
-                        await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
-Time : {1}",emoji,DateTime.Now));
-                        await Task.Delay(100);
+                        foreach (int chatId in chatIds)
+                        {
+                            var emoji = "\u2734";
+                            await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
+Time : {1}", emoji, DateTime.Now));
+                            await Task.Delay(100);
+                        }
+                    }
+                    else
+                    {
+                        if (!earlyAlertSent)
+                        {
+                            foreach (int chatId in chatIds)
+                            {
+                                var emoji = "\u2733";
+                                await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
+Time : {1}", emoji, DateTime.Now));
+                                await Task.Delay(100);
+                            }
+
+                            earlyAlertSent = true;
+                        }
                     }
                 }
                 else
                 {
-                    foreach (int chatId in chatIds)
+                    if (DateTime.Now - lastPeriodicSendTime > TimeSpan.FromHours(1))
                     {
-                        var emoji = "\u2733";
-                        await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
+                        foreach (int chatId in chatIds)
+                        {
+                            var emoji = "\u2733";
+                            await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
 Time : {1}", emoji, DateTime.Now));
-                        await Task.Delay(100);
+                            await Task.Delay(100);
+                        }
+
+                        // reset early alert
+                        earlyAlertSent = false;
                     }
                 }
 
                 previousTimeStamp = timestamp;
-                await Task.Delay(1*60*60*1000);
+                lastPeriodicSendTime = DateTime.Now;
+                await Task.Delay(2*60*1000);
             }
         }
 
