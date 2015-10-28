@@ -62,6 +62,8 @@ namespace TelegramBot
 
                 if (previousTimeStamp == timestamp)
                 {
+                    // system has error
+
                     if (DateTime.Now - lastPeriodicSendTime > TimeSpan.FromHours(1))
                     {
                         foreach (int chatId in chatIds)
@@ -71,6 +73,8 @@ namespace TelegramBot
 Time : {1}", emoji, DateTime.Now));
                             await Task.Delay(100);
                         }
+
+                        lastPeriodicSendTime = DateTime.Now;
                     }
                     else
                     {
@@ -102,11 +106,12 @@ Time : {1}", emoji, DateTime.Now));
 
                         // reset early alert
                         earlyAlertSent = false;
+
+                        lastPeriodicSendTime = DateTime.Now;
                     }
                 }
 
                 previousTimeStamp = timestamp;
-                lastPeriodicSendTime = DateTime.Now;
                 await Task.Delay(2*60*1000);
             }
         }
