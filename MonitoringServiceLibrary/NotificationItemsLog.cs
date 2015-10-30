@@ -19,7 +19,6 @@ namespace MonitoringServiceLibrary
         public bool Value { get; set; }
         public System.DateTime Time { get; set; }
         public byte[] TimeStamp { get; set; }
-        public Nullable<bool> IsDelayedNotificationProcessed { get; set; }
     
         public virtual NotificationItem NotificationItem { get; set; }
     }

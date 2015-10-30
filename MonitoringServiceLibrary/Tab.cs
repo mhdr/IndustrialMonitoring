@@ -14,6 +14,7 @@ namespace MonitoringServiceLibrary
     
     public partial class Tab
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tab()
         {
             this.TabsItems = new HashSet<TabsItem>();
@@ -23,6 +24,7 @@ namespace MonitoringServiceLibrary
         public string TabName { get; set; }
         public Nullable<int> Order { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TabsItem> TabsItems { get; set; }
     }
 }

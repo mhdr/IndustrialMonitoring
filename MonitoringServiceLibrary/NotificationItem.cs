@@ -14,6 +14,7 @@ namespace MonitoringServiceLibrary
     
     public partial class NotificationItem
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NotificationItem()
         {
             this.NotificationItemsLogs = new HashSet<NotificationItemsLog>();
@@ -29,12 +30,15 @@ namespace MonitoringServiceLibrary
         public Nullable<double> High { get; set; }
         public string NotificationMsg { get; set; }
         public Nullable<int> Priority { get; set; }
-        public Nullable<int> NumberOfSecondsInReceivingDelayedAlarmInTelegram { get; set; }
     
         public virtual Item Item { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotificationItemsLog> NotificationItemsLogs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RelatedNotification> RelatedNotifications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RelatedNotification> RelatedNotifications1 { get; set; }
     }
 }

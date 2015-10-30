@@ -14,6 +14,7 @@ namespace MonitoringServiceLibrary
     
     public partial class ThreadGroup
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ThreadGroup()
         {
             this.Items = new HashSet<Item>();
@@ -24,6 +25,7 @@ namespace MonitoringServiceLibrary
         public int IntervalBetweenItems { get; set; }
         public int IntervalBetweenCycle { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Items { get; set; }
     }
 }

@@ -14,15 +14,16 @@ namespace MonitoringServiceLibrary
     
     public partial class Item
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Item()
         {
             this.ItemsLogs = new HashSet<ItemsLog>();
             this.ItemsLogLatests = new HashSet<ItemsLogLatest>();
             this.ItemsLogRawDatas = new HashSet<ItemsLogRawData>();
+            this.LogOutliers = new HashSet<LogOutlier>();
             this.NotificationItems = new HashSet<NotificationItem>();
             this.TabsItems = new HashSet<TabsItem>();
             this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
-            this.LogOutliers = new HashSet<LogOutlier>();
         }
     
         public int ItemId { get; set; }
@@ -50,12 +51,19 @@ namespace MonitoringServiceLibrary
         public Nullable<int> NumberOfDataForBoxplot { get; set; }
     
         public virtual ThreadGroup ThreadGroup { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemsLog> ItemsLogs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemsLogLatest> ItemsLogLatests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemsLogRawData> ItemsLogRawDatas { get; set; }
-        public virtual ICollection<NotificationItem> NotificationItems { get; set; }
-        public virtual ICollection<TabsItem> TabsItems { get; set; }
-        public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LogOutlier> LogOutliers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NotificationItem> NotificationItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TabsItem> TabsItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace MonitoringServiceLibrary
         public int PermissionId { get; set; }
         public int UserId { get; set; }
         public int ItemId { get; set; }
-        public Nullable<bool> ReceiveDelayAlarmInTelegram { get; set; }
     
         public virtual Item Item { get; set; }
         public virtual User User { get; set; }

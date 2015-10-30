@@ -4,43 +4,43 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="734f22ec889e44b798d1af166b024c47" Name="Diagram1">
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.Bot" Width="1.5" PointX="8.25" PointY="4.25" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.BotQueue" Width="1.5" PointX="0.75" PointY="1.5" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.Item" Width="1.5" PointX="3" PointY="10.5" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLog" Width="1.5" PointX="5.25" PointY="25.375" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogLatest" Width="1.5" PointX="5.25" PointY="5.5" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogRawData" Width="1.5" PointX="5.25" PointY="8.375" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItem" Width="1.5" PointX="5.25" PointY="16.25" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItemsLog" Width="1.5" PointX="7.5" PointY="14" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItemsLogLatest" Width="1.5" PointX="7.5" PointY="19.625" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.RelatedNotification" Width="1.5" PointX="7.5" PointY="17" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.Service" Width="1.5" PointX="6" PointY="29.125" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.Tab" Width="1.5" PointX="3" PointY="7.875" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.TabsItem" Width="1.5" PointX="5.25" PointY="12.75" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.ThreadGroup" Width="1.5" PointX="0.75" PointY="12.75" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.User" Width="1.5" PointX="6" PointY="1.5" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersItemsPermission" Width="1.5" PointX="8.25" PointY="10.75" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersServicesPermission" Width="1.5" PointX="8.25" PointY="0.75" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_Bot_Users" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_Items_ThreadGroup" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLog_Items" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogLatest_Items" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogRawData_Items" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItems_Items" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Items" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItemsLog_NotificationItems" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItemsLogLatest_NotificationItems" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Services" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.LogOutlier" Width="1.5" PointX="5.25" PointY="20.75" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_LogOutliers_Items" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogRawData_LogOutleirs" />
+      <Diagram DiagramId="dd2892ec4e9b47d985a4d86606822706" Name="Diagram1">
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Bot" Width="1.5" PointX="10.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.BotQueue" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Item" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLog" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogLatest" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogRawData" Width="1.5" PointX="7.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.LogOutlier" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItem" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItemsLog" Width="1.5" PointX="7.5" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItemsLogLatest" Width="1.5" PointX="7.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.RelatedNotification" Width="1.5" PointX="7.5" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Service" Width="1.5" PointX="8" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Tab" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.TabsItem" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.ThreadGroup" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.User" Width="1.5" PointX="8" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersItemsPermission" Width="1.5" PointX="10.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersServicesPermission" Width="1.5" PointX="10.25" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_Bot_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_Items_ThreadGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLog_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogLatest_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogRawData_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_LogOutliers_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItems_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogRawData_LogOutleirs" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItemsLog_NotificationItems" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItemsLogLatest_NotificationItems" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

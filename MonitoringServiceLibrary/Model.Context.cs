@@ -31,6 +31,7 @@ namespace MonitoringServiceLibrary
         public virtual DbSet<ItemsLog> ItemsLogs { get; set; }
         public virtual DbSet<ItemsLogLatest> ItemsLogLatests { get; set; }
         public virtual DbSet<ItemsLogRawData> ItemsLogRawDatas { get; set; }
+        public virtual DbSet<LogOutlier> LogOutliers { get; set; }
         public virtual DbSet<NotificationItem> NotificationItems { get; set; }
         public virtual DbSet<NotificationItemsLog> NotificationItemsLogs { get; set; }
         public virtual DbSet<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
@@ -42,6 +43,5 @@ namespace MonitoringServiceLibrary
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersItemsPermission> UsersItemsPermissions { get; set; }
         public virtual DbSet<UsersServicesPermission> UsersServicesPermissions { get; set; }
-        public virtual DbSet<LogOutlier> LogOutliers { get; set; }
     }
 }

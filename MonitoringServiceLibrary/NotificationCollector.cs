@@ -126,26 +126,13 @@ namespace MonitoringServiceLibrary
                                     NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
                                     notificationItemsLog.NotificationId = notificationId;
                                     notificationItemsLog.Value = true;
-                                    notificationItemsLog.IsDelayedNotificationProcessed = false;
                                     notificationItemsLog.Time = DateTime.Now;
 
                                     entities.NotificationItemsLogs.Add(notificationItemsLog);
                                     entities.SaveChanges();
 
                                     var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId,NotificationDelayUser.Normal);
-
-                                    // delayed notification
-                                    var lastNotificationLog =
-                                            entities.NotificationItemsLogs.FirstOrDefault(x => x.NotificationId == notificationId && x.Value == false);
-
-                                    if (lastNotificationLog != null && lastNotificationLog.IsDelayedNotificationProcessed != null)
-                                    {
-                                        if (lastNotificationLog.IsDelayedNotificationProcessed.Value == true)
-                                        {
-                                            bot.SendNotification(lastNotificationLog.NotificationLogId, NotificationDelayUser.Delayed);
-                                        }
-                                    }
+                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
                                 }
                             }
                             else
@@ -159,40 +146,14 @@ namespace MonitoringServiceLibrary
                                     NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
                                     notificationItemsLog.NotificationId = notificationId;
                                     notificationItemsLog.Value = false;
-                                    notificationItemsLog.IsDelayedNotificationProcessed = false;
                                     notificationItemsLog.Time = DateTime.Now;
 
                                     entities.NotificationItemsLogs.Add(notificationItemsLog);
                                     entities.SaveChanges();
 
                                     var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId,NotificationDelayUser.Normal);
+                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
                                 }
-
-
-                                // delayed notification
-                                var lastNotificationLog =
-                                        entities.NotificationItemsLogs.FirstOrDefault(x => x.NotificationId == notificationId && x.Value==false);
-
-                                if (lastNotificationLog != null && notificationItem.NumberOfSecondsInReceivingDelayedAlarmInTelegram != null && lastNotificationLog.IsDelayedNotificationProcessed != null)
-                                {
-                                    if (lastNotificationLog.IsDelayedNotificationProcessed.Value==false)
-                                    {
-                                        var timeFromLastNotificationLog = DateTime.Now - lastNotificationLog.Time;
-
-                                        if (timeFromLastNotificationLog >
-                                            TimeSpan.FromSeconds(
-                                                notificationItem.NumberOfSecondsInReceivingDelayedAlarmInTelegram.Value))
-                                        {
-                                            lastNotificationLog.IsDelayedNotificationProcessed = true;
-                                            entities.SaveChanges();
-
-                                            var bot = NotificationsBot.Instance;
-                                            bot.SendNotification(lastNotificationLog.NotificationLogId, NotificationDelayUser.Delayed);
-                                        }
-                                    }
-                                }
-         
                             }
 
 

@@ -62,7 +62,7 @@ namespace MonitoringServiceLibrary
             }
         }
 
-        public async Task<bool> SendNotification(int notificationLogId,NotificationDelayUser user=NotificationDelayUser.All)
+        public async Task<bool> SendNotification(int notificationLogId)
         {
             try
             {
@@ -79,18 +79,8 @@ namespace MonitoringServiceLibrary
                 int itemId = notificationItemsLog.NotificationItem.ItemId;
 
                 List<UsersItemsPermission> userPermissions=new List<UsersItemsPermission>();
-                if (user==NotificationDelayUser.Delayed)
-                {
-                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId && x.ReceiveDelayAlarmInTelegram==true).ToList();
-                }
-                else if (user==NotificationDelayUser.Normal)
-                {
-                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId && x.ReceiveDelayAlarmInTelegram == false).ToList();
-                }
-                else if (user == NotificationDelayUser.All)
-                {
-                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId).ToList();
-                }
+
+                userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId).ToList();
 
                 List<int> chatIds = new List<int>();
 

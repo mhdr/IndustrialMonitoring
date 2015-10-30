@@ -14,6 +14,7 @@ namespace MonitoringServiceLibrary
     
     public partial class Service
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Service()
         {
             this.UsersServicesPermissions = new HashSet<UsersServicesPermission>();
@@ -22,6 +23,7 @@ namespace MonitoringServiceLibrary
         public int ServiceId { get; set; }
         public string ServiceName { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersServicesPermission> UsersServicesPermissions { get; set; }
     }
 }

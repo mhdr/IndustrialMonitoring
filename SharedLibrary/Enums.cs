@@ -33,13 +33,6 @@ namespace SharedLibrary
         Higher = 3,
     }
 
-    public enum NotificationDelayUser
-    {
-        Normal=1,
-        Delayed=2,
-        All=3
-    }
-
     public enum ItemDefinationType
     {
         SqlDefined = 1,
