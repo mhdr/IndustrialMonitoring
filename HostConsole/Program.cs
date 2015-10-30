@@ -7,8 +7,6 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
-using IniParser;
-using IniParser.Model;
 using MonitoringServiceLibrary;
 
 namespace HostConsole
@@ -17,9 +15,9 @@ namespace HostConsole
     {
         static void Main(string[] args)
         {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("Configuration.ini");
-            string pathToOPC = data["OPC"]["OPCClientPath"];
+            Config config=Config.LoadConfig();
+            config.Initialize();
+            string pathToOPC = config.SystemManagerPath;
 
             if (File.Exists(pathToOPC))
             {
