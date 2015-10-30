@@ -20,7 +20,7 @@ namespace HostConsole
 
             if (File.Exists(pathToOPC))
             {
-                var processes = Process.GetProcessesByName("SystemManager.exe");
+                var processes = Process.GetProcessesByName("SystemManager");
 
                 foreach (Process process in processes)
                 {
