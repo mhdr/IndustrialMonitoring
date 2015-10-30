@@ -378,4 +378,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[FK_BotNotificationQueue_NotificationItems]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="69b2e9f6-63fa-4ed1-b3d2-301f6aa5c3cb" ChangeDateTime="10/30/2015 18:47:55">
+    <Property Name="ElementName" Value="[dbo].[NotificationBot].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationBot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationBotId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="58178174-66b3-48f6-9c5a-c6de8f76fde8" ChangeDateTime="10/30/2015 18:48:14">
+    <Property Name="ElementName" Value="[dbo].[NotificationBot].[Notification]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationBot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NotificationLogId" />
+  </Operation>
 </Operations>

@@ -62,7 +62,7 @@ namespace MonitoringServiceLibrary
             }
         }
 
-        public async Task<bool> SendNotification(int notificationLogId)
+        public async Task<bool> SendNotification(int notificationLogId,NotificationDelayType delayType=NotificationDelayType.All)
         {
             try
             {
