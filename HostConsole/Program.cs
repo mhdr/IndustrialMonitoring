@@ -16,7 +16,6 @@ namespace HostConsole
         static void Main(string[] args)
         {
             Config config=Config.LoadConfig();
-            config.Initialize();
             string pathToOPC = config.SystemManagerPath;
 
             if (File.Exists(pathToOPC))
