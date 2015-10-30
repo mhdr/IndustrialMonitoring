@@ -1,38 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
-using IniParser;
-using IniParser.Model;
 using MonitoringServiceLibrary;
 
-namespace HostConsole
+namespace HostConsoleService
 {
-    class Program
+    public partial class IndustrialMonitoringHost : ServiceBase
     {
-        static void Main(string[] args)
+        ServiceHost host1 = null;
+
+        ServiceHost host2 = null;
+
+        ServiceHost host3 = null;
+
+        ServiceHost host4 = null;
+
+        ServiceHost host5 = null;
+
+        ServiceHost host6 = null;
+
+        ServiceHost host7 = null;
+
+        ServiceHost host8 = null;
+
+        public IndustrialMonitoringHost()
         {
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("Configuration.ini");
-            string pathToOPC = data["OPC"]["OPCClientPath"];
+            InitializeComponent();
+        }
 
-            if (File.Exists(pathToOPC))
-            {
-                var processes = Process.GetProcessesByName("SystemManager.exe");
-
-                foreach (Process process in processes)
-                {
-                    process.Kill();
-                }
-
-                var p = Process.Start(pathToOPC);
-            }
-
+        protected override void OnStart(string[] args)
+        {
             Uri baseAddress1 = new Uri("http://172.20.63.234:9011/MonitoringService/DataCollectorService");
             Uri baseAddress2 = new Uri("http://172.20.63.234:9011/MonitoringService/NotificationService");
             Uri baseAddress3 = new Uri("http://172.20.63.234:9011/MonitoringService/ProcessDataService");
@@ -43,28 +48,28 @@ namespace HostConsole
             Uri baseAddress7 = new Uri("net.tcp://172.20.63.234:9012/MonitoringService/ProcessDataService");
             Uri baseAddress8 = new Uri("net.tcp://172.20.63.234:9012/MonitoringService/UserService");
 
-            ServiceHost host1 = new ServiceHost(typeof (DataCollectorService),
-                baseAddress1);
+            host1 = new ServiceHost(typeof(DataCollectorService),
+    baseAddress1);
 
-            ServiceHost host2 = new ServiceHost(typeof(NotificationService),
+            host2 = new ServiceHost(typeof(NotificationService),
     baseAddress2);
 
-            ServiceHost host3 = new ServiceHost(typeof(ProcessDataService),
+            host3 = new ServiceHost(typeof(ProcessDataService),
     baseAddress3);
 
-            ServiceHost host4 = new ServiceHost(typeof(UserService),
+            host4 = new ServiceHost(typeof(UserService),
     baseAddress4);
 
-            ServiceHost host5 = new ServiceHost(typeof(DataCollectorService),
+            host5 = new ServiceHost(typeof(DataCollectorService),
     baseAddress5);
 
-            ServiceHost host6 = new ServiceHost(typeof(NotificationService),
+            host6 = new ServiceHost(typeof(NotificationService),
     baseAddress6);
 
-            ServiceHost host7 = new ServiceHost(typeof(ProcessDataService),
+            host7 = new ServiceHost(typeof(ProcessDataService),
     baseAddress7);
 
-            ServiceHost host8 = new ServiceHost(typeof(UserService),
+            host8 = new ServiceHost(typeof(UserService),
     baseAddress8);
 
             ServiceMetadataBehavior smb1 = new ServiceMetadataBehavior();
@@ -116,9 +121,10 @@ namespace HostConsole
             host6.Open();
             host7.Open();
             host8.Open();
+        }
 
-            Console.ReadKey();
-
+        protected override void OnStop()
+        {
             host1.Close();
             host2.Close();
             host3.Close();
@@ -128,6 +134,15 @@ namespace HostConsole
             host6.Close();
             host7.Close();
             host8.Close();
+
+            host1 = null;
+            host2 = null;
+            host3 = null;
+            host4 = null;
+            host5 = null;
+            host6 = null;
+            host7 = null;
+            host8 = null;
         }
     }
 }

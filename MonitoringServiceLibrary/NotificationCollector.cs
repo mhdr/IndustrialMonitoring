@@ -126,13 +126,26 @@ namespace MonitoringServiceLibrary
                                     NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
                                     notificationItemsLog.NotificationId = notificationId;
                                     notificationItemsLog.Value = true;
+                                    notificationItemsLog.IsDelayedNotificationProcessed = false;
                                     notificationItemsLog.Time = DateTime.Now;
 
                                     entities.NotificationItemsLogs.Add(notificationItemsLog);
                                     entities.SaveChanges();
 
                                     var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                    bot.SendNotification(notificationItemsLog.NotificationLogId,NotificationDelayUser.Normal);
+
+                                    // delayed notification
+                                    var lastNotificationLog =
+                                            entities.NotificationItemsLogs.FirstOrDefault(x => x.NotificationId == notificationId && x.Value == false);
+
+                                    if (lastNotificationLog != null && lastNotificationLog.IsDelayedNotificationProcessed != null)
+                                    {
+                                        if (lastNotificationLog.IsDelayedNotificationProcessed.Value == true)
+                                        {
+                                            bot.SendNotification(lastNotificationLog.NotificationLogId, NotificationDelayUser.Delayed);
+                                        }
+                                    }
                                 }
                             }
                             else
@@ -146,6 +159,7 @@ namespace MonitoringServiceLibrary
                                     NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
                                     notificationItemsLog.NotificationId = notificationId;
                                     notificationItemsLog.Value = false;
+                                    notificationItemsLog.IsDelayedNotificationProcessed = false;
                                     notificationItemsLog.Time = DateTime.Now;
 
                                     entities.NotificationItemsLogs.Add(notificationItemsLog);
@@ -158,8 +172,7 @@ namespace MonitoringServiceLibrary
 
                                 // delayed notification
                                 var lastNotificationLog =
-                                        entities.NotificationItemsLogs.Where(x => x.NotificationId == notificationId).OrderByDescending(x => x.NotificationLogId)
-                                            .FirstOrDefault();
+                                        entities.NotificationItemsLogs.FirstOrDefault(x => x.NotificationId == notificationId && x.Value==false);
 
                                 if (lastNotificationLog != null && notificationItem.NumberOfSecondsInReceivingDelayedAlarmInTelegram != null && lastNotificationLog.IsDelayedNotificationProcessed != null)
                                 {
