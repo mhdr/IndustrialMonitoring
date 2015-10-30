@@ -7,5 +7,6 @@
 	[High] FLOAT NULL, 
 	[NotificationMsg] NVARCHAR(MAX) NULL, 
     [Priority] INT NULL, 
+    [NumberOfSecondsInReceivingDelayedAlarmInTelegram] INT NULL DEFAULT 120, 
     CONSTRAINT [FK_NotificationItems_Items] FOREIGN KEY (ItemId) REFERENCES Items(ItemId) 
 )

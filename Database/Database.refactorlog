@@ -350,4 +350,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[FK_ItemsLogRawData_LogOutleirs]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="b74078db-691c-4fb0-a1e1-1e464e4167c4" ChangeDateTime="10/30/2015 08:05:31">
+    <Property Name="ElementName" Value="[dbo].[NotificationItems].[NumberOfSecondInReceiving]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NumberOfSecondInReceivingDelayedAlarmInTelegram" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7bd1b099-3d72-415e-8e9a-bee891ad86ef" ChangeDateTime="10/30/2015 08:05:40">
+    <Property Name="ElementName" Value="[dbo].[NotificationItems].[NumberOfSecondInReceivingDelayedAlarmInTelegram]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[NotificationItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NumberOfSecondsInReceivingDelayedAlarmInTelegram" />
+  </Operation>
 </Operations>

@@ -137,9 +137,11 @@ namespace MonitoringServiceLibrary
                             }
                             else
                             {
+                                // we have a notification
+
                                 if (notificationItemsLogLatest.Value)
                                 {
-                                    // we have a notification
+                                    // we have a change in notification state
 
                                     NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
                                     notificationItemsLog.NotificationId = notificationId;
@@ -150,8 +152,34 @@ namespace MonitoringServiceLibrary
                                     entities.SaveChanges();
 
                                     var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                    bot.SendNotification(notificationItemsLog.NotificationLogId,NotificationDelayUser.Normal);
                                 }
+
+
+                                // delayed notification
+                                var lastNotificationLog =
+                                        entities.NotificationItemsLogs.Where(x => x.NotificationId == notificationId).OrderByDescending(x => x.NotificationLogId)
+                                            .FirstOrDefault();
+
+                                if (lastNotificationLog != null && notificationItem.NumberOfSecondsInReceivingDelayedAlarmInTelegram != null && lastNotificationLog.IsDelayedNotificationProcessed != null)
+                                {
+                                    if (lastNotificationLog.IsDelayedNotificationProcessed.Value==false)
+                                    {
+                                        var timeFromLastNotificationLog = DateTime.Now - lastNotificationLog.Time;
+
+                                        if (timeFromLastNotificationLog >
+                                            TimeSpan.FromSeconds(
+                                                notificationItem.NumberOfSecondsInReceivingDelayedAlarmInTelegram.Value))
+                                        {
+                                            lastNotificationLog.IsDelayedNotificationProcessed = true;
+                                            entities.SaveChanges();
+
+                                            var bot = NotificationsBot.Instance;
+                                            bot.SendNotification(lastNotificationLog.NotificationLogId, NotificationDelayUser.Delayed);
+                                        }
+                                    }
+                                }
+         
                             }
 
 
