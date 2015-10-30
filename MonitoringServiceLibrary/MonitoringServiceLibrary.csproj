@@ -105,7 +105,7 @@
     <Compile Include="Bot.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="BotQueue.cs">
+    <Compile Include="BotNotificationQueue.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DataCollector.cs" />

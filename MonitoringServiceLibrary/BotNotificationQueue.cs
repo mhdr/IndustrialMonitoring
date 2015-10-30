@@ -12,13 +12,18 @@ namespace MonitoringServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class BotQueue
+    public partial class BotNotificationQueue
     {
         public int BotQueueId { get; set; }
-        public int QueueDirection { get; set; }
+        public Nullable<int> NotificationId { get; set; }
         public int ChatId { get; set; }
         public string MessageText { get; set; }
+        public System.DateTime RegisterTime { get; set; }
+        public Nullable<int> Delay { get; set; }
+        public Nullable<System.DateTime> FinishTime { get; set; }
+        public Nullable<bool> IsSent { get; set; }
         public bool IsCompleted { get; set; }
-        public System.DateTime Date { get; set; }
+    
+        public virtual NotificationItem NotificationItem { get; set; }
     }
 }

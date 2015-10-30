@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bot">
           <Key>
             <PropertyRef Name="BotProcessId" />
@@ -16,16 +16,19 @@
           <Property Name="IsAuthorized" Type="bit" Nullable="false" />
           <Property Name="ReceiveAlarms" Type="bit" />
         </EntityType>
-        <EntityType Name="BotQueue">
+        <EntityType Name="BotNotificationQueue">
           <Key>
             <PropertyRef Name="BotQueueId" />
           </Key>
           <Property Name="BotQueueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="QueueDirection" Type="int" Nullable="false" />
+          <Property Name="NotificationId" Type="int" />
           <Property Name="ChatId" Type="int" Nullable="false" />
           <Property Name="MessageText" Type="nvarchar(max)" />
+          <Property Name="RegisterTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Delay" Type="int" />
+          <Property Name="FinishTime" Type="datetime2" Precision="7" />
+          <Property Name="IsSent" Type="bit" />
           <Property Name="IsCompleted" Type="bit" Nullable="false" />
-          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="Items">
           <Key>
@@ -109,6 +112,7 @@
           <Property Name="High" Type="float" />
           <Property Name="NotificationMsg" Type="nvarchar(max)" />
           <Property Name="Priority" Type="int" />
+          <Property Name="DelayForSendingNotificationInTelegram" Type="int" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -187,6 +191,7 @@
           <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ReceiveDelayedNotificationInTelegram" Type="bit" />
         </EntityType>
         <EntityType Name="UsersServicesPermissions">
           <Key>
@@ -205,6 +210,18 @@
             </Principal>
             <Dependent Role="Bot">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BotNotificationQueue_NotificationItems">
+          <End Role="NotificationItems" Type="Self.NotificationItems" Multiplicity="0..1" />
+          <End Role="BotNotificationQueue" Type="Self.BotNotificationQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItems">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="BotNotificationQueue">
+              <PropertyRef Name="NotificationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -414,7 +431,7 @@
         </Association>
         <EntityContainer Name="IndustrialMonitoringModelStoreContainer">
           <EntitySet Name="Bot" EntityType="Self.Bot" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BotQueue" EntityType="Self.BotQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BotNotificationQueue" EntityType="Self.BotNotificationQueue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLog" EntityType="Self.ItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogLatest" EntityType="Self.ItemsLogLatest" Schema="dbo" store:Type="Tables" />
@@ -434,6 +451,10 @@
           <AssociationSet Name="FK_Bot_Users" Association="Self.FK_Bot_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Bot" EntitySet="Bot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BotNotificationQueue_NotificationItems" Association="Self.FK_BotNotificationQueue_NotificationItems">
+            <End Role="NotificationItems" EntitySet="NotificationItems" />
+            <End Role="BotNotificationQueue" EntitySet="BotNotificationQueue" />
           </AssociationSet>
           <AssociationSet Name="FK_Items_ThreadGroup" Association="Self.FK_Items_ThreadGroup">
             <End Role="ThreadGroup" EntitySet="ThreadGroup" />
@@ -504,8 +525,7 @@
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IndustrialMonitoringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -520,17 +540,6 @@
           <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
           <Property Name="ReceiveAlarms" Type="Boolean" />
           <NavigationProperty Name="User" Relationship="Self.FK_Bot_Users" FromRole="Bot" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="BotQueue">
-          <Key>
-            <PropertyRef Name="BotQueueId" />
-          </Key>
-          <Property Name="BotQueueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="QueueDirection" Type="Int32" Nullable="false" />
-          <Property Name="ChatId" Type="Int32" Nullable="false" />
-          <Property Name="MessageText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -633,6 +642,8 @@
           <NavigationProperty Name="NotificationItemsLogLatests" Relationship="Self.FK_NotificationItemsLogLatest_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLogLatest" />
           <NavigationProperty Name="RelatedNotifications" Relationship="Self.FK_RelatedNotifications_NotificationItems" FromRole="NotificationItems" ToRole="RelatedNotifications" />
           <NavigationProperty Name="RelatedNotifications1" Relationship="Self.FK_RelatedNotifications_NotificationItems2" FromRole="NotificationItems" ToRole="RelatedNotifications" />
+          <Property Name="DelayForSendingNotificationInTelegram" Type="Int32" />
+          <NavigationProperty Name="BotNotificationQueues" Relationship="IndustrialMonitoringModel.FK_BotNotificationQueue_NotificationItems" FromRole="NotificationItem" ToRole="BotNotificationQueue" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -725,6 +736,7 @@
           <Property Name="ItemId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Item" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="UsersItemsPermissions" ToRole="Items" />
           <NavigationProperty Name="User" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="UsersItemsPermissions" ToRole="Users" />
+          <Property Name="ReceiveDelayedNotificationInTelegram" Type="Boolean" />
         </EntityType>
         <EntityType Name="UsersServicesPermission">
           <Key>
@@ -954,7 +966,6 @@
         </Association>
         <EntityContainer Name="IndustrialMonitoringEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bots" EntityType="Self.Bot" />
-          <EntitySet Name="BotQueues" EntityType="Self.BotQueue" />
           <EntitySet Name="Items" EntityType="Self.Item" />
           <EntitySet Name="ItemsLogs" EntityType="Self.ItemsLog" />
           <EntitySet Name="ItemsLogLatests" EntityType="Self.ItemsLogLatest" />
@@ -1043,7 +1054,39 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
+          <EntitySet Name="BotNotificationQueues" EntityType="IndustrialMonitoringModel.BotNotificationQueue" />
+          <AssociationSet Name="FK_BotNotificationQueue_NotificationItems" Association="IndustrialMonitoringModel.FK_BotNotificationQueue_NotificationItems">
+            <End Role="NotificationItem" EntitySet="NotificationItems" />
+            <End Role="BotNotificationQueue" EntitySet="BotNotificationQueues" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="BotNotificationQueue">
+          <Key>
+            <PropertyRef Name="BotQueueId" />
+          </Key>
+          <Property Name="BotQueueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationId" Type="Int32" />
+          <Property Name="ChatId" Type="Int32" Nullable="false" />
+          <Property Name="MessageText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Delay" Type="Int32" />
+          <Property Name="FinishTime" Type="DateTime" Precision="7" />
+          <Property Name="IsSent" Type="Boolean" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NotificationItem" Relationship="IndustrialMonitoringModel.FK_BotNotificationQueue_NotificationItems" FromRole="BotNotificationQueue" ToRole="NotificationItem" />
+        </EntityType>
+        <Association Name="FK_BotNotificationQueue_NotificationItems">
+          <End Type="IndustrialMonitoringModel.NotificationItem" Role="NotificationItem" Multiplicity="0..1" />
+          <End Type="IndustrialMonitoringModel.BotNotificationQueue" Role="BotNotificationQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItem">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="BotNotificationQueue">
+              <PropertyRef Name="NotificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1059,18 +1102,6 @@
                 <ScalarProperty Name="Token" ColumnName="Token" />
                 <ScalarProperty Name="IsAuthorized" ColumnName="IsAuthorized" />
                 <ScalarProperty Name="ReceiveAlarms" ColumnName="ReceiveAlarms" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BotQueues">
-            <EntityTypeMapping TypeName="IndustrialMonitoringModel.BotQueue">
-              <MappingFragment StoreEntitySet="BotQueue">
-                <ScalarProperty Name="BotQueueId" ColumnName="BotQueueId" />
-                <ScalarProperty Name="QueueDirection" ColumnName="QueueDirection" />
-                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
-                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
-                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1153,6 +1184,7 @@
           <EntitySetMapping Name="NotificationItems">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationItem">
               <MappingFragment StoreEntitySet="NotificationItems">
+                <ScalarProperty Name="DelayForSendingNotificationInTelegram" ColumnName="DelayForSendingNotificationInTelegram" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
@@ -1244,6 +1276,7 @@
           <EntitySetMapping Name="UsersItemsPermissions">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.UsersItemsPermission">
               <MappingFragment StoreEntitySet="UsersItemsPermissions">
+                <ScalarProperty Name="ReceiveDelayedNotificationInTelegram" ColumnName="ReceiveDelayedNotificationInTelegram" />
                 <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
@@ -1256,6 +1289,21 @@
                 <ScalarProperty Name="UserServicePermissionId" ColumnName="UserServicePermissionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BotNotificationQueues">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.BotNotificationQueue">
+              <MappingFragment StoreEntitySet="BotNotificationQueue">
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
+                <ScalarProperty Name="Delay" ColumnName="Delay" />
+                <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="BotQueueId" ColumnName="BotQueueId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

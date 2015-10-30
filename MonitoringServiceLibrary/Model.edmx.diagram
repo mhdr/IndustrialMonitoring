@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="dd2892ec4e9b47d985a4d86606822706" Name="Diagram1">
         <EntityTypeShape EntityType="IndustrialMonitoringModel.Bot" Width="1.5" PointX="10.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.BotQueue" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.Item" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLog" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogLatest" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
@@ -41,6 +40,8 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.BotNotificationQueue" Width="1.5" PointX="7.5" PointY="28.25" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_BotNotificationQueue_NotificationItems" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

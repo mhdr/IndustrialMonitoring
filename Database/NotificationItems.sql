@@ -7,5 +7,6 @@
 	[High] FLOAT NULL, 
 	[NotificationMsg] NVARCHAR(MAX) NULL, 
     [Priority] INT NULL, 
+    [DelayForSendingNotificationInTelegram] INT NULL, 
     CONSTRAINT [FK_NotificationItems_Items] FOREIGN KEY (ItemId) REFERENCES Items(ItemId) 
 )

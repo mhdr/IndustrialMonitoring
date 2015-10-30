@@ -26,7 +26,6 @@ namespace MonitoringServiceLibrary
         }
     
         public virtual DbSet<Bot> Bots { get; set; }
-        public virtual DbSet<BotQueue> BotQueues { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemsLog> ItemsLogs { get; set; }
         public virtual DbSet<ItemsLogLatest> ItemsLogLatests { get; set; }
@@ -43,5 +42,6 @@ namespace MonitoringServiceLibrary
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersItemsPermission> UsersItemsPermissions { get; set; }
         public virtual DbSet<UsersServicesPermission> UsersServicesPermissions { get; set; }
+        public virtual DbSet<BotNotificationQueue> BotNotificationQueues { get; set; }
     }
 }

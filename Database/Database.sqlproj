@@ -73,7 +73,7 @@
     <Build Include="Services.sql" />
     <Build Include="Bot.sql" />
     <Build Include="RelatedNotifications.sql" />
-    <Build Include="BotQueue.sql" />
+    <Build Include="BotNotificationQueue.sql" />
     <Build Include="ThreadGroup.sql" />
     <Build Include="ItemsLogRawData.sql" />
     <Build Include="LogOutliers.sql" />

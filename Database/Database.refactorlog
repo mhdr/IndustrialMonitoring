@@ -364,4 +364,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="NumberOfSecondsInReceivingDelayedAlarmInTelegram" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="afcdcbd4-af85-404b-a565-f863fdd29d0f" ChangeDateTime="10/30/2015 14:28:35">
+    <Property Name="ElementName" Value="[dbo].[BotQueue].[Date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[BotQueue]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RegisterTime" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="160b92c1-3c2b-42fb-b52c-146e05d6703d" ChangeDateTime="10/30/2015 15:05:53">
+    <Property Name="ElementName" Value="[dbo].[FK_BotQueue_NotificationItems]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[BotNotificationQueue]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_BotNotificationQueue_NotificationItems]" />
+  </Operation>
 </Operations>
