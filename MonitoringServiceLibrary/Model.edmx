@@ -109,6 +109,7 @@
           <Property Name="High" Type="float" />
           <Property Name="NotificationMsg" Type="nvarchar(max)" />
           <Property Name="Priority" Type="int" />
+          <Property Name="NumberOfSecondsInReceivingDelayedAlarmInTelegram" Type="int" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -117,6 +118,7 @@
           <Property Name="NotificationLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NotificationId" Type="int" Nullable="false" />
           <Property Name="Value" Type="bit" Nullable="false" />
+          <Property Name="IsDelayedNotificationProcessed" Type="bit" />
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
@@ -187,6 +189,7 @@
           <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ReceiveDelayAlarmInTelegram" Type="bit" />
         </EntityType>
         <EntityType Name="UsersServicesPermissions">
           <Key>
@@ -710,6 +713,7 @@
           <NavigationProperty Name="NotificationItemsLogLatests" Relationship="IndustrialMonitoringModel.FK_NotificationItemsLogLatest_NotificationItems" FromRole="NotificationItem" ToRole="NotificationItemsLogLatest" />
           <NavigationProperty Name="RelatedNotifications" Relationship="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems" FromRole="NotificationItem" ToRole="RelatedNotification" />
           <NavigationProperty Name="RelatedNotifications1" Relationship="IndustrialMonitoringModel.FK_RelatedNotifications_NotificationItems2" FromRole="NotificationItem" ToRole="RelatedNotification" />
+          <Property Name="NumberOfSecondsInReceivingDelayedAlarmInTelegram" Type="Int32" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -721,6 +725,7 @@
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="NotificationItem" Relationship="IndustrialMonitoringModel.FK_NotificationItemsLog_NotificationItems" FromRole="NotificationItemsLog" ToRole="NotificationItem" />
+          <Property Name="IsDelayedNotificationProcessed" Type="Boolean" />
         </EntityType>
         <EntityType Name="NotificationItemsLogLatest">
           <Key>
@@ -802,6 +807,7 @@
           <Property Name="ItemId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Item" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" FromRole="UsersItemsPermission" ToRole="Item" />
           <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" FromRole="UsersItemsPermission" ToRole="User" />
+          <Property Name="ReceiveDelayAlarmInTelegram" Type="Boolean" />
         </EntityType>
         <EntityType Name="UsersServicesPermission">
           <Key>
@@ -1139,6 +1145,7 @@
           <EntitySetMapping Name="NotificationItems">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationItem">
               <MappingFragment StoreEntitySet="NotificationItems">
+                <ScalarProperty Name="NumberOfSecondsInReceivingDelayedAlarmInTelegram" ColumnName="NumberOfSecondsInReceivingDelayedAlarmInTelegram" />
                 <ScalarProperty Name="Priority" ColumnName="Priority" />
                 <ScalarProperty Name="NotificationMsg" ColumnName="NotificationMsg" />
                 <ScalarProperty Name="High" ColumnName="High" />
@@ -1152,6 +1159,7 @@
           <EntitySetMapping Name="NotificationItemsLogs">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationItemsLog">
               <MappingFragment StoreEntitySet="NotificationItemsLog">
+                <ScalarProperty Name="IsDelayedNotificationProcessed" ColumnName="IsDelayedNotificationProcessed" />
                 <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
@@ -1230,6 +1238,7 @@
           <EntitySetMapping Name="UsersItemsPermissions">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.UsersItemsPermission">
               <MappingFragment StoreEntitySet="UsersItemsPermissions">
+                <ScalarProperty Name="ReceiveDelayAlarmInTelegram" ColumnName="ReceiveDelayAlarmInTelegram" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />

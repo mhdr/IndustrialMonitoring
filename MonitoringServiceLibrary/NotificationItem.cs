@@ -29,6 +29,7 @@ namespace MonitoringServiceLibrary
         public Nullable<double> High { get; set; }
         public string NotificationMsg { get; set; }
         public Nullable<int> Priority { get; set; }
+        public Nullable<int> NumberOfSecondsInReceivingDelayedAlarmInTelegram { get; set; }
     
         public virtual Item Item { get; set; }
         public virtual ICollection<NotificationItemsLog> NotificationItemsLogs { get; set; }
