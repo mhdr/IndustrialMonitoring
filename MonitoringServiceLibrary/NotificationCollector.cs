@@ -137,7 +137,7 @@ namespace MonitoringServiceLibrary
                             }
                             else
                             {
-                                // we have a notification
+                                // we have notification
 
                                 if (notificationItemsLogLatest.Value)
                                 {
