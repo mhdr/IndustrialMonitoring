@@ -105,9 +105,6 @@
     <Compile Include="Bot.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="BotNotificationQueue.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataCollector.cs" />
     <Compile Include="DataCollectorService.cs" />
     <Compile Include="IDataCollectorService.cs" />
@@ -146,6 +143,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="NotificationBot.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="NotificationCollector.cs" />
     <Compile Include="NotificationItem.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -160,9 +160,6 @@
     <Compile Include="NotificationService.cs" />
     <Compile Include="ProcessDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RelatedNotification.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Service References\BSProcessDataServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

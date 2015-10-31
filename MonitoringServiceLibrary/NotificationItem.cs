@@ -19,9 +19,6 @@ namespace MonitoringServiceLibrary
         {
             this.NotificationItemsLogs = new HashSet<NotificationItemsLog>();
             this.NotificationItemsLogLatests = new HashSet<NotificationItemsLogLatest>();
-            this.RelatedNotifications = new HashSet<RelatedNotification>();
-            this.RelatedNotifications1 = new HashSet<RelatedNotification>();
-            this.BotNotificationQueues = new HashSet<BotNotificationQueue>();
         }
     
         public int NotificationId { get; set; }
@@ -38,11 +35,5 @@ namespace MonitoringServiceLibrary
         public virtual ICollection<NotificationItemsLog> NotificationItemsLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RelatedNotification> RelatedNotifications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RelatedNotification> RelatedNotifications1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BotNotificationQueue> BotNotificationQueues { get; set; }
     }
 }

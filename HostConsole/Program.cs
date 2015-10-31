@@ -15,21 +15,6 @@ namespace HostConsole
     {
         static void Main(string[] args)
         {
-            Config config=Config.LoadConfig();
-            string pathToOPC = config.SystemManagerPath;
-
-            if (File.Exists(pathToOPC))
-            {
-                var processes = Process.GetProcessesByName("SystemManager");
-
-                foreach (Process process in processes)
-                {
-                    process.Kill();
-                }
-
-                var p = Process.Start(pathToOPC);
-            }
-
             Uri baseAddress1 = new Uri("http://172.20.63.234:9011/MonitoringService/DataCollectorService");
             Uri baseAddress2 = new Uri("http://172.20.63.234:9011/MonitoringService/NotificationService");
             Uri baseAddress3 = new Uri("http://172.20.63.234:9011/MonitoringService/ProcessDataService");

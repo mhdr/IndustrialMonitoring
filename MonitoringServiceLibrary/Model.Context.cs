@@ -34,7 +34,6 @@ namespace MonitoringServiceLibrary
         public virtual DbSet<NotificationItem> NotificationItems { get; set; }
         public virtual DbSet<NotificationItemsLog> NotificationItemsLogs { get; set; }
         public virtual DbSet<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
-        public virtual DbSet<RelatedNotification> RelatedNotifications { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Tab> Tabs { get; set; }
         public virtual DbSet<TabsItem> TabsItems { get; set; }
@@ -42,6 +41,6 @@ namespace MonitoringServiceLibrary
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersItemsPermission> UsersItemsPermissions { get; set; }
         public virtual DbSet<UsersServicesPermission> UsersServicesPermissions { get; set; }
-        public virtual DbSet<BotNotificationQueue> BotNotificationQueues { get; set; }
+        public virtual DbSet<NotificationBot> NotificationBots { get; set; }
     }
 }

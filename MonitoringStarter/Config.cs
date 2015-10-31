@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace HostConsole
+namespace MonitoringStarter
 {
     public class Config
     {
+        public string ConsoleHostPath;
+        public string TelegramBotPath;
         public string SystemManagerPath;
 
         public static Config LoadConfig()
@@ -35,6 +37,8 @@ namespace HostConsole
 
         public void Initialize()
         {
+            this.ConsoleHostPath = "";
+            this.TelegramBotPath = "";
             this.SystemManagerPath = "";
         }
     }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8ab867c2-9fa5-4161-ba74-b71343acf4b6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://172.20.63.234:9011/MonitoringService/DataCollectorService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DataCollectorService.xsd" MetadataType="Schema" ID="65ae3dde-4077-440f-84a1-29a68bc4fa1d" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/DataCollectorService?xsd=xsd1" />
+    <MetadataFile FileName="DataCollectorService1.xsd" MetadataType="Schema" ID="65213728-7995-4dc6-9d3c-c217f20302b7" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/DataCollectorService?xsd=xsd0" />
+    <MetadataFile FileName="DataCollectorService2.xsd" MetadataType="Schema" ID="8ba0c5d2-ae5f-4ead-bc75-ef912b0aa12c" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/DataCollectorService?xsd=xsd2" />
+    <MetadataFile FileName="DataCollectorService.disco" MetadataType="Disco" ID="8e02cc9f-4c0e-44c3-b7a4-d8278f8d7d96" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/DataCollectorService?disco" />
+    <MetadataFile FileName="DataCollectorService.wsdl" MetadataType="Wsdl" ID="40b2e72a-dd23-491b-8d15-f260339c16aa" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/DataCollectorService?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

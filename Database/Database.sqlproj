@@ -72,7 +72,6 @@
     <Build Include="UsersServicesPermissions.sql" />
     <Build Include="Services.sql" />
     <Build Include="Bot.sql" />
-    <Build Include="RelatedNotifications.sql" />
     <Build Include="ThreadGroup.sql" />
     <Build Include="ItemsLogRawData.sql" />
     <Build Include="LogOutliers.sql" />

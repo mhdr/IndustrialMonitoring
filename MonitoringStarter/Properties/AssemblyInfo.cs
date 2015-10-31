@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HostConsoleService")]
+[assembly: AssemblyTitle("MonitoringStarter")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HostConsoleService")]
+[assembly: AssemblyProduct("MonitoringStarter")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c1969063-94e7-4d63-b783-5c6d4f77a16b")]
+[assembly: Guid("b7491b23-4c31-4b1b-a809-9f1774155423")]
 
 // Version information for an assembly consists of the following four values:
 //

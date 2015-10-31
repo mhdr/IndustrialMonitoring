@@ -14,6 +14,12 @@ namespace MonitoringServiceLibrary
     
     public partial class NotificationItemsLog
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public NotificationItemsLog()
+        {
+            this.NotificationBots = new HashSet<NotificationBot>();
+        }
+    
         public int NotificationLogId { get; set; }
         public int NotificationId { get; set; }
         public bool Value { get; set; }
@@ -21,5 +27,7 @@ namespace MonitoringServiceLibrary
         public byte[] TimeStamp { get; set; }
     
         public virtual NotificationItem NotificationItem { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NotificationBot> NotificationBots { get; set; }
     }
 }
