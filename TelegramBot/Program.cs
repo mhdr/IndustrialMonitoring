@@ -82,7 +82,7 @@ Time : {1}", emoji, DateTime.Now));
                         {
                             foreach (int chatId in chatIds)
                             {
-                                var emoji = "\u2733";
+                                var emoji = "\u2734";
                                 await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
 Time : {1}", emoji, DateTime.Now));
                                 await Task.Delay(100);
