@@ -196,6 +196,9 @@ Time : {1}", emoji, DateTime.Now));
                             }
                             else if (msg == "/restart sobhan")
                             {
+                                offset = update.Id + 1;
+                                await bot.GetUpdates(offset);
+
                                 Process.Start("shutdown.exe", "-f -r -t 0");
                             }
                             else if (msg == "/ping")
