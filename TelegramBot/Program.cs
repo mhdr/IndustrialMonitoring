@@ -194,6 +194,10 @@ Time : {1}", emoji, DateTime.Now));
 
                                 await bot.SendTextMessage(chatId, output);
                             }
+                            else if (msg == "/restart sobhan")
+                            {
+                                Process.Start("shutdown.exe", "-f -r -t 0");
+                            }
                             else if (msg == "/ping")
                             {
                                 await bot.SendTextMessage(chatId, string.Format("{0} : Server is alive", DateTime.Now));
