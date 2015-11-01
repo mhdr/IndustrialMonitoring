@@ -1,3 +1,5 @@
 sc create IndustrialMonitoring binPath= "C:\Program Files (x86)\MonitoringStarter\MonitoringStarter.exe" DisplayName= "Industrial Monitoring" start= auto
 
 sc delete IndustrialMonitoring
+
+installutil ...
