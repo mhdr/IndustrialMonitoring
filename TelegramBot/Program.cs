@@ -196,6 +196,8 @@ Time : {1}", emoji, DateTime.Now));
                             }
                             else if (msg == "/restart sobhan")
                             {
+                                await bot.SendTextMessage(chatId, "Server is Restarting ... ");
+
                                 offset = update.Id + 1;
                                 await bot.GetUpdates(offset);
 
