@@ -156,7 +156,7 @@
     <Compile Include="NotificationItemsLogLatest.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="NotificationsBot.cs" />
+    <Compile Include="NotificationsBotInvoker.cs" />
     <Compile Include="NotificationService.cs" />
     <Compile Include="ProcessDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

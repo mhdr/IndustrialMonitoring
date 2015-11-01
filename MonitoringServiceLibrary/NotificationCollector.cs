@@ -16,7 +16,10 @@ namespace MonitoringServiceLibrary
 
         public NotificationCollector()
         {
-            RunningThread = new Thread(CheckNotifications);
+            RunningThread = new Thread(()=>
+            {
+                CheckNotifications();
+            });
         }
 
         public Thread RunningThread
@@ -44,6 +47,12 @@ namespace MonitoringServiceLibrary
                 this.StopThread = false;
                 RunningThread.Start();                
             }
+
+            Thread thread=new Thread(() =>
+            {
+                NotificationsBotInvoker.Instance.CheckNotificationBot();
+            });
+            thread.Start();
         }
 
         public void Stop()
@@ -131,8 +140,10 @@ namespace MonitoringServiceLibrary
                                     entities.NotificationItemsLogs.Add(notificationItemsLog);
                                     entities.SaveChanges();
 
-                                    var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                    //var bot = NotificationsBotInvoker.Instance;
+                                    //bot.SendNotification(notificationItemsLog.NotificationLogId);
+
+                                    NotificationsBotInvoker.RegisterNewRecord(notificationId,notificationItemsLog.NotificationLogId);
                                 }
                             }
                             else
@@ -151,8 +162,10 @@ namespace MonitoringServiceLibrary
                                     entities.NotificationItemsLogs.Add(notificationItemsLog);
                                     entities.SaveChanges();
 
-                                    var bot = NotificationsBot.Instance;
-                                    bot.SendNotification(notificationItemsLog.NotificationLogId);
+                                    //var bot = NotificationsBotInvoker.Instance;
+                                    //bot.SendNotification(notificationItemsLog.NotificationLogId);
+
+                                    NotificationsBotInvoker.RegisterNewRecord(notificationId, notificationItemsLog.NotificationLogId);
                                 }
                             }
 
