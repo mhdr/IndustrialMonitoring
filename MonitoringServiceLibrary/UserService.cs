@@ -36,7 +36,7 @@ namespace MonitoringServiceLibrary
         {
             var Entities = new IndustrialMonitoringEntities();
             string pass2 = GetHash(password);
-            if (Entities.Users.Any(x => x.UserName == userName && x.Password ==pass2))
+            if (Entities.Users.Any(x => x.UserName == userName & x.Password ==pass2))
             {
                 return true;
             }
@@ -47,7 +47,7 @@ namespace MonitoringServiceLibrary
         public bool CheckPermission(int userId, int itemId)
         {
             var Entities = new IndustrialMonitoringEntities();
-            if (Entities.UsersItemsPermissions.Any(x => x.UserId == userId && x.ItemId == itemId))
+            if (Entities.UsersItemsPermissions.Any(x => x.UserId == userId & x.ItemId == itemId))
             {
                 return true;
             }
@@ -62,7 +62,7 @@ namespace MonitoringServiceLibrary
 
             foreach (var u in userItemsPermissionQuery)
             {
-                bool tabExist = Entities.TabsItems.Any(x => x.ItemId == u.ItemId && x.TabId == tabId);
+                bool tabExist = Entities.TabsItems.Any(x => x.ItemId == u.ItemId & x.TabId == tabId);
 
                 if (tabExist)
                 {

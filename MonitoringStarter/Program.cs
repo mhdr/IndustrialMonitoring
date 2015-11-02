@@ -36,12 +36,10 @@ namespace MonitoringStarter
             {
                 var processes = Process.GetProcessesByName("SystemManager");
 
-                foreach (Process process in processes)
+                if (!processes.Any())
                 {
-                    process.Kill();
+                    var p1 = Process.Start(config.SystemManagerPath);
                 }
-
-                var p1 = Process.Start(config.SystemManagerPath);
             }
             Console.WriteLine("System Manager Started ...");
 

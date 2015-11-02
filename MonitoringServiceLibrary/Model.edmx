@@ -91,9 +91,10 @@
           <Key>
             <PropertyRef Name="NotificationBotId" />
           </Key>
-          <Property Name="NotificationBotId" Type="int" Nullable="false" />
+          <Property Name="NotificationBotId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NotificationId" Type="int" Nullable="false" />
           <Property Name="NotificationLogId" Type="int" Nullable="false" />
+          <Property Name="WithoutAlarm" Type="bit" Nullable="false" />
           <Property Name="RegisterTime" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Delay" Type="int" Nullable="false" />
           <Property Name="SentTime" Type="datetime2" Precision="7" />
@@ -277,6 +278,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Notification_NotificationItemsLog">
+          <End Role="NotificationItemsLog" Type="Self.NotificationItemsLog" Multiplicity="1" />
+          <End Role="NotificationBot" Type="Self.NotificationBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItemsLog">
+              <PropertyRef Name="NotificationLogId" />
+            </Principal>
+            <Dependent Role="NotificationBot">
+              <PropertyRef Name="NotificationLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NotificationBot_NotificationItems">
           <End Role="NotificationItems" Type="Self.NotificationItems" Multiplicity="1" />
           <End Role="NotificationBot" Type="Self.NotificationBot" Multiplicity="*" />
@@ -286,18 +299,6 @@
             </Principal>
             <Dependent Role="NotificationBot">
               <PropertyRef Name="NotificationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NotificationBot_NotificationItemsLog">
-          <End Role="NotificationItemsLog" Type="Self.NotificationItemsLog" Multiplicity="1" />
-          <End Role="NotificationBot" Type="Self.NotificationBot" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NotificationItemsLog">
-              <PropertyRef Name="NotificationLogId" />
-            </Principal>
-            <Dependent Role="NotificationBot">
-              <PropertyRef Name="NotificationLogId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -455,12 +456,12 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="LogOutliers" EntitySet="LogOutliers" />
           </AssociationSet>
-          <AssociationSet Name="FK_NotificationBot_NotificationItems" Association="Self.FK_NotificationBot_NotificationItems">
-            <End Role="NotificationItems" EntitySet="NotificationItems" />
+          <AssociationSet Name="FK_Notification_NotificationItemsLog" Association="Self.FK_Notification_NotificationItemsLog">
+            <End Role="NotificationItemsLog" EntitySet="NotificationItemsLog" />
             <End Role="NotificationBot" EntitySet="NotificationBot" />
           </AssociationSet>
-          <AssociationSet Name="FK_NotificationBot_NotificationItemsLog" Association="Self.FK_NotificationBot_NotificationItemsLog">
-            <End Role="NotificationItemsLog" EntitySet="NotificationItemsLog" />
+          <AssociationSet Name="FK_NotificationBot_NotificationItems" Association="Self.FK_NotificationBot_NotificationItems">
+            <End Role="NotificationItems" EntitySet="NotificationItems" />
             <End Role="NotificationBot" EntitySet="NotificationBot" />
           </AssociationSet>
           <AssociationSet Name="FK_NotificationItems_Items" Association="Self.FK_NotificationItems_Items">
@@ -628,7 +629,7 @@
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="NotificationItem" Relationship="Self.FK_NotificationItemsLog_NotificationItems" FromRole="NotificationItemsLog" ToRole="NotificationItems" />
-          <NavigationProperty Name="NotificationBots" Relationship="IndustrialMonitoringModel.FK_NotificationBot_NotificationItemsLog" FromRole="NotificationItemsLog" ToRole="NotificationBot" />
+          <NavigationProperty Name="NotificationBots" Relationship="IndustrialMonitoringModel.FK_Notification_NotificationItemsLog" FromRole="NotificationItemsLog" ToRole="NotificationBot" />
         </EntityType>
         <EntityType Name="NotificationItemsLogLatest">
           <Key>
@@ -986,43 +987,32 @@
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
           <EntitySet Name="NotificationBots" EntityType="IndustrialMonitoringModel.NotificationBot" />
-          <AssociationSet Name="FK_NotificationBot_NotificationItemsLog" Association="IndustrialMonitoringModel.FK_NotificationBot_NotificationItemsLog">
-            <End Role="NotificationItemsLog" EntitySet="NotificationItemsLogs" />
-            <End Role="NotificationBot" EntitySet="NotificationBots" />
-          </AssociationSet>
           <AssociationSet Name="FK_NotificationBot_NotificationItems" Association="IndustrialMonitoringModel.FK_NotificationBot_NotificationItems">
             <End Role="NotificationItem" EntitySet="NotificationItems" />
             <End Role="NotificationBot" EntitySet="NotificationBots" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="FK_Notification_NotificationItemsLog" Association="IndustrialMonitoringModel.FK_Notification_NotificationItemsLog">
+            <End Role="NotificationItemsLog" EntitySet="NotificationItemsLogs" />
+            <End Role="NotificationBot" EntitySet="NotificationBots" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="NotificationBot">
           <Key>
             <PropertyRef Name="NotificationBotId" />
           </Key>
-          <Property Name="NotificationBotId" Type="Int32" Nullable="false" />
+          <Property Name="NotificationBotId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NotificationId" Type="Int32" Nullable="false" />
-          <Property Name="NotificationLogId" Type="Int32" Nullable="false" />
+          <Property Name="WithoutAlarm" Type="Boolean" Nullable="false" />
           <Property Name="RegisterTime" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Delay" Type="Int32" Nullable="false" />
           <Property Name="SentTime" Type="DateTime" Precision="7" />
           <Property Name="IsSent" Type="Boolean" Nullable="false" />
           <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
           <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="NotificationItemsLog" Relationship="IndustrialMonitoringModel.FK_NotificationBot_NotificationItemsLog" FromRole="NotificationBot" ToRole="NotificationItemsLog" />
           <NavigationProperty Name="NotificationItem" Relationship="IndustrialMonitoringModel.FK_NotificationBot_NotificationItems" FromRole="NotificationBot" ToRole="NotificationItem" />
+          <Property Name="NotificationLogId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NotificationItemsLog" Relationship="IndustrialMonitoringModel.FK_Notification_NotificationItemsLog" FromRole="NotificationBot" ToRole="NotificationItemsLog" />
         </EntityType>
-        <Association Name="FK_NotificationBot_NotificationItemsLog">
-          <End Type="IndustrialMonitoringModel.NotificationItemsLog" Role="NotificationItemsLog" Multiplicity="1" />
-          <End Type="IndustrialMonitoringModel.NotificationBot" Role="NotificationBot" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NotificationItemsLog">
-              <PropertyRef Name="NotificationLogId" />
-            </Principal>
-            <Dependent Role="NotificationBot">
-              <PropertyRef Name="NotificationLogId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_NotificationBot_NotificationItems">
           <End Type="IndustrialMonitoringModel.NotificationItem" Role="NotificationItem" Multiplicity="1" />
           <End Type="IndustrialMonitoringModel.NotificationBot" Role="NotificationBot" Multiplicity="*" />
@@ -1035,7 +1025,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Notification_NotificationItemsLog">
+          <End Type="IndustrialMonitoringModel.NotificationItemsLog" Role="NotificationItemsLog" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.NotificationBot" Role="NotificationBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItemsLog">
+              <PropertyRef Name="NotificationLogId" />
+            </Principal>
+            <Dependent Role="NotificationBot">
+              <PropertyRef Name="NotificationLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1234,13 +1236,14 @@
           <EntitySetMapping Name="NotificationBots">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationBot">
               <MappingFragment StoreEntitySet="NotificationBot">
+                <ScalarProperty Name="NotificationLogId" ColumnName="NotificationLogId" />
                 <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
                 <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
                 <ScalarProperty Name="IsSent" ColumnName="IsSent" />
                 <ScalarProperty Name="SentTime" ColumnName="SentTime" />
                 <ScalarProperty Name="Delay" ColumnName="Delay" />
                 <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
-                <ScalarProperty Name="NotificationLogId" ColumnName="NotificationLogId" />
+                <ScalarProperty Name="WithoutAlarm" ColumnName="WithoutAlarm" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="NotificationBotId" ColumnName="NotificationBotId" />
               </MappingFragment>

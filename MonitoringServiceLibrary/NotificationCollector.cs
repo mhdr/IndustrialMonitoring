@@ -115,7 +115,7 @@ namespace MonitoringServiceLibrary
                             }
                             else if (notificationItem.NotificationType == (int)NotificationType.Between)
                             {
-                                if (currentValue > notificationItem.Low && currentValue < notificationItem.High)
+                                if (currentValue > notificationItem.Low & currentValue < notificationItem.High)
                                 {
                                     withoutNotification = true;
                                 }
