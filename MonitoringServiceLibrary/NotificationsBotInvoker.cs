@@ -20,46 +20,66 @@ namespace MonitoringServiceLibrary
 
         public static void RegisterNewRecord(int notificationId, int notificationLogId)
         {
-            IndustrialMonitoringEntities entities=new IndustrialMonitoringEntities();
-
-            var notification = entities.NotificationItems.FirstOrDefault(x => x.NotificationId == notificationId);
-            var notificationLog =
-                entities.NotificationItemsLogs.FirstOrDefault(x => x.NotificationLogId == notificationLogId);
-
-            if (notification == null)
+            try
             {
-                return;
-            }
+                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
-            if (notificationLog == null)
+                var notification = entities.NotificationItems.FirstOrDefault(x => x.NotificationId == notificationId);
+                var notificationLog =
+                    entities.NotificationItemsLogs.FirstOrDefault(x => x.NotificationLogId == notificationLogId);
+
+                if (notification == null)
+                {
+                    return;
+                }
+
+                if (notificationLog == null)
+                {
+                    return;
+                }
+
+                if (
+                    entities.UsersItemsPermissions.Any(
+                        x => x.ItemId == notification.ItemId & x.ReceiveDelayedNotificationInTelegram == false))
+                {
+                    NotificationBot notificationBot1 = new NotificationBot();
+                    notificationBot1.NotificationId = notificationId;
+                    notificationBot1.NotificationLogId = notificationLogId;
+                    notificationBot1.WithoutAlarm = notificationLog.Value;
+                    notificationBot1.RegisterTime = DateTime.Now;
+                    notificationBot1.Delay = 0;
+                    notificationBot1.IsSent = false;
+                    notificationBot1.IsCompleted = false;
+
+                    entities.NotificationBots.Add(notificationBot1);
+                }
+
+
+                if (
+                    entities.UsersItemsPermissions.Any(
+                        x => x.ItemId == notification.ItemId & x.ReceiveDelayedNotificationInTelegram == true))
+                {
+                    if (notification.DelayForSendingNotificationInTelegram != null)
+                    {
+                        NotificationBot notificationBot2 = new NotificationBot();
+                        notificationBot2.NotificationId = notificationId;
+                        notificationBot2.NotificationLogId = notificationLogId;
+                        notificationBot2.WithoutAlarm = notificationLog.Value;
+                        notificationBot2.RegisterTime = DateTime.Now;
+                        notificationBot2.Delay = notification.DelayForSendingNotificationInTelegram.Value;
+                        notificationBot2.IsSent = false;
+                        notificationBot2.IsCompleted = false;
+
+                        entities.NotificationBots.Add(notificationBot2);
+                    }
+                }
+
+                entities.SaveChanges();
+            }
+            catch (Exception ex)
             {
-                return;
+                Logger.LogMonitoringServiceLibrary(ex);
             }
-
-            NotificationBot notificationBot1=new NotificationBot();
-            notificationBot1.NotificationId = notificationId;
-            notificationBot1.NotificationLogId = notificationLogId;
-            notificationBot1.RegisterTime=DateTime.Now;
-            notificationBot1.Delay = 0;
-            notificationBot1.IsSent = false;
-            notificationBot1.IsCompleted = false;
-
-            entities.NotificationBots.Add(notificationBot1);
-
-            if (notification.DelayForSendingNotificationInTelegram != null)
-            {
-                NotificationBot notificationBot2 = new NotificationBot();
-                notificationBot2.NotificationId = notificationId;
-                notificationBot2.NotificationLogId = notificationLogId;
-                notificationBot2.RegisterTime = DateTime.Now;
-                notificationBot2.Delay = notification.DelayForSendingNotificationInTelegram.Value;
-                notificationBot2.IsSent = false;
-                notificationBot2.IsCompleted = false;
-
-                entities.NotificationBots.Add(notificationBot2);
-            }
-
-            entities.SaveChanges();
         }
 
         public static NotificationsBotInvoker Instance
@@ -76,8 +96,8 @@ namespace MonitoringServiceLibrary
                 }
             }
         }
-        
-        public async Task<bool> SendNotification(int notificationLogId,NotificationDelayType delayType=NotificationDelayType.All)
+
+        public async Task<bool> SendNotification(int notificationLogId, NotificationDelayType delayType = NotificationDelayType.All)
         {
             try
             {
@@ -93,7 +113,7 @@ namespace MonitoringServiceLibrary
 
                 int itemId = notificationItemsLog.NotificationItem.ItemId;
 
-                List<UsersItemsPermission> userPermissions=new List<UsersItemsPermission>();
+                List<UsersItemsPermission> userPermissions = new List<UsersItemsPermission>();
 
                 if (delayType == NotificationDelayType.All)
                 {
@@ -101,13 +121,13 @@ namespace MonitoringServiceLibrary
                 }
                 else if (delayType == NotificationDelayType.Normal)
                 {
-                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId && x.ReceiveDelayedNotificationInTelegram==false).ToList();
+                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId & x.ReceiveDelayedNotificationInTelegram == false).ToList();
                 }
                 else if (delayType == NotificationDelayType.Delayed)
                 {
-                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId && x.ReceiveDelayedNotificationInTelegram == true).ToList();
+                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId & x.ReceiveDelayedNotificationInTelegram == true).ToList();
                 }
-                
+
 
                 List<int> chatIds = new List<int>();
 
@@ -157,7 +177,7 @@ namespace MonitoringServiceLibrary
 
                 if (notificationItemsLog.NotificationItem.Priority != null)
                 {
-                    priority = (int) notificationItemsLog.NotificationItem.Priority;
+                    priority = (int)notificationItemsLog.NotificationItem.Priority;
                 }
 
                 if (priority > 0)
@@ -165,9 +185,9 @@ namespace MonitoringServiceLibrary
                     for (int i = 1; i <= priority; i++)
                     {
                         emojiRating += "\u2B50";
-                    }    
+                    }
                 }
-                
+
                 string output = string.Format(@"{0} Alarm {0}
 Item Name : {1}
 Item Id : {2}
@@ -176,7 +196,7 @@ Description : {4}
 Status : {5}
 Priority : {6}
 Date : {7}", emojiAlarm, notificationItemsLog.NotificationItem.Item.ItemName, notificationItemsLog.NotificationItem.ItemId, category
-    , notificationItemsLog.NotificationItem.NotificationMsg, emojiStatus,emojiRating, notificationItemsLog.Time);
+    , notificationItemsLog.NotificationItem.NotificationMsg, emojiStatus, emojiRating, notificationItemsLog.Time);
 
                 foreach (int chatId in chatIds)
                 {
@@ -198,89 +218,135 @@ Date : {7}", emojiAlarm, notificationItemsLog.NotificationItem.Item.ItemName, no
         {
             while (true)
             {
-                IndustrialMonitoringEntities entities=new IndustrialMonitoringEntities();
+                IndustrialMonitoringEntities entities = null;
+                List<NotificationBot> notificationBots = new List<NotificationBot>();
 
-                var notificationBots = entities.NotificationBots.Where(x => x.IsCompleted == false);
+                try
+                {
+                    entities = new IndustrialMonitoringEntities();
+
+                    notificationBots = entities.NotificationBots.Where(x => x.IsCompleted == false).OrderBy(x=>x.NotificationBotId).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogMonitoringServiceLibrary(ex);
+                }
 
                 foreach (NotificationBot n in notificationBots)
                 {
-                    if (n.Delay == 0)
+                    try
                     {
-                        await this.SendNotification(n.NotificationLogId,NotificationDelayType.Normal);
-                        n.IsSent = true;
-                        n.IsCompleted = true;
-                        n.SentTime=DateTime.Now;
-
-                        entities.SaveChanges();
-                    }
-
-                    if (n.Delay > 0)
-                    {
-                        if (n.NotificationItemsLog.Value)
+                        if (n.Delay == 0)
                         {
-                            // without alarm
-                            
-                            var lastNotificationBot =
-                                entities.NotificationBots.FirstOrDefault(x => x.NotificationId == n.NotificationId &&
-                                                                              x.Delay > 0 && x.IsCompleted==true);
-                            if (lastNotificationBot == null)
+                            await this.SendNotification(n.NotificationLogId, NotificationDelayType.Normal);
+                            n.IsSent = true;
+                            n.IsCompleted = true;
+                            n.SentTime = DateTime.Now;
+
+                            entities.SaveChanges();
+                        }
+
+                        bool timerElapsed = DateTime.Now - n.RegisterTime > TimeSpan.FromSeconds(n.Delay);
+
+                        if (n.Delay > 0)
+                        {
+                            if (!n.NotificationItemsLog.Value)
                             {
-                                continue;
-                            }
 
-                            if (lastNotificationBot.NotificationItemsLog.Value==false)
-                            {
-                                await this.SendNotification(n.NotificationLogId, NotificationDelayType.Delayed);
+                                // with alarm
+                                // if still has alarm
 
-                                n.IsSent = true;
-                                n.IsCompleted = true;
-                                n.SentTime = DateTime.Now;
+                                if (timerElapsed)
+                                {
+                                    ItemsLogLatest itemLogLatest =
+entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == n.NotificationItem.ItemId);
 
-                                entities.SaveChanges();
+                                    double currentValue = double.Parse(itemLogLatest.Value);
+
+                                    bool withoutNotification = false;
+
+                                    if (n.NotificationItem.NotificationType == (int)NotificationType.Lower)
+                                    {
+                                        if (currentValue < n.NotificationItem.High)
+                                        {
+                                            withoutNotification = true;
+                                        }
+                                    }
+                                    else if (n.NotificationItem.NotificationType == (int)NotificationType.Between)
+                                    {
+                                        if (currentValue > n.NotificationItem.Low & currentValue < n.NotificationItem.High)
+                                        {
+                                            withoutNotification = true;
+                                        }
+                                    }
+                                    else if (n.NotificationItem.NotificationType == (int)NotificationType.Higher)
+                                    {
+                                        if (currentValue > n.NotificationItem.Low)
+                                        {
+                                            withoutNotification = true;
+                                        }
+                                    }
+
+                                    if (!withoutNotification)
+                                    {
+                                        await this.SendNotification(n.NotificationLogId, NotificationDelayType.Delayed);
+
+                                        n.IsSent = true;
+                                        n.IsCompleted = true;
+                                        n.SentTime = DateTime.Now;
+
+                                        entities.SaveChanges();
+                                    }
+                                    else
+                                    {
+                                        n.IsSent = false;
+                                        n.IsCompleted = true;
+
+                                        entities.SaveChanges();
+                                    }
+                                }
                             }
                             else
                             {
-                                n.IsSent = false;
-                                n.IsCompleted = true;
+                                // without alarm
 
-                                entities.SaveChanges();
-                            }
-                        }
-                        else
-                        {
-                            // with alarm
-
-                            if (DateTime.Now - n.RegisterTime > TimeSpan.FromSeconds(n.Delay))
-                            {
-                                IndustrialMonitoringEntities entities2=new IndustrialMonitoringEntities();
-                                var lastNotificationBot =
-                                entities2.NotificationBots.FirstOrDefault(x => x.NotificationId == n.NotificationId &&
-                                                                              x.Delay > 0 && x.IsCompleted==false);
-
-                                if (lastNotificationBot == null)
+                                if (timerElapsed)
                                 {
-                                    continue;
-                                }
+                                    IndustrialMonitoringEntities entities2 = new IndustrialMonitoringEntities();
+                                    var lastNotificationBot =
+                                        entities2.NotificationBots.Where(x => x.NotificationId == n.NotificationId & x.WithoutAlarm == false &
+                                                                              x.Delay > 0 & x.IsCompleted == true).
+                                            OrderByDescending(x => x.NotificationBotId).FirstOrDefault();
 
-                                if (n.NotificationBotId == lastNotificationBot.NotificationBotId)
-                                {
-                                    await this.SendNotification(n.NotificationLogId, NotificationDelayType.Delayed);
+                                    if (lastNotificationBot == null)
+                                    {
+                                        continue;
+                                    }
 
-                                    n.IsSent = true;
-                                    n.IsCompleted = true;
-                                    n.SentTime = DateTime.Now;
+                                    if (lastNotificationBot.IsSent)
+                                    {
+                                        await this.SendNotification(n.NotificationLogId, NotificationDelayType.Delayed);
 
-                                    entities.SaveChanges();
-                                }
-                                else
-                                {
-                                    n.IsSent = false;
-                                    n.IsCompleted = true;
+                                        n.IsSent = true;
+                                        n.IsCompleted = true;
+                                        n.SentTime = DateTime.Now;
 
-                                    entities.SaveChanges();
+                                        entities.SaveChanges();
+                                    }
+                                    else
+                                    {
+                                        n.IsSent = false;
+                                        n.IsCompleted = true;
+
+                                        entities.SaveChanges();
+                                    }
                                 }
                             }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.LogMonitoringServiceLibrary(ex);
                     }
                 }
 

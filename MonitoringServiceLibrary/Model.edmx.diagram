@@ -37,10 +37,10 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationBot" Width="1.5" PointX="9.75" PointY="19.375" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationBot_NotificationItemsLog" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationBot" Width="1.5" PointX="7.5" PointY="26.125" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationBot_NotificationItems" />
-      </Diagram>
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_Notification_NotificationItemsLog" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

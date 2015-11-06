@@ -22,7 +22,7 @@ namespace MonitoringServiceLibrary
 
                 foreach (NotificationItemsLogLatest item in notificationItemsLogLatests)
                 {
-                    if (item.NotificationItem.ItemId == itemId && item.Value == false)
+                    if (item.NotificationItem.ItemId == itemId & item.Value == false)
                     {
                         return true;
                     }
@@ -101,7 +101,7 @@ namespace MonitoringServiceLibrary
 
                 foreach (int itemId in ItemIds)
                 {
-                    if (entities.UsersItemsPermissions.Any(x => x.UserId == userId && x.ItemId == itemId))
+                    if (entities.UsersItemsPermissions.Any(x => x.UserId == userId & x.ItemId == itemId))
                     {
                         ItemIdsForCurrentUser.Add(itemId);
                     }
@@ -148,7 +148,7 @@ namespace MonitoringServiceLibrary
 
                 foreach (int itemId in ItemIds)
                 {
-                    if (entities.UsersItemsPermissions.Any(x => x.UserId == userId && x.ItemId == itemId))
+                    if (entities.UsersItemsPermissions.Any(x => x.UserId == userId & x.ItemId == itemId))
                     {
                         var tabItem = entities.TabsItems.FirstOrDefault(x => x.ItemId == itemId);
                         if (tabItem != null)
@@ -172,7 +172,7 @@ namespace MonitoringServiceLibrary
                 IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
                 List<NotificationItemsLog> notificationItemsLogs =
-                    entities.NotificationItemsLogs.Where(x => x.Time >= startTime && x.Time <= endTime)
+                    entities.NotificationItemsLogs.Where(x => x.Time >= startTime & x.Time <= endTime)
                         .OrderByDescending(x => x.Time)
                         .ToList();
 
@@ -222,7 +222,7 @@ namespace MonitoringServiceLibrary
                 IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
                 List<NotificationItemsLog> notificationItemsLogs =
-                    entities.NotificationItemsLogs.Where(x => x.Time >= startTime && x.Time <= endTime).OrderByDescending(x => x.Time).ToList();
+                    entities.NotificationItemsLogs.Where(x => x.Time >= startTime & x.Time <= endTime).OrderByDescending(x => x.Time).ToList();
 
                 List<UsersItemsPermission> usersItemsPermissions =
                     entities.UsersItemsPermissions.Where(x => x.UserId == userId).ToList();
