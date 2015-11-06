@@ -194,14 +194,38 @@ Time : {1}", emoji, DateTime.Now));
 
                                 await bot.SendTextMessage(chatId, output);
                             }
-                            else if (msg == "/restart sobhan")
+                            else if (msg == "/restart")
                             {
-                                await bot.SendTextMessage(chatId, "Server is Restarting ... ");
+                                var service =
+        entities.Services.FirstOrDefault(x => x.ServiceName == "RestartServerFromTelegram");
 
-                                offset = update.Id + 1;
-                                await bot.GetUpdates(offset);
+                                var users = entities.UsersServicesPermissions.Where(x => x.ServiceId == service.ServiceId);
 
-                                Process.Start("shutdown.exe", "-f -r -t 0");
+                                List<int> chatIds = new List<int>();
+
+                                foreach (UsersServicesPermission u in users)
+                                {
+                                    var userBot = entities.Bots.Where(x => x.UserId == u.UserId);
+
+                                    foreach (Bot bt in userBot)
+                                    {
+                                        if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
+                                    }
+                                }
+
+                                if (chatIds.Contains(chatId))
+                                {
+                                    await bot.SendTextMessage(chatId, "Server is restarting ... ");
+
+                                    offset = update.Id + 1;
+                                    await bot.GetUpdates(offset);
+
+                                    Process.Start("shutdown.exe", "-f -r -t 0");
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "You don't have access to run this command");
+                                }
                             }
                             else if (msg == "/ping")
                             {
