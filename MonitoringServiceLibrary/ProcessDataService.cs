@@ -206,15 +206,11 @@ namespace MonitoringServiceLibrary
             var Entities = new IndustrialMonitoringEntities();
             List<ItemsLogChartHistoryViewModel> result = new List<ItemsLogChartHistoryViewModel>();
 
-            var itemsLog = Entities.ItemsLogs.Where(x => x.ItemId == itemId);
+            var itemsLog = Entities.ItemsLogs.Where(x => x.ItemId == itemId & x.Time>=startDate & x.Time<=endDate).OrderBy(x=>x.ItemLogId);
 
             foreach (var log in itemsLog)
             {
-                if (log.Time >= startDate && log.Time <= endDate)
-                {
-                    result.Add(new ItemsLogChartHistoryViewModel(log));
-                }
-
+                result.Add(new ItemsLogChartHistoryViewModel(log));
             }
 
             return result;
