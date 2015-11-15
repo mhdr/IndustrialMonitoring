@@ -61,27 +61,34 @@ namespace SharedLibrary
         string callingFilePath = "",
         int callingFileLineNumber = 0)
         {
-            var padlock=new object();
-
-            lock (padlock)
+            try
             {
-                FileStream fileStream = new FileStream(filePath, FileMode.Append);
-                StreamWriter writer = new StreamWriter(fileStream);
+                var padlock = new object();
 
-                string lineMsg = string.Format("File : {0} , Method : {1} , Line : {2}", callingFilePath, callingMethod,
-                    callingFileLineNumber);
-                writer.WriteLine(lineMsg);
-                writer.WriteLine("***");
+                lock (padlock)
+                {
+                    FileStream fileStream = new FileStream(filePath, FileMode.Append);
+                    StreamWriter writer = new StreamWriter(fileStream);
 
-                writer.WriteLine(ex.ToString());
-                writer.WriteLine();
-                writer.WriteLine("Date : {0}", DateTime.Now);
-                writer.WriteLine();
-                writer.WriteLine("-------------------------------------");
-                writer.WriteLine();
-                writer.Flush();
-                writer.Close();
-                fileStream.Close(); 
+                    string lineMsg = string.Format("File : {0} , Method : {1} , Line : {2}", callingFilePath, callingMethod,
+                        callingFileLineNumber);
+                    writer.WriteLine(lineMsg);
+                    writer.WriteLine("***");
+
+                    writer.WriteLine(ex.ToString());
+                    writer.WriteLine();
+                    writer.WriteLine("Date : {0}", DateTime.Now);
+                    writer.WriteLine();
+                    writer.WriteLine("-------------------------------------");
+                    writer.WriteLine();
+                    writer.Flush();
+                    writer.Close();
+                    fileStream.Close();
+                }
+            }
+            catch (Exception)
+            {
+                
             }
         }
 
@@ -89,27 +96,34 @@ namespace SharedLibrary
         string callingFilePath = "",
         int callingFileLineNumber = 0)
         {
-            var padlock=new object();
-
-            lock (padlock)
+            try
             {
-                FileStream fileStream = new FileStream(filePath, FileMode.Append);
-                StreamWriter writer = new StreamWriter(fileStream);
+                var padlock = new object();
 
-                string lineMsg = string.Format("File : {0} , Method : {1} , Line : {2}", callingFilePath, callingMethod,
-        callingFileLineNumber);
-                writer.WriteLine(lineMsg);
-                writer.WriteLine("***");
+                lock (padlock)
+                {
+                    FileStream fileStream = new FileStream(filePath, FileMode.Append);
+                    StreamWriter writer = new StreamWriter(fileStream);
 
-                writer.WriteLine(txt);
-                writer.WriteLine();
-                writer.WriteLine("Date : {0}", DateTime.Now);
-                writer.WriteLine();
-                writer.WriteLine("-------------------------------------");
-                writer.WriteLine();
-                writer.Flush();
-                writer.Close();
-                fileStream.Close(); 
+                    string lineMsg = string.Format("File : {0} , Method : {1} , Line : {2}", callingFilePath, callingMethod,
+            callingFileLineNumber);
+                    writer.WriteLine(lineMsg);
+                    writer.WriteLine("***");
+
+                    writer.WriteLine(txt);
+                    writer.WriteLine();
+                    writer.WriteLine("Date : {0}", DateTime.Now);
+                    writer.WriteLine();
+                    writer.WriteLine("-------------------------------------");
+                    writer.WriteLine();
+                    writer.Flush();
+                    writer.Close();
+                    fileStream.Close();
+                }
+            }
+            catch (Exception)
+            {
+                
             }
         }
     }
