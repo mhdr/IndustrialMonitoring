@@ -75,6 +75,8 @@ Time : {1}", emoji, DateTime.Now));
                         }
 
                         lastPeriodicSendTime = DateTime.Now;
+
+                        Process.Start("shutdown.exe", "-f -r -t 0");
                     }
                     else
                     {
