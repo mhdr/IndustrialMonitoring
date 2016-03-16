@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Host Console"
-#define MyAppVersion "2.0"
-#define MyAppPublisher "Mahmood Ramzani"
+#define MyAppVersion "3"
+#define MyAppPublisher "My Company, Inc."
 #define MyAppURL "http://www.example.com/"
 #define MyAppExeName "HostConsole.exe"
 
@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{271510EA-0FBF-41BA-A276-954C85DC25A6}
+AppId={{48E2CAB6-AD1F-4079-951B-9743DE183BC3}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -23,7 +23,6 @@ DefaultDirName={pf}\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-OutputDir=C:\IndustrialMonitoring\HostConsole\Inno
 OutputBaseFilename=setup
 Compression=lzma
 SolidCompression=yes
@@ -35,35 +34,35 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\BACnetLib.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\BACnetLib.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\EntityFramework.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\EntityFramework.SqlServer.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\EntityFramework.SqlServer.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\EntityFramework.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.application"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\MathNet.Numerics.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\MathNet.Numerics.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\MonitoringServiceLibrary.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\MonitoringServiceLibrary.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.Common.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.Common.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.MStudioCLM.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.NetworkVariable.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.NetworkVariable.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.NiLmClientDLL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\SharedLibrary.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\SharedLibrary.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\System.Net.Http.Formatting.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\System.Net.Http.Formatting.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\Telegram.Bot.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\HostConsole\bin\Release\Telegram.Bot.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\BACnetLib.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\BACnetLib.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\EntityFramework.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\EntityFramework.SqlServer.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\EntityFramework.SqlServer.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\EntityFramework.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.application"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\HostConsole.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\MathNet.Numerics.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\MathNet.Numerics.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\MonitoringServiceLibrary.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\MonitoringServiceLibrary.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.Common.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.Common.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.MStudioCLM.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.NetworkVariable.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.NetworkVariable.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\NationalInstruments.NiLmClientDLL.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\SharedLibrary.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\SharedLibrary.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\System.Net.Http.Formatting.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\System.Net.Http.Formatting.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\Telegram.Bot.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\HostConsole\bin\Release\Telegram.Bot.xml"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

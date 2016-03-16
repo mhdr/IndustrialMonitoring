@@ -1,0 +1,68 @@
+﻿<UserControl xmlns:ni="http://schemas.ni.com/controls/2009/xaml/presentation"  xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  x:Class="IndustrialMonitoring.ChartLiveData"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="400" Loaded="AIO_OnLoaded">
+    <UserControl.Resources>
+        <Style x:Key="TitleH1" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#FF606060" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Margin" Value="0,5" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontWeight" Value="Normal"/>
+        </Style>
+
+        <Style x:Key="TitleH2" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="0,5" />
+            <Setter Property="FontFamily" Value="./Fonts/#B Titr" />
+            <Setter Property="FontWeight" Value="Normal"/>
+        </Style>
+
+        <Storyboard Name="StoryboardNotification" x:Key="StoryboardAnim">
+            <ColorAnimation Name="ColorAnimationNotification"
+                                        Storyboard.TargetName="TextBlockTitle"
+                                        Storyboard.TargetProperty="Foreground.Color" 
+                                        From="Black" To="Red" Duration="0:0:1" 
+                                        AutoReverse="True" RepeatBehavior="Forever">
+            </ColorAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+    <Border CornerRadius="5" BorderThickness="1" BorderBrush="AliceBlue" Name="BorderUI">
+        <Grid Name="GridContainer"
+        FlowDirection="RightToLeft" MinWidth="100">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*"/>
+                    <RowDefinition />
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+
+
+                <TextBlock Name="TextBlockTitle" VerticalAlignment="Center" Style="{StaticResource ResourceKey=TitleH2}"
+                       HorizontalAlignment="Center" FontWeight="Bold">
+                </TextBlock>
+
+                <telerik:RadCartesianChart Name="Chart" Grid.Row="1" FlowDirection="LeftToRight" MinWidth="200"
+                                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <telerik:RadCartesianChart.HorizontalAxis>
+                        <telerik:DateTimeContinuousAxis LabelFitMode="Rotate" MaximumTicks="10" Visibility="Hidden"
+                                                    PlotMode="OnTicks" />
+                    </telerik:RadCartesianChart.HorizontalAxis>
+                    <telerik:RadCartesianChart.VerticalAxis>
+                        <telerik:LinearAxis LabelInterval="2"/>
+                    </telerik:RadCartesianChart.VerticalAxis>
+                </telerik:RadCartesianChart>
+
+                <Border Name="BorderAnalogValue" CornerRadius="8" Visibility="Visible"
+                    Grid.Row="2" Margin="0,5,0,0">
+                    <TextBlock Name="TextBlockValue" Style="{StaticResource ResourceKey=TitleH1}"
+                       VerticalAlignment="Center" HorizontalAlignment="Center" FlowDirection="LeftToRight"/>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

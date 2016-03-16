@@ -1,0 +1,1360 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telegram.Bot</name>
+    </assembly>
+    <members>
+        <member name="P:Telegram.Bot.Api.UploadTimeout">
+            <summary>
+            Timeout for uploading Files/Videos/Documents etc.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Api.PollingTimeout">
+            <summary>
+            Timeout for long-polling
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Api.IsReceiving">
+            <summary>
+            Indecates if receiving updates
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Api.MessageOffset">
+            <summary>
+            The current message offset
+            </summary>
+        </member>
+        <member name="E:Telegram.Bot.Api.UpdateReceived">
+            <summary>
+            Fired when any updates are availible
+            </summary>
+        </member>
+        <member name="E:Telegram.Bot.Api.MessageReceived">
+            <summary>
+            Fired when messages are availible
+            </summary>
+        </member>
+        <member name="E:Telegram.Bot.Api.InlineQueryReceived">
+            <summary>
+            Fired when inline queries are availible
+            </summary>
+        </member>
+        <member name="E:Telegram.Bot.Api.ChosenInlineResultReceived">
+            <summary>
+            Fired when chosen inline results are availible
+            </summary>
+        </member>
+        <member name="M:Telegram.Bot.Api.StartReceiving">
+            <summary>
+            Start update receiving
+            </summary>
+        </member>
+        <member name="M:Telegram.Bot.Api.StartReceiving(System.TimeSpan)">
+            <summary>
+            Start update receiving
+            </summary>
+        </member>
+        <member name="M:Telegram.Bot.Api.StopReceiving">
+            <summary>
+            Stop update receiving
+            </summary>
+        </member>
+        <member name="M:Telegram.Bot.Api.GetMe">
+            <summary>
+            A simple method for testing your bot's auth token. Requires no parameters. Returns basic information about the bot in form of User object.
+            </summary>
+            <returns>Returns basic information about the bot in form of <see cref="T:Telegram.Bot.Types.User"/> object</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.GetUpdates(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Use this method to receive incoming updates using long polling.
+            </summary>
+            <param name="offset">
+            Optional. Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates.
+            By default, updates starting with the earliest unconfirmed update are returned. An update is considered confirmed as soon as GetUpdates is 
+            called with an offset higher than its Id.
+            </param>
+            <param name="limit">
+            Optional. Limits the number of updates to be retrieved. Values between 1—100 are accepted. Defaults to 100
+            </param>
+            <param name="timeout">
+            Optional. Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling
+            </param>
+            <remarks>
+            1. This method will not work if an outgoing webhook is set up.
+            2. In order to avoid getting duplicate updates, recalculate offset after each server response.
+            </remarks>
+            <returns>An Array of Update objects is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SetWebhook(System.String,System.Nullable{Telegram.Bot.Types.FileToSend})">
+            <summary>
+            Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will
+            send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will
+            give up after a reasonable amount of attempts.
+            </summary>
+            <param name="url">Optional. HTTPS url to send updates to. Use an empty string to remove webhook integration</param>
+            <param name="certificate">Upload your public key certificate so that the root certificate in use can be checked</param>
+            <remarks>
+            1. You will not be able to receive updates using getUpdates for as long as an outgoing webhook is set up.
+            2. We currently do not support self-signed certificates.
+            3. For the moment, the only supported port for Webhooks is 443. We may support additional ports later.
+            </remarks>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendMessage(Telegram.Bot.Types.MessageType,System.String,System.Object,System.Int32,Telegram.Bot.Types.ReplyMarkup,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Use this method to send any messages. On success, the sent Message is returned.
+            </summary>
+            <param name="type">The <see cref="T:Telegram.Bot.Types.MessageType"/></param>
+            <param name="chatId">Unique identifier for the target chat or username of the target channel (in the format @channelusername)</param>
+            <param name="content">The content of the message. Could be a text, photo, audio, sticker, document, video or location</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <param name="additionalParameters">Optional. if additional Parameters could bei send i.e. "disable_web_page_preview" in for a TextMessage</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendTextMessage(System.Int64,System.String,System.Boolean,System.Int32,Telegram.Bot.Types.ReplyMarkup,Telegram.Bot.Types.ParseMode)">
+            <summary>
+            Use this method to send text messages. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="text">Text of the message to be sent</param>
+            <param name="disableWebPagePreview">Optional. Disables link previews for links in this message</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <param name="parseMode">Optional. Change, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendTextMessage(System.String,System.String,System.Boolean,System.Int32,Telegram.Bot.Types.ReplyMarkup,Telegram.Bot.Types.ParseMode)">
+            <summary>
+            Use this method to send text messages. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">username of the target channel (in the format @channelusername)</param>
+            <param name="text">Text of the message to be sent</param>
+            <param name="disableWebPagePreview">Optional. Disables link previews for links in this message</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <param name="parseMode">Optional. Change, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.ForwardMessage(System.Int64,System.Int64,System.Int32)">
+            <summary>
+            Use this method to forward messages of any kind. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="fromChatId">Unique identifier for the chat where the original message was sent</param>
+            <param name="messageId">Unique message identifier</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.ForwardMessage(System.Int64,System.String,System.Int32)">
+            <summary>
+            Use this method to forward messages of any kind. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="fromChatId">channel username in the format @channelusername</param>
+            <param name="messageId">Unique message identifier</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.ForwardMessage(System.String,System.Int64,System.Int32)">
+            <summary>
+            Use this method to forward messages of any kind. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">username of the target channel (in the format @channelusername)</param>
+            <param name="fromChatId">Unique identifier for the chat where the original message was sent</param>
+            <param name="messageId">Unique message identifier</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.ForwardMessage(System.String,System.String,System.Int32)">
+            <summary>
+            Use this method to forward messages of any kind. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">username of the target channel (in the format @channelusername)</param>
+            <param name="fromChatId">channel username in the format @channelusername</param>
+            <param name="messageId">Unique message identifier</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendPhoto(System.Int64,Telegram.Bot.Types.FileToSend,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send photos. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="photo">Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo using multipart/form-data.</param>
+            <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id).</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendPhoto(System.String,Telegram.Bot.Types.FileToSend,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send photos. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="photo">Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo using multipart/form-data.</param>
+            <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id).</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendPhoto(System.Int64,System.String,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send photos. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="photo">Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo using multipart/form-data.</param>
+            <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id).</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendPhoto(System.String,System.String,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send photos. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="photo">Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo using multipart/form-data.</param>
+            <param name="caption">Optional. Photo caption (may also be used when resending photos by file_id).</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendAudio(System.Int64,Telegram.Bot.Types.FileToSend,System.Int32,System.String,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .mp3 format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="audio">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</param>
+            <param name="duration">Duration of the audio in seconds</param>
+            <param name="performer">Performer</param>
+            <param name="title">Track name</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendAudio(System.String,Telegram.Bot.Types.FileToSend,System.Int32,System.String,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .mp3 format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="audio">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</param>
+            <param name="duration">Duration of the audio in seconds</param>
+            <param name="performer">Performer</param>
+            <param name="title">Track name</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendAudio(System.Int64,System.String,System.Int32,System.String,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). On success, the sent Message is returned. Bots can send audio files of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="audio">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</param>
+            <param name="duration">Duration of the audio in seconds</param>
+            <param name="performer">Performer</param>
+            <param name="title">Track name</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendAudio(System.String,System.String,System.Int32,System.String,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Document). On success, the sent Message is returned. Bots can send audio files of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="audio">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</param>
+            <param name="duration">Duration of the audio in seconds</param>
+            <param name="performer">Performer</param>
+            <param name="title">Track name</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendDocument(System.Int64,Telegram.Bot.Types.FileToSend,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send general files. On success, the sent Message is returned. Bots can send files of any type of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="document">File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file using multipart/form-data.</param>
+            <param name="caption">Document caption</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendDocument(System.String,Telegram.Bot.Types.FileToSend,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send general files. On success, the sent Message is returned. Bots can send files of any type of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="document">File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file using multipart/form-data.</param>
+            <param name="caption">Document caption</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendDocument(System.Int64,System.String,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send general files. On success, the sent Message is returned. Bots can send files of any type of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="document">File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file using multipart/form-data.</param>
+            <param name="caption">Document caption</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendDocument(System.String,System.String,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send general files. On success, the sent Message is returned. Bots can send files of any type of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="document">File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file using multipart/form-data.</param>
+            <param name="caption">Document caption</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendSticker(System.Int64,Telegram.Bot.Types.FileToSend,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send .webp stickers. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="sticker">Sticker to send. You can either pass a file_id as String to resend a sticker that is already on the Telegram servers, or upload a new sticker using multipart/form-data.</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendSticker(System.String,Telegram.Bot.Types.FileToSend,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send .webp stickers. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="sticker">Sticker to send. You can either pass a file_id as String to resend a sticker that is already on the Telegram servers, or upload a new sticker using multipart/form-data.</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendSticker(System.Int64,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send .webp stickers. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="sticker">Sticker to send. You can either pass a file_id as String to resend a sticker that is already on the Telegram servers, or upload a new sticker using multipart/form-data.</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendSticker(System.String,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send .webp stickers. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="sticker">Sticker to send. You can either pass a file_id as String to resend a sticker that is already on the Telegram servers, or upload a new sticker using multipart/form-data.</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendVideo(System.Int64,Telegram.Bot.Types.FileToSend,System.Int32,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can send video files of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="video">Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.</param>
+            <param name="duration">Duration of sent video in seconds</param>
+            <param name="caption">Video caption</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendVideo(System.String,Telegram.Bot.Types.FileToSend,System.Int32,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can send video files of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="video">Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.</param>
+            <param name="duration">Duration of sent video in seconds</param>
+            <param name="caption">Video caption</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendVideo(System.Int64,System.String,System.Int32,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can send video files of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="video">Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.</param>
+            <param name="duration">Duration of sent video in seconds</param>
+            <param name="caption">Video caption</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendVideo(System.String,System.String,System.Int32,System.String,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can send video files of up to 50 MB in size.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="video">Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data.</param>
+            <param name="duration">Duration of sent video in seconds</param>
+            <param name="caption">Video caption</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendVoice(System.Int64,Telegram.Bot.Types.FileToSend,System.Int32,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="audio">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</param>
+            <param name="duration">Duration of sent audio in seconds</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendVoice(System.String,Telegram.Bot.Types.FileToSend,System.Int32,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="audio">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</param>
+            <param name="duration">Duration of sent audio in seconds</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendVoice(System.Int64,System.String,System.Int32,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="audio">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</param>
+            <param name="duration">Duration of sent audio in seconds</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendVoice(System.String,System.String,System.Int32,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="audio">Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data.</param>
+            <param name="duration">Duration of sent audio in seconds</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendLocation(System.Int64,System.Single,System.Single,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send point on the map. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="latitude">Latitude of location</param>
+            <param name="longitude">Longitude of location</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendLocation(System.String,System.Single,System.Single,System.Int32,Telegram.Bot.Types.ReplyMarkup)">
+            <summary>
+            Use this method to send point on the map. On success, the sent Message is returned.
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="latitude">Latitude of location</param>
+            <param name="longitude">Longitude of location</param>
+            <param name="replyToMessageId">Optional. If the message is a reply, ID of the original message</param>
+            <param name="replyMarkup">Optional. Additional interface options. A JSON-serialized object for a custom reply keyboard, instructions to hide keyboard or to force a reply from the user.</param>
+            <returns>On success, the sent Message is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendChatAction(System.Int64,Telegram.Bot.Types.ChatAction)">
+            <summary>
+            Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
+            </summary>
+            <param name="chatId">Unique identifier for the target chat</param>
+            <param name="chatAction">Type of action to broadcast. Choose one, depending on what the user is about to receive.</param>
+            <remarks>We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.</remarks>
+        </member>
+        <member name="M:Telegram.Bot.Api.SendChatAction(System.String,Telegram.Bot.Types.ChatAction)">
+            <summary>
+            Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status).
+            </summary>
+            <param name="chatId">Username of the target channel (in the format @channelusername)</param>
+            <param name="chatAction">Type of action to broadcast. Choose one, depending on what the user is about to receive.</param>
+            <remarks>We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.</remarks>
+        </member>
+        <member name="M:Telegram.Bot.Api.GetUserProfilePhotos(System.Int32,System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
+            </summary>
+            <param name="userId">Unique identifier of the target user</param>
+            <param name="offset">Optional. Sequential number of the first photo to be returned. By default, all photos are returned.</param>
+            <param name="limit">Optional. Limits the number of photos to be retrieved. Values between 1—100 are accepted. Defaults to 100.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.GetFile(System.String,System.IO.Stream)">
+            <summary>
+            Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size.
+            </summary>
+            <param name="fileId">File identifier</param>
+            <param name="destination">The destination stream</param>
+            <returns>The File object. If destination is empty stream ist embedded in the File Object</returns>
+        </member>
+        <member name="M:Telegram.Bot.Api.AnswerInlineQuery(System.String,Telegram.Bot.Types.InlineQueryResult[],System.Nullable{System.Int32},System.Boolean,System.String)">
+            <summary>
+            Use this method to send answers to an inline query.
+            </summary>
+            <param name="inlineQueryId">Unique identifier for answered query</param>
+            <param name="results">A array of results for the inline query</param>
+            <param name="cacheTime">Optional. The maximum amount of time in seconds the result of the inline query may be cached on the server</param>
+            <param name="isPersonal">Optional. Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query</param>
+            <param name="nextOffset">Optional. Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don‘t support pagination. Offset length can’t exceed 64 bytes.</param>
+            <returns>On success, True is returned.</returns>
+        </member>
+        <member name="M:Telegram.Bot.Helpers.Extensions.FromUnixTime(System.Int64)">
+            <summary>
+              Convert a long into a DateTime
+            </summary>
+        </member>
+        <member name="M:Telegram.Bot.Helpers.Extensions.ToUnixTime(System.DateTime)">
+            <summary>
+              Convert a DateTime into a long
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Telegram.Bot.Helpers.UnixDateTimeConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+            Writes the JSON representation of the object.
+            </summary>
+            <param name="writer">The <see cref="T:Newtonsoft.Json.JsonWriter"/> to write to.</param>
+            <param name="value">The value.</param>
+            <param name="serializer">The calling serializer.</param>
+        </member>
+        <member name="M:Telegram.Bot.Helpers.UnixDateTimeConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <summary>
+              Reads the JSON representation of the object.
+            </summary>
+            <param name="reader">The <see cref="T:Newtonsoft.Json.JsonReader" /> to read from.</param>
+            <param name="objectType">Type of the object.</param>
+            <param name="existingValue">The existing value of object being read.</param>
+            <param name="serializer">The calling serializer.</param>
+            <returns>The object value.</returns>
+        </member>
+        <member name="T:Telegram.Bot.Types.ApiRequestException">
+            <summary>
+            Represents an api error
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ApiRequestException.ErrorCode">
+            <summary>
+            Gets the error code.
+            </summary>
+            <value>
+            The error code.
+            </value>
+        </member>
+        <member name="T:Telegram.Bot.Types.ApiResponse`1">
+            <summary>
+            The Api Response
+            </summary>
+            <typeparam name="T">The resultant object</typeparam>
+        </member>
+        <member name="P:Telegram.Bot.Types.ApiResponse`1.Ok">
+            <summary>
+            Gets a value indicating whether the request was successful.
+            </summary>
+            <value>
+              <c>true</c> if the request was successful and the result of the query can be found in the ‘result’ field, otherwise <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Telegram.Bot.Types.ApiResponse`1.ResultObject">
+            <summary>
+            Gets the result object.
+            </summary>
+            <value>
+            The result object.
+            </value>
+        </member>
+        <member name="P:Telegram.Bot.Types.ApiResponse`1.Message">
+            <summary>
+            Gets the error message.
+            </summary>
+            <value>
+            The error message.
+            </value>
+        </member>
+        <member name="P:Telegram.Bot.Types.ApiResponse`1.Code">
+            <summary>
+            Gets the error code.
+            </summary>
+            <value>
+            The error code.
+            </value>
+        </member>
+        <member name="T:Telegram.Bot.Types.Audio">
+            <summary>
+            This object represents an audio file to be treated as music by the Telegram clients.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Audio.Duration">
+            <summary>
+            Duration of the audio in seconds as defined by sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Audio.Performer">
+            <summary>
+            Performer of the audio as defined by sender or by audio tags
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Audio.Title">
+            <summary>
+            Title of the audio as defined by sender or by audio tags
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Audio.MimeType">
+            <summary>
+            Optional. MIME type of the file as defined by sender
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.Chat">
+            <summary>
+            This object represents a chat.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Chat.Id">
+            <summary>
+            Unique identifier for this chat, not exceeding 1e13 by absolute value
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Chat.Type">
+            <summary>
+            Type of chat, can be either "Private", or "Group", or "Channel"
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Chat.Title">
+            <summary>
+            Optional. Title, for channels and group chats
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Chat.Username">
+            <summary>
+            Optional. Username, for private chats and channels if available
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Chat.FirstName">
+            <summary>
+            Optional. First name of the other party in a private chat
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Chat.LastName">
+            <summary>
+            Optional. Last name of the other party in a private chat
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.ChatAction">
+            <summary>
+            Type of action the Bot is performing
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.ChatType">
+            <summary>
+            Type of a Chat
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.ChosenInlineResult">
+            <summary>
+            This object represents a result of an inline query that was chosen by the user and sent to their chat partner.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ChosenInlineResult.ResultId">
+            <summary>
+            The unique identifier for the result that was chosen.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ChosenInlineResult.From">
+            <summary>
+            The user that chose the result.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ChosenInlineResult.Query">
+            <summary>
+            The query that was used to obtain the result.
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.Contact">
+            <summary>
+            This object represents a phone contact.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Contact.PhoneNumber">
+            <summary>
+            Contact's phone number
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Contact.FirstName">
+            <summary>
+            Contact's first name
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Contact.LastName">
+            <summary>
+            Optional. Contact's last name
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Contact.UserId">
+            <summary>
+            Optional. Contact's user identifier in Telegram
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.Document">
+            <summary>
+            This object represents a general file (as opposed to photos and audio files).
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Document.Thumb">
+            <summary>
+            Document thumbnail as defined by sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Document.FileName">
+            <summary>
+            Optional. Original filename as defined by sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Document.MimeType">
+            <summary>
+            Optional. MIME type of the file as defined by sender
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.File">
+            <summary>
+            This object represents a file ready to be downloaded. The file can be downloaded via the link https://api.telegram.org/file/bot{token}/{file_path}. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.File.FileId">
+            <summary>
+            Unique identifier for this file
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.File.FileSize">
+            <summary>
+            Optional. File size, if known
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.File.FilePath">
+            <summary>
+            File path. Use https://api.telegram.org/file/bot{token}/{file_path} to get the file.
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.ForceReply">
+            <summary>
+            Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot‘s message and tapped ’Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ForceReply.Force">
+            <summary>
+            Shows reply interface to the user, as if they manually selected the bot‘s message and tapped ’Reply'
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.InlineQuery">
+            <summary>
+            This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQuery.Id">
+            <summary>
+            Unique identifier for this query
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQuery.From">
+            <summary>
+            Sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQuery.Query">
+            <summary>
+            Text of the query
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQuery.Offset">
+            <summary>
+            Offset of the results to be returned, can be controlled by the bot
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResult.Id">
+            <summary>
+            Unique identifier of this result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResult.Type">
+            <summary>
+            Type of the result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResult.Title">
+            <summary>
+            Title of the result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResult.MessageText">
+            <summary>
+            Text of a message to be sent
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResult.ParseMode">
+            <summary>
+            Optional. If you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResult.ThumbUrl">
+            <summary>
+            Optional. Url of the thumbnail for the result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResult.DisableWebPagePreview">
+            <summary>
+            Optional. Disables link previews for links in the sent message
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.InlineQueryResultArticle">
+            <summary>
+            Represents a link to an article or web page.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultArticle.Title">
+            <summary>
+            Title of the result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultArticle.MessageText">
+            <summary>
+            Text of a message to be sent
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultArticle.ThumbUrl">
+            <summary>
+            Optional. Url of the thumbnail for the result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultArticle.Url">
+            <summary>
+            Optional. URL of the result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultArticle.HideUrl">
+            <summary>
+            Optional. Pass True, if you don't want the URL to be shown in the message
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultArticle.Description">
+            <summary>
+            Optional. Short description of the result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultArticle.ThumbWidth">
+            <summary>
+            Optional. Thumbnail width
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultArticle.ThumbHeight">
+            <summary>
+            Optional. Thumbnail height
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.InlineQueryResultGif">
+            <summary>
+            Represents a link to an animated GIF file.
+            By default, this animated GIF file will be sent by the user with optional caption.
+            Alternatively, you can provide message_text to send it instead of the animation.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultGif.Url">
+            <summary>
+            A valid URL for the GIF file. File size must not exceed 1MB
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultGif.Width">
+            <summary>
+            Optional. Width of the GIF
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultGif.Height">
+            <summary>
+            Optional. Height of the GIF
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultGif.Caption">
+            <summary>
+            Optional. Caption of the GIF file to be sent
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.InlineQueryResultMpeg4Gif">
+            <summary>
+            Represents a link to a video animation (H.264/MPEG-4 AVC video without sound).
+            By default, this animated MPEG-4 file will be sent by the user with optional caption.
+            Alternatively, you can provide message_text to send it instead of the animation.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultMpeg4Gif.Url">
+            <summary>
+            A valid URL for the MP4 file. File size must not exceed 1MB
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultMpeg4Gif.Width">
+            <summary>
+            Optional. Video width
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultMpeg4Gif.Height">
+            <summary>
+            Optional. Video height
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultMpeg4Gif.Caption">
+            <summary>
+            Optional. Caption of the MPEG-4 file to be sent
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.InlineQueryResultPhoto">
+            <summary>
+            Represents a link to a photo.
+            By default, this photo will be sent by the user with optional caption.
+            Alternatively, you can provide message_text to send it instead of photo.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultPhoto.Url">
+            <summary>
+            A valid URL of the photo. Photo size must not exceed 5MB
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultPhoto.MimeType">
+            <summary>
+            Optional. MIME type of the photo, defaults to image/jpeg
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultPhoto.Width">
+            <summary>
+            Optional. Width of the photo
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultPhoto.Height">
+            <summary>
+            Optional. Height of the photo
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultPhoto.Description">
+            <summary>
+            Optional. Short description of the result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultPhoto.Caption">
+            <summary>
+            Optional. Caption of the photo to be sent
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.InlineQueryResultType">
+            <summary>
+            Type of the InlineQueryResult
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.InlineQueryResultVideo">
+            <summary>
+            Represents link to a page containing an embedded video player or a video file.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultVideo.Title">
+            <summary>
+            Title of the result
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultVideo.MessageText">
+            <summary>
+            Text of a message to be sent
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultVideo.Url">
+            <summary>
+            A valid URL for the embedded video player or video file
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultVideo.MimeType">
+            <summary>
+            Mime type of the content of video url, i.e. "text/html" or "video/mp4"
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultVideo.Width">
+            <summary>
+            Optional. Video width
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultVideo.Height">
+            <summary>
+            Optional. Video height
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultVideo.Duration">
+            <summary>
+            Optional. Video duration in seconds
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.InlineQueryResultVideo.Description">
+            <summary>
+            Optional. Short description of the result
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.Location">
+            <summary>
+            This object represents a point on the map.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Location.Longitude">
+            <summary>
+            Longitude as defined by sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Location.Latitude">
+            <summary>
+            Latitude as defined by sender
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.Message">
+            <summary>
+            This object represents a message.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.MessageId">
+            <summary>
+            Unique message identifier
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.From">
+            <summary>
+            Sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Date">
+            <summary>
+            Date the message was sent in Unix time
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Chat">
+            <summary>
+            Conversation the message belongs to
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.ForwardFrom">
+            <summary>
+            Optional. For forwarded messages, sender of the original message
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.ForwardDate">
+            <summary>
+            Optional. For forwarded messages, date the original message was sent in Unix time
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.ReplyToMessage">
+            <summary>
+            Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Text">
+            <summary>
+            Optional. For text messages, the actual UTF-8 text of the message
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Audio">
+            <summary>
+            Optional. Message is an audio file, information about the file
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Document">
+            <summary>
+            Optional. Message is a general file, information about the file
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Photo">
+            <summary>
+            Optional. Message is a photo, available sizes of the photo
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Sticker">
+            <summary>
+            Optional. Message is a sticker, information about the sticker
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Video">
+            <summary>
+            Optional. Message is a video, information about the video
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Voice">
+            <summary>
+            Message is a voice message, information about the file
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Caption">
+            <summary>
+            Caption for the photo or video
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Contact">
+            <summary>
+            Optional. Message is a shared contact, information about the contact
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.Location">
+            <summary>
+            Optional. Message is a shared location, information about the location
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.NewChatParticipant">
+            <summary>
+            Optional. A new member was added to the group, information about them (this member may be bot itself)
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.LeftChatParticipant">
+            <summary>
+            Optional. A member was removed from the group, information about them (this member may be bot itself)
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.NewChatTitle">
+            <summary>
+            Optional. A group title was changed to this value
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.NewChatPhoto">
+            <summary>
+            Optional. A group photo was change to this value
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.DeleteChatPhoto">
+            <summary>
+            Optional. Informs that the group photo was deleted
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.GroupChatCreated">
+            <summary>
+            Optional. Informs that the group has been created
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.SupergroupChatCreated">
+            <summary>
+            Optional. Service message: the supergroup has been created
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.ChannelChatCreated">
+            <summary>
+            Optional. Service message: the channel has been created
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.MigrateToChatId">
+            <summary>
+            Optional. The group has been migrated to a supergroup with the specified identifier
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Message.MigrateFromChatId">
+            <summary>
+            Optional. The supergroup has been migrated from a group with the specified identifier
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.MessageType">
+            <summary>
+            The type of a Message
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.ParseMode">
+            <summary>
+            Text parsing mode
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.PhotoSize">
+            <summary>
+            This object represents one size of a photo or a file / sticker thumbnail.
+            </summary>
+            <remarks>A missing thumbnail for a file (or sticker) is presented as an empty object.</remarks>
+        </member>
+        <member name="P:Telegram.Bot.Types.PhotoSize.Width">
+            <summary>
+            Photo width
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.PhotoSize.Height">
+            <summary>
+            Photo height
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.ReplyKeyboardHide">
+            <summary>
+            Upon receiving a message with this object, Telegram clients will hide the current custom keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup).
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ReplyKeyboardHide.HideKeyboard">
+            <summary>
+            Requests clients to hide the custom keyboard
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.ReplyKeyboardMarkup">
+            <summary>
+            This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ReplyKeyboardMarkup.Keyboard">
+            <summary>
+            Array of button rows, each represented by an Array of Strings
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ReplyKeyboardMarkup.ResizeKeyboard">
+            <summary>
+            Optional. Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard smaller if there are just two rows of buttons). Defaults to false, in which case the custom keyboard is always of the same height as the app's standard keyboard.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ReplyKeyboardMarkup.OneTimeKeyboard">
+            <summary>
+            Optional. Requests clients to hide the keyboard as soon as it's been used. Defaults to false.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.ReplyMarkup.Selective">
+            <summary>
+            Optional. Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
+            Example: A user requests to change the bot‘s language, bot replies to the request with a keyboard to select the new language.Other users in the group don’t see the keyboard.
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.Sticker">
+            <summary>
+            This object represents a sticker.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Sticker.Width">
+            <summary>
+            Sticker width
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Sticker.Height">
+            <summary>
+            Sticker height
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Sticker.Thumb">
+            <summary>
+            Sticker thumbnail in .webp or .jpg format
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.Update">
+            <summary>
+            This object represents an incoming update.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Update.Id">
+            <summary>
+            The update‘s unique identifier. Update identifiers start from a certain positive number and increase sequentially.
+            This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or to
+            restore the correct update sequence, should they get out of order.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Update.Message">
+            <summary>
+            Optional. New incoming message of any kind — text, photo, sticker, etc.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Update.InlineQuery">
+            <summary>
+            Optional. New incoming inline query
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Update.ChosenInlineResult">
+            <summary>
+            Optional. The result of a inline query that was chosen by a user and sent to their chat partner
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.UpdateType">
+            <summary>
+            The type of an Update
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.User">
+            <summary>
+            This object represents a Telegram user or bot.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.User.Id">
+            <summary>
+            Unique identifier for this user or bot
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Telegram.Bot.Types.User.FirstName">
+            <summary>
+            User‘s or bot’s first name
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.User.LastName">
+            <summary>
+            Optional. User‘s or bot’s last name
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.User.Username">
+            <summary>
+            Optional. User‘s or bot’s username
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.UserProfilePhotos">
+            <summary>
+            This object represent a user's profile pictures.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.UserProfilePhotos.TotalCount">
+            <summary>
+            Total number of profile pictures the target user has
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.UserProfilePhotos.Photos">
+            <summary>
+            Requested profile pictures (in up to 4 sizes each)
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.Video">
+            <summary>
+            This object represents a video file.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Video.Width">
+            <summary>
+            Video width as defined by sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Video.Height">
+            <summary>
+            Video height as defined by sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Video.Duration">
+            <summary>
+            Duration of the video in seconds as defined by sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Video.Thumb">
+            <summary>
+            Video thumbnail
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Video.MimeType">
+            <summary>
+            Optional. Mime type of a file as defined by sender
+            </summary>
+        </member>
+        <member name="T:Telegram.Bot.Types.Voice">
+            <summary>
+            This object represents a voice note.
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Voice.Duration">
+            <summary>
+            Duration of the audio in seconds as defined by sender
+            </summary>
+        </member>
+        <member name="P:Telegram.Bot.Types.Voice.MimeType">
+            <summary>
+            Optional. MIME type of the file as defined by sender
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Monitoring Starter"
-#define MyAppVersion "2.1"
-#define MyAppPublisher "Mahmood Ramzani"
+#define MyAppVersion "3"
+#define MyAppPublisher "My Company, Inc."
 #define MyAppURL "http://www.example.com/"
 #define MyAppExeName "MonitoringStarter.exe"
 
@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{783F394B-A084-4584-86BF-11CDAC37C205}
+AppId={{7B9DEF15-C69C-4C07-86F5-1283F6469F53}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -23,7 +23,6 @@ DefaultDirName={pf}\{#MyAppName}
 DisableDirPage=yes
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-OutputDir=C:\IndustrialMonitoring\MonitoringStarter\Inno
 OutputBaseFilename=setup
 Compression=lzma
 SolidCompression=yes
@@ -35,14 +34,12 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\IndustrialMonitoring\MonitoringStarter\bin\Release\MonitoringStarter.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\MonitoringStarter\bin\Release\Config.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\MonitoringStarter\bin\Release\MonitoringStarter.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\MonitoringStarter\bin\Release\MonitoringStarter.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\MonitoringStarter\bin\Release\MonitoringStarter.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\MonitoringStarter\bin\Release\MonitoringStarter.vshost.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\MonitoringStarter\bin\Release\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\IndustrialMonitoring\MonitoringStarter\bin\Release\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\MonitoringStarter\bin\Release\MonitoringStarter.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\MonitoringStarter\bin\Release\Config.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\MonitoringStarter\bin\Release\MonitoringStarter.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\MonitoringStarter\bin\Release\MonitoringStarter.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\MonitoringStarter\bin\Release\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\MonitoringStarter\bin\Release\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
