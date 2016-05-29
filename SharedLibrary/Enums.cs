@@ -10,7 +10,14 @@ namespace SharedLibrary
     {
         Unknown = 0,
         Digital = 1,
-        Analog = 2
+        Analog = 2,
+    }
+
+    public enum InOut
+    {
+        Input=1,
+        Output=2,
+        OutputJustMonitor=3
     }
 
     public enum WhenToLog

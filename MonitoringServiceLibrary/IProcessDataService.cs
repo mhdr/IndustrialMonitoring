@@ -73,5 +73,11 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         void UnMuteHorn();
+
+        [OperationContract]
+        bool On(string location);
+
+        [OperationContract]
+        bool Off(string location);
     }
 }

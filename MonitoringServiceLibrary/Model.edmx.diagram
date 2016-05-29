@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="IndustrialMonitoringModel.Item" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLog" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogLatest" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogRawData" Width="1.5" PointX="7.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogRawData" Width="1.5" PointX="8" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.LogOutlier" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItem" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.NotificationItemsLog" Width="1.5" PointX="7.5" PointY="19.625" IsExpanded="true" />

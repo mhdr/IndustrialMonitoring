@@ -49,6 +49,7 @@ namespace MonitoringServiceLibrary
         public Nullable<bool> NormalizeWhenOutOfRange { get; set; }
         public Nullable<int> ThreadGroupId { get; set; }
         public Nullable<int> NumberOfDataForBoxplot { get; set; }
+        public int InOut { get; set; }
     
         public virtual ThreadGroup ThreadGroup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

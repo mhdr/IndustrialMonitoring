@@ -43,6 +43,7 @@
           <Property Name="NormalizeWhenOutOfRange" Type="bit" />
           <Property Name="ThreadGroupId" Type="int" />
           <Property Name="NumberOfDataForBoxplot" Type="int" />
+          <Property Name="InOut" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -552,6 +553,7 @@
           <NavigationProperty Name="NotificationItems" Relationship="Self.FK_NotificationItems_Items" FromRole="Items" ToRole="NotificationItems" />
           <NavigationProperty Name="TabsItems" Relationship="Self.FK_TabsItems_Items" FromRole="Items" ToRole="TabsItems" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="Items" ToRole="UsersItemsPermissions" />
+          <Property Name="InOut" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -1058,6 +1060,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="InOut" ColumnName="InOut" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
                 <ScalarProperty Name="ItemType" ColumnName="ItemType" />

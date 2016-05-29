@@ -504,5 +504,45 @@ namespace MonitoringServiceLibrary
                 Logger.LogMonitoringServiceLibrary(ex);
             }
         }
+
+        public bool On(string location)
+        {
+            try
+            {
+                var writer = new NetworkVariableBufferedWriter<bool>(location);
+                writer.Connect();
+                writer.WriteValue(true);
+
+                writer.Disconnect();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+            }
+
+            return false;
+        }
+
+        public bool Off(string location)
+        {
+            try
+            {
+                var writer = new NetworkVariableBufferedWriter<bool>(location);
+                writer.Connect();
+                writer.WriteValue(false);
+
+                writer.Disconnect();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+            }
+
+            return false;
+        }
     }
 }

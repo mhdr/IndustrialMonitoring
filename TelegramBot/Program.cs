@@ -534,6 +534,123 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
                                     }
                                 }
                             }
+                            else if (msg.StartsWith("/on "))
+                            {
+                                var service =
+        entities.Services.FirstOrDefault(x => x.ServiceName == "TurnOnOffItems");
+
+                                var users = entities.UsersServicesPermissions.Where(x => x.ServiceId == service.ServiceId);
+
+                                List<int> chatIds = new List<int>();
+
+                                foreach (UsersServicesPermission u in users)
+                                {
+                                    var userBot = entities.Bots.Where(x => x.UserId == u.UserId);
+
+                                    foreach (Bot bt in userBot)
+                                    {
+                                        if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
+                                    }
+                                }
+
+                                if (chatIds.Contains(chatId))
+                                {
+                                    var parts = msg.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                                    if (parts.Length == 2)
+                                    {
+                                        string idStr = parts[1];
+                                        int id;
+
+                                        if (int.TryParse(idStr, out id))
+                                        {
+                                            var item = entities.Items.FirstOrDefault(x => x.ItemId == id);
+
+                                            if (item.InOut == (int)InOut.Output)
+                                            {
+                                                ProcessDataService processDataService = new ProcessDataService();
+                                                var resultOfRun = processDataService.On(item.Location);
+
+                                                if (resultOfRun)
+                                                {
+                                                    await bot.SendTextMessage(update.Message.Chat.Id, "Successfull");
+                                                }
+                                                else
+                                                {
+                                                    await bot.SendTextMessage(update.Message.Chat.Id, "Failed");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                await bot.SendTextMessage(update.Message.Chat.Id, "This type of item can not be turned on");
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "You don't have access to run this command");
+                                }
+                                
+                            }
+                            else if (msg.StartsWith("/off "))
+                            {
+                                var service =
+        entities.Services.FirstOrDefault(x => x.ServiceName == "TurnOnOffItems");
+
+                                var users = entities.UsersServicesPermissions.Where(x => x.ServiceId == service.ServiceId);
+
+                                List<int> chatIds = new List<int>();
+
+                                foreach (UsersServicesPermission u in users)
+                                {
+                                    var userBot = entities.Bots.Where(x => x.UserId == u.UserId);
+
+                                    foreach (Bot bt in userBot)
+                                    {
+                                        if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
+                                    }
+                                }
+
+                                if (chatIds.Contains(chatId))
+                                {
+                                    var parts = msg.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                                    if (parts.Length == 2)
+                                    {
+                                        string idStr = parts[1];
+                                        int id;
+
+                                        if (int.TryParse(idStr, out id))
+                                        {
+                                            var item = entities.Items.FirstOrDefault(x => x.ItemId == id);
+
+                                            if (item.InOut == (int)InOut.Output)
+                                            {
+                                                ProcessDataService processDataService = new ProcessDataService();
+                                                var resultOfRun = processDataService.Off(item.Location);
+
+                                                if (resultOfRun)
+                                                {
+                                                    await bot.SendTextMessage(update.Message.Chat.Id, "Successfull");
+                                                }
+                                                else
+                                                {
+                                                    await bot.SendTextMessage(update.Message.Chat.Id, "Failed");
+                                                }
+                                            }
+                                            else
+                                            {
+                                                await bot.SendTextMessage(update.Message.Chat.Id, "This type of item can not be turned off");
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "You don't have access to run this command");
+                                }
+                            }
                             else
                             {
                                 await bot.SendTextMessage(update.Message.Chat.Id, "Wrong command");
