@@ -18,6 +18,7 @@ namespace TelegramBot
         {
             StartResponseServer();
             StartLatestLogMonitor();
+            StartTechnicalFanCoilBot();
             Console.ReadKey();
         }
 
@@ -115,6 +116,289 @@ Time : {1}", emoji, DateTime.Now));
 
                 previousTimeStamp = timestamp;
                 await Task.Delay(2*60*1000);
+            }
+        }
+
+        public static async Task StartTechnicalFanCoilBot()
+        {
+            var bot = new Telegram.Bot.Api("208761880:AAHxUZCc5z0g2dJDrgbbMEWk7r1t_IoKiAw");
+
+            var offset = 0;
+            Dictionary<int,int> wizardStep=new Dictionary<int, int>();
+
+            while (true)
+            {
+                Update[] result = new Update[] { };
+
+                try
+                {
+                    result = await bot.GetUpdates(offset);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogTelegramBot(ex);
+                    offset += 1;
+                    continue;
+                }
+
+                foreach (Update update in result)
+                {
+                    try
+                    {
+                        if (update.Message.Text != null)
+                        {
+                            string msg = update.Message.Text.Trim().ToLower();
+                            int chatId = update.Message.From.Id;
+                            int msgId = update.Message.MessageId;
+
+                            string log = string.Format("{0}", msg);
+                            Console.WriteLine(log);
+
+                            TechnicalFanCoil technicalFanCoil=new TechnicalFanCoil();
+
+                            if (wizardStep.ContainsKey(chatId))
+                            {
+                                int step = wizardStep[chatId];
+
+                                if (step == 11)
+                                {
+                                    if (msg == "Off")
+                                    {
+                                        technicalFanCoil.TurnOffMotor1();
+                                    }
+                                    else if (msg == "Speed 1")
+                                    {
+                                        technicalFanCoil.ChangeSpeedMotor1(1);
+                                    }
+                                    else if (msg == "Speed 2")
+                                    {
+                                        technicalFanCoil.ChangeSpeedMotor1(2);
+                                    }
+                                    else if (msg== "Speed 3")
+                                    {
+                                        technicalFanCoil.ChangeSpeedMotor1(3);
+                                    }
+
+                                    wizardStep.Remove(chatId);
+                                }
+                                else if (step == 21)
+                                {
+                                    if (msg == "Off")
+                                    {
+                                        technicalFanCoil.TurnOffMotor2();
+                                    }
+                                    else if (msg == "Speed 1")
+                                    {
+                                        technicalFanCoil.ChangeSpeedMotor2(1);
+                                    }
+                                    else if (msg == "Speed 2")
+                                    {
+                                        technicalFanCoil.ChangeSpeedMotor2(2);
+                                    }
+                                    else if (msg == "Speed 3")
+                                    {
+                                        technicalFanCoil.ChangeSpeedMotor2(3);
+                                    }
+
+                                    wizardStep.Remove(chatId);
+                                }
+
+                                ReplyKeyboardHide replyKeyboardHide=new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+                                await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                            }
+                            else if (msg == "/fan_coil_off")
+                            {
+                                var result1=technicalFanCoil.TurnOffMotor1();
+                                var result2=technicalFanCoil.TurnOffMotor2();
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+
+                                if (result1 == true && result2 == true)
+                                {
+                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
+                                }
+                            }
+                            else if (msg== "/motor1_off")
+                            {
+                                var result1=technicalFanCoil.TurnOffMotor1();
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+
+                                if (result1)
+                                {
+                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
+                                }
+                            }
+                            else if (msg == "/motor2_off")
+                            {
+                                var result1=technicalFanCoil.TurnOffMotor2();
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+
+                                if (result1)
+                                {
+                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
+                                }
+                            }
+                            else if (msg == "/motor1_speed1")
+                            {
+                                var result1=technicalFanCoil.ChangeSpeedMotor1(1);
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+
+                                if (result1)
+                                {
+                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
+                                }
+                            }
+                            else if (msg == "/motor1_speed2")
+                            {
+                                var result1=technicalFanCoil.ChangeSpeedMotor1(2);
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+
+                                if (result1)
+                                {
+                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
+                                }
+                            }
+                            else if (msg == "/motor1_speed3")
+                            {
+                                var result1=technicalFanCoil.ChangeSpeedMotor1(3);
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+
+                                if (result1)
+                                {
+                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
+                                }
+                                
+                            }
+                            else if (msg == "/motor2_speed1")
+                            {
+                                var result1=technicalFanCoil.ChangeSpeedMotor2(1);
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+
+                                if (result1)
+                                {
+                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
+                                }
+                                
+                            }
+                            else if (msg == "/motor2_speed2")
+                            {
+                                var result1=technicalFanCoil.ChangeSpeedMotor2(2);
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+
+                                if (result1)
+                                {
+                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
+                                }
+                                
+                            }
+                            else if (msg == "/motor2_speed3")
+                            {
+                                var result1=technicalFanCoil.ChangeSpeedMotor2(3);
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+
+                                if (result1)
+                                {
+                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
+                                }
+                                
+                            }
+                            else if (msg == "/motor1")
+                            {
+                                ReplyKeyboardMarkup replyKeyboardMarkup=new ReplyKeyboardMarkup();
+                                replyKeyboardMarkup.OneTimeKeyboard = true;
+                                replyKeyboardMarkup.Keyboard=new KeyboardButton[][]
+                                {
+                                    new KeyboardButton[] {"Off"},
+                                    new KeyboardButton[] {"Speed 1"},
+                                    new KeyboardButton[] {"Speed 2"},
+                                    new KeyboardButton[] {"Speed 3"}, 
+                                };
+
+                                await bot.SendTextMessage(update.Message.Chat.Id, "Motor 1 :",false,false,0,replyKeyboardMarkup);
+                                wizardStep.Add(chatId,11);
+                            }
+                            else if (msg == "/motor2")
+                            {
+                                ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+                                replyKeyboardMarkup.OneTimeKeyboard = true;
+                                replyKeyboardMarkup.Keyboard = new KeyboardButton[][]
+                                {
+                                    new KeyboardButton[] {"Off"},
+                                    new KeyboardButton[] {"Speed 1"},
+                                    new KeyboardButton[] {"Speed 2"},
+                                    new KeyboardButton[] {"Speed 3"},
+                                };
+
+                                await bot.SendTextMessage(update.Message.Chat.Id, "Motor 2 :", false, false, 0, replyKeyboardMarkup);
+                                wizardStep.Add(chatId, 21);
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.LogTelegramBot(ex);
+                    }
+                    finally
+                    {
+                        offset = update.Id + 1;
+                        await Task.Delay(1000);
+                    }
+                }
             }
         }
 

@@ -111,6 +111,7 @@
     <Compile Include="INotificationService.cs" />
     <Compile Include="IProcessDataService.cs" />
     <Compile Include="IService1.cs" />
+    <Compile Include="ITechnicalFanCoil.cs" />
     <Compile Include="Item.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -175,6 +176,7 @@
     <Compile Include="TabsItem.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="TechnicalFanCoil.cs" />
     <Compile Include="ThreadGroup.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
