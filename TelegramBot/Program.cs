@@ -1192,9 +1192,9 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
 
             foreach (UsersServicesPermission u in users)
             {
-                var userBot = entities.Bots.Where(x => x.UserId == u.UserId);
+                var userBot = entities.FanCoilBots.Where(x => x.UserId == u.UserId);
 
-                foreach (Bot bt in userBot)
+                foreach (var bt in userBot)
                 {
                     if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
                 }
