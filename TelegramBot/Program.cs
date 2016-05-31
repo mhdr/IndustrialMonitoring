@@ -153,7 +153,16 @@ Time : {1}", emoji, DateTime.Now));
                             int msgId = update.Message.MessageId;
                             User currentUser = GetUserInTechnicalFanCoil(chatId);
 
-                            string log = string.Format("{0}", msg);
+                            string log = "";
+                            if (currentUser != null)
+                            {
+                                log = string.Format("{0} {1} : {2}", currentUser.FirstName, currentUser.LastName, msg);
+                            }
+                            else
+                            {
+                                log = string.Format("Anonymous : {0}", msg);
+                            }
+                            
                             Console.WriteLine(log);
 
                             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
@@ -602,13 +611,24 @@ Time : {1}", emoji, DateTime.Now));
                         if (update.Message.Text != null)
                         {
                             string msg = update.Message.Text.Trim().ToLower();
+                            int chatId = update.Message.From.Id;
+                            User currentUser = GetUserInMonitoring(chatId);
 
-                            string log = string.Format("{0}", msg);
+                            string log = "";
+                            if (currentUser != null)
+                            {
+                                log = string.Format("{0} {1} : {2}", currentUser.FirstName, currentUser.LastName, msg);
+                            }
+                            else
+                            {
+                                log = string.Format("Anonymous : {0}", msg);
+                            }
+
                             Console.WriteLine(log);
 
                             IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
-                            int chatId = update.Message.From.Id;
+                            
 
                             if (!entities.Bots.Any(x => x.ChatId == chatId))
                             {
@@ -1122,13 +1142,42 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
 
         public static User GetUserInTechnicalFanCoil(int chatId)
         {
-            var entities = new IndustrialMonitoringEntities();
+            try
+            {
+                var entities = new IndustrialMonitoringEntities();
 
-            var fanCoilBotRow=  entities.FanCoilBots.FirstOrDefault(x => x.ChatId == chatId);
+                var fanCoilBotRow = entities.FanCoilBots.FirstOrDefault(x => x.ChatId == chatId);
 
-            User result = fanCoilBotRow.User;
+                User result = fanCoilBotRow.User;
 
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogTelegramBot(ex);
+            }
+
+            return null;
+        }
+
+        public static User GetUserInMonitoring(int chatId)
+        {
+            try
+            {
+                var entities = new IndustrialMonitoringEntities();
+
+                var botRow = entities.Bots.FirstOrDefault(x => x.ChatId == chatId);
+
+                User result = botRow.User;
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogTelegramBot(ex);
+            }
+
+            return null;
         }
 
         public static List<int> RecieveReportForTechnicalFanCoilChatIds()
