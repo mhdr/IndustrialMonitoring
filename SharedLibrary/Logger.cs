@@ -26,6 +26,14 @@ namespace SharedLibrary
             Log(path, ex);
         }
 
+        public static void LogMonitoringServiceLibrary2(Exception ex, [CallerMemberName] string callingMethod = "",
+[CallerFilePath] string callingFilePath = "",
+[CallerLineNumber] int callingFileLineNumber = 0)
+        {
+            string path = @"C:\Logs\MonitoringServiceLibrary2.log";
+            Log(path, ex);
+        }
+
         public static void LogIndustrialMonitoring(Exception ex, [CallerMemberName] string callingMethod = "",
         [CallerFilePath] string callingFilePath = "",
         [CallerLineNumber] int callingFileLineNumber = 0)

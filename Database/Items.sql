@@ -23,5 +23,6 @@
 	[NormalizeWhenOutOfRange] BIT NULL DEFAULT 0, 
     [ThreadGroupId] INT NULL, 
     [NumberOfDataForBoxplot] INT NULL DEFAULT 0, 
+    [InOut] INT NULL, 
     CONSTRAINT [FK_Items_ThreadGroup] FOREIGN KEY ([ThreadGroupId]) REFERENCES [ThreadGroup]([ThreadGroupId])
 )

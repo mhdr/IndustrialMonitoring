@@ -9,6 +9,7 @@ using MonitoringServiceLibrary;
 using MonitoringServiceLibrary.ViewModels;
 using SharedLibrary;
 using Telegram.Bot.Types;
+using User = MonitoringServiceLibrary.User;
 
 namespace TelegramBot
 {
@@ -150,62 +151,110 @@ Time : {1}", emoji, DateTime.Now));
                             string msg = update.Message.Text.Trim().ToLower();
                             int chatId = update.Message.From.Id;
                             int msgId = update.Message.MessageId;
+                            User currentUser = GetUserInTechnicalFanCoil(chatId);
 
                             string log = string.Format("{0}", msg);
                             Console.WriteLine(log);
+
+                            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+
+                            if (!entities.FanCoilBots.Any(x => x.ChatId == chatId))
+                            {
+                                var matched = entities.FanCoilBots.FirstOrDefault(x => x.Token == msg);
+
+                                if (matched != null)
+                                {
+                                    matched.ChatId = chatId;
+                                    matched.IsAuthorized = true;
+                                    entities.SaveChanges();
+
+                                    await bot.SendTextMessage(update.Message.Chat.Id, "Your token is saved");
+                                }
+                                else
+                                {
+                                    await bot.SendTextMessage(update.Message.Chat.Id, "You aren't authorized to access,please send your token.");
+                                }
+
+                                offset = update.Id + 1;
+                                continue;
+                            }
 
                             TechnicalFanCoil technicalFanCoil=new TechnicalFanCoil();
 
                             if (wizardStep.ContainsKey(chatId))
                             {
                                 int step = wizardStep[chatId];
+                                bool isCancled=false;
 
                                 if (step == 11)
                                 {
-                                    if (msg == "Off")
+                                    if (msg == "Off".ToLower())
                                     {
                                         technicalFanCoil.TurnOffMotor1();
                                     }
-                                    else if (msg == "Speed 1")
+                                    else if (msg == "Speed 1".ToLower())
                                     {
                                         technicalFanCoil.ChangeSpeedMotor1(1);
                                     }
-                                    else if (msg == "Speed 2")
+                                    else if (msg == "Speed 2".ToLower())
                                     {
                                         technicalFanCoil.ChangeSpeedMotor1(2);
                                     }
-                                    else if (msg== "Speed 3")
+                                    else if (msg == "Speed 3".ToLower())
                                     {
                                         technicalFanCoil.ChangeSpeedMotor1(3);
+                                    }
+                                    else
+                                    {
+                                        isCancled = true;
                                     }
 
                                     wizardStep.Remove(chatId);
                                 }
                                 else if (step == 21)
                                 {
-                                    if (msg == "Off")
+                                    if (msg == "Off".ToLower())
                                     {
                                         technicalFanCoil.TurnOffMotor2();
                                     }
-                                    else if (msg == "Speed 1")
+                                    else if (msg == "Speed 1".ToLower())
                                     {
                                         technicalFanCoil.ChangeSpeedMotor2(1);
                                     }
-                                    else if (msg == "Speed 2")
+                                    else if (msg == "Speed 2".ToLower())
                                     {
                                         technicalFanCoil.ChangeSpeedMotor2(2);
                                     }
-                                    else if (msg == "Speed 3")
+                                    else if (msg == "Speed 3".ToLower())
                                     {
                                         technicalFanCoil.ChangeSpeedMotor2(3);
+                                    }
+                                    else
+                                    {
+                                        isCancled = true;
                                     }
 
                                     wizardStep.Remove(chatId);
                                 }
 
-                                ReplyKeyboardHide replyKeyboardHide=new ReplyKeyboardHide();
+                                if (!isCancled)
+                                {
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+                                }
+
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
                                 replyKeyboardHide.HideKeyboard = true;
-                                await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                             }
                             else if (msg == "/fan_coil_off")
                             {
@@ -217,7 +266,19 @@ Time : {1}", emoji, DateTime.Now));
 
                                 if (result1 == true && result2 == true)
                                 {
-                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+
+                                    await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                                 }
                                 else
                                 {
@@ -233,7 +294,19 @@ Time : {1}", emoji, DateTime.Now));
 
                                 if (result1)
                                 {
-                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+
+                                    await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                                 }
                                 else
                                 {
@@ -249,7 +322,19 @@ Time : {1}", emoji, DateTime.Now));
 
                                 if (result1)
                                 {
-                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+
+                                    await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                                 }
                                 else
                                 {
@@ -265,7 +350,19 @@ Time : {1}", emoji, DateTime.Now));
 
                                 if (result1)
                                 {
-                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+
+                                    await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                                 }
                                 else
                                 {
@@ -281,7 +378,19 @@ Time : {1}", emoji, DateTime.Now));
 
                                 if (result1)
                                 {
-                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+
+                                    await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                                 }
                                 else
                                 {
@@ -297,7 +406,19 @@ Time : {1}", emoji, DateTime.Now));
 
                                 if (result1)
                                 {
-                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+
+                                    await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                                 }
                                 else
                                 {
@@ -314,7 +435,19 @@ Time : {1}", emoji, DateTime.Now));
 
                                 if (result1)
                                 {
-                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+
+                                    await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                                 }
                                 else
                                 {
@@ -331,7 +464,19 @@ Time : {1}", emoji, DateTime.Now));
 
                                 if (result1)
                                 {
-                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+
+                                    await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                                 }
                                 else
                                 {
@@ -348,13 +493,31 @@ Time : {1}", emoji, DateTime.Now));
 
                                 if (result1)
                                 {
-                                    await bot.SendTextMessage(chatId, "Done.", false, false, 0, replyKeyboardHide);
+                                    var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                                    string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                                    foreach (var id in chatIds)
+                                    {
+                                        if (id != chatId)
+                                        {
+                                            await bot.SendTextMessage(id, report);
+                                            await bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                                        }
+                                    }
+
+                                    await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                                 }
                                 else
                                 {
                                     await bot.SendTextMessage(chatId, "Failed.", false, false, 0, replyKeyboardHide);
                                 }
                                 
+                            }
+                            else if (msg == "/status")
+                            {
+                                ReplyKeyboardHide replyKeyboardHide = new ReplyKeyboardHide();
+                                replyKeyboardHide.HideKeyboard = true;
+                                await bot.SendTextMessage(chatId, technicalFanCoil.GetStatus(), false, false, 0, replyKeyboardHide);
                             }
                             else if (msg == "/motor1")
                             {
@@ -366,6 +529,7 @@ Time : {1}", emoji, DateTime.Now));
                                     new KeyboardButton[] {"Speed 1"},
                                     new KeyboardButton[] {"Speed 2"},
                                     new KeyboardButton[] {"Speed 3"}, 
+                                    new KeyboardButton[] {"Cancel"}, 
                                 };
 
                                 await bot.SendTextMessage(update.Message.Chat.Id, "Motor 1 :",false,false,0,replyKeyboardMarkup);
@@ -381,6 +545,7 @@ Time : {1}", emoji, DateTime.Now));
                                     new KeyboardButton[] {"Speed 1"},
                                     new KeyboardButton[] {"Speed 2"},
                                     new KeyboardButton[] {"Speed 3"},
+                                    new KeyboardButton[] {"Cancel"},
                                 };
 
                                 await bot.SendTextMessage(update.Message.Chat.Id, "Motor 2 :", false, false, 0, replyKeyboardMarkup);
@@ -953,6 +1118,40 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
 
                 await Task.Delay(1000);
             }
+        }
+
+        public static User GetUserInTechnicalFanCoil(int chatId)
+        {
+            var entities = new IndustrialMonitoringEntities();
+
+            var fanCoilBotRow=  entities.FanCoilBots.FirstOrDefault(x => x.ChatId == chatId);
+
+            User result = fanCoilBotRow.User;
+
+            return result;
+        }
+
+        public static List<int> RecieveReportForTechnicalFanCoilChatIds()
+        {
+            var entities=new IndustrialMonitoringEntities();
+            var service =
+        entities.Services.FirstOrDefault(x => x.ServiceName == "RecieveReportForTechnicalFanCoil");
+
+            var users = entities.UsersServicesPermissions.Where(x => x.ServiceId == service.ServiceId);
+
+            List<int> chatIds = new List<int>();
+
+            foreach (UsersServicesPermission u in users)
+            {
+                var userBot = entities.Bots.Where(x => x.UserId == u.UserId);
+
+                foreach (Bot bt in userBot)
+                {
+                    if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
+                }
+            }
+
+            return chatIds;
         }
     }
 }

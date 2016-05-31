@@ -20,6 +20,7 @@ namespace MonitoringServiceLibrary
             this.Bots = new HashSet<Bot>();
             this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
             this.UsersServicesPermissions = new HashSet<UsersServicesPermission>();
+            this.FanCoilBots = new HashSet<FanCoilBot>();
         }
     
         public int UserId { get; set; }
@@ -34,5 +35,7 @@ namespace MonitoringServiceLibrary
         public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersServicesPermission> UsersServicesPermissions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FanCoilBot> FanCoilBots { get; set; }
     }
 }

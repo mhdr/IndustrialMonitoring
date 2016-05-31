@@ -25,5 +25,8 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         bool ChangeSpeedMotor2(int speed);
+
+        [OperationContract]
+        string GetStatus();
     }
 }

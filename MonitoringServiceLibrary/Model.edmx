@@ -16,6 +16,16 @@
           <Property Name="IsAuthorized" Type="bit" Nullable="false" />
           <Property Name="ReceiveAlarms" Type="bit" />
         </EntityType>
+        <EntityType Name="FanCoilBot">
+          <Key>
+            <PropertyRef Name="BotProcessId" />
+          </Key>
+          <Property Name="BotProcessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsAuthorized" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Items">
           <Key>
             <PropertyRef Name="ItemId" />
@@ -43,7 +53,7 @@
           <Property Name="NormalizeWhenOutOfRange" Type="bit" />
           <Property Name="ThreadGroupId" Type="int" />
           <Property Name="NumberOfDataForBoxplot" Type="int" />
-          <Property Name="InOut" Type="int" Nullable="false" />
+          <Property Name="InOut" Type="int" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -203,6 +213,18 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Bot">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FanCoilBot_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="FanCoilBot" Type="Self.FanCoilBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FanCoilBot">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -413,6 +435,7 @@
         </Association>
         <EntityContainer Name="IndustrialMonitoringModelStoreContainer">
           <EntitySet Name="Bot" EntityType="Self.Bot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FanCoilBot" EntityType="Self.FanCoilBot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLog" EntityType="Self.ItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogLatest" EntityType="Self.ItemsLogLatest" Schema="dbo" store:Type="Tables" />
@@ -432,6 +455,10 @@
           <AssociationSet Name="FK_Bot_Users" Association="Self.FK_Bot_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Bot" EntitySet="Bot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FanCoilBot_Users" Association="Self.FK_FanCoilBot_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FanCoilBot" EntitySet="FanCoilBot" />
           </AssociationSet>
           <AssociationSet Name="FK_Items_ThreadGroup" Association="Self.FK_Items_ThreadGroup">
             <End Role="ThreadGroup" EntitySet="ThreadGroup" />
@@ -553,7 +580,7 @@
           <NavigationProperty Name="NotificationItems" Relationship="Self.FK_NotificationItems_Items" FromRole="Items" ToRole="NotificationItems" />
           <NavigationProperty Name="TabsItems" Relationship="Self.FK_TabsItems_Items" FromRole="Items" ToRole="TabsItems" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="Items" ToRole="UsersItemsPermissions" />
-          <Property Name="InOut" Type="Int32" Nullable="false" />
+          <Property Name="InOut" Type="Int32" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -693,6 +720,7 @@
           <NavigationProperty Name="Bots" Relationship="Self.FK_Bot_Users" FromRole="Users" ToRole="Bot" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="Users" ToRole="UsersItemsPermissions" />
           <NavigationProperty Name="UsersServicesPermissions" Relationship="Self.FK_UsersServicesPermissions_Users" FromRole="Users" ToRole="UsersServicesPermissions" />
+          <NavigationProperty Name="FanCoilBots" Relationship="IndustrialMonitoringModel.FK_FanCoilBot_Users" FromRole="User" ToRole="FanCoilBot" />
         </EntityType>
         <EntityType Name="UsersItemsPermission">
           <Key>
@@ -997,6 +1025,11 @@
             <End Role="NotificationItemsLog" EntitySet="NotificationItemsLogs" />
             <End Role="NotificationBot" EntitySet="NotificationBots" />
           </AssociationSet>
+          <EntitySet Name="FanCoilBots" EntityType="IndustrialMonitoringModel.FanCoilBot" />
+          <AssociationSet Name="FK_FanCoilBot_Users" Association="IndustrialMonitoringModel.FK_FanCoilBot_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FanCoilBot" EntitySet="FanCoilBots" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="NotificationBot">
           <Key>
@@ -1036,6 +1069,29 @@
             </Principal>
             <Dependent Role="NotificationBot">
               <PropertyRef Name="NotificationLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FanCoilBot">
+          <Key>
+            <PropertyRef Name="BotProcessId" />
+          </Key>
+          <Property Name="BotProcessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_FanCoilBot_Users" FromRole="FanCoilBot" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_FanCoilBot_Users">
+          <End Type="IndustrialMonitoringModel.User" Role="User" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.FanCoilBot" Role="FanCoilBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FanCoilBot">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1249,6 +1305,17 @@
                 <ScalarProperty Name="WithoutAlarm" ColumnName="WithoutAlarm" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="NotificationBotId" ColumnName="NotificationBotId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FanCoilBots">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.FanCoilBot">
+              <MappingFragment StoreEntitySet="FanCoilBot">
+                <ScalarProperty Name="IsAuthorized" ColumnName="IsAuthorized" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="BotProcessId" ColumnName="BotProcessId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

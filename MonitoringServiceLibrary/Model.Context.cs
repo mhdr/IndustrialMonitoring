@@ -42,5 +42,6 @@ namespace MonitoringServiceLibrary
         public virtual DbSet<UsersItemsPermission> UsersItemsPermissions { get; set; }
         public virtual DbSet<UsersServicesPermission> UsersServicesPermissions { get; set; }
         public virtual DbSet<NotificationBot> NotificationBots { get; set; }
+        public virtual DbSet<FanCoilBot> FanCoilBots { get; set; }
     }
 }

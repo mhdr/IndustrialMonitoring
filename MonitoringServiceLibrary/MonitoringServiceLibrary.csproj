@@ -107,6 +107,9 @@
     </Compile>
     <Compile Include="DataCollector.cs" />
     <Compile Include="DataCollectorService.cs" />
+    <Compile Include="FanCoilBot.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="IDataCollectorService.cs" />
     <Compile Include="INotificationService.cs" />
     <Compile Include="IProcessDataService.cs" />
