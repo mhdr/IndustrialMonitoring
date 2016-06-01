@@ -28,5 +28,8 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         string GetStatus();
+
+        [OperationContract]
+        Dictionary<int, int> GetStatus2();
     }
 }

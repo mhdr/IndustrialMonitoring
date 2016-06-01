@@ -5,8 +5,89 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <NumberPicker
+    <Button
+        android:text="Refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/numberPicker1" />
+        android:id="@+id/buttonRefresh" />
+    <TextView
+        android:text="Motor 1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:gravity="center"
+        android:lines="3" />
+    <ToggleButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButtonMotor1"
+        android:enabled="false" />
+    <RadioGroup
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup1"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Speed 1"
+            android:id="@+id/radioButtonMotor1Speed1"
+            android:enabled="false" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Speed 2"
+            android:id="@+id/radioButtonMotor1Speed2"
+            android:enabled="false" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Speed 3"
+            android:id="@+id/radioButtonMotor1Speed3"
+            android:enabled="false" />
+    </RadioGroup>
+    <TextView
+        android:text="Motor 2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:gravity="center"
+        android:lines="3" />
+    <ToggleButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButtonMotor2"
+        android:enabled="false" />
+    <RadioGroup
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup2"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Speed 1"
+            android:id="@+id/radioButtonMotor2Speed1"
+            android:enabled="false" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Speed 2"
+            android:id="@+id/radioButtonMotor2Speed2"
+            android:enabled="false" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Speed 3"
+            android:id="@+id/radioButtonMotor2Speed3"
+            android:enabled="false" />
+    </RadioGroup>
 </LinearLayout>
