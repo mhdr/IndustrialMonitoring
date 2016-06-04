@@ -3,11 +3,11 @@
     p1:minWidth="25px"
     p1:minHeight="25px"
     p1:layout_width="match_parent"
-    p1:layout_height="match_parent"
+    p1:layout_height="50px"
     p1:id="@+id/relativeLayout1">
     <TextView
         p1:text="Text"
         p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
-        p1:id="@+id/textViewTitle" />
+        p1:id="@+id/textView1" />
 </RelativeLayout>

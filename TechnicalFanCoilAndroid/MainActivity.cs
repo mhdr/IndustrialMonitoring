@@ -23,12 +23,18 @@ namespace TechnicalFanCoilAndroid
         private RadioButton radioButtonMotor2Speed3;
         private Button buttonSave;
 
+        private Toolbar toolbarMain;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+
+            toolbarMain = FindViewById<Toolbar>(Resource.Id.toolbarMain);
+
+            SetActionBar(toolbarMain);
 
             buttonRefresh = FindViewById<Button>(Resource.Id.buttonRefresh);
             buttonRefresh.Click += ButtonRefresh_Click;
