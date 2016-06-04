@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using System.Threading;
 using Android.App;
 using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Widget;
 
 namespace TechnicalFanCoilAndroid
 {
-    [Activity(Label = "TechnicalFanCoilAndroid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Fan Coil", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         private Button buttonRefresh;
@@ -19,11 +18,9 @@ namespace TechnicalFanCoilAndroid
         private RadioButton radioButtonMotor1Speed1;
         private RadioButton radioButtonMotor1Speed2;
         private RadioButton radioButtonMotor1Speed3;
-
         private RadioButton radioButtonMotor2Speed1;
         private RadioButton radioButtonMotor2Speed2;
         private RadioButton radioButtonMotor2Speed3;
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -31,8 +28,6 @@ namespace TechnicalFanCoilAndroid
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
             buttonRefresh = FindViewById<Button>(Resource.Id.buttonRefresh);
             buttonRefresh.Click += ButtonRefresh_Click;
 
@@ -50,8 +45,24 @@ namespace TechnicalFanCoilAndroid
 
         private void ButtonRefresh_Click(object sender, EventArgs e)
         {
-            TechnicalFanCoil technicalFanCoil=new TechnicalFanCoil();
-            Dictionary<int, int> status = technicalFanCoil.GetStatus2();
+            TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
+            Dictionary<int, int> status = null;
+
+            try
+            {
+                status = technicalFanCoil.GetStatus2();
+            }
+            catch (SocketException ex)
+            {
+                AlertDialog.Builder alert=new AlertDialog.Builder(this);
+                alert.SetTitle("Network Error");
+                alert.SetMessage(ex.Message);
+                alert.SetPositiveButton("Ok", delegate(object o, DialogClickEventArgs args)
+                {
+                    return;
+                });
+                alert.Create().Show();
+            }
 
             if (status == null)
             {
