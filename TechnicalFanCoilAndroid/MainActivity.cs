@@ -21,6 +21,8 @@ namespace TechnicalFanCoilAndroid
         private RadioButton radioButtonMotor2Speed1;
         private RadioButton radioButtonMotor2Speed2;
         private RadioButton radioButtonMotor2Speed3;
+        private Button buttonSave;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -32,7 +34,10 @@ namespace TechnicalFanCoilAndroid
             buttonRefresh.Click += ButtonRefresh_Click;
 
             toggleButtonMotor1 = FindViewById<ToggleButton>(Resource.Id.toggleButtonMotor1);
+            toggleButtonMotor1.Click += ToggleButtonMotor1_Click;
+
             toggleButtonMotor2 = FindViewById<ToggleButton>(Resource.Id.toggleButtonMotor2);
+            toggleButtonMotor2.Click += ToggleButtonMotor2_Click;
 
             radioButtonMotor1Speed1 = FindViewById<RadioButton>(Resource.Id.radioButtonMotor1Speed1);
             radioButtonMotor1Speed2 = FindViewById<RadioButton>(Resource.Id.radioButtonMotor1Speed2);
@@ -41,6 +46,47 @@ namespace TechnicalFanCoilAndroid
             radioButtonMotor2Speed1 = FindViewById<RadioButton>(Resource.Id.radioButtonMotor2Speed1);
             radioButtonMotor2Speed2 = FindViewById<RadioButton>(Resource.Id.radioButtonMotor2Speed2);
             radioButtonMotor2Speed3 = FindViewById<RadioButton>(Resource.Id.radioButtonMotor2Speed3);
+
+            buttonSave = FindViewById<Button>(Resource.Id.buttonSave);
+            buttonSave.Click += ButtonSave_Click;
+        }
+
+        private void ButtonSave_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ToggleButtonMotor2_Click(object sender, EventArgs e)
+        {
+            if (toggleButtonMotor2.Checked)
+            {
+                radioButtonMotor2Speed1.Enabled = true;
+                radioButtonMotor2Speed2.Enabled = true;
+                radioButtonMotor2Speed3.Enabled = true;
+            }
+            else
+            {
+                radioButtonMotor2Speed1.Enabled = false;
+                radioButtonMotor2Speed2.Enabled = false;
+                radioButtonMotor2Speed3.Enabled = false;
+
+            }
+        }
+
+        private void ToggleButtonMotor1_Click(object sender, EventArgs e)
+        {
+            if (toggleButtonMotor1.Checked)
+            {
+                radioButtonMotor1Speed1.Enabled = true;
+                radioButtonMotor1Speed2.Enabled = true;
+                radioButtonMotor1Speed3.Enabled = true;
+            }
+            else
+            {
+                radioButtonMotor1Speed1.Enabled = false;
+                radioButtonMotor1Speed2.Enabled = false;
+                radioButtonMotor1Speed3.Enabled = false;
+            }
         }
 
         private void ButtonRefresh_Click(object sender, EventArgs e)
@@ -71,12 +117,12 @@ namespace TechnicalFanCoilAndroid
 
             toggleButtonMotor1.Enabled = true;
             toggleButtonMotor2.Enabled = true;
-            radioButtonMotor1Speed1.Enabled = true;
-            radioButtonMotor1Speed2.Enabled = true;
-            radioButtonMotor1Speed3.Enabled = true;
-            radioButtonMotor2Speed1.Enabled = true;
-            radioButtonMotor2Speed2.Enabled = true;
-            radioButtonMotor2Speed3.Enabled = true;
+            //radioButtonMotor1Speed1.Enabled = true;
+            //radioButtonMotor1Speed2.Enabled = true;
+            //radioButtonMotor1Speed3.Enabled = true;
+            //radioButtonMotor2Speed1.Enabled = true;
+            //radioButtonMotor2Speed2.Enabled = true;
+            //radioButtonMotor2Speed3.Enabled = true;
 
             Thread thread=new Thread((() =>
             {

@@ -63,6 +63,9 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f050000
 			public const int buttonRefresh = 2131034112;
 			
+			// aapt resource value: 0x7f05000d
+			public const int buttonSave = 2131034125;
+			
 			// aapt resource value: 0x7f050004
 			public const int radioButtonMotor1Speed1 = 2131034116;
 			
@@ -87,11 +90,17 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f050009
 			public const int radioGroup2 = 2131034121;
 			
+			// aapt resource value: 0x7f05000e
+			public const int relativeLayout1 = 2131034126;
+			
 			// aapt resource value: 0x7f050001
 			public const int textView1 = 2131034113;
 			
 			// aapt resource value: 0x7f050007
 			public const int textView2 = 2131034119;
+			
+			// aapt resource value: 0x7f05000f
+			public const int textViewTitle = 2131034127;
 			
 			// aapt resource value: 0x7f050002
 			public const int toggleButtonMotor1 = 2131034114;
@@ -114,6 +123,9 @@ namespace TechnicalFanCoilAndroid
 			
 			// aapt resource value: 0x7f030000
 			public const int Main = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Main_ActionBar = 2130903041;
 			
 			static Layout()
 			{

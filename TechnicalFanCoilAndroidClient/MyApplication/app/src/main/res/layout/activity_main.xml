@@ -1,98 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:minWidth="25px"
-    android:minHeight="25px">
+<LinearLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:text="Fetch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonRefresh" />
+        android:id="@+id/buttonFetch"
+        android:layout_gravity="center_horizontal" />
+
     <TextView
-        android:text="Motor 1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1"
+        android:text="Motor 1"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:lines="3" />
+
     <ToggleButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="New ToggleButton"
         android:id="@+id/toggleButtonMotor1"
-        android:enabled="false" />
+        android:layout_gravity="center_horizontal" />
+
     <RadioGroup
-        android:minWidth="25px"
-        android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/radioGroup1"
         android:orientation="horizontal"
         android:gravity="center">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:text="Speed 1"
             android:id="@+id/radioButtonMotor1Speed1"
             android:enabled="false" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Speed 2"
             android:id="@+id/radioButtonMotor1Speed2"
+            android:layout_gravity="center_horizontal"
             android:enabled="false" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Speed 3"
             android:id="@+id/radioButtonMotor1Speed3"
+            android:layout_gravity="right"
             android:enabled="false" />
     </RadioGroup>
+
     <TextView
-        android:text="Motor 2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Motor 2"
         android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:lines="3" />
+
     <ToggleButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="New ToggleButton"
         android:id="@+id/toggleButtonMotor2"
-        android:enabled="false" />
+        android:layout_gravity="center_horizontal" />
+
     <RadioGroup
-        android:minWidth="25px"
-        android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/radioGroup2"
         android:orientation="horizontal"
         android:gravity="center">
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:text="Speed 1"
             android:id="@+id/radioButtonMotor2Speed1"
+            android:layout_gravity="center_horizontal"
             android:enabled="false" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Speed 2"
             android:id="@+id/radioButtonMotor2Speed2"
+            android:layout_gravity="center_horizontal"
             android:enabled="false" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Speed 3"
             android:id="@+id/radioButtonMotor2Speed3"
+            android:layout_gravity="center_horizontal"
             android:enabled="false" />
     </RadioGroup>
+
     <Button
-        android:text="Save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonSave" />
+        android:text="Save"
+        android:id="@+id/buttonSave"
+        android:layout_gravity="center_horizontal" />
+
+
 </LinearLayout>

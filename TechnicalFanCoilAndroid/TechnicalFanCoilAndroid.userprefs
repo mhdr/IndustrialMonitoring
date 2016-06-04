@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="TechnicalFanCoilAndroid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.16" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainActivity.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="ITechnicalFanCoil.cs" Line="22" Column="51" />
-      <File FileName="MainActivity.cs" Line="67" Column="32" />
+      <File FileName="ITechnicalFanCoil.cs" Line="1" Column="1" />
+      <File FileName="MainActivity.cs" Line="1" Column="1" />
+      <File FileName="TechnicalFanCoil.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
