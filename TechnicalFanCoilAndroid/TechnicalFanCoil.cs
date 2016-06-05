@@ -11,7 +11,7 @@ namespace TechnicalFanCoilAndroid
         public Dictionary<int, int> GetStatus2()
         {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.SendTimeout = 5000;
+            socket.SendTimeout = 10000;
             socket.Connect("172.20.63.234", 14001);
 
             BinaryFormatter formatter = new BinaryFormatter();

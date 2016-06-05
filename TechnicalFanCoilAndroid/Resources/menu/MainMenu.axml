@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/menu_overflow" android:icon="@drawable/dts" android:orderInCategory="999" android:showAsAction="always">
+		<menu>
+			<item android:id="@+id/LoginMenuItem" android:title="Login" android:showAsAction="never" android:orderInCategory="1" />
+			<item android:id="@+id/LogoutMenuItem" android:title="Logout" android:showAsAction="never" android:orderInCategory="2" />
+		</menu>
+	</item>
+</menu>

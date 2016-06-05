@@ -5,18 +5,16 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <Toolbar
-        android:minHeight="?android:attr/actionBarSize"
-        android:background="?android:attr/colorPrimary"
-        android:minWidth="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/toolbarMain" />
     <Button
         android:text="Fetch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buttonRefresh" />
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarTime" />
     <TextView
         android:text="Motor 1"
         android:layout_width="match_parent"
@@ -101,5 +99,6 @@
         android:text="Save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonSave" />
+        android:id="@+id/buttonSave"
+        android:enabled="false" />
 </LinearLayout>

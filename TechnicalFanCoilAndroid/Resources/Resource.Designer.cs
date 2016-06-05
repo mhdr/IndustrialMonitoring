@@ -1438,10 +1438,13 @@ namespace TechnicalFanCoilAndroid
 			public const int abc_textfield_search_material = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int Icon = 2130837579;
+			public const int dts = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int notification_template_icon_bg = 2130837580;
+			public const int Icon = 2130837580;
+			
+			// aapt resource value: 0x7f02004d
+			public const int notification_template_icon_bg = 2130837581;
 			
 			static Drawable()
 			{
@@ -1455,6 +1458,12 @@ namespace TechnicalFanCoilAndroid
 		
 		public partial class Id
 		{
+			
+			// aapt resource value: 0x7f0b006d
+			public const int LoginMenuItem = 2131427437;
+			
+			// aapt resource value: 0x7f0b006e
+			public const int LogoutMenuItem = 2131427438;
 			
 			// aapt resource value: 0x7f0b005f
 			public const int action0 = 2131427423;
@@ -1516,8 +1525,8 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b002b
 			public const int buttonPanel = 2131427371;
 			
-			// aapt resource value: 0x7f0b0051
-			public const int buttonRefresh = 2131427409;
+			// aapt resource value: 0x7f0b0050
+			public const int buttonRefresh = 2131427408;
 			
 			// aapt resource value: 0x7f0b005e
 			public const int buttonSave = 2131427422;
@@ -1600,6 +1609,9 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0062
 			public const int media_actions = 2131427426;
 			
+			// aapt resource value: 0x7f0b006c
+			public const int menu_overflow = 2131427436;
+			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
 			
@@ -1617,6 +1629,9 @@ namespace TechnicalFanCoilAndroid
 			
 			// aapt resource value: 0x7f0b002d
 			public const int parentPanel = 2131427373;
+			
+			// aapt resource value: 0x7f0b0051
+			public const int progressBarTime = 2131427409;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -1761,9 +1776,6 @@ namespace TechnicalFanCoilAndroid
 			
 			// aapt resource value: 0x7f0b0059
 			public const int toggleButtonMotor2 = 2131427417;
-			
-			// aapt resource value: 0x7f0b0050
-			public const int toolbarMain = 2131427408;
 			
 			// aapt resource value: 0x7f0b002e
 			public const int topPanel = 2131427374;
@@ -1941,6 +1953,22 @@ namespace TechnicalFanCoilAndroid
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0c0000
+			public const int MainMenu = 2131492864;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
