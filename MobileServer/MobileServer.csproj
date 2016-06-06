@@ -70,6 +70,10 @@
       <Project>{cecaff59-b76f-4fbd-a21d-82e182a89c6b}</Project>
       <Name>SharedLibrarySocket</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj">
+      <Project>{cc6f55e9-ddbe-46ce-8045-74c5326f1f84}</Project>
+      <Name>SharedLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

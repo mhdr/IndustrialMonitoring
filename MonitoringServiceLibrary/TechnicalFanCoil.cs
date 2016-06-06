@@ -404,8 +404,29 @@ namespace MonitoringServiceLibrary
             catch (Exception ex)
             {
                 Logger.LogMonitoringServiceLibrary(ex);
-                return null;
             }
+
+            return null;
+        }
+
+        public bool SetStatus(Dictionary<int, int> dic)
+        {
+            try
+            {
+                int motor1 = dic[1];
+                int motor2 = dic[2];
+
+                ChangeSpeedMotor1(motor1);
+                ChangeSpeedMotor2(motor2);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+            }
+
+            return false;
         }
     }
 }

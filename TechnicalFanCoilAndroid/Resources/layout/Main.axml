@@ -10,11 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buttonRefresh" />
-    <ProgressBar
-        style="?android:attr/progressBarStyleSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBarTime" />
     <TextView
         android:text="Motor 1"
         android:layout_width="match_parent"

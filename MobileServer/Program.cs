@@ -8,6 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using MonitoringServiceLibrary;
+using SharedLibrary;
 using SharedLibrarySocket;
 
 namespace MobileServer
@@ -33,60 +34,116 @@ namespace MobileServer
 
         public static async void OnNewSocketAccept(Socket newSocket)
         {
-            Console.WriteLine("new connection...");
-
-            byte[] buffer = new byte[8*1024];
-
-            int readBytes = newSocket.Receive(buffer);
-            MemoryStream memoryStream = new MemoryStream();
-
-            while (readBytes > 0)
+            try
             {
-                memoryStream.Write(buffer, 0, readBytes);
+                Console.WriteLine("new connection...");
 
-                if (newSocket.Available > 0)
+                // first get length of data
+                byte[] lengthB = new byte[4];
+                newSocket.Receive(lengthB);
+
+                if (BitConverter.IsLittleEndian)
                 {
-                    readBytes = newSocket.Receive(buffer);
+                    Array.Reverse(lengthB);
+                }
+
+                // length of data
+                int length = BitConverter.ToInt32(lengthB, 0);
+
+                int bufferSize = 1024 * 8;
+                byte[] buffer = new byte[bufferSize];
+
+                int readBytes = newSocket.Receive(buffer);
+                MemoryStream memoryStream = new MemoryStream();
+
+                while (length > memoryStream.Length)
+                {
+                    if (readBytes > 0)
+                    {
+                        memoryStream.Write(buffer, 0, readBytes);
+                    }
+
+                    int available = newSocket.Available;
+
+                    if (available > 0)
+                    {
+                        readBytes = newSocket.Receive(buffer);
+                    }
+                    else
+                    {
+                        readBytes = 0;
+                    }
+                }
+
+                Console.WriteLine("data received...");
+
+                BinaryFormatter formatter = new BinaryFormatter();
+                memoryStream.Position = 0;
+                Request request = (Request)formatter.Deserialize(memoryStream);
+                memoryStream.Close();
+
+                int methodNumber = request.MethodNumber;
+                Response response = new Response();
+
+                if (methodNumber == 1)
+                {
+                    TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
+
+                    // Dictionary<int,int>
+                    var status = technicalFanCoil.GetStatus2();
+                    response.Result = status;
+                }
+                else if (methodNumber == 2)
+                {
+                    TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
+
+                    Dictionary<int, int> dic = (Dictionary<int, int>)request.Parameter;
+                    bool result = technicalFanCoil.SetStatus(dic);
+
+                    // bool
+                    response.Result = result;
+                }
+
+                formatter = new BinaryFormatter();
+                memoryStream = new MemoryStream();
+
+                if (response.Result != null)
+                {
+                    formatter.Serialize(memoryStream, response);
+
+                    byte[] dataBytes = memoryStream.ToArray();
+
+                    int dataLength = dataBytes.Length;
+                    // length of data in bytes
+                    byte[] dataLengthB = BitConverter.GetBytes(dataLength);
+                    if (BitConverter.IsLittleEndian)
+                    {
+                        Array.Reverse(dataLengthB);
+                    }
+
+                    // first send length
+                    newSocket.Send(dataLengthB);
+
+                    // send data
+                    newSocket.Send(dataBytes);
+
+                    memoryStream.Close();
+                    newSocket.Close();
+
+                    Console.WriteLine("data sent...");
                 }
                 else
                 {
-                    break;
+                    memoryStream.Close();
+                    newSocket.Close();
                 }
             }
-
-            Console.WriteLine("data received...");
-
-            BinaryFormatter formatter = new BinaryFormatter();
-            memoryStream.Position = 0;
-            Request request = (Request) formatter.Deserialize(memoryStream);
-            memoryStream.Close();
-
-            int methodNumber = request.MethodNumber;
-            Response response=new Response();
-
-            if (methodNumber == 1)
+            catch (Exception ex)
             {
-                TechnicalFanCoil technicalFanCoil=new TechnicalFanCoil();
-
-                // Dictionary<int,int>
-                var status = technicalFanCoil.GetStatus2();
-                response.Result = status;
+                Logger.LogMobileServer(ex);
+                Console.WriteLine(ex.Message);
             }
-
-            formatter = new BinaryFormatter();
-            memoryStream = new MemoryStream();
-
-            if (response.Result != null)
-            {
-                formatter.Serialize(memoryStream, response);
-
-                newSocket.Send(memoryStream.ToArray());
-
-                memoryStream.Close();
-                newSocket.Close();
-
-                Console.WriteLine("data sent...");
-            }
+            
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MonitoringServiceLibrary
 {
@@ -31,5 +32,8 @@ namespace MonitoringServiceLibrary
 
         [OperationContract]
         Dictionary<int, int> GetStatus2();
+
+        [OperationContract]
+        bool SetStatus(Dictionary<int, int> dic);
     }
 }

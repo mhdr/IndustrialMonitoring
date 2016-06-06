@@ -27,6 +27,9 @@ namespace TechnicalFanCoilAndroid
         private RadioButton radioButtonMotor2Speed3;
         private Button buttonSave;
 
+
+        private ProgressDialog progressDialog;
+
         private int buttonRefreshRunningThreads = 0;
 
         protected override void OnCreate(Bundle bundle)
@@ -86,6 +89,8 @@ namespace TechnicalFanCoilAndroid
                 CreateDatabase();
             }
             
+
+            progressDialog=new ProgressDialog(this);
         }
 
         private void CreateDatabase()
@@ -103,7 +108,89 @@ namespace TechnicalFanCoilAndroid
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //buttonSave.Enabled = false;
+            //buttonRefresh.Enabled = false;
+
+            progressDialog.SetTitle("Working");
+            progressDialog.SetMessage("Wait while working...");
+            progressDialog.Show();
+
+            Thread thread=new Thread(()=> { buttonSaveClickedAsync(); });
+            thread.Start();
+        }
+
+        private void buttonSaveClickedAsync()
+        {
+            try
+            {
+                Dictionary<int, int> dic = new Dictionary<int, int>();
+
+                if (!toggleButtonMotor1.Checked)
+                {
+                    dic.Add(1, 0);
+                }
+                else if (radioButtonMotor1Speed1.Checked)
+                {
+                    dic.Add(1, 1);
+                }
+                else if (radioButtonMotor1Speed2.Checked)
+                {
+                    dic.Add(1, 2);
+                }
+                else if (radioButtonMotor1Speed3.Checked)
+                {
+                    dic.Add(1, 3);
+                }
+
+                if (!toggleButtonMotor2.Checked)
+                {
+                    dic.Add(2, 0);
+                }
+                else if (radioButtonMotor2Speed1.Checked)
+                {
+                    dic.Add(2, 1);
+                }
+                else if (radioButtonMotor2Speed2.Checked)
+                {
+                    dic.Add(2, 2);
+                }
+                else if (radioButtonMotor2Speed3.Checked)
+                {
+                    dic.Add(2, 3);
+                }
+
+                TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
+                bool result = technicalFanCoil.SetStatus(dic);
+
+                ButtonRefreshClickedAsync();
+
+                //RunOnUiThread(() =>
+                //{
+                //    buttonSave.Enabled = true;
+                //});
+
+                progressDialog.Dismiss();
+            }
+            catch (Exception ex)
+            {
+                //RunOnUiThread(() =>
+                //{
+                //    buttonSave.Enabled = true;
+                //    buttonRefresh.Enabled = true;
+                //});
+
+                progressDialog.Dismiss();
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.SetTitle("Error");
+                alert.SetMessage(ex.Message);
+                alert.SetPositiveButton("Ok", delegate (object o, DialogClickEventArgs args)
+                {
+                    return;
+                });
+                alert.Create().Show();
+            }
+            
         }
 
         private void ToggleButtonMotor2_Click(object sender, EventArgs e)
@@ -141,24 +228,160 @@ namespace TechnicalFanCoilAndroid
 
         private void ButtonRefresh_Click(object sender, EventArgs e)
         {
-            buttonRefresh.Enabled = false;
+            //buttonRefresh.Enabled = false;
+            progressDialog.SetTitle("Working");
+            progressDialog.SetMessage("Wait while working...");
+            progressDialog.Show();
+
             Thread thread=new Thread(()=> {ButtonRefreshClickedAsync();});
             thread.Start();
         }
 
         private void ButtonRefreshClickedAsync()
         {
-            TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
-            Dictionary<int, int> status = null;
-
             try
             {
+                TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
+                Dictionary<int, int> status = null;
+
                 status = technicalFanCoil.GetStatus2();
+
+                RunOnUiThread(() =>
+                {
+                    if (status == null)
+                    {
+                        return;
+                    }
+
+
+                    Thread thread = new Thread((() =>
+                    {
+                        buttonRefreshRunningThreads++;
+
+                        Thread.Sleep(1000 * 60);
+
+                        if (buttonRefreshRunningThreads > 1)
+                        {
+                            buttonRefreshRunningThreads--;
+                            return;
+                        }
+
+                        RunOnUiThread(() =>
+                        {
+                            toggleButtonMotor1.Enabled = false;
+                            toggleButtonMotor2.Enabled = false;
+                            radioButtonMotor1Speed1.Enabled = false;
+                            radioButtonMotor1Speed2.Enabled = false;
+                            radioButtonMotor1Speed3.Enabled = false;
+                            radioButtonMotor2Speed1.Enabled = false;
+                            radioButtonMotor2Speed2.Enabled = false;
+                            radioButtonMotor2Speed3.Enabled = false;
+
+                            buttonSave.Enabled = false;
+
+                            buttonRefreshRunningThreads--;
+                        });
+                    }));
+                    thread.Start();
+
+
+                    int motor1Status = status[1];
+                    int motor2Status = status[2];
+
+                    if (motor1Status == 0)
+                    {
+                        toggleButtonMotor1.Checked = false;
+                        radioButtonMotor1Speed1.Checked = false;
+                        radioButtonMotor1Speed2.Checked = false;
+                        radioButtonMotor1Speed3.Checked = false;
+                    }
+                    else if (motor1Status == 1)
+                    {
+                        toggleButtonMotor1.Checked = true;
+                        radioButtonMotor1Speed1.Checked = true;
+                    }
+                    else if (motor1Status == 2)
+                    {
+                        toggleButtonMotor1.Checked = true;
+                        radioButtonMotor1Speed2.Checked = true;
+                    }
+                    else if (motor1Status == 3)
+                    {
+                        toggleButtonMotor1.Checked = true;
+                        radioButtonMotor1Speed3.Checked = true;
+                    }
+
+                    if (motor2Status == 0)
+                    {
+                        toggleButtonMotor2.Checked = false;
+                        radioButtonMotor2Speed1.Checked = false;
+                        radioButtonMotor2Speed2.Checked = false;
+                        radioButtonMotor2Speed3.Checked = false;
+                    }
+                    else if (motor2Status == 1)
+                    {
+                        toggleButtonMotor2.Checked = true;
+                        radioButtonMotor2Speed1.Checked = true;
+                    }
+                    else if (motor2Status == 2)
+                    {
+                        toggleButtonMotor2.Checked = true;
+                        radioButtonMotor2Speed2.Checked = true;
+
+                    }
+                    else if (motor2Status == 3)
+                    {
+                        toggleButtonMotor2.Checked = true;
+                        radioButtonMotor2Speed3.Checked = true;
+                    }
+
+                    toggleButtonMotor1.Enabled = true;
+                    toggleButtonMotor2.Enabled = true;
+
+                    if (toggleButtonMotor1.Checked)
+                    {
+                        radioButtonMotor1Speed1.Enabled = true;
+                        radioButtonMotor1Speed2.Enabled = true;
+                        radioButtonMotor1Speed3.Enabled = true;
+                    }
+
+                    if (toggleButtonMotor2.Checked)
+                    {
+                        radioButtonMotor2Speed1.Enabled = true;
+                        radioButtonMotor2Speed2.Enabled = true;
+                        radioButtonMotor2Speed3.Enabled = true;
+                    }
+
+                    int isAuthorized = 0;
+
+                    SQLiteConnection connection = new SQLiteConnection(Statics.DatabaseFilePath);
+                    var users = connection.Table<User>();
+
+                    foreach (User user in users)
+                    {
+                        if (user.IsAuthorized)
+                        {
+                            isAuthorized++;
+                        }
+                    }
+
+                    if (isAuthorized > 0)
+                    {
+                        buttonSave.Enabled = true;
+                    }
+
+                    buttonSave.Enabled = true;
+                    //buttonRefresh.Enabled = true;
+
+                    progressDialog.Dismiss();
+                });
             }
             catch (SocketException ex)
             {
                 RunOnUiThread(() =>
                 {
+                    progressDialog.Dismiss();
+
                     AlertDialog.Builder alert = new AlertDialog.Builder(this);
                     alert.SetTitle("Network Error");
                     alert.SetMessage(ex.Message);
@@ -171,133 +394,20 @@ namespace TechnicalFanCoilAndroid
                     buttonRefresh.Enabled = true;
                 });
             }
-
-            RunOnUiThread(() =>
+            catch (Exception ex)
             {
-                if (status == null)
+                progressDialog.Dismiss();
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.SetTitle("Error");
+                alert.SetMessage(ex.Message);
+                alert.SetPositiveButton("Ok", delegate (object o, DialogClickEventArgs args)
                 {
                     return;
-                }
-
-
-                Thread thread = new Thread((() =>
-                {
-                    buttonRefreshRunningThreads++;
-
-                    Thread.Sleep(1000 * 60);
-
-                    if (buttonRefreshRunningThreads > 1)
-                    {
-                        buttonRefreshRunningThreads--;
-                        return;
-                    }
-
-                    RunOnUiThread(() =>
-                    {
-                        toggleButtonMotor1.Enabled = false;
-                        toggleButtonMotor2.Enabled = false;
-                        radioButtonMotor1Speed1.Enabled = false;
-                        radioButtonMotor1Speed2.Enabled = false;
-                        radioButtonMotor1Speed3.Enabled = false;
-                        radioButtonMotor2Speed1.Enabled = false;
-                        radioButtonMotor2Speed2.Enabled = false;
-                        radioButtonMotor2Speed3.Enabled = false;
-
-                        buttonSave.Enabled = false;
-
-                        buttonRefreshRunningThreads--;
-                    });
-                }));
-                thread.Start();
-
-
-                int motor1Status = status[1];
-                int motor2Status = status[2];
-
-                if (motor1Status == 0)
-                {
-                    toggleButtonMotor1.Checked = false;
-                    radioButtonMotor1Speed1.Checked = false;
-                    radioButtonMotor1Speed2.Checked = false;
-                    radioButtonMotor1Speed3.Checked = false;
-                }
-                else if (motor1Status == 1)
-                {
-                    toggleButtonMotor1.Checked = true;
-                    radioButtonMotor1Speed1.Checked = true;
-                }
-                else if (motor1Status == 2)
-                {
-                    toggleButtonMotor1.Checked = true;
-                    radioButtonMotor1Speed2.Checked = true;
-                }
-                else if (motor1Status == 3)
-                {
-                    toggleButtonMotor1.Checked = true;
-                    radioButtonMotor1Speed3.Checked = true;
-                }
-
-                if (motor2Status == 0)
-                {
-                    toggleButtonMotor2.Checked = false;
-                    radioButtonMotor2Speed1.Checked = false;
-                    radioButtonMotor2Speed2.Checked = false;
-                    radioButtonMotor2Speed3.Checked = false;
-                }
-                else if (motor2Status == 1)
-                {
-                    toggleButtonMotor2.Checked = true;
-                    radioButtonMotor2Speed1.Checked = true;
-                }
-                else if (motor2Status == 2)
-                {
-                    toggleButtonMotor2.Checked = true;
-                    radioButtonMotor2Speed2.Checked = true;
-
-                }
-                else if (motor2Status == 3)
-                {
-                    toggleButtonMotor2.Checked = true;
-                    radioButtonMotor2Speed3.Checked = true;
-                }
-
-                toggleButtonMotor1.Enabled = true;
-                toggleButtonMotor2.Enabled = true;
-
-                if (toggleButtonMotor1.Checked)
-                {
-                    radioButtonMotor1Speed1.Enabled = true;
-                    radioButtonMotor1Speed2.Enabled = true;
-                    radioButtonMotor1Speed3.Enabled = true;
-                }
-
-                if (toggleButtonMotor2.Checked)
-                {
-                    radioButtonMotor2Speed1.Enabled = true;
-                    radioButtonMotor2Speed2.Enabled = true;
-                    radioButtonMotor2Speed3.Enabled = true;
-                }
-
-                int isAuthorized = 0;
-
-                SQLiteConnection connection = new SQLiteConnection(Statics.DatabaseFilePath);
-                var users = connection.Table<User>();
-
-                foreach (User user in users)
-                {
-                    if (user.IsAuthorized)
-                    {
-                        isAuthorized++;
-                    }
-                }
-
-                if (isAuthorized > 0)
-                {
-                    buttonSave.Enabled = true;
-                }
-
-                buttonRefresh.Enabled = true;
-            });
+                });
+                alert.Create().Show();
+            }
+            
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
