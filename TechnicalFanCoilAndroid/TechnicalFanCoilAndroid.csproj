@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ITechnicalFanCoil.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +84,8 @@
     <Compile Include="Statics.cs" />
     <Compile Include="TechnicalFanCoil.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="LoginDialog.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -94,6 +97,7 @@
     <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\menu\MainMenu.axml" />
     <AndroidResource Include="Resources\drawable\dts.png" />
+    <AndroidResource Include="Resources\layout\Login.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
