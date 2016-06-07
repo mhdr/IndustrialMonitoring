@@ -53,7 +53,7 @@ namespace TechnicalFanCoilAndroid
             // length of data
             int length = BitConverter.ToInt32(lengthB, 0);
 
-            int bufferSize = 1024*8;
+            int bufferSize = 1024;
             byte[] buffer = new byte[bufferSize];
             int readBytes = socket.Receive(buffer);
 
@@ -136,7 +136,7 @@ namespace TechnicalFanCoilAndroid
             // length of data
             int length = BitConverter.ToInt32(lengthB, 0);
 
-            int bufferSize = 1024 * 8;
+            int bufferSize = 1024;
             byte[] buffer = new byte[bufferSize];
             int readBytes = socket.Receive(buffer);
 

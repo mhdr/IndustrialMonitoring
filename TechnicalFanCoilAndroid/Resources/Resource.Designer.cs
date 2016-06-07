@@ -1459,14 +1459,14 @@ namespace TechnicalFanCoilAndroid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b0073
-			public const int LoginMenuItem = 2131427443;
-			
 			// aapt resource value: 0x7f0b0074
-			public const int LogoutMenuItem = 2131427444;
+			public const int LoginMenuItem = 2131427444;
 			
-			// aapt resource value: 0x7f0b0065
-			public const int action0 = 2131427429;
+			// aapt resource value: 0x7f0b0075
+			public const int LogoutMenuItem = 2131427445;
+			
+			// aapt resource value: 0x7f0b0066
+			public const int action0 = 2131427430;
 			
 			// aapt resource value: 0x7f0b0041
 			public const int action_bar = 2131427393;
@@ -1492,8 +1492,8 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0042
 			public const int action_context_bar = 2131427394;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int action_divider = 2131427433;
+			// aapt resource value: 0x7f0b006a
+			public const int action_divider = 2131427434;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1523,25 +1523,28 @@ namespace TechnicalFanCoilAndroid
 			public const int beginning = 2131427353;
 			
 			// aapt resource value: 0x7f0b0058
-			public const int buttonLogin = 2131427416;
+			public const int buttonCancelLogin = 2131427416;
+			
+			// aapt resource value: 0x7f0b0057
+			public const int buttonLogin = 2131427415;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int buttonPanel = 2131427371;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int buttonRefresh = 2131427427;
-			
 			// aapt resource value: 0x7f0b0064
-			public const int buttonSave = 2131427428;
+			public const int buttonRefresh = 2131427428;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int cancel_action = 2131427430;
+			// aapt resource value: 0x7f0b0065
+			public const int buttonSave = 2131427429;
+			
+			// aapt resource value: 0x7f0b0067
+			public const int cancel_action = 2131427431;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int checkbox = 2131427385;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int chronometer = 2131427436;
+			// aapt resource value: 0x7f0b006d
+			public const int chronometer = 2131427437;
 			
 			// aapt resource value: 0x7f0b001d
 			public const int collapseActionView = 2131427357;
@@ -1576,8 +1579,8 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b001a
 			public const int end = 2131427354;
 			
-			// aapt resource value: 0x7f0b0071
-			public const int end_padder = 2131427441;
+			// aapt resource value: 0x7f0b0072
+			public const int end_padder = 2131427442;
 			
 			// aapt resource value: 0x7f0b0025
 			public const int expand_activities_button = 2131427365;
@@ -1600,14 +1603,14 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0026
 			public const int image = 2131427366;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int info = 2131427440;
+			// aapt resource value: 0x7f0b0071
+			public const int info = 2131427441;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int line1 = 2131427434;
+			// aapt resource value: 0x7f0b006b
+			public const int line1 = 2131427435;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int line3 = 2131427438;
+			// aapt resource value: 0x7f0b006f
+			public const int line3 = 2131427439;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int listMode = 2131427337;
@@ -1615,11 +1618,11 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0028
 			public const int list_item = 2131427368;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int media_actions = 2131427432;
+			// aapt resource value: 0x7f0b0069
+			public const int media_actions = 2131427433;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int menu_overflow = 2131427442;
+			// aapt resource value: 0x7f0b0073
+			public const int menu_overflow = 2131427443;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
@@ -1648,29 +1651,29 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b003b
 			public const int radio = 2131427387;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int radioButtonMotor1Speed1 = 2131427419;
-			
 			// aapt resource value: 0x7f0b005c
-			public const int radioButtonMotor1Speed2 = 2131427420;
+			public const int radioButtonMotor1Speed1 = 2131427420;
 			
 			// aapt resource value: 0x7f0b005d
-			public const int radioButtonMotor1Speed3 = 2131427421;
+			public const int radioButtonMotor1Speed2 = 2131427421;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int radioButtonMotor2Speed1 = 2131427424;
+			// aapt resource value: 0x7f0b005e
+			public const int radioButtonMotor1Speed3 = 2131427422;
 			
 			// aapt resource value: 0x7f0b0061
-			public const int radioButtonMotor2Speed2 = 2131427425;
+			public const int radioButtonMotor2Speed1 = 2131427425;
 			
 			// aapt resource value: 0x7f0b0062
-			public const int radioButtonMotor2Speed3 = 2131427426;
+			public const int radioButtonMotor2Speed2 = 2131427426;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int radioGroup1 = 2131427418;
+			// aapt resource value: 0x7f0b0063
+			public const int radioButtonMotor2Speed3 = 2131427427;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int radioGroup2 = 2131427423;
+			// aapt resource value: 0x7f0b005b
+			public const int radioGroup1 = 2131427419;
+			
+			// aapt resource value: 0x7f0b0060
+			public const int radioGroup2 = 2131427424;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int screen = 2131427349;
@@ -1744,8 +1747,8 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0018
 			public const int src_over = 2131427352;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int status_bar_latest_event_content = 2131427431;
+			// aapt resource value: 0x7f0b0068
+			public const int status_bar_latest_event_content = 2131427432;
 			
 			// aapt resource value: 0x7f0b004c
 			public const int submit_area = 2131427404;
@@ -1762,14 +1765,11 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0054
 			public const int tableRow2 = 2131427412;
 			
-			// aapt resource value: 0x7f0b0057
-			public const int tableRow3 = 2131427415;
+			// aapt resource value: 0x7f0b0070
+			public const int text = 2131427440;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int text = 2131427439;
-			
-			// aapt resource value: 0x7f0b006d
-			public const int text2 = 2131427437;
+			// aapt resource value: 0x7f0b006e
+			public const int text2 = 2131427438;
 			
 			// aapt resource value: 0x7f0b0034
 			public const int textSpacerNoButtons = 2131427380;
@@ -1780,8 +1780,11 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0055
 			public const int textView2 = 2131427413;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int time = 2131427435;
+			// aapt resource value: 0x7f0b0059
+			public const int textViewLoginErrorMessage = 2131427417;
+			
+			// aapt resource value: 0x7f0b006c
+			public const int time = 2131427436;
 			
 			// aapt resource value: 0x7f0b002a
 			public const int title = 2131427370;
@@ -1789,11 +1792,11 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b002f
 			public const int title_template = 2131427375;
 			
-			// aapt resource value: 0x7f0b0059
-			public const int toggleButtonMotor1 = 2131427417;
+			// aapt resource value: 0x7f0b005a
+			public const int toggleButtonMotor1 = 2131427418;
 			
-			// aapt resource value: 0x7f0b005e
-			public const int toggleButtonMotor2 = 2131427422;
+			// aapt resource value: 0x7f0b005f
+			public const int toggleButtonMotor2 = 2131427423;
 			
 			// aapt resource value: 0x7f0b002e
 			public const int topPanel = 2131427374;

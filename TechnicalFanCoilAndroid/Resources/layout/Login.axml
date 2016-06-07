@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     android:id="@+id/tableLayout1"
     android:stretchColumns="1"
-    android:shrinkColumns="1">
+    android:shrinkColumns="1"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
     <TableRow
         android:id="@+id/tableRow1">
         <TextView
@@ -20,8 +24,7 @@
         <EditText
             android:id="@+id/editTextUserName"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="right" />
+            android:layout_height="match_parent" />
     </TableRow>
     <TableRow
         android:id="@+id/tableRow2">
@@ -39,13 +42,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
     </TableRow>
-    <TableRow
-        android:id="@+id/tableRow3">
-        <Button
-            android:text="Login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonLogin"
-            android:layout_span="2" />
-    </TableRow>
+    <Button
+        android:text="Login"
+        android:id="@+id/buttonLogin" />
+    <Button
+        android:text="Cancel"
+        android:id="@+id/buttonCancelLogin" />
+    <TextView
+        android:id="@+id/textViewLoginErrorMessage"
+        android:visibility="gone"
+        android:lines="2"
+        android:gravity="center" />
 </TableLayout>

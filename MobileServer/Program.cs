@@ -6,10 +6,12 @@ using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using MonitoringServiceLibrary;
 using SharedLibrary;
 using SharedLibrarySocket;
+using SharedLibrarySocket.Warpper;
 
 namespace MobileServer
 {
@@ -28,11 +30,12 @@ namespace MobileServer
                 Console.WriteLine("waiting for new connection...");
 
                 Socket newSocket = socket.Accept();
-                OnNewSocketAccept(newSocket);
+                ThreadPool.QueueUserWorkItem((state => OnNewSocketAccept(newSocket)));
+                //OnNewSocketAccept(newSocket);
             }
         }
 
-        public static async void OnNewSocketAccept(Socket newSocket)
+        public static void OnNewSocketAccept(Socket newSocket)
         {
             try
             {
@@ -50,7 +53,7 @@ namespace MobileServer
                 // length of data
                 int length = BitConverter.ToInt32(lengthB, 0);
 
-                int bufferSize = 1024 * 8;
+                int bufferSize = 1024;
                 byte[] buffer = new byte[bufferSize];
 
                 int readBytes = newSocket.Receive(buffer);
@@ -99,6 +102,18 @@ namespace MobileServer
 
                     Dictionary<int, int> dic = (Dictionary<int, int>)request.Parameter;
                     bool result = technicalFanCoil.SetStatus(dic);
+
+                    // bool
+                    response.Result = result;
+                }
+                else if (methodNumber == 3)
+                {
+                    UserService userService=new UserService();
+                    AuthorizeWrapper wrapper = (AuthorizeWrapper) request.Parameter;
+                    string userName = wrapper.UserName;
+                    string password = wrapper.Password;
+
+                    bool result= userService.Authorize(userName, password);
 
                     // bool
                     response.Result = result;

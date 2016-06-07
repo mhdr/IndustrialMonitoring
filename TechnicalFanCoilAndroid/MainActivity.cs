@@ -60,35 +60,40 @@ namespace TechnicalFanCoilAndroid
             buttonSave.Click += ButtonSave_Click;
 
             Statics.DatabaseFilePath= Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"fancoil.db3");
-            
-            SQLiteConnection connection;
-            Settings setting;
-            
 
-            try
-            {
-                connection = new SQLiteConnection(Statics.DatabaseFilePath);
-                setting = connection.Get<Settings>(x => x.DatabaseVersion == 1);
-
-                if (setting == null)
-                {
-                    CreateDatabase();
-                }
-                else
-                {
-                    if (setting.DatabaseVersion != 1)
-                    {
-                        CreateDatabase();
-                    }
-                }
-
-                connection.Close();
-            }
-            catch (NullReferenceException ex)
+            if (!File.Exists(Statics.DatabaseFilePath))
             {
                 CreateDatabase();
             }
-            
+            else
+            {
+                SQLiteConnection connection;
+                Settings setting;
+
+                try
+                {
+                    connection = new SQLiteConnection(Statics.DatabaseFilePath);
+                    setting = connection.Get<Settings>(x => x.DatabaseVersion == 1);
+
+                    if (setting == null)
+                    {
+                        CreateDatabase();
+                    }
+                    else
+                    {
+                        if (setting.DatabaseVersion != 1)
+                        {
+                            CreateDatabase();
+                        }
+                    }
+
+                    connection.Close();
+                }
+                catch (NullReferenceException ex)
+                {
+                    CreateDatabase();
+                }
+            }
 
             progressDialog=new ProgressDialog(this);
         }
@@ -452,6 +457,21 @@ namespace TechnicalFanCoilAndroid
             {
                 case Resource.Id.LoginMenuItem:
 
+                    var ft = FragmentManager.BeginTransaction();
+                    var prev= FragmentManager.FindFragmentByTag<LoginDialog>("loginDialog");
+
+                    if (prev != null)
+                    {
+                        ft.Remove(prev);
+                    }
+
+                    // when you press back-key, the current activity (which holds multiple fragments) 
+                    // will load previous fragment rather than finishing itself.
+                    ft.AddToBackStack(null);
+
+                    LoginDialog loginDialog=new LoginDialog();
+                    loginDialog.Show(ft, "loginDialog");
+
                     break;
 
                 case Resource.Id.LogoutMenuItem:
@@ -459,7 +479,7 @@ namespace TechnicalFanCoilAndroid
                     break;
             }
 
-            return true;
+            return base.OnOptionsItemSelected(item);
         }
     }
 }
