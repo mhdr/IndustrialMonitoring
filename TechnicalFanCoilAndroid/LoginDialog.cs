@@ -11,7 +11,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using SQLite;
+using TechnicalFanCoilAndroid.Model;
 
 namespace TechnicalFanCoilAndroid
 {
@@ -68,13 +68,14 @@ namespace TechnicalFanCoilAndroid
 
             if (result)
             {
-                User user=new User();
-                user.UserName = userName;
-                user.IsAuthorized = true;
+                Logins logins=new Logins();
 
-                SQLiteConnection connection = new SQLiteConnection(Statics.DatabaseFilePath);
-                int resultId=connection.Insert(user);
-                connection.Close();
+                Login login = new Login();
+                login.UserName = userName;
+                login.IsAuthorized = true;
+
+                logins.Insert(login);
+
 
                 Activity.FragmentManager.PopBackStack();
             }

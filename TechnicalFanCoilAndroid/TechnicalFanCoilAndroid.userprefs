@@ -1,18 +1,15 @@
 ﻿<Properties StartupItem="TechnicalFanCoilAndroid.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.16" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainActivity.cs">
+  <MonoDevelop.Ide.ItemProperties.TechnicalFanCoilAndroid PreferredExecutionTarget="Android.16" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Model\Table.cs">
     <Files>
-      <File FileName="TechnicalFanCoil.cs" Line="6" Column="7" />
-      <File FileName="MainActivity.cs" Line="427" Column="1" />
-      <File FileName="LoginDialog.cs" Line="77" Column="1" />
-      <File FileName="UserService.cs" Line="90" Column="1" />
+      <File FileName="LoginDialog.cs" Line="79" Column="5" />
+      <File FileName="Model\Table.cs" Line="85" Column="1" />
+      <File FileName="Model\Logins.cs" Line="79" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\LoginDialog.cs" line="77" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.TechnicalFanCoilAndroid AndroidDesignerPreferredDevice="Nexus 4" />
 </Properties>

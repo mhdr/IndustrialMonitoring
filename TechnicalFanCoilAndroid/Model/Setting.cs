@@ -9,16 +9,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using SQLite;
 
-namespace TechnicalFanCoilAndroid
+namespace TechnicalFanCoilAndroid.Model
 {
-    public class Settings
+    public class Setting
     {
-        [PrimaryKey, AutoIncrement]
-        public int SettingId { get; set; }
+        public int Id { get; set; }
 
 
-        public int DatabaseVersion;
+        public string Key;
+        public string Value;
     }
 }

@@ -9,14 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using SQLite;
 
-namespace TechnicalFanCoilAndroid
+namespace TechnicalFanCoilAndroid.Model
 {
-    public class User
+    public class Login
     {
-        [PrimaryKey, AutoIncrement]
-        public int UserId { get; set; }
+        public int Id { get; set; }
 
         public string UserName;
 

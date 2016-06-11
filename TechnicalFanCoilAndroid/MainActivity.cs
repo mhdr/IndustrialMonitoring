@@ -8,7 +8,8 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using SQLite;
+using Mono.Data.Sqlite;
+using TechnicalFanCoilAndroid.Model;
 using Environment = System.Environment;
 
 namespace TechnicalFanCoilAndroid
@@ -61,54 +62,26 @@ namespace TechnicalFanCoilAndroid
 
             Statics.DatabaseFilePath= Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"fancoil.db3");
 
-            if (!File.Exists(Statics.DatabaseFilePath))
-            {
-                CreateDatabase();
-            }
-            else
-            {
-                SQLiteConnection connection;
-                Settings setting;
-
-                try
-                {
-                    connection = new SQLiteConnection(Statics.DatabaseFilePath);
-                    setting = connection.Get<Settings>(x => x.DatabaseVersion == 1);
-
-                    if (setting == null)
-                    {
-                        CreateDatabase();
-                    }
-                    else
-                    {
-                        if (setting.DatabaseVersion != 1)
-                        {
-                            CreateDatabase();
-                        }
-                    }
-
-                    connection.Close();
-                }
-                catch (NullReferenceException ex)
-                {
-                    CreateDatabase();
-                }
-            }
+            //DeleteDatabaseFile();
+            CreateDatabase();
 
             progressDialog=new ProgressDialog(this);
         }
 
+
+        private void DeleteDatabaseFile()
+        {
+            if (File.Exists(Statics.DatabaseFilePath))
+            {
+                File.Delete(Statics.DatabaseFilePath);
+            }            
+        }
+
         private void CreateDatabase()
         {
-            SQLiteConnection connection = new SQLiteConnection(Statics.DatabaseFilePath);
-            connection.CreateTable<Settings>();
-            connection.CreateTable<User>();
-
-            Settings settings=new Settings();
-            settings.DatabaseVersion = 1;
-
-            connection.Insert(settings);
-            connection.Close();
+            Table.CreateDatabase(Statics.DatabaseFilePath);
+            Logins.CreateTable(Statics.GetConnectionString());
+            Settings.CreateTable(Statics.GetConnectionString());
         }
 
         private void ButtonSave_Click(object sender, EventArgs e)
@@ -356,20 +329,10 @@ namespace TechnicalFanCoilAndroid
                         radioButtonMotor2Speed2.Enabled = true;
                         radioButtonMotor2Speed3.Enabled = true;
                     }
+                    
 
-                    int isAuthorized = 0;
-
-                    SQLiteConnection connection = new SQLiteConnection(Statics.DatabaseFilePath);
-                    var users = connection.Table<User>();
-
-                    foreach (User user in users)
-                    {
-                        if (user.IsAuthorized)
-                        {
-                            isAuthorized++;
-                        }
-                    }
-
+                    var logins=new Logins();
+                    int isAuthorized = logins.GetValue(x => x.IsAuthorized).Count;
                     if (isAuthorized > 0)
                     {
                         buttonSave.Enabled = true;
@@ -424,18 +387,9 @@ namespace TechnicalFanCoilAndroid
 
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
-            int isAuthorized = 0;
+            var logins=new Logins();
 
-            SQLiteConnection connection = new SQLiteConnection(Statics.DatabaseFilePath);
-            var users = connection.Table<User>();
-
-            foreach (User user in users)
-            {
-                if (user.IsAuthorized)
-                {
-                    isAuthorized++;
-                }
-            }
+            int isAuthorized = logins.GetValue(x => x.IsAuthorized).Count;
 
             if (isAuthorized > 0)
             {

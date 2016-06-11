@@ -15,5 +15,10 @@ namespace TechnicalFanCoilAndroid
     public static class Statics
     {
         public static string DatabaseFilePath;
+
+        public static string GetConnectionString()
+        {
+            return string.Format("Data Source={0};Version=3;", DatabaseFilePath);
+        }
     }
 }
