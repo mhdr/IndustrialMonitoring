@@ -5,11 +5,11 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Model\Table.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LoginDialog.cs">
     <Files>
-      <File FileName="LoginDialog.cs" Line="79" Column="5" />
-      <File FileName="Model\Table.cs" Line="85" Column="1" />
-      <File FileName="Model\Logins.cs" Line="79" Column="7" />
+      <File FileName="LoginDialog.cs" Line="82" Column="43" />
+      <File FileName="UserService.cs" Line="7" Column="1" />
+      <File FileName="MainActivity.cs" Line="407" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
 </Properties>

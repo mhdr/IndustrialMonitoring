@@ -1,9 +1,9 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using SQLite;
 using TechnicalFanCoilAndroid.Model;
 
 namespace TechnicalFanCoilAndroid
@@ -63,19 +64,26 @@ namespace TechnicalFanCoilAndroid
             string userName = editTextUserName.Text;
             string password = editTextPassword.Text;
 
-            UserService userService=new UserService();
-            bool result = userService.Authorize(userName, password);
+            //UserService userService=new UserService();
+            //bool result = userService.Authorize(userName, password);
+
+
+            bool result = false;
+
+            if (userName == "mahmood" && password == "12345")
+            {
+                result = true;
+            }
 
             if (result)
             {
-                Logins logins=new Logins();
+                SQLiteConnection  connection=new SQLiteConnection(Statics.DatabaseFilePath);
 
                 Login login = new Login();
                 login.UserName = userName;
                 login.IsAuthorized = true;
 
-                logins.Insert(login);
-
+                connection.Insert(login, typeof(Login));
 
                 Activity.FragmentManager.PopBackStack();
             }

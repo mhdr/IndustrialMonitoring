@@ -8,7 +8,7 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using Mono.Data.Sqlite;
+using SQLite;
 using TechnicalFanCoilAndroid.Model;
 using Environment = System.Environment;
 
@@ -62,8 +62,8 @@ namespace TechnicalFanCoilAndroid
 
             Statics.DatabaseFilePath= Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"fancoil.db3");
 
-            //DeleteDatabaseFile();
-            CreateDatabase();
+            DeleteDatabaseFile();
+            InitializeDatabase();
 
             progressDialog=new ProgressDialog(this);
         }
@@ -77,11 +77,24 @@ namespace TechnicalFanCoilAndroid
             }            
         }
 
-        private void CreateDatabase()
+        private void InitializeDatabase()
         {
-            Table.CreateDatabase(Statics.DatabaseFilePath);
-            Logins.CreateTable(Statics.GetConnectionString());
-            Settings.CreateTable(Statics.GetConnectionString());
+            if (!File.Exists(Statics.DatabaseFilePath))
+            {
+                BinaryReader binaryReader=new BinaryReader(Assets.Open("fancoil.db3"));
+                BinaryWriter binaryWriter=new BinaryWriter(new FileStream(Statics.DatabaseFilePath,FileMode.Create));
+
+                byte[] buffer=new byte[2048];
+                int len = 0;
+
+                while ((len = binaryReader.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    binaryWriter.Write(buffer, 0, len);
+                }
+
+                binaryReader.Close();
+                binaryWriter.Close();
+            }
         }
 
         private void ButtonSave_Click(object sender, EventArgs e)
@@ -330,9 +343,10 @@ namespace TechnicalFanCoilAndroid
                         radioButtonMotor2Speed3.Enabled = true;
                     }
                     
+                    SQLiteConnection connection=new SQLiteConnection(Statics.DatabaseFilePath);
 
-                    var logins=new Logins();
-                    int isAuthorized = logins.GetValue(x => x.IsAuthorized).Count;
+                    var logins = connection.Table<Login>();
+                    int isAuthorized = logins.Count(x => x.IsAuthorized);
                     if (isAuthorized > 0)
                     {
                         buttonSave.Enabled = true;
@@ -387,9 +401,19 @@ namespace TechnicalFanCoilAndroid
 
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
-            var logins=new Logins();
+            SQLiteConnection connection = new SQLiteConnection(Statics.DatabaseFilePath);
 
-            int isAuthorized = logins.GetValue(x => x.IsAuthorized).Count;
+            var logins = connection.Table<Login>();
+            //int isAuthorized = logins.Count(x => x.IsAuthorized);
+            int isAuthorized = 0;
+
+            foreach (Login login in logins)
+            {
+                if (login.IsAuthorized)
+                {
+                    isAuthorized++;
+                }
+            }
 
             if (isAuthorized > 0)
             {
