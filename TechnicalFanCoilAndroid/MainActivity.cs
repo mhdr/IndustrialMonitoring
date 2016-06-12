@@ -356,9 +356,6 @@ namespace TechnicalFanCoilAndroid
                         buttonSave.Enabled = true;
                     }
 
-                    buttonSave.Enabled = true;
-                    //buttonRefresh.Enabled = true;
-
                     progressDialog.Dismiss();
                 });
             }
@@ -405,6 +402,12 @@ namespace TechnicalFanCoilAndroid
 
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
+            CreateMenu(menu);
+            return base.OnPrepareOptionsMenu(menu);
+        }
+
+        private void CreateMenu(IMenu menu)
+        {
             var values = Login.GetValues(x => x.IsAuthorized);
             int isAuthorized = 0;
 
@@ -423,8 +426,12 @@ namespace TechnicalFanCoilAndroid
                 menu.FindItem(Resource.Id.LoginMenuItem).SetVisible(true);
                 menu.FindItem(Resource.Id.LogoutMenuItem).SetVisible(false);
             }
+        }
 
-            return base.OnPrepareOptionsMenu(menu);
+        public override bool OnMenuOpened(int featureId, IMenu menu)
+        {
+            CreateMenu(menu);
+            return base.OnMenuOpened(featureId, menu);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
