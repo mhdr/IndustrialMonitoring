@@ -11,7 +11,6 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using SQLite;
 using TechnicalFanCoilAndroid.Model;
 
 namespace TechnicalFanCoilAndroid
@@ -64,26 +63,30 @@ namespace TechnicalFanCoilAndroid
             string userName = editTextUserName.Text;
             string password = editTextPassword.Text;
 
-            //UserService userService=new UserService();
-            //bool result = userService.Authorize(userName, password);
-
-
-            bool result = false;
-
-            if (userName == "mahmood" && password == "12345")
-            {
-                result = true;
-            }
+            UserService userService = new UserService();
+            bool result = userService.Authorize(userName, password);
 
             if (result)
             {
-                SQLiteConnection  connection=new SQLiteConnection(Statics.DatabaseFilePath);
+
+                var logins = Login.GetValues(x=>x.IsAuthorized);
+
+                if (logins != null)
+                {
+                    foreach (Login l in logins)
+                    {
+                        l.IsAuthorized = false;
+                        Login.Update(l);
+                    }
+                }
 
                 Login login = new Login();
                 login.UserName = userName;
                 login.IsAuthorized = true;
 
-                connection.Insert(login, typeof(Login));
+                Login.Insert(login);
+
+                logins = Login.GetValues();
 
                 Activity.FragmentManager.PopBackStack();
             }

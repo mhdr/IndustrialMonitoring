@@ -9,14 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using SQLite;
 
 namespace TechnicalFanCoilAndroid.Model
 {
     public class Setting
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
 
         public string Key;

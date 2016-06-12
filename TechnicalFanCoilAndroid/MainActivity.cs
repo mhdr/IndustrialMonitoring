@@ -8,7 +8,6 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using SQLite;
 using TechnicalFanCoilAndroid.Model;
 using Environment = System.Environment;
 
@@ -62,7 +61,7 @@ namespace TechnicalFanCoilAndroid
 
             Statics.DatabaseFilePath= Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"fancoil.db3");
 
-            DeleteDatabaseFile();
+            //DeleteDatabaseFile();
             InitializeDatabase();
 
             progressDialog=new ProgressDialog(this);
@@ -342,11 +341,16 @@ namespace TechnicalFanCoilAndroid
                         radioButtonMotor2Speed2.Enabled = true;
                         radioButtonMotor2Speed3.Enabled = true;
                     }
-                    
-                    SQLiteConnection connection=new SQLiteConnection(Statics.DatabaseFilePath);
 
-                    var logins = connection.Table<Login>();
-                    int isAuthorized = logins.Count(x => x.IsAuthorized);
+
+                    var values = Login.GetValues(x => x.IsAuthorized);
+                    int isAuthorized = 0;
+
+                    if (values != null)
+                    {
+                        isAuthorized = values.Count;
+                    }
+
                     if (isAuthorized > 0)
                     {
                         buttonSave.Enabled = true;
@@ -401,18 +405,12 @@ namespace TechnicalFanCoilAndroid
 
         public override bool OnPrepareOptionsMenu(IMenu menu)
         {
-            SQLiteConnection connection = new SQLiteConnection(Statics.DatabaseFilePath);
-
-            var logins = connection.Table<Login>();
-            //int isAuthorized = logins.Count(x => x.IsAuthorized);
+            var values = Login.GetValues(x => x.IsAuthorized);
             int isAuthorized = 0;
 
-            foreach (Login login in logins)
+            if (values != null)
             {
-                if (login.IsAuthorized)
-                {
-                    isAuthorized++;
-                }
+                isAuthorized = values.Count;
             }
 
             if (isAuthorized > 0)
@@ -453,6 +451,17 @@ namespace TechnicalFanCoilAndroid
                     break;
 
                 case Resource.Id.LogoutMenuItem:
+
+                    var logins = Login.GetValues(x => x.IsAuthorized);
+
+                    if (logins != null)
+                    {
+                        foreach (Login login in logins)
+                        {
+                            login.IsAuthorized = false;
+                            Login.Update(login);
+                        }
+                    }
 
                     break;
             }
