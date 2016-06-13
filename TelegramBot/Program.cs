@@ -6,7 +6,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MonitoringServiceLibrary;
+using MonitoringServiceLibrary.Jobs;
 using MonitoringServiceLibrary.ViewModels;
+using Quartz;
+using Quartz.Impl;
 using SharedLibrary;
 using Telegram.Bot.Types;
 using User = MonitoringServiceLibrary.User;
@@ -20,7 +23,36 @@ namespace TelegramBot
             StartResponseServer();
             StartLatestLogMonitor();
             StartTechnicalFanCoilBot();
+            SatrtQuartzScheduler();
             Console.ReadKey();
+        }
+
+        public static async Task SatrtQuartzScheduler()
+        {
+            // construct a scheduler factory
+            ISchedulerFactory schedFact = new StdSchedulerFactory();
+
+            // get a scheduler
+            IScheduler sched = schedFact.GetScheduler();
+            sched.Start();
+
+            // define the job and tie it to our HelloJob class
+            IJobDetail job = JobBuilder.Create<FanCoilSwitchOff>()
+                .WithIdentity("SwitchOffFanCoil", "FanCoil")
+                .Build();
+
+            DateTime startTime=new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,18,0,0);
+            
+            // Trigger the job to run now, and then every 24 hours
+            ITrigger trigger = TriggerBuilder.Create()
+              .WithIdentity("Trigger1", "group1")
+              .StartAt(new DateTimeOffset(startTime))
+              .WithSimpleSchedule(x => x
+                  .WithIntervalInHours(24)
+                  .RepeatForever())
+              .Build();
+
+            sched.ScheduleJob(job, trigger);
         }
 
         public static async Task StartLatestLogMonitor()
