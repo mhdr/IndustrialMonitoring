@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Telegram Bot"
-#define MyAppVersion "3.1"
+#define MyAppVersion "3.0"
 #define MyAppPublisher "My Company, Inc."
 #define MyAppURL "http://www.example.com/"
 #define MyAppExeName "TelegramBot.exe"
@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{1633D6C0-6E81-4791-9667-C02F4177B66D}
+AppId={{E1998F56-8038-4848-8322-6BB6BE28B2BD}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -37,6 +37,12 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\BACnetLib.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\BACnetLib.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Common.Logging.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Common.Logging.Core.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Common.Logging.Core.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Common.Logging.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Common.Logging.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Common.Logging.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\EntityFramework.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\EntityFramework.SqlServer.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\EntityFramework.SqlServer.xml"; DestDir: "{app}"; Flags: ignoreversion
@@ -53,8 +59,13 @@ Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\Telegram
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\NationalInstruments.NiLmClientDLL.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Newtonsoft.Json.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Quartz.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Quartz.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\Quartz.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\SharedLibrary.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\SharedLibrary.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\SharedLibrarySocket.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\SharedLibrarySocket.pdb"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\System.Net.Http.Extensions.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\System.Net.Http.Extensions.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\System.Net.Http.Formatting.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -67,8 +78,13 @@ Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\Telegram
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.vshost.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+
+[Run]
+Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
