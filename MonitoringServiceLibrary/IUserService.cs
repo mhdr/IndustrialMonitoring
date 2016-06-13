@@ -21,6 +21,12 @@ namespace MonitoringServiceLibrary
         bool Authorize(string userName, string password);
 
         [OperationContract]
+        string AuthorizeAndGetSession(string username, string password);
+
+        [OperationContract]
+        User GetUserFromSession(string sessionKey);
+
+        [OperationContract]
         bool CheckPermission(int userId, int itemId);
 
         [OperationContract]

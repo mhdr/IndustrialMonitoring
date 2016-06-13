@@ -4,8 +4,9 @@ using System.IO;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using SharedLibrarySocket;
+using TechnicalFanCoilAndroid.Lib;
 
-namespace TechnicalFanCoilAndroid
+namespace TechnicalFanCoilAndroid.RPC
 {
     public class TechnicalFanCoil : ITechnicalFanCoil
     {
@@ -13,13 +14,13 @@ namespace TechnicalFanCoilAndroid
         {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.SendTimeout = 10000;
-            socket.Connect("172.20.63.234", 14001);
+            socket.Connect(Statics.IPAddress, Statics.Port);
 
             BinaryFormatter formatter = new BinaryFormatter();
             MemoryStream memoryStream = new MemoryStream();
 
             Request request = new Request();
-            request.MethodNumber = 1;
+            request.MethodNumber = RemoteMethod.GetStatus2;
 
             formatter.Serialize(memoryStream, request);
 
@@ -95,13 +96,13 @@ namespace TechnicalFanCoilAndroid
         {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.SendTimeout = 10000;
-            socket.Connect("172.20.63.234", 14001);
+            socket.Connect(Statics.IPAddress, Statics.Port);
 
             BinaryFormatter formatter = new BinaryFormatter();
             MemoryStream memoryStream = new MemoryStream();
 
             Request request = new Request();
-            request.MethodNumber = 2;
+            request.MethodNumber = RemoteMethod.SetStatus;
             request.Parameter = dic;
 
             formatter.Serialize(memoryStream, request);

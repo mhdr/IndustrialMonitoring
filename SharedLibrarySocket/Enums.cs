@@ -13,4 +13,12 @@ namespace SharedLibrarySocket
         Speed2=2,
         Speed3=3
     }
+
+    public enum RemoteMethod
+    {
+        GetStatus2=1,
+        SetStatus=2,
+        Authorize=3,
+        AuthorizeAndGetSession=4
+    }
 }

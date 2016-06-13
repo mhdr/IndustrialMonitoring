@@ -12,6 +12,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using TechnicalFanCoilAndroid.Model;
+using TechnicalFanCoilAndroid.RPC;
 
 namespace TechnicalFanCoilAndroid
 {
@@ -27,7 +28,8 @@ namespace TechnicalFanCoilAndroid
 		{
 			base.OnCreate (savedInstanceState);
 
-			// Create your fragment here
+			SetStyle(DialogFragmentStyle.NoTitle, 0);
+		    // Create your fragment here
 		}
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -64,9 +66,9 @@ namespace TechnicalFanCoilAndroid
             string password = editTextPassword.Text;
 
             UserService userService = new UserService();
-            bool result = userService.Authorize(userName, password);
+            string result = userService.AuthorizeAndGetSession(userName, password);
 
-            if (result)
+            if (result.Length>0)
             {
 
                 var logins = Login.GetValues(x=>x.IsAuthorized);
@@ -85,8 +87,6 @@ namespace TechnicalFanCoilAndroid
                 login.IsAuthorized = true;
 
                 Login.Insert(login);
-
-                logins = Login.GetValues();
 
                 Activity.FragmentManager.PopBackStack();
             }

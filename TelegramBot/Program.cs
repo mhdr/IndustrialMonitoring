@@ -1312,10 +1312,10 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
                 Request request = (Request)formatter.Deserialize(memoryStream);
                 memoryStream.Close();
 
-                int methodNumber = request.MethodNumber;
+                RemoteMethod methodNumber = request.MethodNumber;
                 Response response = new Response();
 
-                if (methodNumber == 1)
+                if (methodNumber == RemoteMethod.GetStatus2)
                 {
                     TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
 
@@ -1323,7 +1323,7 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
                     var status = technicalFanCoil.GetStatus2();
                     response.Result = status;
                 }
-                else if (methodNumber == 2)
+                else if (methodNumber == RemoteMethod.SetStatus)
                 {
                     TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
 
@@ -1333,7 +1333,7 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
                     // bool
                     response.Result = result;
                 }
-                else if (methodNumber == 3)
+                else if (methodNumber == RemoteMethod.Authorize)
                 {
                     UserService userService = new UserService();
                     AuthorizeWrapper wrapper = (AuthorizeWrapper)request.Parameter;
@@ -1343,6 +1343,17 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
                     bool result = userService.Authorize(userName, password);
 
                     // bool
+                    response.Result = result;
+                }
+                else if (methodNumber == RemoteMethod.AuthorizeAndGetSession)
+                {
+                    UserService userService=new UserService();
+                    AuthorizeWrapper wrapper = (AuthorizeWrapper)request.Parameter;
+                    string userName = wrapper.UserName;
+                    string password = wrapper.Password;
+
+                    string result = userService.AuthorizeAndGetSession(userName, password);
+
                     response.Result = result;
                 }
 

@@ -8,7 +8,9 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using TechnicalFanCoilAndroid.Lib;
 using TechnicalFanCoilAndroid.Model;
+using TechnicalFanCoilAndroid.RPC;
 using Environment = System.Environment;
 
 namespace TechnicalFanCoilAndroid
@@ -469,6 +471,8 @@ namespace TechnicalFanCoilAndroid
                             Login.Update(login);
                         }
                     }
+
+                    buttonSave.Enabled = false;
 
                     break;
             }

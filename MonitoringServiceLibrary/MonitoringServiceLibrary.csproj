@@ -186,6 +186,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Service1.cs" />
+    <Compile Include="Session.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tab.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

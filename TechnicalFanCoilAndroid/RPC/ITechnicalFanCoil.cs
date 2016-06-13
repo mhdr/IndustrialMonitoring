@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TechnicalFanCoilAndroid
+namespace TechnicalFanCoilAndroid.RPC
 {
     public interface ITechnicalFanCoil
     {

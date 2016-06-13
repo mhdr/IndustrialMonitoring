@@ -42,6 +42,8 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_Notification_NotificationItemsLog" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.FanCoilBot" Width="1.5" PointX="10.25" PointY="1.5" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_FanCoilBot_Users" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.Session" Width="1.5" PointX="10.25" PointY="17.625" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_Session_Users" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

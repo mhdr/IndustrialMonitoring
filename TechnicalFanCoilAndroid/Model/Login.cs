@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Mono.Data.Sqlite;
+using TechnicalFanCoilAndroid.Lib;
 
 namespace TechnicalFanCoilAndroid.Model
 {
@@ -21,6 +22,8 @@ namespace TechnicalFanCoilAndroid.Model
 
         public bool IsAuthorized;
 
+        public string SessionKey;
+
         public static string TableName = "Login";
 
         public static int Update(Login value)
@@ -31,8 +34,8 @@ namespace TechnicalFanCoilAndroid.Model
                 connection.Open();
                 SqliteCommand command = connection.CreateCommand();
 
-                string commandStr = string.Format("UPDATE {0} SET UserName='{1}',IsAuthorized='{2}' WHERE Id='{3}'", TableName,
-                    value.UserName, value.IsAuthorized, value.Id);
+                string commandStr = string.Format("UPDATE {0} SET UserName='{1}',IsAuthorized='{2}',SessionKey='{3}' WHERE Id='{4}'", TableName,
+                    value.UserName, value.IsAuthorized,value.SessionKey, value.Id);
 
                 command.CommandText = commandStr;
 
@@ -60,7 +63,8 @@ namespace TechnicalFanCoilAndroid.Model
                 connection.Open();
                 SqliteCommand command = connection.CreateCommand();
 
-                string commandStr = string.Format("INSERT INTO Login (UserName,IsAuthorized) VALUES('{0}','{1}');SELECT last_insert_rowid();", value.UserName, value.IsAuthorized);
+                string commandStr = string.Format("INSERT INTO Login (UserName,IsAuthorized,SessionKey) VALUES('{0}','{1}','{2}');SELECT last_insert_rowid();", 
+                    value.UserName, value.IsAuthorized,value.SessionKey);
                 command.CommandText = commandStr;
 
                 var result = command.ExecuteScalar();
@@ -109,6 +113,7 @@ namespace TechnicalFanCoilAndroid.Model
                     login.Id = Convert.ToInt32(reader["Id"]);
                     login.UserName = reader["UserName"] as string;
                     login.IsAuthorized = Convert.ToBoolean(reader["IsAuthorized"]);
+                    login.SessionKey = reader["SessionKey"] as string;
 
                     result.Add(login);
                 }
@@ -148,6 +153,7 @@ namespace TechnicalFanCoilAndroid.Model
                     login.Id = Convert.ToInt32(reader["Id"]);
                     login.UserName =reader["UserName"] as string;
                     login.IsAuthorized =Convert.ToBoolean(reader["IsAuthorized"]);
+                    login.SessionKey = reader["SessionKey"] as string;
 
                     if (predicate(login))
                     {

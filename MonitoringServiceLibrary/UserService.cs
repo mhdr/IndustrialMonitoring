@@ -44,6 +44,34 @@ namespace MonitoringServiceLibrary
             return false;
         }
 
+        public string AuthorizeAndGetSession(string username, string password)
+        {
+            bool isAuthorized = Authorize(username, password);
+
+            if (isAuthorized)
+            {
+                var  entities=new IndustrialMonitoringEntities();
+                var user = entities.Users.FirstOrDefault(x => x.UserName == username);
+
+                Session session=new Session();
+                session.SessionKey = Guid.NewGuid().ToString();
+                session.UserId = user.UserId;
+                session.IsValid = true;
+
+                entities.Sessions.Add(session);
+                entities.SaveChanges();
+
+                return session.SessionKey;
+            }
+
+            return "";
+        }
+
+        public User GetUserFromSession(string sessionKey)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool CheckPermission(int userId, int itemId)
         {
             var Entities = new IndustrialMonitoringEntities();

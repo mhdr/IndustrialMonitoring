@@ -9,7 +9,7 @@ namespace SharedLibrarySocket
     [Serializable]
     public class Request
     {
-        public int MethodNumber;
+        public RemoteMethod MethodNumber;
         public object Parameter;
     }
 }
