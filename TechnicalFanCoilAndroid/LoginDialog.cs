@@ -85,6 +85,7 @@ namespace TechnicalFanCoilAndroid
                 Login login = new Login();
                 login.UserName = userName;
                 login.IsAuthorized = true;
+				login.SessionKey = result;
 
                 Login.Insert(login);
 

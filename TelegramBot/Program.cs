@@ -24,6 +24,7 @@ namespace TelegramBot
 {
     class Program
     {
+        private static int FanCoilPort = 4200;
         static void Main(string[] args)
         {
             StartResponseServer();
@@ -1248,7 +1249,7 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
         public static void StartFanCoilMobileServer()
         {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            EndPoint endPoint = new IPEndPoint(IPAddress.Any, 14001);
+            EndPoint endPoint = new IPEndPoint(IPAddress.Any, FanCoilPort);
 
             socket.Bind(endPoint);
             socket.Listen(10);
