@@ -90,7 +90,7 @@ namespace Echo
         {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.SendTimeout = 10000;
-            socket.Connect("172.20.63.234", 14200);
+            socket.Connect("172.20.63.234", 4200);
             //socket.Connect("5.22.198.62", 4200);
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -182,7 +182,7 @@ namespace Echo
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.SendTimeout = 10000;
             //socket.Connect("172.20.63.234", 14001);
-            socket.Connect("5.22.198.62", 14200);
+            socket.Connect("5.22.198.62", 4200);
 
             BinaryFormatter formatter = new BinaryFormatter();
             MemoryStream memoryStream = new MemoryStream();
