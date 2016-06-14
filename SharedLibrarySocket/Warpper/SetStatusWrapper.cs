@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 namespace SharedLibrarySocket.Warpper
 {
     [Serializable]
-    public class GetStatus2Wrapper
+    public class SetStatusWrapper
     {
         public MotorStatus Motor1;
         public MotorStatus Motor2;
+        public string SessionKey;
     }
 }

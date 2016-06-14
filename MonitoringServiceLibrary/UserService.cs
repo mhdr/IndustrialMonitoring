@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using MonitoringServiceLibrary.ViewModels;
+using SharedLibrary;
 
 namespace MonitoringServiceLibrary
 {
@@ -69,7 +70,18 @@ namespace MonitoringServiceLibrary
 
         public User GetUserFromSession(string sessionKey)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entities = new IndustrialMonitoringEntities();
+                User user = entities.Sessions.FirstOrDefault(x => x.SessionKey == sessionKey).User;
+                return user;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMonitoringServiceLibrary(ex);
+                return null;
+            }
+
         }
 
         public bool CheckPermission(int userId, int itemId)

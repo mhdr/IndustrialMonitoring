@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 using Android.App;
@@ -8,6 +9,8 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using SharedLibrarySocket;
+using SharedLibrarySocket.Warpper;
 using TechnicalFanCoilAndroid.Lib;
 using TechnicalFanCoilAndroid.Model;
 using TechnicalFanCoilAndroid.RPC;
@@ -117,42 +120,53 @@ namespace TechnicalFanCoilAndroid
             {
                 Dictionary<int, int> dic = new Dictionary<int, int>();
 
+                MotorStatus motor1 = MotorStatus.Off;
+                MotorStatus motor2 = MotorStatus.Off;
+
                 if (!toggleButtonMotor1.Checked)
                 {
-                    dic.Add(1, 0);
+                    motor1=MotorStatus.Off;
                 }
                 else if (radioButtonMotor1Speed1.Checked)
                 {
-                    dic.Add(1, 1);
+                    motor1=MotorStatus.Speed1;
                 }
                 else if (radioButtonMotor1Speed2.Checked)
                 {
-                    dic.Add(1, 2);
+                    motor1=MotorStatus.Speed2;
                 }
                 else if (radioButtonMotor1Speed3.Checked)
                 {
-                    dic.Add(1, 3);
+                    motor1=MotorStatus.Speed3;
                 }
 
                 if (!toggleButtonMotor2.Checked)
                 {
-                    dic.Add(2, 0);
+                    motor2=MotorStatus.Off;
                 }
                 else if (radioButtonMotor2Speed1.Checked)
                 {
-                    dic.Add(2, 1);
+                    motor2=MotorStatus.Speed1;
                 }
                 else if (radioButtonMotor2Speed2.Checked)
                 {
-                    dic.Add(2, 2);
+                    motor2=MotorStatus.Speed2;
                 }
                 else if (radioButtonMotor2Speed3.Checked)
                 {
-                    dic.Add(2, 3);
+                    motor2=MotorStatus.Speed3;
                 }
 
+
+                SetStatusWrapper wrapper=new SetStatusWrapper();
+                wrapper.Motor1 = motor1;
+                wrapper.Motor2 = motor2;
+
+                var login = Login.GetValues(x => x.IsAuthorized).FirstOrDefault();
+                wrapper.SessionKey = login.SessionKey;
+
                 TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
-                bool result = technicalFanCoil.SetStatus(dic);
+                bool result = technicalFanCoil.SetStatus(wrapper);
 
                 ButtonRefreshClickedAsync();
 

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using NationalInstruments.NetworkVariable;
 using SharedLibrary;
+using SharedLibrarySocket.Warpper;
 
 namespace MonitoringServiceLibrary
 {
@@ -409,12 +410,12 @@ namespace MonitoringServiceLibrary
             return null;
         }
 
-        public bool SetStatus(Dictionary<int, int> dic)
+        public bool SetStatus(SetStatusWrapper value)
         {
             try
             {
-                int motor1 = dic[1];
-                int motor2 = dic[2];
+                int motor1 = (int) value.Motor1;
+                int motor2 = (int) value.Motor2;
 
                 ChangeSpeedMotor1(motor1);
                 ChangeSpeedMotor2(motor2);

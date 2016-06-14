@@ -1,111 +1,104 @@
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using Android.App;
+using Android.Content;
+using Android.Graphics;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using Android.OS;
 using SharedLibrarySocket;
-using SharedLibrarySocket.Interfaces;
 using SharedLibrarySocket.Warpper;
-using TechnicalFanCoilAndroid.Lib;
 
-namespace TechnicalFanCoilAndroid.RPC
+namespace Echo
 {
-    public class TechnicalFanCoil : ITechnicalFanCoil
+    [Activity(Label = "Echo", MainLauncher = true, Icon = "@drawable/icon")]
+    public class MainActivity : Activity
     {
-        public Dictionary<int, int> GetStatus2()
+        private Button buttonEcho;
+        private TextView textViewResult;
+        private Button buttonEchoExternal;
+
+        protected override void OnCreate(Bundle bundle)
         {
-            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.SendTimeout = 10000;
-            socket.Connect(Statics.IPAddress, Statics.Port);
+            base.OnCreate(bundle);
 
-            BinaryFormatter formatter = new BinaryFormatter();
-            MemoryStream memoryStream = new MemoryStream();
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
 
-            Request request = new Request();
-            request.MethodNumber = RemoteMethod.GetStatus2;
+            // Get our button from the layout resource,
+            // and attach an event to it
+            buttonEcho = FindViewById<Button>(Resource.Id.buttonEcho);
+            textViewResult = FindViewById<TextView>(Resource.Id.textViewResult);
+            buttonEchoExternal = FindViewById<Button>(Resource.Id.buttonEchoExternal);
 
-            formatter.Serialize(memoryStream, request);
-
-            byte[] dataBytes = memoryStream.ToArray();
-
-            int dataLength = dataBytes.Length;
-            // length of data in bytes
-            byte[] dataLengthB = BitConverter.GetBytes(dataLength);
-            if (BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(dataLengthB);
-            }
-
-            // first send length
-            socket.Send(dataLengthB);
-
-            // send data
-            int successfullSent = socket.Send(dataBytes);
-
-            memoryStream = new MemoryStream();
-
-            // first get length of data
-            byte[] lengthB = new byte[4];
-            socket.Receive(lengthB);
-
-            if (BitConverter.IsLittleEndian)
-            {
-                Array.Reverse(lengthB);
-            }
-
-            // length of data
-            int length = BitConverter.ToInt32(lengthB, 0);
-
-            int bufferSize = 1024;
-            byte[] buffer = new byte[bufferSize];
-            int readBytes = socket.Receive(buffer);
-
-            while (length > memoryStream.Length)
-            {
-                if (readBytes > 0)
-                {
-                    memoryStream.Write(buffer, 0, readBytes);
-                }
-
-                int available = socket.Available;
-
-                if (available > 0)
-                {
-                    readBytes = socket.Receive(buffer);
-                }
-                else
-                {
-                    readBytes = 0;
-                }
-            }
-
-            formatter = new BinaryFormatter();
-
-            // set position to 0 or create a new stream
-            memoryStream.Position = 0;
-
-            Response response = (Response)formatter.Deserialize(memoryStream);
-
-            Dictionary<int, int> result = (Dictionary<int, int>)response.Result;
-
-            memoryStream.Close();
-            socket.Close();
-
-            return result;
+            buttonEcho.Click += Button_Click;
+            buttonEchoExternal.Click += ButtonEchoExternal_Click;
         }
 
-        public bool SetStatus(SetStatusWrapper value)
+        private void ButtonEchoExternal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = Echo();
+
+                if (result)
+                {
+                    textViewResult.Text = "Ok";
+                    textViewResult.SetTextColor(Color.Green);
+                }
+                else
+                {
+                    textViewResult.Text = "Failed";
+                    textViewResult.SetTextColor(Color.Red);
+                }
+            }
+            catch (Exception)
+            {
+                textViewResult.Text = "Failed";
+                textViewResult.SetTextColor(Color.Red);
+            }
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = Echo2();
+
+                if (result)
+                {
+                    textViewResult.Text = "Ok";
+                    textViewResult.SetTextColor(Color.Green);
+                }
+                else
+                {
+                    textViewResult.Text = "Failed";
+                    textViewResult.SetTextColor(Color.Red);
+                }
+            }
+            catch (Exception)
+            {
+                textViewResult.Text = "Failed";
+                textViewResult.SetTextColor(Color.Red);
+            }
+        }
+
+        private bool Echo2()
         {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.SendTimeout = 10000;
-            socket.Connect(Statics.IPAddress, Statics.Port);
+            socket.Connect("172.20.63.234", 14200);
+            //socket.Connect("5.22.198.62", 4200);
 
             BinaryFormatter formatter = new BinaryFormatter();
             MemoryStream memoryStream = new MemoryStream();
 
             Request request = new Request();
-            request.MethodNumber = RemoteMethod.SetStatus;
-            request.Parameter = value;
+            request.MethodNumber = RemoteMethod.Echo;
+            request.Parameter = "Ok";
 
             formatter.Serialize(memoryStream, request);
 
@@ -169,12 +162,112 @@ namespace TechnicalFanCoilAndroid.RPC
 
             Response response = (Response)formatter.Deserialize(memoryStream);
 
-            bool result = (bool)response.Result;
+            string result = response.Result.ToString();
 
             memoryStream.Close();
             socket.Close();
 
-            return result;
+            if (result == "Ok")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool Echo()
+        {
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socket.SendTimeout = 10000;
+            //socket.Connect("172.20.63.234", 14001);
+            socket.Connect("5.22.198.62", 14200);
+
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream memoryStream = new MemoryStream();
+
+            Request request = new Request();
+            request.MethodNumber = RemoteMethod.Echo;
+            request.Parameter = "Ok";
+
+            formatter.Serialize(memoryStream, request);
+
+            byte[] dataBytes = memoryStream.ToArray();
+
+            int dataLength = dataBytes.Length;
+            // length of data in bytes
+            byte[] dataLengthB = BitConverter.GetBytes(dataLength);
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(dataLengthB);
+            }
+
+            // first send length
+            socket.Send(dataLengthB);
+
+            // send data
+            int successfullSent = socket.Send(dataBytes);
+
+            memoryStream = new MemoryStream();
+
+            // first get length of data
+            byte[] lengthB = new byte[4];
+            socket.Receive(lengthB);
+
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(lengthB);
+            }
+
+            // length of data
+            int length = BitConverter.ToInt32(lengthB, 0);
+
+            int bufferSize = 1024;
+            byte[] buffer = new byte[bufferSize];
+            int readBytes = socket.Receive(buffer);
+
+            while (length > memoryStream.Length)
+            {
+                if (readBytes > 0)
+                {
+                    memoryStream.Write(buffer, 0, readBytes);
+                }
+
+                int available = socket.Available;
+
+                if (available > 0)
+                {
+                    readBytes = socket.Receive(buffer);
+                }
+                else
+                {
+                    readBytes = 0;
+                }
+            }
+
+            formatter = new BinaryFormatter();
+
+            // set position to 0 or create a new stream
+            memoryStream.Position = 0;
+
+            Response response = (Response)formatter.Deserialize(memoryStream);
+
+            string result = response.Result.ToString();
+
+            memoryStream.Close();
+            socket.Close();
+
+            if (result == "Ok")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
+    
 }
+

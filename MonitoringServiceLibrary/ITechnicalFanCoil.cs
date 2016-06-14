@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using SharedLibrarySocket.Warpper;
 
 namespace MonitoringServiceLibrary
 {
@@ -34,6 +35,6 @@ namespace MonitoringServiceLibrary
         Dictionary<int, int> GetStatus2();
 
         [OperationContract]
-        bool SetStatus(Dictionary<int, int> dic);
+        bool SetStatus(SetStatusWrapper value);
     }
 }

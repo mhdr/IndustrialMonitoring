@@ -80,8 +80,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RPC\ITechnicalFanCoil.cs" />
-    <Compile Include="RPC\IUserService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -118,7 +116,6 @@
       <Name>SharedLibrarySocket</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <AndroidAsset Include="Assets\fancoil.db3" />
   </ItemGroup>

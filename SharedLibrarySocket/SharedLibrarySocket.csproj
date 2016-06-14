@@ -41,11 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
+    <Compile Include="Interfaces\ITechnicalFanCoil.cs" />
+    <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Warpper\AuthorizeWrapper.cs" />
     <Compile Include="Warpper\GetStatus2Wrapper.cs" />
+    <Compile Include="Warpper\SetStatusWrapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

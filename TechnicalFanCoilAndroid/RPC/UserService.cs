@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
 using SharedLibrarySocket;
+using SharedLibrarySocket.Interfaces;
 using SharedLibrarySocket.Warpper;
 using TechnicalFanCoilAndroid.Lib;
 

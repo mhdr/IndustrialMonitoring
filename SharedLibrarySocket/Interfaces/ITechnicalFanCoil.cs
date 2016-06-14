@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using SharedLibrarySocket.Warpper;
 
-namespace TechnicalFanCoilAndroid.RPC
+namespace SharedLibrarySocket.Interfaces
 {
     public interface ITechnicalFanCoil
     {
         Dictionary<int, int> GetStatus2();
 
-        bool SetStatus(Dictionary<int, int> dic);
+        bool SetStatus(SetStatusWrapper value);
     }
 }

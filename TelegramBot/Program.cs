@@ -24,7 +24,7 @@ namespace TelegramBot
 {
     class Program
     {
-        private static int FanCoilPort = 4200;
+        private static int FanCoilPort = 14001;
         static void Main(string[] args)
         {
             StartResponseServer();
@@ -35,7 +35,30 @@ namespace TelegramBot
             Thread thread=new Thread(()=>StartFanCoilMobileServer());
             thread.Start();
 
+            Thread thread2=new Thread(() =>
+            {
+                StartEchoServer();
+            });
+            thread2.Start();
+
             Console.ReadKey();
+        }
+
+        public static void StartEchoServer()
+        {
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            EndPoint endPoint = new IPEndPoint(IPAddress.Any, 14200);
+
+            socket.Bind(endPoint);
+            socket.Listen(10);
+
+            while (true)
+            {
+                Console.WriteLine("waiting for new connection...");
+
+                Socket newSocket = socket.Accept();
+                ThreadPool.QueueUserWorkItem((state => OnNewSocketAccept(newSocket)));
+            }
         }
 
         public static async Task SatrtQuartzScheduler()
@@ -1316,7 +1339,11 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
                 RemoteMethod methodNumber = request.MethodNumber;
                 Response response = new Response();
 
-                if (methodNumber == RemoteMethod.GetStatus2)
+                if (methodNumber == RemoteMethod.Echo)
+                {
+                    response.Result = request.Parameter;
+                }
+                else if (methodNumber == RemoteMethod.GetStatus2)
                 {
                     TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
 
@@ -1328,8 +1355,27 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
                 {
                     TechnicalFanCoil technicalFanCoil = new TechnicalFanCoil();
 
-                    Dictionary<int, int> dic = (Dictionary<int, int>)request.Parameter;
-                    bool result = technicalFanCoil.SetStatus(dic);
+                    SetStatusWrapper value = (SetStatusWrapper) request.Parameter;
+                    bool result = technicalFanCoil.SetStatus(value);
+
+                    if (result)
+                    {
+                        ThreadPool.QueueUserWorkItem(obj =>
+                        {
+                            var bot = new Telegram.Bot.Api("208761880:AAHxUZCc5z0g2dJDrgbbMEWk7r1t_IoKiAw");
+                            UserService userService=new UserService();
+                            var currentUser = userService.GetUserFromSession(value.SessionKey);
+
+                            var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                            string report = string.Format("Status is changed by {0} {1}", currentUser.FirstName, currentUser.LastName);
+
+                            foreach (var id in chatIds)
+                            {
+                                 bot.SendTextMessage(id, report);
+                                 bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                            }
+                        });
+                    }
 
                     // bool
                     response.Result = result;

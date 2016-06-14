@@ -1,4 +1,4 @@
-namespace TechnicalFanCoilAndroid.RPC
+namespace SharedLibrarySocket.Interfaces
 {
     public interface IUserService
     {

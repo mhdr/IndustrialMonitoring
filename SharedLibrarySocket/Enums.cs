@@ -16,6 +16,7 @@ namespace SharedLibrarySocket
 
     public enum RemoteMethod
     {
+        Echo=0,
         GetStatus2=1,
         SetStatus=2,
         Authorize=3,
