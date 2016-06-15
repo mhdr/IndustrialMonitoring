@@ -12,18 +12,36 @@ namespace MonitoringServiceLibrary.Jobs
         public void Execute(IJobExecutionContext context)
         {
             TechnicalFanCoil technicalFanCoil=new TechnicalFanCoil();
-            technicalFanCoil.TurnOffMotor1();
-            technicalFanCoil.TurnOffMotor2();
 
-            var bot = new Telegram.Bot.Api("208761880:AAHxUZCc5z0g2dJDrgbbMEWk7r1t_IoKiAw");
+            var status = technicalFanCoil.GetStatus2();
 
-            var chatIds = RecieveReportForTechnicalFanCoilChatIds();
-            string report = "Status automatically changed to off.";
+            bool machineOn = false;
 
-            foreach (var id in chatIds)
+            if (status[1] != 0)
             {
-                bot.SendTextMessage(id, report);
-                bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                machineOn = true;
+            }
+
+            if (status[2] != 0)
+            {
+                machineOn = true;
+            }
+
+            if (machineOn)
+            {
+                technicalFanCoil.TurnOffMotor1();
+                technicalFanCoil.TurnOffMotor2();
+
+                var bot = new Telegram.Bot.Api("208761880:AAHxUZCc5z0g2dJDrgbbMEWk7r1t_IoKiAw");
+
+                var chatIds = RecieveReportForTechnicalFanCoilChatIds();
+                string report = "Fancoil automatically switched off.";
+
+                foreach (var id in chatIds)
+                {
+                    bot.SendTextMessage(id, report);
+                    bot.SendTextMessage(id, technicalFanCoil.GetStatus());
+                }
             }
         }
 

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
@@ -20,6 +21,11 @@ namespace Echo
         private Button buttonEcho;
         private TextView textViewResult;
         private Button buttonEchoExternal;
+        private EditText editTextPort;
+
+		private ProgressDialog progressDialog;
+
+        private int port=0;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -33,64 +39,116 @@ namespace Echo
             buttonEcho = FindViewById<Button>(Resource.Id.buttonEcho);
             textViewResult = FindViewById<TextView>(Resource.Id.textViewResult);
             buttonEchoExternal = FindViewById<Button>(Resource.Id.buttonEchoExternal);
+            editTextPort = FindViewById<EditText>(Resource.Id.editTextPort);
+            editTextPort.TextChanged += EditTextPort_TextChanged;
 
             buttonEcho.Click += Button_Click;
             buttonEchoExternal.Click += ButtonEchoExternal_Click;
+
+			progressDialog = new ProgressDialog(this);
+        }
+
+        private void EditTextPort_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        {
+            port = Convert.ToInt32(editTextPort.Text);
         }
 
         private void ButtonEchoExternal_Click(object sender, EventArgs e)
+        {
+            progressDialog.SetTitle("Loading");
+            progressDialog.SetMessage("Wait while loading...");
+            progressDialog.Show();
+
+            Thread thread = new Thread(() => { buttonEchoClickedAsync(); });
+            thread.Start();
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            progressDialog.SetTitle("Loading");
+            progressDialog.SetMessage("Wait while loading...");
+            progressDialog.Show();
+
+            Thread thread=new Thread(()=> { buttonEcho2ClickedAsync(); });
+            thread.Start();
+        }
+
+        private void buttonEchoClickedAsync()
         {
             try
             {
                 var result = Echo();
 
-                if (result)
+                RunOnUiThread(() =>
                 {
-                    textViewResult.Text = "Ok";
-                    textViewResult.SetTextColor(Color.Green);
-                }
-                else
-                {
-                    textViewResult.Text = "Failed";
-                    textViewResult.SetTextColor(Color.Red);
-                }
+                    if (result)
+                    {
+                        textViewResult.Text = "Ok";
+                        textViewResult.SetTextColor(Color.Green);
+                    }
+                    else
+                    {
+                        textViewResult.Text = "Failed";
+                        textViewResult.SetTextColor(Color.Red);
+                    }
+
+                    progressDialog.Dismiss();
+                });
             }
             catch (Exception)
             {
-                textViewResult.Text = "Failed";
-                textViewResult.SetTextColor(Color.Red);
+                RunOnUiThread(() =>
+                {
+                    progressDialog.Dismiss();
+                    textViewResult.Text = "Failed";
+                    textViewResult.SetTextColor(Color.Red);
+                });
             }
         }
 
-        private void Button_Click(object sender, EventArgs e)
+        private void buttonEcho2ClickedAsync()
         {
             try
             {
                 var result = Echo2();
+                
+                RunOnUiThread(() =>
+                {
+                    if (result)
+                    {
+                        textViewResult.Text = "Ok";
+                        textViewResult.SetTextColor(Color.Green);
+                    }
+                    else
+                    {
+                        textViewResult.Text = "Failed";
+                        textViewResult.SetTextColor(Color.Red);
+                    }
 
-                if (result)
-                {
-                    textViewResult.Text = "Ok";
-                    textViewResult.SetTextColor(Color.Green);
-                }
-                else
-                {
-                    textViewResult.Text = "Failed";
-                    textViewResult.SetTextColor(Color.Red);
-                }
+                    progressDialog.Dismiss();
+                });
             }
             catch (Exception)
             {
-                textViewResult.Text = "Failed";
-                textViewResult.SetTextColor(Color.Red);
+                RunOnUiThread(() =>
+                {
+                    progressDialog.Dismiss();
+                    textViewResult.Text = "Failed";
+                    textViewResult.SetTextColor(Color.Red);
+                });
             }
         }
 
         private bool Echo2()
         {
+            if (port == 0)
+            {
+                return false;
+            }
+
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.SendTimeout = 10000;
-            socket.Connect("172.20.63.234", 4200);
+            socket.Connect("172.20.63.234", port);
             //socket.Connect("5.22.198.62", 4200);
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -179,10 +237,15 @@ namespace Echo
 
         private bool Echo()
         {
+            if (port == 0)
+            {
+                return false;
+            }
+
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.SendTimeout = 10000;
             //socket.Connect("172.20.63.234", 14001);
-            socket.Connect("5.22.198.62", 4200);
+            socket.Connect("5.22.198.62", port);
 
             BinaryFormatter formatter = new BinaryFormatter();
             MemoryStream memoryStream = new MemoryStream();

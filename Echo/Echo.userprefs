@@ -2,12 +2,15 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\Echo\MainActivity.cs" line="77" column="1" />
+      <Breakpoint file="C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\Echo\MainActivity.cs" line="110" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Echo AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.16" />
   <MonoDevelop.Ide.Workbench ActiveDocument="MainActivity.cs">
     <Files>
-      <File FileName="MainActivity.cs" Line="185" Column="49" />
+      <File FileName="MainActivity.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
 </Properties>

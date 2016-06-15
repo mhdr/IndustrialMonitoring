@@ -5,6 +5,28 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1"
+        android:shrinkColumns="1"
+        android:stretchColumns="1">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <TextView
+                android:text="Port"
+                android:id="@+id/textView4"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp" />
+            <EditText
+                android:id="@+id/editTextPort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </TableRow>
+    </TableLayout>
     <Button
         android:text="Echo from Local"
         android:layout_width="match_parent"
