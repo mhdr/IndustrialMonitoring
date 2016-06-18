@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using Android.App;
@@ -9,6 +10,7 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 using SharedLibrarySocket;
 using SharedLibrarySocket.Warpper;
 using TechnicalFanCoilAndroid.Lib;
@@ -70,8 +72,70 @@ namespace TechnicalFanCoilAndroid
             InitializeDatabase();
 
             progressDialog=new ProgressDialog(this);
+
+            Thread thread=new Thread(() =>
+            {
+                CheckUpdate();
+            });
+
+            thread.Start();
         }
 
+        private void CheckUpdate()
+        {
+            try
+            {
+                //string url = "http://172.20.63.234:4210/TechnicalFanCoilAndroid/update.json";
+                string url = "http://5.22.198.62:4210/TechnicalFanCoilAndroid/update.json";
+
+                var client = new WebClient();
+                var updateStrInJson = client.DownloadString(url);
+
+                var update = JsonConvert.DeserializeObject<Update>(updateStrInJson);
+
+                RunOnUiThread(() =>
+                {
+                    if (!update.LatestVersion.Equals(Statics.Version, StringComparison.Ordinal))
+                    {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                        alert.SetTitle("Update");
+                        alert.SetMessage(string.Format("Version {0} is available,Do you want to download it?", update.LatestVersion));
+                        alert.SetPositiveButton("Yes", (sender, args) =>
+                        {
+                            var download = (DownloadManager)GetSystemService(Context.DownloadService);
+                            Android.Net.Uri uri = Android.Net.Uri.Parse(update.Url);
+                            DownloadManager.Request request = new DownloadManager.Request(uri);
+                            var fileName = System.IO.Path.GetFileName(update.Url);
+                            request.SetTitle("Fan Coil").SetDescription(fileName);
+                            request.SetVisibleInDownloadsUi(true);
+                            request.SetNotificationVisibility(DownloadVisibility.VisibleNotifyCompleted);
+                            download.Enqueue(request);
+                            //request.SetAllowedNetworkTypes(DownloadNetwork.Mobile | DownloadNetwork.Wifi);
+                        });
+
+                        alert.SetNegativeButton("No", (sender, args) =>
+                        {
+                            return;
+                        });
+
+                        alert.Create().Show();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.SetTitle("Error");
+                alert.SetMessage(ex.Message);
+                alert.SetPositiveButton("Ok", (sender, args) =>
+                {
+                   return; 
+                });
+
+                alert.Create().Show();
+            }
+
+        }
 
         private void DeleteDatabaseFile()
         {
