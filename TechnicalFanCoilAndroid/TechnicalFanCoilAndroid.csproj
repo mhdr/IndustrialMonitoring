@@ -96,6 +96,7 @@
     <Compile Include="RPC\TechnicalFanCoil.cs" />
     <Compile Include="LoginDialog.cs" />
     <Compile Include="RPC\UserService.cs" />
+    <Compile Include="UpdateActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -107,6 +108,7 @@
     <AndroidResource Include="Resources\menu\MainMenu.axml" />
     <AndroidResource Include="Resources\drawable\dts.png" />
     <AndroidResource Include="Resources\layout\Login.axml" />
+    <AndroidResource Include="Resources\layout\Update.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

@@ -1459,11 +1459,11 @@ namespace TechnicalFanCoilAndroid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b0074
-			public const int LoginMenuItem = 2131427444;
+			// aapt resource value: 0x7f0b007c
+			public const int LoginMenuItem = 2131427452;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int LogoutMenuItem = 2131427445;
+			// aapt resource value: 0x7f0b007d
+			public const int LogoutMenuItem = 2131427453;
 			
 			// aapt resource value: 0x7f0b0066
 			public const int action0 = 2131427430;
@@ -1522,6 +1522,9 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0019
 			public const int beginning = 2131427353;
 			
+			// aapt resource value: 0x7f0b007a
+			public const int buttonCancelDownloadUpdate = 2131427450;
+			
 			// aapt resource value: 0x7f0b0058
 			public const int buttonCancelLogin = 2131427416;
 			
@@ -1536,6 +1539,9 @@ namespace TechnicalFanCoilAndroid
 			
 			// aapt resource value: 0x7f0b0065
 			public const int buttonSave = 2131427429;
+			
+			// aapt resource value: 0x7f0b0079
+			public const int buttonStartStopDownloadUpdate = 2131427449;
 			
 			// aapt resource value: 0x7f0b0067
 			public const int cancel_action = 2131427431;
@@ -1621,8 +1627,8 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0069
 			public const int media_actions = 2131427433;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int menu_overflow = 2131427443;
+			// aapt resource value: 0x7f0b007b
+			public const int menu_overflow = 2131427451;
 			
 			// aapt resource value: 0x7f0b001b
 			public const int middle = 2131427355;
@@ -1641,6 +1647,9 @@ namespace TechnicalFanCoilAndroid
 			
 			// aapt resource value: 0x7f0b002d
 			public const int parentPanel = 2131427373;
+			
+			// aapt resource value: 0x7f0b0077
+			public const int progressBarUpdate = 2131427447;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -1780,8 +1789,23 @@ namespace TechnicalFanCoilAndroid
 			// aapt resource value: 0x7f0b0055
 			public const int textView2 = 2131427413;
 			
+			// aapt resource value: 0x7f0b0075
+			public const int textViewFileSize = 2131427445;
+			
+			// aapt resource value: 0x7f0b0076
+			public const int textViewFileSizeValue = 2131427446;
+			
 			// aapt resource value: 0x7f0b0059
 			public const int textViewLoginErrorMessage = 2131427417;
+			
+			// aapt resource value: 0x7f0b0078
+			public const int textViewProgressText = 2131427448;
+			
+			// aapt resource value: 0x7f0b0073
+			public const int textViewVersion = 2131427443;
+			
+			// aapt resource value: 0x7f0b0074
+			public const int textViewVersionValue = 2131427444;
 			
 			// aapt resource value: 0x7f0b006c
 			public const int time = 2131427436;
@@ -1970,6 +1994,9 @@ namespace TechnicalFanCoilAndroid
 			
 			// aapt resource value: 0x7f030026
 			public const int support_simple_spinner_dropdown_item = 2130903078;
+			
+			// aapt resource value: 0x7f030027
+			public const int Update = 2130903079;
 			
 			static Layout()
 			{

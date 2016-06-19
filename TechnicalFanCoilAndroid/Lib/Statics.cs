@@ -4,11 +4,12 @@ namespace TechnicalFanCoilAndroid.Lib
     {
         public static string DatabaseFilePath;
         public static int Port = 4200;
-        public static string IPAddress = "5.22.198.62";
-        public static string Version = "1.0.2";
+        //public static string IPAddress = "5.22.198.62";
+        public static int HttpPort = 4210;
+        public static string Version = "1.0.3";
 
         //public static int Port = 14001;
-        //public static string IPAddress = "172.20.63.234";
+        public static string IPAddress = "172.20.63.234";
 
         public static string GetConnectionString()
         {

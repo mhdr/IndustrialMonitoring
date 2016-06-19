@@ -85,13 +85,17 @@ namespace TechnicalFanCoilAndroid
         {
             try
             {
-                //string url = "http://172.20.63.234:4210/TechnicalFanCoilAndroid/update.json";
-                string url = "http://5.22.198.62:4210/TechnicalFanCoilAndroid/update.json";
+                string url = string.Format("http://{0}:{1}/TechnicalFanCoilAndroid/update.json",Statics.IPAddress,Statics.HttpPort);
 
                 var client = new WebClient();
                 var updateStrInJson = client.DownloadString(url);
 
                 var update = JsonConvert.DeserializeObject<Update>(updateStrInJson);
+
+                HttpWebRequest httpWebRequest =(HttpWebRequest) WebRequest.Create(update.Url);
+                httpWebRequest.Method = "HEAD";
+                HttpWebResponse httpWebResponse = (HttpWebResponse) httpWebRequest.GetResponse();
+                long length = httpWebResponse.ContentLength;
 
                 RunOnUiThread(() =>
                 {
@@ -102,15 +106,11 @@ namespace TechnicalFanCoilAndroid
                         alert.SetMessage(string.Format("Version {0} is available,Do you want to download it?", update.LatestVersion));
                         alert.SetPositiveButton("Yes", (sender, args) =>
                         {
-                            var download = (DownloadManager)GetSystemService(Context.DownloadService);
-                            Android.Net.Uri uri = Android.Net.Uri.Parse(update.Url);
-                            DownloadManager.Request request = new DownloadManager.Request(uri);
-                            var fileName = System.IO.Path.GetFileName(update.Url);
-                            request.SetTitle("Fan Coil").SetDescription(fileName);
-                            request.SetVisibleInDownloadsUi(true);
-                            request.SetNotificationVisibility(DownloadVisibility.VisibleNotifyCompleted);
-                            download.Enqueue(request);
-                            //request.SetAllowedNetworkTypes(DownloadNetwork.Mobile | DownloadNetwork.Wifi);
+                            Intent updateIntent = new Intent(this, typeof(UpdateActivity));
+                            updateIntent.PutExtra("Version", update.LatestVersion);
+                            updateIntent.PutExtra("Url", update.Url);
+                            updateIntent.PutExtra("Length", length);
+                            StartActivity(updateIntent);
                         });
 
                         alert.SetNegativeButton("No", (sender, args) =>

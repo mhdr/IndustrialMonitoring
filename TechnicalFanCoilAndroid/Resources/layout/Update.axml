@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableLayout1"
+        android:shrinkColumns="4"
+        android:stretchColumns="4">
+        <TableRow
+            android:id="@+id/tableRow1">
+            <TextView
+                android:text="Version : "
+                android:id="@+id/textViewVersion"
+                android:gravity="center"
+                android:lines="2" />
+            <TextView
+                android:id="@+id/textViewVersionValue"
+                android:gravity="left"
+                android:lines="2" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2">
+            <TextView
+                android:text="File Size : "
+                android:id="@+id/textViewFileSize"
+                android:gravity="center"
+                android:lines="2" />
+            <TextView
+                android:id="@+id/textViewFileSizeValue"
+                android:gravity="left"
+                android:lines="2" />
+        </TableRow>
+    </TableLayout>
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarUpdate"
+        android:indeterminate="false"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp" />
+    <TextView
+        android:text="0/100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewProgressText"
+        android:gravity="center" />
+    <Button
+        android:text="Start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonStartStopDownloadUpdate" />
+    <Button
+        android:text="Cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonCancelDownloadUpdate" />
+</LinearLayout>
