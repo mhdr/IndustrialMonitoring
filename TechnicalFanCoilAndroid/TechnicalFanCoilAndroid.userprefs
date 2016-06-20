@@ -1,17 +1,14 @@
 ﻿<Properties StartupItem="TechnicalFanCoilAndroid.csproj">
-  <MonoDevelop.Ide.ItemProperties.TechnicalFanCoilAndroid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.16" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.TechnicalFanCoilAndroid PreferredExecutionTarget="Android.16" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Properties\AndroidManifest.xml">
     <Files>
-      <File FileName="MainActivity.cs" Line="69" Column="30" />
-      <File FileName="UpdateActivity.cs" Line="1" Column="1" />
-      <File FileName="Model\Login.cs" Line="171" Column="1" />
-      <File FileName="Properties\AndroidManifest.xml" Line="7" Column="69" />
-      <File FileName="..\..\..\..\..\..\Program Files (x86)\MSBuild\Xamarin\Android\Xamarin.Android.Common.targets" Line="526" Column="2" />
+      <File FileName="UpdateActivity.cs" Line="106" Column="34" />
+      <File FileName="Properties\AndroidManifest.xml" Line="10" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
 </Properties>

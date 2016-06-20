@@ -19,7 +19,7 @@ using Uri = Android.Net.Uri;
 
 namespace TechnicalFanCoilAndroid
 {
-	[Activity(Label = "UpdateActivity")]
+	[Activity(Label = "Update")]
 	public class UpdateActivity : Activity
 	{
 	    private ProgressBar progressBarUpdate;
@@ -58,10 +58,10 @@ namespace TechnicalFanCoilAndroid
                 var url = Intent.Extras.GetString("Url");
                 var length = Intent.Extras.GetLong("Length");
 
-		        double lengthInMB = length/1000000;
+		        double lengthInMB = Convert.ToDouble(length)/1000000.0;
 
 		        textViewVersionValue.Text = version;
-		        textViewFileSizeValue.Text = string.Format("{0} MB",lengthInMB);
+		        textViewFileSizeValue.Text = string.Format("{0:F2} MB",lengthInMB);
 		    }
 
 		}
@@ -79,6 +79,8 @@ namespace TechnicalFanCoilAndroid
             try
             {
                 buttonStartStopDownloadUpdate.Enabled = false;
+                buttonCancelDownloadUpdate.Enabled = true;
+
                 var url = Intent.Extras.GetString("Url");
                 client = new WebClient();
                 client.DownloadProgressChanged += Client_DownloadProgressChanged;
@@ -109,18 +111,13 @@ namespace TechnicalFanCoilAndroid
                     var fileName = System.IO.Path.GetFileName(url);
                     string path = "";
 
-                    //if (Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryDownloads) != null)
-                    //{
-                    //    path =
-                    //        Android.OS.Environment.GetExternalStoragePublicDirectory(
-                    //            Android.OS.Environment.DirectoryDownloads).ToString();
-                    //}
-                    //else
-                    //{
-                    //    path = Android.OS.Environment.DataDirectory.ToString();
-                    //}
+                    var file =
+                        Android.OS.Environment.GetExternalStoragePublicDirectory(
+                            Android.OS.Environment.DirectoryDownloads);
 
-                    path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                    file.Mkdirs();
+
+                    path = file.ToString();
 
                     var filePath = Path.Combine(path, fileName);
                     var filePath2 = string.Format("file://{0}", filePath);
@@ -134,12 +131,14 @@ namespace TechnicalFanCoilAndroid
                     binaryWriter.Write(e.Result);
                     binaryWriter.Close();
 
-                    Android.Content.Intent intentInstall = new Intent(Intent.ActionView).SetDataAndType(Uri.Parse(filePath2), "application/vnd.android.package-archive");
+                    Android.Content.Intent intentInstall =
+                        new Intent(Intent.ActionView).SetDataAndType(Uri.Parse(filePath2),
+                            "application/vnd.android.package-archive");
                     intentInstall.SetFlags(ActivityFlags.NewTask);
                     StartActivity(intentInstall);
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -152,15 +151,19 @@ namespace TechnicalFanCoilAndroid
                 });
                 alert.Create().Show();
             }
-
-            buttonStartStopDownloadUpdate.Enabled = true;
-
+            finally
+            {
+                buttonStartStopDownloadUpdate.Enabled = true;
+                buttonCancelDownloadUpdate.Enabled = false;
+            }
+            
         }
 
         private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
+            double progress = Convert.ToDouble(e.BytesReceived)/1000000.0;
             progressBarUpdate.Progress = e.ProgressPercentage;
-            textViewProgressText.Text = string.Format("{0}/100", e.ProgressPercentage);
+            textViewProgressText.Text = string.Format("{0}/100 ({1:F2} MB)", e.ProgressPercentage, progress);
         }
     }
 }

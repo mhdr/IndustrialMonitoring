@@ -72,6 +72,8 @@ namespace TechnicalFanCoilAndroid
             InitializeDatabase();
 
             progressDialog=new ProgressDialog(this);
+            progressDialog.SetCancelable(false);
+            
 
             Thread thread=new Thread(() =>
             {
@@ -124,15 +126,7 @@ namespace TechnicalFanCoilAndroid
             }
             catch (Exception ex)
             {
-                AlertDialog.Builder alert = new AlertDialog.Builder(this);
-                alert.SetTitle("Error");
-                alert.SetMessage(ex.Message);
-                alert.SetPositiveButton("Ok", (sender, args) =>
-                {
-                   return; 
-                });
-
-                alert.Create().Show();
+                
             }
 
         }

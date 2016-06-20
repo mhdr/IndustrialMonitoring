@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -24,7 +25,7 @@ namespace TechnicalFanCoilAndroid
 	    private Button buttonCancelLogin;
 	    private TextView textViewLoginErrorMessage;
 
-		public override void OnCreate (Bundle savedInstanceState)
+        public override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 
@@ -52,7 +53,7 @@ namespace TechnicalFanCoilAndroid
 
 		    textViewLoginErrorMessage = (TextView) view.FindViewById(Resource.Id.textViewLoginErrorMessage);
 
-		    return view;
+            return view;
 		}
 
         private void ButtonCancelLogin_Click(object sender, EventArgs e)
@@ -62,40 +63,58 @@ namespace TechnicalFanCoilAndroid
 
         private void ButtonLogin_Click(object sender, EventArgs e)
         {
+            buttonLogin.Enabled = false;
+            buttonLogin.Text = "Loging in...";
+
             string userName = editTextUserName.Text;
             string password = editTextPassword.Text;
 
-            UserService userService = new UserService();
-            string result = userService.AuthorizeAndGetSession(userName, password);
-
-            if (result.Length>0)
+            Thread thread=new Thread(() =>
             {
+                UserService userService = new UserService();
+                string result = userService.AuthorizeAndGetSession(userName, password);
 
-                var logins = Login.GetValues(x=>x.IsAuthorized);
-
-                if (logins != null)
+                if (result.Length > 0)
                 {
-                    foreach (Login l in logins)
+
+                    var logins = Login.GetValues(x => x.IsAuthorized);
+
+                    if (logins != null)
                     {
-                        l.IsAuthorized = false;
-                        Login.Update(l);
+                        foreach (Login l in logins)
+                        {
+                            l.IsAuthorized = false;
+                            Login.Update(l);
+                        }
                     }
+
+                    Login login = new Login();
+                    login.UserName = userName;
+                    login.IsAuthorized = true;
+                    login.SessionKey = result;
+
+                    Login.Insert(login);
+
+                    Activity.FragmentManager.PopBackStack();
+                }
+                else
+                {
+                    Activity?.RunOnUiThread(() =>
+                    {
+                        textViewLoginErrorMessage.Visibility = ViewStates.Visible;
+                        textViewLoginErrorMessage.Text = "Wrong username or password";
+                    });
                 }
 
-                Login login = new Login();
-                login.UserName = userName;
-                login.IsAuthorized = true;
-				login.SessionKey = result;
+                Activity?.RunOnUiThread(() =>
+                {
+                    buttonLogin.Enabled = true;
+                    buttonLogin.Text = "Login";
+                });
+            });
 
-                Login.Insert(login);
-
-                Activity.FragmentManager.PopBackStack();
-            }
-            else
-            {
-                textViewLoginErrorMessage.Visibility=ViewStates.Visible;
-                textViewLoginErrorMessage.Text = "Wrong username or password";
-            }
+            thread.Start();
+            
         }
     }
 }

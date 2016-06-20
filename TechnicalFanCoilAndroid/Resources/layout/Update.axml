@@ -57,5 +57,6 @@
         android:text="Cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonCancelDownloadUpdate" />
+        android:id="@+id/buttonCancelDownloadUpdate"
+        android:enabled="false" />
 </LinearLayout>
