@@ -1,14 +1,14 @@
 ﻿<Properties StartupItem="TechnicalFanCoilAndroid.csproj">
-  <MonoDevelop.Ide.ItemProperties.TechnicalFanCoilAndroid PreferredExecutionTarget="Android.16" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.ItemProperties.TechnicalFanCoilAndroid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.16" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Properties\AndroidManifest.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UpdateActivity.cs">
     <Files>
-      <File FileName="UpdateActivity.cs" Line="106" Column="34" />
-      <File FileName="Properties\AndroidManifest.xml" Line="10" Column="12" />
+      <File FileName="UpdateActivity.cs" Line="1" Column="1" />
+      <File FileName="MainActivity.cs" Line="99" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
 </Properties>
