@@ -85,6 +85,7 @@
   <ItemGroup>
     <None Include="Database.publish.xml" />
     <None Include="Database_2014.publish.xml" />
+    <None Include="Database_2016.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment.sql" />

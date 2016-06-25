@@ -16,6 +16,7 @@ namespace MonitoringServiceLibrary
     {
         public int NotificationBotId { get; set; }
         public int NotificationId { get; set; }
+        public int NotificationLogId { get; set; }
         public bool WithoutAlarm { get; set; }
         public System.DateTime RegisterTime { get; set; }
         public int Delay { get; set; }
@@ -23,9 +24,8 @@ namespace MonitoringServiceLibrary
         public bool IsSent { get; set; }
         public bool IsCompleted { get; set; }
         public byte[] TimeStamp { get; set; }
-        public int NotificationLogId { get; set; }
     
-        public virtual NotificationItem NotificationItem { get; set; }
         public virtual NotificationItemsLog NotificationItemsLog { get; set; }
+        public virtual NotificationItem NotificationItem { get; set; }
     }
 }

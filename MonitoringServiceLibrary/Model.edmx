@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bot">
           <Key>
             <PropertyRef Name="BotProcessId" />
@@ -556,7 +556,8 @@
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IndustrialMonitoringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -571,6 +572,17 @@
           <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
           <Property Name="ReceiveAlarms" Type="Boolean" />
           <NavigationProperty Name="User" Relationship="Self.FK_Bot_Users" FromRole="Bot" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="FanCoilBot">
+          <Key>
+            <PropertyRef Name="BotProcessId" />
+          </Key>
+          <Property Name="BotProcessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_FanCoilBot_Users" FromRole="FanCoilBot" ToRole="Users" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -599,6 +611,7 @@
           <Property Name="NormalizeWhenOutOfRange" Type="Boolean" />
           <Property Name="ThreadGroupId" Type="Int32" />
           <Property Name="NumberOfDataForBoxplot" Type="Int32" />
+          <Property Name="InOut" Type="Int32" />
           <NavigationProperty Name="ThreadGroup" Relationship="Self.FK_Items_ThreadGroup" FromRole="Items" ToRole="ThreadGroup" />
           <NavigationProperty Name="ItemsLogs" Relationship="Self.FK_ItemsLog_Items" FromRole="Items" ToRole="ItemsLog" />
           <NavigationProperty Name="ItemsLogLatests" Relationship="Self.FK_ItemsLogLatest_Items" FromRole="Items" ToRole="ItemsLogLatest" />
@@ -607,7 +620,6 @@
           <NavigationProperty Name="NotificationItems" Relationship="Self.FK_NotificationItems_Items" FromRole="Items" ToRole="NotificationItems" />
           <NavigationProperty Name="TabsItems" Relationship="Self.FK_TabsItems_Items" FromRole="Items" ToRole="TabsItems" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="Items" ToRole="UsersItemsPermissions" />
-          <Property Name="InOut" Type="Int32" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -658,6 +670,23 @@
           <NavigationProperty Name="Item" Relationship="Self.FK_LogOutliers_Items" FromRole="LogOutliers" ToRole="Items" />
           <NavigationProperty Name="ItemsLogRawDatas" Relationship="Self.FK_ItemsLogRawData_LogOutleirs" FromRole="LogOutliers" ToRole="ItemsLogRawData" />
         </EntityType>
+        <EntityType Name="NotificationBot">
+          <Key>
+            <PropertyRef Name="NotificationBotId" />
+          </Key>
+          <Property Name="NotificationBotId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationId" Type="Int32" Nullable="false" />
+          <Property Name="NotificationLogId" Type="Int32" Nullable="false" />
+          <Property Name="WithoutAlarm" Type="Boolean" Nullable="false" />
+          <Property Name="RegisterTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Delay" Type="Int32" Nullable="false" />
+          <Property Name="SentTime" Type="DateTime" Precision="7" />
+          <Property Name="IsSent" Type="Boolean" Nullable="false" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="NotificationItemsLog" Relationship="Self.FK_Notification_NotificationItemsLog" FromRole="NotificationBot" ToRole="NotificationItemsLog" />
+          <NavigationProperty Name="NotificationItem" Relationship="Self.FK_NotificationBot_NotificationItems" FromRole="NotificationBot" ToRole="NotificationItems" />
+        </EntityType>
         <EntityType Name="NotificationItem">
           <Key>
             <PropertyRef Name="NotificationId" />
@@ -669,11 +698,11 @@
           <Property Name="High" Type="Double" />
           <Property Name="NotificationMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Priority" Type="Int32" />
+          <Property Name="DelayForSendingNotificationInTelegram" Type="Int32" />
           <NavigationProperty Name="Item" Relationship="Self.FK_NotificationItems_Items" FromRole="NotificationItems" ToRole="Items" />
+          <NavigationProperty Name="NotificationBots" Relationship="Self.FK_NotificationBot_NotificationItems" FromRole="NotificationItems" ToRole="NotificationBot" />
           <NavigationProperty Name="NotificationItemsLogs" Relationship="Self.FK_NotificationItemsLog_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLog" />
           <NavigationProperty Name="NotificationItemsLogLatests" Relationship="Self.FK_NotificationItemsLogLatest_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLogLatest" />
-          <Property Name="DelayForSendingNotificationInTelegram" Type="Int32" />
-          <NavigationProperty Name="NotificationBots" Relationship="IndustrialMonitoringModel.FK_NotificationBot_NotificationItems" FromRole="NotificationItem" ToRole="NotificationBot" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -684,8 +713,8 @@
           <Property Name="Value" Type="Boolean" Nullable="false" />
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="NotificationBots" Relationship="Self.FK_Notification_NotificationItemsLog" FromRole="NotificationItemsLog" ToRole="NotificationBot" />
           <NavigationProperty Name="NotificationItem" Relationship="Self.FK_NotificationItemsLog_NotificationItems" FromRole="NotificationItemsLog" ToRole="NotificationItems" />
-          <NavigationProperty Name="NotificationBots" Relationship="IndustrialMonitoringModel.FK_Notification_NotificationItemsLog" FromRole="NotificationItemsLog" ToRole="NotificationBot" />
         </EntityType>
         <EntityType Name="NotificationItemsLogLatest">
           <Key>
@@ -705,6 +734,17 @@
           <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ServiceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UsersServicesPermissions" Relationship="Self.FK_UsersServicesPermissions_Services" FromRole="Services" ToRole="UsersServicesPermissions" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SessionKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <Property Name="ValidUntil" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Session_Users" FromRole="Session" ToRole="Users" />
         </EntityType>
         <EntityType Name="Tab">
           <Key>
@@ -745,10 +785,10 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Bots" Relationship="Self.FK_Bot_Users" FromRole="Users" ToRole="Bot" />
+          <NavigationProperty Name="FanCoilBots" Relationship="Self.FK_FanCoilBot_Users" FromRole="Users" ToRole="FanCoilBot" />
+          <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Users" FromRole="Users" ToRole="Session" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="Users" ToRole="UsersItemsPermissions" />
           <NavigationProperty Name="UsersServicesPermissions" Relationship="Self.FK_UsersServicesPermissions_Users" FromRole="Users" ToRole="UsersServicesPermissions" />
-          <NavigationProperty Name="FanCoilBots" Relationship="IndustrialMonitoringModel.FK_FanCoilBot_Users" FromRole="User" ToRole="FanCoilBot" />
-          <NavigationProperty Name="Sessions" Relationship="IndustrialMonitoringModel.FK_Session_Users" FromRole="User" ToRole="Session" />
         </EntityType>
         <EntityType Name="UsersItemsPermission">
           <Key>
@@ -757,9 +797,9 @@
           <Property Name="PermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="ReceiveDelayedNotificationInTelegram" Type="Boolean" />
           <NavigationProperty Name="Item" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="UsersItemsPermissions" ToRole="Items" />
           <NavigationProperty Name="User" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="UsersItemsPermissions" ToRole="Users" />
-          <Property Name="ReceiveDelayedNotificationInTelegram" Type="Boolean" />
         </EntityType>
         <EntityType Name="UsersServicesPermission">
           <Key>
@@ -779,6 +819,18 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Bot">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FanCoilBot_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="FanCoilBot" Type="Self.FanCoilBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FanCoilBot">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -891,6 +943,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Notification_NotificationItemsLog">
+          <End Role="NotificationItemsLog" Type="Self.NotificationItemsLog" Multiplicity="1" />
+          <End Role="NotificationBot" Type="Self.NotificationBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItemsLog">
+              <PropertyRef Name="NotificationLogId" />
+            </Principal>
+            <Dependent Role="NotificationBot">
+              <PropertyRef Name="NotificationLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationBot_NotificationItems">
+          <End Role="NotificationItems" Type="Self.NotificationItem" Multiplicity="1" />
+          <End Role="NotificationBot" Type="Self.NotificationBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItems">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="NotificationBot">
+              <PropertyRef Name="NotificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NotificationItemsLog_NotificationItems">
           <End Role="NotificationItems" Type="Self.NotificationItem" Multiplicity="1" />
           <End Role="NotificationItemsLog" Type="Self.NotificationItemsLog" Multiplicity="*" />
@@ -924,6 +1000,18 @@
             </Principal>
             <Dependent Role="UsersServicesPermissions">
               <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Session_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -965,15 +1053,18 @@
         </Association>
         <EntityContainer Name="IndustrialMonitoringEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bots" EntityType="Self.Bot" />
+          <EntitySet Name="FanCoilBots" EntityType="Self.FanCoilBot" />
           <EntitySet Name="Items" EntityType="Self.Item" />
           <EntitySet Name="ItemsLogs" EntityType="Self.ItemsLog" />
           <EntitySet Name="ItemsLogLatests" EntityType="Self.ItemsLogLatest" />
           <EntitySet Name="ItemsLogRawDatas" EntityType="Self.ItemsLogRawData" />
           <EntitySet Name="LogOutliers" EntityType="Self.LogOutlier" />
+          <EntitySet Name="NotificationBots" EntityType="Self.NotificationBot" />
           <EntitySet Name="NotificationItems" EntityType="Self.NotificationItem" />
           <EntitySet Name="NotificationItemsLogs" EntityType="Self.NotificationItemsLog" />
           <EntitySet Name="NotificationItemsLogLatests" EntityType="Self.NotificationItemsLogLatest" />
           <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="Sessions" EntityType="Self.Session" />
           <EntitySet Name="Tabs" EntityType="Self.Tab" />
           <EntitySet Name="TabsItems" EntityType="Self.TabsItem" />
           <EntitySet Name="ThreadGroups" EntityType="Self.ThreadGroup" />
@@ -983,6 +1074,10 @@
           <AssociationSet Name="FK_Bot_Users" Association="Self.FK_Bot_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Bot" EntitySet="Bots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FanCoilBot_Users" Association="Self.FK_FanCoilBot_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FanCoilBot" EntitySet="FanCoilBots" />
           </AssociationSet>
           <AssociationSet Name="FK_Items_ThreadGroup" Association="Self.FK_Items_ThreadGroup">
             <End Role="ThreadGroup" EntitySet="ThreadGroups" />
@@ -1020,6 +1115,14 @@
             <End Role="LogOutliers" EntitySet="LogOutliers" />
             <End Role="ItemsLogRawData" EntitySet="ItemsLogRawDatas" />
           </AssociationSet>
+          <AssociationSet Name="FK_Notification_NotificationItemsLog" Association="Self.FK_Notification_NotificationItemsLog">
+            <End Role="NotificationItemsLog" EntitySet="NotificationItemsLogs" />
+            <End Role="NotificationBot" EntitySet="NotificationBots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationBot_NotificationItems" Association="Self.FK_NotificationBot_NotificationItems">
+            <End Role="NotificationItems" EntitySet="NotificationItems" />
+            <End Role="NotificationBot" EntitySet="NotificationBots" />
+          </AssociationSet>
           <AssociationSet Name="FK_NotificationItemsLog_NotificationItems" Association="Self.FK_NotificationItemsLog_NotificationItems">
             <End Role="NotificationItems" EntitySet="NotificationItems" />
             <End Role="NotificationItemsLog" EntitySet="NotificationItemsLogs" />
@@ -1031,6 +1134,10 @@
           <AssociationSet Name="FK_UsersServicesPermissions_Services" Association="Self.FK_UsersServicesPermissions_Services">
             <End Role="Services" EntitySet="Services" />
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Session_Users" Association="Self.FK_Session_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Session" EntitySet="Sessions" />
           </AssociationSet>
           <AssociationSet Name="FK_TabsItems_Tabs" Association="Self.FK_TabsItems_Tabs">
             <End Role="Tabs" EntitySet="Tabs" />
@@ -1044,114 +1151,8 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
-          <EntitySet Name="NotificationBots" EntityType="IndustrialMonitoringModel.NotificationBot" />
-          <AssociationSet Name="FK_NotificationBot_NotificationItems" Association="IndustrialMonitoringModel.FK_NotificationBot_NotificationItems">
-            <End Role="NotificationItem" EntitySet="NotificationItems" />
-            <End Role="NotificationBot" EntitySet="NotificationBots" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Notification_NotificationItemsLog" Association="IndustrialMonitoringModel.FK_Notification_NotificationItemsLog">
-            <End Role="NotificationItemsLog" EntitySet="NotificationItemsLogs" />
-            <End Role="NotificationBot" EntitySet="NotificationBots" />
-          </AssociationSet>
-          <EntitySet Name="FanCoilBots" EntityType="IndustrialMonitoringModel.FanCoilBot" />
-          <AssociationSet Name="FK_FanCoilBot_Users" Association="IndustrialMonitoringModel.FK_FanCoilBot_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="FanCoilBot" EntitySet="FanCoilBots" />
-          </AssociationSet>
-          <EntitySet Name="Sessions" EntityType="IndustrialMonitoringModel.Session" />
-          <AssociationSet Name="FK_Session_Users" Association="IndustrialMonitoringModel.FK_Session_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Session" EntitySet="Sessions" />
-          </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="NotificationBot">
-          <Key>
-            <PropertyRef Name="NotificationBotId" />
-          </Key>
-          <Property Name="NotificationBotId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NotificationId" Type="Int32" Nullable="false" />
-          <Property Name="WithoutAlarm" Type="Boolean" Nullable="false" />
-          <Property Name="RegisterTime" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="Delay" Type="Int32" Nullable="false" />
-          <Property Name="SentTime" Type="DateTime" Precision="7" />
-          <Property Name="IsSent" Type="Boolean" Nullable="false" />
-          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
-          <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="NotificationItem" Relationship="IndustrialMonitoringModel.FK_NotificationBot_NotificationItems" FromRole="NotificationBot" ToRole="NotificationItem" />
-          <Property Name="NotificationLogId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="NotificationItemsLog" Relationship="IndustrialMonitoringModel.FK_Notification_NotificationItemsLog" FromRole="NotificationBot" ToRole="NotificationItemsLog" />
-        </EntityType>
-        <Association Name="FK_NotificationBot_NotificationItems">
-          <End Type="IndustrialMonitoringModel.NotificationItem" Role="NotificationItem" Multiplicity="1" />
-          <End Type="IndustrialMonitoringModel.NotificationBot" Role="NotificationBot" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NotificationItem">
-              <PropertyRef Name="NotificationId" />
-            </Principal>
-            <Dependent Role="NotificationBot">
-              <PropertyRef Name="NotificationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Notification_NotificationItemsLog">
-          <End Type="IndustrialMonitoringModel.NotificationItemsLog" Role="NotificationItemsLog" Multiplicity="1" />
-          <End Type="IndustrialMonitoringModel.NotificationBot" Role="NotificationBot" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NotificationItemsLog">
-              <PropertyRef Name="NotificationLogId" />
-            </Principal>
-            <Dependent Role="NotificationBot">
-              <PropertyRef Name="NotificationLogId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="FanCoilBot">
-          <Key>
-            <PropertyRef Name="BotProcessId" />
-          </Key>
-          <Property Name="BotProcessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ChatId" Type="Int32" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_FanCoilBot_Users" FromRole="FanCoilBot" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_FanCoilBot_Users">
-          <End Type="IndustrialMonitoringModel.User" Role="User" Multiplicity="1" />
-          <End Type="IndustrialMonitoringModel.FanCoilBot" Role="FanCoilBot" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="FanCoilBot">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Session">
-          <Key>
-            <PropertyRef Name="SessionId" />
-          </Key>
-          <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="SessionKey" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsValid" Type="Boolean" Nullable="false" />
-          <Property Name="ValidUntil" Type="DateTime" Precision="7" />
-          <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_Session_Users" FromRole="Session" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_Session_Users">
-          <End Type="IndustrialMonitoringModel.User" Role="User" Multiplicity="1" />
-          <End Type="IndustrialMonitoringModel.Session" Role="Session" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Session">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        </Schema>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1169,10 +1170,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="FanCoilBots">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.FanCoilBot">
+              <MappingFragment StoreEntitySet="FanCoilBot">
+                <ScalarProperty Name="BotProcessId" ColumnName="BotProcessId" />
+                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="IsAuthorized" ColumnName="IsAuthorized" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
-                <ScalarProperty Name="InOut" ColumnName="InOut" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
                 <ScalarProperty Name="ItemType" ColumnName="ItemType" />
@@ -1196,6 +1207,7 @@
                 <ScalarProperty Name="NormalizeWhenOutOfRange" ColumnName="NormalizeWhenOutOfRange" />
                 <ScalarProperty Name="ThreadGroupId" ColumnName="ThreadGroupId" />
                 <ScalarProperty Name="NumberOfDataForBoxplot" ColumnName="NumberOfDataForBoxplot" />
+                <ScalarProperty Name="InOut" ColumnName="InOut" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1246,10 +1258,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NotificationBots">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationBot">
+              <MappingFragment StoreEntitySet="NotificationBot">
+                <ScalarProperty Name="NotificationBotId" ColumnName="NotificationBotId" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="NotificationLogId" ColumnName="NotificationLogId" />
+                <ScalarProperty Name="WithoutAlarm" ColumnName="WithoutAlarm" />
+                <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+                <ScalarProperty Name="Delay" ColumnName="Delay" />
+                <ScalarProperty Name="SentTime" ColumnName="SentTime" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="NotificationItems">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationItem">
               <MappingFragment StoreEntitySet="NotificationItems">
-                <ScalarProperty Name="DelayForSendingNotificationInTelegram" ColumnName="DelayForSendingNotificationInTelegram" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
@@ -1257,6 +1284,7 @@
                 <ScalarProperty Name="High" ColumnName="High" />
                 <ScalarProperty Name="NotificationMsg" ColumnName="NotificationMsg" />
                 <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="DelayForSendingNotificationInTelegram" ColumnName="DelayForSendingNotificationInTelegram" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1287,6 +1315,17 @@
               <MappingFragment StoreEntitySet="Services">
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
                 <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sessions">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.Session">
+              <MappingFragment StoreEntitySet="Session">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1332,10 +1371,10 @@
           <EntitySetMapping Name="UsersItemsPermissions">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.UsersItemsPermission">
               <MappingFragment StoreEntitySet="UsersItemsPermissions">
-                <ScalarProperty Name="ReceiveDelayedNotificationInTelegram" ColumnName="ReceiveDelayedNotificationInTelegram" />
                 <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ReceiveDelayedNotificationInTelegram" ColumnName="ReceiveDelayedNotificationInTelegram" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1345,44 +1384,6 @@
                 <ScalarProperty Name="UserServicePermissionId" ColumnName="UserServicePermissionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NotificationBots">
-            <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationBot">
-              <MappingFragment StoreEntitySet="NotificationBot">
-                <ScalarProperty Name="NotificationLogId" ColumnName="NotificationLogId" />
-                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
-                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
-                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
-                <ScalarProperty Name="SentTime" ColumnName="SentTime" />
-                <ScalarProperty Name="Delay" ColumnName="Delay" />
-                <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
-                <ScalarProperty Name="WithoutAlarm" ColumnName="WithoutAlarm" />
-                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
-                <ScalarProperty Name="NotificationBotId" ColumnName="NotificationBotId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FanCoilBots">
-            <EntityTypeMapping TypeName="IndustrialMonitoringModel.FanCoilBot">
-              <MappingFragment StoreEntitySet="FanCoilBot">
-                <ScalarProperty Name="IsAuthorized" ColumnName="IsAuthorized" />
-                <ScalarProperty Name="Token" ColumnName="Token" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ChatId" ColumnName="ChatId" />
-                <ScalarProperty Name="BotProcessId" ColumnName="BotProcessId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sessions">
-            <EntityTypeMapping TypeName="IndustrialMonitoringModel.Session">
-              <MappingFragment StoreEntitySet="Session">
-                <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
-                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
-                <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

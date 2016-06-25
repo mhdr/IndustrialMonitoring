@@ -17,9 +17,9 @@ namespace MonitoringServiceLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NotificationItem()
         {
+            this.NotificationBots = new HashSet<NotificationBot>();
             this.NotificationItemsLogs = new HashSet<NotificationItemsLog>();
             this.NotificationItemsLogLatests = new HashSet<NotificationItemsLogLatest>();
-            this.NotificationBots = new HashSet<NotificationBot>();
         }
     
         public int NotificationId { get; set; }
@@ -33,10 +33,10 @@ namespace MonitoringServiceLibrary
     
         public virtual Item Item { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NotificationBot> NotificationBots { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotificationItemsLog> NotificationItemsLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NotificationBot> NotificationBots { get; set; }
     }
 }

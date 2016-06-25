@@ -26,8 +26,8 @@ namespace MonitoringServiceLibrary
         public System.DateTime Time { get; set; }
         public byte[] TimeStamp { get; set; }
     
-        public virtual NotificationItem NotificationItem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotificationBot> NotificationBots { get; set; }
+        public virtual NotificationItem NotificationItem { get; set; }
     }
 }
