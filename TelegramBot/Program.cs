@@ -54,39 +54,55 @@ namespace TelegramBot
 
             while (true)
             {
-                Console.WriteLine("waiting for new connection...");
+                try
+                {
+                    Console.WriteLine("waiting for new connection...");
 
-                Socket newSocket = socket.Accept();
-                ThreadPool.QueueUserWorkItem((state => OnNewSocketAccept(newSocket)));
+                    Socket newSocket = socket.Accept();
+                    ThreadPool.QueueUserWorkItem((state => OnNewSocketAccept(newSocket)));
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogTelegramBot(ex);
+                }
+
             }
         }
 
         public static async Task SatrtQuartzScheduler()
         {
-            // construct a scheduler factory
-            ISchedulerFactory schedFact = new StdSchedulerFactory();
+            try
+            {
+                // construct a scheduler factory
+                ISchedulerFactory schedFact = new StdSchedulerFactory();
 
-            // get a scheduler
-            IScheduler sched = schedFact.GetScheduler();
-            sched.Start();
+                // get a scheduler
+                IScheduler sched = schedFact.GetScheduler();
+                sched.Start();
 
-            // define the job and tie it to our HelloJob class
-            IJobDetail job = JobBuilder.Create<FanCoilSwitchOff>()
-                .WithIdentity("SwitchOffFanCoil", "FanCoil")
-                .Build();
+                // define the job and tie it to our HelloJob class
+                IJobDetail job = JobBuilder.Create<FanCoilSwitchOff>()
+                    .WithIdentity("SwitchOffFanCoil", "FanCoil")
+                    .Build();
 
-            DateTime startTime=new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day,18,0,0);
-            
-            // Trigger the job to run now, and then every 24 hours
-            ITrigger trigger = TriggerBuilder.Create()
-              .WithIdentity("Trigger1", "group1")
-              .StartAt(new DateTimeOffset(startTime))
-              .WithSimpleSchedule(x => x
-                  .WithIntervalInHours(24)
-                  .RepeatForever())
-              .Build();
+                DateTime startTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 18, 0, 0);
 
-            sched.ScheduleJob(job, trigger);
+                // Trigger the job to run now, and then every 24 hours
+                ITrigger trigger = TriggerBuilder.Create()
+                  .WithIdentity("Trigger1", "group1")
+                  .StartAt(new DateTimeOffset(startTime))
+                  .WithSimpleSchedule(x => x
+                      .WithIntervalInHours(24)
+                      .RepeatForever())
+                  .Build();
+
+                sched.ScheduleJob(job, trigger);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogTelegramBot(ex);
+            }
+
         }
 
         public static async Task StartLatestLogMonitor()
@@ -99,56 +115,42 @@ namespace TelegramBot
 
             while (true)
             {
-                entities=new IndustrialMonitoringEntities();
-
-                string timestamp = "";
-
-                var items = entities.ItemsLogLatests;
-
-                foreach (ItemsLogLatest item in items)
+                try
                 {
-                    timestamp += item.Time.ToBinary();
-                }
-                timestamp = Hash.GetHash(timestamp);
+                    entities = new IndustrialMonitoringEntities();
 
-                var service =
-                        entities.Services.FirstOrDefault(x => x.ServiceName == "RecieveLatesLogMonitorInTelegram");
+                    string timestamp = "";
 
-                var users = entities.UsersServicesPermissions.Where(x => x.ServiceId == service.ServiceId);
+                    var items = entities.ItemsLogLatests;
 
-                List<int> chatIds = new List<int>();
-
-                foreach (UsersServicesPermission user in users)
-                {
-                    var userBot = entities.Bots.Where(x => x.UserId == user.UserId);
-
-                    foreach (Bot bt in userBot)
+                    foreach (ItemsLogLatest item in items)
                     {
-                        if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
+                        timestamp += item.Time.ToBinary();
                     }
-                }
+                    timestamp = Hash.GetHash(timestamp);
 
-                if (previousTimeStamp == timestamp)
-                {
-                    // system has error
+                    var service =
+                            entities.Services.FirstOrDefault(x => x.ServiceName == "RecieveLatesLogMonitorInTelegram");
 
-                    if (DateTime.Now - lastPeriodicSendTime > TimeSpan.FromHours(1))
+                    var users = entities.UsersServicesPermissions.Where(x => x.ServiceId == service.ServiceId);
+
+                    List<int> chatIds = new List<int>();
+
+                    foreach (UsersServicesPermission user in users)
                     {
-                        foreach (int chatId in chatIds)
+                        var userBot = entities.Bots.Where(x => x.UserId == user.UserId);
+
+                        foreach (Bot bt in userBot)
                         {
-                            var emoji = "\u2734";
-                            await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
-Time : {1}", emoji, DateTime.Now));
-                            await Task.Delay(100);
+                            if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
                         }
-
-                        lastPeriodicSendTime = DateTime.Now;
-
-                        Process.Start("shutdown.exe", "-f -r -t 0");
                     }
-                    else
+
+                    if (previousTimeStamp == timestamp)
                     {
-                        if (!earlyAlertSent)
+                        // system has error
+
+                        if (DateTime.Now - lastPeriodicSendTime > TimeSpan.FromHours(1))
                         {
                             foreach (int chatId in chatIds)
                             {
@@ -158,31 +160,52 @@ Time : {1}", emoji, DateTime.Now));
                                 await Task.Delay(100);
                             }
 
-                            earlyAlertSent = true;
+                            lastPeriodicSendTime = DateTime.Now;
+
+                            Process.Start("shutdown.exe", "-f -r -t 0");
                         }
-                    }
-                }
-                else
-                {
-                    if (DateTime.Now - lastPeriodicSendTime > TimeSpan.FromHours(1))
-                    {
-                        foreach (int chatId in chatIds)
+                        else
                         {
-                            var emoji = "\u2733";
-                            await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
+                            if (!earlyAlertSent)
+                            {
+                                foreach (int chatId in chatIds)
+                                {
+                                    var emoji = "\u2734";
+                                    await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
 Time : {1}", emoji, DateTime.Now));
-                            await Task.Delay(100);
+                                    await Task.Delay(100);
+                                }
+
+                                earlyAlertSent = true;
+                            }
                         }
-
-                        // reset early alert
-                        earlyAlertSent = false;
-
-                        lastPeriodicSendTime = DateTime.Now;
                     }
-                }
+                    else
+                    {
+                        if (DateTime.Now - lastPeriodicSendTime > TimeSpan.FromHours(1))
+                        {
+                            foreach (int chatId in chatIds)
+                            {
+                                var emoji = "\u2733";
+                                await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
+Time : {1}", emoji, DateTime.Now));
+                                await Task.Delay(100);
+                            }
 
-                previousTimeStamp = timestamp;
-                await Task.Delay(2*60*1000);
+                            // reset early alert
+                            earlyAlertSent = false;
+
+                            lastPeriodicSendTime = DateTime.Now;
+                        }
+                    }
+
+                    previousTimeStamp = timestamp;
+                    await Task.Delay(2 * 60 * 1000);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogTelegramBot(ex);
+                }
             }
         }
 
@@ -1248,25 +1271,35 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
 
         public static List<int> RecieveReportForTechnicalFanCoilChatIds()
         {
-            var entities=new IndustrialMonitoringEntities();
-            var service =
-        entities.Services.FirstOrDefault(x => x.ServiceName == "RecieveReportForTechnicalFanCoil");
-
-            var users = entities.UsersServicesPermissions.Where(x => x.ServiceId == service.ServiceId);
-
-            List<int> chatIds = new List<int>();
-
-            foreach (UsersServicesPermission u in users)
+            try
             {
-                var userBot = entities.FanCoilBots.Where(x => x.UserId == u.UserId);
+                var entities = new IndustrialMonitoringEntities();
+                var service =
+            entities.Services.FirstOrDefault(x => x.ServiceName == "RecieveReportForTechnicalFanCoil");
 
-                foreach (var bt in userBot)
+                var users = entities.UsersServicesPermissions.Where(x => x.ServiceId == service.ServiceId);
+
+                List<int> chatIds = new List<int>();
+
+                foreach (UsersServicesPermission u in users)
                 {
-                    if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
-                }
-            }
+                    var userBot = entities.FanCoilBots.Where(x => x.UserId == u.UserId);
 
-            return chatIds;
+                    foreach (var bt in userBot)
+                    {
+                        if (bt.ChatId != null) chatIds.Add(bt.ChatId.Value);
+                    }
+                }
+
+                return chatIds;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogTelegramBot(ex);
+            }
+            
+
+            return new List<int>();
         }
 
         public static void StartFanCoilMobileServer()
@@ -1279,10 +1312,19 @@ Date : {7}", i, count, notificationLog.ItemName, notificationLog.ItemId, categor
 
             while (true)
             {
-                Console.WriteLine("waiting for new connection...");
+                try
+                {
+                    Console.WriteLine("waiting for new connection...");
 
-                Socket newSocket = socket.Accept();
-                ThreadPool.QueueUserWorkItem((state => OnNewSocketAccept(newSocket)));
+                    Socket newSocket = socket.Accept();
+                    ThreadPool.QueueUserWorkItem((state => OnNewSocketAccept(newSocket)));
+                }
+                catch (Exception ex)
+                {
+                    
+                    Logger.LogTelegramBot(ex);
+                }
+
             }
         }
 
