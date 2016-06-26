@@ -1,0 +1,9 @@
+﻿<Properties StartupItem="MonitoringAndroid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.ItemProperties.MonitoringAndroid PreferredExecutionTarget="Android.16" />
+</Properties>
