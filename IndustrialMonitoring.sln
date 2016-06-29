@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echo", "Echo\Echo.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringAndroid", "MonitoringAndroid\MonitoringAndroid.csproj", "{3CA153B4-12C9-451B-8AD2-B2A91A9A00C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchiveLogs", "ArchiveLogs\ArchiveLogs.csproj", "{99459952-2FC9-48FC-8530-1A007E82357B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{3CA153B4-12C9-451B-8AD2-B2A91A9A00C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CA153B4-12C9-451B-8AD2-B2A91A9A00C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CA153B4-12C9-451B-8AD2-B2A91A9A00C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99459952-2FC9-48FC-8530-1A007E82357B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99459952-2FC9-48FC-8530-1A007E82357B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99459952-2FC9-48FC-8530-1A007E82357B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99459952-2FC9-48FC-8530-1A007E82357B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

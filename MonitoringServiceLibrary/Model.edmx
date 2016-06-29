@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bot">
           <Key>
             <PropertyRef Name="BotProcessId" />
@@ -56,6 +56,16 @@
           <Property Name="InOut" Type="int" />
         </EntityType>
         <EntityType Name="ItemsLog">
+          <Key>
+            <PropertyRef Name="ItemLogId" />
+          </Key>
+          <Property Name="ItemLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemsLogArchive">
           <Key>
             <PropertyRef Name="ItemLogId" />
           </Key>
@@ -263,6 +273,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ItemsLogArcgive_Items">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="ItemsLogArchive" Type="Self.ItemsLogArchive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="ItemsLogArchive">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemsLogLatest_Items">
           <End Role="Items" Type="Self.Items" Multiplicity="1" />
           <End Role="ItemsLogLatest" Type="Self.ItemsLogLatest" Multiplicity="*" />
@@ -460,6 +482,7 @@
           <EntitySet Name="FanCoilBot" EntityType="Self.FanCoilBot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLog" EntityType="Self.ItemsLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemsLogArchive" EntityType="Self.ItemsLogArchive" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogLatest" EntityType="Self.ItemsLogLatest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogRawData" EntityType="Self.ItemsLogRawData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LogOutliers" EntityType="Self.LogOutliers" Schema="dbo" store:Type="Tables" />
@@ -490,6 +513,10 @@
           <AssociationSet Name="FK_ItemsLog_Items" Association="Self.FK_ItemsLog_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLog" EntitySet="ItemsLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsLogArcgive_Items" Association="Self.FK_ItemsLogArcgive_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemsLogArchive" EntitySet="ItemsLogArchive" />
           </AssociationSet>
           <AssociationSet Name="FK_ItemsLogLatest_Items" Association="Self.FK_ItemsLogLatest_Items">
             <End Role="Items" EntitySet="Items" />
@@ -556,8 +583,7 @@
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IndustrialMonitoringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -620,6 +646,7 @@
           <NavigationProperty Name="NotificationItems" Relationship="Self.FK_NotificationItems_Items" FromRole="Items" ToRole="NotificationItems" />
           <NavigationProperty Name="TabsItems" Relationship="Self.FK_TabsItems_Items" FromRole="Items" ToRole="TabsItems" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="Items" ToRole="UsersItemsPermissions" />
+          <NavigationProperty Name="ItemsLogArchives" Relationship="IndustrialMonitoringModel.FK_ItemsLogArcgive_Items" FromRole="Item" ToRole="ItemsLogArchive" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -1151,7 +1178,35 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
+          <EntitySet Name="ItemsLogArchives" EntityType="IndustrialMonitoringModel.ItemsLogArchive" />
+          <AssociationSet Name="FK_ItemsLogArcgive_Items" Association="IndustrialMonitoringModel.FK_ItemsLogArcgive_Items">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="ItemsLogArchive" EntitySet="ItemsLogArchives" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ItemsLogArchive">
+          <Key>
+            <PropertyRef Name="ItemLogId" />
+          </Key>
+          <Property Name="ItemLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Item" Relationship="IndustrialMonitoringModel.FK_ItemsLogArcgive_Items" FromRole="ItemsLogArchive" ToRole="Item" />
+        </EntityType>
+        <Association Name="FK_ItemsLogArcgive_Items">
+          <End Type="IndustrialMonitoringModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.ItemsLogArchive" Role="ItemsLogArchive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="ItemsLogArchive">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1384,6 +1439,17 @@
                 <ScalarProperty Name="UserServicePermissionId" ColumnName="UserServicePermissionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsLogArchives">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.ItemsLogArchive">
+              <MappingFragment StoreEntitySet="ItemsLogArchive">
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ItemLogId" ColumnName="ItemLogId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

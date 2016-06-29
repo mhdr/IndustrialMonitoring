@@ -99,6 +99,9 @@ namespace HostConsole
             host7.Open();
             host8.Open();
 
+
+
+
             Console.ReadKey();
 
             host1.Close();
@@ -111,5 +114,7 @@ namespace HostConsole
             host7.Close();
             host8.Close();
         }
+
+
     }
 }

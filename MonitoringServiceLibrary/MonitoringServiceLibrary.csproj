@@ -134,6 +134,9 @@
     <Compile Include="ItemsLog.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ItemsLogArchive.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ItemsLogLatest.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -141,6 +144,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="IUserService.cs" />
+    <Compile Include="Jobs\ArchiveItemsLog.cs" />
     <Compile Include="Jobs\FanCoilSwitchOff.cs" />
     <Compile Include="LogOutlier.cs">
       <DependentUpon>Model.tt</DependentUpon>

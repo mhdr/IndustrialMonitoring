@@ -206,9 +206,27 @@ namespace MonitoringServiceLibrary
             var Entities = new IndustrialMonitoringEntities();
             List<ItemsLogChartHistoryViewModel> result = new List<ItemsLogChartHistoryViewModel>();
 
-            var itemsLog = Entities.ItemsLogs.Where(x => x.ItemId == itemId & x.Time>=startDate & x.Time<=endDate).OrderBy(x=>x.ItemLogId);
+            var itemsLog1 = Entities.ItemsLogs.Where(x => x.ItemId == itemId & x.Time >= startDate & x.Time <= endDate).OrderBy(x => x.ItemLogId);
+            var itemsLog2 = Entities.ItemsLogArchives.Where(x => x.ItemId == itemId & x.Time>=startDate & x.Time<=endDate).OrderBy(x=>x.ItemLogId);
 
-            foreach (var log in itemsLog)
+            List<ItemsLog> itemsLog=new List<ItemsLog>();
+
+            itemsLog.AddRange(itemsLog1);
+
+            foreach (ItemsLogArchive itemsLogArchive in itemsLog2)
+            {
+                ItemsLog log2 = new ItemsLog();
+                log2.ItemId = itemsLogArchive.ItemId;
+                log2.Value = itemsLogArchive.Value;
+                log2.Time = itemsLogArchive.Time;
+                log2.ItemLogId = itemsLogArchive.ItemLogId;
+
+                itemsLog.Add(log2);
+            }
+
+            var itemsLogAll = itemsLog.OrderBy(x => x.Time);
+
+            foreach (var log in itemsLogAll)
             {
                 result.Add(new ItemsLogChartHistoryViewModel(log));
             }

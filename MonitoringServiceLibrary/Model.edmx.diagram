@@ -44,6 +44,8 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogArchive" Width="1.5" PointX="5.25" PointY="28.625" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogArcgive_Items" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

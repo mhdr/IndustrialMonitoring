@@ -24,6 +24,7 @@ namespace MonitoringServiceLibrary
             this.NotificationItems = new HashSet<NotificationItem>();
             this.TabsItems = new HashSet<TabsItem>();
             this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
+            this.ItemsLogArchives = new HashSet<ItemsLogArchive>();
         }
     
         public int ItemId { get; set; }
@@ -66,5 +67,7 @@ namespace MonitoringServiceLibrary
         public virtual ICollection<TabsItem> TabsItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemsLogArchive> ItemsLogArchives { get; set; }
     }
 }

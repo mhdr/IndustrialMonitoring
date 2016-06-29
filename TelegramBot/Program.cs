@@ -33,6 +33,7 @@ namespace TelegramBot
             StartLatestLogMonitor();
             StartTechnicalFanCoilBot();
             SatrtQuartzScheduler();
+            SatrtQuartzSchedulerForArchive();
 
             Thread thread=new Thread(()=>StartFanCoilMobileServer());
             thread.Start();
@@ -105,6 +106,39 @@ namespace TelegramBot
                 Logger.LogTelegramBot(ex);
             }
 
+        }
+
+        public static async Task SatrtQuartzSchedulerForArchive()
+        {
+            try
+            {
+                // construct a scheduler factory
+                ISchedulerFactory schedFact = new StdSchedulerFactory();
+
+                // get a scheduler
+                IScheduler sched = schedFact.GetScheduler();
+                sched.Start();
+
+                // define the job and tie it to our HelloJob class
+                IJobDetail job = JobBuilder.Create<ArchiveItemsLog>()
+                    .WithIdentity("ArchiveItems", "Items")
+                    .Build();
+
+                // Trigger the job to run now, and then every 24 hours
+                ITrigger trigger = TriggerBuilder.Create()
+                  .WithIdentity("Trigger2", "group2")
+                  .StartNow()
+                  .WithSimpleSchedule(x => x
+                      .WithIntervalInHours(1)
+                      .RepeatForever())
+                  .Build();
+
+                sched.ScheduleJob(job, trigger);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogTelegramBot(ex);
+            }
         }
 
         public static async Task StartLatestLogMonitor()
