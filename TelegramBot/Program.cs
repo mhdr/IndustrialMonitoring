@@ -124,7 +124,7 @@ namespace TelegramBot
                     .WithIdentity("ArchiveItems", "Items")
                     .Build();
 
-                // Trigger the job to run now, and then every 24 hours
+                // Trigger the job to run now, and then every 1 hours
                 ITrigger trigger = TriggerBuilder.Create()
                   .WithIdentity("Trigger2", "group2")
                   .StartNow()

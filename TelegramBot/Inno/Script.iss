@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Telegram Bot"
-#define MyAppVersion "3.0"
+#define MyAppVersion "3.3"
 #define MyAppPublisher "My Company, Inc."
 #define MyAppURL "http://www.example.com/"
 #define MyAppExeName "TelegramBot.exe"
@@ -11,7 +11,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{E1998F56-8038-4848-8322-6BB6BE28B2BD}
+AppId={{2A3F7B80-BE04-4FED-83E8-4D409CF0E8CE}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -78,8 +78,10 @@ Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\Telegram
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.exe.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.vshost.application"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.vshost.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.vshost.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Administrator\Documents\Projects\IndustrialMonitoring\TelegramBot\bin\Release\TelegramBot.vshost.exe.manifest"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
