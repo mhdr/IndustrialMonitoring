@@ -17,6 +17,7 @@ namespace MonitoringServiceLibrary.Jobs
                 DateTime now = DateTime.Now;
 
                 DateTime timeToArchive = now - new TimeSpan(0, 1, 0, 0);
+                DateTime timeToRemoveGarbage = now - new TimeSpan(1, 0, 0, 0);
 
                 IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
 
@@ -35,6 +36,21 @@ namespace MonitoringServiceLibrary.Jobs
 
                 entities.ItemsLogArchives.AddRange(allItems);
                 entities.ItemsLogs.RemoveRange(items);
+
+                var itemsToRemove1 = entities.ItemsLogRawDatas.Where(x => x.Time < timeToArchive);
+
+                if (itemsToRemove1.Any())
+                {
+                    entities.ItemsLogRawDatas.RemoveRange(itemsToRemove1);
+                }
+
+                var itemsToRemove2 = entities.LogOutliers.Where(x => x.Time < timeToRemoveGarbage);
+
+                if (itemsToRemove2.Any())
+                {
+                    entities.LogOutliers.RemoveRange(itemsToRemove2);
+                }
+
                 entities.SaveChanges();
             }
             catch (Exception ex)
