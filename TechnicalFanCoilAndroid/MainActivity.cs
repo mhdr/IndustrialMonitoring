@@ -264,6 +264,8 @@ namespace TechnicalFanCoilAndroid
                 radioButtonMotor2Speed1.Enabled = true;
                 radioButtonMotor2Speed2.Enabled = true;
                 radioButtonMotor2Speed3.Enabled = true;
+
+                radioButtonMotor2Speed1.Checked = true;
             }
             else
             {
@@ -281,6 +283,8 @@ namespace TechnicalFanCoilAndroid
                 radioButtonMotor1Speed1.Enabled = true;
                 radioButtonMotor1Speed2.Enabled = true;
                 radioButtonMotor1Speed3.Enabled = true;
+
+                radioButtonMotor1Speed1.Checked = true;
             }
             else
             {
