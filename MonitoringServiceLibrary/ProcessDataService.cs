@@ -189,7 +189,7 @@ namespace MonitoringServiceLibrary
             var Entities = new IndustrialMonitoringEntities();
             List<Item1> result = new List<Item1>();
 
-            var tabsItem = Entities.TabsItems.Where(x => x.TabId == tabId).OrderBy(x=>x.Item.Order);
+            var tabsItem = Entities.TabsItems.Where(x => x.TabId == tabId).OrderBy(x=>x.Item.ItemName);
 
             foreach (var item in tabsItem)
             {

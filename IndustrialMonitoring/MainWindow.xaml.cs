@@ -206,7 +206,7 @@ namespace IndustrialMonitoring
                 radTabItem.Content = wrapPanel;
 
                 TabControlIOs.Items.Add(radTabItem);
-
+                
                 foreach (var itemsAioViewModel in items)
                 {
                     if (!UserServiceClient.CheckPermission(Lib.Static.CurrentUser.UserId, itemsAioViewModel.ItemId))
@@ -222,7 +222,7 @@ namespace IndustrialMonitoring
 
 
                     // TODO Parameter
-                    chartLiveData.Width = 240;
+                    //chartLiveData.Width = 280;
 
                     // TODO Parameter
                     chartLiveData.Height = 200;

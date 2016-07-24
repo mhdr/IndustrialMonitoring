@@ -277,6 +277,12 @@ namespace IndustrialMonitoring
             }
         }
 
+        public int GetWidthOfTitle()
+        {
+            int value = TextBlockTitle.Text.Length;
+            return value;
+        }
+
         private void ShowAnimationUI()
         {
             try
@@ -301,5 +307,19 @@ namespace IndustrialMonitoring
                 Logger.LogIndustrialMonitoring(ex);
             }
         }
+
+        //private void TextBlockTitle_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        //{
+        //    double size = TextBlockTitle.Width + 20;
+
+        //    if (size <= 240)
+        //    {
+        //        this.Width = 240;
+        //    }
+        //    else
+        //    {
+        //        this.Width = TextBlockTitle.Width + 10;
+        //    }
+        //}
     }
 }
