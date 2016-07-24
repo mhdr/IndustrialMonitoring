@@ -42,10 +42,12 @@ namespace MonitoringAdmin
             foreach (Item item in items)
             {
                 var tab = Entities.TabsItems.FirstOrDefault(x => x.ItemId == item.ItemId);
-                string name = string.Format("{0} - {1}", tab.Tab.TabName, item.ItemName);
-                ItemTabViewModel itemTabViewModel=new ItemTabViewModel(item.ItemId,tab.TabId,name);
-
-                source.Add(itemTabViewModel);
+                if (tab != null)
+                {
+                    string name = string.Format("{0} - {1}", tab.Tab.TabName, item.ItemName);
+                    ItemTabViewModel itemTabViewModel = new ItemTabViewModel(item.ItemId, tab.TabId, name);
+                    source.Add(itemTabViewModel);
+                }
             }
 
             ComboBoxItems.ItemsSource = source.OrderBy(x=>x.Name);
