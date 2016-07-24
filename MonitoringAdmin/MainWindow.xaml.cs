@@ -174,5 +174,11 @@ namespace MonitoringAdmin
             WindowNotifications windowNotifications=new WindowNotifications();
             windowNotifications.Show();
         }
+
+        private void MenuItemNewBACnet_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            WindowAddBACnet windowAddBaCnet=new WindowAddBACnet();
+            windowAddBaCnet.Show();
+        }
     }
 }

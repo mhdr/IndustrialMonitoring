@@ -12,22 +12,20 @@ namespace MonitoringAdmin
     using System;
     using System.Collections.Generic;
     
-    public partial class NotificationItemsLog
+    public partial class NotificationBot
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NotificationItemsLog()
-        {
-            this.NotificationBots = new HashSet<NotificationBot>();
-        }
-    
-        public int NotificationLogId { get; set; }
+        public int NotificationBotId { get; set; }
         public int NotificationId { get; set; }
-        public bool Value { get; set; }
-        public System.DateTime Time { get; set; }
+        public int NotificationLogId { get; set; }
+        public bool WithoutAlarm { get; set; }
+        public System.DateTime RegisterTime { get; set; }
+        public int Delay { get; set; }
+        public Nullable<System.DateTime> SentTime { get; set; }
+        public bool IsSent { get; set; }
+        public bool IsCompleted { get; set; }
         public byte[] TimeStamp { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NotificationBot> NotificationBots { get; set; }
+        public virtual NotificationItemsLog NotificationItemsLog { get; set; }
         public virtual NotificationItem NotificationItem { get; set; }
     }
 }

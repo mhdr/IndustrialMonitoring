@@ -12,13 +12,14 @@ namespace MonitoringAdmin
     using System;
     using System.Collections.Generic;
     
-    public partial class BotQueue
+    public partial class Session
     {
-        public int BotQueueId { get; set; }
-        public int QueueDirection { get; set; }
-        public int ChatId { get; set; }
-        public string MessageText { get; set; }
-        public bool IsCompleted { get; set; }
-        public System.DateTime Date { get; set; }
+        public int SessionId { get; set; }
+        public int UserId { get; set; }
+        public string SessionKey { get; set; }
+        public bool IsValid { get; set; }
+        public Nullable<System.DateTime> ValidUntil { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }

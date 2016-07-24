@@ -16,16 +16,15 @@
           <Property Name="IsAuthorized" Type="bit" Nullable="false" />
           <Property Name="ReceiveAlarms" Type="bit" />
         </EntityType>
-        <EntityType Name="BotQueue">
+        <EntityType Name="FanCoilBot">
           <Key>
-            <PropertyRef Name="BotQueueId" />
+            <PropertyRef Name="BotProcessId" />
           </Key>
-          <Property Name="BotQueueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="QueueDirection" Type="int" Nullable="false" />
-          <Property Name="ChatId" Type="int" Nullable="false" />
-          <Property Name="MessageText" Type="nvarchar(max)" />
-          <Property Name="IsCompleted" Type="bit" Nullable="false" />
-          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="BotProcessId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChatId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Token" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsAuthorized" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Items">
           <Key>
@@ -53,8 +52,20 @@
           <Property Name="MaxRange" Type="nvarchar" MaxLength="50" />
           <Property Name="NormalizeWhenOutOfRange" Type="bit" />
           <Property Name="ThreadGroupId" Type="int" />
+          <Property Name="NumberOfDataForBoxplot" Type="int" />
+          <Property Name="InOut" Type="int" />
         </EntityType>
         <EntityType Name="ItemsLog">
+          <Key>
+            <PropertyRef Name="ItemLogId" />
+          </Key>
+          <Property Name="ItemLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemsLogArchive">
           <Key>
             <PropertyRef Name="ItemLogId" />
           </Key>
@@ -83,6 +94,34 @@
           <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="OutlierId" Type="int" />
+        </EntityType>
+        <EntityType Name="LogOutliers">
+          <Key>
+            <PropertyRef Name="OutlierId" />
+          </Key>
+          <Property Name="OutlierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="IQR" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LQR" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UQR" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationBot">
+          <Key>
+            <PropertyRef Name="NotificationBotId" />
+          </Key>
+          <Property Name="NotificationBotId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NotificationId" Type="int" Nullable="false" />
+          <Property Name="NotificationLogId" Type="int" Nullable="false" />
+          <Property Name="WithoutAlarm" Type="bit" Nullable="false" />
+          <Property Name="RegisterTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Delay" Type="int" Nullable="false" />
+          <Property Name="SentTime" Type="datetime2" Precision="7" />
+          <Property Name="IsSent" Type="bit" Nullable="false" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="NotificationItems">
           <Key>
@@ -95,6 +134,7 @@
           <Property Name="High" Type="float" />
           <Property Name="NotificationMsg" Type="nvarchar(max)" />
           <Property Name="Priority" Type="int" />
+          <Property Name="DelayForSendingNotificationInTelegram" Type="int" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -116,20 +156,22 @@
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <EntityType Name="RelatedNotifications">
-          <Key>
-            <PropertyRef Name="RelationId" />
-          </Key>
-          <Property Name="RelationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NotificationIdParent" Type="int" Nullable="false" />
-          <Property Name="NotificationIdChild" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Services">
           <Key>
             <PropertyRef Name="ServiceId" />
           </Key>
           <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="SessionKey" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+          <Property Name="ValidUntil" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="Tabs">
           <Key>
@@ -173,6 +215,7 @@
           <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="ReceiveDelayedNotificationInTelegram" Type="bit" />
         </EntityType>
         <EntityType Name="UsersServicesPermissions">
           <Key>
@@ -190,6 +233,18 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Bot">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FanCoilBot_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="FanCoilBot" Type="Self.FanCoilBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FanCoilBot">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -218,6 +273,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ItemsLogArcgive_Items">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="ItemsLogArchive" Type="Self.ItemsLogArchive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="ItemsLogArchive">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemsLogLatest_Items">
           <End Role="Items" Type="Self.Items" Multiplicity="1" />
           <End Role="ItemsLogLatest" Type="Self.ItemsLogLatest" Multiplicity="*" />
@@ -239,6 +306,54 @@
             </Principal>
             <Dependent Role="ItemsLogRawData">
               <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemsLogRawData_LogOutleirs">
+          <End Role="LogOutliers" Type="Self.LogOutliers" Multiplicity="0..1" />
+          <End Role="ItemsLogRawData" Type="Self.ItemsLogRawData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogOutliers">
+              <PropertyRef Name="OutlierId" />
+            </Principal>
+            <Dependent Role="ItemsLogRawData">
+              <PropertyRef Name="OutlierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogOutliers_Items">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="LogOutliers" Type="Self.LogOutliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="LogOutliers">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_NotificationItemsLog">
+          <End Role="NotificationItemsLog" Type="Self.NotificationItemsLog" Multiplicity="1" />
+          <End Role="NotificationBot" Type="Self.NotificationBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItemsLog">
+              <PropertyRef Name="NotificationLogId" />
+            </Principal>
+            <Dependent Role="NotificationBot">
+              <PropertyRef Name="NotificationLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationBot_NotificationItems">
+          <End Role="NotificationItems" Type="Self.NotificationItems" Multiplicity="1" />
+          <End Role="NotificationBot" Type="Self.NotificationBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItems">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="NotificationBot">
+              <PropertyRef Name="NotificationId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -278,27 +393,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RelatedNotifications_NotificationItems">
-          <End Role="NotificationItems" Type="Self.NotificationItems" Multiplicity="1" />
-          <End Role="RelatedNotifications" Type="Self.RelatedNotifications" Multiplicity="*" />
+        <Association Name="FK_Session_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="NotificationItems">
-              <PropertyRef Name="NotificationId" />
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="RelatedNotifications">
-              <PropertyRef Name="NotificationIdParent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RelatedNotifications_NotificationItems2">
-          <End Role="NotificationItems" Type="Self.NotificationItems" Multiplicity="1" />
-          <End Role="RelatedNotifications" Type="Self.RelatedNotifications" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NotificationItems">
-              <PropertyRef Name="NotificationId" />
-            </Principal>
-            <Dependent Role="RelatedNotifications">
-              <PropertyRef Name="NotificationIdChild" />
+            <Dependent Role="Session">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -376,16 +479,19 @@
         </Association>
         <EntityContainer Name="IndustrialMonitoringModelStoreContainer">
           <EntitySet Name="Bot" EntityType="Self.Bot" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BotQueue" EntityType="Self.BotQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FanCoilBot" EntityType="Self.FanCoilBot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLog" EntityType="Self.ItemsLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemsLogArchive" EntityType="Self.ItemsLogArchive" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogLatest" EntityType="Self.ItemsLogLatest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsLogRawData" EntityType="Self.ItemsLogRawData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogOutliers" EntityType="Self.LogOutliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationBot" EntityType="Self.NotificationBot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItems" EntityType="Self.NotificationItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLog" EntityType="Self.NotificationItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLogLatest" EntityType="Self.NotificationItemsLogLatest" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RelatedNotifications" EntityType="Self.RelatedNotifications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tabs" EntityType="Self.Tabs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TabsItems" EntityType="Self.TabsItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThreadGroup" EntityType="Self.ThreadGroup" Schema="dbo" store:Type="Tables" />
@@ -396,6 +502,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Bot" EntitySet="Bot" />
           </AssociationSet>
+          <AssociationSet Name="FK_FanCoilBot_Users" Association="Self.FK_FanCoilBot_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FanCoilBot" EntitySet="FanCoilBot" />
+          </AssociationSet>
           <AssociationSet Name="FK_Items_ThreadGroup" Association="Self.FK_Items_ThreadGroup">
             <End Role="ThreadGroup" EntitySet="ThreadGroup" />
             <End Role="Items" EntitySet="Items" />
@@ -404,6 +514,10 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLog" EntitySet="ItemsLog" />
           </AssociationSet>
+          <AssociationSet Name="FK_ItemsLogArcgive_Items" Association="Self.FK_ItemsLogArcgive_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemsLogArchive" EntitySet="ItemsLogArchive" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemsLogLatest_Items" Association="Self.FK_ItemsLogLatest_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLogLatest" EntitySet="ItemsLogLatest" />
@@ -411,6 +525,22 @@
           <AssociationSet Name="FK_ItemsLogRawData_Items" Association="Self.FK_ItemsLogRawData_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLogRawData" EntitySet="ItemsLogRawData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemsLogRawData_LogOutleirs" Association="Self.FK_ItemsLogRawData_LogOutleirs">
+            <End Role="LogOutliers" EntitySet="LogOutliers" />
+            <End Role="ItemsLogRawData" EntitySet="ItemsLogRawData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogOutliers_Items" Association="Self.FK_LogOutliers_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="LogOutliers" EntitySet="LogOutliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_NotificationItemsLog" Association="Self.FK_Notification_NotificationItemsLog">
+            <End Role="NotificationItemsLog" EntitySet="NotificationItemsLog" />
+            <End Role="NotificationBot" EntitySet="NotificationBot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationBot_NotificationItems" Association="Self.FK_NotificationBot_NotificationItems">
+            <End Role="NotificationItems" EntitySet="NotificationItems" />
+            <End Role="NotificationBot" EntitySet="NotificationBot" />
           </AssociationSet>
           <AssociationSet Name="FK_NotificationItems_Items" Association="Self.FK_NotificationItems_Items">
             <End Role="Items" EntitySet="Items" />
@@ -424,13 +554,9 @@
             <End Role="NotificationItems" EntitySet="NotificationItems" />
             <End Role="NotificationItemsLogLatest" EntitySet="NotificationItemsLogLatest" />
           </AssociationSet>
-          <AssociationSet Name="FK_RelatedNotifications_NotificationItems" Association="Self.FK_RelatedNotifications_NotificationItems">
-            <End Role="NotificationItems" EntitySet="NotificationItems" />
-            <End Role="RelatedNotifications" EntitySet="RelatedNotifications" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RelatedNotifications_NotificationItems2" Association="Self.FK_RelatedNotifications_NotificationItems2">
-            <End Role="NotificationItems" EntitySet="NotificationItems" />
-            <End Role="RelatedNotifications" EntitySet="RelatedNotifications" />
+          <AssociationSet Name="FK_Session_Users" Association="Self.FK_Session_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Session" EntitySet="Session" />
           </AssociationSet>
           <AssociationSet Name="FK_TabsItems_Items" Association="Self.FK_TabsItems_Items">
             <End Role="Items" EntitySet="Items" />
@@ -474,16 +600,16 @@
           <Property Name="ReceiveAlarms" Type="Boolean" />
           <NavigationProperty Name="User" Relationship="Self.FK_Bot_Users" FromRole="Bot" ToRole="Users" />
         </EntityType>
-        <EntityType Name="BotQueue">
+        <EntityType Name="FanCoilBot">
           <Key>
-            <PropertyRef Name="BotQueueId" />
+            <PropertyRef Name="BotProcessId" />
           </Key>
-          <Property Name="BotQueueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="QueueDirection" Type="Int32" Nullable="false" />
-          <Property Name="ChatId" Type="Int32" Nullable="false" />
-          <Property Name="MessageText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="BotProcessId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChatId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsAuthorized" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_FanCoilBot_Users" FromRole="FanCoilBot" ToRole="Users" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -511,10 +637,14 @@
           <Property Name="MaxRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NormalizeWhenOutOfRange" Type="Boolean" />
           <Property Name="ThreadGroupId" Type="Int32" />
+          <Property Name="NumberOfDataForBoxplot" Type="Int32" />
+          <Property Name="InOut" Type="Int32" />
           <NavigationProperty Name="ThreadGroup" Relationship="Self.FK_Items_ThreadGroup" FromRole="Items" ToRole="ThreadGroup" />
           <NavigationProperty Name="ItemsLogs" Relationship="Self.FK_ItemsLog_Items" FromRole="Items" ToRole="ItemsLog" />
+          <NavigationProperty Name="ItemsLogArchives" Relationship="Self.FK_ItemsLogArcgive_Items" FromRole="Items" ToRole="ItemsLogArchive" />
           <NavigationProperty Name="ItemsLogLatests" Relationship="Self.FK_ItemsLogLatest_Items" FromRole="Items" ToRole="ItemsLogLatest" />
           <NavigationProperty Name="ItemsLogRawDatas" Relationship="Self.FK_ItemsLogRawData_Items" FromRole="Items" ToRole="ItemsLogRawData" />
+          <NavigationProperty Name="LogOutliers" Relationship="Self.FK_LogOutliers_Items" FromRole="Items" ToRole="LogOutliers" />
           <NavigationProperty Name="NotificationItems" Relationship="Self.FK_NotificationItems_Items" FromRole="Items" ToRole="NotificationItems" />
           <NavigationProperty Name="TabsItems" Relationship="Self.FK_TabsItems_Items" FromRole="Items" ToRole="TabsItems" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="Items" ToRole="UsersItemsPermissions" />
@@ -529,6 +659,17 @@
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Item" Relationship="Self.FK_ItemsLog_Items" FromRole="ItemsLog" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="ItemsLogArchive">
+          <Key>
+            <PropertyRef Name="ItemLogId" />
+          </Key>
+          <Property Name="ItemLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_ItemsLogArcgive_Items" FromRole="ItemsLogArchive" ToRole="Items" />
         </EntityType>
         <EntityType Name="ItemsLogLatest">
           <Key>
@@ -550,7 +691,40 @@
           <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="OutlierId" Type="Int32" />
           <NavigationProperty Name="Item" Relationship="Self.FK_ItemsLogRawData_Items" FromRole="ItemsLogRawData" ToRole="Items" />
+          <NavigationProperty Name="LogOutlier" Relationship="Self.FK_ItemsLogRawData_LogOutleirs" FromRole="ItemsLogRawData" ToRole="LogOutliers" />
+        </EntityType>
+        <EntityType Name="LogOutlier">
+          <Key>
+            <PropertyRef Name="OutlierId" />
+          </Key>
+          <Property Name="OutlierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="IQR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LQR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UQR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Item" Relationship="Self.FK_LogOutliers_Items" FromRole="LogOutliers" ToRole="Items" />
+          <NavigationProperty Name="ItemsLogRawDatas" Relationship="Self.FK_ItemsLogRawData_LogOutleirs" FromRole="LogOutliers" ToRole="ItemsLogRawData" />
+        </EntityType>
+        <EntityType Name="NotificationBot">
+          <Key>
+            <PropertyRef Name="NotificationBotId" />
+          </Key>
+          <Property Name="NotificationBotId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationId" Type="Int32" Nullable="false" />
+          <Property Name="NotificationLogId" Type="Int32" Nullable="false" />
+          <Property Name="WithoutAlarm" Type="Boolean" Nullable="false" />
+          <Property Name="RegisterTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Delay" Type="Int32" Nullable="false" />
+          <Property Name="SentTime" Type="DateTime" Precision="7" />
+          <Property Name="IsSent" Type="Boolean" Nullable="false" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="NotificationItemsLog" Relationship="Self.FK_Notification_NotificationItemsLog" FromRole="NotificationBot" ToRole="NotificationItemsLog" />
+          <NavigationProperty Name="NotificationItem" Relationship="Self.FK_NotificationBot_NotificationItems" FromRole="NotificationBot" ToRole="NotificationItems" />
         </EntityType>
         <EntityType Name="NotificationItem">
           <Key>
@@ -563,11 +737,11 @@
           <Property Name="High" Type="Double" />
           <Property Name="NotificationMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Priority" Type="Int32" />
+          <Property Name="DelayForSendingNotificationInTelegram" Type="Int32" />
           <NavigationProperty Name="Item" Relationship="Self.FK_NotificationItems_Items" FromRole="NotificationItems" ToRole="Items" />
+          <NavigationProperty Name="NotificationBots" Relationship="Self.FK_NotificationBot_NotificationItems" FromRole="NotificationItems" ToRole="NotificationBot" />
           <NavigationProperty Name="NotificationItemsLogs" Relationship="Self.FK_NotificationItemsLog_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLog" />
           <NavigationProperty Name="NotificationItemsLogLatests" Relationship="Self.FK_NotificationItemsLogLatest_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLogLatest" />
-          <NavigationProperty Name="RelatedNotifications" Relationship="Self.FK_RelatedNotifications_NotificationItems" FromRole="NotificationItems" ToRole="RelatedNotifications" />
-          <NavigationProperty Name="RelatedNotifications1" Relationship="Self.FK_RelatedNotifications_NotificationItems2" FromRole="NotificationItems" ToRole="RelatedNotifications" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -578,6 +752,7 @@
           <Property Name="Value" Type="Boolean" Nullable="false" />
           <Property Name="Time" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="NotificationBots" Relationship="Self.FK_Notification_NotificationItemsLog" FromRole="NotificationItemsLog" ToRole="NotificationBot" />
           <NavigationProperty Name="NotificationItem" Relationship="Self.FK_NotificationItemsLog_NotificationItems" FromRole="NotificationItemsLog" ToRole="NotificationItems" />
         </EntityType>
         <EntityType Name="NotificationItemsLogLatest">
@@ -591,16 +766,6 @@
           <Property Name="TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="NotificationItem" Relationship="Self.FK_NotificationItemsLogLatest_NotificationItems" FromRole="NotificationItemsLogLatest" ToRole="NotificationItems" />
         </EntityType>
-        <EntityType Name="RelatedNotification">
-          <Key>
-            <PropertyRef Name="RelationId" />
-          </Key>
-          <Property Name="RelationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NotificationIdParent" Type="Int32" Nullable="false" />
-          <Property Name="NotificationIdChild" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="NotificationItem" Relationship="Self.FK_RelatedNotifications_NotificationItems" FromRole="RelatedNotifications" ToRole="NotificationItems" />
-          <NavigationProperty Name="NotificationItem1" Relationship="Self.FK_RelatedNotifications_NotificationItems2" FromRole="RelatedNotifications" ToRole="NotificationItems" />
-        </EntityType>
         <EntityType Name="Service">
           <Key>
             <PropertyRef Name="ServiceId" />
@@ -608,6 +773,17 @@
           <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ServiceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UsersServicesPermissions" Relationship="Self.FK_UsersServicesPermissions_Services" FromRole="Services" ToRole="UsersServicesPermissions" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="SessionKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <Property Name="ValidUntil" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Session_Users" FromRole="Session" ToRole="Users" />
         </EntityType>
         <EntityType Name="Tab">
           <Key>
@@ -648,6 +824,8 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Bots" Relationship="Self.FK_Bot_Users" FromRole="Users" ToRole="Bot" />
+          <NavigationProperty Name="FanCoilBots" Relationship="Self.FK_FanCoilBot_Users" FromRole="Users" ToRole="FanCoilBot" />
+          <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Users" FromRole="Users" ToRole="Session" />
           <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="Users" ToRole="UsersItemsPermissions" />
           <NavigationProperty Name="UsersServicesPermissions" Relationship="Self.FK_UsersServicesPermissions_Users" FromRole="Users" ToRole="UsersServicesPermissions" />
         </EntityType>
@@ -658,6 +836,7 @@
           <Property Name="PermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <Property Name="ReceiveDelayedNotificationInTelegram" Type="Boolean" />
           <NavigationProperty Name="Item" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="UsersItemsPermissions" ToRole="Items" />
           <NavigationProperty Name="User" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="UsersItemsPermissions" ToRole="Users" />
         </EntityType>
@@ -679,6 +858,18 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Bot">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FanCoilBot_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="FanCoilBot" Type="Self.FanCoilBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FanCoilBot">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -707,6 +898,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ItemsLogArcgive_Items">
+          <End Role="Items" Type="Self.Item" Multiplicity="1" />
+          <End Role="ItemsLogArchive" Type="Self.ItemsLogArchive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="ItemsLogArchive">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemsLogLatest_Items">
           <End Role="Items" Type="Self.Item" Multiplicity="1" />
           <End Role="ItemsLogLatest" Type="Self.ItemsLogLatest" Multiplicity="*" />
@@ -727,6 +930,18 @@
               <PropertyRef Name="ItemId" />
             </Principal>
             <Dependent Role="ItemsLogRawData">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LogOutliers_Items">
+          <End Role="Items" Type="Self.Item" Multiplicity="1" />
+          <End Role="LogOutliers" Type="Self.LogOutlier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="LogOutliers">
               <PropertyRef Name="ItemId" />
             </Dependent>
           </ReferentialConstraint>
@@ -767,6 +982,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ItemsLogRawData_LogOutleirs">
+          <End Role="LogOutliers" Type="Self.LogOutlier" Multiplicity="0..1" />
+          <End Role="ItemsLogRawData" Type="Self.ItemsLogRawData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LogOutliers">
+              <PropertyRef Name="OutlierId" />
+            </Principal>
+            <Dependent Role="ItemsLogRawData">
+              <PropertyRef Name="OutlierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notification_NotificationItemsLog">
+          <End Role="NotificationItemsLog" Type="Self.NotificationItemsLog" Multiplicity="1" />
+          <End Role="NotificationBot" Type="Self.NotificationBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItemsLog">
+              <PropertyRef Name="NotificationLogId" />
+            </Principal>
+            <Dependent Role="NotificationBot">
+              <PropertyRef Name="NotificationLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationBot_NotificationItems">
+          <End Role="NotificationItems" Type="Self.NotificationItem" Multiplicity="1" />
+          <End Role="NotificationBot" Type="Self.NotificationBot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationItems">
+              <PropertyRef Name="NotificationId" />
+            </Principal>
+            <Dependent Role="NotificationBot">
+              <PropertyRef Name="NotificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NotificationItemsLog_NotificationItems">
           <End Role="NotificationItems" Type="Self.NotificationItem" Multiplicity="1" />
           <End Role="NotificationItemsLog" Type="Self.NotificationItemsLog" Multiplicity="*" />
@@ -791,30 +1042,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RelatedNotifications_NotificationItems">
-          <End Role="NotificationItems" Type="Self.NotificationItem" Multiplicity="1" />
-          <End Role="RelatedNotifications" Type="Self.RelatedNotification" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NotificationItems">
-              <PropertyRef Name="NotificationId" />
-            </Principal>
-            <Dependent Role="RelatedNotifications">
-              <PropertyRef Name="NotificationIdParent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RelatedNotifications_NotificationItems2">
-          <End Role="NotificationItems" Type="Self.NotificationItem" Multiplicity="1" />
-          <End Role="RelatedNotifications" Type="Self.RelatedNotification" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NotificationItems">
-              <PropertyRef Name="NotificationId" />
-            </Principal>
-            <Dependent Role="RelatedNotifications">
-              <PropertyRef Name="NotificationIdChild" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UsersServicesPermissions_Services">
           <End Role="Services" Type="Self.Service" Multiplicity="1" />
           <End Role="UsersServicesPermissions" Type="Self.UsersServicesPermission" Multiplicity="*" />
@@ -824,6 +1051,18 @@
             </Principal>
             <Dependent Role="UsersServicesPermissions">
               <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Session_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -865,16 +1104,19 @@
         </Association>
         <EntityContainer Name="IndustrialMonitoringEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bots" EntityType="Self.Bot" />
-          <EntitySet Name="BotQueues" EntityType="Self.BotQueue" />
+          <EntitySet Name="FanCoilBots" EntityType="Self.FanCoilBot" />
           <EntitySet Name="Items" EntityType="Self.Item" />
           <EntitySet Name="ItemsLogs" EntityType="Self.ItemsLog" />
+          <EntitySet Name="ItemsLogArchives" EntityType="Self.ItemsLogArchive" />
           <EntitySet Name="ItemsLogLatests" EntityType="Self.ItemsLogLatest" />
           <EntitySet Name="ItemsLogRawDatas" EntityType="Self.ItemsLogRawData" />
+          <EntitySet Name="LogOutliers" EntityType="Self.LogOutlier" />
+          <EntitySet Name="NotificationBots" EntityType="Self.NotificationBot" />
           <EntitySet Name="NotificationItems" EntityType="Self.NotificationItem" />
           <EntitySet Name="NotificationItemsLogs" EntityType="Self.NotificationItemsLog" />
           <EntitySet Name="NotificationItemsLogLatests" EntityType="Self.NotificationItemsLogLatest" />
-          <EntitySet Name="RelatedNotifications" EntityType="Self.RelatedNotification" />
           <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="Sessions" EntityType="Self.Session" />
           <EntitySet Name="Tabs" EntityType="Self.Tab" />
           <EntitySet Name="TabsItems" EntityType="Self.TabsItem" />
           <EntitySet Name="ThreadGroups" EntityType="Self.ThreadGroup" />
@@ -885,6 +1127,10 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Bot" EntitySet="Bots" />
           </AssociationSet>
+          <AssociationSet Name="FK_FanCoilBot_Users" Association="Self.FK_FanCoilBot_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FanCoilBot" EntitySet="FanCoilBots" />
+          </AssociationSet>
           <AssociationSet Name="FK_Items_ThreadGroup" Association="Self.FK_Items_ThreadGroup">
             <End Role="ThreadGroup" EntitySet="ThreadGroups" />
             <End Role="Items" EntitySet="Items" />
@@ -893,6 +1139,10 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLog" EntitySet="ItemsLogs" />
           </AssociationSet>
+          <AssociationSet Name="FK_ItemsLogArcgive_Items" Association="Self.FK_ItemsLogArcgive_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="ItemsLogArchive" EntitySet="ItemsLogArchives" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemsLogLatest_Items" Association="Self.FK_ItemsLogLatest_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLogLatest" EntitySet="ItemsLogLatests" />
@@ -900,6 +1150,10 @@
           <AssociationSet Name="FK_ItemsLogRawData_Items" Association="Self.FK_ItemsLogRawData_Items">
             <End Role="Items" EntitySet="Items" />
             <End Role="ItemsLogRawData" EntitySet="ItemsLogRawDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LogOutliers_Items" Association="Self.FK_LogOutliers_Items">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="LogOutliers" EntitySet="LogOutliers" />
           </AssociationSet>
           <AssociationSet Name="FK_NotificationItems_Items" Association="Self.FK_NotificationItems_Items">
             <End Role="Items" EntitySet="Items" />
@@ -913,6 +1167,18 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="UsersItemsPermissions" EntitySet="UsersItemsPermissions" />
           </AssociationSet>
+          <AssociationSet Name="FK_ItemsLogRawData_LogOutleirs" Association="Self.FK_ItemsLogRawData_LogOutleirs">
+            <End Role="LogOutliers" EntitySet="LogOutliers" />
+            <End Role="ItemsLogRawData" EntitySet="ItemsLogRawDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notification_NotificationItemsLog" Association="Self.FK_Notification_NotificationItemsLog">
+            <End Role="NotificationItemsLog" EntitySet="NotificationItemsLogs" />
+            <End Role="NotificationBot" EntitySet="NotificationBots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationBot_NotificationItems" Association="Self.FK_NotificationBot_NotificationItems">
+            <End Role="NotificationItems" EntitySet="NotificationItems" />
+            <End Role="NotificationBot" EntitySet="NotificationBots" />
+          </AssociationSet>
           <AssociationSet Name="FK_NotificationItemsLog_NotificationItems" Association="Self.FK_NotificationItemsLog_NotificationItems">
             <End Role="NotificationItems" EntitySet="NotificationItems" />
             <End Role="NotificationItemsLog" EntitySet="NotificationItemsLogs" />
@@ -921,17 +1187,13 @@
             <End Role="NotificationItems" EntitySet="NotificationItems" />
             <End Role="NotificationItemsLogLatest" EntitySet="NotificationItemsLogLatests" />
           </AssociationSet>
-          <AssociationSet Name="FK_RelatedNotifications_NotificationItems" Association="Self.FK_RelatedNotifications_NotificationItems">
-            <End Role="NotificationItems" EntitySet="NotificationItems" />
-            <End Role="RelatedNotifications" EntitySet="RelatedNotifications" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RelatedNotifications_NotificationItems2" Association="Self.FK_RelatedNotifications_NotificationItems2">
-            <End Role="NotificationItems" EntitySet="NotificationItems" />
-            <End Role="RelatedNotifications" EntitySet="RelatedNotifications" />
-          </AssociationSet>
           <AssociationSet Name="FK_UsersServicesPermissions_Services" Association="Self.FK_UsersServicesPermissions_Services">
             <End Role="Services" EntitySet="Services" />
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Session_Users" Association="Self.FK_Session_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Session" EntitySet="Sessions" />
           </AssociationSet>
           <AssociationSet Name="FK_TabsItems_Tabs" Association="Self.FK_TabsItems_Tabs">
             <End Role="Tabs" EntitySet="Tabs" />
@@ -964,15 +1226,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BotQueues">
-            <EntityTypeMapping TypeName="IndustrialMonitoringModel.BotQueue">
-              <MappingFragment StoreEntitySet="BotQueue">
-                <ScalarProperty Name="BotQueueId" ColumnName="BotQueueId" />
-                <ScalarProperty Name="QueueDirection" ColumnName="QueueDirection" />
+          <EntitySetMapping Name="FanCoilBots">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.FanCoilBot">
+              <MappingFragment StoreEntitySet="FanCoilBot">
+                <ScalarProperty Name="BotProcessId" ColumnName="BotProcessId" />
                 <ScalarProperty Name="ChatId" ColumnName="ChatId" />
-                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
-                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="IsAuthorized" ColumnName="IsAuthorized" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1001,12 +1262,25 @@
                 <ScalarProperty Name="MaxRange" ColumnName="MaxRange" />
                 <ScalarProperty Name="NormalizeWhenOutOfRange" ColumnName="NormalizeWhenOutOfRange" />
                 <ScalarProperty Name="ThreadGroupId" ColumnName="ThreadGroupId" />
+                <ScalarProperty Name="NumberOfDataForBoxplot" ColumnName="NumberOfDataForBoxplot" />
+                <ScalarProperty Name="InOut" ColumnName="InOut" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ItemsLogs">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.ItemsLog">
               <MappingFragment StoreEntitySet="ItemsLog">
+                <ScalarProperty Name="ItemLogId" ColumnName="ItemLogId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsLogArchives">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.ItemsLogArchive">
+              <MappingFragment StoreEntitySet="ItemsLogArchive">
                 <ScalarProperty Name="ItemLogId" ColumnName="ItemLogId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
@@ -1034,6 +1308,36 @@
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="OutlierId" ColumnName="OutlierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogOutliers">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.LogOutlier">
+              <MappingFragment StoreEntitySet="LogOutliers">
+                <ScalarProperty Name="OutlierId" ColumnName="OutlierId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="IQR" ColumnName="IQR" />
+                <ScalarProperty Name="LQR" ColumnName="LQR" />
+                <ScalarProperty Name="UQR" ColumnName="UQR" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationBots">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationBot">
+              <MappingFragment StoreEntitySet="NotificationBot">
+                <ScalarProperty Name="NotificationBotId" ColumnName="NotificationBotId" />
+                <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
+                <ScalarProperty Name="NotificationLogId" ColumnName="NotificationLogId" />
+                <ScalarProperty Name="WithoutAlarm" ColumnName="WithoutAlarm" />
+                <ScalarProperty Name="RegisterTime" ColumnName="RegisterTime" />
+                <ScalarProperty Name="Delay" ColumnName="Delay" />
+                <ScalarProperty Name="SentTime" ColumnName="SentTime" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1047,6 +1351,7 @@
                 <ScalarProperty Name="High" ColumnName="High" />
                 <ScalarProperty Name="NotificationMsg" ColumnName="NotificationMsg" />
                 <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="DelayForSendingNotificationInTelegram" ColumnName="DelayForSendingNotificationInTelegram" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1072,20 +1377,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RelatedNotifications">
-            <EntityTypeMapping TypeName="IndustrialMonitoringModel.RelatedNotification">
-              <MappingFragment StoreEntitySet="RelatedNotifications">
-                <ScalarProperty Name="RelationId" ColumnName="RelationId" />
-                <ScalarProperty Name="NotificationIdParent" ColumnName="NotificationIdParent" />
-                <ScalarProperty Name="NotificationIdChild" ColumnName="NotificationIdChild" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Services">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Service">
               <MappingFragment StoreEntitySet="Services">
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
                 <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sessions">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.Session">
+              <MappingFragment StoreEntitySet="Session">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1134,6 +1441,7 @@
                 <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ReceiveDelayedNotificationInTelegram" ColumnName="ReceiveDelayedNotificationInTelegram" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

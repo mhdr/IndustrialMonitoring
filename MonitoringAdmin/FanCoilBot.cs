@@ -12,14 +12,14 @@ namespace MonitoringAdmin
     using System;
     using System.Collections.Generic;
     
-    public partial class UsersItemsPermission
+    public partial class FanCoilBot
     {
-        public int PermissionId { get; set; }
+        public int BotProcessId { get; set; }
+        public Nullable<int> ChatId { get; set; }
         public int UserId { get; set; }
-        public int ItemId { get; set; }
-        public Nullable<bool> ReceiveDelayedNotificationInTelegram { get; set; }
+        public string Token { get; set; }
+        public bool IsAuthorized { get; set; }
     
-        public virtual Item Item { get; set; }
         public virtual User User { get; set; }
     }
 }

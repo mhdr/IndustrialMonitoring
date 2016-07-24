@@ -12,13 +12,14 @@ namespace MonitoringAdmin
     using System;
     using System.Collections.Generic;
     
-    public partial class RelatedNotification
+    public partial class ItemsLogArchive
     {
-        public int RelationId { get; set; }
-        public int NotificationIdParent { get; set; }
-        public int NotificationIdChild { get; set; }
+        public int ItemLogId { get; set; }
+        public int ItemId { get; set; }
+        public string Value { get; set; }
+        public System.DateTime Time { get; set; }
+        public byte[] TimeStamp { get; set; }
     
-        public virtual NotificationItem NotificationItem { get; set; }
-        public virtual NotificationItem NotificationItem1 { get; set; }
+        public virtual Item Item { get; set; }
     }
 }

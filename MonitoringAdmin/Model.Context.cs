@@ -26,16 +26,19 @@ namespace MonitoringAdmin
         }
     
         public virtual DbSet<Bot> Bots { get; set; }
-        public virtual DbSet<BotQueue> BotQueues { get; set; }
+        public virtual DbSet<FanCoilBot> FanCoilBots { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<ItemsLog> ItemsLogs { get; set; }
+        public virtual DbSet<ItemsLogArchive> ItemsLogArchives { get; set; }
         public virtual DbSet<ItemsLogLatest> ItemsLogLatests { get; set; }
         public virtual DbSet<ItemsLogRawData> ItemsLogRawDatas { get; set; }
+        public virtual DbSet<LogOutlier> LogOutliers { get; set; }
+        public virtual DbSet<NotificationBot> NotificationBots { get; set; }
         public virtual DbSet<NotificationItem> NotificationItems { get; set; }
         public virtual DbSet<NotificationItemsLog> NotificationItemsLogs { get; set; }
         public virtual DbSet<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
-        public virtual DbSet<RelatedNotification> RelatedNotifications { get; set; }
         public virtual DbSet<Service> Services { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
         public virtual DbSet<Tab> Tabs { get; set; }
         public virtual DbSet<TabsItem> TabsItems { get; set; }
         public virtual DbSet<ThreadGroup> ThreadGroups { get; set; }

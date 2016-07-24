@@ -17,10 +17,9 @@ namespace MonitoringAdmin
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NotificationItem()
         {
+            this.NotificationBots = new HashSet<NotificationBot>();
             this.NotificationItemsLogs = new HashSet<NotificationItemsLog>();
             this.NotificationItemsLogLatests = new HashSet<NotificationItemsLogLatest>();
-            this.RelatedNotifications = new HashSet<RelatedNotification>();
-            this.RelatedNotifications1 = new HashSet<RelatedNotification>();
         }
     
         public int NotificationId { get; set; }
@@ -30,15 +29,14 @@ namespace MonitoringAdmin
         public Nullable<double> High { get; set; }
         public string NotificationMsg { get; set; }
         public Nullable<int> Priority { get; set; }
+        public Nullable<int> DelayForSendingNotificationInTelegram { get; set; }
     
         public virtual Item Item { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NotificationBot> NotificationBots { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotificationItemsLog> NotificationItemsLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotificationItemsLogLatest> NotificationItemsLogLatests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RelatedNotification> RelatedNotifications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RelatedNotification> RelatedNotifications1 { get; set; }
     }
 }

@@ -18,8 +18,10 @@ namespace MonitoringAdmin
         public Item()
         {
             this.ItemsLogs = new HashSet<ItemsLog>();
+            this.ItemsLogArchives = new HashSet<ItemsLogArchive>();
             this.ItemsLogLatests = new HashSet<ItemsLogLatest>();
             this.ItemsLogRawDatas = new HashSet<ItemsLogRawData>();
+            this.LogOutliers = new HashSet<LogOutlier>();
             this.NotificationItems = new HashSet<NotificationItem>();
             this.TabsItems = new HashSet<TabsItem>();
             this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
@@ -47,14 +49,20 @@ namespace MonitoringAdmin
         public string MaxRange { get; set; }
         public Nullable<bool> NormalizeWhenOutOfRange { get; set; }
         public Nullable<int> ThreadGroupId { get; set; }
+        public Nullable<int> NumberOfDataForBoxplot { get; set; }
+        public Nullable<int> InOut { get; set; }
     
         public virtual ThreadGroup ThreadGroup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemsLog> ItemsLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemsLogArchive> ItemsLogArchives { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemsLogLatest> ItemsLogLatests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemsLogRawData> ItemsLogRawDatas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LogOutlier> LogOutliers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotificationItem> NotificationItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,0 +1,21 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MonitoringAdmin"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="MonitoringAdmin.WindowAddBACnet"
+        mc:Ignorable="d"
+        Title="WindowAddBACnet" Height="300" Width="300" WindowState="Maximized" Loaded="WindowAddBACnet_OnLoaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <telerik:RadDataForm Grid.Row="0" Name="DataFormBACnet" EditEnded="DataFormBACnet_EditEnded"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <telerik:RadButton Name="ButtonSave" Width="80" Height="35" Margin="10 5 5 10" Click="ButtonSave_OnClick">Save</telerik:RadButton>
+            <telerik:RadButton Name="ButtonClear" Width="80" Height="35" Margin="10 5 5 10" Click="ButtonClear_OnClick">Clear</telerik:RadButton>
+        </StackPanel>
+    </Grid>
+</Window>

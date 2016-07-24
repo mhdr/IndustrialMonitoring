@@ -25,6 +25,7 @@
                 <telerik:RadMenuItem Header="Tools">
                     <telerik:RadMenuItem Header="Permissions" Name="MenuItemPermissions" Click="MenuItemPermissions_OnClick"/>
                     <telerik:RadMenuItem Header="Notifications" Name="MenuItemNotifications" Click="MenuItemNotifications_OnClick"/>
+                    <telerik:RadMenuItem Header="New BACnet" Name="MenuItemNewBACnet" Click="MenuItemNewBACnet_OnClick"/>
                 </telerik:RadMenuItem>
             </telerik:RadMenu>
             <StackPanel Name="StackPanelMain" Grid.Row="1">
