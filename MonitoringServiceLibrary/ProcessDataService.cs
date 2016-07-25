@@ -247,6 +247,17 @@ namespace MonitoringServiceLibrary
                     entities.SaveChanges();
                     return true;
                 }
+                else
+                {
+                    var Item2 = entities.ItemsLogArchives.FirstOrDefault(x => x.ItemLogId == itemLogId);
+
+                    if (Item2 != null)
+                    {
+                        entities.ItemsLogArchives.Remove(Item2);
+                        entities.SaveChanges();
+                        return true;
+                    }
+                }
 
                 return false;
             }

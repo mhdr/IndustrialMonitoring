@@ -193,6 +193,8 @@ namespace MonitoringServiceLibrary
             {
                 try
                 {
+                    Entities=new IndustrialMonitoringEntities();
+
                     if (this.DefinationType == ItemDefinationType.SqlDefined)
                     {
                         if (this.Type == ItemType.Digital)
@@ -447,6 +449,24 @@ namespace MonitoringServiceLibrary
                                 Entities.ItemsLogRawDatas.Add(rawData);
                                 Entities.SaveChanges();
                             }
+                            else
+                            {
+                                if (DateTime.Now - lastItemLogRaw.Time > new TimeSpan(0, 0, 1, 0))
+                                {
+                                    ItemsLogRawData rawData = new ItemsLogRawData();
+                                    rawData.ItemId = ItemId;
+                                    rawData.Value = value;
+                                    rawData.Time = DateTime.Now;
+
+                                    if (outlierId > 0)
+                                    {
+                                        rawData.OutlierId = outlierId;
+                                    }
+
+                                    Entities.ItemsLogRawDatas.Add(rawData);
+                                    Entities.SaveChanges();
+                                }
+                            }
                         }
                         //
 
@@ -493,6 +513,19 @@ namespace MonitoringServiceLibrary
                                     Entities.ItemsLogs.Add(itemsLog);
 
                                     Entities.SaveChanges();
+                                }
+                                else
+                                {
+                                    if (DateTime.Now - lastItemLog.Time > new TimeSpan(0, 0, 1, 0))
+                                    {
+                                        ItemsLog itemsLog = new ItemsLog();
+                                        itemsLog.ItemId = this.ItemId;
+                                        itemsLog.Time = DateTime.Now;
+                                        itemsLog.Value = value;
+                                        Entities.ItemsLogs.Add(itemsLog);
+
+                                        Entities.SaveChanges();
+                                    }
                                 }
                             }
 
@@ -586,6 +619,8 @@ namespace MonitoringServiceLibrary
         {
             try
             {
+                Entities=new IndustrialMonitoringEntities();
+
                 if (this.DefinationType == ItemDefinationType.SqlDefined)
                 {
                     if (this.Type == ItemType.Digital)
@@ -842,6 +877,24 @@ namespace MonitoringServiceLibrary
                             Entities.ItemsLogRawDatas.Add(rawData);
                             Entities.SaveChanges();
                         }
+                        else
+                        {
+                            if (DateTime.Now - lastItemLogRaw.Time > new TimeSpan(0, 0, 1, 0))
+                            {
+                                ItemsLogRawData rawData = new ItemsLogRawData();
+                                rawData.ItemId = ItemId;
+                                rawData.Value = value;
+                                rawData.Time = DateTime.Now;
+
+                                if (outlierId > 0)
+                                {
+                                    rawData.OutlierId = outlierId;
+                                }
+
+                                Entities.ItemsLogRawDatas.Add(rawData);
+                                Entities.SaveChanges();
+                            }
+                        }
                     }
                     //
 
@@ -888,6 +941,19 @@ namespace MonitoringServiceLibrary
                                 Entities.ItemsLogs.Add(itemsLog);
 
                                 Entities.SaveChanges();
+                            }
+                            else
+                            {
+                                if (DateTime.Now - lastItemLog.Time > new TimeSpan(0, 0, 1, 0))
+                                {
+                                    ItemsLog itemsLog = new ItemsLog();
+                                    itemsLog.ItemId = this.ItemId;
+                                    itemsLog.Time = DateTime.Now;
+                                    itemsLog.Value = value;
+                                    Entities.ItemsLogs.Add(itemsLog);
+
+                                    Entities.SaveChanges();
+                                }
                             }
                         }
 
@@ -963,6 +1029,29 @@ namespace MonitoringServiceLibrary
                                 }
 
                                 Entities.SaveChanges();
+                            }
+                            else
+                            {
+                                if (DateTime.Now - lastItemLogLatest.Time > new TimeSpan(0, 0, 1, 0))
+                                {
+                                    ItemsLogLatest itemsLogLatest = null;
+                                    if (Entities.ItemsLogLatests.Any(x => x.ItemId == this.ItemId))
+                                    {
+                                        itemsLogLatest = Entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == this.ItemId);
+                                        itemsLogLatest.Time = DateTime.Now;
+                                        itemsLogLatest.Value = value;
+                                    }
+                                    else
+                                    {
+                                        itemsLogLatest = new ItemsLogLatest();
+                                        itemsLogLatest.ItemId = this.ItemId;
+                                        itemsLogLatest.Time = DateTime.Now;
+                                        itemsLogLatest.Value = value;
+                                        Entities.ItemsLogLatests.Add(itemsLogLatest);
+                                    }
+
+                                    Entities.SaveChanges();
+                                }
                             }
                         }
                     }
