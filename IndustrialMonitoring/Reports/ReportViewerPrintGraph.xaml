@@ -1,0 +1,23 @@
+﻿<Window x:Class="IndustrialMonitoring.Reports.ReportViewerPrintGraph"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:IndustrialMonitoring.Reports"
+    xmlns:tr="http://schemas.telerik.com/wpf"
+    xmlns:telerikReporting="clr-namespace:Telerik.Reporting;assembly=Telerik.Reporting"
+    Title="Report - Graph" Loaded="ReportViewerPrintGraph_OnLoaded">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid Margin="20" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <tr:ReportViewer Grid.Row="0" x:Name="ReportViewer1" HorizontalAlignment="Stretch">
+              <tr:ReportViewer.ReportSource>
+                <telerikReporting:UriReportSource Uri="Reports/Graph.trdp"/>
+              </tr:ReportViewer.ReportSource>
+            </tr:ReportViewer>
+          
+        </Grid>
+    </Grid>
+</Window>

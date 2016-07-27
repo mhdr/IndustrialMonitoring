@@ -182,6 +182,18 @@ namespace TelegramBot
                         }
                     }
 
+                    PerformanceCounter cpuCounter=new PerformanceCounter("Processor", "% Processor Time", "_Total");
+                    PerformanceCounter ramCounter= new PerformanceCounter("Memory", "Available MBytes");
+
+                    // The method nextValue() always returns a 0 value on the first call. So you have to call this method a second time
+                    cpuCounter.NextValue();
+                    Thread.Sleep(1000);
+                    var cpuUsage = cpuCounter.NextValue();
+                    string cpuUsageStr = string.Format("{0:f2} %",cpuUsage);
+
+                    var ramAvailable = ramCounter.NextValue();
+                    string ramAvaiableStr = string.Format("{0} MB", ramAvailable);
+
                     if (previousTimeStamp == timestamp)
                     {
                         // system has error
@@ -192,7 +204,9 @@ namespace TelegramBot
                             {
                                 var emoji = "\u2734";
                                 await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
-Time : {1}", emoji, DateTime.Now));
+Time : {1}
+CPU Usage : {2}
+Memory Available : {3}", emoji, DateTime.Now,cpuUsageStr,ramAvaiableStr));
                                 await Task.Delay(100);
                             }
 
@@ -208,7 +222,9 @@ Time : {1}", emoji, DateTime.Now));
                                 {
                                     var emoji = "\u2734";
                                     await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
-Time : {1}", emoji, DateTime.Now));
+Time : {1}
+CPU Usage : {2}
+Memory Available : {3}", emoji, DateTime.Now, cpuUsageStr, ramAvaiableStr));
                                     await Task.Delay(100);
                                 }
 
@@ -224,7 +240,9 @@ Time : {1}", emoji, DateTime.Now));
                             {
                                 var emoji = "\u2733";
                                 await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
-Time : {1}", emoji, DateTime.Now));
+Time : {1}
+CPU Usage : {2}
+Memory Available : {3}", emoji, DateTime.Now, cpuUsageStr, ramAvaiableStr));
                                 await Task.Delay(100);
                             }
 

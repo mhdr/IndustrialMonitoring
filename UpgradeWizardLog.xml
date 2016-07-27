@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="_UpgradeWizard_Files\UpgradeWizardLog.xslt"?>
+<log>
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\IndustrialMonitoring.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="IndustrialMonitoring" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring\IndustrialMonitoring.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\SharedLibrary\SharedLibrary.csproj" />
+  <event action="Analyze" type="Success" name="SharedLibrary" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\SharedLibrary\SharedLibrary.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\MonitoringAdmin.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="MonitoringAdmin" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAdmin\MonitoringAdmin.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\MonitoringServiceLibrary.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\packages.config" />
+  <event action="Analyze" type="Success" name="MonitoringServiceLibrary" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringServiceLibrary\MonitoringServiceLibrary.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\HostConsole.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\packages.config" />
+  <event action="Analyze" type="Success" name="HostConsole" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostConsole\HostConsole.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingServiceLibrary\FillingServiceLibrary.csproj" />
+  <event action="Analyze" type="Success" name="FillingServiceLibrary" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingServiceLibrary\FillingServiceLibrary.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingHostConsole\FillingHostConsole.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingHostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingHostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingHostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingHostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingHostConsole\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingHostConsole\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingHostConsole\App.config" />
+  <event action="Analyze" type="Success" name="FillingHostConsole" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\FillingHostConsole\FillingHostConsole.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\TelegramBot.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\packages.config" />
+  <event action="Analyze" type="Success" name="TelegramBot" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TelegramBot\TelegramBot.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\HostEMS2.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\packages.config" />
+  <event action="Analyze" type="Success" name="HostEMS2" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostEMS2\HostEMS2.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\BACnetLib\BACnetLib.csproj" />
+  <event action="Analyze" type="Success" name="BACnetLib" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\BACnetLib\BACnetLib.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\MonitoringStarter.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\packages.config" />
+  <event action="Analyze" type="Success" name="MonitoringStarter" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringStarter\MonitoringStarter.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\HostService.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\App.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\App.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\App.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\App.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\App.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\App.config" />
+  <event action="Analyze" type="Success" name="App.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\App.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\packages.config" />
+  <event action="Analyze" type="Success" name="ProjectInstaller.resx" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\ProjectInstaller.resx" />
+  <event action="Analyze" type="Success" name="HostService" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\HostService\HostService.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\TechnicalFanCoilAndroid.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="TechnicalFanCoilAndroid" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\TechnicalFanCoilAndroid\TechnicalFanCoilAndroid.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\SharedLibrarySocket\SharedLibrarySocket.csproj" />
+  <event action="Analyze" type="Success" name="SharedLibrarySocket" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\SharedLibrarySocket\SharedLibrarySocket.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\Echo\Echo.csproj" />
+  <event action="Analyze" type="Success" name="Echo" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\Echo\Echo.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAndroid\MonitoringAndroid.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAndroid\packages.config" />
+  <event action="Analyze" type="Success" name="MonitoringAndroid" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\MonitoringAndroid\MonitoringAndroid.csproj" />
+  <event action="Analyze" type="Success" name="IndustrialMonitoring" path="C:\Users\ma.ramezani\Documents\Projects\IndustrialMonitoring\IndustrialMonitoring.sln" />
+</log>

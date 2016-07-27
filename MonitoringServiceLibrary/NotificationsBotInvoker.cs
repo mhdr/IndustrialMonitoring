@@ -48,7 +48,7 @@ namespace MonitoringServiceLibrary
 
                 if (
                     entities.UsersItemsPermissions.Any(
-                        x => x.ItemId == notification.ItemId & x.ReceiveDelayedNotificationInTelegram == false))
+                        x => x.ItemId == notification.ItemId & x.Item.ReceiveDelayedNotificationInTelegram == false))
                 {
                     NotificationBot notificationBot1 = new NotificationBot();
                     notificationBot1.NotificationId = notificationId;
@@ -65,7 +65,7 @@ namespace MonitoringServiceLibrary
 
                 if (
                     entities.UsersItemsPermissions.Any(
-                        x => x.ItemId == notification.ItemId & x.ReceiveDelayedNotificationInTelegram == true))
+                        x => x.ItemId == notification.ItemId & x.Item.ReceiveDelayedNotificationInTelegram == true))
                 {
                     if (notification.DelayForSendingNotificationInTelegram != null)
                     {
@@ -129,11 +129,11 @@ namespace MonitoringServiceLibrary
                 }
                 else if (delayType == NotificationDelayType.Normal)
                 {
-                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId & x.ReceiveDelayedNotificationInTelegram == false).ToList();
+                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId & x.Item.ReceiveDelayedNotificationInTelegram == false).ToList();
                 }
                 else if (delayType == NotificationDelayType.Delayed)
                 {
-                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId & x.ReceiveDelayedNotificationInTelegram == true).ToList();
+                    userPermissions = entities.UsersItemsPermissions.Where(x => x.ItemId == itemId & x.Item.ReceiveDelayedNotificationInTelegram == true).ToList();
                 }
 
 

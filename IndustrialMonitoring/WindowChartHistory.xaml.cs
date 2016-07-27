@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,11 +16,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.ProcessDataServiceReference;
+using IndustrialMonitoring.Reports;
+using Microsoft.Win32;
 using SharedLibrary;
+using Telerik.Reporting;
+using Telerik.ReportViewer.Wpf;
 using Telerik.Windows;
 using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.ChartView;
-using Telerik.Windows.Controls.Legend;
+using AreaSeries = Telerik.Windows.Controls.ChartView.AreaSeries;
+using LegendItem = Telerik.Windows.Controls.Legend.LegendItem;
+using LineSeries = Telerik.Windows.Controls.ChartView.LineSeries;
+using TextBox = Telerik.Reporting.TextBox;
 
 namespace IndustrialMonitoring
 {
@@ -413,6 +421,44 @@ namespace IndustrialMonitoring
                 Logger.LogIndustrialMonitoring(ex);
                 
             }
+        }
+
+        private void MenuItemExport_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog=new SaveFileDialog();
+
+            saveFileDialog.Filter = "Images (*.png)|*.png|All files (*.*)|*.*";
+
+            string filename = string.Format("{0}.png", this.TextBlockTitle.Text.Replace("/","-").Replace(":","-"));
+            saveFileDialog.FileName = filename;
+
+            if (saveFileDialog.ShowDialog().Value)
+            {
+                filename = saveFileDialog.FileName;
+
+                using (Stream fileStream = File.Open(filename, FileMode.OpenOrCreate))
+                {
+                    Telerik.Windows.Media.Imaging.ExportExtensions.ExportToImage(this.Chart, fileStream, new PngBitmapEncoder());
+                }
+            }
+             
+        }
+
+        private void MenuItemPrint_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            string filename = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                string.Format("{0}.png", Guid.NewGuid().ToString()));
+
+            using (Stream fileStream = File.Open(filename, FileMode.OpenOrCreate))
+            {
+                Telerik.Windows.Media.Imaging.ExportExtensions.ExportToImage(this.Chart, fileStream, new PngBitmapEncoder());
+            }
+
+            ReportViewerPrintGraph reportViewerPrintGraph=new ReportViewerPrintGraph();
+            reportViewerPrintGraph.TitleValue = TextBlockTitle.Text;
+            Uri uri=new Uri(filename);
+            reportViewerPrintGraph.ImageValue=new BitmapImage(uri);
+            reportViewerPrintGraph.Show();
         }
     }
 }

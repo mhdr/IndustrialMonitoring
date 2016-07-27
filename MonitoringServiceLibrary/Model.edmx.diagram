@@ -22,7 +22,6 @@
         <EntityTypeShape EntityType="IndustrialMonitoringModel.TabsItem" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ThreadGroup" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.User" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersItemsPermission" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersServicesPermission" Width="1.5" PointX="11.25" PointY="6.5" IsExpanded="true" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_Bot_Users" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_FanCoilBot_Users" ManuallyRouted="false" />
@@ -33,7 +32,6 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_LogOutliers_Items" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationItems_Items" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Items" ManuallyRouted="false" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogRawData_LogOutleirs" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_Notification_NotificationItemsLog" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_NotificationBot_NotificationItems" ManuallyRouted="false" />
@@ -42,10 +40,12 @@
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Services" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_Session_Users" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_TabsItems_Tabs" ManuallyRouted="false" />
-        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" ManuallyRouted="false" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersServicesPermissions_Users" ManuallyRouted="false" />
         <EntityTypeShape EntityType="IndustrialMonitoringModel.ItemsLogArchive" Width="1.5" PointX="5.25" PointY="28.625" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_ItemsLogArcgive_Items" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersItemsPermission" Width="1.5" PointX="8.25" PointY="12.875" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" />
+        <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

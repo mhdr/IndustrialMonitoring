@@ -23,8 +23,8 @@ namespace MonitoringServiceLibrary
             this.LogOutliers = new HashSet<LogOutlier>();
             this.NotificationItems = new HashSet<NotificationItem>();
             this.TabsItems = new HashSet<TabsItem>();
-            this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
             this.ItemsLogArchives = new HashSet<ItemsLogArchive>();
+            this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
         }
     
         public int ItemId { get; set; }
@@ -51,6 +51,7 @@ namespace MonitoringServiceLibrary
         public Nullable<int> ThreadGroupId { get; set; }
         public Nullable<int> NumberOfDataForBoxplot { get; set; }
         public Nullable<int> InOut { get; set; }
+        public Nullable<bool> ReceiveDelayedNotificationInTelegram { get; set; }
     
         public virtual ThreadGroup ThreadGroup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -66,8 +67,8 @@ namespace MonitoringServiceLibrary
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TabsItem> TabsItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemsLogArchive> ItemsLogArchives { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
     }
 }
