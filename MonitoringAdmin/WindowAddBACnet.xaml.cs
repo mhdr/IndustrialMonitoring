@@ -38,43 +38,44 @@ namespace MonitoringAdmin
 
         private void ButtonSave_OnClick(object sender, RoutedEventArgs e)
         {
+            BACnetItem item = (BACnetItem)DataFormBACnet.CurrentItem;
+
+            Item newItem = new Item();
+            newItem.ItemName = item.ItemName;
+            newItem.ItemType = item.ItemType;
+            newItem.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
+            newItem.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
+            newItem.ShowInUITimeInterval = item.ShowInUiTimeInterval;
+            newItem.ScanCycle = item.ScanCycle;
+            newItem.SaveInItemsLogWhen = item.SaveInItemsLogWhen;
+            newItem.SaveInItemsLogLastWhen = item.SaveInItemsLogLastWhen;
+            newItem.DefinationType = item.DefinationType;
+            newItem.Unit = item.Unit;
+            newItem.Order = item.Order;
+            newItem.BACnetIP = item.BaCnetIp;
+            newItem.BACnetPort = item.BaCnetPort;
+            newItem.BACnetControllerInstance = item.BaCnetControllerInstance;
+            newItem.BACnetItemInstance = item.BaCnetItemInstance;
+            newItem.BACnetItemType = item.BaCnetItemType;
+            newItem.MinRange = item.MinRange;
+            newItem.MaxRange = item.MaxRange;
+            newItem.NormalizeWhenOutOfRange = item.NormalizeWhenOutOfRange;
+            newItem.ThreadGroupId = item.ThreadGroupId;
+            newItem.NumberOfDataForBoxplot = item.NumberOfDataForBoxplot;
+            newItem.InOut = item.InOut;
+
+            IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
+            entities.Items.Add(newItem);
+            entities.SaveChanges();
+
+            MessageBox.Show("New item saved successfully");
             try
             {
-                BACnetItem item = (BACnetItem)DataFormBACnet.CurrentItem;
-
-                Item newItem = new Item();
-                newItem.ItemName = item.ItemName;
-                newItem.ItemType = item.ItemType;
-                newItem.SaveInItemsLogTimeInterval = item.SaveInItemsLogTimeInterval;
-                newItem.SaveInItemsLogLastesTimeInterval = item.SaveInItemsLogLastesTimeInterval;
-                newItem.ShowInUITimeInterval = item.ShowInUiTimeInterval;
-                newItem.ScanCycle = item.ScanCycle;
-                newItem.SaveInItemsLogWhen = item.SaveInItemsLogWhen;
-                newItem.SaveInItemsLogLastWhen = item.SaveInItemsLogLastWhen;
-                newItem.DefinationType = item.DefinationType;
-                newItem.Unit = item.Unit;
-                newItem.Order = item.Order;
-                newItem.BACnetIP = item.BaCnetIp;
-                newItem.BACnetPort = item.BaCnetPort;
-                newItem.BACnetControllerInstance = item.BaCnetControllerInstance;
-                newItem.BACnetItemInstance = item.BaCnetItemInstance;
-                newItem.BACnetItemType = item.BaCnetItemType;
-                newItem.MinRange = item.MinRange;
-                newItem.MaxRange = item.MaxRange;
-                newItem.NormalizeWhenOutOfRange = item.NormalizeWhenOutOfRange;
-                newItem.ThreadGroupId = item.ThreadGroupId;
-                newItem.NumberOfDataForBoxplot = item.NumberOfDataForBoxplot;
-                newItem.InOut = item.InOut;
-
-                IndustrialMonitoringEntities entities = new IndustrialMonitoringEntities();
-                entities.Items.Add(newItem);
-                entities.SaveChanges();
-
-                MessageBox.Show("New item saved successfully");
+               
             }
             catch (Exception ex)
             {
-
+                throw ex;
                 MessageBox.Show(ex.Message);
             }
 
