@@ -30,6 +30,7 @@ namespace MonitoringServiceLibrary
         public string NotificationMsg { get; set; }
         public Nullable<int> Priority { get; set; }
         public Nullable<int> DelayForSendingNotificationInTelegram { get; set; }
+        public Nullable<bool> DisableSendingNotificationInTelegram { get; set; }
     
         public virtual Item Item { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

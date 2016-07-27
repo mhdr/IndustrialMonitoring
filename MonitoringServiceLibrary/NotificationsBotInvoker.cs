@@ -38,6 +38,14 @@ namespace MonitoringServiceLibrary
                     return;
                 }
 
+                if (notification.DisableSendingNotificationInTelegram != null)
+                {
+                    if (notification.DisableSendingNotificationInTelegram.Value == true)
+                    {
+                        return;
+                    }
+                }
+
                 if (
                     entities.UsersItemsPermissions.Any(
                         x => x.ItemId == notification.ItemId & x.ReceiveDelayedNotificationInTelegram == false))

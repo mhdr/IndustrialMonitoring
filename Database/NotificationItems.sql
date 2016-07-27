@@ -8,5 +8,6 @@
 	[NotificationMsg] NVARCHAR(MAX) NULL, 
     [Priority] INT NULL, 
     [DelayForSendingNotificationInTelegram] INT NULL, 
+    [DisableSendingNotificationInTelegram] BIT NULL DEFAULT 0, 
     CONSTRAINT [FK_NotificationItems_Items] FOREIGN KEY (ItemId) REFERENCES Items(ItemId) 
 )
