@@ -16,7 +16,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.ProcessDataServiceReference;
-using IndustrialMonitoring.Reports;
 using Microsoft.Win32;
 using SharedLibrary;
 using Telerik.Reporting;
