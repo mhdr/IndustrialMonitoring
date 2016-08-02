@@ -193,6 +193,7 @@ namespace TelegramBot
 
                     var ramAvailable = ramCounter.NextValue();
                     string ramAvaiableStr = string.Format("{0} MB", ramAvailable);
+                    long archived = entities.ItemsLogs.Count() + entities.ItemsLogArchives.Count();
 
                     if (previousTimeStamp == timestamp)
                     {
@@ -206,7 +207,8 @@ namespace TelegramBot
                                 await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
 Time : {1}
 CPU Usage : {2}
-Memory Available : {3}", emoji, DateTime.Now,cpuUsageStr,ramAvaiableStr));
+Memory Available : {3}
+Archived : {4:0,0}", emoji, DateTime.Now,cpuUsageStr,ramAvaiableStr,archived));
                                 await Task.Delay(100);
                             }
 
@@ -224,7 +226,8 @@ Memory Available : {3}", emoji, DateTime.Now,cpuUsageStr,ramAvaiableStr));
                                     await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
 Time : {1}
 CPU Usage : {2}
-Memory Available : {3}", emoji, DateTime.Now, cpuUsageStr, ramAvaiableStr));
+Memory Available : {3}
+Archived : {4:0,0}", emoji, DateTime.Now, cpuUsageStr, ramAvaiableStr,archived));
                                     await Task.Delay(100);
                                 }
 
@@ -242,7 +245,8 @@ Memory Available : {3}", emoji, DateTime.Now, cpuUsageStr, ramAvaiableStr));
                                 await bot.SendTextMessage(chatId, string.Format(@"{0} System Health {0}
 Time : {1}
 CPU Usage : {2}
-Memory Available : {3}", emoji, DateTime.Now, cpuUsageStr, ramAvaiableStr));
+Memory Available : {3}
+Archived : {4:0,0}", emoji, DateTime.Now, cpuUsageStr, ramAvaiableStr,archived));
                                 await Task.Delay(100);
                             }
 
