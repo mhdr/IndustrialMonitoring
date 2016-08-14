@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndustrialMonitoring", "IndustrialMonitoring\IndustrialMonitoring.csproj", "{6DC5D2C4-BB92-4BBE-9769-86758C45FE71}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -49,9 +49,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalFanCoilAndroid", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedLibrarySocket", "SharedLibrarySocket\SharedLibrarySocket.csproj", "{CECAFF59-B76F-4FBD-A21D-82E182A89C6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Echo", "Echo\Echo.csproj", "{C60E371E-CD5A-4D04-BE1C-F7C972FE3668}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringAndroid", "MonitoringAndroid\MonitoringAndroid.csproj", "{3CA153B4-12C9-451B-8AD2-B2A91A9A00C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerCounter", "PowerCounter\PowerCounter.csproj", "{32A2A82F-3E1F-48D9-8319-FF2B69C4A815}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,16 +123,14 @@ Global
 		{CECAFF59-B76F-4FBD-A21D-82E182A89C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CECAFF59-B76F-4FBD-A21D-82E182A89C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CECAFF59-B76F-4FBD-A21D-82E182A89C6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C60E371E-CD5A-4D04-BE1C-F7C972FE3668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C60E371E-CD5A-4D04-BE1C-F7C972FE3668}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C60E371E-CD5A-4D04-BE1C-F7C972FE3668}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{C60E371E-CD5A-4D04-BE1C-F7C972FE3668}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C60E371E-CD5A-4D04-BE1C-F7C972FE3668}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C60E371E-CD5A-4D04-BE1C-F7C972FE3668}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{3CA153B4-12C9-451B-8AD2-B2A91A9A00C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3CA153B4-12C9-451B-8AD2-B2A91A9A00C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CA153B4-12C9-451B-8AD2-B2A91A9A00C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CA153B4-12C9-451B-8AD2-B2A91A9A00C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32A2A82F-3E1F-48D9-8319-FF2B69C4A815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32A2A82F-3E1F-48D9-8319-FF2B69C4A815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32A2A82F-3E1F-48D9-8319-FF2B69C4A815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32A2A82F-3E1F-48D9-8319-FF2B69C4A815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

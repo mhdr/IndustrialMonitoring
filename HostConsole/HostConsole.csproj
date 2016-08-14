@@ -55,7 +55,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5F2B41A2DB66E063643BFC77E8C7808F73EDE47C</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>0B05E41F08DEF4858C5DBB2775FDBFCE997BB5A9</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>HostConsole_TemporaryKey.pfx</ManifestKeyFile>

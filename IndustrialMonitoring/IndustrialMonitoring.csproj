@@ -60,7 +60,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>D04E5F2319B96C77C001AE5C290E1EB59E75862E</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>AB687D086719FC2F96EF41C708432C40C8DB4127</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>IndustrialMonitoring_TemporaryKey.pfx</ManifestKeyFile>

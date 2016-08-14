@@ -453,11 +453,11 @@ namespace IndustrialMonitoring
                 Telerik.Windows.Media.Imaging.ExportExtensions.ExportToImage(this.Chart, fileStream, new PngBitmapEncoder());
             }
 
-            ReportViewerPrintGraph reportViewerPrintGraph=new ReportViewerPrintGraph();
-            reportViewerPrintGraph.TitleValue = TextBlockTitle.Text;
-            Uri uri=new Uri(filename);
-            reportViewerPrintGraph.ImageValue=new BitmapImage(uri);
-            reportViewerPrintGraph.Show();
+            //ReportViewerPrintGraph reportViewerPrintGraph=new ReportViewerPrintGraph();
+            //reportViewerPrintGraph.TitleValue = TextBlockTitle.Text;
+            //Uri uri=new Uri(filename);
+            //reportViewerPrintGraph.ImageValue=new BitmapImage(uri);
+            //reportViewerPrintGraph.Show();
         }
     }
 }

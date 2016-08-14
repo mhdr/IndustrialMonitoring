@@ -56,7 +56,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C065E9CD0190A7188036E72EEA41F360CF3456D7</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>4ED285E12B02C50797A3758E72A0A4FC923DD92C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>MonitoringAdmin_TemporaryKey.pfx</ManifestKeyFile>
