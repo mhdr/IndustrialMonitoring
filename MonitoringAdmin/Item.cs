@@ -51,6 +51,7 @@ namespace MonitoringAdmin
         public Nullable<int> ThreadGroupId { get; set; }
         public Nullable<int> NumberOfDataForBoxplot { get; set; }
         public Nullable<int> InOut { get; set; }
+        public Nullable<bool> ReceiveDelayedNotificationInTelegram { get; set; }
     
         public virtual ThreadGroup ThreadGroup { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -20,8 +20,8 @@ namespace MonitoringAdmin
             this.Bots = new HashSet<Bot>();
             this.FanCoilBots = new HashSet<FanCoilBot>();
             this.Sessions = new HashSet<Session>();
-            this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
             this.UsersServicesPermissions = new HashSet<UsersServicesPermission>();
+            this.UsersItemsPermissions = new HashSet<UsersItemsPermission>();
         }
     
         public int UserId { get; set; }
@@ -37,8 +37,8 @@ namespace MonitoringAdmin
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Session> Sessions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersServicesPermission> UsersServicesPermissions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsersItemsPermission> UsersItemsPermissions { get; set; }
     }
 }

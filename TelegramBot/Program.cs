@@ -324,7 +324,7 @@ Archived : {4:0,0}", emoji, DateTime.Now, cpuUsageStr, ramAvaiableStr,archived))
                                     matched.IsAuthorized = true;
                                     entities.SaveChanges();
 
-                                    await bot.SendTextMessage(update.Message.Chat.Id, "Your token is saved");
+                                    await bot.SendTextMessage(update.Message.Chat.Id, "Your token saved");
                                 }
                                 else
                                 {

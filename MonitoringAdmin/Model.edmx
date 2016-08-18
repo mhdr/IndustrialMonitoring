@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IndustrialMonitoringModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bot">
           <Key>
             <PropertyRef Name="BotProcessId" />
@@ -54,6 +54,7 @@
           <Property Name="ThreadGroupId" Type="int" />
           <Property Name="NumberOfDataForBoxplot" Type="int" />
           <Property Name="InOut" Type="int" />
+          <Property Name="ReceiveDelayedNotificationInTelegram" Type="bit" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -135,6 +136,7 @@
           <Property Name="NotificationMsg" Type="nvarchar(max)" />
           <Property Name="Priority" Type="int" />
           <Property Name="DelayForSendingNotificationInTelegram" Type="int" />
+          <Property Name="DisableSendingNotificationInTelegram" Type="bit" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -215,7 +217,6 @@
           <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ItemId" Type="int" Nullable="false" />
-          <Property Name="ReceiveDelayedNotificationInTelegram" Type="bit" />
         </EntityType>
         <EntityType Name="UsersServicesPermissions">
           <Key>
@@ -583,8 +584,7 @@
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IndustrialMonitoringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -647,7 +647,8 @@
           <NavigationProperty Name="LogOutliers" Relationship="Self.FK_LogOutliers_Items" FromRole="Items" ToRole="LogOutliers" />
           <NavigationProperty Name="NotificationItems" Relationship="Self.FK_NotificationItems_Items" FromRole="Items" ToRole="NotificationItems" />
           <NavigationProperty Name="TabsItems" Relationship="Self.FK_TabsItems_Items" FromRole="Items" ToRole="TabsItems" />
-          <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="Items" ToRole="UsersItemsPermissions" />
+          <Property Name="ReceiveDelayedNotificationInTelegram" Type="Boolean" />
+          <NavigationProperty Name="UsersItemsPermissions" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" FromRole="Item" ToRole="UsersItemsPermission" />
         </EntityType>
         <EntityType Name="ItemsLog">
           <Key>
@@ -742,6 +743,7 @@
           <NavigationProperty Name="NotificationBots" Relationship="Self.FK_NotificationBot_NotificationItems" FromRole="NotificationItems" ToRole="NotificationBot" />
           <NavigationProperty Name="NotificationItemsLogs" Relationship="Self.FK_NotificationItemsLog_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLog" />
           <NavigationProperty Name="NotificationItemsLogLatests" Relationship="Self.FK_NotificationItemsLogLatest_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLogLatest" />
+          <Property Name="DisableSendingNotificationInTelegram" Type="Boolean" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -826,19 +828,8 @@
           <NavigationProperty Name="Bots" Relationship="Self.FK_Bot_Users" FromRole="Users" ToRole="Bot" />
           <NavigationProperty Name="FanCoilBots" Relationship="Self.FK_FanCoilBot_Users" FromRole="Users" ToRole="FanCoilBot" />
           <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Users" FromRole="Users" ToRole="Session" />
-          <NavigationProperty Name="UsersItemsPermissions" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="Users" ToRole="UsersItemsPermissions" />
           <NavigationProperty Name="UsersServicesPermissions" Relationship="Self.FK_UsersServicesPermissions_Users" FromRole="Users" ToRole="UsersServicesPermissions" />
-        </EntityType>
-        <EntityType Name="UsersItemsPermission">
-          <Key>
-            <PropertyRef Name="PermissionId" />
-          </Key>
-          <Property Name="PermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="ItemId" Type="Int32" Nullable="false" />
-          <Property Name="ReceiveDelayedNotificationInTelegram" Type="Boolean" />
-          <NavigationProperty Name="Item" Relationship="Self.FK_UsersItemsPermissions_Items" FromRole="UsersItemsPermissions" ToRole="Items" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UsersItemsPermissions_Users" FromRole="UsersItemsPermissions" ToRole="Users" />
+          <NavigationProperty Name="UsersItemsPermissions" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" FromRole="User" ToRole="UsersItemsPermission" />
         </EntityType>
         <EntityType Name="UsersServicesPermission">
           <Key>
@@ -970,18 +961,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UsersItemsPermissions_Items">
-          <End Role="Items" Type="Self.Item" Multiplicity="1" />
-          <End Role="UsersItemsPermissions" Type="Self.UsersItemsPermission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Items">
-              <PropertyRef Name="ItemId" />
-            </Principal>
-            <Dependent Role="UsersItemsPermissions">
-              <PropertyRef Name="ItemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ItemsLogRawData_LogOutleirs">
           <End Role="LogOutliers" Type="Self.LogOutlier" Multiplicity="0..1" />
           <End Role="ItemsLogRawData" Type="Self.ItemsLogRawData" Multiplicity="*" />
@@ -1078,18 +1057,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UsersItemsPermissions_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="UsersItemsPermissions" Type="Self.UsersItemsPermission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UsersItemsPermissions">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UsersServicesPermissions_Users">
           <End Role="Users" Type="Self.User" Multiplicity="1" />
           <End Role="UsersServicesPermissions" Type="Self.UsersServicesPermission" Multiplicity="*" />
@@ -1121,7 +1088,6 @@
           <EntitySet Name="TabsItems" EntityType="Self.TabsItem" />
           <EntitySet Name="ThreadGroups" EntityType="Self.ThreadGroup" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="UsersItemsPermissions" EntityType="Self.UsersItemsPermission" />
           <EntitySet Name="UsersServicesPermissions" EntityType="Self.UsersServicesPermission" />
           <AssociationSet Name="FK_Bot_Users" Association="Self.FK_Bot_Users">
             <End Role="Users" EntitySet="Users" />
@@ -1163,10 +1129,6 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="TabsItems" EntitySet="TabsItems" />
           </AssociationSet>
-          <AssociationSet Name="FK_UsersItemsPermissions_Items" Association="Self.FK_UsersItemsPermissions_Items">
-            <End Role="Items" EntitySet="Items" />
-            <End Role="UsersItemsPermissions" EntitySet="UsersItemsPermissions" />
-          </AssociationSet>
           <AssociationSet Name="FK_ItemsLogRawData_LogOutleirs" Association="Self.FK_ItemsLogRawData_LogOutleirs">
             <End Role="LogOutliers" EntitySet="LogOutliers" />
             <End Role="ItemsLogRawData" EntitySet="ItemsLogRawDatas" />
@@ -1199,15 +1161,54 @@
             <End Role="Tabs" EntitySet="Tabs" />
             <End Role="TabsItems" EntitySet="TabsItems" />
           </AssociationSet>
-          <AssociationSet Name="FK_UsersItemsPermissions_Users" Association="Self.FK_UsersItemsPermissions_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UsersItemsPermissions" EntitySet="UsersItemsPermissions" />
-          </AssociationSet>
           <AssociationSet Name="FK_UsersServicesPermissions_Users" Association="Self.FK_UsersServicesPermissions_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersServicesPermissions" EntitySet="UsersServicesPermissions" />
           </AssociationSet>
+          <EntitySet Name="UsersItemsPermissions" EntityType="IndustrialMonitoringModel.UsersItemsPermission" />
+          <AssociationSet Name="FK_UsersItemsPermissions_Items" Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="UsersItemsPermission" EntitySet="UsersItemsPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersItemsPermissions_Users" Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UsersItemsPermission" EntitySet="UsersItemsPermissions" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="UsersItemsPermission">
+          <Key>
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="PermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ItemId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Item" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" FromRole="UsersItemsPermission" ToRole="Item" />
+          <NavigationProperty Name="User" Relationship="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" FromRole="UsersItemsPermission" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UsersItemsPermissions_Items">
+          <End Type="IndustrialMonitoringModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.UsersItemsPermission" Role="UsersItemsPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemId" />
+            </Principal>
+            <Dependent Role="UsersItemsPermission">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersItemsPermissions_Users">
+          <End Type="IndustrialMonitoringModel.User" Role="User" Multiplicity="1" />
+          <End Type="IndustrialMonitoringModel.UsersItemsPermission" Role="UsersItemsPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersItemsPermission">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1240,6 +1241,7 @@
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.Item">
               <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="ReceiveDelayedNotificationInTelegram" ColumnName="ReceiveDelayedNotificationInTelegram" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
                 <ScalarProperty Name="ItemType" ColumnName="ItemType" />
@@ -1344,6 +1346,7 @@
           <EntitySetMapping Name="NotificationItems">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationItem">
               <MappingFragment StoreEntitySet="NotificationItems">
+                <ScalarProperty Name="DisableSendingNotificationInTelegram" ColumnName="DisableSendingNotificationInTelegram" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
@@ -1435,22 +1438,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UsersItemsPermissions">
-            <EntityTypeMapping TypeName="IndustrialMonitoringModel.UsersItemsPermission">
-              <MappingFragment StoreEntitySet="UsersItemsPermissions">
-                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
-                <ScalarProperty Name="ReceiveDelayedNotificationInTelegram" ColumnName="ReceiveDelayedNotificationInTelegram" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UsersServicesPermissions">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.UsersServicesPermission">
               <MappingFragment StoreEntitySet="UsersServicesPermissions">
                 <ScalarProperty Name="UserServicePermissionId" ColumnName="UserServicePermissionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersItemsPermissions">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.UsersItemsPermission">
+              <MappingFragment StoreEntitySet="UsersItemsPermissions">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
