@@ -18,15 +18,12 @@ using IndustrialMonitoring.Lib;
 using IndustrialMonitoring.ProcessDataServiceReference;
 using Microsoft.Win32;
 using SharedLibrary;
-using Telerik.Reporting;
-using Telerik.ReportViewer.Wpf;
 using Telerik.Windows;
 using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.ChartView;
 using AreaSeries = Telerik.Windows.Controls.ChartView.AreaSeries;
 using LegendItem = Telerik.Windows.Controls.Legend.LegendItem;
 using LineSeries = Telerik.Windows.Controls.ChartView.LineSeries;
-using TextBox = Telerik.Reporting.TextBox;
 
 namespace IndustrialMonitoring
 {
@@ -445,13 +442,13 @@ namespace IndustrialMonitoring
 
         private void MenuItemPrint_OnClick(object sender, RadRoutedEventArgs e)
         {
-            string filename = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                string.Format("{0}.png", Guid.NewGuid().ToString()));
+            //string filename = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            //    string.Format("{0}.png", Guid.NewGuid().ToString()));
 
-            using (Stream fileStream = File.Open(filename, FileMode.OpenOrCreate))
-            {
-                Telerik.Windows.Media.Imaging.ExportExtensions.ExportToImage(this.Chart, fileStream, new PngBitmapEncoder());
-            }
+            //using (Stream fileStream = File.Open(filename, FileMode.OpenOrCreate))
+            //{
+            //    Telerik.Windows.Media.Imaging.ExportExtensions.ExportToImage(this.Chart, fileStream, new PngBitmapEncoder());
+            //}
 
             //ReportViewerPrintGraph reportViewerPrintGraph=new ReportViewerPrintGraph();
             //reportViewerPrintGraph.TitleValue = TextBlockTitle.Text;

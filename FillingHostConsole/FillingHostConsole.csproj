@@ -54,10 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>62C0EFBE1F705454449660DEB1A6A4F7A12668F0</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6254F810CC18289E5E57DBBA1844CA387FBEC298</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>FillingHostConsole_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>FillingHostConsole_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -84,6 +84,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="FillingHostConsole_1_TemporaryKey.pfx" />
     <None Include="FillingHostConsole_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
