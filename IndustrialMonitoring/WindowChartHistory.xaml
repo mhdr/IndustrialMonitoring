@@ -22,7 +22,6 @@
                                          MouseEnter="MenuItemShowSetTimeDialog_OnMouseEnter"/>
                 </telerik:RadMenuItem>
                 <telerik:RadMenuItem Header="Export" Name="MenuItemExport" Click="MenuItemExport_OnClick"/>
-                <telerik:RadMenuItem Header="Print" Name="MenuItemPrint" Click="MenuItemPrint_OnClick"></telerik:RadMenuItem>
 
             </telerik:RadMenu>
 
