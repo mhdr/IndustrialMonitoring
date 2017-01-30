@@ -439,22 +439,5 @@ namespace IndustrialMonitoring
             }
              
         }
-
-        private void MenuItemPrint_OnClick(object sender, RadRoutedEventArgs e)
-        {
-            //string filename = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            //    string.Format("{0}.png", Guid.NewGuid().ToString()));
-
-            //using (Stream fileStream = File.Open(filename, FileMode.OpenOrCreate))
-            //{
-            //    Telerik.Windows.Media.Imaging.ExportExtensions.ExportToImage(this.Chart, fileStream, new PngBitmapEncoder());
-            //}
-
-            //ReportViewerPrintGraph reportViewerPrintGraph=new ReportViewerPrintGraph();
-            //reportViewerPrintGraph.TitleValue = TextBlockTitle.Text;
-            //Uri uri=new Uri(filename);
-            //reportViewerPrintGraph.ImageValue=new BitmapImage(uri);
-            //reportViewerPrintGraph.Show();
-        }
     }
 }
