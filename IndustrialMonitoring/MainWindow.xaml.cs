@@ -93,6 +93,22 @@ namespace IndustrialMonitoring
                 {
                     MenuItemHorn.IsEnabled = true;
                 }
+
+                MenuItemStart.IsEnabled = false;
+                Thread thread=new Thread(() =>
+                {
+                    Thread.Sleep(2000);
+
+
+                    Dispatcher.BeginInvoke(new Action(() =>
+                    {
+                        StartMonitoring();    
+                    }));   
+                    
+                });
+
+                thread.Start();
+                
             }
             catch (Exception ex)
             {
@@ -428,6 +444,11 @@ namespace IndustrialMonitoring
         }
 
         private void MenuItemStart_OnClick(object sender, RadRoutedEventArgs e)
+        {
+            StartMonitoring();
+        }
+
+        private void StartMonitoring()
         {
             try
             {
