@@ -71,7 +71,7 @@
             </telerik:RadMenu>
 
             <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True" Grid.Row="1">
-                <telerik:RadTabControl Name="TabControlIOs">
+                <telerik:RadTabControl Name="TabControlIOs" OverflowMode="Wrap">
                     <telerik:RadContextMenu.ContextMenu>
                         <telerik:RadContextMenu>
                             <telerik:RadMenuItem Header="Show Chart" Name="ContextMenuItemChart">

@@ -203,7 +203,12 @@ namespace IndustrialMonitoring
                 WrapPanel wrapPanel = new WrapPanel();
                 wrapPanel.Name = string.Format("WrapPanel{0}", tabsViewModel.TabName).Replace(" ", "");
 
-                radTabItem.Content = wrapPanel;
+                ScrollViewer scrollViewer=new ScrollViewer();
+                scrollViewer.Name=string.Format("ScrollViewer{0}", tabsViewModel.TabName).Replace(" ", "");
+                scrollViewer.VerticalScrollBarVisibility=ScrollBarVisibility.Auto;
+
+                scrollViewer.Content = wrapPanel;
+                radTabItem.Content = scrollViewer;
 
                 TabControlIOs.Items.Add(radTabItem);
                 
