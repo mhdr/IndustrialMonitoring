@@ -100,10 +100,8 @@ namespace IndustrialMonitoring
                 ChartBrushes.Add(Brushes.LightSalmon);
                 ChartBrushes.Add(Brushes.DarkRed);
                 ChartBrushes.Add(Brushes.Gold);
-                ChartBrushes.Add(Brushes.MediumBlue);
                 ChartBrushes.Add(Brushes.CadetBlue);
                 ChartBrushes.Add(Brushes.Coral);
-                ChartBrushes.Add(Brushes.Chocolate);
                 ChartBrushes.Add(Brushes.Crimson);
                 ChartBrushes.Add(Brushes.Indigo);
                 ChartBrushes.Add(Brushes.PaleGreen);
@@ -114,6 +112,8 @@ namespace IndustrialMonitoring
                 ChartBrushes.Add(Brushes.Orange);
                 ChartBrushes.Add(Brushes.Purple);
                 ChartBrushes.Add(Brushes.Chartreuse);
+                ChartBrushes.Add(Brushes.MediumBlue);
+                ChartBrushes.Add(Brushes.Chocolate);
 
                 int countItems = ItemsId.Count;
 
