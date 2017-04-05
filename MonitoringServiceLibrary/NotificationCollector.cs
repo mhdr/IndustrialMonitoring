@@ -99,7 +99,9 @@ namespace MonitoringServiceLibrary
                         }
                         else
                         {
-                            ItemsLogLatest itemLogLatest =
+                            if (!notificationItem.DisableNotification)
+                            {
+                                ItemsLogLatest itemLogLatest =
             entities.ItemsLogLatests.FirstOrDefault(x => x.ItemId == notificationItem.ItemId);
 
                             double currentValue = double.Parse(itemLogLatest.Value);
@@ -173,6 +175,23 @@ namespace MonitoringServiceLibrary
                             notificationItemsLogLatest.Value = withoutNotification;
                             notificationItemsLogLatest.Time = DateTime.Now;
                             entities.SaveChanges();
+
+                            }
+                            else
+                            {
+                                if (notificationItemsLogLatest.Value == false)
+                                {
+                                    NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
+                                    notificationItemsLog.NotificationId = notificationId;
+                                    notificationItemsLog.Value = true;
+                                    notificationItemsLog.Time = DateTime.Now;
+
+                                    entities.NotificationItemsLogs.Add(notificationItemsLog);
+                                    entities.SaveChanges();
+                                
+                                    NotificationsBotInvoker.RegisterNewRecord(notificationId,notificationItemsLog.NotificationLogId);
+                                }
+                            }
                         }
 
                         Thread.Sleep(10);
