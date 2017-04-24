@@ -10,5 +10,6 @@
     [DelayForSendingNotificationInTelegram] INT NULL, 
     [DisableSendingNotificationInTelegram] BIT NULL DEFAULT 0, 
     [DisableNotification] BIT NOT NULL DEFAULT 0, 
+    [SendAsEvent] BIT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_NotificationItems_Items] FOREIGN KEY (ItemId) REFERENCES Items(ItemId) 
 )

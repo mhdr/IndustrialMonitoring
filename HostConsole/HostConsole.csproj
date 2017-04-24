@@ -55,10 +55,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>0B05E41F08DEF4858C5DBB2775FDBFCE997BB5A9</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B20F20A5AD69284819F799037E7CFF021CFE4840</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>HostConsole_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>HostConsole_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="HostConsole_1_TemporaryKey.pfx" />
     <None Include="HostConsole_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Service References\BSProcessDataServiceReference\ProcessDataService.wsdl" />

@@ -56,10 +56,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>4ED285E12B02C50797A3758E72A0A4FC923DD92C</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>922E7183E385C399DC8EDFEF28ADD06A27D8D925</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>MonitoringAdmin_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>MonitoringAdmin_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -302,6 +302,7 @@
     <None Include="Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
+    <None Include="MonitoringAdmin_1_TemporaryKey.pfx" />
     <None Include="MonitoringAdmin_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Monitoring.CompositeType.datasource" />
