@@ -53,10 +53,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E4E0EDCF829A157D70D06A67C3754F53E7EB616B</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>6AE97E0D7D24E820A981E7435CC632EE888E1262</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>TelegramBot_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>TelegramBot_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -129,6 +129,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="TelegramBot_1_TemporaryKey.pfx" />
+    <None Include="TelegramBot_2_TemporaryKey.pfx" />
     <None Include="TelegramBot_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

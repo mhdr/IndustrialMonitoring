@@ -138,6 +138,7 @@
           <Property Name="DelayForSendingNotificationInTelegram" Type="int" />
           <Property Name="DisableSendingNotificationInTelegram" Type="bit" />
           <Property Name="DisableNotification" Type="bit" Nullable="false" />
+          <Property Name="SendAsEvent" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -735,6 +736,7 @@
           <NavigationProperty Name="NotificationItemsLogLatests" Relationship="Self.FK_NotificationItemsLogLatest_NotificationItems" FromRole="NotificationItems" ToRole="NotificationItemsLogLatest" />
           <Property Name="DisableSendingNotificationInTelegram" Type="Boolean" />
           <Property Name="DisableNotification" Type="Boolean" Nullable="false" />
+          <Property Name="SendAsEvent" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="NotificationItemsLog">
           <Key>
@@ -1337,6 +1339,7 @@
           <EntitySetMapping Name="NotificationItems">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.NotificationItem">
               <MappingFragment StoreEntitySet="NotificationItems">
+                <ScalarProperty Name="SendAsEvent" ColumnName="SendAsEvent" />
                 <ScalarProperty Name="DisableNotification" ColumnName="DisableNotification" />
                 <ScalarProperty Name="DisableSendingNotificationInTelegram" ColumnName="DisableSendingNotificationInTelegram" />
                 <ScalarProperty Name="NotificationId" ColumnName="NotificationId" />
