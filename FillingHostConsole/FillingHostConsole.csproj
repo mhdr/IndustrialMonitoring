@@ -54,10 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>CCA32EE774F7E7FBAF49EDE552F40AD0A1FCED4C</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>3855D947AFA3D82E9B9D41A1C3875E2C846C4A48</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>FillingHostConsole_2_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>FillingHostConsole_3_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -86,6 +86,7 @@
     </None>
     <None Include="FillingHostConsole_1_TemporaryKey.pfx" />
     <None Include="FillingHostConsole_2_TemporaryKey.pfx" />
+    <None Include="FillingHostConsole_3_TemporaryKey.pfx" />
     <None Include="FillingHostConsole_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f4cc7649-d0cf-4aaa-aad9-c30f6888f22c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9011/MonitoringService/ProcessDataService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProcessDataService.xsd" MetadataType="Schema" ID="7a123d2b-fc66-42b9-8db1-b0ba036a8376" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd3" />
+    <MetadataFile FileName="ProcessDataService1.xsd" MetadataType="Schema" ID="bf3fc820-792b-40cf-b994-a31f8136b9eb" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd5" />
+    <MetadataFile FileName="ProcessDataService2.xsd" MetadataType="Schema" ID="7102a924-504f-4a59-982f-b98ebe4b2262" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd0" />
+    <MetadataFile FileName="ProcessDataService.wsdl" MetadataType="Wsdl" ID="6f4869c5-c3a0-46cd-8572-155926a2ba7f" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?wsdl" />
+    <MetadataFile FileName="ProcessDataService3.xsd" MetadataType="Schema" ID="c5f7566b-50f0-45c1-beb0-e602ee796aa5" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd2" />
+    <MetadataFile FileName="ProcessDataService4.xsd" MetadataType="Schema" ID="52a87bf4-79d0-4803-a98a-525da7c3cf9a" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd1" />
+    <MetadataFile FileName="ProcessDataService5.xsd" MetadataType="Schema" ID="ad8ce709-1a51-43f8-884d-f6fbba4fa09c" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?xsd=xsd4" />
+    <MetadataFile FileName="ProcessDataService.disco" MetadataType="Disco" ID="75040e82-9b57-4a3c-b823-a02c563da4c4" SourceId="1" SourceUrl="http://172.20.63.234:9011/MonitoringService/ProcessDataService?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

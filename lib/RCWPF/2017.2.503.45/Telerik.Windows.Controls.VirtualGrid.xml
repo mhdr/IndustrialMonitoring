@@ -1,0 +1,949 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telerik.Windows.Controls.VirtualGrid</name>
+    </assembly>
+    <members>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.CellDecorationEventArgs">
+            <summary>
+            Represent event arguments for the CellDecorationNeeded event.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.CellDecorationEventArgs.Background">
+            <summary>
+            Gets or sets the cell background.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.CellDecorationEventArgs.Foreground">
+            <summary>
+            Gets or sets the cell foreground.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.CellDecorationEventArgs.FontSize">
+            <summary>
+            Gets or sets the cell font size.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.CellDecorationEventArgs.FontFamily">
+            <summary>
+            Gets or sets the cell font family.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.CellDecorationEventArgs.RowIndex">
+            <summary>
+            Gets the cell's row index.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.CellDecorationEventArgs.ColumnIndex">
+            <summary>
+            Gets the cell's column index.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.OverlayBrushesEventArgs">
+            <summary>
+            Represents the event args for the OverlayBrushesNeeded event.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.OverlayBrushesEventArgs.Brushes">
+            <summary>
+            Represents the list of background brushes that will be used to customize cells' backgrounds.
+            </summary>
+            <value>The brushes.</value>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.CellValueEventArgs">
+            <summary>
+            Represents event arguments for the ValueForCell event.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.CellValueEventArgs.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.CellValueEventArgs.ColumnIndex">
+            <summary>
+            Gets or sets the index of the column.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.CellValueEventArgs.RowIndex">
+            <summary>
+            Gets or sets the index of the row.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement.Invalidate">
+            <summary>
+            Invalidates this instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement.Render(System.Windows.Media.DrawingContext,System.Windows.Rect)">
+            <summary>
+            Renders the specified dc.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement.Write(Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement.BoolFlags,System.Boolean)">
+            <summary>
+            Writes the flag.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement.Read(Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement.BoolFlags)">
+            <summary>
+            Reads the flag.
+            </summary>
+            <param name="required">The required flag.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement.BoolFlags">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement.BoolFlags.NeedsVisualUpdate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.VirtualGrid.FrameworkRenderElement.BoolFlags.FormattedTextInvalid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.IContainerGeneratorItem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.IContainerGeneratorItem.Prepare">
+            <summary>
+            Prepares this instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.IContainerGeneratorItem.Draw(System.Windows.Media.DrawingContext)">
+            <summary>
+            Draws the specified drawing context.
+            </summary>
+            <param name="drawingContext">The drawing context.</param>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.IContainerGeneratorItem.ShouldPrepare">
+            <summary>
+            Gets or sets the should prepare.
+            </summary>
+            <value>The should prepare.</value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.IContainerGeneratorItem.Container">
+            <summary>
+            Gets or sets the container.
+            </summary>
+            <value>The container.</value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.IContainerGeneratorItem.ArrangeLocation">
+            <summary>
+            Gets or sets the arrange location.
+            </summary>
+            <value>The arrange location.</value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.IContainerGeneratorItem.MeasureSize">
+            <summary>
+            Gets or sets the size of the measure.
+            </summary>
+            <value>The size of the measure.</value>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.LineRenderElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.LineRenderElement.Render(System.Windows.Media.DrawingContext,System.Windows.Rect)">
+            <summary>
+            Renders the specified dc.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.OverlayRenderElement.Render(System.Windows.Media.DrawingContext,System.Windows.Rect)">
+            <summary>
+            Renders the specified dc.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.VirtualGridOrientation">
+            <summary>
+            Represents orientation.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.VirtualGrid.VirtualGridOrientation.Horizontal">
+            <summary>
+            Horizontal orientation.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.VirtualGrid.VirtualGridOrientation.Vertical">
+            <summary>
+            Vertical orientation.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.DataProvider">
+            <summary>
+            Represent a set of members that functionally affects RadVirtualGrid. They can be overridden to modify its behavior.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.DataProvider.#ctor(System.Collections.IEnumerable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Controls.VirtualGrid.DataProvider"/> class.
+            </summary>
+            <param name="source">The source.</param>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.DataProvider.OnCellValueNeeded(Telerik.Windows.Controls.VirtualGrid.CellValueEventArgs)">
+            <summary>
+            Invoked by RadVirtualGrid when the CellValueNeeded event is raised.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.DataProvider.OnEditorValueChanged(Telerik.Windows.Controls.VirtualGrid.CellValueEventArgs)">
+            <summary>
+            Invoked by RadVirtualGrid when the EditorValueChanged event is raised.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.DataProvider.OnEditorNeeded(Telerik.Windows.Controls.VirtualGrid.EditorNeededEventArgs)">
+            <summary>
+            Invoked by RadVirtualGrid when the EditorNeeded event is raised.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.DataProvider.OnCellEditEnded(Telerik.Windows.Controls.VirtualGrid.CellValueEventArgs)">
+            <summary>
+            Invoked by RadVirtualGrid when the CellEditEnded event is raised.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.DataProvider.PushCellValueToSource(System.Int32,System.Int32,System.Object)">
+            <summary>
+            Invoked by RadVirtualGrid when the CellEditEnded event is raised.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.DataProvider.OnHeaderValueNeeded(Telerik.Windows.Controls.VirtualGrid.HeaderValueEventArgs)">
+            <summary>
+            Invoked by RadVirtualGrid when the HeaderValueNeeded event is raised.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.DataProvider.ItemProperties">
+            <summary>
+            Gets the item properties.
+            </summary>
+            <value>The item properties.</value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.DataProvider.ShouldPushEditValueToGrid">
+            <summary>
+            Gets a value that indicates whether the new cell value should be pushed to VirtualGrid after CellEditEnded.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.DataProvider.InitialColumnCount">
+            <summary>
+            Represents the initial column count.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.DataProvider.InitialRowCount">
+            <summary>
+            Represents the initial row count.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.EditorNeededEventArgs">
+            <summary>
+            Represents event arguments for the EditorNeeded event.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.EditorNeededEventArgs.Editor">
+            <summary>
+            Gets or sets the editor that will be used for editing a particular cell.
+            </summary>
+            <value>The editor.</value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.EditorNeededEventArgs.EditorProperty">
+            <summary>
+            Gets or sets the editor's editable dependency property.
+            </summary>
+            <value>The editor property.</value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.EditorNeededEventArgs.RowIndex">
+            <summary>
+            Gets the index of the cell's row.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.EditorNeededEventArgs.ColumnIndex">
+            <summary>
+            Gets the index of the cell's column.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.HeaderValueEventArgs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.HeaderValueEventArgs.HeaderOrientation">
+            <summary>
+            Gets the header orientation.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.HeaderValueEventArgs.Index">
+            <summary>
+            Gets the header cell index.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.HeaderValueEventArgs.Value">
+            <summary>
+            Gets or sets the header cell value.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.RadVirtualGrid">
+            <summary>
+            Represents a tabular control that dynamically loads data, using a light-weight engine to display and modify it.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.#ctor">
+            <summary>
+            Initializes a new instance of the RadVirtualGrid class.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application
+            code or internal processes call <see cref="M:System.Windows.FrameworkElement.ApplyTemplate" />.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.PinColumnLeft(System.Int32)">
+            <summary>
+            Pins the column left.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.PinColumnRight(System.Int32)">
+            <summary>
+            Pins the column right.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.PinRowTop(System.Int32)">
+            <summary>
+            Pins the row top.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.PinRowBottom(System.Int32)">
+            <summary>
+            Pins the row bottom.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.UnpinRow(System.Int32)">
+            <summary>
+            Unpins the row with the given index.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.UnpinColumn(System.Int32)">
+            <summary>
+            Unpins the column with the given index.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.ResetTheme">
+            <summary>
+            Resets the theme.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.InsertNewRowAtIndex(System.Int32)">
+            <summary>
+            Increases the table capacity by adding a row on the given index.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.RemoveRowAtIndex(System.Int32)">
+            <summary>
+            Reduces the table capacity by removing a row on the given index.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.InsertNewColumnAtIndex(System.Int32)">
+            <summary>
+            Increases the table capacity by adding a column on the given index.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.RemoveColumnAtIndex(System.Int32)">
+            <summary>
+            Reduces the table capacity by removing a column on the given index.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.Reset">
+            <summary>
+            Resets the control to its initial visual state.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.Reset(System.Int32,System.Int32)">
+            <summary>
+            Resets the control to an initial visual state with the given row count and column count.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.PushCellValue(System.Int32,System.Int32,System.Object)">
+            <summary>
+            Updates VirtualGrid with the given value. It also needs to be persisted in the data source.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.RadVirtualGrid.OnInitialized(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.FrameworkElement.Initialized"/> event. This method is invoked whenever <see cref="P:System.Windows.FrameworkElement.IsInitialized"/> is set to true internally.
+            </summary>
+            <param name="e">The <see cref="T:System.Windows.RoutedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.ColumnHeaderHeightProperty">
+            <summary>
+            Represents the ColumnHeaderHeight dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.RowHeaderWidthProperty">
+            <summary>
+            Represents the RowHeaderWidth dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.LinesVisibilityProperty">
+            <summary>
+            Represents the LinesVisibility dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.HorizontalLinesBrushProperty">
+            <summary>
+            Represents the HorizontalLinesBrush dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.VerticalLinesBrushProperty">
+            <summary>
+            Represents the VerticalLinesBrush dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.RowHeaderBackgroundProperty">
+            <summary>
+            Represents the RowHeaderBackground dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.CanUserEditProperty">
+            <summary>
+            Represents the CanUserEdit dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.ColumnHeaderBackgroundProperty">
+            <summary>
+            Represents the ColumnHeaderBackground dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.ColumnHeaderForegroundProperty">
+            <summary>
+            Represents the ColumnHeaderForeground dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.RowHeaderForegroundProperty">
+            <summary>
+            Represents the RowHeaderForeground dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.CurrentCellStrokeProperty">
+            <summary>
+            Represents the CurrentCellStroke dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.PinnedCellBackgroundProperty">
+            <summary>
+            Represents the PinnedCellBackground dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.PinnedCellForegroundProperty">
+            <summary>
+            Represents the PinnedCellForeground dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.SortedHeaderBackgroundProperty">
+            <summary>
+            Represents the SortedHeaderBackground dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.SortedHeaderForegroundProperty">
+            <summary>
+            Represents the SortedHeaderForeground dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.ColumnWidthProperty">
+            <summary>
+            Represents the ColumnWidth dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.RowHeightProperty">
+            <summary>
+            Represents the RowHeight dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.RowHeaderLinesBrushProperty">
+            <summary>
+            Represents the RowHeaderLinesBrush dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.ColumnHeaderLinesBrushProperty">
+            <summary>
+            Represents the ColumnHeaderLinesBrush dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.InitialRowCountProperty">
+            <summary>
+            Represents the InitialRowCount dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.InitialColumnCountProperty">
+            <summary>
+            Represents the InitialColumnCount dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.RadVirtualGrid.PinnedRowHeaderBackgroundProperty">
+            <summary>
+            Represents the PinnedRowHeaderBackground dependency property.
+            </summary>
+        </member>
+        <member name="E:Telerik.Windows.Controls.RadVirtualGrid.CellValueNeeded">
+            <summary>
+            Occurs when RadVirtualGrid fetches the value for a cell.
+            </summary>
+        </member>
+        <member name="E:Telerik.Windows.Controls.RadVirtualGrid.EditorNeeded">
+            <summary>
+            Occurs when a cell is edited and the editor property value gets changed.
+            </summary>
+        </member>
+        <member name="E:Telerik.Windows.Controls.RadVirtualGrid.EditorValueChanged">
+            <summary>
+            Occurs when a cell is edited and an editor is required.
+            </summary>
+        </member>
+        <member name="E:Telerik.Windows.Controls.RadVirtualGrid.OverlayBrushesNeeded">
+            <summary>
+            Occurs when the set of brushes that will be used for background customization is needed.
+            </summary>
+        </member>
+        <member name="E:Telerik.Windows.Controls.RadVirtualGrid.CellDecorationsNeeded">
+            <summary>
+            Occurs when a cell will be visualized. Setting the arguments' properties will visually modify the cell.
+            </summary>
+        </member>
+        <member name="E:Telerik.Windows.Controls.RadVirtualGrid.CellEditEnded">
+            <summary>
+            Occurs when an edit operation is finished.
+            </summary>
+        </member>
+        <member name="E:Telerik.Windows.Controls.RadVirtualGrid.HeaderValueNeeded">
+            <summary>
+            Occurs when header cell values is needed.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.DataProvider">
+            <summary>
+            Gets or sets the data provider.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.ColumnWidth">
+            <summary>
+            Gets or sets the width of the columns.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.RowHeight">
+            <summary>
+            Gets or sets the height of the rows.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.CanUserEdit">
+            <summary>
+            Gets or sets a value that indicates whether data can be modified through user input.
+            </summary>
+            <value>The can user edit.</value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.ColumnHeaderHeight">
+            <summary>
+            Gets or sets the height of the column headers.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.RowHeaderWidth">
+            <summary>
+            Gets or sets the width of the row headers.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.LinesVisibility">
+            <summary>
+            Gets or sets the lines' visibility.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.HorizontalLinesBrush">
+            <summary>
+            Gets or sets the horizontal lines' stroke brush.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.VerticalLinesBrush">
+            <summary>
+            Gets or sets the vertical lines' stroke brush.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.RowHeaderLinesBrush">
+            <summary>
+            Gets or sets the row header lines' stroke brush.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.ColumnHeaderLinesBrush">
+            <summary>
+            Gets or sets the column header lines' stroke brush.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.RowHeaderBackground">
+            <summary>
+            Gets or sets the row headers' background.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.PinnedRowHeaderBackground">
+            <summary>
+            Gets or sets the pinned row headers' background.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.ColumnHeaderBackground">
+            <summary>
+            Gets or sets the column headers' background.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.ColumnHeaderForeground">
+            <summary>
+            Gets or sets the column headers' foreground.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.RowHeaderForeground">
+            <summary>
+            Gets or sets the row header's foreground.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.CurrentCellStroke">
+            <summary>
+            Gets or sets the stroke brush of the current cell.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.InitialRowCount">
+            <summary>
+            Gets or sets the initial row count.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.InitialColumnCount">
+            <summary>
+            Gets or sets the initial column count.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.PinnedCellBackground">
+            <summary>
+            Gets or sets the cells' background when cells are pinned.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.PinnedCellForeground">
+            <summary>
+            Gets or sets the cells' foreground when cells are pinned.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.SortedHeaderBackground">
+            <summary>
+            Gets or sets the headers' background when the respective columns are sorted.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.RadVirtualGrid.SortedHeaderForeground">
+            <summary>
+            Gets or sets the headers' foreground when the respective columns are sorted.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.VirtualGridCanvasPanel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.VirtualizingCanvasBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.VirtualizingCanvasBase.InitialRowsCount">
+            <summary>
+            Gets or sets the rows count.
+            </summary>
+            <value>The rows count.</value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.VirtualizingCanvasBase.InitialColumnsCount">
+            <summary>
+            Gets or sets the columns count.
+            </summary>
+            <value>The columns count.</value>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGrid.VirtualGridCanvasPanel.ArrangeOverride(System.Windows.Size)">
+            <summary>
+            When overridden in a derived class, positions child elements and determines
+            a size for a <see cref="T:System.Windows.FrameworkElement" /> derived class.
+            </summary>
+            <param name="finalSize">The final area within the parent that this element should
+            use to arrange itself and its children.</param>
+            <returns>The actual size used.</returns>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGrid.VirtualGridCanvasPanel.WrappingBorder">
+            <summary>
+            Gets the wrapping border.
+            </summary>
+            <value>The wrapping border.</value>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGridCompoundPanel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Controls.VirtualGridCompoundPanel"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.MeasureOverride(System.Windows.Size)">
+            <summary>
+            When overridden in a derived class, measures the size in layout required
+            for child elements and determines a size for the <see cref="T:System.Windows.FrameworkElement" />-derived
+            class.
+            </summary>
+            <param name="availableSize">The available size that this element can give to
+            child elements. Infinity can be specified as a value to indicate that the element
+            will size to whatever content is available.</param>
+            <returns>
+            The size that this element determines it needs during layout, based
+            on its calculations of child element sizes.
+            </returns>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.ArrangeOverride(System.Windows.Size)">
+            <summary>
+            When overridden in a derived class, positions child elements and determines
+            a size for a <see cref="T:System.Windows.FrameworkElement" /> derived class.
+            </summary>
+            <param name="finalSize">The final area within the parent that this element should
+            use to arrange itself and its children.</param>
+            <returns>The actual size used.</returns>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.OnMouseDown(System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.VirtualGridCompoundPanel.scrollOwner">
+            <summary>
+            Gets or sets a <see cref="T:System.Windows.Controls.ScrollViewer" />
+            element that controls scrolling behavior.
+            </summary>
+            <returns>A <see cref="T:System.Windows.Controls.ScrollViewer" /> element that
+            controls scrolling behavior. This property has no default value.</returns>
+            <value></value>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.SetHorizontalOffset(System.Double)">
+            <summary>
+            Sets the amount of horizontal offset.
+            </summary>
+            <param name="offset">The degree to which content is horizontally offset from
+            the containing viewport.</param>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.SetVerticalOffset(System.Double)">
+            <summary>
+            Sets the amount of vertical offset.
+            </summary>
+            <param name="offset">The degree to which content is vertically offset from the
+            containing viewport.</param>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.LineDown">
+            <summary>
+            Scrolls down within content by one logical unit.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.LineUp">
+            <summary>
+            Scrolls up within content by one logical unit.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.LineRight">
+            <summary>
+            Scrolls right within content by one logical unit.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.LineLeft">
+            <summary>
+            Scrolls left within content by one logical unit.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.MouseWheelDown">
+            <summary>
+            Scrolls down within content after a user clicks the wheel button on
+            a mouse.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.MouseWheelUp">
+            <summary>
+            Scrolls up within content after a user clicks the wheel button on a
+            mouse.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.MouseWheelRight">
+            <summary>
+            Scrolls right within content after a user clicks the wheel button on
+            a mouse.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.MouseWheelLeft">
+            <summary>
+            Scrolls left within content after a user clicks the wheel button on
+            a mouse.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.PageDown">
+            <summary>
+            Scrolls down within content by one page.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.PageUp">
+            <summary>
+            Scrolls up within content by one page.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.PageRight">
+            <summary>
+            Scrolls right within content by one page.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.PageLeft">
+            <summary>
+            Scrolls left within content by one page.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.VirtualGridCompoundPanel.MakeVisible(System.Windows.Media.Visual,System.Windows.Rect)">
+            <summary>
+            Forces content to scroll until the coordinate space of a <see cref="T:System.Windows.Media.Visual" />
+            object is visible.
+            </summary>
+            <param name="visual">A <see cref="T:System.Windows.Media.Visual" /> that becomes
+            visible.</param>
+            <param name="rectangle">A bounding rectangle that identifies the coordinate space
+            to make visible.</param>
+            <returns>A <see cref="T:System.Windows.Rect" /> that is visible.</returns>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.CanHorizontallyScroll">
+            <summary>
+            Gets or sets a value that indicates whether scrolling on the horizontal
+            axis is possible.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.CanVerticallyScroll">
+            <summary>
+            Gets or sets a value that indicates whether scrolling on the vertical
+            axis is possible.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.ExtentHeight">
+            <summary>
+            Gets the vertical size of the extent.
+            </summary>
+            <returns>A <see cref="T:System.Double" /> that represents, in device independent
+            pixels, the vertical size of the extent.This property has no default value.</returns>
+            <value></value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.ExtentWidth">
+            <summary>
+            Gets the horizontal size of the extent.
+            </summary>
+            <returns>A <see cref="T:System.Double" /> that represents, in device independent
+            pixels, the horizontal size of the extent. This property has no default value.
+            </returns>
+            <value></value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.HorizontalOffset">
+            <summary>
+            Gets the horizontal offset of the scrolled content.
+            </summary>
+            <returns>A <see cref="T:System.Double" /> that represents, in device independent
+            pixels, the horizontal offset. This property has no default value.</returns>
+            <value></value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.VerticalOffset">
+            <summary>
+            Gets the vertical offset of the scrolled content.
+            </summary>
+            <returns>A <see cref="T:System.Double" /> that represents, in device independent
+            pixels, the vertical offset of the scrolled content. Valid values are between
+            zero and the <see cref="P:System.Windows.Controls.Primitives.IScrollInfo.ExtentHeight" />
+            minus the <see cref="P:System.Windows.Controls.Primitives.IScrollInfo.ViewportHeight" />.
+            This property has no default value.</returns>
+            <value></value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.ViewportHeight">
+            <summary>
+            Gets the vertical size of the viewport for this content.
+            </summary>
+            <returns>A <see cref="T:System.Double" /> that represents, in device independent
+            pixels, the vertical size of the viewport for this content. This property has
+            no default value.</returns>
+            <value></value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.ViewportWidth">
+            <summary>
+            Gets the horizontal size of the viewport for this content.
+            </summary>
+            <returns>A <see cref="T:System.Double" /> that represents, in device independent
+            pixels, the horizontal size of the viewport for this content. This property has
+            no default value.</returns>
+            <value></value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.ScrollOwner">
+            <summary>
+            Gets or sets a <see cref="T:System.Windows.Controls.ScrollViewer" />
+            element that controls scrolling behavior.
+            </summary>
+            <returns>A <see cref="T:System.Windows.Controls.ScrollViewer" /> element that
+            controls scrolling behavior. This property has no default value.</returns>
+            <value></value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.ComputedVerticalOffset">
+            <summary>
+            Gets or sets the computed vertical offset.
+            </summary>
+            <value>The computed vertical offset.</value>
+        </member>
+        <member name="P:Telerik.Windows.Controls.VirtualGridCompoundPanel.ComputedHorizontalOffset">
+            <summary>
+            Gets or sets the computed horizontal offset.
+            </summary>
+            <value>The computed horizontal offset.</value>
+        </member>
+        <member name="T:Telerik.Windows.Controls.VirtualGrid.VirtualGridLinesVisibility">
+            <summary>
+            Determines the visibility of the gridlines.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.VirtualGrid.VirtualGridLinesVisibility.None">
+            <summary>
+            No gridlines are visible.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.VirtualGrid.VirtualGridLinesVisibility.Horizontal">
+            <summary>
+            Only horizontal gridlines are visible.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.VirtualGrid.VirtualGridLinesVisibility.Vertical">
+            <summary>
+            Only vertical gridlines are visible.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.VirtualGrid.VirtualGridLinesVisibility.Both">
+            <summary>
+            Both vertical and horizontal gridlines are visible.
+            </summary>
+        </member>
+    </members>
+</doc>

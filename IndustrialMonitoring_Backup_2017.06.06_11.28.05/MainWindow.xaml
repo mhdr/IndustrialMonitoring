@@ -1,0 +1,114 @@
+﻿<Window xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"  x:Class="IndustrialMonitoring.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Monitoring" Height="593" Width="871" Loaded="MainWindow_OnLoaded"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition MinHeight="10" MaxHeight="25"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <telerik:RadMenu VerticalAlignment="Top" Name="MenuMain" HorizontalAlignment="Stretch" Grid.Row="0">
+                <telerik:RadMenuItem Header="Action">
+                    <telerik:RadMenuItem Header="Start Monitoring" Name="MenuItemStart" Click="MenuItemStart_OnClick"/>
+                    <telerik:RadMenuItem Header="Stop Monitoring" Name="MenuItemStop" Click="MenuItemStop_OnClick" IsEnabled="False"/>
+                </telerik:RadMenuItem>
+
+                <telerik:RadMenuItem Header="Archive">
+                    <telerik:RadMenuItem Header="Show Chart" Name="MenuItemChart">
+                        <telerik:RadMenuItem Header="Line Series" Name="MenuItemLineSeries" Click="MenuItemLineSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Spline Series" Name="MenuItemSplineSeries" Click="MenuItemSplineSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Step Line Series" Name="MenuItemStepLineSeries" Click="MenuItemStepLineSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Point Series" Name="MenuItemPointSeries" Click="MenuItemPointSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Area Series" Name="MenuItemAreaSeries" Click="MenuItemAreaSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Spline Area Series" Name="MenuItemSplineAreaSeries" Click="MenuItemSplineAreaSeries_OnClick"/>
+                        <telerik:RadMenuItem Header="Step Area Series" Name="MenuItemStepAreaSeries" Click="MenuItemStepAreaSeries_OnClick"/>
+                    </telerik:RadMenuItem>
+                    <telerik:RadMenuItem Header="Show Grid" Name="MenuItemGrid" Click="MenuItemGrid_OnClick"/>
+                    <telerik:RadMenuItem Header="Compare" Name="MenuItemCompareData" Click="MenuItemCompareData_OnClick">
+                        <telerik:RadMenuItem Header="Add Item" Name="MenuItemAddItem" Click="MenuItemAddItem_Click"/>
+                        <telerik:RadMenuItem Header="Clear Items" Name="MenuItemClearItems" IsEnabled="False" Click="MenuItemClearItems_Click"/>
+                        <telerik:RadMenuItem Header="Items" Name="MenuItemItems">
+
+                        </telerik:RadMenuItem>
+                        <telerik:RadMenuItem Name="MenuItemCompare" Header="Compare Items">
+                            <telerik:RadMenuItem Header="Line Series" Name="MenuItemLineSeriesCompare" Click="ContextMenuItemLineSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Spline Series" Name="MenuItemSplineSeriesCompare" Click="ContextMenuItemSplineSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Step Line Series" Name="MenuItemStepLineSeriesCompare" Click="ContextMenuItemStepLineSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Point Series" Name="MenuItemPointSeriesCompare" Click="ContextMenuItemPointSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Area Series" Name="MenuItemAreaSeriesCompare" Click="ContextMenuItemAreaSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Spline Area Series" Name="MenuItemSplineAreaSeriesCompare" Click="ContextMenuItemSplineAreaSeriesCompare_OnClick"/>
+                            <telerik:RadMenuItem Header="Step Area Series" Name="MenuItemStepAreaSeriesCompare" Click="ContextMenuItemStepAreaSeriesCompare_OnClick"/>
+                        </telerik:RadMenuItem>
+                    </telerik:RadMenuItem>
+                </telerik:RadMenuItem>
+                
+                <telerik:RadMenuItem Header="Notification">
+                    <telerik:RadMenuItem Name="MenuItemShowNotifications" Header="Notifications" ToolTip="Show notifications for all items" Click="MenuItemShowNotifications_OnClick"/>
+                    <telerik:RadMenuItem Name="MenuItemShowNotificationForCurrentItem" Header="Notification" ToolTip="Show notifications for current item" Click="MenuItemShowNotificationForCurrentItem_OnClick"/>
+                </telerik:RadMenuItem>
+
+                <telerik:RadMenuItem Name="MenuItemTools" SubmenuOpened="MenuItemTools_OnSubmenuOpened" Header="Tools">
+                    <telerik:RadMenuItem Name="MenuItemChangePasswordWindow" Header="Change password" Click="MenuItemChangePasswordWindow_OnClick"/>
+                </telerik:RadMenuItem>
+
+                <telerik:RadMenuItem Name="MenuItemServices" Header="Services">
+                    <telerik:RadMenuItem Name="MenuItemHorn" Header="Horn" Click="MenuItemHorn_OnClick" IsEnabled="False"/>
+                </telerik:RadMenuItem>
+                
+                <telerik:RadMenuItem Name="MenuItemHelp" Header="Help">
+                    <telerik:RadMenuItem Name="MenuItemIssues" Header="Show Issues" ToolTip="Show issues" Click="MenuItemIssues_OnClick"/>
+                    <telerik:RadMenuItem Name="MenuItemNewIssue" Header="New issue" ToolTip="Report a new issue" Click="MenuItemNewIssue_OnClick"/>
+                </telerik:RadMenuItem>
+            </telerik:RadMenu>
+
+            <telerik:RadBusyIndicator Name="BusyIndicator" IsIndeterminate="True" Grid.Row="1">
+                <telerik:RadTabControl Name="TabControlIOs" OverflowMode="Wrap">
+                    <telerik:RadContextMenu.ContextMenu>
+                        <telerik:RadContextMenu>
+                            <telerik:RadMenuItem Header="Show Chart" Name="ContextMenuItemChart">
+                                <telerik:RadMenuItem Header="Line Series" Name="ContextMenuItemLineSeries" Click="MenuItemLineSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Spline Series" Name="ContextMenuItemSplineSeries" Click="MenuItemSplineSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Step Line Series" Name="ContextMenuItemStepLineSeries" Click="MenuItemStepLineSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Point Series" Name="ContextMenuItemPointSeries" Click="MenuItemPointSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Area Series" Name="ContextMenuItemAreaSeries" Click="MenuItemAreaSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Spline Area Series" Name="ContextMenuItemSplineAreaSeries" Click="MenuItemSplineAreaSeries_OnClick"/>
+                                <telerik:RadMenuItem Header="Step Area Series" Name="ContextMenuItemStepAreaSeries" Click="MenuItemStepAreaSeries_OnClick"/>
+                                </telerik:RadMenuItem>
+                            <telerik:RadMenuItem Header="Show Grid" Name="ContextMenuItemGrid" Click="MenuItemGrid_OnClick"/>
+                            <telerik:RadMenuItem Header="Compare" Name="ContextMenuItemCompareData" Click="MenuItemCompareData_OnClick">
+                                <telerik:RadMenuItem Header="Add Item" Name="ContextMenuItemAddItem" Click="MenuItemAddItem_Click"/>
+                                <telerik:RadMenuItem Header="Clear Items" Name="ContextMenuItemClearItems" IsEnabled="False" Click="MenuItemClearItems_Click"/>
+                                <telerik:RadMenuItem Header="Items" Name="ContextMenuItemItems">
+
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Name="ContextMenuItemCompare" Header="Compare Items">
+                                    <telerik:RadMenuItem Header="Line Series" Name="ContextMenuItemLineSeriesCompare" Click="ContextMenuItemLineSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Spline Series" Name="ContextMenuItemSplineSeriesCompare" Click="ContextMenuItemSplineSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Step Line Series" Name="ContextMenuItemStepLineSeriesCompare" Click="ContextMenuItemStepLineSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Point Series" Name="ContextMenuItemPointSeriesCompare" Click="ContextMenuItemPointSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Area Series" Name="ContextMenuItemAreaSeriesCompare" Click="ContextMenuItemAreaSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Spline Area Series" Name="ContextMenuItemSplineAreaSeriesCompare" Click="ContextMenuItemSplineAreaSeriesCompare_OnClick"/>
+                                    <telerik:RadMenuItem Header="Step Area Series" Name="ContextMenuItemStepAreaSeriesCompare" Click="ContextMenuItemStepAreaSeriesCompare_OnClick"/>
+                                </telerik:RadMenuItem>
+                            </telerik:RadMenuItem>
+
+                            <telerik:RadMenuItem Name="ContextItemShowNotificationForCurrentItem" Header="Notification" ToolTip="Show notifications for current item" Click="MenuItemShowNotificationForCurrentItem_OnClick"/>
+                        </telerik:RadContextMenu>
+                    </telerik:RadContextMenu.ContextMenu>
+                    </telerik:RadTabControl>
+            </telerik:RadBusyIndicator>
+        </Grid>
+
+        <StatusBar Name="StatusBarBottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1"
+                   MouseDoubleClick="StatusBarBottom_OnMouseDoubleClick" FontWeight="Bold"/>
+    </Grid>
+</Window>

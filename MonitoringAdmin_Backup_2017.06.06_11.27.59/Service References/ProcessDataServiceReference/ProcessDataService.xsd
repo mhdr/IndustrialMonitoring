@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SharedLibrary" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SharedLibrary" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ItemType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Digital" />
+      <xs:enumeration value="Analog" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ItemType" nillable="true" type="tns:ItemType" />
+  <xs:simpleType name="WhenToLog">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="OnTimerElapsed" />
+      <xs:enumeration value="OnChange" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="WhenToLog" nillable="true" type="tns:WhenToLog" />
+</xs:schema>
