@@ -143,7 +143,6 @@
     <Compile Include="IUserService.cs" />
     <Compile Include="Jobs\ArchiveItemsLog.cs" />
     <Compile Include="Jobs\FanCoilSwitchOff.cs" />
-    <Compile Include="Jobs\OpcBooleanCommandJob.cs" />
     <Compile Include="LogOutlier.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -180,6 +179,7 @@
     <Compile Include="OpcBooleanCommand.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="OpcCommandsJob.cs" />
     <Compile Include="ProcessDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\BSProcessDataServiceReference\Reference.cs">

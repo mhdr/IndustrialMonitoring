@@ -85,6 +85,37 @@ namespace MonitoringServiceLibrary
                         entities = new IndustrialMonitoringEntities();
                         int notificationId = notificationItem.NotificationId;
 
+                        if (notificationItem.DisableNotification)
+                        {
+                            NotificationItemsLog prev =
+                                entities.NotificationItemsLogs.FirstOrDefault(x => x.NotificationId == notificationId);
+
+                            if (!prev.Value)
+                            {
+                                NotificationItemsLog notificationItemsLog = new NotificationItemsLog();
+                                notificationItemsLog.NotificationId = notificationId;
+                                notificationItemsLog.Value = true;
+                                notificationItemsLog.Time = DateTime.Now;
+
+                                entities.NotificationItemsLogs.Add(notificationItemsLog);
+                            }
+
+                            NotificationItemsLogLatest latest =
+                                entities.NotificationItemsLogLatests.FirstOrDefault(
+                                    x => x.NotificationId == notificationId);
+
+                            if (!latest.Value)
+                            {
+                                latest.Value = true;
+                                latest.Time = DateTime.Now;
+
+                                entities.SaveChanges();
+                            }
+                            
+
+                            continue;
+                        }
+
                         NotificationItemsLogLatest notificationItemsLogLatest = entities.NotificationItemsLogLatests.FirstOrDefault(x => x.NotificationId == notificationId);
 
                         if (notificationItemsLogLatest == null)

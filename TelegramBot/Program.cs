@@ -39,18 +39,29 @@ namespace TelegramBot
             Thread thread=new Thread(()=>StartFanCoilMobileServer());
             thread.Start();
 
-            //Thread thread2 = new Thread(() =>
-            //  {
-            //      StartEchoServer();
-            //  });
-            //thread2.Start();
+            Thread thread2=new Thread(()=>StartOpcCommandsServer());
+            thread2.Start();
 
             Console.ReadKey();
         }
 
         public static void StartOpcCommandsServer()
         {
-            
+            try
+            {
+                while (true)
+                {
+                    OpcCommandsJob job=new OpcCommandsJob();
+                    job.Run();
+
+                    Thread.Sleep(5000);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Logger.LogTelegramBot(ex);
+            }
         }
 
         public static void StartEchoServer()

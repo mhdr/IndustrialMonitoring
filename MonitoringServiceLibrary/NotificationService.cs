@@ -22,6 +22,11 @@ namespace MonitoringServiceLibrary
 
                 foreach (NotificationItemsLogLatest item in notificationItemsLogLatests)
                 {
+                    if (item.NotificationItem.DisableNotification)
+                    {
+                        return false;
+                    }
+
                     if (item.NotificationItem.ItemId == itemId & item.Value == false)
                     {
                         return true;
