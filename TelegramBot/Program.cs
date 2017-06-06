@@ -34,6 +34,7 @@ namespace TelegramBot
             StartTechnicalFanCoilBot();
             SatrtQuartzScheduler();
             SatrtQuartzSchedulerForArchive();
+            StartOpcCommandsServer();
 
             Thread thread=new Thread(()=>StartFanCoilMobileServer());
             thread.Start();
@@ -45,6 +46,11 @@ namespace TelegramBot
             //thread2.Start();
 
             Console.ReadKey();
+        }
+
+        public static void StartOpcCommandsServer()
+        {
+            
         }
 
         public static void StartEchoServer()
