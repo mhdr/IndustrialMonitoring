@@ -110,3 +110,4 @@ Backup*/
 UpgradeLog*.XML
 
 *.apk
+/Database/Database.jfm

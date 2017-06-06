@@ -18,5 +18,6 @@ namespace MonitoringServiceLibrary
         public string Location { get; set; }
         public bool CommandValue { get; set; }
         public int Interval { get; set; }
+        public Nullable<System.DateTime> PreviousRun { get; set; }
     }
 }

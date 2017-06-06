@@ -168,6 +168,7 @@
           <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CommandValue" Type="bit" Nullable="false" />
           <Property Name="Interval" Type="int" Nullable="false" />
+          <Property Name="PreviousRun" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -1232,6 +1233,7 @@
           <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CommandValue" Type="Boolean" Nullable="false" />
           <Property Name="Interval" Type="Int32" Nullable="false" />
+          <Property Name="PreviousRun" Type="DateTime" Precision="7" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1485,6 +1487,7 @@
           <EntitySetMapping Name="OpcBooleanCommands">
             <EntityTypeMapping TypeName="IndustrialMonitoringModel.OpcBooleanCommand">
               <MappingFragment StoreEntitySet="OpcBooleanCommands">
+                <ScalarProperty Name="PreviousRun" ColumnName="PreviousRun" />
                 <ScalarProperty Name="Interval" ColumnName="Interval" />
                 <ScalarProperty Name="CommandValue" ColumnName="CommandValue" />
                 <ScalarProperty Name="Location" ColumnName="Location" />
