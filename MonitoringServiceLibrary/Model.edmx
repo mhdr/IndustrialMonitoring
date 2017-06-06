@@ -160,6 +160,15 @@
           <Property Name="Time" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
+        <EntityType Name="OpcBooleanCommands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CommandValue" Type="bit" Nullable="false" />
+          <Property Name="Interval" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Services">
           <Key>
             <PropertyRef Name="ServiceId" />
@@ -493,6 +502,7 @@
           <EntitySet Name="NotificationItems" EntityType="Self.NotificationItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLog" EntityType="Self.NotificationItemsLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationItemsLogLatest" EntityType="Self.NotificationItemsLogLatest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpcBooleanCommands" EntityType="Self.OpcBooleanCommands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tabs" EntityType="Self.Tabs" Schema="dbo" store:Type="Tables" />
@@ -1155,6 +1165,7 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UsersItemsPermission" EntitySet="UsersItemsPermissions" />
           </AssociationSet>
+          <EntitySet Name="OpcBooleanCommands" EntityType="IndustrialMonitoringModel.OpcBooleanCommand" />
         </EntityContainer>
         <EntityType Name="ItemsLogArchive">
           <Key>
@@ -1213,6 +1224,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="OpcBooleanCommand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommandValue" Type="Boolean" Nullable="false" />
+          <Property Name="Interval" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1459,6 +1479,16 @@
                 <ScalarProperty Name="ItemId" ColumnName="ItemId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OpcBooleanCommands">
+            <EntityTypeMapping TypeName="IndustrialMonitoringModel.OpcBooleanCommand">
+              <MappingFragment StoreEntitySet="OpcBooleanCommands">
+                <ScalarProperty Name="Interval" ColumnName="Interval" />
+                <ScalarProperty Name="CommandValue" ColumnName="CommandValue" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

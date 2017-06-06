@@ -179,6 +179,9 @@
     </Compile>
     <Compile Include="NotificationsBotInvoker.cs" />
     <Compile Include="NotificationService.cs" />
+    <Compile Include="OpcBooleanCommand.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProcessDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\BSProcessDataServiceReference\Reference.cs">

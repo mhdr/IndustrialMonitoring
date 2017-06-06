@@ -81,6 +81,7 @@
     <Build Include="FanCoilBot.sql" />
     <Build Include="Session.sql" />
     <Build Include="ItemsLogArchive.sql" />
+    <Build Include="OpcBooleanCommands.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Database.refactorlog" />

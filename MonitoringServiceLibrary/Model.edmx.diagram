@@ -46,6 +46,7 @@
         <EntityTypeShape EntityType="IndustrialMonitoringModel.UsersItemsPermission" Width="1.5" PointX="8.25" PointY="12.875" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Items" />
         <AssociationConnector Association="IndustrialMonitoringModel.FK_UsersItemsPermissions_Users" />
+        <EntityTypeShape EntityType="IndustrialMonitoringModel.OpcBooleanCommand" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

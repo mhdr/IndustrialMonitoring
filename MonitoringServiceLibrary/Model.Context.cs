@@ -45,5 +45,6 @@ namespace MonitoringServiceLibrary
         public virtual DbSet<UsersServicesPermission> UsersServicesPermissions { get; set; }
         public virtual DbSet<ItemsLogArchive> ItemsLogArchives { get; set; }
         public virtual DbSet<UsersItemsPermission> UsersItemsPermissions { get; set; }
+        public virtual DbSet<OpcBooleanCommand> OpcBooleanCommands { get; set; }
     }
 }
