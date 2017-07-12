@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="Item2" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>MonitoringAdmin.ProcessDataServiceReference.Item2</TypeInfo>
+   <TypeInfo>MonitoringAdmin.ProcessDataServiceReference.Item2, Service References.ProcessDataServiceReference.Reference.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>
