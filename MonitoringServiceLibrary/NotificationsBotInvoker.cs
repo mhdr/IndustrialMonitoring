@@ -208,8 +208,15 @@ Date : {7}", emojiAlarm, notificationItemsLog.NotificationItem.Item.ItemName, no
 
                 foreach (int chatId in chatIds)
                 {
-                    await bot.SendTextMessage(chatId, output);
-                    await Task.Delay(100);
+                    try
+                    {
+                        await bot.SendTextMessage(chatId, output);
+                        await Task.Delay(100);
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.LogMonitoringServiceLibrary(e);
+                    }
                 }
 
                 return true;
