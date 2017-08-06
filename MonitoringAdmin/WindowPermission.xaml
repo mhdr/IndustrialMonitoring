@@ -26,9 +26,11 @@
         </GroupBox>
         
         <GroupBox Header="Permissions" Grid.Column="0" Grid.Row="1">
-            <WrapPanel Name="WrapPanelPermission">
-                
-            </WrapPanel>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <WrapPanel Name="WrapPanelPermission">
+
+                </WrapPanel>
+            </ScrollViewer>
         </GroupBox>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
