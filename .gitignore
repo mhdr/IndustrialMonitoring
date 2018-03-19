@@ -111,3 +111,4 @@ UpgradeLog*.XML
 
 *.apk
 /Database/Database.jfm
+/.vs
